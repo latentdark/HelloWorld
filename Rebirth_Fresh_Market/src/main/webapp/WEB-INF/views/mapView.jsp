@@ -14,9 +14,14 @@
 			border-style: none;
 			font-size:15px;
 		}
-		#start,#deal,#login{
+		#start,#login{
 			margin-top : 3px;
 			color:white;
+			background:none;
+		}
+		#deal{
+			margin-top : 3px;
+			color:gray;
 			background:none;
 		}
 	
@@ -28,10 +33,6 @@
 		
 		#search{
 			margin-top: 10px;
-		}
-		body{
-			background-image: url("/resources/imgs/bg.png");
-			background-color:#00A1DA;
 		}
 		.dropdown-menu{
 		 	padding: 15px; 
@@ -53,7 +54,18 @@
 			border:none;
 		}
 		
+		
+		
+		html { height: 100% }
+      	body { height: 100%; margin: 0; padding: 0 }
+      	
+      	#map_canvas { height: 100%;}
+		
 	</style>
+	
+	<script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAX-hWL7tXxRZd2GtUjDME2jf-9qNoiRsE&sensor=false&language=ko">
+    </script>
 	<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
@@ -80,12 +92,35 @@
 		if(mail03.test(cg.value)) return true;		
 		return false;
 	}
+	
+	//구글 맵
+	
+	 function initialize() {
+        var mapOptions = {
+          center: new google.maps.LatLng(37.494626, 127.027933),
+          zoom: 17,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+            mapOptions);
+      
+        var marker = new google.maps.Marker({
+            position: map.getCenter(),
+            map: map,
+            title: 'Click to zoom'
+          });
+        
+        google.maps.event.addListener(marker, 'click', function() {
+            map.setZoom(20);
+            map.setCenter(marker.getPosition());
+          }); 
+      }  
 	</script>
 	
 	
 	
 </head>
-<body>
+<body onload="initialize()">
 	<div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -126,16 +161,6 @@
         </div><!--/.nav-collapse -->
       </div>
     </div>
-	<br><br>
-	<div id="main" class="container">
-	<br><br>
-	<div id="logo">
-	<img src="/resources/imgs/logo5.png" width="600" height="80" >
-	</div>
-	<br><br>
-	</div>
-	
-	
 	<script type="text/javascript">
 	//이메일칸에 입력전에 submit 버튼 활성화/비활성화
 	document.loginform.commit.disabled = true;
@@ -148,8 +173,9 @@
 		} else {
 		    document.loginform.commit.disabled = false;
 		}
-	}
+	}	
 	</script>
+	<div id="map_canvas" style="width:100%; height:100% "></div>
 
 </body>
 </html>
