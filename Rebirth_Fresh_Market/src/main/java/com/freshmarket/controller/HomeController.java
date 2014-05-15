@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Handles requests for the application home page.
@@ -20,10 +21,27 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	
+	@RequestMapping(value = "/googleMap")
+	public ModelAndView googlemap(Locale locale, Model model) {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/googleMap");
+		return modelAndView;
+	}
+	
+	
+	/*
+	@RequestMapping(value = "/googleMap")
+	public String googlemap(Locale locale, Model model) {
+		return "googleMap";
+	}
+	*/
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		return "index";
 	}
+	
+	
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
