@@ -8,7 +8,7 @@
 <h1>
 	Hello world!  
 </h1>
-	<p>어서오너라 데스크탑이다~</p>
+
 <P>  The time on the server is ${serverTime}. </P>
 </body>
 </html>
