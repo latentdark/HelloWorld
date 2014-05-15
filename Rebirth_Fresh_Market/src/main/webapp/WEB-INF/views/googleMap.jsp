@@ -38,10 +38,10 @@
   	<title>Google Map Test</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<link rel="Stylesheet" href="css/bootstrap.min.css"/>
+	<link rel="Stylesheet" href="/resources/css/bootstrap.min.css"/>
 	<style>
 		.navbar{
-			background-image: url("img/bg.png");
+			background-image: url("/resources/imgs/bg.png");
 			border-style: none;
 		}
 		#start,#deal,#login{
@@ -60,7 +60,7 @@
       	#map_canvas { height: 100%;}
 	</style>
 	
-	<link rel="Stylesheet" href="css/bootstrap-responsive.min.css"/>
+	<link rel="Stylesheet" href="/resources/css/bootstrap-responsive.min.css"/>
 	<script src="http://code.jquery.com/jquery-1.7.1.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 
@@ -108,7 +108,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="Index.html"><img src="img/logo5.png" width="140" height="20"></a>
+          <a class="navbar-brand" href="/"><img src="/resources/imgs/logo5.png" width="140" height="20"></a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
