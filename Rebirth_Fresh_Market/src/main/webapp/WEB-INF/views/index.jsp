@@ -94,7 +94,7 @@
             <span class="icon-bar"></span>
            
           </button>
-          <a class="navbar-brand" href="Index.html"><img src="/resources/imgs/logo5.png" width="140" height="20"></a>
+          <a class="navbar-brand" href="index.jsp"><img src="/resources/imgs/logo5.png" width="140" height="20"></a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -152,9 +152,9 @@
 	if(document.form.email.value != ""){
 		f_val = document.loginform.useremail;
 		if(!check_mail(f_val)) { 
-		alert("이메일주소가 형식에 맞지 않습니다."); 
-		document.loginform.useremail.focus();
-		return true; 
+			alert("이메일주소가 형식에 맞지 않습니다."); 
+			document.loginform.useremail.focus();
+			return true; 
 		}	
 	}
 	
