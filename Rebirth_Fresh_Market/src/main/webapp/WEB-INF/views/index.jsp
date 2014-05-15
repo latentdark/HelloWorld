@@ -94,12 +94,12 @@
             <span class="icon-bar"></span>
            
           </button>
-          <a class="navbar-brand" href="index.jsp"><img src="/resources/imgs/logo5.png" width="140" height="20"></a>
+          <a class="navbar-brand" href="/index"><img src="/resources/imgs/logo5.png" width="140" height="20"></a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a id="start" href="#">시작하기</a></li>
-            <li><a id="deal" href="googleMap.jsp">사고팔기</a></li>
+            <li><a id="deal" href="/googleMap">사고팔기</a></li>
           </ul>
           <ul class="nav navbar-nav pull-right">
             <li class="divider-vertical"></li>
@@ -146,17 +146,6 @@
 		    document.loginform.commit.disabled = false;
 		}
 	}	
-	
-	//이메일 체크
-	
-	if(document.form.email.value != ""){
-		f_val = document.loginform.useremail;
-		if(!check_mail(f_val)) { 
-			alert("이메일주소가 형식에 맞지 않습니다."); 
-			document.loginform.useremail.focus();
-			return true; 
-		}	
-	}
 	
 	</script>
 </body>
