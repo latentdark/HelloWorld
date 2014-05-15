@@ -115,7 +115,52 @@
 			<artifactId>junit</artifactId>
 			<version>4.7</version>
 			<scope>test</scope>
-		</dependency>        
+		</dependency>
+		
+		<!-- Spring Mobile -->
+	    <dependency>
+	        <groupId>org.springframework.mobile</groupId>
+	        <artifactId>spring-mobile-device</artifactId>
+	        <version>1.1.1.RELEASE</version>
+	    </dependency>
+   		
+   		        <!-- Test Driven용 Lib-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>4.0.3.RELEASE</version>
+		</dependency>
+        
+        <!-- assertThat -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>4.0.3.RELEASE</version>
+		</dependency>
+            
+		
+		<!-- json -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20140107</version>
+		</dependency>
+		
+		<!-- ajax -->
+		<!-- 
+		<dependency>
+			<groupId>org.mule.transports</groupId>
+			<artifactId>mule-transport-ajax</artifactId>
+			<version>3.5.0-bighorn</version>
+		</dependency>
+		 -->
+		<!-- jdbc -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>4.0.3.RELEASE</version>
+		</dependency>
+   		
 	</dependencies>
     <build>
         <plugins>
