@@ -55,8 +55,53 @@
 		
 	</style>
 	<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
+	
+	
+	//------------------------------------------------------------------------------------------//
+	//------------------------------------------------------------------------------------------//
+	// 버튼 이펙트 코드
+	// http://jqueryui.com/effect/#default
+	
+	//
+	 $(function() {
+    // run the currently selected effect
+    function runEffect() {
+      // get effect type from
+      var selectedEffect = $( "#highlight" ).val();
+ 
+      // most effect types need no options passed by default
+      var options = {};
+      // some effects have required parameters
+      if ( selectedEffect === "scale" ) {
+        options = { percent: 0 };
+      } else if ( selectedEffect === "transfer" ) {
+        options = { to: "#login_submit", className: "ui-effects-transfer" };
+      } else if ( selectedEffect === "size" ) {
+        options = { to: { width: 200, height: 60 } };
+      }
+ 
+      // run the effect
+      $( "#effect" ).effect( selectedEffect, options, 500, callback );
+    };
+	
+	// callback function to bring a hidden box back
+    function callback() {
+      setTimeout(function() {
+        $( "#effect" ).removeAttr( "style" ).hide().fadeIn();
+      }, 1000 );
+    };
+ 
+    // set effect from select menu value
+    $( "#login_submit" ).click(function() {
+      runEffect();
+      return false;
+    });
+
+  //------------------------------------------------------------------------------------------//
+  //------------------------------------------------------------------------------------------//
 	
 	//로그인 메뉴 
 	$(function() {
@@ -107,7 +152,7 @@
             <a id="login" class="dropdown-toggle" href="" data-toggle="dropdown">로그인 <strong class="caret"></strong></a>
             <div class="dropdown-menu">
               <!-- Login form here -->
-	            <form name="loginform" action="/" method="post" accept-charset="UTF-8">
+	            <form name="loginform" action="/mapView" method="post" accept-charset="UTF-8">
 				  <input class="form-control" id="user_email" style="margin-bottom: 15px;" type="email" name="useremail" size="30" placeholder=" 이메일"/>
 				  <input class="form-control" id="user_password" style="margin-bottom: 15px;" type="password" name="password" size="30" placeholder=" 비밀번호"/>
 				  <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="user[remember_me]" value="1" />
@@ -142,11 +187,18 @@
 	document.onkeyup = proces;
 	document.onmouseup = proces;
 	document.onmousedown = proces;
+	
+	
+	//알고리즘 개선하였음.
 	function proces() {
-		if (document.loginform.useremail.value == '') {
-		    document.loginform.commit.disabled = true;
-		} else {
-		    document.loginform.commit.disabled = false;
+		if (document.loginform.useremail.value == '' 
+			||document.loginform.user_password.value == '') {   
+			document.loginform.commit.disabled = true;
+		} else if(document.loginform.user_password.value != ''
+				&&document.loginform.user_password.value.length >=8 ){
+			
+			document.loginform.commit.disabled = false; 
+			runEffect();
 		}
 	}
 	</script>
