@@ -94,7 +94,7 @@
             <span class="icon-bar"></span>
            
           </button>
-          <a class="navbar-brand" href="/index"><img src="/resources/imgs/logo5.png" width="140" height="20"></a>
+          <a class="navbar-brand" href="/"><img src="/resources/imgs/logo5.png" width="140" height="20"></a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -107,7 +107,7 @@
             <a id="login" class="dropdown-toggle" href="" data-toggle="dropdown">로그인 <strong class="caret"></strong></a>
             <div class="dropdown-menu">
               <!-- Login form here -->
-	            <form name="loginform" action="[YOUR ACTION]" method="post" accept-charset="UTF-8">
+	            <form name="loginform" action="localhost:8080" method="post" accept-charset="UTF-8">
 				  <input class="form-control" id="user_email" style="margin-bottom: 15px;" type="email" name="useremail" size="30" placeholder=" 이메일"/>
 				  <input class="form-control" id="user_password" style="margin-bottom: 15px;" type="password" name="password" size="30" placeholder=" 비밀번호"/>
 				  <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="user[remember_me]" value="1" />
