@@ -124,7 +124,8 @@
 	        <version>1.1.1.RELEASE</version>
 	    </dependency>
    		
-   		        <!-- Test Driven용 Lib-->
+   		
+   		<!-- Test Driven용 Lib-->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
@@ -160,6 +161,34 @@
 			<artifactId>spring-jdbc</artifactId>
 			<version>4.0.3.RELEASE</version>
 		</dependency>
+		
+		  		<!-- org.thymeleaf -->
+   		<dependency>
+			<groupId>org.thymeleaf</groupId>
+			<artifactId>thymeleaf-spring3</artifactId>
+			<version>2.1.2.RELEASE</version>
+		</dependency>
+		
+		<!-- spring Web Servlet -->
+		<!-- 
+		연동 안되서 spring-web-4.0.3.RELEASE.jar 파일 jre에 직접 넣음
+		 -->
+   		 <!--
+   		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>org.springframework.web.servlet</artifactId>
+		    <version>3.2.5.RELEASE</version>
+		</dependency>
+		 -->
+   		 <!-- -->
+   		
+   		<!-- Spring Mobile -->
+	    <dependency>
+	        <groupId>org.springframework.mobile</groupId>
+	        <artifactId>spring-mobile-device</artifactId>
+	        <version>1.1.1.RELEASE</version>
+	    </dependency>
+		
    		
 	</dependencies>
     <build>
