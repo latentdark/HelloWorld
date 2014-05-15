@@ -3,8 +3,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.freshmarket</groupId>
-	<artifactId>controller</artifactId>
-	<name>Rebirth_Fresh_Market</name>
+	<artifactId>test</artifactId>
+	<name>FreshMarket</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
@@ -115,7 +115,71 @@
 			<artifactId>junit</artifactId>
 			<version>4.7</version>
 			<scope>test</scope>
-		</dependency>        
+		</dependency>
+		
+		<!-- Spring Mobile -->
+	    <dependency>
+	        <groupId>org.springframework.mobile</groupId>
+	        <artifactId>spring-mobile-device</artifactId>
+	        <version>1.1.1.RELEASE</version>
+	    </dependency>
+   		
+   		
+   		<!-- Test Driven용 Lib-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>4.0.3.RELEASE</version>
+		</dependency>
+        
+        <!-- assertThat -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>4.0.3.RELEASE</version>
+		</dependency>
+            
+		
+		<!-- json -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20140107</version>
+		</dependency>
+		
+		<!-- ajax -->
+		 
+		<dependency>
+			<groupId>org.mule.transports</groupId>
+			<artifactId>mule-transport-ajax</artifactId>
+			<version>3.5.0-bighorn</version>
+		</dependency>
+		<!-- -->
+		<!-- jdbc -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>4.0.3.RELEASE</version>
+		</dependency>
+		
+		<!-- org.thymeleaf -->
+   		<dependency>
+			<groupId>org.thymeleaf</groupId>
+			<artifactId>thymeleaf-spring3</artifactId>
+			<version>2.1.2.RELEASE</version>
+		</dependency>
+		
+		<!-- spring Web Servlet -->
+		<!-- 
+		연동 안되서 spring-web-4.0.3.RELEASE.jar 파일 jre에 직접 넣음
+		
+   		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>org.springframework.web.servlet</artifactId>
+		    <version>3.2.5.RELEASE</version>
+		</dependency>
+ 		-->
+   		
 	</dependencies>
     <build>
         <plugins>
