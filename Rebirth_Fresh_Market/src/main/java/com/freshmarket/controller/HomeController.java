@@ -21,10 +21,10 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	
-	@RequestMapping(value = "/googleMap")
+	@RequestMapping(value = "/mapView")
 	public ModelAndView googlemap(Locale locale, Model model) {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/googleMap");
+		modelAndView.setViewName("/mapView");
 		return modelAndView;
 	}
 	
@@ -36,7 +36,7 @@ public class HomeController {
 	}
 	*/
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/")//, method = RequestMethod.GET
 	public String home(Locale locale, Model model) {
 		return "index";
 	}
