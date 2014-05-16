@@ -92,6 +92,11 @@
 		#login_submit.btn{
 			background-color:#00A1DA;
 			border:none;
+			margin-bottom: 5px;
+		}
+		
+		#signup{
+			margin-left:160px;
 		}
 	</style>
 	
@@ -187,6 +192,7 @@
 	
 </head>
 <body>
+<header>
 	<div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -213,8 +219,9 @@
 				  <input class="form-control" id="user_password" style="margin-bottom: 15px;" type="password" name="password" size="30" placeholder=" 비밀번호"/>
 				  <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="user[remember_me]" value="1" />
 				  <label class="string optional" for="user_remember_me"> Remember me</label>
-				 
+				 <!--  아직 적용안됐음 (remember me) -->
 				  <input id="login_submit" class="btn btn-primary" type="submit" name="commit" value="Sign In" onchange='proces()'/>
+				  <a id="signup" href="#">Sign Up</a>
 				</form>
             </div>
           </li>
@@ -227,6 +234,8 @@
         </div><!--/.nav-collapse -->
       </div>
     </div>
+
+    
 	<div id="fullpage">
 	<div class="section " id="section0">
 		<div class="intro">
@@ -242,7 +251,7 @@
 	</div>
 	<div class="section" id="section2">
 		<div class="intro">
-
+		
 		</div>
 	</div>
 </div>
