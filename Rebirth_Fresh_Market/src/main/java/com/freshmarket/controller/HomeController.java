@@ -35,11 +35,18 @@ public class HomeController {
 		return "googleMap";
 	}
 	*/
+	
+	//----------------테스트용 코드
 	@RequestMapping(value = "/test")//, method = RequestMethod.GET
 	public String testHome(Locale locale, Model model) {
 		return "index_test";
 	}
 	
+	@RequestMapping(value = "/effect")//, method = RequestMethod.GET
+	public String effectTest(Locale locale, Model model) {
+		return "/test/effect";
+	}
+	//----------------테스트용 코드
 	
 	@RequestMapping(value = "/")//, method = RequestMethod.GET
 	public String home(Locale locale, Model model) {
