@@ -6,13 +6,14 @@
 	<meta charset="UTF-8">
 	<title>Fresh Market</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
 	<link rel="Stylesheet" href="/resources/css/bootstrap.min.css"/>
 	<style>
 		.navbar{
 			background-image: url("/resources/imgs/bg.png");
 			border-style: none;
 			font-size:15px;
+			font-familiy:'Nanum Gothic'
 		}
 		#start,#login{
 			margin-top : 3px;
@@ -60,7 +61,6 @@
       	body { height: 100%; margin: 0; padding: 0 }
       	
       	#map_canvas { height: 100%;}
-		
 	</style>
 	
 	<script type="text/javascript"

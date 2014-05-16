@@ -1,18 +1,60 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
 	<meta charset="UTF-8">
 	<title>Fresh Market</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+
+	<link rel="stylesheet" type="text/css" href="/resources/css/jquery.fullPage.css" />
+	<link rel="stylesheet" type="text/css" href="/resources/css/examples.css" />
+	<style>
+	
+		/* Style for our header texts 
+	* --------------------------------------- */
+	
+	/* Centered texts in each section 
+	* --------------------------------------- */
+	.section{
+		text-align:center;
+	}
+	#section0,#section1,#section2{
+		background-image: url(/resources/imgs/bg.png);
+	}
+
+	/* Overwriting styles for control arrows for slides
+	* --------------------------------------- */
+	.controlArrow.prev {
+		left: 50px;
+	}
+	.controlArrow.next{
+		right: 50px;
+	}
+	
+	/* Overwriting fullPage.js tooltip color
+	* --------------------------------------- */
+	
+	#fullPage-nav span, .fullPage-slidesNav span{
+		border-color: #FFF;
+	}
+	#fullPage-nav li .active span, .fullPage-slidesNav .active span{
+		background: #FFF;
+	}
+	
+	
+	</style>
+	
 	<link rel="Stylesheet" href="/resources/css/bootstrap.min.css"/>
 	<style>
 		.navbar{
 			background-image: url("/resources/imgs/bg.png");
 			border-style: none;
 			font-size:15px;
+			font-familiy:'Nanum Gothic'
 		}
 		#start,#deal,#login{
 			margin-top : 3px;
@@ -31,7 +73,6 @@
 		}
 		body{
 			background-image: url("/resources/imgs/bg.png");
-			background-color:#00A1DA;
 		}
 		.dropdown-menu{
 		 	padding: 15px; 
@@ -52,8 +93,8 @@
 			background-color:#00A1DA;
 			border:none;
 		}
-		* { -webkit-text-size-adjust:none; max-width:100%; }
 	</style>
+	
 	<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
@@ -127,6 +168,21 @@
 	}
 	</script>
 	
+	<script type="text/javascript" src="/resources/vendors/jquery.slimscroll.min.js"></script>
+
+	<script type="text/javascript" src="/resources/js/jquery.fullPage.js"></script>
+	<script type="text/javascript" src="/resources/js/examples.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#fullpage').fullpage({
+				anchors: ['firstPage', 'secondPage', '3rdPage'],
+				navigation: true,
+				navigationPosition: 'right',
+				navigationTooltips: ['First', 'Second', 'Third']
+			});
+		});
+	</script>
 	
 	
 </head>
@@ -171,15 +227,25 @@
         </div><!--/.nav-collapse -->
       </div>
     </div>
-	<br><br>
-	<div id="main" class="container">
-	<br><br>
-	<div id="logo">
-	<img src="/resources/imgs/logo5.png" width="600" height="80" >
+	<div id="fullpage">
+	<div class="section " id="section0">
+		<div class="intro">
+			<img src="/resources/imgs/logo5.png" width="600" height="80" >
+		
+		</div>
 	</div>
-	<br><br>
+	<div class="section" id="section1">
+		<div class="intro">
+			<img src="/resources/imgs/masan.png" width="800" height="600" >
+		
+		</div>
 	</div>
-	
+	<div class="section" id="section2">
+		<div class="intro">
+
+		</div>
+	</div>
+</div>
 	
 	<script type="text/javascript">
 	//이메일칸에 입력전에 submit 버튼 활성화/비활성화
@@ -202,6 +268,8 @@
 		}
 	}
 	</script>
+
+
 
 </body>
 </html>
