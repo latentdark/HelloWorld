@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<title>Fresh Market</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
 	<link rel="Stylesheet" href="/resources/css/bootstrap.min.css"/>
 	<style>
 		.navbar{
@@ -52,7 +52,7 @@
 			background-color:#00A1DA;
 			border:none;
 		}
-		
+		* { -webkit-text-size-adjust:none; max-width:100%; }
 	</style>
 	<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
