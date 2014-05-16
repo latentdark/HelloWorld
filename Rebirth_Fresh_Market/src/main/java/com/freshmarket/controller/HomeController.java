@@ -35,6 +35,11 @@ public class HomeController {
 		return "googleMap";
 	}
 	*/
+	@RequestMapping(value = "/test")//, method = RequestMethod.GET
+	public String testHome(Locale locale, Model model) {
+		return "index_test";
+	}
+	
 	
 	@RequestMapping(value = "/")//, method = RequestMethod.GET
 	public String home(Locale locale, Model model) {
