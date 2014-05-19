@@ -265,6 +265,9 @@
 	
 	
 	//알고리즘 개선하였음.
+	//active_signUp_process()는 
+	//유효한 이메일 ex) oo@oo.oo가 되면 1차조건 true
+	//8자 이상의 비밀번호 입력시 active됨.
 	function proces() {
 		if (document.loginform.useremail.value == '' 
 			||document.loginform.user_password.value == '') {   
@@ -276,6 +279,8 @@
 			runEffect();
 		}
 	}
+	
+	
 	</script>
 
 
