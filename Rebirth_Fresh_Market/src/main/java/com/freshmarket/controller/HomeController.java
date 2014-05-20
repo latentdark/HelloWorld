@@ -6,6 +6,7 @@ import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.mobile.device.site.SitePreference;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,10 +49,22 @@ public class HomeController {
 	}
 	//----------------테스트용 코드
 	
-	@RequestMapping(value = "/")//, method = RequestMethod.GET
-	public String home(Locale locale, Model model) {
-		return "index";
-	}
+	@RequestMapping("/")
+    public String home(SitePreference sitePreference, Model model) {
+        if (sitePreference == SitePreference.NORMAL) {
+            logger.info("Site preference is normal");
+            return "home";
+        } else if (sitePreference == SitePreference.MOBILE) {
+            logger.info("Site preference is mobile");
+            return "home-mobile";
+        } else if (sitePreference == SitePreference.TABLET) {
+            logger.info("Site preference is tablet");
+            return "home-tablet";
+        } else {
+            logger.info("no site preference");
+            return "home";
+        }
+    }
 	
 	
 	
