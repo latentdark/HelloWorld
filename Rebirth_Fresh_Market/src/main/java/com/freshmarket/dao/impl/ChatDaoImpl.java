@@ -2,7 +2,9 @@ package com.freshmarket.dao.impl;
 
 import java.util.List;
 
-import org.mybatis.spring.SqlSessionTemplate;
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.freshmarket.dao.ChatDao;
@@ -10,11 +12,23 @@ import com.freshmarket.domain.Chat;
 
 @Repository
 public class ChatDaoImpl implements ChatDao {
-    private SqlSessionTemplate sqlSessionTemplate;
-
-    public void setSqlSessionTemplate(SqlSessionTemplate sqlSessionTemplate){
-    	this.sqlSessionTemplate=sqlSessionTemplate;
+    
+	@Autowired
+	@Qualifier("sqlSessionTemplate")
+	private SqlSession sqlSession;
+	
+	//Setter Injection
+    public void setSqlSession(SqlSession sqlSession){
+    	this.sqlSession=sqlSession;
     }
+    
+    //Default Contructor
+    public ChatDaoImpl() {
+		// TODO Auto-generated constructor stub
+    	System.out.println("__________________________");
+    	System.out.println("____Chat_Dao_Impl_Call____");
+    	System.out.println("__________________________");
+	}
 
 	@Override
 	public Integer newChat(Integer dealNo, Integer senderNo, Integer receiverNo) {
