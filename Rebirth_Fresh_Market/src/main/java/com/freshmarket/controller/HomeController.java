@@ -6,12 +6,16 @@ import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.mobile.device.Device;
 import org.springframework.mobile.device.site.SitePreference;
+import org.springframework.mobile.device.view.LiteDeviceDelegatingViewResolver;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 /**
  * Handles requests for the application home page.
@@ -48,10 +52,35 @@ public class HomeController {
 		return "/test/effect";
 	}
 	//----------------테스트용 코드
+	/*
+	@RequestMapping("/")
+	public void home(Device device) {
+        if (device.isMobile()) {
+            logger.info("Hello mobile user!");
+        } else if (device.isTablet()) {
+            logger.info("Hello tablet user!");
+        } else {
+            logger.info("Hello desktop user!");         
+        }
+	}
 	
+	@Bean
+	public LiteDeviceDelegatingViewResolver liteDeviceAwareViewResolver() {
+	    InternalResourceViewResolver delegate = 
+	            new InternalResourceViewResolver();
+	    delegate.setPrefix("/WEB-INF/views/");
+	    delegate.setSuffix(".jsp");
+	    LiteDeviceDelegatingViewResolver resolver = 
+	            new LiteDeviceDelegatingViewResolver(delegate);
+	    resolver.setMobilePrefix("mobile/");
+	    resolver.setTabletPrefix("tablet/");
+	    return resolver;
+	}
+	*/
 	@RequestMapping("/")
     public String home(SitePreference sitePreference, Model model) {
-        if (sitePreference == SitePreference.NORMAL) {
+		System.out.println("들어오긴함?");
+		if (sitePreference == SitePreference.NORMAL) {
             logger.info("Site preference is normal");
             return "home";
         } else if (sitePreference == SitePreference.MOBILE) {
