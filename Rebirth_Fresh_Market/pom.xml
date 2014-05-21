@@ -210,6 +210,13 @@
 		    <version>3.2.5.RELEASE</version>
 		</dependency>
  		-->
+ 		
+ 		<!-- mybatis -->
+        <dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.2.7</version>
+		</dependency>
    		
    		<!-- Mybatis-Spring -->
    		<dependency>
