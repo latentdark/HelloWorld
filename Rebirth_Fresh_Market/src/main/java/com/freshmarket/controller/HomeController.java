@@ -6,6 +6,7 @@ import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.mobile.device.Device;
 import org.springframework.mobile.device.site.SitePreference;
@@ -23,8 +24,22 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Controller
 public class HomeController {
 	
+	@Value("#{commonProperties['pageUnit']}")
+	//@Value("#{commonProperties['pageUnit'] ?: 3}")
+	int pageUnit;
+	
+	@Value("#{commonProperties['pageSize']}")
+	//@Value("#{commonProperties['pageSize'] ?: 2}")
+	int pageSize;
+	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
+	public HomeController() {
+		// TODO Auto-generated constructor stub
+		System.out.println("__________________________");
+    	System.out.println("___Home_Controller_Call___");
+    	System.out.println("__________________________");
+	}
 	
 	@RequestMapping(value = "/mapView")
 	public ModelAndView googlemap(Locale locale, Model model) {
