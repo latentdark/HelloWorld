@@ -2,6 +2,8 @@ package com.freshmarket.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.freshmarket.common.Search;
@@ -11,11 +13,21 @@ import com.freshmarket.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {
-    private UserDao userDao;
+    
+	@Autowired
+	@Qualifier("userDaoImpl")
+	private UserDao userDao;
 
     public void setUserDao(UserDao userDao){
     	this.userDao=userDao;
     }
+    
+    public UserServiceImpl() {
+		// TODO Auto-generated constructor stub
+    	System.out.println("__________________________");
+    	System.out.println("__User_Service_Impl_Call__");
+    	System.out.println("__________________________");
+	}
 
 	@Override
 	public Integer addUser(User user) {

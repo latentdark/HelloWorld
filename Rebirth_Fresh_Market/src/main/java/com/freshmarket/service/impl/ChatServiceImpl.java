@@ -20,6 +20,13 @@ public class ChatServiceImpl implements ChatService {
     public void setChatDao(ChatDao chatDao){
     	this.chatDao=chatDao;
     }
+    
+    public ChatServiceImpl() {
+		// TODO Auto-generated constructor stub
+    	System.out.println("__________________________");
+    	System.out.println("__Chat_Service_Impl_Call__");
+    	System.out.println("__________________________");
+	}
 
 	@Override
 	public Integer newChat(Integer dealNo, Integer senderNo, Integer receiverNo) {

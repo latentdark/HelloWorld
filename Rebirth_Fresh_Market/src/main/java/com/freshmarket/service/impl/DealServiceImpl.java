@@ -21,6 +21,13 @@ public class DealServiceImpl implements DealService {
     public void setDealDao(DealDao dealDao){
     	this.dealDao=dealDao;
     }
+    
+    public DealServiceImpl() {
+		// TODO Auto-generated constructor stub
+    	System.out.println("__________________________");
+    	System.out.println("__Deal_Service_Impl_Call__");
+    	System.out.println("__________________________");
+	}
 
 	@Override
 	public Integer makeDeal(Deal deal) {

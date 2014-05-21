@@ -2,6 +2,8 @@ package com.freshmarket.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.freshmarket.common.Search;
@@ -11,10 +13,21 @@ import com.freshmarket.service.ItemService;
 
 @Service
 public class ItemServiceImpl implements ItemService {
-    private ItemDao itemDao;
+    
+	@Autowired
+	@Qualifier("itemDaoImpl")
+	private ItemDao itemDao;
 
     public void setItemDao(ItemDao itemDao){
+    	this.itemDao=itemDao;
     }
+    
+    public ItemServiceImpl() {
+		// TODO Auto-generated constructor stub
+    	System.out.println("__________________________");
+    	System.out.println("__Item_Service_Impl_Call__");
+    	System.out.println("__________________________");
+	}
 
 	@Override
 	public Integer addItem(Item item) {
