@@ -32,43 +32,43 @@ public class DealServiceImpl implements DealService {
 	@Override
 	public Integer makeDeal(Deal deal) {
 		// TODO Auto-generated method stub
-		return null;
+		return dealDao.makeDeal(deal);
 	}
 
 	@Override
 	public Deal findDeal(Integer dealNo) {
 		// TODO Auto-generated method stub
-		return null;
+		return dealDao.findDeal(dealNo);
 	}
 
 	@Override
 	public Integer updateDeal(Deal deal) {
 		// TODO Auto-generated method stub
-		return null;
+		return dealDao.updateDeal(deal);
 	}
 
 	@Override
 	public Integer completeDeal(Integer dealNo) {
 		// TODO Auto-generated method stub
-		return null;
+		return dealDao.completeDeal(dealNo);
 	}
 
 	@Override
 	public Integer cancelDeal(Integer dealNo) {
 		// TODO Auto-generated method stub
-		return null;
+		return dealDao.cancelDeal(dealNo);
 	}
 
 	@Override
 	public List<Deal> findDealList(Search search) {
 		// TODO Auto-generated method stub
-		return null;
+		return dealDao.findDealList(search);
 	}
 
 	@Override
 	public Integer pushMessage(Integer dealNo) {
 		// TODO Auto-generated method stub
-		return null;
+		return dealDao.pushMessage(dealNo);
 	}
 
 

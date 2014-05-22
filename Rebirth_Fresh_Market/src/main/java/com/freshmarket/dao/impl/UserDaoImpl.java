@@ -44,6 +44,12 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
+	public User findUser(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
 	public Integer updateUser(User user) {
 		// TODO Auto-generated method stub
 		return null;
@@ -68,9 +74,10 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public Integer pairingUser() {
+	public Integer pairingUser(User user) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

@@ -32,25 +32,25 @@ public class ItemDaoImpl implements ItemDao {
 	}
 
 	@Override
-	public Integer addItem() {
+	public Integer addItem(Item item) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Integer findItem() {
+	public Item findItem(Integer itemNo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Integer updateItem() {
+	public Integer updateItem(Item item) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Integer removeItem() {
+	public Integer removeItem(Integer itemNo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -60,6 +60,5 @@ public class ItemDaoImpl implements ItemDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 }

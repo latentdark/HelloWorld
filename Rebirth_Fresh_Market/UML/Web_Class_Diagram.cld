@@ -3140,7 +3140,12 @@ return </old>
                                                                                                                                         <visibility class="net.java.amateras.uml.classdiagram.model.Visibility$1" reference="../../net.java.amateras.uml.classdiagram.model.OperationModel/visibility"/>
                                                                                                                                         <name>addItem</name>
                                                                                                                                         <type>Integer</type>
-                                                                                                                                        <params/>
+                                                                                                                                        <params>
+                                                                                                                                          <net.java.amateras.uml.classdiagram.model.Argument>
+                                                                                                                                            <name>item</name>
+                                                                                                                                            <type>Item</type>
+                                                                                                                                          </net.java.amateras.uml.classdiagram.model.Argument>
+                                                                                                                                        </params>
                                                                                                                                         <isAbstract>false</isAbstract>
                                                                                                                                         <isStatic>false</isStatic>
                                                                                                                                       </net.java.amateras.uml.classdiagram.model.OperationModel>
@@ -3160,8 +3165,13 @@ return </old>
                                                                                                                                         </listeners>
                                                                                                                                         <visibility class="net.java.amateras.uml.classdiagram.model.Visibility$1" reference="../../net.java.amateras.uml.classdiagram.model.OperationModel/visibility"/>
                                                                                                                                         <name>findItem</name>
-                                                                                                                                        <type>Integer</type>
-                                                                                                                                        <params/>
+                                                                                                                                        <type>Item</type>
+                                                                                                                                        <params>
+                                                                                                                                          <net.java.amateras.uml.classdiagram.model.Argument>
+                                                                                                                                            <name>itemNo</name>
+                                                                                                                                            <type>Integer</type>
+                                                                                                                                          </net.java.amateras.uml.classdiagram.model.Argument>
+                                                                                                                                        </params>
                                                                                                                                         <isAbstract>false</isAbstract>
                                                                                                                                         <isStatic>false</isStatic>
                                                                                                                                       </net.java.amateras.uml.classdiagram.model.OperationModel>
@@ -3182,7 +3192,12 @@ return </old>
                                                                                                                                         <visibility class="net.java.amateras.uml.classdiagram.model.Visibility$1" reference="../../net.java.amateras.uml.classdiagram.model.OperationModel/visibility"/>
                                                                                                                                         <name>updateItem</name>
                                                                                                                                         <type>Integer</type>
-                                                                                                                                        <params/>
+                                                                                                                                        <params>
+                                                                                                                                          <net.java.amateras.uml.classdiagram.model.Argument>
+                                                                                                                                            <name>item</name>
+                                                                                                                                            <type>Item</type>
+                                                                                                                                          </net.java.amateras.uml.classdiagram.model.Argument>
+                                                                                                                                        </params>
                                                                                                                                         <isAbstract>false</isAbstract>
                                                                                                                                         <isStatic>false</isStatic>
                                                                                                                                       </net.java.amateras.uml.classdiagram.model.OperationModel>
@@ -3203,7 +3218,12 @@ return </old>
                                                                                                                                         <visibility class="net.java.amateras.uml.classdiagram.model.Visibility$1" reference="../../net.java.amateras.uml.classdiagram.model.OperationModel/visibility"/>
                                                                                                                                         <name>removeItem</name>
                                                                                                                                         <type>Integer</type>
-                                                                                                                                        <params/>
+                                                                                                                                        <params>
+                                                                                                                                          <net.java.amateras.uml.classdiagram.model.Argument>
+                                                                                                                                            <name>itemNo</name>
+                                                                                                                                            <type>Integer</type>
+                                                                                                                                          </net.java.amateras.uml.classdiagram.model.Argument>
+                                                                                                                                        </params>
                                                                                                                                         <isAbstract>false</isAbstract>
                                                                                                                                         <isStatic>false</isStatic>
                                                                                                                                       </net.java.amateras.uml.classdiagram.model.OperationModel>
@@ -6060,7 +6080,12 @@ return </old>
                                                                       <visibility class="net.java.amateras.uml.classdiagram.model.Visibility$1" reference="../../../parent/children/net.java.amateras.uml.classdiagram.model.InterfaceModel[4]/parent/children/net.java.amateras.uml.classdiagram.model.InterfaceModel[5]/children/net.java.amateras.uml.classdiagram.model.OperationModel/visibility"/>
                                                                       <name>addItem</name>
                                                                       <type>Integer</type>
-                                                                      <params/>
+                                                                      <params>
+                                                                        <net.java.amateras.uml.classdiagram.model.Argument>
+                                                                          <name>item</name>
+                                                                          <type>Item</type>
+                                                                        </net.java.amateras.uml.classdiagram.model.Argument>
+                                                                      </params>
                                                                       <isAbstract>false</isAbstract>
                                                                       <isStatic>false</isStatic>
                                                                     </net.java.amateras.uml.classdiagram.model.OperationModel>
@@ -6078,8 +6103,13 @@ return </old>
                                                                       </listeners>
                                                                       <visibility class="net.java.amateras.uml.classdiagram.model.Visibility$1" reference="../../../parent/children/net.java.amateras.uml.classdiagram.model.InterfaceModel[4]/parent/children/net.java.amateras.uml.classdiagram.model.InterfaceModel[5]/children/net.java.amateras.uml.classdiagram.model.OperationModel/visibility"/>
                                                                       <name>findItem</name>
-                                                                      <type>Integer</type>
-                                                                      <params/>
+                                                                      <type>Item</type>
+                                                                      <params>
+                                                                        <net.java.amateras.uml.classdiagram.model.Argument>
+                                                                          <name>itemNo</name>
+                                                                          <type>Integer</type>
+                                                                        </net.java.amateras.uml.classdiagram.model.Argument>
+                                                                      </params>
                                                                       <isAbstract>false</isAbstract>
                                                                       <isStatic>false</isStatic>
                                                                     </net.java.amateras.uml.classdiagram.model.OperationModel>
@@ -6098,7 +6128,12 @@ return </old>
                                                                       <visibility class="net.java.amateras.uml.classdiagram.model.Visibility$1" reference="../../../parent/children/net.java.amateras.uml.classdiagram.model.InterfaceModel[4]/parent/children/net.java.amateras.uml.classdiagram.model.InterfaceModel[5]/children/net.java.amateras.uml.classdiagram.model.OperationModel/visibility"/>
                                                                       <name>updateItem</name>
                                                                       <type>Integer</type>
-                                                                      <params/>
+                                                                      <params>
+                                                                        <net.java.amateras.uml.classdiagram.model.Argument>
+                                                                          <name>item</name>
+                                                                          <type>Item</type>
+                                                                        </net.java.amateras.uml.classdiagram.model.Argument>
+                                                                      </params>
                                                                       <isAbstract>false</isAbstract>
                                                                       <isStatic>false</isStatic>
                                                                     </net.java.amateras.uml.classdiagram.model.OperationModel>
@@ -6117,7 +6152,12 @@ return </old>
                                                                       <visibility class="net.java.amateras.uml.classdiagram.model.Visibility$1" reference="../../../parent/children/net.java.amateras.uml.classdiagram.model.InterfaceModel[4]/parent/children/net.java.amateras.uml.classdiagram.model.InterfaceModel[5]/children/net.java.amateras.uml.classdiagram.model.OperationModel/visibility"/>
                                                                       <name>removeItem</name>
                                                                       <type>Integer</type>
-                                                                      <params/>
+                                                                      <params>
+                                                                        <net.java.amateras.uml.classdiagram.model.Argument>
+                                                                          <name>itemNo</name>
+                                                                          <type>Integer</type>
+                                                                        </net.java.amateras.uml.classdiagram.model.Argument>
+                                                                      </params>
                                                                       <isAbstract>false</isAbstract>
                                                                       <isStatic>false</isStatic>
                                                                     </net.java.amateras.uml.classdiagram.model.OperationModel>

@@ -9,7 +9,7 @@ public interface DealDao {
 
     public Integer makeDeal(Deal deal);
 
-    public Integer findDeal(Integer dealNo);
+    public Deal findDeal(Integer dealNo);
 
     public Integer updateDeal(Deal deal);
 

@@ -40,13 +40,7 @@ public class HomeController {
     	System.out.println("___Home_Controller_Call___");
     	System.out.println("__________________________");
 	}
-	
-	@RequestMapping(value = "/sellbuy")
-	public ModelAndView googlemap(Locale locale, Model model) {
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/sellbuy");
-		return modelAndView;
-	}
+
 	
 	@RequestMapping(value = "/start")
 	public ModelAndView start(Locale locale, Model model) {
@@ -54,13 +48,7 @@ public class HomeController {
 		modelAndView.setViewName("/start");
 		return modelAndView;
 	}
-	
-	@RequestMapping(value = "/signup")
-	public ModelAndView signup(Locale locale, Model model) {
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/signup");
-		return modelAndView;
-	}
+
 	
 	
 	/*

@@ -32,44 +32,49 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Integer addUser(User user) {
 		// TODO Auto-generated method stub
-		return null;
+		return userDao.addUser(user);
 	}
 
 	@Override
 	public User findUser(Integer userNo) {
 		// TODO Auto-generated method stub
-		return null;
+		return userDao.findUser(userNo);
+	}
+	
+	@Override
+	public User findUser(String email) {
+		// TODO Auto-generated method stub
+		return userDao.findUser(email);
 	}
 
 	@Override
 	public Integer updateUser(User user) {
 		// TODO Auto-generated method stub
-		return null;
+		return userDao.updateUser(user);
 	}
 
 	@Override
 	public Integer removeUser(Integer userNo) {
 		// TODO Auto-generated method stub
-		return null;
+		return userDao.removeUser(userNo);
 	}
 
 	@Override
 	public List<User> findUserList(Search search) {
 		// TODO Auto-generated method stub
-		return null;
+		return userDao.findUserList(search);
 	}
 
 	@Override
 	public Boolean isDuplication(String email) {
 		// TODO Auto-generated method stub
-		return null;
+		return userDao.isDuplication(email);
 	}
 
 	@Override
 	public Integer pairingUser(User user) {
 		// TODO Auto-generated method stub
-		return null;
+		return userDao.pairingUser(user);
 	}
-
 
 }

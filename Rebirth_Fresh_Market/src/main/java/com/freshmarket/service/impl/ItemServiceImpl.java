@@ -32,31 +32,31 @@ public class ItemServiceImpl implements ItemService {
 	@Override
 	public Integer addItem(Item item) {
 		// TODO Auto-generated method stub
-		return null;
+		return itemDao.addItem(item);
 	}
 
 	@Override
 	public Item findItem(Integer itemNo) {
 		// TODO Auto-generated method stub
-		return null;
+		return itemDao.findItem(itemNo);
 	}
 
 	@Override
 	public Integer updateItem(Item item) {
 		// TODO Auto-generated method stub
-		return null;
+		return itemDao.updateItem(item);
 	}
 
 	@Override
 	public Integer removeItem(Integer itemNo) {
 		// TODO Auto-generated method stub
-		return null;
+		return itemDao.removeItem(itemNo);
 	}
 
 	@Override
 	public List<Item> findItemList(Search search) {
 		// TODO Auto-generated method stub
-		return null;
+		return itemDao.findItemList(search);
 	}
     
 }

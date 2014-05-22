@@ -10,6 +10,8 @@ public interface UserService {
     public Integer addUser(User user);
 
     public User findUser(Integer userNo);
+    
+    public User findUser(String email);
 
     public Integer updateUser(User user);
 

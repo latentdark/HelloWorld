@@ -10,6 +10,8 @@ public interface UserDao {
     public Integer addUser(User user);
 
     public User findUser(Integer userNo);
+    
+    public User findUser(String email);
 
     public Integer updateUser(User user);
 
@@ -19,6 +21,6 @@ public interface UserDao {
 
     public Boolean isDuplication(String email);
 
-    public Integer pairingUser();
+    public Integer pairingUser(User user);
 
 }

@@ -7,13 +7,13 @@ import com.freshmarket.domain.Item;
 
 public interface ItemDao {
 
-    public Integer addItem();
+    public Integer addItem(Item item);
 
-    public Integer findItem();
+    public Item findItem(Integer itemNo);
 
-    public Integer updateItem();
+    public Integer updateItem(Item item);
 
-    public Integer removeItem();
+    public Integer removeItem(Integer itemNo);
 
     public List<Item> findItemList(Search search);
 

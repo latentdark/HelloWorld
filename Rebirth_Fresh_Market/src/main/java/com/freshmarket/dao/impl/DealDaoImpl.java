@@ -38,7 +38,7 @@ public class DealDaoImpl implements DealDao {
 	}
 
 	@Override
-	public Integer findDeal(Integer dealNo) {
+	public Deal findDeal(Integer dealNo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
