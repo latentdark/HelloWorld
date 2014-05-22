@@ -34,8 +34,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public Integer addUser(User user) {
 		// TODO Auto-generated method stub
-
-		return null;
+		return sqlSession.insert("UserMapper.addUser",user);
 	}
 
 	@Override
