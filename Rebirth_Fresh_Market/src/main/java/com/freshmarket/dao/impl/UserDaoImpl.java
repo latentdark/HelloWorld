@@ -30,52 +30,45 @@ public class UserDaoImpl implements UserDao {
     	System.out.println("____User_Dao_Impl_Call____");
     	System.out.println("__________________________");
 	}
-
+	
 	@Override
 	public Integer addUser(User user) {
-		// TODO Auto-generated method stub
-		return sqlSession.insert("UserMapper.addUser",user);
+		return sqlSession.insert("UserMapper.addUser", user);
 	}
 
 	@Override
 	public User findUser(Integer userNo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public User findUser(String email) {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne("UserMapper.findUser", userNo);
 	}
 	
 	@Override
-	public Integer updateUser(User user) {
+	public User findUser(String email) {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne("UserMapper.findUser", email);
+	}
+
+	@Override
+	public Integer updateUser(User user) {
+		return sqlSession.update("UserMapper.updateUser", user);
 	}
 
 	@Override
 	public Integer removeUser(Integer userNo) {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.delete("UserMapper.removeUser", userNo);
 	}
 
 	@Override
 	public List<User> findUserList(Search search) {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectList("UserMapper.findUserList", search);
 	}
 
 	@Override
 	public Boolean isDuplication(String email) {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne("UserMapper.isDuplication", email);
 	}
 
 	@Override
 	public Integer pairingUser(User user) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

@@ -1,1 +1,111 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">	
+
+<!-- <bean id="location" class="location"> -->
+<!-- 	<property name="configLocation" value="classpath:sql/mybatis-config.xml"/>		 -->
+<!-- </bean> -->
+
+<mapper namespace="UserMapper">
+
+	<resultMap id="UserSelectMap" type="user">
+		<result property="userNo" column="user_no" jdbcType="INTEGER"/>
+		<result property="email" column="email" jdbcType="VARCHAR"/>
+		<result property="password" column="password" jdbcType="VARCHAR"/>
+		<result property="phoneNumber" column="phone_number" jdbcType="VARCHAR"/>
+		<result property="nickname" column="nickname" jdbcType="VARCHAR"/>
+		<result property="date" column="date" jdbcType="DATE"/>
+		<result property="location.gridX" column="grid_x" jdbcType="DOUBLE"/>
+		<result property="location.gridY" column="grid_y" jdbcType="DOUBLE"/>
+	</resultMap>
+	
+	<insert id="addUser" parameterType="user">
+		INSERT user
+		(email, password, phone_number, nickname, date, grid_x, grid_y)
+		VALUES
+		(	<if test="email!=null">#{email, jdbcType=VARCHAR}</if>
+			<if test="email==null">null</if>,
+			#{password, jdbcType=VARCHAR},
+			<if test="phoneNumber!=null">#{phoneNumber, jdbcType=VARCHAR}</if>
+			<if test="phoneNumber==null">null</if>,
+			#{nickname, jdbcType=VARCHAR},
+			sysdate(),
+			<if test="location!=null">#{location.gridX, jdbcType=DOUBLE}, #{location.gridY, jdbcType=DOUBLE}</if>
+			<if test="location==null">0.0, 0.0</if>	)
+	</insert>
+	
+	<update id="updateUser" parameterType="user">
+		UPDATE user
+		<set>
+			<if test="password!=null">
+				password = #{password, jdbcType=VARCHAR},
+			</if>
+			
+			<if test="phoneNumber!=null">
+				phone_number = #{phoneNumber, jdbcType=VARCHAR},
+			</if>
+			
+			<if test="nickname!=null">
+				nickname = #{nickname, jdbcType=VARCHAR},
+			</if>
+			
+			<if test="gridX!=null">
+				grid_x = #{gridX, jdbcType=DOUBLE},
+			</if>
+			
+			<if test="gridY!=null">
+				grid_y = #{gridY, jdbcType=DOUBLE}
+			</if>
+		</set>
+		WHERE email = #{email, jdbcType=VARCHAR}
+	</update>
+	
+	<select id="findUser" parameterType="string" resultMap="UserSelectMap">
+		SELECT
+		user_no, email, password, phone_number, nickname, date, grid_x, grid_y
+		FROM user
+		WHERE email = #{value}
+	</select>
+	
+	<select id="findUserList" parameterType="search" resultMap="UserSelectMap">
+		SELECT
+		user_no, email, password, phone_number, nickname, date, grid_x, grid_y
+		FROM (	SELECT
+			inner_table.*, @RNUM AS row_seq
+			FROM	(
+						SELECT
+						user_no, email, password, phone_number, nickname, date, grid_x, grid_y
+						FROM user
+						<if test="searchKeyword!='' ">
+							<where>
+								<if test="searchCondition==1">
+									email LIKE '%${searchKeyword}%'
+								</if>
+								<if test="searchCondition==2">
+									nickname LIKE '%${searchKeyword}%'
+								</if>
+								<if test="searchCondition==3">
+									phone_number LIKE '%${searchKeyword}%'
+								</if>
+							</where>
+						</if>
+						ORDER BY user_no	) AS inner_table,
+					(	SELECT @RNUM :=1	) AS RNUM
+			WHERE <![CDATA[@RNUM<=#{endRowNum}]]>	) AS inner_table
+		WHERE inner_table.row_seq BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
+	
+	<delete id="removeUser" parameterType="user">
+		DELETE
+		FROM user
+		WHERE user_no = #{userNo, jdbcType=INTEGER}
+	</delete>
+	
+	<select id="isDuplication" parameterType="string" resultType="boolean">
+		SELECT COUNT(*) FROM user
+  		WHERE email='${value}'
+	</select>
+	
+</mapper>
