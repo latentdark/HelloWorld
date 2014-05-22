@@ -42,37 +42,54 @@ public class UserController {
     	System.out.println("__________________________");
 	}
     
-	
-	@RequestMapping(value = "/signup")
-	public ModelAndView signup(Locale locale, Model model) {
-		
-		
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/signup");
-		return modelAndView;
-	}
-    
-    @RequestMapping("/login")
-	public ModelAndView loginAction (
-			@ModelAttribute("user") User user,
-			HttpSession session ) throws Exception{
-		
-		System.out.println("_______________________________________________");
-		System.out.println("==> User /login __call !!!");
-		System.out.println("_______________________________________________");
-		
-		
-		User dbUser=userService.findUser(user.getEmail());
-		dbUser.setActive(true);
-		if(dbUser!=null && dbUser.getPassword().equals(user.getPassword()) ){
-			session.setAttribute("user", dbUser);
-		}
-		
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/home");
+    @RequestMapping("/signup")
+  	public ModelAndView signup (
+  			@ModelAttribute("user") User user,
+  			HttpSession session ) throws Exception{
+  		
+  		System.out.println("_______________________________________________");
+  		System.out.println("==> User /signup __call !!!");
+  		System.out.println("_______________________________________________");
+  		
+  		
+  		User dbUser=userService.findUser(user.getEmail());
+  		dbUser.setActive(true);
+  		if(dbUser!=null && dbUser.getPassword().equals(user.getPassword()) ){
+  			session.setAttribute("user", dbUser);
+  		}
+  		
+  		ModelAndView modelAndView = new ModelAndView();
+  		modelAndView.setViewName("/home");
 
+  		return modelAndView;
+  	}
+    @RequestMapping("/signupForm")
+    public String signupForm()throws Exception{
+    	return "signupForm";
+    }
+	
+	@RequestMapping(value = "/signupSubmit")
+	public ModelAndView signupSubmit(
+			@ModelAttribute("user") User user,
+			HttpSession session 
+			){
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/signupSuccess");
+		
+		System.out.println("___________/signupSubmit");
+		System.out.println(user.getEmail());
+		System.out.println(user.getNickname());
+		System.out.println("___________/signupSubmit");
+		
+		/*
+		System.out.println(userService.addUser(user));
+		session.setAttribute("user", user);
+		*/
 		return modelAndView;
 	}
+	
+  
+	/*
 	
 	@RequestMapping("/logout")
 	public ModelAndView logoutAction(HttpSession session) throws Exception {
@@ -89,5 +106,6 @@ public class UserController {
 		
 		return modelAndView;
 	}
+	*/
     
 }

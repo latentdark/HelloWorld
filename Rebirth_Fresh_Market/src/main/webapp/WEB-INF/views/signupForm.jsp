@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="EUC_KR"%>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -59,7 +59,7 @@
 		}
 		
 		
-		/* ì„¹ì…˜ ë¶€ë¶„  */
+		/* ¼½¼Ç ºÎºĞ  */
 		#content{
 			padding-top: 60px;
 		}
@@ -258,7 +258,7 @@
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 
-	//ë¡œê·¸ì¸ ë©”ë‰´ 
+	//·Î±×ÀÎ ¸Ş´º 
 	$(function() {
 	  // Setup drop down menu
 	  $('.dropdown-toggle').dropdown();
@@ -270,7 +270,7 @@
 	});
 	
 	
-	//ì´ë©”ì¼ ì²´í¬
+	//ÀÌ¸ŞÀÏ Ã¼Å©
 	function check_mail(cg) {
 		mail01 = /[^@]+@[A-Za-z0-9_-]+[.]+[A-Za-z]+/;
 		mail02 = /[^@]+@[A-Za-z0-9_-]+[.]+[A-Za-z0-9_-]+[.]+[A-Za-z]+/;
@@ -355,21 +355,21 @@
 	        </div>
 	        <div class="collapse navbar-collapse">
 	          <ul class="nav navbar-nav">
-	            <li><a id="start" href="#">ì‹œì‘í•˜ê¸°</a></li>
-	            <li><a id="deal" href="sellBuy">ì‚¬ê³ íŒ”ê¸°</a></li>
+	            <li><a id="start" href="#">½ÃÀÛÇÏ±â</a></li>
+	            <li><a id="deal" href="sellBuy">»ç°íÆÈ±â</a></li>
 	          </ul>
 	          <ul class="nav navbar-nav pull-right">
 	            <li class="divider-vertical"></li>
 	          	<li class="dropdown">
-	            <a id="login" class="dropdown-toggle" href="" data-toggle="dropdown">ë¡œê·¸ì¸ <strong class="caret"></strong></a>
+	            <a id="login" class="dropdown-toggle" href="" data-toggle="dropdown">·Î±×ÀÎ <strong class="caret"></strong></a>
 	            <div class="dropdown-menu">
 	              <!-- Login form here -->
 		            <form name="loginform" action="" method="post" accept-charset="UTF-8">
-					  <input class="form-control" id="user_email" style="margin-bottom: 15px;" type="email" name="useremail" size="30" placeholder=" ì´ë©”ì¼"/>
-					  <input class="form-control" id="user_password" style="margin-bottom: 15px;" type="password" name="password" size="30" placeholder=" ë¹„ë°€ë²ˆí˜¸"/>
+					  <input class="form-control" id="user_email" style="margin-bottom: 15px;" type="email" name="useremail" size="30" placeholder=" ÀÌ¸ŞÀÏ"/>
+					  <input class="form-control" id="user_password" style="margin-bottom: 15px;" type="password" name="password" size="30" placeholder=" ºñ¹Ğ¹øÈ£"/>
 					  <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="user[remember_me]" value="1" />
 					  <label class="string optional" for="user_remember_me"> Remember me</label>
-					 <!--  ì•„ì§ ì ìš©ì•ˆëìŒ (remember me) -->
+					 <!--  ¾ÆÁ÷ Àû¿ë¾ÈµÆÀ½ (remember me) -->
 					  <input id="login_submit" class="btn btn-primary" type="submit" name="commit" value="Sign In" onchange='proces()'/>
 					  <a id="signup" href="/signup">Sign Up</a>
 					</form>
@@ -386,13 +386,13 @@
 	    </div>
 	<header>
 	<script type="text/javascript">
-	//ì´ë©”ì¼ì¹¸ì— ì…ë ¥ì „ì— submit ë²„íŠ¼ í™œì„±í™”/ë¹„í™œì„±í™”
+	//ÀÌ¸ŞÀÏÄ­¿¡ ÀÔ·ÂÀü¿¡ submit ¹öÆ° È°¼ºÈ­/ºñÈ°¼ºÈ­
 	document.loginform.commit.disabled = true;
 	document.onkeyup = proces;
 	document.onmouseup = proces;
 	document.onmousedown = proces;
 	
-	//ì•Œê³ ë¦¬ì¦˜ ê°œì„ í•˜ì˜€ìŒ.
+	//¾Ë°í¸®Áò °³¼±ÇÏ¿´À½.
 	function proces() {
 		if (document.loginform.useremail.value == '' 
 			||document.loginform.user_password.value == '') {   
@@ -412,7 +412,7 @@
 			     <div id="big-form" class="well auth-box">
 			    	 
 			    	 
-			      <!-- íšŒì› ê°€ì… ë¶€ë¶„  -->
+			      <!-- È¸¿ø °¡ÀÔ ºÎºĞ  -->
 			    
 			      <form action="/signupSubmit" method="POST">
 			        <fieldset>
@@ -425,17 +425,17 @@
 			            <!-- <label class=" control-label" for="textinput">Email</label>  
 			             -->
 			              <div class="">
-			              <input id="email" name="email" placeholder="ì´ë©”ì¼" class="form-control input-md" type="email">
+			              <input id="email" name="email" placeholder="ÀÌ¸ŞÀÏ" class="form-control input-md" type="email">
 			           	  <br>
-			           	  <input id="password" name="password" placeholder="ë¹„ë°€ë²ˆí˜¸" class="form-control input-md" type="password">
+			           	  <input id="password" name="password" placeholder="ºñ¹Ğ¹øÈ£" class="form-control input-md" type="password">
 			              <br>
-			              <input id="confirmpassword" name="confirmpassword" placeholder="ë¹„ë°€ë²ˆí˜¸ ì¬í™•ì¸" class="form-control input-md" type="password">
+			              <input id="confirmpassword" name="confirmpassword" placeholder="ºñ¹Ğ¹øÈ£ ÀçÈ®ÀÎ" class="form-control input-md" type="password">
 			              <br>
-			              <input id="nickName" name="nickName" placeholder="ë³„ëª…" class="form-control input-md" type="text">
+			              <input id="nickname" name="nickname" placeholder="º°¸í" class="form-control input-md" type="text">
 			           	  <br>
-			              <input id="phoneNumber" name="phoneNumber" placeholder="íœ´ëŒ€í° ë²ˆí˜¸" class="form-control input-md" type="text">
+			              <input id="phoneNumber" name="phoneNumber" placeholder="ÈŞ´ëÆù ¹øÈ£" class="form-control input-md" type="text">
 			              <br>
-			           	  <input id="signup_submit" name="signup_submit" class="btn btn-default" type="submit" value="ê°€ì…í•˜ê¸°">
+			           	  <input id="signup_submit" name="signup_submit" class="btn btn-default" type="submit" value="°¡ÀÔÇÏ±â">
 			            </div>
 			          </div>
 			         

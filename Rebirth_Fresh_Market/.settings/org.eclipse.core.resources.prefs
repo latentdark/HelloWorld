@@ -1,2 +1,4 @@
 eclipse.preferences.version=1
 encoding//src/main/java/com/freshmarket/common/Page.java=EUC_KR
+encoding//src/main/webapp/WEB-INF/views/sellBuy.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/successSignup.jsp=UTF-8

@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
+    pageEncoding="EUC_KR"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -42,6 +45,9 @@
 	}
 	#fullPage-nav li .active span, .fullPage-slidesNav .active span{
 		background: #FFF;
+	}
+	#main_logo{
+		width:80%; height:80%;
 	}
 	
 	
@@ -107,7 +113,7 @@
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 
-	//ë¡œê·¸ì¸ ë©”ë‰´ 
+	//·Î±×ÀÎ ¸Ş´º 
 	$(function() {
 	  // Setup drop down menu
 	  $('.dropdown-toggle').dropdown();
@@ -119,7 +125,7 @@
 	});
 	
 	
-	//ì´ë©”ì¼ ì²´í¬
+	//ÀÌ¸ŞÀÏ Ã¼Å©
 	function check_mail(cg) {
 		mail01 = /[^@]+@[A-Za-z0-9_-]+[.]+[A-Za-z]+/;
 		mail02 = /[^@]+@[A-Za-z0-9_-]+[.]+[A-Za-z0-9_-]+[.]+[A-Za-z]+/;
@@ -164,23 +170,31 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a id="start" href="#">ì‹œì‘í•˜ê¸°</a></li>
-            <li><a id="deal" href="/itemMapView">ì‚¬ê³ íŒ”ê¸°</a></li>
+            <li><a id="start" href="#">½ÃÀÛÇÏ±â</a></li>
+            <li><a id="deal" href="/itemMapView">»ç°íÆÈ±â</a></li>
           </ul>
           <ul class="nav navbar-nav pull-right">
             <li class="divider-vertical"></li>
           	<li class="dropdown">
-            <a id="login" class="dropdown-toggle" href="" data-toggle="dropdown">ë¡œê·¸ì¸ <strong class="caret"></strong></a>
+          	
+          	<!-- ¼öÁ¤ÇÑºÎºĞ -->
+          	<c:if test="${user==null}">
+           	 <a id="login" class="dropdown-toggle" href="" data-toggle="dropdown">·Î±×ÀÎ <strong class="caret"></strong></a>
+            </c:if>
+            <c:if test="${user!=null}">
+             ${user.getUserNickname}´Ô È¯¿µÇÕ´Ï´Ù!
+            </c:if>
+            
             <div class="dropdown-menu">
               <!-- Login form here -->
-	            <form name="loginform" action="" method="post" accept-charset="UTF-8">
-				  <input class="form-control" id="user_email" style="margin-bottom: 15px;" type="email" name="email" size="30" placeholder=" ì´ë©”ì¼"/>
-				  <input class="form-control" id="user_password" style="margin-bottom: 15px;" type="password" name="password" size="30" placeholder=" ë¹„ë°€ë²ˆí˜¸"/>
+	            <form name="loginform" action="/signup" method="post" accept-charset="UTF-8">
+				  <input class="form-control" id="user_email" style="margin-bottom: 15px;" type="email" name="email" size="30" placeholder=" ÀÌ¸ŞÀÏ"/>
+				  <input class="form-control" id="user_password" style="margin-bottom: 15px;" type="password" name="password" size="30" placeholder=" ºñ¹Ğ¹øÈ£"/>
 				  <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="user[remember_me]" value="1" />
 				  <label class="string optional" for="user_remember_me"> Remember me</label>
-				 <!--  ì•„ì§ ì ìš©ì•ˆëìŒ (remember me) -->
+				 <!--  ¾ÆÁ÷ Àû¿ë¾ÈµÆÀ½ (remember me) -->
 				  <input id="login_submit" class="btn btn-primary" type="submit" name="commit" value="Sign In" onchange='proces()'/>
-				  <a id="signup" href="signup">Sign Up</a>
+				  <a id="signup" href="signupForm">Sign Up</a>
 				 <!--  <a id="signup" href="signup" class="btn-example" onclick="layer_open('layer2');return false;">Sign Up</a>-->
 				</form>
             </div>
@@ -202,7 +216,7 @@
 	<div id="fullpage">
 		<div class="section " id="section0">
 			<div class="intro">
-				<img src="/resources/imgs/logo5.png">
+				<img id="main_logo" src="/resources/imgs/logo5.png">
 			
 			</div>
 		</div>
@@ -213,7 +227,7 @@
 		</div>
 		<div class="section" id="section2">
 			<div class="intro">
-					<!--  ì„¸ë²ˆì§¸ í˜ì´ì§€  -->	
+					<!--  ¼¼¹øÂ° ÆäÀÌÁö  -->	
 			</div>
 		</div>
 		
@@ -222,13 +236,13 @@
 </div>
 		
 	<script type="text/javascript">
-	//ì´ë©”ì¼ì¹¸ì— ì…ë ¥ì „ì— submit ë²„íŠ¼ í™œì„±í™”/ë¹„í™œì„±í™”
+	//ÀÌ¸ŞÀÏÄ­¿¡ ÀÔ·ÂÀü¿¡ submit ¹öÆ° È°¼ºÈ­/ºñÈ°¼ºÈ­
 	document.loginform.commit.disabled = true;
 	document.onkeyup = proces;
 	document.onmouseup = proces;
 	document.onmousedown = proces;
 	
-	//ì•Œê³ ë¦¬ì¦˜ ê°œì„ í•˜ì˜€ìŒ.
+	//¾Ë°í¸®Áò °³¼±ÇÏ¿´À½.
 	function proces() {
 		if (document.loginform.useremail.value == '' 
 			||document.loginform.user_password.value == '') {   
