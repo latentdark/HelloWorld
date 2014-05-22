@@ -81,10 +81,10 @@ public class UserController {
 		System.out.println(user.getNickname());
 		System.out.println("___________/signupSubmit");
 		
-		/*
-		System.out.println(userService.addUser(user));
+		Integer temp;
+		temp=userService.addUser(user);
 		session.setAttribute("user", user);
-		*/
+		
 		return modelAndView;
 	}
 	
