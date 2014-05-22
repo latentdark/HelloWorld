@@ -165,7 +165,7 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a id="start" href="#">시작하기</a></li>
-            <li><a id="deal" href="/sellBuy">사고팔기</a></li>
+            <li><a id="deal" href="/itemMapView">사고팔기</a></li>
           </ul>
           <ul class="nav navbar-nav pull-right">
             <li class="divider-vertical"></li>
