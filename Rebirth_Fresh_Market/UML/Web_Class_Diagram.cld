@@ -5411,7 +5411,7 @@ return </old>
                                                                                         </listeners>
                                                                                         <visibility class="net.java.amateras.uml.classdiagram.model.Visibility$1" reference="../../net.java.amateras.uml.classdiagram.model.OperationModel[2]/visibility"/>
                                                                                         <name>findDeal</name>
-                                                                                        <type>Integer</type>
+                                                                                        <type>Deal</type>
                                                                                         <params>
                                                                                           <net.java.amateras.uml.classdiagram.model.Argument>
                                                                                             <name>deal</name>
@@ -5637,7 +5637,7 @@ return </old>
                                                                                   </listeners>
                                                                                   <visibility class="net.java.amateras.uml.classdiagram.model.Visibility$1" reference="../../net.java.amateras.uml.classdiagram.model.OperationModel/visibility"/>
                                                                                   <name>findDeal</name>
-                                                                                  <type>Integer</type>
+                                                                                  <type>Deal</type>
                                                                                   <params>
                                                                                     <net.java.amateras.uml.classdiagram.model.Argument>
                                                                                       <name>dealNo</name>
