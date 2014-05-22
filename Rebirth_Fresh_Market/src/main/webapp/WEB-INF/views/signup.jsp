@@ -11,7 +11,7 @@
 	<link rel="Stylesheet" href="/resources/css/bootstrap.min.css"/>
 	<style>
 		.navbar{
-			background-image: url("/resources/imgs/bg4.png");
+			background-image: url("/resources/imgs/bg6.png");
 			border-style: none;
 			font-size:15px;
 			font-familiy:'Nanum Gothic'
@@ -68,7 +68,7 @@
 		  margin-top: 20px;
 		}
 		body{
-		  background-image: url("/resources/imgs/bg4.png"); 
+		  background-image: url("/resources/imgs/bg6.png"); 
 /* 		  background-size:100% 100%; */
 		  background-attachment: fixed; 
 		  background-repeat:no-repeat;
@@ -410,32 +410,31 @@
 			<div class="container auth">
 			   <!--  <h1 class="text-center">Sign up<span>It's nice!</span> </h1>-->
 			     <div id="big-form" class="well auth-box">
-			      <form>
+			    	 
+			    	 
+			      <!-- 회원 가입 부분  -->
+			    
+			      <form action="/successSignup" method="POST">
 			        <fieldset>
-			
+				
 			          <!-- Form Name -->
-			          <legend></legend>
+			          <legend>Fresh Market</legend>
 			      
 			          <!-- Text input-->
 			          <div class="form-group">
 			            <!-- <label class=" control-label" for="textinput">Email</label>  
 			             -->
 			              <div class="">
-			              <input id="textinput" name="textinput" placeholder="이메일" class="form-control input-md" type="text">
+			              <input id="email" name="email" placeholder="이메일" class="form-control input-md" type="email">
 			           	  <br>
-			           	  <input id="passwordinput" name="passwordinput" placeholder="비밀번호" class="form-control input-md" type="password">
+			           	  <input id="password" name="password" placeholder="비밀번호" class="form-control input-md" type="password">
 			              <br>
 			              <input id="confirmpassword" name="confirmpassword" placeholder="비밀번호 재확인" class="form-control input-md" type="password">
 			              <br>
-			              <input id="nick_name" name="nick_name" placeholder="별명" class="form-control input-md" type="text">
+			              <input id="nickName" name="nickName" placeholder="별명" class="form-control input-md" type="text">
 			           	  <br>
-			               <input id="phone_number" name="phone_number" placeholder="휴대폰 번호" class="form-control input-md" type="text">
-			               <button id="singlebutton" name="singlebutton" class="btn btn-default">번호 인증</button>
-			           
+			              <input id="phoneNumber" name="phoneNumber" placeholder="휴대폰 번호" class="form-control input-md" type="text">
 			              <br>
-			               
-			              
-			           	  
 			           	  <input id="signup_submit" name="signup_submit" class="btn btn-default" type="submit" value="가입하기">
 			            </div>
 			          </div>
