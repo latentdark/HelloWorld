@@ -21,10 +21,13 @@ import com.freshmarket.domain.User;
 import com.freshmarket.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "config/context-aspect.xml",
-		"config/context-common.xml",
-		"config/context-mybatis.xml",
-		"config/context-transaction.xml"})
+@ContextConfiguration(locations = { 
+		"classpath:config/context-aspect.xml",
+		"classpath:config/context-common.xml",
+		"classpath:config/context-mybatis.xml",
+		"classpath:config/context-transaction.xml",
+		"servlet-context.xml"})
+		
 public class UserControllerTestApp {
 	
 	@Autowired
