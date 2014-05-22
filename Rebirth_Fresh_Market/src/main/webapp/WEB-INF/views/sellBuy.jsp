@@ -10,7 +10,7 @@
 	<link rel="Stylesheet" href="/resources/css/bootstrap.min.css"/>
 	<style>
 		.navbar{
-			background-image: url("/resources/imgs/bg4.png");
+			background-image: url("/resources/imgs/bg6.png");
 			border-style: none;
 			font-size:15px;
 			font-familiy:'Nanum Gothic'
