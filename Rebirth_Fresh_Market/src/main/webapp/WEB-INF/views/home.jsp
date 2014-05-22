@@ -22,7 +22,7 @@
 		text-align:center;
 	}
 	#section0,#section1,#section2{
-		background-image: url(/resources/imgs/bg4.png);
+		background-image: url(/resources/imgs/bg6.png);
 	}
 
 	/* Overwriting styles for control arrows for slides
@@ -50,7 +50,7 @@
 	<link rel="Stylesheet" href="/resources/css/bootstrap.min.css"/>
 	<style>
 		.navbar{
-			background-image: url("/resources/imgs/bg4.png");
+			background-image: url("/resources/imgs/bg6.png");
 			border-style: none;
 			font-size:15px;
 			font-familiy:'Nanum Gothic'
@@ -71,7 +71,7 @@
 			margin-top: 10px;
 		}
 		body{
-			background-image: url("/resources/imgs/bg4.png");
+			background-image: url("/resources/imgs/bg6.png");
 		}
 		.dropdown-menu{
 		 	padding: 15px; 
@@ -174,7 +174,7 @@
             <div class="dropdown-menu">
               <!-- Login form here -->
 	            <form name="loginform" action="" method="post" accept-charset="UTF-8">
-				  <input class="form-control" id="user_email" style="margin-bottom: 15px;" type="email" name="useremail" size="30" placeholder=" 이메일"/>
+				  <input class="form-control" id="user_email" style="margin-bottom: 15px;" type="email" name="email" size="30" placeholder=" 이메일"/>
 				  <input class="form-control" id="user_password" style="margin-bottom: 15px;" type="password" name="password" size="30" placeholder=" 비밀번호"/>
 				  <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="user[remember_me]" value="1" />
 				  <label class="string optional" for="user_remember_me"> Remember me</label>
