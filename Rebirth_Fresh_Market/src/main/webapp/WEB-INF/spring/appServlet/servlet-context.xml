@@ -46,8 +46,32 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	 
+	
+	<!--
 	<context:component-scan base-package="com.freshmarket.controller" />
-	
-	
-	
+	 -->
+	 <context:component-scan base-package="com.freshmarket.controller">
+			<context:include-filter type="annotation" 
+						expression="org.springframework.stereotype.Controller"/>
+			<context:exclude-filter type="annotation" 
+						expression="org.springframework.stereotype.Service"/>
+			<context:exclude-filter type="annotation" 
+						expression="org.springframework.stereotype.Repository"/>
+		</context:component-scan>
+		
+		
+		<!-- DI용  logonCheckInterceptor-->		
+<!-- 
+		<bean id="logonCheckInterceptor" class="com.multicampus.minishop.controller.LogonCheckInterceptor"></bean>
+		
+		<bean
+		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+			<property name="order" value="0"></property>
+-->
+			<!-- DI -->
+<!--  
+			<property name="interceptors" ref="logonCheckInterceptor"></property>
+		</bean>
+-->
 </beans:beans>
