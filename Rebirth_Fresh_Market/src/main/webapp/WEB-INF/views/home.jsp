@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC_KR"%>
+    pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
@@ -113,7 +113,7 @@
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 
-	//·Î±×ÀÎ ¸Ş´º 
+	//ë¡œê·¸ì¸ ë©”ë‰´ 
 	$(function() {
 	  // Setup drop down menu
 	  $('.dropdown-toggle').dropdown();
@@ -125,7 +125,7 @@
 	});
 	
 	
-	//ÀÌ¸ŞÀÏ Ã¼Å©
+	//ì´ë©”ì¼ ì²´í¬
 	function check_mail(cg) {
 		mail01 = /[^@]+@[A-Za-z0-9_-]+[.]+[A-Za-z]+/;
 		mail02 = /[^@]+@[A-Za-z0-9_-]+[.]+[A-Za-z0-9_-]+[.]+[A-Za-z]+/;
@@ -170,29 +170,34 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a id="start" href="#">½ÃÀÛÇÏ±â</a></li>
-            <li><a id="deal" href="/itemMapView">»ç°íÆÈ±â</a></li>
+            <li><a id="start" href="#">ì‹œì‘í•˜ê¸°</a></li>
+            <li><a id="deal" href="/itemMapView">ì‚¬ê³ íŒ”ê¸°</a></li>
           </ul>
           <ul class="nav navbar-nav pull-right">
             <li class="divider-vertical"></li>
           	<li class="dropdown">
           	
-          	<!-- ¼öÁ¤ÇÑºÎºĞ -->
+          	<!-- 
+          	<a id="login" class="dropdown-toggle" href="" data-toggle="dropdown">ë¡œê·¸ì¸ <strong class="caret"></strong></a>
+          -->
+          	<!-- ìˆ˜ì •í•œë¶€ë¶„ -->
+          	
           	<c:if test="${user==null}">
-           	 <a id="login" class="dropdown-toggle" href="" data-toggle="dropdown">·Î±×ÀÎ <strong class="caret"></strong></a>
+           	 <a id="login" class="dropdown-toggle" href="" data-toggle="dropdown">ë¡œê·¸ì¸ <strong class="caret"></strong></a>
             </c:if>
             <c:if test="${user!=null}">
-             ${user.getUserNickname}´Ô È¯¿µÇÕ´Ï´Ù!
+             <a>${user.getUserNickname}ë‹˜ í™˜ì˜í•©ë‹ˆë‹¤!</a>
             </c:if>
-            
+             
+             
             <div class="dropdown-menu">
               <!-- Login form here -->
 	            <form name="loginform" action="/signup" method="post" accept-charset="UTF-8">
-				  <input class="form-control" id="user_email" style="margin-bottom: 15px;" type="email" name="email" size="30" placeholder=" ÀÌ¸ŞÀÏ"/>
-				  <input class="form-control" id="user_password" style="margin-bottom: 15px;" type="password" name="password" size="30" placeholder=" ºñ¹Ğ¹øÈ£"/>
+				  <input class="form-control" id="user_email" style="margin-bottom: 15px;" type="email" name="email" size="30" placeholder=" ì´ë©”ì¼"/>
+				  <input class="form-control" id="user_password" style="margin-bottom: 15px;" type="password" name="password" size="30" placeholder=" ë¹„ë°€ë²ˆí˜¸"/>
 				  <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="user[remember_me]" value="1" />
 				  <label class="string optional" for="user_remember_me"> Remember me</label>
-				 <!--  ¾ÆÁ÷ Àû¿ë¾ÈµÆÀ½ (remember me) -->
+				 <!--  ì•„ì§ ì ìš©ì•ˆëìŒ (remember me) -->
 				  <input id="login_submit" class="btn btn-primary" type="submit" name="commit" value="Sign In" onchange='proces()'/>
 				  <a id="signup" href="signupForm">Sign Up</a>
 				 <!--  <a id="signup" href="signup" class="btn-example" onclick="layer_open('layer2');return false;">Sign Up</a>-->
@@ -227,7 +232,7 @@
 		</div>
 		<div class="section" id="section2">
 			<div class="intro">
-					<!--  ¼¼¹øÂ° ÆäÀÌÁö  -->	
+					<!--  ì„¸ë²ˆì§¸ í˜ì´ì§€  -->	
 			</div>
 		</div>
 		
@@ -236,13 +241,13 @@
 </div>
 		
 	<script type="text/javascript">
-	//ÀÌ¸ŞÀÏÄ­¿¡ ÀÔ·ÂÀü¿¡ submit ¹öÆ° È°¼ºÈ­/ºñÈ°¼ºÈ­
+	//ì´ë©”ì¼ì¹¸ì— ì…ë ¥ì „ì— submit ë²„íŠ¼ í™œì„±í™”/ë¹„í™œì„±í™”
 	document.loginform.commit.disabled = true;
 	document.onkeyup = proces;
 	document.onmouseup = proces;
 	document.onmousedown = proces;
 	
-	//¾Ë°í¸®Áò °³¼±ÇÏ¿´À½.
+	//ì•Œê³ ë¦¬ì¦˜ ê°œì„ í•˜ì˜€ìŒ.
 	function proces() {
 		if (document.loginform.useremail.value == '' 
 			||document.loginform.user_password.value == '') {   
