@@ -21,8 +21,8 @@
 	<!--  ㅇ Annotation 기반 wiring 할수 있도록 component-scan 서술적기술 
     		ㅇ @Service /  @Repository  annotation 선언된 Bean 만 Wiring
     		ㅇ @Controller annotation 선언된 Bean 은 Scan 제외 -->
-	<!--  
-	<context:component-scan base-package="com.multicampus.minishop..*">
+	
+	<context:component-scan base-package="com.freshmarket..*">
 		<context:include-filter 	type="annotation" 
 												expression="org.springframework.stereotype.Service"/>
 		<context:include-filter 	type="annotation" 
@@ -30,5 +30,6 @@
 		<context:exclude-filter 	type="annotation"
 												expression="org.springframework.stereotype.Controller" />  
 	</context:component-scan>
+	<!--  
 	-->
 </beans>
