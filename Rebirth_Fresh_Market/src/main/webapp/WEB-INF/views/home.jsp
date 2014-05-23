@@ -61,7 +61,7 @@
 			font-size:15px;
 			font-familiy:'Nanum Gothic'
 		}
-		#start,#deal,#login{
+		#start,#deal,#login,#welcome{
 			margin-top : 3px;
 			color:white;
 			background:none;
@@ -70,6 +70,11 @@
 		
 		#start:hover, #deal:hover, #login:hover{
 			color:gray;
+			background:none;
+		}
+		
+		#welcome:hover{
+			color:white;
 			background:none;
 		}
 		
@@ -186,13 +191,16 @@
            	 <a id="login" class="dropdown-toggle" href="" data-toggle="dropdown">로그인 <strong class="caret"></strong></a>
             </c:if>
             <c:if test="${user!=null}">
-             <a>${user.getUserNickname}님 환영합니다!</a>
+             <a id="welcome">${user.nickname} 님 환영합니다!</a>
             </c:if>
              
              
             <div class="dropdown-menu">
               <!-- Login form here -->
+              	<!-- 
 	            <form name="loginform" action="/signup" method="post" accept-charset="UTF-8">
+	             -->
+	            <form name="loginform" action="/signup" method="post">
 				  <input class="form-control" id="user_email" style="margin-bottom: 15px;" type="email" name="email" size="30" placeholder=" 이메일"/>
 				  <input class="form-control" id="user_password" style="margin-bottom: 15px;" type="password" name="password" size="30" placeholder=" 비밀번호"/>
 				  <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="user[remember_me]" value="1" />
@@ -249,12 +257,12 @@
 	
 	//알고리즘 개선하였음.
 	function proces() {
-		if (document.loginform.useremail.value == '' 
-			||document.loginform.user_password.value == '') {   
+		if (document.loginform.email.value == '' 
+			||document.loginform.password.value == '') {   
 			document.loginform.commit.disabled = true;
 		} 
-		else if(document.loginform.user_password.value != ''
-				&&document.loginform.user_password.value.length >=8 ){	
+		else if(document.loginform.password.value != ''
+				&&document.loginform.password.value.length >=8 ){	
 			document.loginform.commit.disabled = false; 
 		}
 	}

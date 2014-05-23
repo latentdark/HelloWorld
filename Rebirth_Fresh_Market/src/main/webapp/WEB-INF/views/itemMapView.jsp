@@ -139,7 +139,16 @@
           <ul class="nav navbar-nav pull-right">
             <li class="divider-vertical"></li>
           	<li class="dropdown">
-            <a id="login" class="dropdown-toggle" href="" data-toggle="dropdown">로그인 <strong class="caret"></strong></a>
+            
+            <!-- 수정한부분 -->
+          	
+          	<c:if test="${user==null}">
+           	 <a id="login" class="dropdown-toggle" href="" data-toggle="dropdown">로그인 <strong class="caret"></strong></a>
+            </c:if>
+            <c:if test="${user!=null}">
+             <a id="welcome">${user.nickname} 님 환영합니다!</a>
+            </c:if>
+            
             <div class="dropdown-menu">
               <!-- Login form here -->
 	            <form name="loginform" action="/" method="post" accept-charset="UTF-8">
