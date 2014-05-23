@@ -32,6 +32,13 @@
 			background:none;
 		}
 		
+			
+		#welcome:hover{
+			color:white;
+			background:none;
+		}
+		
+		
 		#search{
 			margin-top: 10px;
 		}
@@ -142,17 +149,17 @@
             
             <!-- 수정한부분 -->
           	
-          	<c:if test="${user==null}">
+          	<c:if test="${user.nickname==null}">
            	 <a id="login" class="dropdown-toggle" href="" data-toggle="dropdown">로그인 <strong class="caret"></strong></a>
             </c:if>
-            <c:if test="${user!=null}">
+            <c:if test="${user.nickname!=null}">
              <a id="welcome">${user.nickname} 님 환영합니다!</a>
             </c:if>
             
             <div class="dropdown-menu">
               <!-- Login form here -->
 	            <form name="loginform" action="/" method="post" accept-charset="UTF-8">
-				  <input class="form-control" id="user_email" style="margin-bottom: 15px;" type="email" name="useremail" size="30" placeholder=" 이메일"/>
+				  <input class="form-control" id="user_email" style="margin-bottom: 15px;" type="email" name="email" size="30" placeholder=" 이메일"/>
 				  <input class="form-control" id="user_password" style="margin-bottom: 15px;" type="password" name="password" size="30" placeholder=" 비밀번호"/>
 				  <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="user[remember_me]" value="1" />
 				  <label class="string optional" for="user_remember_me"> Remember me</label>
