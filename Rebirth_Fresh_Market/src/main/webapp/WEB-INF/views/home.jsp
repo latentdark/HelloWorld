@@ -46,8 +46,8 @@
 	#fullPage-nav li .active span, .fullPage-slidesNav .active span{
 		background: #FFF;
 	}
-	#main_logo{
-		width:80%; height:80%;
+	#section0_img,#section1_img{
+		width:70%; height:70%;
 	}
 	
 	
@@ -56,11 +56,19 @@
 	<link rel="Stylesheet" href="/resources/css/bootstrap.min.css"/>
 	<style>
 		.navbar{
-			background-image: url("/resources/imgs/bg6.png");
+			/* background-image: url("/resources/imgs/bg6.png");
+			 */
+			background-color: #5DCD9D;
 			border-style: none;
 			font-size:15px;
-			font-familiy:'Nanum Gothic'
+			font-familiy:'Nanum Gothic';
+			margin:0;
 		}
+		
+		#brand_img{
+			margin-left:10px;
+		}
+		
 		#start,#deal,#login,#welcome{
 			margin-top : 3px;
 			color:white;
@@ -83,7 +91,7 @@
 		}
 		body{
 			background-image: url("/resources/imgs/bg6.png");
-		}
+		} 
 		.dropdown-menu{
 		 	padding: 15px; 
 		 	padding-bottom: 15px;
@@ -107,7 +115,12 @@
 		
 		#signup{
 			margin-left:160px;
+			text-decoration: none;
 		}
+		#signup:hover{
+			color: gray;
+		}
+	
 	</style>
 	
 
@@ -130,19 +143,6 @@
 	});
 	
 	
-	//이메일 체크
-	function check_mail(cg) {
-		mail01 = /[^@]+@[A-Za-z0-9_-]+[.]+[A-Za-z]+/;
-		mail02 = /[^@]+@[A-Za-z0-9_-]+[.]+[A-Za-z0-9_-]+[.]+[A-Za-z]+/;
-		mail03 = /[^@]+@[A-Za-z0-9_-]+[.]+[A-Za-z0-9_-]+[.]+[A-Za-z0-9_-]+[.]+[A-Za-z]+/;
-		if(mail01.test(cg.value)) return true;
-		if(mail02.test(cg.value)) return true;
-		if(mail03.test(cg.value)) return true;		
-		return false;
-	}
-	$(function() {
-		$( "#dialog" ).dialog();
-	});
 	</script>
 	
 	
@@ -163,15 +163,15 @@
 </head>
 <body>
 <header>
-	<div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
+	<div class="navbar navbar-fixed-top">
+      <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/"><img src="/resources/imgs/logo5.png" width="140" height="20"></a>
+          <a class="navbar-brand" href="/"><img id="brand_img" src="/resources/imgs/logo5.png" width="140" height="20"></a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -208,7 +208,6 @@
 				 <!--  아직 적용안됐음 (remember me) -->
 				  <input id="login_submit" class="btn btn-primary" type="submit" name="commit" value="Sign In" onchange='proces()'/>
 				  <a id="signup" href="signupForm">Sign Up</a>
-				 <!--  <a id="signup" href="signup" class="btn-example" onclick="layer_open('layer2');return false;">Sign Up</a>-->
 				</form>
             </div>
           </li>
@@ -221,21 +220,22 @@
         </div><!--/.nav-collapse -->
       </div>
     </div>
-<header>
+</header>
 
-<div id="content">
-    <section id="main_section">
+
+<section id="main_section">
+    <div id="content">
     <!-- vertical slider -->
 	<div id="fullpage">
 		<div class="section " id="section0">
 			<div class="intro">
-				<img id="main_logo" src="/resources/imgs/logo5.png">
+				<img id="section0_img" src="/resources/imgs/logo5.png">
 			
 			</div>
 		</div>
 		<div class="section" id="section1">
 			<div class="intro">
-				<img src="/resources/imgs/masan.png" width="800" height="600" >
+				<img id="section1_img" src="/resources/imgs/masan.png" width="800" height="600" >
 			</div>
 		</div>
 		<div class="section" id="section2">
@@ -245,9 +245,8 @@
 		</div>
 		
 	</div>
-	</section>
-</div>
-		
+	</div>
+</section>	
 	<script type="text/javascript">
 	//이메일칸에 입력전에 submit 버튼 활성화/비활성화
 	document.loginform.commit.disabled = true;

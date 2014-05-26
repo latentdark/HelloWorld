@@ -11,7 +11,7 @@
 	<link rel="Stylesheet" href="/resources/css/bootstrap.min.css"/>
 	<style>
 		body{
-		 	background-color:rgb(245,246,247);		
+		 	background-color:#F5F6F7;		
 		}
 		
 		/* #main_section{
@@ -19,8 +19,9 @@
 		}
 		 */
 		#signup_logo{
-			width:100%; height:100%;
+			width:80%; height:80%;
 			margin-top: 50px;
+			margin-left: 50px;
 			margin-bottom: 50px;
 			display:block;
 			
@@ -138,7 +139,7 @@
 						</td>
 					</tr>
 					<tr bgcolor="white"> 
-						<td height="70"><input id="phoneNumber" name="phoneNumber" placeholder="휴대폰 번호" class="signup" type="text" size="40" maxlength="11"/>
+						<td height="70"><input id="phoneNumber" name="phoneNumber" placeholder="휴대폰 번호 (- 없이 입력)" class="signup" type="text" size="40" maxlength="11"/>
 						<button id="phonenumcheck" type="button" class="btn btn-primary pull-right">인증</button>
 						</td>		
 					</tr>
