@@ -59,6 +59,7 @@
 		 	top:54px;
 			left:-180px;
 			margin-right:20px;
+			border-color: #BCBCBC;
 		}
 		
 		#login_submit{
@@ -95,14 +96,24 @@
       	}
       	
       	#aside{
-      		background-color:#F5F6F7;	
-      		width:10%;
+      		background-color:#F5F6F7;
+      		width:7%;
       		height:100%;
       		float:left;
       		margin-top:53px;
       		text-align:center;
-      		
+      		border:1px solid #BCBCBC;
       	
+      	}
+      	
+      	#aside_detail{
+      		width:20%;
+      		height:100%;
+      		float:left;
+      		margin-top:53px;
+      		text-align:center;
+      		border-top:1px solid #BCBCBC;
+      		padding-top:10px;
       	}
       
       	#map_canvas{
@@ -179,34 +190,42 @@
 	            <li class="divider-vertical"></li>
 	          	<li class="dropdown">
 	          	
-	          	<!-- 
-	          	<a id="login" class="dropdown-toggle" href="" data-toggle="dropdown">로그인 <strong class="caret"></strong></a>
-	          -->
-	          	<!-- 수정한부분 -->
-	          	
-	          	<c:if test="${user==null}">
-	           	 <a id="login" class="dropdown-toggle" href="" data-toggle="dropdown">로그인 <strong class="caret"></strong></a>
-	            </c:if>
-	            <c:if test="${user!=null}">
-	             <a id="welcome">${user.nickname} 님 환영합니다!</a>
-	            </c:if>
-	             
-	             
-	            <div class="dropdown-menu">
-	              <!-- Login form here -->
-	              	<!-- 
-		            <form name="loginform" action="/signup" method="post" accept-charset="UTF-8">
-		             -->
-		            <form name="loginform" action="/signup" method="post">
-					  <input class="form-control" id="user_email" style="margin-bottom: 15px;" type="email" name="email" size="30" placeholder=" 이메일"/>
-					  <input class="form-control" id="user_password" style="margin-bottom: 15px;" type="password" name="password" size="30" placeholder=" 비밀번호"/>
-					  <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="user[remember_me]" value="1" />
-					  <label class="string optional" for="user_remember_me"> Remember me</label>
-					 <!--  아직 적용안됐음 (remember me) -->
-					  <input id="login_submit" class="btn btn-primary" type="submit" name="commit" value="Sign In" onchange='proces()'/>
-					  <a id="signup" href="signupForm">Sign Up</a>
-					</form>
-	            </div>
+	          	<!--  로그인버튼, 로그인차, 마이페이지 -->
+	          	     		
+		          	<c:if test="${user==null}">
+		           	 <a id="login" class="dropdown-toggle" href="" data-toggle="dropdown">로그인 <strong class="caret"></strong></a>
+			            <div class="dropdown-menu">
+			              <!-- Login form here -->
+			              	<!-- 
+				            <form name="loginform" action="/signup" method="post" accept-charset="UTF-8">
+				             -->
+				            <form name="loginform" action="/signin" method="post">
+							  <input class="form-control" id="user_email" style="margin-bottom: 15px;" type="email" name="email" size="30" placeholder=" 이메일"/>
+							  <input class="form-control" id="user_password" style="margin-bottom: 15px;" type="password" name="password" size="30" placeholder=" 비밀번호"/>
+							  <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="user[remember_me]" value="1" />
+							  <label class="string optional" for="user_remember_me"> Remember me</label>
+							 <!--  아직 적용안됐음 (remember me) -->
+							  <input id="login_submit" class="btn btn-primary" type="submit" name="commit" value="Sign In" onchange='proces()'/>
+							  <a id="signup" href="signupForm">Sign Up</a>
+							</form>
+			            </div>
+		            </c:if>
+		            
+		            <c:if test="${user!=null}">
+		             <a id="welcome" class="dropdown-toggle" href="" data-toggle="dropdown">${user.nickname} 님 환영합니다! <strong class="caret"></strong></a>
+						<div class="dropdown-menu">
+			              <!-- Login form here -->
+			              	<!-- 
+				            <form name="loginform" action="/signup" method="post" accept-charset="UTF-8">
+				             -->
+				            <form name="loginform" action="/signin" method="post">
+							  <a id="signup" href="signupForm">Sign Up</a>
+							</form>
+			            </div>            
+		            </c:if>
+		             
+		           
+		     		  <!--  로그인버튼, 로그인차, 마이페이지  끝 -->
 	          </li>
 	          </ul>
 	          <form id="search" class="navbar-form navbar-right" role="search">
@@ -218,16 +237,36 @@
 	      </div>
 	    </div>
 	</header>
-	<div id="aside">
-	<br>
- 	삽니다
- 	<br><br>
- 	팝니다
- 	<br><br>
- 	상세검색
- 	</div>
-	<div id="map_canvas" style="width:90%; height:100%;">
-
+	
+	<div id="aside" class="tabbable">
+		<ul class="nav">
+			<li class="active">
+				<a href="#tab1" data-toggle="tab">삽니다</a>
+			</li>
+			<li>
+				<a href="#tab2" data-toggle="tab">팝니다</a>
+			</li>
+			<li>
+				<a href="#tab3" data-toggle="tab">상세검색</a>
+			</li>
+	 	</ul>
+ 	</div>	
+ 	
+ 	
+ 	<div id="aside_detail" class="tab-content">
+		<div class="tab-pane active" id="tab1">
+			<p>안녕</p>
+		</div>
+		<div class="tab-pane" id="tab2">
+			<p>또 안녕</p>
+		</div>
+		<div class="tab-pane" id="tab3">
+			<p>또또 안녕</p>
+		</div>
+	</div>
+	
+	<div id="map_canvas" style="width:73%; height:100%;">
+	
 	</div>
 	<script type="text/javascript">
 	//이메일칸에 입력전에 submit 버튼 활성화/비활성화
