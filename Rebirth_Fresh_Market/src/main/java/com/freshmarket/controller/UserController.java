@@ -44,13 +44,14 @@ public class UserController {
     	System.out.println("__________________________");
 	}
     
-    @RequestMapping("/signup")
-  	public ModelAndView signup (
+    //signup->signin 으로 교체
+    @RequestMapping("/signin")
+  	public ModelAndView signin (
   			@ModelAttribute("user") User user,
   			HttpSession session ) throws Exception{
   		
   		System.out.println("_______________________________________________");
-  		System.out.println("==> User /signup __call !!!");
+  		System.out.println("==> User /signin __call !!!");
   		System.out.println("_______________________________________________");
   		
   		
@@ -61,6 +62,9 @@ public class UserController {
   		}
   		
   		ModelAndView modelAndView = new ModelAndView();
+  		//addObject 사용하면 로그인할 때 바로 이름 뜸 필요에 대한 검증 필요
+  		//signin으로 들어온후 주소창 refresh 되게 만들어야함
+  		modelAndView.addObject("user", dbUser);
   		modelAndView.setViewName("/home");
 
   		return modelAndView;
@@ -73,11 +77,10 @@ public class UserController {
 	@RequestMapping(value = "/signupSubmit")
 	public ModelAndView signupSubmit(
 			@ModelAttribute("user") User user,
-			HttpSession session,
+			HttpSession session, 
 			HttpServletRequest request,
 			HttpServletResponse response
 			){
-		
 		//request.setCharacterEncoding("UTF-8");
 		
 		ModelAndView modelAndView = new ModelAndView();
@@ -119,3 +122,4 @@ public class UserController {
 		return "smsForm";
 	}
 }
+
