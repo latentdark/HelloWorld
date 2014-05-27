@@ -40,7 +40,11 @@ public class HomeController {
     	System.out.println("___Home_Controller_Call___");
     	System.out.println("__________________________");
 	}
-
+	
+	@RequestMapping(value = "/home")
+	public String home(Locale locale, Model model) {
+		return "home";
+	}
 	
 	@RequestMapping(value = "/start")
 	public ModelAndView start(Locale locale, Model model) {

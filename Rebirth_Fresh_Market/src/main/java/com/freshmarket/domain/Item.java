@@ -7,6 +7,7 @@ public class Item {
     private Integer itemNo;
     private Integer userNo;
     private String itemName;
+    private String itemInfo;
     private Integer price;
     private Date regiDate;
     private Integer stateCode;
@@ -38,6 +39,14 @@ public class Item {
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
 	}
+	
+	public String getItemInfo() {
+		return itemInfo;
+	}
+	public void setItemInfo(String itemInfo) {
+		this.itemInfo = itemInfo;
+	}
+	
 	public Integer getPrice() {
 		return price;
 	}
@@ -84,10 +93,12 @@ public class Item {
 	@Override
 	public String toString() {
 		return "Item [itemNo=" + itemNo + ", userNo=" + userNo + ", itemName="
-				+ itemName + ", price=" + price + ", regiDate=" + regiDate
-				+ ", stateCode=" + stateCode + ", category1=" + category1
-				+ ", category2=" + category2 + ", itemPicture=" + itemPicture
-				+ ", locationList=" + locationList + "]";
+				+ itemName + ", itemInfo=" + itemInfo + ", price=" + price
+				+ ", regiDate=" + regiDate + ", stateCode=" + stateCode
+				+ ", category1=" + category1 + ", category2=" + category2
+				+ ", itemPicture=" + itemPicture + ", locationList="
+				+ locationList + "]";
 	}
+
 	
 }

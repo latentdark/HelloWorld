@@ -2,6 +2,8 @@ package com.freshmarket.controller;
 
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,8 +73,13 @@ public class UserController {
 	@RequestMapping(value = "/signupSubmit")
 	public ModelAndView signupSubmit(
 			@ModelAttribute("user") User user,
-			HttpSession session 
+			HttpSession session,
+			HttpServletRequest request,
+			HttpServletResponse response
 			){
+		
+		//request.setCharacterEncoding("UTF-8");
+		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("/signupSuccess");
 		
@@ -107,5 +114,8 @@ public class UserController {
 		return modelAndView;
 	}
 	*/
-    
+	@RequestMapping(value="/smsForm")
+	public String smsForm(Locale locale,Model model){
+		return "smsForm";
+	}
 }
