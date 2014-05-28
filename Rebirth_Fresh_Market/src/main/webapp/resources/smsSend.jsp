@@ -3,6 +3,7 @@
 
 <%@ page language="java" import="java.util.*, java.security.*, java.io.*, java.net.*" %>
 <%!
+
 /**====================================================================================
   Description        :  사용 함수 선언
 ====================================================================================**/
@@ -69,8 +70,12 @@ String charsetType = "UTF-8"; //EUC-KR 또는 UTF-8
 request.setCharacterEncoding(charsetType);
 response.setCharacterEncoding(charsetType);
 String  action     = nullcheck(request.getParameter("action"), "");
+System.out.println("일단 오긴오냐?");
+System.out.println(request.getParameter("action"));
 if(action.equals("go")) {
-
+	//내가 단거
+	System.out.println("smsSend 체크");
+	System.out.println(request.getParameter("msg"));
 	String sms_url = "";
     sms_url = "http://sslsms.cafe24.com/sms_sender.php"; // SMS 전송요청 URL
     String user_id = base64Encode("latentdarksms"); // SMS아이디
