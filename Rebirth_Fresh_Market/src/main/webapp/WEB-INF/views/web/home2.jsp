@@ -22,7 +22,7 @@
 
 <div class="target">
     <div id="body">
-    	<%@include file="slide.jsp"%>
+    	<%@include file="itemMapView.jsp"%>
     </div>   
 </div>
 <div>
