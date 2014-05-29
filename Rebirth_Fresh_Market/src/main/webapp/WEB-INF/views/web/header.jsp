@@ -204,7 +204,7 @@
 					  <label class="string optional" for="user_remember_me"> Remember me</label>
 					 <!--  아직 적용안됐음 (remember me) -->
 					  <input id="login_submit" class="btn btn-primary" type="submit" name="commit" value="Sign In" onchange='proces()'/>
-					  <a id="signup" href="signupForm">Sign Up</a>
+					  <a id="signup" href="http://192.168.200.56:3000/node.js/signupForm">Sign Up</a>
 					</form>
 	            </div>
             </c:if>
