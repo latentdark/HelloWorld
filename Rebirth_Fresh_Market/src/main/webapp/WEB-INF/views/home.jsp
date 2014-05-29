@@ -76,7 +76,7 @@
 		}
 	
 		
-		#start:hover, #deal:hover, #login:hover{
+		#start:hover, #deal:hover, #login:hover, #welcome:hover{
 			color:gray;
 			background:none;
 		}
@@ -179,16 +179,17 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a id="start" href="#">시작하기</a></li>
-            <li><a id="deal" href="/itemMapView" >사고팔기</a></li>
+            <li><a id="deal" href="/itemMapView">사고팔기</a></li>
           </ul>
           <ul class="nav navbar-nav pull-right">
             <li class="divider-vertical"></li>
-          	<li class="dropdown">
+          	
           	
      
      		<!--  로그인버튼, 로그인차, 마이페이지 -->
      		
           	<c:if test="${user==null}">
+          	<li class="dropdown">
            	 <a id="login" class="dropdown-toggle" href="" data-toggle="dropdown">로그인 <strong class="caret"></strong></a>
 	            <div class="dropdown-menu">
 	              <!-- Login form here -->
@@ -205,9 +206,11 @@
 					  <a id="signup" href="signupForm">Sign Up</a>
 					</form>
 	            </div>
+	        </li>    
             </c:if>
             
             <c:if test="${user!=null}">
+            <li class="dropdown">
              <a id="welcome" class="dropdown-toggle" href="" data-toggle="dropdown">${user.nickname} 님 환영합니다! <strong class="caret"></strong></a>
 				<div class="dropdown-menu">
 	              <!-- Login form here -->
@@ -217,7 +220,8 @@
 		            <form name="loginform" action="/signin" method="post">
 					  <a id="signup" href="signupForm">Sign Up</a>
 					</form>
-	            </div>            
+	            </div>
+	        </li>              
             </c:if>
              
            
@@ -226,7 +230,7 @@
             
             
             
-          </li>
+          
           </ul>
           <form id="search" class="navbar-form navbar-right" role="search">
 			<div class="form-group">
