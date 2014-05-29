@@ -39,7 +39,7 @@
 			background:none;
 		}
 		
-		#start:hover, #deal:hover, #login:hover{
+		#start:hover, #deal:hover, #login:hover, #welcome:hover{
 			color:gray;
 			background:none;
 		}
