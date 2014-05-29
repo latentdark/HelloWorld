@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -33,6 +33,7 @@
 			background:none;
 		}
 		
+		/* 페이지에 따라 알아서 색깔 바뀌게 수정해야함  */
 		#deal{
 			margin-top : 3px;
 			color:gray;
@@ -171,71 +172,7 @@
 </head>
 <body onload="initialize()">
 	<header>
-		<div class="navbar navbar-fixed-top">
-	      <div class="container-fluid">
-	        <div class="navbar-header">
-	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	          </button>
-	          <a class="navbar-brand" href="/"><img id="brand_img" src="/resources/imgs/logo5.png" width="140" height="20"></a>
-	        </div>
-	        <div class="collapse navbar-collapse">
-	          <ul class="nav navbar-nav">
-	            <li><a id="start" href="#">시작하기</a></li>
-	            <li><a id="deal" href="/itemMapView">사고팔기</a></li>
-	          </ul>
-	          <ul class="nav navbar-nav pull-right">
-	            <li class="divider-vertical"></li>
-	          	<li class="dropdown">
-	          	
-	          	<!--  로그인버튼, 로그인차, 마이페이지 -->
-	          	     		
-		          	<c:if test="${user==null}">
-		           	 <a id="login" class="dropdown-toggle" href="" data-toggle="dropdown">로그인 <strong class="caret"></strong></a>
-			            <div class="dropdown-menu">
-			              <!-- Login form here -->
-			              	<!-- 
-				            <form name="loginform" action="/signup" method="post" accept-charset="UTF-8">
-				             -->
-				            <form name="loginform" action="/signin" method="post">
-							  <input class="form-control" id="user_email" style="margin-bottom: 15px;" type="email" name="email" size="30" placeholder=" 이메일"/>
-							  <input class="form-control" id="user_password" style="margin-bottom: 15px;" type="password" name="password" size="30" placeholder=" 비밀번호"/>
-							  <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="user[remember_me]" value="1" />
-							  <label class="string optional" for="user_remember_me"> Remember me</label>
-							 <!--  아직 적용안됐음 (remember me) -->
-							  <input id="login_submit" class="btn btn-primary" type="submit" name="commit" value="Sign In" onchange='proces()'/>
-							  <a id="signup" href="signupForm">Sign Up</a>
-							</form>
-			            </div>
-		            </c:if>
-		            
-		            <c:if test="${user!=null}">
-		             <a id="welcome" class="dropdown-toggle" href="" data-toggle="dropdown">${user.nickname} 님 환영합니다! <strong class="caret"></strong></a>
-						<div class="dropdown-menu">
-			              <!-- Login form here -->
-			              	<!-- 
-				            <form name="loginform" action="/signup" method="post" accept-charset="UTF-8">
-				             -->
-				            <form name="loginform" action="/signin" method="post">
-							  <a id="signup" href="signupForm">Sign Up</a>
-							</form>
-			            </div>            
-		            </c:if>
-		             
-		           
-		     		  <!--  로그인버튼, 로그인차, 마이페이지  끝 -->
-	          </li>
-	          </ul>
-	          <form id="search" class="navbar-form navbar-right" role="search">
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Search" height="10">
-				</div>
-			  </form>          
-	        </div><!--/.nav-collapse -->
-	      </div>
-	    </div>
+		<%@include file="header.jsp"%>
 	</header>
 	
 	<div id="aside" class="tabbable">

@@ -103,7 +103,7 @@ public class HomeController {
 		System.out.println("들어오긴함?");
 		if (sitePreference == SitePreference.NORMAL) {
             logger.info("Site preference is normal");
-            return "home";
+            return "web/home";
         } else if (sitePreference == SitePreference.MOBILE) {
             logger.info("Site preference is mobile");
             return "home-mobile";
@@ -112,7 +112,7 @@ public class HomeController {
             return "home-tablet";
         } else {
             logger.info("no site preference");
-            return "home";
+            return "web/home";
         }
     }
 	

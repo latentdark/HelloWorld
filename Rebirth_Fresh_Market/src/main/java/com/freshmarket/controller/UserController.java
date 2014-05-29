@@ -48,11 +48,13 @@ public class UserController {
     @RequestMapping("/signin")
   	public ModelAndView signin (
   			@ModelAttribute("user") User user,
-  			HttpSession session ) throws Exception{
+  			HttpSession session, HttpServletRequest request, HttpServletResponse response)
+  					throws Exception{
   		
   		System.out.println("_______________________________________________");
   		System.out.println("==> User /signin __call !!!");
   		System.out.println("_______________________________________________");
+  		System.out.println(request.getRequestURI());
   		
   		
   		User dbUser=userService.findUser(user.getEmail());
@@ -65,7 +67,8 @@ public class UserController {
   		//addObject 사용하면 로그인할 때 바로 이름 뜸 필요에 대한 검증 필요
   		//signin으로 들어온후 주소창 refresh 되게 만들어야함
   		modelAndView.addObject("user", dbUser);
-  		modelAndView.setViewName("/home");
+  		//redirect 사용안하면 주소창에 주소가 /signin으로 됨
+  		modelAndView.setViewName("redirect:/home");
 
   		return modelAndView;
   	}

@@ -41,7 +41,7 @@ public class ItemController {
 	@RequestMapping(value = "/itemMapView")
 	public ModelAndView googlemap(Locale locale, Model model) {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/itemMapView");
+		modelAndView.setViewName("web/itemMapView");
 		return modelAndView;
 	}
     
