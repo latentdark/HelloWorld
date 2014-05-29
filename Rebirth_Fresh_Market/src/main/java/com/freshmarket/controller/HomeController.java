@@ -43,7 +43,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/home")
 	public String home(Locale locale, Model model) {
-		return "home";
+		return "web/home";
 	}
 	
 	@RequestMapping(value = "/start")
