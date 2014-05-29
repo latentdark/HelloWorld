@@ -54,6 +54,8 @@ public class UserController {
   		System.out.println("_______________________________________________");
   		System.out.println("==> User /signin __call !!!");
   		System.out.println("_______________________________________________");
+  		//들어오는 주소 확인해서 다시 그주소로 보내기 위해서 사용했지만
+  		//들어오는 주소가 /signin으로 떠서 망함
   		System.out.println(request.getRequestURI());
   		
   		
@@ -72,6 +74,16 @@ public class UserController {
 
   		return modelAndView;
   	}
+    
+    @RequestMapping("/signout")
+    public String signout(HttpServletRequest request, HttpServletResponse response)
+		throws Exception{
+    	HttpSession session=request.getSession();
+		session.invalidate();
+    	return "redirect:/home";
+    }
+    
+    
     @RequestMapping("/signupForm")
     public String signupForm()throws Exception{
     	return "signupForm";

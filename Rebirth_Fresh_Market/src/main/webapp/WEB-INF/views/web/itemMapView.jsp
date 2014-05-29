@@ -27,32 +27,33 @@
 			margin-left:10px;
 		}
 		
-		#start,#login,#welcome{
+		#start,#signin,#signin_on{
 			margin-top : 3px;
 			color:white;
 			background:none;
 		}
+	
 		
 		/* 페이지에 따라 알아서 색깔 바뀌게 수정해야함  */
-		#deal{
+		#deal, #deal:hover{
+			background-color:#33A876;
 			margin-top : 3px;
-			color:gray;
-			background:none;
-		}
-		
-		#start:hover, #deal:hover, #login:hover{
-			color:gray;
-			background:none;
-		}
-		
-		#welcome:hover{
 			color:white;
+		}
+		
+		#start:hover, #signin:hover, #signin_on:hover{
+			color:gray;
 			background:none;
 		}
 		
 		#search{
 			margin-top: 10px;
 		}
+		
+		body{
+			background-image: url("/resources/imgs/bg6.png");
+		} 
+		
 		
 		.dropdown-menu{
 		 	padding: 15px; 
@@ -63,14 +64,25 @@
 			border-color: #BCBCBC;
 		}
 		
-		#login_submit{
+		#dropdown_on{
+			padding-right:0px;
+			padding-left:0px;
+			padding-top:15px;
+			padding-bottom:15px;
+			margin:0;
+			text-align: right;
+		}
+		
+		
+		#signin_submit{
 			clear: left; 
 			width: 100%; 
 			height: 32px; 
 			font-size: 13px;
 			
 		}
-		#login_submit.btn{
+		
+		#signin_submit.btn{
 			background-color:#00A1DA;
 			border:none;
 			margin-bottom: 5px;
@@ -84,7 +96,15 @@
 			color: gray;
 		}
 		
+		#dropdown_on>li>a{
+			color:blue;
+		 	background:none;
+		}
 		
+		#dropdown_on>li>a:hover{
+			color:gray;
+		 	background:none;
+		}
 		<!-- -->
 		
 		
@@ -108,6 +128,7 @@
       	}
       	
       	#aside_detail{
+      		background-color:#FFFFFF;
       		width:20%;
       		height:100%;
       		float:left;
