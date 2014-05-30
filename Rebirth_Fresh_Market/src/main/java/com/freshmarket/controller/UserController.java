@@ -89,12 +89,15 @@ public class UserController {
     	return "signupForm";
     }
 	
+//	@RequestMapping(value = "/signupSubmit")
+//	public ModelAndView signupSubmit(
+//			@ModelAttribute("user") User user,
+//			HttpSession session, 
+//			HttpServletRequest request,
+//			HttpServletResponse response
+//			){
 	@RequestMapping(value = "/signupSubmit")
-	public ModelAndView signupSubmit(
-			@ModelAttribute("user") User user,
-			HttpSession session, 
-			HttpServletRequest request,
-			HttpServletResponse response
+	public ModelAndView signupSubmit(Locale locale, Model model
 			){
 		//request.setCharacterEncoding("UTF-8");
 		
