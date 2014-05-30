@@ -25,7 +25,7 @@
 		}
 		
 		#start,#deal,#signin,#signin_on{
-			margin-top : 3px;
+			padding-top:18px;
 			color:white;
 			background:none;
 		}

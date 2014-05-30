@@ -21,7 +21,7 @@
 			     	     	<ul class="nav navbar-nav pull-right">
 			     	     		<li class="divider-vertical"></li>
 			          			<li class="dropdown">
-			         	  		<a id="signin" class="dropdown-toggle" href="#" data-toggle="dropdown">로그인 <strong class="caret"></strong></a>
+			         	  		<a id="signin" class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
 				            	<div class="dropdown-menu">
 					                <!-- Login form here -->
 					              	<form name="signinform" action="/signin" method="post">

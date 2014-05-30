@@ -28,7 +28,7 @@
 		}
 		
 		#start,#signin,#signin_on{
-			margin-top : 3px;
+			padding-top:18px;
 			color:white;
 			background:none;
 		}
@@ -37,8 +37,9 @@
 		/* 페이지에 따라 알아서 색깔 바뀌게 수정해야함  */
 		#deal, #deal:hover{
 			background-color:#33A876;
-			margin-top : 3px;
+			padding-top:18px;
 			color:white;
+			height:53px;
 		}
 		
 		#start:hover, #signin:hover, #signin_on:hover{
