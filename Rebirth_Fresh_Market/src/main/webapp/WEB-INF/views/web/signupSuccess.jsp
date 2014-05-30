@@ -98,7 +98,10 @@
 		}
 		
 		/* session 부분 */
-		
+		#content{
+			padding-top: 200px;
+			text-align: center;
+		}
 		#success_img{
 			width: 80%;height:80%;
 		}
