@@ -99,16 +99,18 @@ public class UserController {
 		//request.setCharacterEncoding("UTF-8");
 		
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/signupSuccess");
+//		modelAndView.setViewName("/signupSuccess");
+		modelAndView.setViewName("web/signupSuccess");
 		
-		System.out.println("___________/signupSubmit");
-		System.out.println(user.getEmail());
-		System.out.println(user.getNickname());
-		System.out.println("___________/signupSubmit");
 		
-		Integer temp;
-		temp=userService.addUser(user);
-		session.setAttribute("user", user);
+//		System.out.println("___________/signupSubmit");
+//		System.out.println(user.getEmail());
+//		System.out.println(user.getNickname());
+//		System.out.println("___________/signupSubmit");
+//		
+//		Integer temp;
+//		temp=userService.addUser(user);
+//		session.setAttribute("user", user);
 		
 		return modelAndView;
 	}
