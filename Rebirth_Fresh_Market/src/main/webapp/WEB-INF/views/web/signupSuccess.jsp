@@ -129,7 +129,6 @@
 	  });
 	});
 	
-	
 	</script>
 </head>
 <body>
@@ -140,9 +139,15 @@
 	<div id="content">
 	    <section id="main_section">
 			<img id="success_img" src="/resources/imgs/success.png">
+			<input id="password_compareCheck_result", name="password_compareCheck_result", 
+										style="color:blue;border:0 solid black;text-align:left; margin-left:20px; margin-top:10px;",
+										value="ㅇㅇㅇ", size="40", readonly>
 		</section>
-	</div>
 		
+	</div>
+	<div id="timeout">
+
+	</div>
 	
 	<!-- Footer -->
 	<footer>
