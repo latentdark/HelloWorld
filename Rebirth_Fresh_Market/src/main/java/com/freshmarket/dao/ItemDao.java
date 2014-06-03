@@ -10,8 +10,6 @@ public interface ItemDao {
     public Integer addItem(Item item);
 
     public Item findItem(Integer itemNo);
-    
-    public Item findItem(String itemName);
 
     public Integer updateItem(Item item);
 
