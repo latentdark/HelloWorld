@@ -80,11 +80,18 @@ if(action.equals("go")) {
     sms_url = "http://sslsms.cafe24.com/sms_sender.php"; // SMS 전송요청 URL
     String user_id = base64Encode("latentdarksms"); // SMS아이디
     String secure = base64Encode("d59f176bbb5792ead21aedecafd7c39f");//인증키
-    String msg = base64Encode(nullcheck(request.getParameter("msg"), ""));
+    
+    String msg = base64Encode("Fresh Market \n인증번호 [ "+request.getParameter("msg")+" ]");
+    //String msg = base64Encode(nullcheck(request.getParameter("msg"), ""));
     String rphone = base64Encode(nullcheck(request.getParameter("rphone"), ""));
-    String sphone1 = base64Encode(nullcheck(request.getParameter("sphone1"), ""));
-    String sphone2 = base64Encode(nullcheck(request.getParameter("sphone2"), ""));
-    String sphone3 = base64Encode(nullcheck(request.getParameter("sphone3"), ""));
+   
+    String sphone1=base64Encode("02");
+    String sphone2=base64Encode("5555");
+    String sphone3=base64Encode("5555");
+    
+    //String sphone1 = base64Encode(nullcheck(request.getParameter("sphone1"), ""));
+    //String sphone2 = base64Encode(nullcheck(request.getParameter("sphone2"), ""));
+    //String sphone3 = base64Encode(nullcheck(request.getParameter("sphone3"), ""));
     String rdate = base64Encode(nullcheck(request.getParameter("rdate"), ""));
     String rtime = base64Encode(nullcheck(request.getParameter("rtime"), ""));
     String mode = base64Encode("1");
