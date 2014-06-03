@@ -6,7 +6,6 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 
 import com.freshmarket.domain.Item;
 import com.freshmarket.service.ItemService;
-import com.freshmarket.service.UserService;
 
 //@RunWith(SpringJUnit4ClassRunner.class)
 //@ContextConfiguration(locations = { "config/context-aspect.xml",
@@ -28,7 +27,6 @@ public class ItemTest {
 																						"config/context-transaction.xml" });
 		this.itemService = context.getBean("itemServiceImpl", ItemService.class);
 		
-		
 		//addItem
 		Item item = new Item();
 		item.setUserNo(1);
@@ -39,15 +37,17 @@ public class ItemTest {
 		item.setCategory1(14);
 		item.setCategory2(11);
 		
-		System.out.println(itemService.addItem(item));
 		System.out.println(item);
+		//System.out.println("insert 결과 : "+itemService.addItem(item));
 		
-		//findItem
-		item.setItemNo(itemService.findItem(300).getItemNo());
-		System.out.println(item.getItemNo());
+		//findItem(itemNo)
+		System.out.println("select 결과 : "+itemService.findItem(415));
+		
+		//findItem(itemName)
+		//System.out.println(itemService.findItem2("fan"));
 		
 		//removeItem
-		System.out.println(itemService.removeItem(item.getItemNo()));
-		System.out.println(itemService.findItem(300));
+		//System.out.println("delete 결과 : "+itemService.removeItem(414));
+		//System.out.println("select 결과 : "+itemService.findItem(414));
 	}
 }
