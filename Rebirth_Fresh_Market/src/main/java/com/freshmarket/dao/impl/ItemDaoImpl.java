@@ -40,10 +40,6 @@ public class ItemDaoImpl implements ItemDao {
 	public Item findItem(Integer itemNo) {
 		return sqlSession.selectOne("ItemMapper.findItem", itemNo);
 	}
-	
-	public Item findItem(String itemName) {
-		return sqlSession.selectOne("ItemMapper.findItem", itemName);
-	}
 
 	@Override
 	public Integer updateItem(Item item) {
