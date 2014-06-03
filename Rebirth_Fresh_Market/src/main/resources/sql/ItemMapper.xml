@@ -11,7 +11,7 @@
 		<result property="userNo" column="user_no" jdbcType="INTEGER"/>
 		<result property="itemName" column="item_name" jdbcType="VARCHAR"/>
 		<result property="price" column="price" jdbcType="INTEGER"/>
-<!-- 		<result property="info" column="info" jdbcType="VARCHAR"/> -->
+ 		<result property="itemInfo" column="item_info" jdbcType="VARCHAR"/>
 		<result property="regiDate" column="regi_date" jdbcType="DATE"/>
 		<result property="stateCode" column="state_code" jdbcType="INTEGER"/>
 		<result property="category1" column="category1" jdbcType="INTEGER"/>
@@ -23,17 +23,86 @@
 						state_code,
 						item_name,
 						price,
-						info,
+						item_info,
 						regi_date,
 						category1,
 						category2	)
-		VALUES (	#{userNo, jdbcType=INT},
-					#{stateCode, jdbcType=INT},
-					#{itemName, jdbcType=INT},
-					#{price, jdbcType=INT},
-					#{info, jdbcType=VARCHAR},
-					#{regiDate, jdbcType=DATE},
-					#{category1, jdbcType=INT},
-					#{category2, jdbcType=INT}	)
+		VALUES (	#{userNo, jdbcType=INTEGER},
+					#{stateCode, jdbcType=INTEGER},
+					#{itemName, jdbcType=VARCHAR},
+					#{price, jdbcType=INTEGER},
+					#{itemInfo, jdbcType=VARCHAR},
+					sysdate(),
+					#{category1, jdbcType=INTEGER},
+					#{category2, jdbcType=INTEGER}	)
 	</insert>
+	
+	<select id="findItem" parameterType="integer" resultMap="ItemSelectMap">
+		SELECT
+		i.item_no, u.nickname, u.user_no, i.state_code, i.item_name, i.price, i.item_info, i.regi_date, i.category1, i.category2, l.grid_x, l.grid_y
+		FROM user u, item i, location l
+		WHERE i.item_no = l.item_no
+			  AND
+			  i.user_no = u.user_no
+			  AND
+			  i.item_no = #{value}
+	</select>
+	
+	<select id="findItemList" parameterType="search" resultMap="ItemSelectMap">
+		SELECT
+		user_no, state_code, item_name, price, item_info, regi_date, category1, category2
+		weFROM (	SELECT
+			inner_table.*, @RNUM AS row_seq
+			FROM	(
+						SELECT
+						user_no, state_code, item_name, price, item_info, regi_date, category1, category2
+						FROM item
+						<if test="searchKeyword!='' ">
+							<where>
+								<if test="searchCondition==1">
+									category1 LIKE '%${searchKeyword}%'
+								</if>
+								<if test="searchCondition==2">
+									category2 LIKE '%${searchKeyword}%'
+								</if>
+								<if test="searchCondition==3">
+									item_name LIKE '%${searchKeyword}%'
+								</if>
+							</where>
+						</if>
+						ORDER BY item_no	) AS inner_table,
+					(	SELECT @RNUM :=1	) AS RNUM
+			WHERE <![CDATA[@RNUM<=#{endRowNum}]]>	) AS inner_table
+		WHERE inner_table.row_seq BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
+	
+	<update id="updateItem" parameterType="item">
+		UPDATE item
+		<set>
+			<if test="stateCode!=null">
+				state_code={stateCode, jdbcType=INT},
+			</if>
+			<if test="itemName!=null">
+				item_name={itemName, jdbcType=VARCHAR},
+			</if>
+			<if test="price!=null">
+				price={price, jdbcType=INT},
+			</if>
+			<if test="itemInfo!=null">
+				item_info={itemInfo, jdbcType=VARCHAR},
+			</if>
+			<if test="category1!=null">
+				category1={category1, jdbcType=INT},
+			</if>
+			<if test="category2!=null">
+				category2={category2, jdbcType=INT}
+			</if>
+		</set>
+	</update>
+	
+	<delete id="removeItem" parameterType="integer">
+		DELETE
+		FROM item
+		WHERE item_no = ${value}
+	</delete>
 </mapper>
