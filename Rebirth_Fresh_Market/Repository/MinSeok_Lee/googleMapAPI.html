@@ -1,0 +1,459 @@
+---------------클릭하면 장소 확대, 3초이상 안움직일경우 처음위치로 이동시킴---------------
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta charset="utf-8">
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map_canvas { height: 100% }
+    </style>
+    <script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAX-hWL7tXxRZd2GtUjDME2jf-9qNoiRsE&sensor=false&language=ko">
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: new google.maps.LatLng(37.494626, 127.027933),
+          zoom: 17,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+            mapOptions);
+      
+        var marker = new google.maps.Marker({
+            position: map.getCenter(),
+            map: map,
+            title: 'Click to zoom'
+          });
+        
+        
+        google.maps.event.addListener(map, 'center_changed', function() {
+            // 3 seconds after the center of the map has changed, pan back to the
+            // marker.
+            // 3초동안 움직이지 않으면 처음에 잡은 좌표로 이동
+            window.setTimeout(function() {
+              map.panTo(marker.getPosition());
+            }, 3000);
+          });
+        
+        google.maps.event.addListener(marker, 'click', function() {
+            map.setZoom(20);
+            map.setCenter(marker.getPosition());
+          }); 
+      }  
+	</script>
+  </head>
+  <body onload="initialize()">
+    <div id="map_canvas" style="width:100%; height:100%"></div>
+  </body>
+</html>
+        
+-----------------마우스로 클릭해서 지도에 마킹하기----------------------------------
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta charset="utf-8">
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map_canvas { height: 100% }
+    </style>
+    <script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAX-hWL7tXxRZd2GtUjDME2jf-9qNoiRsE&sensor=false&language=ko">
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: new google.maps.LatLng(37.494626, 127.027933),
+          zoom: 17,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+            mapOptions);
+        google.maps.event.addListener(map, 'click', function(e) {
+            placeMarker(e.latLng, map);
+          });
+      }
+
+		function placeMarker(position, map) {
+		  var marker = new google.maps.Marker({
+		    position: position,
+		    map: map
+		  });
+		  map.panTo(position);
+		}
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+  <body onload="initialize()">
+    <div id="map_canvas" style="width:100%; height:100%"></div>
+  </body>
+</html>
+
+----------지도에 선긋기--------------------
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta charset="utf-8">
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map_canvas { height: 100% }
+    </style>
+    <script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAX-hWL7tXxRZd2GtUjDME2jf-9qNoiRsE&sensor=false&language=ko">
+    </script>
+    <script type="text/javascript">
+		function initialize() {
+		  var mapOptions = {
+		    center: new google.maps.LatLng(37.494626, 127.027933),
+		    zoom: 17,
+		    mapTypeId: google.maps.MapTypeId.ROADMAP
+		  };
+		  var map = new google.maps.Map(document.getElementById("map_canvas"),
+		      mapOptions);
+	
+		  var flightPlanCoordinates = [
+			    new google.maps.LatLng(37.497771, 127.027527),
+			    new google.maps.LatLng(37.491874, 127.007651),
+			    new google.maps.LatLng(37.491017, 127.005286),
+			    new google.maps.LatLng(37.482674, 127.002668),
+			    new google.maps.LatLng(37.476612, 126.981725),
+			    new google.maps.LatLng(37.481244, 126.952629),
+			    new google.maps.LatLng(37.480086, 126.947178)
+		  ];
+		  
+		  var flightPath = new google.maps.Polyline({
+			    path: flightPlanCoordinates,
+			    strokeColor: "#000000",
+			    strokeOpacity: 1.0,
+			    strokeWeight: 5
+			  });
+		
+		 flightPath.setMap(map);
+		  
+		}//end of fx
+		
+    </script>
+  </head>
+  <body onload="initialize()">
+    <div id="map_canvas" style="width:100%; height:100%"></div>
+  </body>
+</html>
+
+
+--------지도 찍기랑 선긋기 합체---------------
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta charset="utf-8">
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map_canvas { height: 100% }
+    </style>
+    <script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAX-hWL7tXxRZd2GtUjDME2jf-9qNoiRsE&sensor=false&language=ko">
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: new google.maps.LatLng(37.494626, 127.027933),
+          zoom: 17,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+            mapOptions);
+        google.maps.event.addListener(map, 'click', function(e) {
+            placeMarker(e.latLng, map);
+          });
+
+	 	  var flightPlanCoordinates = [
+			    new google.maps.LatLng(37.497771, 127.027527),
+			    new google.maps.LatLng(37.491874, 127.007651),
+			    new google.maps.LatLng(37.491017, 127.005286),
+			    new google.maps.LatLng(37.482674, 127.002668),
+			    new google.maps.LatLng(37.476612, 126.981725),
+			    new google.maps.LatLng(37.481244, 126.952629),
+			    new google.maps.LatLng(37.480086, 126.947178)
+		  ]; 
+		  
+		  var flightPath = new google.maps.Polyline({
+			    path:flightPlanCoordinates,
+			    strokeColor: "#000000",
+			    strokeOpacity: 1.0,
+			    strokeWeight: 5
+			  });
+		
+		 flightPath.setMap(map);
+		  
+      }//end of fx
+
+		function placeMarker(position, map) {
+		  var marker = new google.maps.Marker({
+		    position: position,
+		    map: map
+		  });
+		  map.panTo(position);
+		}//end of fx
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+  <body onload="initialize()">
+    <div id="map_canvas" style="width:100%; height:100%"></div>
+  </body>
+</html>
+
+--------------------마우스로 클릭하면 마크하고 마크한거끼리 선으로 이어줌-----------
+
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<% 
+	//두정동 우리집 좌표
+	//자기위치 초기화 값을 받아서 대입해서 초기위치를 지도에 표시
+/* 	double x=36.832116;
+    double y=127.147438; */
+	
+    
+	//비트교육센터 좌표 
+	double x=37.494642;
+    double y=127.027953;
+	
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>구글맵 테스트</title>
+<style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAX-hWL7tXxRZd2GtUjDME2jf-9qNoiRsE&sensor=false&language=ko">
+    </script>
+    <script>
+		var poly;
+		var map;
+		
+		function initialize() {
+		  var mapOptions = {
+			center: new google.maps.LatLng(<%=x%>,<%=y%>),
+			zoom: 18,
+		  };
+		
+		  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+		
+		  var polyOptions = {
+		    strokeColor: '#000000',
+		    strokeOpacity: 1.0,
+		    strokeWeight: 3
+		  };
+		  poly = new google.maps.Polyline(polyOptions);
+		  poly.setMap(map);
+		
+		  // Add a listener for the click event
+		  google.maps.event.addListener(map, 'click', addLatLng);
+		}//end of initialize
+		
+		/**
+		 * Handles click events on a map, and adds a new point to the Polyline.
+		 * @param {google.maps.MouseEvent} event
+		 */
+		function addLatLng(event) {
+		
+		  var path = poly.getPath();
+		
+		  // Because path is an MVCArray, we can simply append a new coordinate
+		  // and it will automatically appear.
+		  path.push(event.latLng);
+		
+		  // Add a new marker at the new plotted point on the polyline.
+		  var marker = new google.maps.Marker({
+		    position: event.latLng,
+		    title: '#' + path.getLength(),
+		    map: map
+		  });
+		}//end of addLatLng
+		
+		google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+</html>
+
+
+-----------------
+var maleArray;
+
+<%
+List maleTagList = new ArrayList();
+
+ // 배열에 태그 값을 넣는다. 
+ out.println("maleArray = new Array(");
+ for(int i = 0; i < maleTagList.size(); i++)
+ {
+  if(i==maleTagList.size()-1){
+   out.println("\"" +  maleTagList.get(i).getTagId() + "\");");
+  }
+  else{
+   out.print("\"" +  maleTagList.get(i).getTagId() + "\",");
+  }
+ }
+%>
+ 
+[출처] jsp에서 값을 가져와 자바스크립트의 배열에 넣기 (개발자로 살아남기) |작성자 스페셜원
+
+--------------------좌표를 받아와서 마크찍고 마크끼리 선으로 연결--------------------
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<% 
+	/*	
+		-지도에 받아올 정보 : 좌표 위치 (x,y),좌표가 찍힌 시간
+		-지도의 초기위치 
+		1) 처음 출발한 위치
+		2) 마커가 표시된 숫자의 총수/2 위치를 가운데로 
+
+		자기위치 초기화 값을 받아서 대입해서 초기위치를 지도에 표시
+			    
+		비트교육센터 좌표 
+		double x=37.494642;
+	    double y=127.027953;
+	 	*/	
+	  Double[] xPoint = new Double[10];
+	  xPoint[0]=37.494626;
+	  xPoint[1]=37.494301;
+	  xPoint[2]=37.494603;
+	  xPoint[3]=37.493754;
+	  xPoint[4]=37.492962;
+	  xPoint[5]=37.493540;
+	  xPoint[6]=37.490578;
+	  xPoint[7]=37.490088;
+	  xPoint[8]=37.484529;
+	  xPoint[9]=37.486906;
+	 
+	  
+	  Double[] yPoint = new Double[10];
+	  yPoint[0]=127.027933;
+	  yPoint[1]=127.028018;
+	  yPoint[2]=127.029042;
+	  yPoint[3]=127.029477;
+	  yPoint[4]=127.029827; 
+	  yPoint[5]=127.031778; 
+	  yPoint[6]=127.033162;
+	  yPoint[7]=127.031499;
+	  yPoint[8]=127.034085;
+	  yPoint[9]=127.046774;
+	  
+%>
+<!DOCTYPE html>
+<html>
+  <head>
+  	<title>Google Map Test</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta charset="utf-8">
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map_canvas { height: 100% }
+    </style>
+    <script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAX-hWL7tXxRZd2GtUjDME2jf-9qNoiRsE&sensor=false&language=ko">
+    </script>
+    <script type="text/javascript">
+		function initialize() {
+		  var mapOptions = {
+		    center: new google.maps.LatLng(37.494626, 127.027933),
+		    zoom: 17,
+		    mapTypeId: google.maps.MapTypeId.ROADMAP
+		  };
+		  var map = new google.maps.Map(document.getElementById("map_canvas"),
+		      mapOptions);
+		  var xPoint;
+		  var yPoint;
+		  var flightPlanCoordinates;
+		  var marker; 
+		   		
+		  <%
+		
+		  // 배열에 태그 값을 넣는다. 
+		   out.println("xPoint = new Array(");
+		   for(int i = 0; i < xPoint.length; i++)
+		   {
+		    if(i==xPoint.length-1){
+		     out.println("\"" +  xPoint[i] + "\");");
+		    }
+		    else{
+		     out.print("\"" +  xPoint[i] + "\",");
+		    }
+		   }
+		   
+		   out.println("yPoint = new Array(");
+		   for(int i = 0; i < yPoint.length; i++)
+		   {
+		    if(i==yPoint.length-1){
+		     out.println("\"" +  yPoint[i] + "\");");
+		    }
+		    else{
+		     out.print("\"" +  yPoint[i] + "\",");
+		    }
+		   }
+		
+	   	
+	   	 out.println("flightPlanCoordinates = [");
+		    for(int i=0;i<xPoint.length;i++){                           
+				if(i==xPoint.length-1){
+	   	    		out.print("new google.maps.LatLng("+xPoint[i]+", "+yPoint[i]+")];");
+				}else{
+					out.print("new google.maps.LatLng("+xPoint[i]+", "+yPoint[i]+"),");
+				}	
+			};
+	
+		out.println("marker = [");
+		    for(int i=0;i<xPoint.length;i++){                           
+				if(i==xPoint.length-1){
+	   	    		out.print("new google.maps.Marker({ position:new google.maps.LatLng("+xPoint[i]+", "+yPoint[i]+"),map: map})];");
+				}else{
+					out.print("new google.maps.Marker({ position:new google.maps.LatLng("+xPoint[i]+", "+yPoint[i]+"),map: map}),");
+				}	
+			};
+	     %>         
+	     
+	 	
+		
+		 var flightPath = new google.maps.Polyline({
+			    path: flightPlanCoordinates,
+			    strokeColor: "#000000",
+			    strokeOpacity: 1.0,
+			    strokeWeight: 5
+			  });
+		
+		 flightPath.setMap(map);
+		
+		 	  });
+		}//end of fx
+		
+    </script>
+  </head>
+  <body onload="initialize()">
+    <div id="map_canvas" style="width:100%; height:100%"></div>
+  </body>
+</html>
