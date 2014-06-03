@@ -33,32 +33,31 @@ public class ItemDaoImpl implements ItemDao {
 
 	@Override
 	public Integer addItem(Item item) {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.insert("ItemMapper.addItem", item);
 	}
 
 	@Override
 	public Item findItem(Integer itemNo) {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne("ItemMapper.findItem", itemNo);
+	}
+	
+	public Item findItem(String itemName) {
+		return sqlSession.selectOne("ItemMapper.findItem", itemName);
 	}
 
 	@Override
 	public Integer updateItem(Item item) {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.update("ItemMapper.updateItem", item);
 	}
 
 	@Override
 	public Integer removeItem(Integer itemNo) {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.delete("ItemMapper.removeItem", itemNo);
 	}
 
 	@Override
 	public List<Item> findItemList(Search search) {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectList("ItemMapper.findItemList", search);
 	}
 
 }
