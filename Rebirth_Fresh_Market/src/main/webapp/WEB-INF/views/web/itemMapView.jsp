@@ -397,6 +397,8 @@
 
 	google.maps.event.addDomListener(window, 'load', initialize);
 
+
+	
 	//셀렉트
 	
 	var f_selbox = new Array('의류', '수입명품', '패션잡화' , '미용',
@@ -444,7 +446,7 @@
 			s_sel.options[i] = null;
 		}
 
-		s_sel.options[0] = new Option("선택", "");
+		s_sel.options[0] = new Option("소분류 선택", "");
 
 		if(sel != 0){
 			for(var i=0; i<s_selbox[sel-1].length; i++){
@@ -504,8 +506,8 @@
 				    </div>
 				    <div id="collapseOne" class="panel-collapse collapse in">
 				      <div class="panel-body">
-				     	<input type="button" class="btn btn-default" id="buybtn" value="삽니다">
-						<input type="button" class="btn btn-default" id="sellbtn" value="팝니다">
+				     	<input type="button" class="btn btn-default accordion-toggle" id="buybtn" value="삽니다"  data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+						<input type="button" class="btn btn-default accordion-toggle" id="sellbtn" value="팝니다"  data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
 				      </div>
 				    </div>
 				  </div>
@@ -514,7 +516,7 @@
 				      <h4 class="panel-title">
 				        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
 				          Step 2. 거래 장소 선택
-				        </a>
+				        </a> 
 				      </h4>
 				    </div>
 				    <div id="collapseTwo" class="panel-collapse collapse">
@@ -597,7 +599,7 @@
 				    
 				</div>	
 				<input id="item_submit" class="btn btn-primary" type="submit" name="commit" value="등록 하기"/>
-			  	    					
+			  	<input id="preview" class="btn btn-primary" type="button" value="미리보기">    					
 			</form>
 		</div><!-- end of tap2   -->
 		<div class="tab-pane" id="tab3">
