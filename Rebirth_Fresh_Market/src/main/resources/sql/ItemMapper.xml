@@ -51,8 +51,8 @@
 	<select id="findItemList" parameterType="search" resultMap="ItemSelectMap">
 		SELECT
 		user_no, state_code, item_name, price, item_info, regi_date, category1, category2
-		weFROM (	SELECT
-			inner_table.*, @RNUM AS row_seq
+		FROM (	SELECT
+			inner_table.*, @RNUM:=@RNUM+1 AS row_seq
 			FROM	(
 						SELECT
 						user_no, state_code, item_name, price, item_info, regi_date, category1, category2
@@ -60,19 +60,19 @@
 						<if test="searchKeyword!='' ">
 							<where>
 								<if test="searchCondition==1">
-									category1 LIKE '%${searchKeyword}%'
+									item_name LIKE '%${searchKeyword}%'
 								</if>
 								<if test="searchCondition==2">
-									category2 LIKE '%${searchKeyword}%'
+									price LIKE '%${searchKeyword}%'
 								</if>
 								<if test="searchCondition==3">
-									item_name LIKE '%${searchKeyword}%'
+									state_code LIKE '%${searchKeyword}%'
 								</if>
 							</where>
 						</if>
 						ORDER BY item_no	) AS inner_table,
-					(	SELECT @RNUM :=1	) AS RNUM
-			WHERE <![CDATA[@RNUM<=#{endRowNum}]]>	) AS inner_table
+					(	SELECT @RNUM :=0	) AS RNUM
+			WHERE <![CDATA[@RNUM<#{endRowNum}]]>	) AS inner_table
 		WHERE inner_table.row_seq BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
 	

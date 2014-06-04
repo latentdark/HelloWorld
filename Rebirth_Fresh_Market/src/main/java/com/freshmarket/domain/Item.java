@@ -97,7 +97,7 @@ public class Item {
 				+ ", regiDate=" + regiDate + ", stateCode=" + stateCode
 				+ ", category1=" + category1 + ", category2=" + category2
 				+ ", itemPicture=" + itemPicture + ", locationList="
-				+ locationList + "]";
+				+ locationList + "]\n";
 	}
 
 	
