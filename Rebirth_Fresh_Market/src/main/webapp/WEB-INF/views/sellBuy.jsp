@@ -1,1 +1,0 @@
-itemMapView.jsp로 변경함
