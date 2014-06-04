@@ -80,14 +80,15 @@
 						FROM item i, location l
 						<if test="searchKeyword!='' ">
 							<where>
+								i.item_no = l.item_no
 								<if test="searchCondition==1">
-									item_name LIKE '%${searchKeyword}%'
+									AND item_name LIKE '%${searchKeyword}%'
 								</if>
 								<if test="searchCondition==2">
-									price LIKE '%${searchKeyword}%'
+									AND price LIKE '%${searchKeyword}%'
 								</if>
 								<if test="searchCondition==3">
-									state_code LIKE '%${searchKeyword}%'
+									AND state_code LIKE '%${searchKeyword}%'
 								</if>
 							</where>
 						</if>
