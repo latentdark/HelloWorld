@@ -195,29 +195,208 @@
 	
 
 	
-	//구글 맵
+	//---------------------------------------
+	var test="${test}";
+	console.log(test);
+	//HTML5 Geolocation을 이용한 ip trace
+	/**/
+	var sellImage = 'resources/imgs/icons/blueArrow.png';
+	var buyImage = 'resources/imgs/icons/redArrow.png';
+	var geoImage = 'resources/imgs/icons/green_apple_adam.png';
 	
-	 function initialize() {
-       var mapOptions = {
-         center: new google.maps.LatLng(37.494626, 127.027933),
-         zoom: 17,
-         mapTypeId: google.maps.MapTypeId.ROADMAP
-       };
-       var map = new google.maps.Map(document.getElementById("map_canvas"),
-           mapOptions);
-     
-       var marker = new google.maps.Marker({
-           position: map.getCenter(),
-           map: map,
-           title: 'Click to zoom'
-         });
-       
-       google.maps.event.addListener(marker, 'click', function() {
-           map.setZoom(20);
-           map.setCenter(marker.getPosition());
-         }); 
-     }  
+	var map;
+	var markers = [];
+	var itemList=${itemList};
 	
+	for (var i=0; i< itemList.length; i++) {
+		//statCode 1=sell, 2=buy, 3=deal
+		markers.push(
+				new google.maps.Marker({
+					position : new google.maps.LatLng(itemList[i].locationList.gridX , itemList[i].locationList.gridY ),
+					map : map,
+					icon: (itmelist.stateCode==1)?sellImage:(itmelist.stateCode==2)?buyImage:dealImage,
+					title : itemList[i].itemName,
+					content : itemList[i].itemInfo
+					})
+		);
+	}
+	
+	/*
+
+	
+
+	markers.push(
+		new google.maps.Marker({
+			position : new google.maps.LatLng(37.547817, 126.954437),
+			map : map,
+			icon: sellImage,
+			title : '쿠어어어어',
+			content : '마커를 찍어봅세'
+			})
+	);
+	markers.push(
+		new google.maps.Marker({
+			position : new google.maps.LatLng(37.543817, 126.956437),
+			map : map,
+			icon: buyImage,
+			title : '오홍홍홍',
+			content : '두번째 마커입니당'
+		})
+	);
+	markers.push(
+		new google.maps.Marker({
+		position : new google.maps.LatLng(37.544415, 127.020792),
+		map : map,
+		icon: buyImage,
+		title : 'Europa',
+		content : 'Europa~~~'
+		})
+	);
+	markers.push(
+			new google.maps.Marker({
+			position : new google.maps.LatLng(37.492131, 126.990580),
+			map : map,
+			icon: sellImage,
+			title : '허허허',
+			content : '파스텔 팝니다'
+			})
+		);
+	markers.push(
+			new google.maps.Marker({
+			position : new google.maps.LatLng(37.500848, 127.053065),
+			map : map,
+			icon: buyImage,
+			scaledSize : 0.8,
+			size: 0.4,
+			title : 'epic',
+			content : '아이언맨 슈트 삼'
+			})
+		);
+	
+	/*
+	var marker = new google.maps.Marker({
+		position : new google.maps.LatLng(37.547817, 126.954437),
+		map : map
+	});
+	markers.push(marker);
+	
+	markers.push(new google.maps.Marker({
+		position : new google.maps.LatLng(37.543817, 126.956437),
+		map : map
+	}));
+	*/
+
+
+	function initialize() {
+
+		// map = new google.maps.Map(document.getElementById('map-canvas'),
+		//     mapOptions);
+		var mapOptions = {
+			zoom : 12,
+			center : new google.maps.LatLng(-33, 151),
+			disableDefaultUI : true
+		}
+		map = new google.maps.Map(document.getElementById("map_canvas"),
+				mapOptions);
+		//map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+		// Try HTML5 geolocation
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(function(position) {
+				var pos = new google.maps.LatLng(position.coords.latitude,
+						position.coords.longitude);
+				
+				new google.maps.Marker({
+					position : new google.maps.LatLng(position.coords.latitude,
+							position.coords.longitude),
+					map : map,
+					icon: geoImage					
+					})
+				
+				var infowindow = new google.maps.InfoWindow({
+					map : map,
+					position : pos,
+					content : '여기가 내위치오'
+				});
+				
+				map.setCenter(pos);
+			}, function() {
+				handleNoGeolocation(true);
+			});
+		} else {
+			// Browser doesn't support Geolocation
+			handleNoGeolocation(false);
+		}
+
+		markerInitialize(map);
+	}
+	
+
+
+	// Sets the map on all markers in the array.
+	function markerInitialize(map) {
+	  for (var i = 0; i < markers.length; i++) {
+		markers[i].setMap(map);
+	    
+		console.log(markers[i].content);
+	    
+		markerAddListener(markers[i], i);
+	  }
+	}
+	/*
+	function markerInitialize(map) {
+	  for (var i = 0; i < markers.length; i++) {
+		markers[i].setMap(map);
+	    
+		console.log(markers[i].content);
+	    
+		markerAddListener(markers[i], i);
+	  }
+	}
+	*/
+	
+	// The five markers show a secret message when clicked
+	// but that message is not within the marker's instance data
+	function markerAddListener(marker, i) {
+	  var infowindow = new google.maps.InfoWindow({
+	    content: marker.content
+	  });
+
+	  google.maps.event.addListener(marker, 'click', function() {
+	    infowindow.open(marker.get('map'), marker);
+	  });
+	  infowindow.open(marker.get('map'), marker);
+	}
+	
+	//gps module
+	function handleNoGeolocation(errorFlag) {
+		if (errorFlag) {
+			var content = 'Error: The Geolocation service failed.';
+		} else {
+			var content = 'Error: Your browser doesn\'t support geolocation.';
+		}
+
+		var options = {
+			map : map,
+			position : new google.maps.LatLng(60, 105),
+			content : content
+		};
+
+		var infowindow = new google.maps.InfoWindow(options);
+		map.setCenter(options.position);
+	}
+	
+	// Add a marker to the map and push to the array.
+	function addMarker(location) {
+		var marker = new google.maps.Marker({
+			position : location,
+			map : map
+		});
+		markers.push(marker);
+	}
+	
+
+	google.maps.event.addDomListener(window, 'load', initialize);
+
 	//셀렉트
 	
 	var f_selbox = new Array('의류', '수입명품', '패션잡화' , '미용',
