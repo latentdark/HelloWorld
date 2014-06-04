@@ -206,26 +206,56 @@
 	
 	var map;
 	var markers = [];
-	/*
+	
+	
 	var itemList=${itemList};
+	
 	
 	for (var i=0; i< itemList.length; i++) {
 		//statCode 1=sell, 2=buy, 3=deal
-		markers.push(
-				new google.maps.Marker({
-					position : new google.maps.LatLng(itemList[i].locationList.gridX , itemList[i].locationList.gridY ),
-					map : map,
-					icon: (itmelist.stateCode==1)?sellImage:(itmelist.stateCode==2)?buyImage:dealImage,
-					title : itemList[i].itemName,
-					content : itemList[i].itemInfo
-					})
-		);
+		if(itemList[i].gridX1!=null && itemList[i].gridY1!=""){
+			markers.push(
+					new google.maps.Marker({
+						position : new google.maps.LatLng(itemList[i].gridX1 , itemList[i].gridY1 ),
+						map : map,
+						icon: (itmelist.stateCode==1)?sellImage:(itmelist.stateCode==2)?buyImage:dealImage,
+						title : itemList[i].itemName,
+						content : itemList[i].itemInfo
+						})
+			);
+		}
+		
+		if(itemList[i].gridX2!=null && itemList[i].gridY2!=""){
+			markers.push(
+					new google.maps.Marker({
+						position : new google.maps.LatLng(itemList[i].gridX2 , itemList[i].gridY2 ),
+						map : map,
+						icon: (itmelist.stateCode==1)?sellImage:(itmelist.stateCode==2)?buyImage:dealImage,
+						title : itemList[i].itemName,
+						content : itemList[i].itemInfo
+						})
+			);
+		}
+		
+		if(itemList[i].gridX3!=null && itemList[i].gridY3!=""){
+			markers.push(
+					new google.maps.Marker({
+						position : new google.maps.LatLng(itemList[i].gridX3 , itemList[i].gridY3 ),
+						map : map,
+						icon: (itmelist.stateCode==1)?sellImage:(itmelist.stateCode==2)?buyImage:dealImage,
+						title : itemList[i].itemName,
+						content : itemList[i].itemInfo
+						})
+			);
+		}
+		
 	}
-	*/
+	/**/
+	
 	
 
 	
-
+/*
 	markers.push(
 		new google.maps.Marker({
 			position : new google.maps.LatLng(37.547817, 126.954437),
