@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.freshmarket.common.Search;
 import com.freshmarket.service.ItemService;
 
 @Controller
@@ -41,6 +42,11 @@ public class ItemController {
 	@RequestMapping(value = "/itemMapView")
 	public ModelAndView googlemap(Locale locale, Model model) {
 		ModelAndView modelAndView = new ModelAndView();
+		
+		Search search=new Search();
+		modelAndView.addObject("itemList", itemService.findItemList(search));
+		modelAndView.addObject("test", "뽑아묵는교?");
+		
 		modelAndView.setViewName("web/itemMapView");
 		return modelAndView;
 	}
