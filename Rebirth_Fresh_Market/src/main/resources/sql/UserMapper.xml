@@ -73,7 +73,7 @@
 		SELECT
 		user_no, email, password, phone_number, nickname, date, grid_x, grid_y
 		FROM (	SELECT
-			inner_table.*, @RNUM AS row_seq
+			inner_table.*, @RNUM:=@RNUM+1 AS row_seq
 			FROM	(
 						SELECT
 						user_no, email, password, phone_number, nickname, date, grid_x, grid_y
@@ -92,8 +92,8 @@
 							</where>
 						</if>
 						ORDER BY user_no	) AS inner_table,
-					(	SELECT @RNUM :=1	) AS RNUM
-			WHERE <![CDATA[@RNUM<=#{endRowNum}]]>	) AS inner_table
+					(	SELECT @RNUM :=0	) AS RNUM
+			WHERE <![CDATA[@RNUM<#{endRowNum}]]>	) AS inner_table
 		WHERE inner_table.row_seq BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
 	
