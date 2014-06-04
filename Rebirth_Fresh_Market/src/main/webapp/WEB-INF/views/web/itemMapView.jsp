@@ -206,6 +206,7 @@
 	
 	var map;
 	var markers = [];
+	/*
 	var itemList=${itemList};
 	
 	for (var i=0; i< itemList.length; i++) {
@@ -220,8 +221,8 @@
 					})
 		);
 	}
+	*/
 	
-	/*
 
 	
 
