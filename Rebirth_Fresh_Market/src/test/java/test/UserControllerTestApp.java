@@ -20,14 +20,23 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.freshmarket.domain.User;
 import com.freshmarket.service.UserService;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+
+/*
 @ContextConfiguration(locations = { 
 		"classpath:config/context-aspect.xml",
 		"classpath:config/context-common.xml",
 		"classpath:config/context-mybatis.xml",
 		"classpath:config/context-transaction.xml",
 		"servlet-context.xml"})
-		
+*/		
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { 
+		"classpath:config/context-aspect.xml",
+		"classpath:config/context-common.xml",
+		"classpath:config/context-mybatis.xml",
+		"classpath:config/context-transaction.xml"
+	})	
 public class UserControllerTestApp {
 	
 	@Autowired
@@ -53,7 +62,11 @@ public class UserControllerTestApp {
     	System.out.println("__________________________");
 	}
     
-	@Test
+    @Test
+    public void test(){
+    	System.out.println("good");
+    }
+	//@Test
 	public void signup() {
 		
 		User user=new User();
