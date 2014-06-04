@@ -71,13 +71,13 @@
 	
 	<select id="findItemList" parameterType="search" resultMap="ItemSelectMap">
 		SELECT
-		item_no, user_no, state_code, item_name, price, item_info, regi_date, category1, category2
+		item_no, user_no, state_code, item_name, price, item_info, regi_date, category1, category2, grid_x1, grid_y1, grid_x2, grid_y2, grid_x3, grid_y3
 		FROM (	SELECT
 			inner_table.*, @RNUM:=@RNUM+1 AS row_seq
 			FROM	(
 						SELECT
-						item_no, user_no, state_code, item_name, price, item_info, regi_date, category1, category2
-						FROM item
+						i.item_no, i.user_no, i.state_code, i.item_name, i.price, i.item_info, i.regi_date, i.category1, i.category2, l.grid_x1, l.grid_y1, l.grid_x2, l.grid_y2, l.grid_x3, l.grid_y3
+						FROM item i, location l
 						<if test="searchKeyword!='' ">
 							<where>
 								<if test="searchCondition==1">
