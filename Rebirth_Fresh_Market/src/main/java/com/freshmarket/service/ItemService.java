@@ -9,6 +9,8 @@ public interface ItemService {
 
     public Integer addItem(Item item);
 
+    public Integer findItemNo(Item item);
+    
     public Item findItem(Integer itemNo);
 
     public Integer updateItem(Item item);

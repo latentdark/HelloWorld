@@ -41,6 +41,10 @@ public class ItemServiceImpl implements ItemService {
 		return itemDao.findItem(itemNo);
 	}
 
+	public Integer findItemNo(Item item){
+		return itemDao.findItemNo(item);
+	}
+	
 	@Override
 	public Integer updateItem(Item item) {
 		// TODO Auto-generated method stub
