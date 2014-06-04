@@ -16,6 +16,15 @@
 		<result property="stateCode" column="state_code" jdbcType="INTEGER"/>
 		<result property="category1" column="category1" jdbcType="INTEGER"/>
 		<result property="category2" column="category2" jdbcType="INTEGER"/>
+		<result property="gridX1" column="grid_x1" jdbcType="DOUBLE"/>
+		<result property="gridY1" column="grid_y1" jdbcType="DOUBLE"/>
+		<result property="gridX2" column="grid_x2" jdbcType="DOUBLE"/>
+		<result property="gridY2" column="grid_y2" jdbcType="DOUBLE"/>
+		<result property="gridX3" column="grid_x3" jdbcType="DOUBLE"/>
+		<result property="gridY3" column="grid_y3" jdbcType="DOUBLE"/>
+		<result property="itemPicturePath1" column="filepath1" jdbcType="VARCHAR"/>
+		<result property="itemPicturePath2" column="filepath2" jdbcType="VARCHAR"/>
+		<result property="itemPicturePath3" column="filepath3" jdbcType="VARCHAR"/>
 	</resultMap>
 	
 	<insert id="addItem" parameterType="item">
@@ -37,25 +46,37 @@
 					#{category2, jdbcType=INTEGER}	)
 	</insert>
 	
+	<select id="findItemNo" parameterType="item" resultType="integer">
+		SELECT MAX(item_no)
+		FROM item
+		WHERE user_no=#{userNo};
+	</select>
+	
 	<select id="findItem" parameterType="integer" resultMap="ItemSelectMap">
+<!-- 		SELECT -->
+<!-- 		i.item_no, u.nickname, u.user_no, i.state_code, i.item_name, i.price, i.item_info, i.regi_date, i.category1, i.category2, l.grid_x, l.grid_y -->
+<!-- 		FROM user u, item i, location l -->
+<!-- 		WHERE i.item_no = l.item_no -->
+<!-- 			  AND -->
+<!-- 			  i.user_no = u.user_no -->
+<!-- 			  AND -->
+<!-- 			  i.item_no = #{value} -->
 		SELECT
-		i.item_no, u.nickname, u.user_no, i.state_code, i.item_name, i.price, i.item_info, i.regi_date, i.category1, i.category2, l.grid_x, l.grid_y
-		FROM user u, item i, location l
-		WHERE i.item_no = l.item_no
-			  AND
-			  i.user_no = u.user_no
-			  AND
-			  i.item_no = #{value}
+		i.item_no, i.user_no, i.state_code, i.item_name, i.price, i.item_info, i.regi_date, i.category1, i.category2, l.grid_x1, l.grid_y1, l.grid_x2, l.grid_y2, l.grid_x3, l.grid_y3
+		FROM item i, location l
+		WHERE	i.item_no=l.item_no
+				AND
+				i.item_no=#{value}
 	</select>
 	
 	<select id="findItemList" parameterType="search" resultMap="ItemSelectMap">
 		SELECT
-		user_no, state_code, item_name, price, item_info, regi_date, category1, category2
+		item_no, user_no, state_code, item_name, price, item_info, regi_date, category1, category2
 		FROM (	SELECT
 			inner_table.*, @RNUM:=@RNUM+1 AS row_seq
 			FROM	(
 						SELECT
-						user_no, state_code, item_name, price, item_info, regi_date, category1, category2
+						item_no, user_no, state_code, item_name, price, item_info, regi_date, category1, category2
 						FROM item
 						<if test="searchKeyword!='' ">
 							<where>
@@ -80,24 +101,25 @@
 		UPDATE item
 		<set>
 			<if test="stateCode!=null">
-				state_code={stateCode, jdbcType=INT},
+				state_code=#{stateCode, jdbcType=INTEGER},
 			</if>
 			<if test="itemName!=null">
-				item_name={itemName, jdbcType=VARCHAR},
+				item_name=#{itemName, jdbcType=VARCHAR},
 			</if>
 			<if test="price!=null">
-				price={price, jdbcType=INT},
+				price=#{price, jdbcType=INTEGER},
 			</if>
 			<if test="itemInfo!=null">
-				item_info={itemInfo, jdbcType=VARCHAR},
+				item_info=#{itemInfo, jdbcType=VARCHAR},
 			</if>
 			<if test="category1!=null">
-				category1={category1, jdbcType=INT},
+				category1=#{category1, jdbcType=INTEGER},
 			</if>
 			<if test="category2!=null">
-				category2={category2, jdbcType=INT}
+				category2=#{category2, jdbcType=INTEGER}
 			</if>
 		</set>
+		WHERE item_no = #{itemNo, jdbcType=INTEGER}
 	</update>
 	
 	<delete id="removeItem" parameterType="integer">

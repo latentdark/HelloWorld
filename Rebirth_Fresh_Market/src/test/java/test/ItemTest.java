@@ -46,7 +46,7 @@ public class ItemTest {
 		System.out.println(item);
 		
 		//findItem
-		System.out.println("selectOne 결과 : "+itemService.findItem(item.getItemNo()));
+		System.out.println("selectOne 결과 : "+itemService.findItem(300));
 		
 		//findItemList
 		Search search = new Search();
