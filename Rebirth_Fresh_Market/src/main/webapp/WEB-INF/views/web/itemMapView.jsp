@@ -200,9 +200,9 @@
 	console.log(test);
 	//HTML5 Geolocation을 이용한 ip trace
 	/**/
-	var sellImage = 'resources/imgs/icons/blueArrow.png';
-	var buyImage = 'resources/imgs/icons/redArrow.png';
-	var geoImage = 'resources/imgs/icons/green_apple_adam.png';
+	var sellImage = 'resources/imgs/icons/sell.gif';
+	var buyImage = 'resources/imgs/icons/buy.gif';
+	var geoImage = 'resources/imgs/icons/people.gif';
 	
 	var map;
 	var markers = [];
