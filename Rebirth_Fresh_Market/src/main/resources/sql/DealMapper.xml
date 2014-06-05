@@ -1,1 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<mapper namespace="DealMapper">
+	<insert id="makeDeal" parameterType="deal">
+		INSERT deal(user_no,
+					deal_date,
+					time)
+	</insert>
+	
+	<select id="findDeal">
+	
+	</select>
+	
+	<update id="updateDeal">
+	
+	</update>
+	
+	<delete id="completeDeal">
+	
+	</delete>
+	
+	<update id="cancelDeal">
+	
+	</update>
+	
+	<select id="findDealList" parameterType="search">
+	
+	</select>
+</mapper>
