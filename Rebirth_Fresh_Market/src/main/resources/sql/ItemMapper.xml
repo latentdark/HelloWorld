@@ -99,6 +99,43 @@
 	
 	<select id="findItemList" parameterType="search" resultMap="ItemSelectMap">
 		SELECT
+		item_no, user_no, state_code, item_name, price, item_info, regi_date, 
+		category1, category2, grid_x1, grid_y1, grid_x2, grid_y2, grid_x3, grid_y3,
+		filepath1, filepath2, filepath3
+		FROM (	SELECT
+			inner_table.*, @RNUM:=@RNUM+1 AS row_seq
+			FROM	(
+						SELECT
+						i.item_no, i.user_no, i.state_code, i.item_name, 
+						i.price, i.item_info, i.regi_date, i.category1, 
+						i.category2, l.grid_x1, l.grid_y1, l.grid_x2, 
+						l.grid_y2, l.grid_x3, l.grid_y3,
+						ip.filepath1, ip.filepath2, ip.filepath3
+						FROM item i, location l, item_pic ip
+						<if test="searchKeyword!='' ">
+							<where>
+								i.item_no = l.item_no
+								AND l.item_no = ip.item_no
+								<if test="searchCondition==1">
+									AND item_name LIKE '%${searchKeyword}%'
+								</if>
+								<if test="searchCondition==2">
+									AND price LIKE '%${searchKeyword}%'
+								</if>
+								<if test="searchCondition==3">
+									AND state_code LIKE '%${searchKeyword}%'
+								</if>
+							</where>
+						</if>
+						ORDER BY item_no	) AS inner_table,
+					(	SELECT @RNUM :=0	) AS RNUM
+			WHERE <![CDATA[@RNUM<#{endRowNum}]]>	) AS inner_table
+		WHERE inner_table.row_seq BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
+	
+	<!-- 
+	<select id="findItemList" parameterType="search" resultMap="ItemSelectMap">
+		SELECT
 		item_no, user_no, state_code, item_name, price, item_info, regi_date, category1, category2, grid_x1, grid_y1, grid_x2, grid_y2, grid_x3, grid_y3
 		FROM (	SELECT
 			inner_table.*, @RNUM:=@RNUM+1 AS row_seq
@@ -125,6 +162,7 @@
 			WHERE <![CDATA[@RNUM<#{endRowNum}]]>	) AS inner_table
 		WHERE inner_table.row_seq BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
+	 -->
 	
 	<update id="updateItem" parameterType="item">
 		UPDATE item
