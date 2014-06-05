@@ -208,48 +208,22 @@
 	var markers = [];
 	
 	
-	var itemList=${itemList};
+//var itemList=${itemList};
 	
+	//statCode 1=sell, 2=buy, 3=deal
+	<c:forEach var="itemList" items="${itemList}">
+		<c:set var="i" value="${ i+1 }" />	
+			markers.push(
+					new google.maps.Marker({
+						position : new google.maps.LatLng(${itemList.gridX1} , ${itemList.gridY1} ),
+						map : map,
+						icon: buyImage,
+						title : '${itemList.itemName}',
+						content : '${itemList.itemInfo}'
+						})
+			);
 	
-	for (var i=0; i< itemList.length; i++) {
-		//statCode 1=sell, 2=buy, 3=deal
-		if(itemList[i].gridX1!=null && itemList[i].gridY1!=""){
-			markers.push(
-					new google.maps.Marker({
-						position : new google.maps.LatLng(itemList[i].gridX1 , itemList[i].gridY1 ),
-						map : map,
-						icon: (itmelist.stateCode==1)?sellImage:(itmelist.stateCode==2)?buyImage:dealImage,
-						title : itemList[i].itemName,
-						content : itemList[i].itemInfo
-						})
-			);
-		}
-		
-		if(itemList[i].gridX2!=null && itemList[i].gridY2!=""){
-			markers.push(
-					new google.maps.Marker({
-						position : new google.maps.LatLng(itemList[i].gridX2 , itemList[i].gridY2 ),
-						map : map,
-						icon: (itmelist.stateCode==1)?sellImage:(itmelist.stateCode==2)?buyImage:dealImage,
-						title : itemList[i].itemName,
-						content : itemList[i].itemInfo
-						})
-			);
-		}
-		
-		if(itemList[i].gridX3!=null && itemList[i].gridY3!=""){
-			markers.push(
-					new google.maps.Marker({
-						position : new google.maps.LatLng(itemList[i].gridX3 , itemList[i].gridY3 ),
-						map : map,
-						icon: (itmelist.stateCode==1)?sellImage:(itmelist.stateCode==2)?buyImage:dealImage,
-						title : itemList[i].itemName,
-						content : itemList[i].itemInfo
-						})
-			);
-		}
-		
-	}
+	</c:forEach>
 	/**/
 	
 	
