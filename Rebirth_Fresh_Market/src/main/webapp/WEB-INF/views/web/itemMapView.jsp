@@ -200,9 +200,9 @@
 	console.log(test);
 	//HTML5 Geolocation을 이용한 ip trace
 	/**/
-	var sellImage = 'resources/imgs/icons/sell.png';
-	var buyImage = 'resources/imgs/icons/buy.png';
-	var geoImage = 'resources/imgs/icons/people.png';
+	var sellImage = 'resources/imgs/icons/ssh2.png';
+	var buyImage = 'resources/imgs/icons/bsh2.png';
+	var geoImage = 'resources/imgs/icons/p33.png';
 	
 	var map;
 	var markers = [];
@@ -256,13 +256,7 @@
 							position.coords.longitude),
 					map : map,
 					icon: geoImage					
-					})
-				
-				var infowindow = new google.maps.InfoWindow({
-					map : map,
-					position : pos,
-					content : '여기가 내위치오'
-				});
+					});
 				
 				map.setCenter(pos);
 			}, function() {
