@@ -47,7 +47,7 @@ public class ItemController {
 		
 		Search search=new Search();
 		search.setCurrentPage(1);
-		search.setPageSize(200);
+		search.setPageSize(500);
 		
 		List itemList=itemService.findItemList(search);
 		modelAndView.addObject("itemList", itemService.findItemList(search));
