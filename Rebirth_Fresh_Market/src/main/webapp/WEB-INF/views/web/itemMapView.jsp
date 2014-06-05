@@ -128,6 +128,14 @@
       		
       	}
       	
+      	#aside>ul>li>a{
+      		color:#103425;
+      	}
+      	
+      	#aside>ul>li>a:hover{
+      		color:#5DCD9D;
+      	}
+      	
       	#aside_detail{
       		background-color:#FFFFFF;
       		width:22%;
@@ -171,6 +179,15 @@
       	#category1{
       		margin-bottom:10px;
       	}
+      	.panel-title>a{
+      		color:#103425;
+      		text-decoration: none;
+      	}
+      	.panel-title>a:hover{
+      		color:#5DCD9D;
+      		text-decoration: none;
+      	}
+      	
 	
 	</style>
 	
@@ -202,7 +219,7 @@
 	/**/
 	var sellImage = 'resources/imgs/icons/ssh2.png';
 	var buyImage = 'resources/imgs/icons/bsh2.png';
-	var geoImage = 'resources/imgs/icons/p33.png';
+	var geoImage = 'resources/imgs/icons/pb.png';
 	
 	var map;
 	var markers = [];
@@ -434,7 +451,7 @@
 			    <span class="sr-only">60% Complete</span>
 			  </div>
 			</div> 
-			<form action="" name="form">
+			<form action="" name="form" id="register_form">
 				<div class="panel-group" id="accordion">
 				  <div class="panel panel-default">
 				    <div class="panel-heading">
