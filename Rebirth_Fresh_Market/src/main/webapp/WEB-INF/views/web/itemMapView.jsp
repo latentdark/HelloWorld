@@ -128,14 +128,6 @@
       		
       	}
       	
-      	#aside>ul>li>a{
-      		color:#103425;
-      	}
-      	
-      	#aside>ul>li>a:hover{
-      		color:#5DCD9D;
-      	}
-      	
       	#aside_detail{
       		background-color:#FFFFFF;
       		width:22%;
@@ -179,15 +171,18 @@
       	#category1{
       		margin-bottom:10px;
       	}
-      	.panel-title>a{
-      		color:#103425;
-      		text-decoration: none;
-      	}
-      	.panel-title>a:hover{
-      		color:#5DCD9D;
-      		text-decoration: none;
-      	}
       	
+      	.labels {
+	     color: red;
+	     background-color: white;
+	     font-family: "Lucida Grande", "Arial", sans-serif;
+	     font-size: 10px;
+	     font-weight: bold;
+	     text-align: center;
+	     width: 40px;
+	     border: 2px solid black;
+	     white-space: nowrap;
+   		}
 	
 	</style>
 	
@@ -197,7 +192,95 @@
 	<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	
+	<!-- 
+	<script src="resources/js_custom/markerclusterer_packed.js"></script>
+	<script src="resources/js_custom/markerclusterer.js"></script>
+	 -->
+	<script src="resources/js_custom/markerwithlabel.js"></script> 
+	
+	<script type="text/javascript">
+	//여기부터 clusterer
+	//----------------------------------------------------------	
+    var script = '<script type="text/javascript" src="resources/js_custom/markerclusterer';
+    if (document.location.search.indexOf('compiled') !== -1) {
+      script += '_compiled';
+    }
+    script += '.js"><' + '/script>';
+    document.write(script);
+  	</script>
 	<script>
+     var styles = [[{
+       url: 'resources/imgs/markerclusterer/people35.png',
+       height: 35,
+       width: 35,
+       anchor: [16, 0],
+       textColor: '#ff00ff',
+       textSize: 10
+     }, {
+       url: 'resources/imgs/markerclusterer/people45.png',
+       height: 45,
+       width: 45,
+       anchor: [24, 0],
+       textColor: '#ff0000',
+       textSize: 11
+     }, {
+       url: 'resources/imgs/markerclusterer/people55.png',
+       height: 55,
+       width: 55,
+       anchor: [32, 0],
+       textColor: '#ffffff',
+       textSize: 12
+     }], [{
+       url: 'resources/imgs/markerclusterer/conv30.png',
+       height: 27,
+       width: 30,
+       anchor: [3, 0],
+       textColor: '#ff00ff',
+       textSize: 10
+     }, {
+       url: 'resources/imgs/markerclusterer/conv40.png',
+       height: 36,
+       width: 40,
+       anchor: [6, 0],
+       textColor: '#ff0000',
+       textSize: 11
+     }, {
+       url: 'resources/imgs/markerclusterer/conv50.png',
+       width: 50,
+       height: 45,
+       anchor: [8, 0],
+       textSize: 12
+     }], [{
+       url: 'resources/imgs/markerclusterer/heart30.png',
+       height: 26,
+       width: 30,
+       anchor: [4, 0],
+       textColor: '#ff00ff',
+       textSize: 10
+     }, {
+       url: 'resources/imgs/markerclusterer/heart40.png',
+       height: 35,
+       width: 40,
+       anchor: [8, 0],
+       textColor: '#ff0000',
+       textSize: 11
+     }, {
+       url: 'resources/imgs/markerclusterer/heart50.png',
+       width: 50,
+       height: 44,
+       anchor: [12, 0],
+       textSize: 12
+     }]];
+     
+     // var zoom = parseInt(document.getElementById('zoom').value, 10);
+     //var size = parseInt(document.getElementById('size').value, 10);
+     //var style = parseInt(document.getElementById('style').value, 10);
+     var zoom = null ;
+     var size = null ;
+     var style = null;
+     //여기까지 clusterer
+	 //----------------------------------------------------------
 
 	//로그인 메뉴 
 	$(function() {
@@ -219,7 +302,8 @@
 	/**/
 	var sellImage = 'resources/imgs/icons/ssh2.png';
 	var buyImage = 'resources/imgs/icons/bsh2.png';
-	var geoImage = 'resources/imgs/icons/pb.png';
+	var dealImage = 'resources/imgs/icons/dsh.png';
+	var geoImage = 'resources/imgs/icons/p33.png';
 	
 	var map;
 	var markers = [];
@@ -232,6 +316,7 @@
 		<c:set var="i" value="${ i+1 }" />	
 			markers.push(
 					new google.maps.Marker({
+					//new MarkerWithLabel({
 						position : new google.maps.LatLng(${itemList.gridX1} , ${itemList.gridY1} ),
 						map : map,
 						icon:
@@ -241,9 +326,23 @@
 							<c:if test="${itemList.stateCode=='2'}">
 								sellImage
 							</c:if>
+							<c:if test="${itemList.stateCode=='3'}">
+								dealImage
+							</c:if>
 								,
 						title : '${itemList.itemName}',
-						content : '${itemList.itemInfo}'
+					//	labelContent: '$425K',
+					//	labelAnchor: new google.maps.Point(22, 0),
+					//    labelClass: "labels", // the CSS class for the label
+						content : '<div id="content">'+
+								'<h1 id="head" class="head">${itemList.itemName}</h1>'+
+								 '<div id="bodyContent">'+
+								 <c:if test="${itemList.itemPicturePath1!=null}">
+								 '<img src = "resources/itempictures/${itemList.itemPicturePath1}"></img><br>'+
+								 </c:if>
+								 '${itemList.itemInfo}'+
+								 '</div>'+
+								'</div >'
 						//labelContent : '${itemList.itemInfo}'
 						})
 			);
@@ -276,6 +375,7 @@
 					});
 				
 				map.setCenter(pos);
+				map.setZoom(12);
 			}, function() {
 				handleNoGeolocation(true);
 			});
@@ -285,6 +385,11 @@
 		}
 
 		markerInitialize(map);
+		markerClusterer = new MarkerClusterer(map, markers, {
+	          //maxZoom: zoom,
+	          gridSize: size
+	          //styles: styles[style]
+	        });
 	}
 	
 
@@ -451,7 +556,7 @@
 			    <span class="sr-only">60% Complete</span>
 			  </div>
 			</div> 
-			<form action="" name="form" id="register_form">
+			<form action="" name="form">
 				<div class="panel-group" id="accordion">
 				  <div class="panel panel-default">
 				    <div class="panel-heading">
