@@ -1,6 +1,8 @@
-CREATE TABLE prod_pic(
+CREATE TABLE item_pic(
 	pic_no	INT	PRIMARY KEY AUTO_INCREMENT,
 	item_no	INT	NOT NULL,
-	filepath	VARCHAR(255)	NOT NULL,
+	filepath1	VARCHAR(255)	NOT NULL,
+	filepath2	VARCHAR(255),
+	filepath3	VARCHAR(255),
 	FOREIGN KEY (item_no) REFERENCES item(item_no) ON DELETE CASCADE ON UPDATE CASCADE
 );
