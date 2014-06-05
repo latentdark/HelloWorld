@@ -48,16 +48,4 @@ public class ItemControllerTestApp {
     	System.out.println("__________________________");
 	}
     
-	@RequestMapping(value = "/itemMapView")
-	public ModelAndView googlemap(Locale locale, Model model) {
-		ModelAndView modelAndView = new ModelAndView();
-		
-		Search search=new Search();
-		modelAndView.addObject("itemList", itemService.findItemList(search));
-		modelAndView.addObject("test", "뽑아묵는교?");
-		
-		modelAndView.setViewName("web/itemMapView");
-		return modelAndView;
-	}
-    
 }
