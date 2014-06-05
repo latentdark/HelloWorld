@@ -200,9 +200,9 @@
 	console.log(test);
 	//HTML5 Geolocation을 이용한 ip trace
 	/**/
-	var sellImage = 'resources/imgs/icons/sell.gif';
-	var buyImage = 'resources/imgs/icons/buy.gif';
-	var geoImage = 'resources/imgs/icons/people.gif';
+	var sellImage = 'resources/imgs/icons/sell.png';
+	var buyImage = 'resources/imgs/icons/buy.png';
+	var geoImage = 'resources/imgs/icons/people.png';
 	
 	var map;
 	var markers = [];
@@ -217,80 +217,21 @@
 					new google.maps.Marker({
 						position : new google.maps.LatLng(${itemList.gridX1} , ${itemList.gridY1} ),
 						map : map,
-						icon: buyImage,
+						icon:
+							<c:if test="${itemList.stateCode=='1'}">
+								buyImage
+							</c:if>
+							<c:if test="${itemList.stateCode=='2'}">
+								sellImage
+							</c:if>
+								,
 						title : '${itemList.itemName}',
 						content : '${itemList.itemInfo}'
+						//labelContent : '${itemList.itemInfo}'
 						})
 			);
-	
 	</c:forEach>
-	/**/
 	
-	
-
-	
-/*
-	markers.push(
-		new google.maps.Marker({
-			position : new google.maps.LatLng(37.547817, 126.954437),
-			map : map,
-			icon: sellImage,
-			title : '쿠어어어어',
-			content : '마커를 찍어봅세'
-			})
-	);
-	markers.push(
-		new google.maps.Marker({
-			position : new google.maps.LatLng(37.543817, 126.956437),
-			map : map,
-			icon: buyImage,
-			title : '오홍홍홍',
-			content : '두번째 마커입니당'
-		})
-	);
-	markers.push(
-		new google.maps.Marker({
-		position : new google.maps.LatLng(37.544415, 127.020792),
-		map : map,
-		icon: buyImage,
-		title : 'Europa',
-		content : 'Europa~~~'
-		})
-	);
-	markers.push(
-			new google.maps.Marker({
-			position : new google.maps.LatLng(37.492131, 126.990580),
-			map : map,
-			icon: sellImage,
-			title : '허허허',
-			content : '파스텔 팝니다'
-			})
-		);
-	markers.push(
-			new google.maps.Marker({
-			position : new google.maps.LatLng(37.500848, 127.053065),
-			map : map,
-			icon: buyImage,
-			scaledSize : 0.8,
-			size: 0.4,
-			title : 'epic',
-			content : '아이언맨 슈트 삼'
-			})
-		);
-	
-	/*
-	var marker = new google.maps.Marker({
-		position : new google.maps.LatLng(37.547817, 126.954437),
-		map : map
-	});
-	markers.push(marker);
-	
-	markers.push(new google.maps.Marker({
-		position : new google.maps.LatLng(37.543817, 126.956437),
-		map : map
-	}));
-	*/
-
 
 	function initialize() {
 
