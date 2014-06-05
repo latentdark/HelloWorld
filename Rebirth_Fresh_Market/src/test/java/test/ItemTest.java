@@ -51,11 +51,11 @@ public class ItemTest {
 		//findItemList
 		Search search = new Search();
 		search.setPageSize(10);
-		search.setCurrentPage(2);
+		search.setCurrentPage(1);
 		System.out.println(search.getEndRowNum());
 		System.out.println(search.getStartRowNum());
-		search.setSearchCondition("2");
-		search.setSearchKeyword("5000");
+		//search.setSearchCondition("2");
+		//search.setSearchKeyword("5000");
 		System.out.println("selectList 결과 : "+itemService.findItemList(search));
 		
 		//updateItem --> 가격변경
