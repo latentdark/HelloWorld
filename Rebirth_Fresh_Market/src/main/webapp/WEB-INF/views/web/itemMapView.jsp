@@ -369,7 +369,7 @@
 	  google.maps.event.addListener(marker, 'click', function() {
 	    infowindow.open(marker.get('map'), marker);
 	  });
-	  infowindow.open(marker.get('map'), marker);
+	  //infowindow.open(marker.get('map'), marker);
 	}
 	
 	//gps module
