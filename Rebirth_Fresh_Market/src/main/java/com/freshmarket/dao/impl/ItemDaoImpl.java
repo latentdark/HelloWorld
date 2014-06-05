@@ -33,7 +33,7 @@ public class ItemDaoImpl implements ItemDao {
 
 	@Override
 	public Integer addItem(Item item) {
-		 
+	
 		Integer a = sqlSession.insert("ItemMapper.addItem", item);
 		item.setItemNo(findItemNo(item));
 		Integer b = sqlSession.insert("ItemMapper.addLocation", item);
