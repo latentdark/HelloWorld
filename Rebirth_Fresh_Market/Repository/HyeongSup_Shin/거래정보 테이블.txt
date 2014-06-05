@@ -1,0 +1,10 @@
+CREATE TABLE deal(
+	item_no	INT PRIMARY KEY AUTO_INCREMENT,
+	user_no	INT	NOT NULL,
+	deal_date	DATE	NOT NULL,
+	time	TIMESTAMP	NOT NULL,
+	grid_x	DOUBLE,
+	grid_y	DOUBLE,
+	CONSTRAINT item_item_no_fk
+	FOREIGN KEY (item_no) REFERENCES item(item_no)
+);

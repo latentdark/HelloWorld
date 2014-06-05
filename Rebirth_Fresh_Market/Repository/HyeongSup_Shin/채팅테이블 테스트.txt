@@ -1,0 +1,33 @@
+CREATE TABLE logtest(
+	serial_num	INT		PRIMARY KEY	AUTO_INCREMENT,
+	chat_no		INT		NOT NULL,
+	user_no		INT		NOT NULL,
+	user_no2	INT		NOT NULL,
+	contents	VARCHAR(255)	NOT NULL,
+	time		TIMESTAMP	NOT NULL	DEFAULT CURRENT_TIMESTAMP,
+	state_code	INT		NOT NULL
+);
+
+
+
+INSERT logtest(chat_no,user_no,user_no2,contents,state_code) values(1,1,2,'ぞし',1);
+INSERT logtest(chat_no,user_no,user_no2,contents,state_code) values(1,1,2,'构窃?',1);
+UPDATE logtest SET time=time, state_code=0 WHERE user_no2=2;
+INSERT logtest(chat_no,user_no,user_no2,contents,state_code) values(1,2,1,'端接せ',1);
+INSERT logtest(chat_no,user_no,user_no2,contents,state_code) values(1,2,1,'晨货该霸秦拎?',1);
+UPDATE logtest SET time=time, state_code=0 WHERE user_no2=1;
+
+INSERT logtest(chat_no,user_no,user_no2,contents,state_code) values(2,1,3,'ぞしし',1);
+UPDATE logtest SET time=time, state_code=0 WHERE user_no2=3;
+INSERT logtest(chat_no,user_no,user_no2,contents,state_code) values(2,3,1,'しし ぞしぞし',1);
+
+
+
+
+
+
+
+DROP TABLE logtest;
+
+
+SELECT * FROM logtest;

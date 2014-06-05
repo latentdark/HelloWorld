@@ -1,0 +1,126 @@
+CREATE TABLE user (
+	user_no      INTEGER       AUTO_INCREMENT PRIMARY KEY,
+	email        VARCHAR(40)  CHARACTER SET utf8 UNIQUE,
+	password     VARCHAR(20) NOT NULL,
+	phone_number VARCHAR(30)  UNIQUE,
+	nickname     VARCHAR(20) CHARACTER SET utf8  NOT NULL UNIQUE,
+	date         DATE          NOT NULL,
+	grid_x       DOUBLE        NULL,
+	grid_y       DOUBLE        NULL
+);
+
+
+
+INSERT user(email,password,phone_number,nickname,date)
+VALUES('genius0426@naver.com','12345','010-9344-2795','¾ß¸Þ¶¼',sysdate());
+
+INSERT user(email,password,phone_number,nickname,date)
+VALUES('ruwkthtm@naver.com','12345','010-9344-2796','°ÜÀÚ¼Ò½º',sysdate());
+
+INSERT user(email,password,phone_number,nickname,date,grid_x,grid_y)
+VALUES('beenzinojj@naver.com','12345','010-9344-2797','¼·¼·¸Ç',sysdate(),37.494616,127.027997);
+
+INSERT user(email,password,phone_number,nickname,date)
+VALUES('test5@test.com','12345678','010-4194-16','±³È¸¿ÀÇ¢',sysdate());
+
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test100@test.com'	,'12345'	,'010-1111-0100'	,'test100',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test101@test.com'	,'12345'	,'010-1111-0101'	,'test101',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test102@test.com'	,'12345'	,'010-1111-0102'	,'test102',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test103@test.com'	,'12345'	,'010-1111-0103'	,'test103',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test104@test.com'	,'12345'	,'010-1111-0104'	,'test104',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test105@test.com'	,'12345'	,'010-1111-0105'	,'test105',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test106@test.com'	,'12345'	,'010-1111-0106'	,'test106',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test107@test.com'	,'12345'	,'010-1111-0107'	,'test107',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test108@test.com'	,'12345'	,'010-1111-0108'	,'test108',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test109@test.com'	,'12345'	,'010-1111-0109'	,'test109',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test110@test.com'	,'12345'	,'010-1111-0110'	,'test110',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test111@test.com'	,'12345'	,'010-1111-0111'	,'test111',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test112@test.com'	,'12345'	,'010-1111-0112'	,'test112',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test113@test.com'	,'12345'	,'010-1111-0113'	,'test113',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test114@test.com'	,'12345'	,'010-1111-0114'	,'test114',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test115@test.com'	,'12345'	,'010-1111-0115'	,'test115',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test116@test.com'	,'12345'	,'010-1111-0116'	,'test116',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test117@test.com'	,'12345'	,'010-1111-0117'	,'test117',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test118@test.com'	,'12345'	,'010-1111-0118'	,'test118',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test119@test.com'	,'12345'	,'010-1111-0119'	,'test119',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test120@test.com'	,'12345'	,'010-1111-0120'	,'test120',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test121@test.com'	,'12345'	,'010-1111-0121'	,'test121',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test122@test.com'	,'12345'	,'010-1111-0122'	,'test122',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test123@test.com'	,'12345'	,'010-1111-0123'	,'test123',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test124@test.com'	,'12345'	,'010-1111-0124'	,'test124',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test125@test.com'	,'12345'	,'010-1111-0125'	,'test125',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test126@test.com'	,'12345'	,'010-1111-0126'	,'test126',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test127@test.com'	,'12345'	,'010-1111-0127'	,'test127',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test128@test.com'	,'12345'	,'010-1111-0128'	,'test128',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test129@test.com'	,'12345'	,'010-1111-0129'	,'test129',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test130@test.com'	,'12345'	,'010-1111-0130'	,'test130',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test131@test.com'	,'12345'	,'010-1111-0131'	,'test131',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test132@test.com'	,'12345'	,'010-1111-0132'	,'test132',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test133@test.com'	,'12345'	,'010-1111-0133'	,'test133',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test134@test.com'	,'12345'	,'010-1111-0134'	,'test134',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test135@test.com'	,'12345'	,'010-1111-0135'	,'test135',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test136@test.com'	,'12345'	,'010-1111-0136'	,'test136',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test137@test.com'	,'12345'	,'010-1111-0137'	,'test137',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test138@test.com'	,'12345'	,'010-1111-0138'	,'test138',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test139@test.com'	,'12345'	,'010-1111-0139'	,'test139',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test140@test.com'	,'12345'	,'010-1111-0140'	,'test140',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test141@test.com'	,'12345'	,'010-1111-0141'	,'test141',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test142@test.com'	,'12345'	,'010-1111-0142'	,'test142',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test143@test.com'	,'12345'	,'010-1111-0143'	,'test143',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test144@test.com'	,'12345'	,'010-1111-0144'	,'test144',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test145@test.com'	,'12345'	,'010-1111-0145'	,'test145',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test146@test.com'	,'12345'	,'010-1111-0146'	,'test146',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test147@test.com'	,'12345'	,'010-1111-0147'	,'test147',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test148@test.com'	,'12345'	,'010-1111-0148'	,'test148',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test149@test.com'	,'12345'	,'010-1111-0149'	,'test149',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test150@test.com'	,'12345'	,'010-1111-0150'	,'test150',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test151@test.com'	,'12345'	,'010-1111-0151'	,'test151',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test152@test.com'	,'12345'	,'010-1111-0152'	,'test152',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test153@test.com'	,'12345'	,'010-1111-0153'	,'test153',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test154@test.com'	,'12345'	,'010-1111-0154'	,'test154',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test155@test.com'	,'12345'	,'010-1111-0155'	,'test155',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test156@test.com'	,'12345'	,'010-1111-0156'	,'test156',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test157@test.com'	,'12345'	,'010-1111-0157'	,'test157',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test158@test.com'	,'12345'	,'010-1111-0158'	,'test158',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test159@test.com'	,'12345'	,'010-1111-0159'	,'test159',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test160@test.com'	,'12345'	,'010-1111-0160'	,'test160',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test161@test.com'	,'12345'	,'010-1111-0161'	,'test161',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test162@test.com'	,'12345'	,'010-1111-0162'	,'test162',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test163@test.com'	,'12345'	,'010-1111-0163'	,'test163',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test164@test.com'	,'12345'	,'010-1111-0164'	,'test164',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test165@test.com'	,'12345'	,'010-1111-0165'	,'test165',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test166@test.com'	,'12345'	,'010-1111-0166'	,'test166',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test167@test.com'	,'12345'	,'010-1111-0167'	,'test167',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test168@test.com'	,'12345'	,'010-1111-0168'	,'test168',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test169@test.com'	,'12345'	,'010-1111-0169'	,'test169',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test170@test.com'	,'12345'	,'010-1111-0170'	,'test170',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test171@test.com'	,'12345'	,'010-1111-0171'	,'test171',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test172@test.com'	,'12345'	,'010-1111-0172'	,'test172',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test173@test.com'	,'12345'	,'010-1111-0173'	,'test173',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test174@test.com'	,'12345'	,'010-1111-0174'	,'test174',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test175@test.com'	,'12345'	,'010-1111-0175'	,'test175',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test176@test.com'	,'12345'	,'010-1111-0176'	,'test176',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test177@test.com'	,'12345'	,'010-1111-0177'	,'test177',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test178@test.com'	,'12345'	,'010-1111-0178'	,'test178',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test179@test.com'	,'12345'	,'010-1111-0179'	,'test179',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test180@test.com'	,'12345'	,'010-1111-0180'	,'test180',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test181@test.com'	,'12345'	,'010-1111-0181'	,'test181',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test182@test.com'	,'12345'	,'010-1111-0182'	,'test182',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test183@test.com'	,'12345'	,'010-1111-0183'	,'test183',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test184@test.com'	,'12345'	,'010-1111-0184'	,'test184',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test185@test.com'	,'12345'	,'010-1111-0185'	,'test185',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test186@test.com'	,'12345'	,'010-1111-0186'	,'test186',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test187@test.com'	,'12345'	,'010-1111-0187'	,'test187',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test188@test.com'	,'12345'	,'010-1111-0188'	,'test188',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test189@test.com'	,'12345'	,'010-1111-0189'	,'test189',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test190@test.com'	,'12345'	,'010-1111-0190'	,'test190',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test191@test.com'	,'12345'	,'010-1111-0191'	,'test191',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test192@test.com'	,'12345'	,'010-1111-0192'	,'test192',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test193@test.com'	,'12345'	,'010-1111-0193'	,'test193',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test194@test.com'	,'12345'	,'010-1111-0194'	,'test194',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test195@test.com'	,'12345'	,'010-1111-0195'	,'test195',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test196@test.com'	,'12345'	,'010-1111-0196'	,'test196',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test197@test.com'	,'12345'	,'010-1111-0197'	,'test197',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test198@test.com'	,'12345'	,'010-1111-0198'	,'test198',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test199@test.com'	,'12345'	,'010-1111-0199'	,'test199',	sysdate());
+INSERT user(email,password,phone_number,nickname,date) VALUES	('test200@test.com'	,'12345'	,'010-1111-0200'	,'test200',	sysdate());
