@@ -46,10 +46,38 @@
 					#{category2, jdbcType=INTEGER}	)
 	</insert>
 	
+	<insert id="addLocation" parameterType="item">
+		INSERT location	(	item_no,
+							grid_x1,
+							grid_y1,
+							grid_x2,
+							grid_y2,
+							grid_x3,
+							grid_y3		)
+		VALUES (	#{itemNo},
+					#{gridX1},
+					#{gridY1},
+					#{gridX2},
+					#{gridY2},
+					#{gridX3},
+					#{gridY3}	)
+	</insert>
+	
+	<insert id="addItem_pic" parameterType="item">
+		INSERT item_pic	(	item_no,
+							filepath1,
+							filepath2,
+							filepath3	)
+		VALUES (	#{itemNo},
+					#{itemPicturePath1},
+					#{itemPicturePath2},
+					#{itemPicturePath3}		)
+	</insert>
+	
 	<select id="findItemNo" parameterType="item" resultType="integer">
 		SELECT MAX(item_no)
 		FROM item
-		WHERE user_no=#{userNo};
+		WHERE user_no=#{userNo}
 	</select>
 	
 	<select id="findItem" parameterType="integer" resultMap="ItemSelectMap">

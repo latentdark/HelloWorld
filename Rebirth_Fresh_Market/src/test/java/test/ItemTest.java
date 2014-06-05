@@ -37,8 +37,11 @@ public class ItemTest {
 		item.setItemInfo("국내 최저 소음: 36dB 조용한 1단 / 시원한 2단");
 		item.setCategory1(14);
 		item.setCategory2(11);
+		item.setGridX1(37.633735);
+		item.setGridY1(127.198934);
+		item.setItemPicturePath1("jjuggumi.jpg");
 		
-		//System.out.println("insert 결과 : "+itemService.addItem(item));
+		System.out.println("insert 결과 : "+itemService.addItem(item));
 		
 		//findItemNo
 		item.setItemNo(itemService.findItemNo(item));
@@ -52,8 +55,6 @@ public class ItemTest {
 		Search search = new Search();
 		search.setPageSize(10);
 		search.setCurrentPage(1);
-		System.out.println(search.getEndRowNum());
-		System.out.println(search.getStartRowNum());
 		//search.setSearchCondition("2");
 		//search.setSearchKeyword("5000");
 		System.out.println("selectList 결과 : "+itemService.findItemList(search));
