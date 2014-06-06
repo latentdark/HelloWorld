@@ -19,7 +19,7 @@ public class AndroidController {
 	 public AndroidController() {
 			// TODO Auto-generated constructor stub
 	    	System.out.println("__________________________");
-	    	System.out.println("___Chat_Controller_Call___");
+	    	System.out.println("__Andriod_Controller_Call_");
 	    	System.out.println("__________________________");
 	}
 	 
