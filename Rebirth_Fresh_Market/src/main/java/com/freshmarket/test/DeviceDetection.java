@@ -1,4 +1,4 @@
-package com.freshmarket.controller;
+package com.freshmarket.test;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.mobile.device.view.LiteDeviceDelegatingViewResolver;

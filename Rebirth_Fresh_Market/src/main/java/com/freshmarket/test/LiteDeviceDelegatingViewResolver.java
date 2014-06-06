@@ -1,4 +1,4 @@
-package com.freshmarket.controller;
+package com.freshmarket.test;
 
 public class LiteDeviceDelegatingViewResolver {
 
