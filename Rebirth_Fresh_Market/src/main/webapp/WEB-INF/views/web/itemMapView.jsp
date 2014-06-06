@@ -453,22 +453,38 @@
 	}
 	// Sets the map on all markers in the array.
 	function markerAddListener(marker, i) {
-		/*
+		/* 
 	  var infowindow = new google.maps.InfoWindow({
 	    content: marker.content
 	  });
-		*/
+	  */
 	  google.maps.event.addListener(marker, 'click', function() {
-		  	console.log("뭐지?");
+		  //infowindow.open(marker.get('map'), marker);	
+		  //console.log("뭐지?");
 	  		alert("휴..");
-	  
-	  	   // $( "#opener" ).click(function() {
-	  	      $( "#dialog" ).dialog( "open" );
-	  	    //});
-	  	 
+	  		myModal();	 	 
 	  });
-	  
-	  
+	  function myModal(){
+		  $(function() {
+		  	    $( "#dialog" ).dialog({
+		  	      autoOpen: true,
+		  	      show: {
+		  	        effect: "blind",
+		  	        duration: 1000
+		  	      },
+		  	      hide: {
+		  	        effect: "explode",
+		  	        duration: 1000
+		  	      }
+		  	    });
+		  	 
+		  	   //$( marker ).click(function() {
+		  	     // $( "#dialog" ).dialog( "open" );
+		  	   //});
+		  });
+	  }
+	 
+
 	  /*
 	  google.maps.event.addListener(marker, 'click', function() {
 	    infowindow.open(marker.get('map'), marker);
@@ -476,23 +492,7 @@
 	  */
 	  //infowindow.open(marker.get('map'), marker);
 	}
-	 $(function() {
-	  	    $( "#dialog" ).dialog({
-	  	      autoOpen: false,
-	  	      show: {
-	  	        effect: "blind",
-	  	        duration: 1000
-	  	      },
-	  	      hide: {
-	  	        effect: "explode",
-	  	        duration: 1000
-	  	      }
-	  	    });
-	  	 
-	  	   // $( "#opener" ).click(function() {
-	  	   //   $( "#dialog" ).dialog( "open" );
-	  	   //});
-	 });
+	
 	
 	//gps module
 	function handleNoGeolocation(errorFlag) {
@@ -520,7 +520,6 @@
 		});
 		markers.push(marker);
 	}
-	
 
 	google.maps.event.addDomListener(window, 'load', initialize);
 
