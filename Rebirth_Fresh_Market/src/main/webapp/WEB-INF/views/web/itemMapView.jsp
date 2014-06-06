@@ -193,12 +193,18 @@
 	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 	
+	<!-- jquery UI google CDN -->
+	<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+	
 	<!-- 
 	<script src="resources/js_custom/markerclusterer_packed.js"></script>
 	<script src="resources/js_custom/markerclusterer.js"></script>
 	 -->
 	<script src="resources/js_custom/markerwithlabel.js"></script> 
-	
+	<!-- 
+	<link rel="stylesheet" href="/resources/demos/style.css">
+	 -->
 	<script type="text/javascript">
 	//여기부터 clusterer
 	//----------------------------------------------------------	
@@ -392,8 +398,8 @@
 			title : 'epic',
 			
 			content :  '<div id="dialog" title="Basic dialog">'+
-			'몰아치는 한숨'+
-				'</div>'
+						'몰아치는 한숨'+
+						'</div>'
 			})
 		);
 	
@@ -441,6 +447,7 @@
 	          //styles: styles[style]
 	        });
 	}
+	
 
 	function markerInitialize(map) {
 	  for (var i = 0; i < markers.length; i++) {
@@ -450,6 +457,11 @@
 	    
 		markerAddListener(markers[i], i);
 	  }
+	  /*
+	  $('#dialog').on('shown', function () {
+		  google.maps.event.trigger(map, 'resize');
+		})
+		*/
 	}
 	// Sets the map on all markers in the array.
 	function markerAddListener(marker, i) {
@@ -462,27 +474,23 @@
 		  //infowindow.open(marker.get('map'), marker);	
 		  //console.log("뭐지?");
 	  		alert("휴..");
-	  		myModal();	 	 
+	  		$( "#dialog2" ).dialog( "open" ); 	 
 	  });
-	  function myModal(){
-		  $(function() {
-		  	    $( "#dialog" ).dialog({
-		  	      autoOpen: true,
-		  	      show: {
-		  	        effect: "blind",
-		  	        duration: 1000
-		  	      },
-		  	      hide: {
-		  	        effect: "explode",
-		  	        duration: 1000
-		  	      }
-		  	    });
-		  	 
-		  	   //$( marker ).click(function() {
-		  	     // $( "#dialog" ).dialog( "open" );
-		  	   //});
-		  });
-	  }
+	  $(function() {
+		    $( "#dialog2" ).dialog({
+		      autoOpen: false,
+		      show: {
+		        effect: "blind",
+		        duration: 1000
+		      },
+		      hide: {
+		        effect: "explode",
+		        duration: 1000
+		      }
+		    });
+		 
+		    
+		});
 	 
 
 	  /*
@@ -592,8 +600,13 @@
 	</script>
 </head>
 <body onload="init(this.form);">
+	
+	<div id="dialog2" title="Basic dialog">
+		  <p>what the?</p>
+		</div>
 	<header>
 		<%@include file="header.jsp"%>
+		
 	</header>
 	
 	<div id="aside" class="tabbable">
@@ -742,6 +755,7 @@
 	</div>
 	
 	<div id="map_canvas" style="width:71%; height:100%;">
+	<!-- --> 
 	
 	</div>
 	<script type="text/javascript">
