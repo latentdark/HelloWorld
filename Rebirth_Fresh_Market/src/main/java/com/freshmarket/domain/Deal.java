@@ -1,15 +1,18 @@
 package com.freshmarket.domain;
 
+import java.sql.Time;
 import java.util.Date;
-
 
 
 public class Deal {
     private Integer itemNo;
     private Integer registerUserNo;
     private Integer contactUserNo;
+    private String registerUserName;	//거래 등록자 닉네임
+    private String contactUserName;		//거래 상대방 닉네임
     private Date dealDate;
-    private Location location;
+    private Time time;			//Date가 날짜만 나와서 만나는 시간 추가함
+	private Location location;
     
     public Deal() {
 		// TODO Auto-generated constructor stub
@@ -61,5 +64,5 @@ public class Deal {
 				+ ", contactUserNo=" + contactUserNo + ", dealDate=" + dealDate
 				+ ", location=" + location + "]";
 	}
-    
+	  
 }

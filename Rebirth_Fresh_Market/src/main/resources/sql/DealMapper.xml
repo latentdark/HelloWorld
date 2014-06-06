@@ -5,26 +5,55 @@
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 		
 <mapper namespace="DealMapper">
+
+	<resultMap id="UserSelectMap" type="user">
+		<result property="itemNo" column="item_no" jdbcType="INTEGER"/>
+		<result property="registerUserNo" column="" jdbcType="INTEGER"/>
+		<result property="contactUserNo" column="" jdbcType="INTEGER"/>
+		<result property="registerUserName" column="" jdbcType="VARCHAR"/>
+		<result property="contactUserName" column="" jdbcType="VARCHAR"/>
+		<result property="dealDate" column="date" jdbcType="DATE"/>
+		<result property="time" column="time" jdbcType="TIME"/>
+		<result property="location.gridX" column="grid_x" jdbcType="DOUBLE"/>
+		<result property="location.gridY" column="grid_y" jdbcType="DOUBLE"/>
+	</resultMap>
+	
 	<insert id="makeDeal" parameterType="deal">
 		INSERT deal(user_no,
-					deal_date,
-					time)
+					time,
+					grid_x,
+					grid_y)
+		VALUES(#{userNo},
+			   #{dealDate},
+			   #{location.gridX},
+			   #{location.gridY}	)
 	</insert>
 	
 	<select id="findDeal">
-	
+		SELECT
 	</select>
 	
 	<update id="updateDeal">
-	
+		UPDATE deal
+		SET
+		<if test=""></if>
 	</update>
 	
 	<delete id="completeDeal">
-	
+		{call
+		declare
+		begin
+			DELETE FROM deal WHERE item_no=#{itemNo}
+			DELETE FROM location WHERE item_no=#{itemNo}
+			DELETE FROM item_pic WHERE item_no=#{itemNo}
+			DELETE FROM reply WHERE item_no=#{itemNo}
+			DELETE FROM item WHERE item_no=#{itemNo}
+		end
+		}		
 	</delete>
 	
 	<update id="cancelDeal">
-	
+		UPDATE
 	</update>
 	
 	<select id="findDealList" parameterType="search">
