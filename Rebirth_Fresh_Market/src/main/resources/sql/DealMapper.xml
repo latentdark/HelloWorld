@@ -6,7 +6,7 @@
 		
 <mapper namespace="DealMapper">
 
-	<resultMap id="UserSelectMap" type="user">
+	<resultMap id="DealSelectMap" type="deal">
 		<result property="itemNo" column="item_no" jdbcType="INTEGER"/>
 		<result property="registerUserNo" column="" jdbcType="INTEGER"/>
 		<result property="contactUserNo" column="" jdbcType="INTEGER"/>
@@ -20,23 +20,28 @@
 	
 	<insert id="makeDeal" parameterType="deal">
 		INSERT deal(user_no,
+					date,
 					time,
 					grid_x,
 					grid_y)
 		VALUES(#{userNo},
 			   #{dealDate},
+			   #{time},
 			   #{location.gridX},
 			   #{location.gridY}	)
 	</insert>
 	
 	<select id="findDeal">
-		SELECT
+		SELECT ???????
+		FROM
+		WHERE 
 	</select>
 	
 	<update id="updateDeal">
 		UPDATE deal
-		SET
-		<if test=""></if>
+		<set>
+			<if test=""></if>
+		</set>
 	</update>
 	
 	<delete id="completeDeal">
@@ -57,6 +62,11 @@
 	</update>
 	
 	<select id="findDealList" parameterType="search">
-	
+		SELECT ?????
+		FROM deal d, (SELECT
+					  l.grid_x1,l.grid_y1
+					  FROM item i,location l
+					  WHERE i.item_no=l.item_no	),
+		WHERE 
 	</select>
 </mapper>
