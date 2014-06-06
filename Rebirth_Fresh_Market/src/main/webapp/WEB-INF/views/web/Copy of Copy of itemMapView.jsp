@@ -298,27 +298,6 @@
 	  });
 	});
 	
-	//-----------------------------------------------------
-	//여기부터 아이템 modal
-	
-	/*
-	 $(function() {
-	    $( "#dialog" ).dialog({
-	      autoOpen: false,
-	      show: {
-	        effect: "blind",
-	        duration: 1000
-	      },
-	      hide: {
-	        effect: "explode",
-	        duration: 1000
-	      }
-	    });
-	 
-	  });
-	*/
-	 /**/
-	//-----------------------------------------------------
 
 	
 	//---------------------------------------
@@ -357,10 +336,9 @@
 							</c:if>
 								,
 						title : '${itemList.itemName}',
-						//	labelContent: '$425K',
-						//	labelAnchor: new google.maps.Point(22, 0),
-						//    labelClass: "labels", // the CSS class for the label
-						
+					//	labelContent: '$425K',
+					//	labelAnchor: new google.maps.Point(22, 0),
+					//    labelClass: "labels", // the CSS class for the label
 						content : '<div id="content">'+
 								'<h1 id="head" class="head">${itemList.itemName}</h1>'+
 								 '<div id="bodyContent">'+
@@ -370,32 +348,10 @@
 								 '${itemList.itemInfo}'+
 								 '</div>'+
 								'</div >'
-						/*
-						content :  '<div id="dialog" title="Basic dialog">'+
-									'몰아치는 한숨'+
-						 			'</div>'
-						 			
-						 content :  '<div id="${itemList.itemNo}" title="Basic dialog">'+
-									'몰아치는 한숨'+
-						 			'</div>'
-						 			*/
 						//labelContent : '${itemList.itemInfo}'
 						})
 			);
 	</c:forEach>
-	
-	markers.push(
-			new google.maps.Marker({
-			position : new google.maps.LatLng(37.500848, 127.053065),
-			map : map,
-			icon: buyImage,
-			title : 'epic',
-			
-			content :  '<div id="dialog" title="Basic dialog">'+
-			'몰아치는 한숨'+
-				'</div>'
-			})
-		);
 	
 
 	function initialize() {
@@ -441,58 +397,43 @@
 	          //styles: styles[style]
 	        });
 	}
+	
 
+
+	// Sets the map on all markers in the array.
 	function markerInitialize(map) {
 	  for (var i = 0; i < markers.length; i++) {
 		markers[i].setMap(map);
 	    
-		//console.log(markers[i].content);
+		console.log(markers[i].content);
 	    
 		markerAddListener(markers[i], i);
 	  }
 	}
-	// Sets the map on all markers in the array.
+	/*
+	function markerInitialize(map) {
+	  for (var i = 0; i < markers.length; i++) {
+		markers[i].setMap(map);
+	    
+		console.log(markers[i].content);
+	    
+		markerAddListener(markers[i], i);
+	  }
+	}
+	*/
+	
+	// The five markers show a secret message when clicked
+	// but that message is not within the marker's instance data
 	function markerAddListener(marker, i) {
-		/*
 	  var infowindow = new google.maps.InfoWindow({
 	    content: marker.content
 	  });
-		*/
-	  google.maps.event.addListener(marker, 'click', function() {
-		  	console.log("뭐지?");
-	  		alert("휴..");
-	  
-	  	   // $( "#opener" ).click(function() {
-	  	      $( "#dialog" ).dialog( "open" );
-	  	    //});
-	  	 
-	  });
-	  
-	  
-	  /*
+
 	  google.maps.event.addListener(marker, 'click', function() {
 	    infowindow.open(marker.get('map'), marker);
 	  });
-	  */
 	  //infowindow.open(marker.get('map'), marker);
 	}
-	 $(function() {
-	  	    $( "#dialog" ).dialog({
-	  	      autoOpen: false,
-	  	      show: {
-	  	        effect: "blind",
-	  	        duration: 1000
-	  	      },
-	  	      hide: {
-	  	        effect: "explode",
-	  	        duration: 1000
-	  	      }
-	  	    });
-	  	 
-	  	   // $( "#opener" ).click(function() {
-	  	   //   $( "#dialog" ).dialog( "open" );
-	  	   //});
-	 });
 	
 	//gps module
 	function handleNoGeolocation(errorFlag) {
@@ -524,15 +465,7 @@
 
 	google.maps.event.addDomListener(window, 'load', initialize);
 
-	
-	//------------------------------경계선 ----------------------------------//
-	//----------------------                            -------------------//
-	//----------------------                            -------------------//
-	//----------------------                            -------------------//
-	//----------------------                            -------------------//
-	//----------------------                            -------------------//
-	//----------------------                            -------------------//
-	//------------------------------경계선 ----------------------------------//
+
 	
 	//셀렉트
 	
@@ -592,7 +525,7 @@
 	
 	</script>
 </head>
-<body onload="init(this.form);">
+<body onload="initialize(); init(this.form);">
 	<header>
 		<%@include file="header.jsp"%>
 	</header>

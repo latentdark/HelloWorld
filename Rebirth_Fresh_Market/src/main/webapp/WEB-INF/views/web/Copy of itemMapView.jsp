@@ -171,16 +171,121 @@
       	#category1{
       		margin-bottom:10px;
       	}
+      	
+      	.labels {
+	     color: red;
+	     background-color: white;
+	     font-family: "Lucida Grande", "Arial", sans-serif;
+	     font-size: 10px;
+	     font-weight: bold;
+	     text-align: center;
+	     width: 40px;
+	     border: 2px solid black;
+	     white-space: nowrap;
+   		}
 	
 	</style>
 	
-	<script type="text/javascript"
+	<script 
       src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAX-hWL7tXxRZd2GtUjDME2jf-9qNoiRsE&sensor=false&language=ko">
     </script>
-	<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+	<script src="http://code.jquery.com/jquery.min.js"></script>
 	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	
+	<!-- 
+	<script src="resources/js_custom/markerclusterer_packed.js"></script>
+	<script src="resources/js_custom/markerclusterer.js"></script>
+	 -->
+	<script src="resources/js_custom/markerwithlabel.js"></script> 
+	
+	<script type="text/javascript">
+	//여기부터 clusterer
+	//----------------------------------------------------------	
+    var script = '<script type="text/javascript" src="resources/js_custom/markerclusterer';
+    if (document.location.search.indexOf('compiled') !== -1) {
+      script += '_compiled';
+    }
+    script += '.js"><' + '/script>';
+    document.write(script);
+  	</script>
 	<script>
+     var styles = [[{
+       url: 'resources/imgs/markerclusterer/people35.png',
+       height: 35,
+       width: 35,
+       anchor: [16, 0],
+       textColor: '#ff00ff',
+       textSize: 10
+     }, {
+       url: 'resources/imgs/markerclusterer/people45.png',
+       height: 45,
+       width: 45,
+       anchor: [24, 0],
+       textColor: '#ff0000',
+       textSize: 11
+     }, {
+       url: 'resources/imgs/markerclusterer/people55.png',
+       height: 55,
+       width: 55,
+       anchor: [32, 0],
+       textColor: '#ffffff',
+       textSize: 12
+     }], [{
+       url: 'resources/imgs/markerclusterer/conv30.png',
+       height: 27,
+       width: 30,
+       anchor: [3, 0],
+       textColor: '#ff00ff',
+       textSize: 10
+     }, {
+       url: 'resources/imgs/markerclusterer/conv40.png',
+       height: 36,
+       width: 40,
+       anchor: [6, 0],
+       textColor: '#ff0000',
+       textSize: 11
+     }, {
+       url: 'resources/imgs/markerclusterer/conv50.png',
+       width: 50,
+       height: 45,
+       anchor: [8, 0],
+       textSize: 12
+     }], [{
+       url: 'resources/imgs/markerclusterer/heart30.png',
+       height: 26,
+       width: 30,
+       anchor: [4, 0],
+       textColor: '#ff00ff',
+       textSize: 10
+     }, {
+       url: 'resources/imgs/markerclusterer/heart40.png',
+       height: 35,
+       width: 40,
+       anchor: [8, 0],
+       textColor: '#ff0000',
+       textSize: 11
+     }, {
+       url: 'resources/imgs/markerclusterer/heart50.png',
+       width: 50,
+       height: 44,
+       anchor: [12, 0],
+       textSize: 12
+     }]];
+     
+	 //-----------------------
+     //맵 스타일 - Bright & Bubbly
+     var styles = [ 
+               ]
+     //-----------------------
+     // var zoom = parseInt(document.getElementById('zoom').value, 10);
+     //var size = parseInt(document.getElementById('size').value, 10);
+     //var style = parseInt(document.getElementById('style').value, 10);
+     var zoom = null ;
+     var size = null ;
+     var style = null;
+     //여기까지 clusterer
+	 //----------------------------------------------------------
 
 	//로그인 메뉴 
 	$(function() {
@@ -200,15 +305,32 @@
 	console.log(test);
 	//HTML5 Geolocation을 이용한 ip trace
 	/**/
-	var sellImage = 'resources/imgs/icons/blueArrow.png';
-	//var buyImage = 'resources/imgs/icons/redArrow.png';
-	var buyImage = 'resources/imgs/icons/star.jpg';
-	var geoImage = 'resources/imgs/icons/green_apple_adam.png';
+	var sellImage = 'resources/imgs/icons/ssh2.png';
+	var buyImage = 'resources/imgs/icons/bsh2.png';
+	var dealImage = 'resources/imgs/icons/dsh.png';
+	var geoImage = 'resources/imgs/icons/p33.png';
 	
 	var map;
 	var markers = [];
 	
+	//-----------------------------------------------------
+	//여기부터 아이템 modal
+	 $(function() {
+	    $( "#dialog" ).dialog({
+	      autoOpen: false,
+	      show: {
+	        effect: "blind",
+	        duration: 1000
+	      },
+	      hide: {
+	        effect: "explode",
+	        duration: 1000
+	      }
+	    });
+	 
+	  });
 	
+	//-----------------------------------------------------
 	//var itemList=${itemList};
 	
 	//statCode 1=sell, 2=buy, 3=deal
@@ -216,120 +338,45 @@
 		<c:set var="i" value="${ i+1 }" />	
 			markers.push(
 					new google.maps.Marker({
+					//new MarkerWithLabel({
 						position : new google.maps.LatLng(${itemList.gridX1} , ${itemList.gridY1} ),
 						map : map,
-						icon: buyImage,
+						icon:
+							<c:if test="${itemList.stateCode=='1'}">
+								buyImage
+							</c:if>
+							<c:if test="${itemList.stateCode=='2'}">
+								sellImage
+							</c:if>
+							<c:if test="${itemList.stateCode=='3'}">
+								dealImage
+							</c:if>
+								,
 						title : '${itemList.itemName}',
-						content : '${itemList.itemInfo}'
+						content : '<div id="dialog" title="Basic dialog">'+
+								  '<p>This is an animated dialog which is useful for displaying information.'+
+								  'The dialog window can be moved, resized and closed with the \'x\' icon.</p>'+
+								  '</div>'
 						})
 			);
-	
 	</c:forEach>
-	/*
-	var contentString;
+	//	labelContent: '$425K',
+	//	labelAnchor: new google.maps.Point(22, 0),
+	//    labelClass: "labels", // the CSS class for the label
 	
-	var contentString='<div id="content">'+
+	/*
+		content : '<div id="content">'+
 				'<h1 id="head" class="head">${itemList.itemName}</h1>'+
 				 '<div id="bodyContent">'+
 				 <c:if test="${itemList.itemPicturePath1!=null}">
-				 '<img src = "resources/imgs/itemgpictures/${itemList.itemPicturePath1}></img>'+
+				 '<img src = "resources/itempictures/${itemList.itemPicturePath1}"></img><br>'+
 				 </c:if>
 				 '${itemList.itemInfo}'+
-				 '</div>'+
-				'</div >';
-				
-*/
-/*
-markers.push(
-		new google.maps.Marker({
-		position : new google.maps.LatLng(38.223863, 127.670753),
-		map : map,
-		icon: sellImage,
-		title : '',
-		//content : '${itemList.itemInfo}'
-		
-		})
-	);
-*/
-	/*
-	new MarkerWithLabel({
-						position : new google.maps.LatLng(${itemList.gridX1} , ${itemList.gridY1} ),
-						map : map,
-						labelContent: "$425K",
-						icon: buyImage,
-						title : '${itemList.itemName}',
-						content : '${itemList.itemInfo}'
-						//labelContent : '${itemList.itemInfo}'
-						})
-	
+				 '</div>'
 	*/
 	
-	
+	//labelContent : '${itemList.itemInfo}'
 
-	
-/*
-	markers.push(
-		new google.maps.Marker({
-			position : new google.maps.LatLng(37.547817, 126.954437),
-			map : map,
-			icon: sellImage,
-			title : '쿠어어어어',
-			content : '마커를 찍어봅세'
-			})
-	);
-	markers.push(
-		new google.maps.Marker({
-			position : new google.maps.LatLng(37.543817, 126.956437),
-			map : map,
-			icon: buyImage,
-			title : '오홍홍홍',
-			content : '두번째 마커입니당'
-		})
-	);
-	markers.push(
-		new google.maps.Marker({
-		position : new google.maps.LatLng(37.544415, 127.020792),
-		map : map,
-		icon: buyImage,
-		title : 'Europa',
-		content : 'Europa~~~'
-		})
-	);
-	markers.push(
-			new google.maps.Marker({
-			position : new google.maps.LatLng(37.492131, 126.990580),
-			map : map,
-			icon: sellImage,
-			title : '허허허',
-			content : '파스텔 팝니다'
-			})
-		);
-	markers.push(
-			new google.maps.Marker({
-			position : new google.maps.LatLng(37.500848, 127.053065),
-			map : map,
-			icon: buyImage,
-			scaledSize : 0.8,
-			size: 0.4,
-			title : 'epic',
-			content : '아이언맨 슈트 삼'
-			})
-		);
-	
-	/*
-	var marker = new google.maps.Marker({
-		position : new google.maps.LatLng(37.547817, 126.954437),
-		map : map
-	});
-	markers.push(marker);
-	
-	markers.push(new google.maps.Marker({
-		position : new google.maps.LatLng(37.543817, 126.956437),
-		map : map
-	}));
-	*/
-
-	
 	function initialize() {
 
 		// map = new google.maps.Map(document.getElementById('map-canvas'),
@@ -337,7 +384,8 @@ markers.push(
 		var mapOptions = {
 			zoom : 12,
 			center : new google.maps.LatLng(-33, 151),
-			disableDefaultUI : true
+			disableDefaultUI : true,
+			styles: styles
 		}
 		map = new google.maps.Map(document.getElementById("map_canvas"),
 				mapOptions);
@@ -353,15 +401,10 @@ markers.push(
 							position.coords.longitude),
 					map : map,
 					icon: geoImage					
-					})
-				
-				var infowindow = new google.maps.InfoWindow({
-					map : map,
-					position : pos,
-					content : '여기가 내위치오'
-				});
+					});
 				
 				map.setCenter(pos);
+				map.setZoom(12);
 			}, function() {
 				handleNoGeolocation(true);
 			});
@@ -371,6 +414,11 @@ markers.push(
 		}
 
 		markerInitialize(map);
+		markerClusterer = new MarkerClusterer(map, markers, {
+	          //maxZoom: zoom,
+	          gridSize: size
+	          //styles: styles[style]
+	        });
 	}
 	
 
@@ -385,17 +433,6 @@ markers.push(
 		markerAddListener(markers[i], i);
 	  }
 	}
-	/*
-	function markerInitialize(map) {
-	  for (var i = 0; i < markers.length; i++) {
-		markers[i].setMap(map);
-	    
-		console.log(markers[i].content);
-	    
-		markerAddListener(markers[i], i);
-	  }
-	}
-	*/
 	
 	// The five markers show a secret message when clicked
 	// but that message is not within the marker's instance data
@@ -404,10 +441,16 @@ markers.push(
 	    content: marker.content
 	  });
 
+	  
+	  google.maps.event.addListener(marker, 'click', function() {
+		      $( "#dialog" ).dialog( "open" );
+	  {
+	  /*
 	  google.maps.event.addListener(marker, 'click', function() {
 	    infowindow.open(marker.get('map'), marker);
 	  });
-	  infowindow.open(marker.get('map'), marker);
+	  */
+	  //infowindow.open(marker.get('map'), marker);
 	}
 	
 	//gps module
@@ -504,7 +547,6 @@ markers.push(
 	<header>
 		<%@include file="header.jsp"%>
 	</header>
-	
 	<div id="aside" class="tabbable">
 		<ul class="nav">
 			<li class="active">
