@@ -209,10 +209,6 @@
 	-->	
 	
 	<script src="http://code.jquery.com/jquery.min.js"></script>
-	<!-- 
-	중복으로 인한 주석처리 google CDN으로 대체하였음. 호환성 체크후 삭제예정
-	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-	-->
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 	
 	
@@ -227,16 +223,17 @@
 	<script
 	src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 
-<!--
-<script
-	src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<!--
+	<script
+		src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
  	 -->
-<!-- 
+	
+	<!-- 
 	<script src="resources/js_custom/markerclusterer_packed.js"></script>
 	<script src="resources/js_custom/markerclusterer.js"></script>
 	 -->
-<script src="resources/js_custom/markerwithlabel.js"></script>
-<!-- 
+	<script src="resources/js_custom/markerwithlabel.js"></script>
+	<!-- 
 	<link rel="stylesheet" href="/resources/demos/style.css">
 	 -->
 	 
@@ -249,7 +246,7 @@
 	    }
 	    script += '.js"><' + '/script>';
 	    document.write(script);
-	  	</script>
+</script>
 <script>
 	     var styles = [[{
 	       url: 'resources/imgs/markerclusterer/people35.png',
@@ -365,10 +362,12 @@
 							</c:if>
 								,
 						title : '${itemList.itemName}',
+						content : '${itemList.itemNo}'
 						//	labelContent: '$425K',
 						//	labelAnchor: new google.maps.Point(22, 0),
 						//    labelClass: "labels", // the CSS class for the label
 						
+						/*
 						content : '<div id="content">'+
 								'<h1 id="head" class="head">${itemList.itemName}</h1>'+
 								 '<div id="bodyContent">'+
@@ -378,6 +377,7 @@
 								 '${itemList.itemInfo}'+
 								 '</div>'+
 								'</div >'
+						*/
 						/*
 						content :  '<div id="dialog" title="Basic dialog">'+
 									'몰아치는 한숨'+
@@ -391,6 +391,7 @@
 						})
 			);
 		</c:forEach>
+		/*
 		markers.push(
 				new google.maps.Marker({
 				position : new google.maps.LatLng(37.500848, 127.053065),
@@ -403,21 +404,18 @@
 							'</div>'
 				})
 			);
-		
+		*/
 
 		function initialize() {
-
-			// map = new google.maps.Map(document.getElementById('map-canvas'),
-			//     mapOptions);
+			
 			var mapOptions = {
 				zoom : 12,
 				center : new google.maps.LatLng(-33, 151),
 				disableDefaultUI : true,
 				styles: styles
 			}
-			map = new google.maps.Map(document.getElementById("map_canvas"),
-					mapOptions);
-			//map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+			map = new google.maps.Map(document.getElementById("map_canvas"),mapOptions);
+			
 			// Try HTML5 geolocation
 			if (navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(function(position) {
@@ -456,26 +454,55 @@
 			//console.log(markers[i].content); 
 			markerAddListener(markers[i], i);
 		  }
-		  /*
-		  $('#dialog').on('shown', function () {
-			  google.maps.event.trigger(map, 'resize');
-			})
-			*/
 		}
 		// Sets the map on all markers in the array.
 		function markerAddListener(marker, i) {
-			/* 
+		/* 
 		  var infowindow = new google.maps.InfoWindow({
-		    content: marker.content
+			content: marker.content	
 		  });
-		  */
+		 */
+		  console.log("marker.content_"+marker.content);
+		 var dialogName="#item"+marker.content;
 		  google.maps.event.addListener(marker, 'click', function() {
 			  //infowindow.open(marker.get('map'), marker);	
 			  //console.log("뭐지?");
-		  		alert("휴..");
-		  		//$("#dialog").parent().appendTo($("#bd"));
-		  		$("#dialog2").dialog( "open" ); 	
+		  		//alert("휴..");
+		  		
+		  		//아래는 예제
+		  		//$("#dialog2").dialog( "open" ); 
+		   		$("#item"+marker.content).dialog( "open" );
+		  		
 		  });
+		  
+		  
+		  <c:forEach var="itemList" items="${itemList}">
+			<c:set var="i" value="${ i+1 }" />	
+				$(function() {
+				    $( "#item${itemList.itemNo}" ).dialog({
+				      maxHeight:700,
+				      maxWidth: 1000,
+				      minHeight: 700,
+				      minWidth: 1000,
+					  autoOpen: false,
+					  draggable : false,
+					  modal : true ,
+					  resizable : true,
+					  position : { my: "center", at: "center", of: window },
+				      show: {
+				        effect: "blind",
+				        duration: 1000
+				      },
+				      hide: {
+				        effect: "explode",
+				        duration: 1000
+				      }
+				    });
+				});
+			</c:forEach>
+		  
+		  //아래는 실행가능한 코드
+		  /*
 		  $(function() {
 			    $( "#dialog2" ).dialog({
 				  autoOpen: false,
@@ -489,6 +516,8 @@
 			      }
 			    });
 			});
+		  */
+		  
 		  /*
 		  google.maps.event.addListener(marker, 'click', function() {
 		    infowindow.open(marker.get('map'), marker);
@@ -683,12 +712,6 @@
 <body onload="init(this.form);">
 	
 	<header>
-		
-		<!-- Header부분에 modal용 div넣습니다. 레이아웃과 상관없으니 삭제하지 마세요 -->
-		<div id="dialog2" class="dialog2" title="Basic dialog">
-			<p>what the?</p>
-		</div>
-		
 		<%@include file="header.jsp"%>
 	</header>
 	
@@ -860,6 +883,33 @@
 	}
 	</script>
 
-<footer></footer>		
+<footer>
+	<!-- footer부분에 modal용 div넣습니다. 레이아웃과 상관없으니 삭제하지 마세요 -->
+		
+		<c:forEach var="itemList" items="${itemList}">
+		<c:set var="i" value="${ i+1 }" />	
+			<div id="item${itemList.itemNo}" title="${itemList.itemName}">
+				
+				<div id="bodyContent">
+				 
+					<c:if test="${itemList.itemPicturePath1!=null}">
+						<img src = "resources/itempictures/${itemList.itemPicturePath1}"></img><br>
+					</c:if>
+				 <!-- -->
+					${itemList.itemInfo}
+				</div>
+				 <!-- 
+				 ${itemList.itemInfo}
+				 -->
+			</div>
+		</c:forEach>
+		
+		
+		<div id="dialog2" class="dialog2" title="Basic dialog">
+			<p>what the?</p>
+		</div>
+		
+		<!-- footer부분에 modal용 div넣습니다. 레이아웃과 상관없으니 삭제하지 마세요 -->
+</footer>		
 </body>
 </html>

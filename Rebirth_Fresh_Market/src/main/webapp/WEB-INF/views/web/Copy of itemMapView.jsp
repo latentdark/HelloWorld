@@ -186,119 +186,138 @@
 	
 	</style>
 	
-	<script 
-      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAX-hWL7tXxRZd2GtUjDME2jf-9qNoiRsE&sensor=false&language=ko">
-    </script>
-	<script src="http://code.jquery.com/jquery.min.js"></script>
-	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	<!--
+				
+				
+				
+				
+				
+	---------------------------------------------------------------------
+								S T A R T!      
+			
+			
+				Mr.JaeYoung 코드 시작 지점, 종료지점까지 수정하시면 안됩니다!
 	
-	<!-- 
+	
+								S T A R T!
+	---------------------------------------------------------------------
+	
+	
+	
+	
+	
+	-->	
+<script
+	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAX-hWL7tXxRZd2GtUjDME2jf-9qNoiRsE&sensor=false&language=ko">
+	</script>
+
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<!-- jquery UI google CDN -->
+<link rel="stylesheet"
+	href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+<script
+	src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<!--
+<script
+	src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+ 	 -->
+<!-- 
 	<script src="resources/js_custom/markerclusterer_packed.js"></script>
 	<script src="resources/js_custom/markerclusterer.js"></script>
 	 -->
-	<script src="resources/js_custom/markerwithlabel.js"></script> 
-	
-	<script type="text/javascript">
-	//여기부터 clusterer
-	//----------------------------------------------------------	
-    var script = '<script type="text/javascript" src="resources/js_custom/markerclusterer';
-    if (document.location.search.indexOf('compiled') !== -1) {
-      script += '_compiled';
-    }
-    script += '.js"><' + '/script>';
-    document.write(script);
-  	</script>
-	<script>
-     var styles = [[{
-       url: 'resources/imgs/markerclusterer/people35.png',
-       height: 35,
-       width: 35,
-       anchor: [16, 0],
-       textColor: '#ff00ff',
-       textSize: 10
-     }, {
-       url: 'resources/imgs/markerclusterer/people45.png',
-       height: 45,
-       width: 45,
-       anchor: [24, 0],
-       textColor: '#ff0000',
-       textSize: 11
-     }, {
-       url: 'resources/imgs/markerclusterer/people55.png',
-       height: 55,
-       width: 55,
-       anchor: [32, 0],
-       textColor: '#ffffff',
-       textSize: 12
-     }], [{
-       url: 'resources/imgs/markerclusterer/conv30.png',
-       height: 27,
-       width: 30,
-       anchor: [3, 0],
-       textColor: '#ff00ff',
-       textSize: 10
-     }, {
-       url: 'resources/imgs/markerclusterer/conv40.png',
-       height: 36,
-       width: 40,
-       anchor: [6, 0],
-       textColor: '#ff0000',
-       textSize: 11
-     }, {
-       url: 'resources/imgs/markerclusterer/conv50.png',
-       width: 50,
-       height: 45,
-       anchor: [8, 0],
-       textSize: 12
-     }], [{
-       url: 'resources/imgs/markerclusterer/heart30.png',
-       height: 26,
-       width: 30,
-       anchor: [4, 0],
-       textColor: '#ff00ff',
-       textSize: 10
-     }, {
-       url: 'resources/imgs/markerclusterer/heart40.png',
-       height: 35,
-       width: 40,
-       anchor: [8, 0],
-       textColor: '#ff0000',
-       textSize: 11
-     }, {
-       url: 'resources/imgs/markerclusterer/heart50.png',
-       width: 50,
-       height: 44,
-       anchor: [12, 0],
-       textSize: 12
-     }]];
-     
-	 //-----------------------
-     //맵 스타일 - Bright & Bubbly
-     var styles = [ 
-               ]
-     //-----------------------
-     // var zoom = parseInt(document.getElementById('zoom').value, 10);
-     //var size = parseInt(document.getElementById('size').value, 10);
-     //var style = parseInt(document.getElementById('style').value, 10);
-     var zoom = null ;
-     var size = null ;
-     var style = null;
-     //여기까지 clusterer
-	 //----------------------------------------------------------
-
-	//로그인 메뉴 
-	$(function() {
-	  // Setup drop down menu
-	  $('.dropdown-toggle').dropdown();
+<script src="resources/js_custom/markerwithlabel.js"></script>
+<!-- 
+	<link rel="stylesheet" href="/resources/demos/style.css">
+	 -->
 	 
-	  // Fix input element click problem
-	  $('.dropdown input, .dropdown label').click(function(e) {
-	    e.stopPropagation();
-	  });
-	});
-	
-
+<script>
+	//여기부터 clusterer
+		//----------------------------------------------------------	
+	    var script = '<script type="text/javascript" src="resources/js_custom/markerclusterer';
+	    if (document.location.search.indexOf('compiled') !== -1) {
+	      script += '_compiled';
+	    }
+	    script += '.js"><' + '/script>';
+	    document.write(script);
+	  	</script>
+<script>
+	     var styles = [[{
+	       url: 'resources/imgs/markerclusterer/people35.png',
+	       height: 35,
+	       width: 35,
+	       anchor: [16, 0],
+	       textColor: '#ff00ff',
+	       textSize: 10
+	     }, {
+	       url: 'resources/imgs/markerclusterer/people45.png',
+	       height: 45,
+	       width: 45,
+	       anchor: [24, 0],
+	       textColor: '#ff0000',
+	       textSize: 11
+	     }, {
+	       url: 'resources/imgs/markerclusterer/people55.png',
+	       height: 55,
+	       width: 55,
+	       anchor: [32, 0],
+	       textColor: '#ffffff',
+	       textSize: 12
+	     }], [{
+	       url: 'resources/imgs/markerclusterer/conv30.png',
+	       height: 27,
+	       width: 30,
+	       anchor: [3, 0],
+	       textColor: '#ff00ff',
+	       textSize: 10
+	     }, {
+	       url: 'resources/imgs/markerclusterer/conv40.png',
+	       height: 36,
+	       width: 40,
+	       anchor: [6, 0],
+	       textColor: '#ff0000',
+	       textSize: 11
+	     }, {
+	       url: 'resources/imgs/markerclusterer/conv50.png',
+	       width: 50,
+	       height: 45,
+	       anchor: [8, 0],
+	       textSize: 12
+	     }], [{
+	       url: 'resources/imgs/markerclusterer/heart30.png',
+	       height: 26,
+	       width: 30,
+	       anchor: [4, 0],
+	       textColor: '#ff00ff',
+	       textSize: 10
+	     }, {
+	       url: 'resources/imgs/markerclusterer/heart40.png',
+	       height: 35,
+	       width: 40,
+	       anchor: [8, 0],
+	       textColor: '#ff0000',
+	       textSize: 11
+	     }, {
+	       url: 'resources/imgs/markerclusterer/heart50.png',
+	       width: 50,
+	       height: 44,
+	       anchor: [12, 0],
+	       textSize: 12
+	     }]];
+	     
+		 //-----------------------
+	     //맵 스타일 - Bright & Bubbly
+	     var styles = [ 
+	               ]
+	     //-----------------------
+	     // var zoom = parseInt(document.getElementById('zoom').value, 10);
+	     //var size = parseInt(document.getElementById('size').value, 10);
+	     //var style = parseInt(document.getElementById('style').value, 10);
+	     var zoom = null ;
+	     var size = null ;
+	     var style = null;
+	     //여기까지 clusterer
+		 //----------------------------------------------------------
+		 
 	
 	//---------------------------------------
 	var test="${test}";
@@ -313,24 +332,7 @@
 	var map;
 	var markers = [];
 	
-	//-----------------------------------------------------
-	//여기부터 아이템 modal
-	 $(function() {
-	    $( "#dialog" ).dialog({
-	      autoOpen: false,
-	      show: {
-	        effect: "blind",
-	        duration: 1000
-	      },
-	      hide: {
-	        effect: "explode",
-	        duration: 1000
-	      }
-	    });
-	 
-	  });
 	
-	//-----------------------------------------------------
 	//var itemList=${itemList};
 	
 	//statCode 1=sell, 2=buy, 3=deal
@@ -353,138 +355,241 @@
 							</c:if>
 								,
 						title : '${itemList.itemName}',
-						content : '<div id="dialog" title="Basic dialog">'+
-								  '<p>This is an animated dialog which is useful for displaying information.'+
-								  'The dialog window can be moved, resized and closed with the \'x\' icon.</p>'+
-								  '</div>'
+						//	labelContent: '$425K',
+						//	labelAnchor: new google.maps.Point(22, 0),
+						//    labelClass: "labels", // the CSS class for the label
+						
+						content : '<div id="content">'+
+								'<h1 id="head" class="head">${itemList.itemName}</h1>'+
+								 '<div id="bodyContent">'+
+								 <c:if test="${itemList.itemPicturePath1!=null}">
+								 '<img src = "resources/itempictures/${itemList.itemPicturePath1}"></img><br>'+
+								 </c:if>
+								 '${itemList.itemInfo}'+
+								 '</div>'+
+								'</div >'
+						/*
+						content :  '<div id="dialog" title="Basic dialog">'+
+									'몰아치는 한숨'+
+						 			'</div>'
+						 			
+						 content :  '<div id="${itemList.itemNo}" title="Basic dialog">'+
+									'몰아치는 한숨'+
+						 			'</div>'
+						 			*/
+						//labelContent : '${itemList.itemInfo}'
 						})
 			);
-	</c:forEach>
-	//	labelContent: '$425K',
-	//	labelAnchor: new google.maps.Point(22, 0),
-	//    labelClass: "labels", // the CSS class for the label
-	
-	/*
-		content : '<div id="content">'+
-				'<h1 id="head" class="head">${itemList.itemName}</h1>'+
-				 '<div id="bodyContent">'+
-				 <c:if test="${itemList.itemPicturePath1!=null}">
-				 '<img src = "resources/itempictures/${itemList.itemPicturePath1}"></img><br>'+
-				 </c:if>
-				 '${itemList.itemInfo}'+
-				 '</div>'
-	*/
-	
-	//labelContent : '${itemList.itemInfo}'
-
-	function initialize() {
-
-		// map = new google.maps.Map(document.getElementById('map-canvas'),
-		//     mapOptions);
-		var mapOptions = {
-			zoom : 12,
-			center : new google.maps.LatLng(-33, 151),
-			disableDefaultUI : true,
-			styles: styles
-		}
-		map = new google.maps.Map(document.getElementById("map_canvas"),
-				mapOptions);
-		//map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
-		// Try HTML5 geolocation
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(function(position) {
-				var pos = new google.maps.LatLng(position.coords.latitude,
-						position.coords.longitude);
-				
+		</c:forEach>
+		markers.push(
 				new google.maps.Marker({
-					position : new google.maps.LatLng(position.coords.latitude,
-							position.coords.longitude),
-					map : map,
-					icon: geoImage					
-					});
+				position : new google.maps.LatLng(37.500848, 127.053065),
+				map : map,
+				icon: buyImage,
+				title : 'epic',
 				
-				map.setCenter(pos);
-				map.setZoom(12);
-			}, function() {
-				handleNoGeolocation(true);
+				content :  '<div id="dialog" title="Basic dialog">'+
+							'몰아치는 한숨'+
+							'</div>'
+				})
+			);
+		
+
+		function initialize() {
+
+			// map = new google.maps.Map(document.getElementById('map-canvas'),
+			//     mapOptions);
+			var mapOptions = {
+				zoom : 12,
+				center : new google.maps.LatLng(-33, 151),
+				disableDefaultUI : true,
+				styles: styles
+			}
+			map = new google.maps.Map(document.getElementById("map_canvas"),
+					mapOptions);
+			//map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+			// Try HTML5 geolocation
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(function(position) {
+					var pos = new google.maps.LatLng(position.coords.latitude,
+							position.coords.longitude);
+					
+					new google.maps.Marker({
+						position : new google.maps.LatLng(position.coords.latitude,
+								position.coords.longitude),
+						map : map,
+						icon: geoImage					
+						});
+					
+					map.setCenter(pos);
+					map.setZoom(12);
+				}, function() {
+					handleNoGeolocation(true);
+				});
+			} else {
+				// Browser doesn't support Geolocation
+				handleNoGeolocation(false);
+			}
+
+			markerInitialize(map);
+			markerClusterer = new MarkerClusterer(map, markers, {
+		          //maxZoom: zoom,
+		          gridSize: size
+		          //styles: styles[style]
+		        });
+		}
+		
+
+		function markerInitialize(map) {
+		  for (var i = 0; i < markers.length; i++) {
+			markers[i].setMap(map);   
+			//console.log(markers[i].content); 
+			markerAddListener(markers[i], i);
+		  }
+		  /*
+		  $('#dialog').on('shown', function () {
+			  google.maps.event.trigger(map, 'resize');
+			})
+			*/
+		}
+		// Sets the map on all markers in the array.
+		function markerAddListener(marker, i) {
+			/* 
+		  var infowindow = new google.maps.InfoWindow({
+		    content: marker.content
+		  });
+		  */
+		  google.maps.event.addListener(marker, 'click', function() {
+			  //infowindow.open(marker.get('map'), marker);	
+			  //console.log("뭐지?");
+		  		alert("휴..");
+		  		//$("#dialog").parent().appendTo($("#bd"));
+		  		$("#dialog2").dialog( "open" ); 	
+		  });
+		  $(function() {
+			    $( "#dialog2" ).dialog({
+				  autoOpen: false,
+			      show: {
+			        effect: "blind",
+			        duration: 1000
+			      },
+			      hide: {
+			        effect: "explode",
+			        duration: 1000
+			      }
+			    });
 			});
-		} else {
-			// Browser doesn't support Geolocation
-			handleNoGeolocation(false);
+		  /*
+		  google.maps.event.addListener(marker, 'click', function() {
+		    infowindow.open(marker.get('map'), marker);
+		  });
+		  */
+		  //infowindow.open(marker.get('map'), marker);
 		}
+		
+		
+		//gps module
+		function handleNoGeolocation(errorFlag) {
+			if (errorFlag) {
+				var content = 'Error: The Geolocation service failed.';
+			} else {
+				var content = 'Error: Your browser doesn\'t support geolocation.';
+			}
 
-		markerInitialize(map);
-		markerClusterer = new MarkerClusterer(map, markers, {
-	          //maxZoom: zoom,
-	          gridSize: size
-	          //styles: styles[style]
-	        });
-	}
-	
+			var options = {
+				map : map,
+				position : new google.maps.LatLng(60, 105),
+				content : content
+			};
 
-
-	// Sets the map on all markers in the array.
-	function markerInitialize(map) {
-	  for (var i = 0; i < markers.length; i++) {
-		markers[i].setMap(map);
-	    
-		console.log(markers[i].content);
-	    
-		markerAddListener(markers[i], i);
-	  }
-	}
-	
-	// The five markers show a secret message when clicked
-	// but that message is not within the marker's instance data
-	function markerAddListener(marker, i) {
-	  var infowindow = new google.maps.InfoWindow({
-	    content: marker.content
-	  });
-
-	  
-	  google.maps.event.addListener(marker, 'click', function() {
-		      $( "#dialog" ).dialog( "open" );
-	  {
-	  /*
-	  google.maps.event.addListener(marker, 'click', function() {
-	    infowindow.open(marker.get('map'), marker);
-	  });
-	  */
-	  //infowindow.open(marker.get('map'), marker);
-	}
-	
-	//gps module
-	function handleNoGeolocation(errorFlag) {
-		if (errorFlag) {
-			var content = 'Error: The Geolocation service failed.';
-		} else {
-			var content = 'Error: Your browser doesn\'t support geolocation.';
+			var infowindow = new google.maps.InfoWindow(options);
+			map.setCenter(options.position);
 		}
-
-		var options = {
-			map : map,
-			position : new google.maps.LatLng(60, 105),
-			content : content
-		};
-
-		var infowindow = new google.maps.InfoWindow(options);
-		map.setCenter(options.position);
-	}
+		
+		// Add a marker to the map and push to the array.
+		function addMarker(location) {
+			var marker = new google.maps.Marker({
+				position : location,
+				map : map
+			});
+			markers.push(marker);
+		}
+					
+		google.maps.event.addDomListener(window, 'load', initialize);
+					
+	</script>
+	<!--
+		
+		
+		
+		
+				
+	---------------------------------------------------------------------
+								 THE END !      
+			
+			
+							Mr.JaeYoung 코드 종료 지점
 	
-	// Add a marker to the map and push to the array.
-	function addMarker(location) {
-		var marker = new google.maps.Marker({
-			position : location,
-			map : map
-		});
-		markers.push(marker);
-	}
 	
-
-	google.maps.event.addDomListener(window, 'load', initialize);
-
-
+								 THE END ! 
+	---------------------------------------------------------------------
 	
+	
+	
+	
+	
+	-->	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!--
+	
+	
+	
+	
+				
+	---------------------------------------------------------------------
+								S T A R T!      
+			
+			
+				Mr.MinSeok 코드 시작 지점, 종료지점까지 수정하시면 안됩니다!
+	
+	
+								S T A R T!
+	---------------------------------------------------------------------
+	
+	
+	
+	
+	
+	-->	
+	<script src="http://code.jquery.com/jquery.min.js"></script>
+	<!-- 아래거 빼도됨 -->
+	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+	<script>
+	//로그인 메뉴 
+	$(function() {
+	  // Setup drop down menu
+	  $('.dropdown-toggle').dropdown();
+	 
+	  // Fix input element click problem
+	  $('.dropdown input, .dropdown label').click(function(e) {
+	    e.stopPropagation();
+	  });
+	});
+
 	//셀렉트
 	
 	var f_selbox = new Array('의류', '수입명품', '패션잡화' , '미용',
@@ -542,11 +647,46 @@
 	}
 	
 	</script>
+	
+	<!--
+		
+		
+		
+		
+				
+	---------------------------------------------------------------------
+								 THE END !      
+			
+			
+							Mr.MinSeok 코드 종료 지점
+	
+	
+								 THE END ! 
+	---------------------------------------------------------------------
+	
+	
+	
+	
+	
+	-->	
+	
 </head>
-<body onload="initialize(); init(this.form);">
+<!-- 
+	onLoad=initialize 쓰지마세요. 직접 dom객체에 추가했어요.
+ 	onload에 추가하면 2번 되서 성능 저하됩니다~~~~~~ 
+ -->
+<body onload="init(this.form);">
+	
 	<header>
+		
+		<!-- Header부분에 modal용 div넣습니다. 레이아웃과 상관없으니 삭제하지 마세요 -->
+		<div id="dialog2" class="dialog2" title="Basic dialog">
+			<p>what the?</p>
+		</div>
+		
 		<%@include file="header.jsp"%>
 	</header>
+	
 	<div id="aside" class="tabbable">
 		<ul class="nav">
 			<li class="active">
@@ -693,8 +833,8 @@
 	</div>
 	
 	<div id="map_canvas" style="width:71%; height:100%;">
-	
 	</div>
+	
 	<script type="text/javascript">
 	//이메일칸에 입력전에 submit 버튼 활성화/비활성화
 	document.loginform.commit.disabled = true;
