@@ -208,6 +208,10 @@
 	
 	-->	
 	
+	<!-- jquery + UI + CSS google CDN -->
+	
+	
+	
 	<script src="http://code.jquery.com/jquery.min.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 	
@@ -223,19 +227,31 @@
 	<script
 	src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 
-	<!--
+	<%--
 	<script
 		src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
- 	 -->
+ 	 --%>
 	
-	<!-- 
+	<%--
 	<script src="resources/js_custom/markerclusterer_packed.js"></script>
 	<script src="resources/js_custom/markerclusterer.js"></script>
-	 -->
+	 --%> 
 	<script src="resources/js_custom/markerwithlabel.js"></script>
-	<!-- 
+	<%-- 
 	<link rel="stylesheet" href="/resources/demos/style.css">
-	 -->
+	  --%>
+	 
+	
+
+	
+	<%-- 
+	<script src="resources/js_custom/markerclusterer_packed.js"></script>
+	<script src="resources/js_custom/markerclusterer.js"></script>
+	--%>
+	<script src="resources/js_custom/markerwithlabel.js"></script>
+	<%--
+	<link rel="stylesheet" href="/resources/demos/style.css">
+	--%>
 	 
 <script>
 	//여기부터 clusterer
@@ -247,7 +263,7 @@
 	    script += '.js"><' + '/script>';
 	    document.write(script);
 </script>
-<script>
+<script async>
 	     var styles = [[{
 	       url: 'resources/imgs/markerclusterer/people35.png',
 	       height: 35,
@@ -378,19 +394,12 @@
 								 '</div>'+
 								'</div >'
 						*/
-						/*
-						content :  '<div id="dialog" title="Basic dialog">'+
-									'몰아치는 한숨'+
-						 			'</div>'
-						 			
-						 content :  '<div id="${itemList.itemNo}" title="Basic dialog">'+
-									'몰아치는 한숨'+
-						 			'</div>'
-						 			*/
+					
 						//labelContent : '${itemList.itemInfo}'
 						})
 			);
 		</c:forEach>
+	
 		/*
 		markers.push(
 				new google.maps.Marker({
@@ -462,8 +471,8 @@
 			content: marker.content	
 		  });
 		 */
-		  console.log("marker.content_"+marker.content);
-		 var dialogName="#item"+marker.content;
+		  //console.log("marker.content_"+marker.content);
+		 //var dialogName="#item"+marker.content;
 		  google.maps.event.addListener(marker, 'click', function() {
 			  //infowindow.open(marker.get('map'), marker);	
 			  //console.log("뭐지?");
@@ -898,9 +907,6 @@
 				 <!-- -->
 					${itemList.itemInfo}
 				</div>
-				 <!-- 
-				 ${itemList.itemInfo}
-				 -->
 			</div>
 		</c:forEach>
 		
