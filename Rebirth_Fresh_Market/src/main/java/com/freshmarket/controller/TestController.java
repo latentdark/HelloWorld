@@ -37,6 +37,11 @@ public class TestController {
 	public String home(Locale locale, Model model) {
 		return "Test/Dialog";
 	}
+	
+	@RequestMapping(value ="/itemMap")
+	public String itemMap(Locale locale, Model model) {
+		return "web/itemMap";
+	}
 }
 
 	
