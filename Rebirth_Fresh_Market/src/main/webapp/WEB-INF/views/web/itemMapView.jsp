@@ -485,30 +485,7 @@
 		  });
 		  
 		  
-		  <c:forEach var="itemList" items="${itemList}">
-			<c:set var="i" value="${ i+1 }" />	
-				$(function() {
-				    $( "#item${itemList.itemNo}" ).dialog({
-				      maxHeight:700,
-				      maxWidth: 1000,
-				      minHeight: 700,
-				      minWidth: 1000,
-					  autoOpen: false,
-					  draggable : false,
-					  modal : true ,
-					  resizable : true,
-					  position : { my: "center", at: "center", of: window },
-				      show: {
-				        effect: "blind",
-				        duration: 1000
-				      },
-				      hide: {
-				        effect: "explode",
-				        duration: 1000
-				      }
-				    });
-				});
-			</c:forEach>
+		 
 		  
 		  //아래는 실행가능한 코드
 		  /*
@@ -534,7 +511,47 @@
 		  */
 		  //infowindow.open(marker.get('map'), marker);
 		}
-		
+		<c:forEach var="itemList" items="${itemList}">
+			<c:set var="i" value="${ i+1 }" />	
+				$(function() {
+				    $( "#item${itemList.itemNo}" ).dialog({
+				      maxHeight:700,
+				      maxWidth: 1000,
+				      minHeight: 700,
+				      minWidth: 1000,
+					  autoOpen: false,
+					  draggable : false,
+					  modal : true ,
+					  resizable : true,
+					  closeText : "닫기버튼입니다.",
+					  buttons : {
+						  "문의하기": function() {  window.location = 'http://www.stackoverflow.com'; },
+						   "닫기": function() { $(this).dialog("close"); },
+					  }, 
+				      position : { my: "center", at: "center", of: window },
+				      show: {
+				        effect: "blind",
+				        <%--  effect: "blind", --%>
+				        duration: 400
+				      },
+				      hide: {
+				        effect: "explode",
+				        <%-- effect: "explode",--%>
+				        duration: 300
+				      }
+				}).prev(".ui-dialog-titlebar").css("background","#87cefa");
+
+					<%--    
+				.ui-dialog-title{
+					font-size: 200%;
+			    	color: #FFFFFF ;
+			    	background: #000000 ;
+				};
+				--%>
+				
+			});
+		</c:forEach>
+			
 		
 		//gps module
 		function handleNoGeolocation(errorFlag) {
@@ -900,10 +917,11 @@
 			<div id="item${itemList.itemNo}" title="${itemList.itemName}">
 				
 				<div id="bodyContent">
-				 
-					<c:if test="${itemList.itemPicturePath1!=null}">
-						<img src = "resources/itempictures/${itemList.itemPicturePath1}"></img><br>
-					</c:if>
+				 	<div align="center">
+						<c:if test="${itemList.itemPicturePath1!=null}">
+							<img style="width: 700px; height:auto;", src = "resources/itempictures/${itemList.itemPicturePath1}"></img><br>
+						</c:if>
+					</div>
 				 <!-- -->
 					${itemList.itemInfo}
 				</div>
