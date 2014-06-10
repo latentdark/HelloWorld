@@ -26,6 +26,7 @@
 	border-style: none;
 	font-size: 15px;
 	font-familiy: 'Nanum Gothic';
+	z-index: 2000;
 	margin: 0;
 }
 
@@ -188,7 +189,7 @@ body {
 }
 
 <%-- slider bar css --%>
-<%-- Menu1 --%>
+<%-- 텔 --%>
 #menu1 {
 	transition: all 0.3s ease;
 	position: fixed;
@@ -198,7 +199,7 @@ body {
 	background: #CDECFA;
 	<%--background: rgb(0, 0, 0); --%>
 	height: 100%;
-	z-index: 999;
+	z-index: 1100;
 	box-shadow: 0px 0px 10px black;
 	<%-- box-shadow: 0px 0px 10px black; --%>
 }
@@ -218,13 +219,14 @@ body {
 #menu1 a:hover {
 	background: rgb(50, 50, 50);
 }
-<%-- 텔 --%>
+
 #menu-toggle1 {
 	position: fixed;
 	top: 200px;
 	left: 0;
 	background: rgb(3, 0, 102);
-	z-index: 1000;
+	z-index: 1000;	
+	
 	padding-left: 10px;
 	padding-top: 10px;
 	padding-bottom: 10px;
@@ -252,6 +254,7 @@ body {
 	left: 400px;
 }
 
+
 <%-- Menu2 --%>
 #menu2 {
 	transition: all 0.3s ease;
@@ -262,7 +265,7 @@ body {
 	background: #CDECFA;
 	<%--background: rgb(0, 0, 0); --%>
 	height: 100%;
-	z-index: 999;
+	z-index: 1100;
 	box-shadow: 0px 0px 10px black;
 	<%-- box-shadow: 0px 0px 10px black; --%>
 }
@@ -327,7 +330,7 @@ body {
 	background: #CDECFA;
 	<%--background: rgb(0, 0, 0); --%>
 	height: 100%;
-	z-index: 999;
+	z-index: 1100;
 	box-shadow: 0px 0px 10px black;
 	<%-- box-shadow: 0px 0px 10px black; --%>
 }
@@ -416,6 +419,8 @@ body {
 	
 	<%-- -----------------------------------------------------------------------%>
 	
+
+	
 	<!-- jquery + UI + CSS google CDN -->
 	
 	<%--panel용 lib --%>
@@ -477,6 +482,9 @@ body {
 	<script src="resources/js_custom/script.js"></script> 
 	 --%>
 	 <script src="resources/js_custom/slider_script.js"></script> 
+	 
+	 <script src="/resources/js/jquery.bootstrap.wizard.js"></script>
+	<script src="/resources/js/prettify.js"></script>
 <script>
 
 
@@ -973,7 +981,6 @@ body {
 		<%@include file="header.jsp"%>
 	</header>
 	
-	<%-- 텔 --%>
 	<div id="menu-toggle1">
 				
 		<img src="resources/imgs/slider/search.png" width=70 height=70 alt="Menu1"></img>
@@ -982,143 +989,211 @@ body {
 		--%>
 	</div>
 		<nav id="menu1">
-			<br><br><br><br><br><br><br>
 			<div class="tab-pane active" id="tab1">
-			<p>안녕</p>
+			<form class="navbar-form navbar-left" role="search">
+			    <div class="form-group">
+			        <input type="text" class="form-control" placeholder="Search">
+			    </div>
+			    <button type="submit" class="btn btn-default">검색</button>
+			    <br><br>
+			    <div id="select_loca">
+			    	위치 선택
+		    		<div class="btn-group" data-toggle="buttons" style="margin-left:10px">			    
+				  		<label class="btn btn-default active">
+				    	<input type="radio" name="options" id="option1"> 현재위치
+				  		</label>
+			  			<label class="btn btn-default">
+				    	<input type="radio" name="options" id="option2"> 위치지정
+				  		</label>
+					</div>
+			    </div>
+			    <br>
+			   	<div id="select_deal">
+			    	거래 선택 
+			    	<div class="btn-group" data-toggle="buttons" style="margin-left:10px">			    
+				  		<label class="btn btn-default">
+				    	<input type="radio" name="options" id="option1"> 삽니다
+				  		</label>
+			  			<label class="btn btn-default">
+				    	<input type="radio" name="options" id="option2"> 팝니다
+				  		</label>
+					</div>
+				</div>
+				<br>
+				<div>
+					거래 지역 범위 설정
+				</div>
+			</form>
 		</div><!-- end of tap1   -->
 		</nav>
 	
 	<div id="menu-toggle2">
-
-		<img src="resources/imgs/slider/Cloud_Add.png" width=70 height=70
-			alt="Menu2"></img>
+				
+		<img src="resources/imgs/slider/Cloud_Add.png" width=70 height=70 alt="Menu2"></img>
 		<%-- 
 		<img src="resources/imgs/slider/menu.png" width=50 height=50 alt="Menu"></img>
 		--%>
 	</div>
-		
+		<%-- 텔 --%>
 		<nav id="menu2">
 			<br><br><br><br><br><br><br>
 			<div class="tab-pane" id="tab2">
-			<!-- 진행% -->
-			<div class="progress">
-			  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-			    <span class="sr-only">60% Complete</span>
-			  </div>
-			</div> 
-			<form action="" name="form">
-				<div class="panel-group" id="accordion">
-				  <div class="panel panel-default">
-				    <div class="panel-heading">
-				      <h4 class="panel-title">
-				        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-				          Step 1. 거래선택
-				        </a>
-				      </h4>
-				    </div>
-				    <div id="collapseOne" class="panel-collapse collapse in">
-				      <div class="panel-body">
-				     	<input type="button" class="btn btn-default accordion-toggle" id="buybtn" value="삽니다"  data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-						<input type="button" class="btn btn-default accordion-toggle" id="sellbtn" value="팝니다"  data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-				      </div>
-				    </div>
+	
+			<div id="rootwizard">				
+				<div class="navbar2">
+				  <div class="navbar-inner2">
+				    <div class="container2" style="display:none;">
+						<ul id="register_tap">
+						  	<li><a href="#tab11" data-toggle="tab">1단계</a></li>
+							<li><a href="#tab12" data-toggle="tab">2단계</a></li>
+							<li><a href="#tab13" data-toggle="tab">3단계</a></li>
+							<li><a href="#tab14" data-toggle="tab">4단계</a></li>
+							<li><a href="#tab15" data-toggle="tab">5단계</a></li>
+						</ul>
+				 	</div>
 				  </div>
-				  <div class="panel panel-default">
-				    <div class="panel-heading">
-				      <h4 class="panel-title">
-				        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-				          Step 2. 거래 장소 선택
-				        </a> 
-				      </h4>
+				</div>
+				<div id="bar" class="progress progress-striped active">
+				  <div class="progress-bar"></div>
+				</div>
+				
+				<form action="#" name="form" id="register_form" method="post" >
+				<div class="tab-content">
+				 	
+				    <div class="tab-pane" id="tab11">
+				    	<div class="form-group">
+				    		<h4>거래 선택하기</h4>
+				    		<br>
+						   	 <div class="btn-group" data-toggle="buttons">
+							  <label class="btn btn-default">
+							    <input type="radio" name="buyBtn" id="buy"> 삽니다
+							  </label>
+							  <label class="btn btn-default">
+							    <input type="radio" name="sellBtn" id="sell"> 팝니다
+							  </label>							  
+							</div>	
+						</div>
 				    </div>
-				    <div id="collapseTwo" class="panel-collapse collapse">
-				      <div class="panel-body">
-				        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, 
-				      </div>
+				    <div class="tab-pane" id="tab12">
+				    	<div class="form-group">
+				    		<h4>거래할 위치 등록하기</h4>
+				    		<br>
+				    		<input type="hidden" id="reg_lat" value="" style="border: none;">
+				    		<input type="hidden" id="reg_lng" value="" style="border: none;">
+				    		<input id="latlng" type="text" value="" style="display:none;">
+				    		<button class="btn btn-default" onclick="markerDrop();">위치 정하기</button>
+				    		<br><br>
+				    		<textarea id="reg_add" rows="4" cols="40" value="" style="border: none;"></textarea>
+				    	</div>
 				    </div>
-				  </div>
-				  <div class="panel panel-default">
-				    <div class="panel-heading">
-				      <h4 class="panel-title">
-				        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-				      	  Step 3. 사진 등록
-				        </a>
-				      </h4>
+					<div class="tab-pane" id="tab13">
+						<div class="form-group">
+							<h4>사진 등록하기</h4>
+							<br>
+							<input  class="form-control" type="file" multiple="multiple" id="exampleInputFile">						
+				   		</div>
 				    </div>
-				    <div id="collapseThree" class="panel-collapse collapse">
-				      <div class="panel-body">
-				      	 <div class="form-group">
-						    <input  class="form-control" type="file" id="exampleInputFile">
-						 </div>
-				      </div>
-				    </div>
-				  </div>
-				  <div class="panel panel-default">
-					    <div class="panel-heading">
-					      <h4 class="panel-title">
-					        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
-					          Step 4. 카테고리 등록
-					        </a>
-					      </h4>
+					<div class="tab-pane" id="tab14">
+						<div class="form-group">
+							<h4>카테고리 등록하기</h4>
+							<br>
+							<select id="category1" class="form-control" onchange="itemChange(this.form);" ></select>
+							<select id="category2" class="form-control"></select>											 
 					    </div>
-					    <div id="collapseFour" class="panel-collapse collapse" >
-					     
-					      
-					      <div class="panel-body">
-					      	<select id="category1" class="form-control" onchange="itemChange(this.form);" ></select>
-						 	 <select id="category2" class="form-control"></select>
-					 
-					      </div>
+					</div>    
+				    <div class="tab-pane" id="tab15">
+						<div class="form-group">
+							<h4>상세내용 입력하기</h4>
+							<br>	
+							<input id="item_name" type="text" class="form-control input-normal" placeholder="물품명을 입력하세요" >								       
+					        <div class="input-group">
+					        	<span class="input-group-addon">￦</span><input type="text" class="form-control" placeholder="희망가격 입력" >
+				     	 	</div>	
+				     	 	<br>	
+				     	 	<textarea class="form-control" rows="10" cols="80" placeholder="상세내용을 입력하세요"></textarea>
+				     	 	<br>				      				
+							<button class="btn btn-default" data-toggle="modal" href="#previewModal" onclick="return false">
+							미리보기
+							</button>
+							<input type="submit" class="btn btn-primary" value="등록하기" >
+							
+						
+							<!-- preview modal -->
+							<div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							  <div class="modal-dialog">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							        <h4 class="modal-title">제품명<font color="red"> [가격]</font></h4>
+							       
+							      </div>
+							      <div class="modal-body">
+							        <div id="imgslider_container">
+          		
+									  <!-- main slider carousel -->
+									  <div class="row-fluid">
+									    <div class="span12" id="slider">
+									      <div class="row-fluid">
+									        <div class="span8" id="carousel-bounding-box">
+									          <div id="myCarousel" class="carousel slide">
+									            
+									            <!-- main slider carousel items -->
+									            <div class="carousel-inner">
+									              <div class="active item" data-slide-number="0">
+									                <img src="http://placehold.it/640x480&amp;text=one">
+									              </div>
+									              <div class="item" data-slide-number="1">
+									                <img src="http://placehold.it/640x480&amp;text=two">
+									              </div>
+									              <div class="item" data-slide-number="2">
+									                <img src="http://placehold.it/640x480&amp;text=three">
+									              </div>
+									              <div class="item" data-slide-number="3">
+									                <img src="http://placehold.it/640x480&amp;text=four">
+									              </div>
+									               
+									            </div>
+									            
+									            <!-- main slider carousel nav controls -->
+									            <a class="carousel-control left" href="#myCarousel" data-slide="prev">‹</a>
+									            <a class="carousel-control right" href="#myCarousel" data-slide="next">›</a>
+									          </div>
+									        </div>
+									        
+									       
+									      </div>
+									      
+									    </div>
+									  </div> <!--/main slider carousel-->
+									</div><!-- end of image slider -->
+									<br>
+									<p>상세 내용</p>
+									
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							       	<input type="submit" class="btn btn-primary" value="등록하기" >
+							      </div>
+							    </div><!-- /.modal-content -->
+							  </div><!-- /.modal-dialog -->
+							</div><!-- /.modal -->
+												 
 					    </div>
-			 	 	</div>
-				    <div class="panel panel-default">
-					    <div class="panel-heading">
-					      <h4 class="panel-title">
-					        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" >
-					          Step 5. 상세 입력
-					        </a>
-					      </h4>
-					    </div>
-					    <div id="collapseFive" class="panel-collapse collapse">
-				      		<div class="panel-body">
-				      				<!-- Button trigger modal -->
-								<button class="btn btn-default" data-toggle="modal" data-target="#myModal">
-								  입력하기
-								</button>
-								<!-- Modal -->
-								<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-								  <div class="modal-dialog">
-								    <div class="modal-content">
-								      <div class="modal-header">								        	
-								       	 	<input id="item_name" type="text" class="form-control input-normal" placeholder="물품명을 입력하세요" >								       
-									        <div class="input-group">
-									        	<span class="input-group-addon">￦</span><input type="text" class="form-control" placeholder="희망가격 입력" >
-								     	 	</div>
-						     	 	  </div>
-								      <div class="modal-body">
-								        <textarea class="form-control" rows="15" cols="80" placeholder="상세내용을 입력하세요"></textarea>
-								      </div>
-								      <div class="modal-footer">
-								        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								        <button type="button" class="btn btn-primary">Save changes</button>
-								      </div>
-								    </div><!-- /.modal-content -->
-								  </div><!-- /.modal-dialog -->
-								</div><!-- /.modal -->				 
-							</div>
-					    </div>
-				  	</div>
-				    
+					</div>   
+					<ul class="pager wizard">
+						<li class="previous first" style="display:none;"><a href="#" onclick="return false">First</a></li>
+						<li class="previous"><a href="#" onclick="return false">Previous</a></li>
+						<li class="next last" style="display:none;"><a href="#" onclick="return false">Last</a></li>
+					  	<li class="next"><a href="#" onclick="return false">Next</a></li>
+					</ul> 
 				</div>	
-				<input id="item_submit" class="btn btn-primary" type="submit" name="commit" value="등록 하기"/>
-			  	<input id="preview" class="btn btn-primary" type="button" value="미리보기">    					
-			</form>
+				</form>
+			</div>
 		</div><!-- end of tap2   -->
 		</nav>	
-	
 	<div id="menu-toggle3">
 				
-		<img src="resources/imgs/slider/handshake_shadowless.png" width=70 height=70 alt="Menu3"></img>
+		<img src="resources/imgs/slider/Handshake-icon.png" width=70 height=70 alt="Menu3"></img>
 		<%-- 
 		<img src="resources/imgs/slider/menu.png" width=50 height=50 alt="Menu"></img>
 		--%>
@@ -1129,17 +1204,6 @@ body {
 				<p>또또 안녕</p>
 			</div><!-- end of tap3   -->
 		</nav>	
-	
-		
-	<%--
-				<nav id="menu">
-					<a href="#">Home</a>
-					<a href="#">About</a>
-					<a href="#">Login</a>
-					<a href="#">A Link</a>
-					<a href="#">Another Link</a>
-				</nav>
-	 --%>
 	
 	<div id="map_canvas" style="width:100%; height:100%;">
 		

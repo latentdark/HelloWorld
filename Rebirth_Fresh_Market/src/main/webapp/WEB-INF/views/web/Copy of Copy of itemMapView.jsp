@@ -532,7 +532,7 @@
 					거래 지역 범위 설정
 				</div>
 			</form>
-		</div><!-- end of tap2   -->
+		</div><!-- end of tap1   -->
 		<div class="tab-pane" id="tab2">
 	
 			<div id="rootwizard">				
