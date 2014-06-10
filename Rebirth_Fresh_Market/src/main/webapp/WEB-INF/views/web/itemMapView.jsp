@@ -986,7 +986,7 @@ body {
 			<br><br><br><br><br><br><br>
 			<div class="tab-pane active" id="tab1">
 			<p>안녕</p>
-		</div><!-- end of tap1   -->
+			</div><!-- end of tap1   -->
 		</nav>
 	
 	<div id="menu-toggle2">
