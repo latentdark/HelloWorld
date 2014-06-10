@@ -26,6 +26,7 @@
 	border-style: none;
 	font-size: 15px;
 	font-familiy: 'Nanum Gothic';
+	z-index: 2000;
 	margin: 0;
 }
 
@@ -198,7 +199,7 @@ body {
 	background: #CDECFA;
 	<%--background: rgb(0, 0, 0); --%>
 	height: 100%;
-	z-index: 999;
+	z-index: 1100;
 	box-shadow: 0px 0px 10px black;
 	<%-- box-shadow: 0px 0px 10px black; --%>
 }
@@ -224,7 +225,8 @@ body {
 	top: 200px;
 	left: 0;
 	background: rgb(3, 0, 102);
-	z-index: 1000;
+	z-index: 1000;	
+	
 	padding-left: 10px;
 	padding-top: 10px;
 	padding-bottom: 10px;
@@ -263,7 +265,7 @@ body {
 	background: #CDECFA;
 	<%--background: rgb(0, 0, 0); --%>
 	height: 100%;
-	z-index: 999;
+	z-index: 1100;
 	box-shadow: 0px 0px 10px black;
 	<%-- box-shadow: 0px 0px 10px black; --%>
 }
@@ -328,7 +330,7 @@ body {
 	background: #CDECFA;
 	<%--background: rgb(0, 0, 0); --%>
 	height: 100%;
-	z-index: 999;
+	z-index: 1100;
 	box-shadow: 0px 0px 10px black;
 	<%-- box-shadow: 0px 0px 10px black; --%>
 }
