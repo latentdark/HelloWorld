@@ -224,6 +224,7 @@ body {
 	position: fixed;
 	top: 200px;
 	left: 0;
+	<%-- 아이콘 바탕색 --%>
 	background: rgb(3, 0, 102);
 	z-index: 1000;	
 	
@@ -235,6 +236,64 @@ body {
 	border-bottom-right-radius: 5px;
 	transition: all 0.3s ease;
 }
+
+
+
+<%-- 새로운 시도 시작 --%>
+#menu-toggle1 span{
+	
+	/* Container properties */
+	
+	width:0;
+	left:90px;
+	top:0px;
+	/*
+	옆에서 얼마나 떨어졌나 지정
+	left:70px;
+	*/
+	padding:0;
+	position:absolute;
+	overflow:hidden;
+
+	/* Text properties */
+	font-family:'Myriad Pro',Arial, Helvetica, sans-serif;
+	font-size:18px;
+	font-weight:bold;
+	letter-spacing:0.6px;
+	white-space:nowrap;
+	line-height:90px;
+	/* 하이라이터 높이 지정 line-height:39px;*/
+	/* CSS3 Transition: */
+	-webkit-transition: 0.25s;
+	
+	/* Future proofing (these do not work yet): */
+	-moz-transition: 0.25s;
+	transition: 0.25s;
+}
+<%-- span 보여주게 하는 코드 --%>
+#menu-toggle1 a:hover span{ 
+	background-color:rgb(255, 228, 0);
+	color:rgb(3, 0, 102);
+	text-shadow:1px 1px 0 #99bf31;
+	width:auto;
+	padding:0 20px;
+	<%--   --%>
+	overflow:visible; }
+
+<%-- 
+#menu-toggle1 a:hover{
+	text-decoration:none;
+	
+	/* CSS outer glow with the box-shadow property */
+	-moz-box-shadow:0 0 5px #9ddff5;
+	-webkit-box-shadow:0 0 5px #9ddff5;
+	box-shadow:0 0 5px #9ddff5;
+}
+--%>
+
+
+<%-- 새로운 시도 끝 --%>
+
 
 #menu-toggle1:hover {
 	background: rgb(255, 228, 0);
@@ -301,6 +360,62 @@ body {
 	transition: all 0.3s ease;
 }
 
+<%-- 새로운 시도 시작 --%>
+#menu-toggle2 span{
+	
+	/* Container properties */
+	
+	width:0;
+	left:90px;
+	top:0px;
+	/*
+	옆에서 얼마나 떨어졌나 지정
+	left:70px;
+	*/
+	padding:0;
+	position:absolute;
+	overflow:hidden;
+
+	/* Text properties */
+	font-family:'Myriad Pro',Arial, Helvetica, sans-serif;
+	font-size:18px;
+	font-weight:bold;
+	letter-spacing:0.6px;
+	white-space:nowrap;
+	line-height:90px;
+	/* 하이라이터 높이 지정 line-height:39px;*/
+	/* CSS3 Transition: */
+	-webkit-transition: 0.25s;
+	
+	/* Future proofing (these do not work yet): */
+	-moz-transition: 0.25s;
+	transition: 0.25s;
+}
+<%-- span 보여주게 하는 코드 --%>
+#menu-toggle2 a:hover span{ 
+	background-color:rgb(255, 228, 0);
+	color:rgb(3, 0, 102);
+	text-shadow:1px 1px 0 #99bf31;
+	width:auto;
+	padding:0 20px;
+	<%--   --%>
+	overflow:visible; }
+
+<%-- 
+#menu-toggle1 a:hover{
+	text-decoration:none;
+	
+	/* CSS outer glow with the box-shadow property */
+	-moz-box-shadow:0 0 5px #9ddff5;
+	-webkit-box-shadow:0 0 5px #9ddff5;
+	box-shadow:0 0 5px #9ddff5;
+}
+--%>
+
+
+<%-- 새로운 시도 끝 --%>
+
+
 #menu-toggle2:hover {
 	background: rgb(255, 228, 0);
 	cursor: pointer;
@@ -365,6 +480,62 @@ body {
 	border-bottom-right-radius: 5px;
 	transition: all 0.3s ease;
 }
+
+<%-- 새로운 시도 시작 --%>
+#menu-toggle3 span{
+	
+	/* Container properties */
+	
+	width:0;
+	left:90px;
+	top:0px;
+	/*
+	옆에서 얼마나 떨어졌나 지정
+	left:70px;
+	*/
+	padding:0;
+	position:absolute;
+	overflow:hidden;
+
+	/* Text properties */
+	font-family:'Myriad Pro',Arial, Helvetica, sans-serif;
+	font-size:18px;
+	font-weight:bold;
+	letter-spacing:0.6px;
+	white-space:nowrap;
+	line-height:90px;
+	/* 하이라이터 높이 지정 line-height:39px;*/
+	/* CSS3 Transition: */
+	-webkit-transition: 0.25s;
+	
+	/* Future proofing (these do not work yet): */
+	-moz-transition: 0.25s;
+	transition: 0.25s;
+}
+<%-- span 보여주게 하는 코드 --%>
+#menu-toggle3 a:hover span{ 
+	background-color:rgb(255, 228, 0);
+	color:rgb(3, 0, 102);
+	text-shadow:1px 1px 0 #99bf31;
+	width:auto;
+	padding:0 20px;
+	<%--   --%>
+	overflow:visible; }
+
+<%-- 
+#menu-toggle1 a:hover{
+	text-decoration:none;
+	
+	/* CSS outer glow with the box-shadow property */
+	-moz-box-shadow:0 0 5px #9ddff5;
+	-webkit-box-shadow:0 0 5px #9ddff5;
+	box-shadow:0 0 5px #9ddff5;
+}
+--%>
+
+
+<%-- 새로운 시도 끝 --%>
+
 
 #menu-toggle3:hover {
 	background: rgb(255, 228, 0);
@@ -995,11 +1166,14 @@ body {
 	</header>
 	
 	<div id="menu-toggle1">
-				
+		<a>
 		<img src="resources/imgs/slider/search.png" width=70 height=70 alt="Menu1"></img>
+		<span>상품검색</span>
+		</a>
 		<%-- 
 		<img src="resources/imgs/slider/menu.png" width=50 height=50 alt="Menu"></img>
 		--%>
+		
 	</div>
 		<nav id="menu1">
 			<div class="tab-pane active" id="tab1">
@@ -1041,8 +1215,10 @@ body {
 		</nav>
 	
 	<div id="menu-toggle2">
-				
+		<a>
 		<img src="resources/imgs/slider/Cloud_Add.png" width=70 height=70 alt="Menu2"></img>
+		<span>물건 팔기/사기</span>
+		</a>		
 		<%-- 
 		<img src="resources/imgs/slider/menu.png" width=50 height=50 alt="Menu"></img>
 		--%>
@@ -1205,8 +1381,10 @@ body {
 		</div><!-- end of tap2   -->
 		</nav>	
 	<div id="menu-toggle3">
-				
+		<a>
 		<img src="resources/imgs/slider/Handshake-icon.png" width=70 height=70 alt="Menu3"></img>
+		<span>거래현황</span>
+		</a>		
 		<%-- 
 		<img src="resources/imgs/slider/menu.png" width=50 height=50 alt="Menu"></img>
 		--%>
