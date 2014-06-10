@@ -12,180 +12,255 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
 	<link rel="Stylesheet" href="/resources/css/bootstrap.min.css"/>
+	
+	<%-- Slider css--%>
+	<%--
+	<link rel="stylesheet" type="text/css" href="css/default.css" />
+	<link rel="stylesheet" type="text/css" href="css/component.css" />
+	 --%>	
 	<style>
-		.navbar{
-			/* background-image: url("/resources/imgs/bg6.png");
+.navbar {
+	/* background-image: url("/resources/imgs/bg6.png");
 			 */
-			background-color: #5DCD9D;
-			border-style: none;
-			font-size:15px;
-			font-familiy:'Nanum Gothic';
-			margin:0;
-		}
-		
-		#brand_img{
-			margin-left:10px;
-		}
-		
-		#start,#signin,#signin_on{
-			padding-top:18px;
-			color:white;
-			background:none;
-		}
-	
-		
-		/* 페이지에 따라 알아서 색깔 바뀌게 수정해야함  */
-		#deal, #deal:hover{
-			background-color:#33A876;
-			padding-top:18px;
-			color:white;
-			height:53px;
-		}
-		
-		#start:hover, #signin:hover, #signin_on:hover{
-			color:gray;
-			background:none;
-		}
-		
-		#search{
-			margin-top: 10px;
-		}
-		
-		body{
-			background-image: url("/resources/imgs/bg6.png");
-		} 
-		
-		
-		.dropdown-menu{
-		 	padding: 15px; 
-		 	padding-bottom: 15px;
-		 	top:54px;
-			left:-180px;
-			margin-right:20px;
-			border-color: #BCBCBC;
-		}
-		
-		#dropdown_on{
-			padding-right:0px;
-			padding-left:0px;
-			padding-top:15px;
-			padding-bottom:15px;
-			margin:0;
-			text-align: right;
-		}
-		
-		
-		#signin_submit{
-			clear: left; 
-			width: 100%; 
-			height: 32px; 
-			font-size: 13px;
-			
-		}
-		
-		#signin_submit.btn{
-			background-color:#00A1DA;
-			border:none;
-			margin-bottom: 5px;
-		}
-		
-		#signup{
-			margin-left:160px;
-			text-decoration: none;
-		}
-		#signup:hover{
-			color: gray;
-		}
-		
-		#dropdown_on>li>a{
-			color:blue;
-		 	background:none;
-		}
-		
-		#dropdown_on>li>a:hover{
-			color:gray;
-		 	background:none;
-		}
-		
-		/* itemMapView css  */
-		
-		html { height: 100% }
-      	body { 
-      		height: 100%; 
-      		margin: 0; 
-      		padding: 0; 
-      		overflow:hidden;
-      	}
-      	
-      	#aside{
-      		background-color:#F5F6F7;
-      		width:7%;
-      		height:100%;
-      		float:left;
-      		margin-top:53px;
-      		text-align:center;
-      		border:1px solid #BCBCBC;
-      		
-      	}
-      	
-      	#aside_detail{
-      		background-color:#FFFFFF;
-      		width:22%;
-      		height:100%;
-      		float:left;
-      		margin-top:53px;
-      		text-align:center;
-      		border-top:1px solid #BCBCBC;
-      		padding-top:10px;
-      		padding-left:10px;
-      		padding-right:10px;
-      	}
-      
-      	#map_canvas{
-      		float:left;
-	      	margin-top:53px;
-	      	border-left:1px solid #BCBCBC;
-      		border-top:1px solid #BCBCBC;
-      		
-      	}
-      	
-      	
-      	/* 상품등록 css  */
-      	#sellbtn{
-      		width:100px;
-      	}
-      	
-      	#buybtn{
-      		width:100px;
-      	}
-      	
-      	#popover-content{
-      		margin-left:200px;
-      		width:600px;
-      		height:400px;
-      	}
-      	
-      	#item_name{
-      		margin-bottom:10px;
-      	}
-      	#category1{
-      		margin-bottom:10px;
-      	}
-      	
-      	.labels {
-	     color: red;
-	     background-color: white;
-	     font-family: "Lucida Grande", "Arial", sans-serif;
-	     font-size: 10px;
-	     font-weight: bold;
-	     text-align: center;
-	     width: 40px;
-	     border: 2px solid black;
-	     white-space: nowrap;
-   		}
-	
-	</style>
-	
+	background-color: #5DCD9D;
+	border-style: none;
+	font-size: 15px;
+	font-familiy: 'Nanum Gothic';
+	margin: 0;
+}
+
+#brand_img {
+	margin-left: 10px;
+}
+
+#start,#signin,#signin_on {
+	padding-top: 18px;
+	color: white;
+	background: none;
+}
+
+/* 페이지에 따라 알아서 색깔 바뀌게 수정해야함  */
+#deal,#deal:hover {
+	background-color: #33A876;
+	padding-top: 18px;
+	color: white;
+	height: 53px;
+}
+
+#start:hover,#signin:hover,#signin_on:hover {
+	color: gray;
+	background: none;
+}
+
+#search {
+	margin-top: 10px;
+}
+
+body {
+	background-image: url("/resources/imgs/bg6.png");
+}
+
+.dropdown-menu {
+	padding: 15px;
+	padding-bottom: 15px;
+	top: 54px;
+	left: -180px;
+	margin-right: 20px;
+	border-color: #BCBCBC;
+}
+
+#dropdown_on {
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	margin: 0;
+	text-align: right;
+}
+
+#signin_submit {
+	clear: left;
+	width: 100%;
+	height: 32px;
+	font-size: 13px;
+}
+
+#signin_submit.btn {
+	background-color: #00A1DA;
+	border: none;
+	margin-bottom: 5px;
+}
+
+#signup {
+	margin-left: 160px;
+	text-decoration: none;
+}
+
+#signup:hover {
+	color: gray;
+}
+
+#dropdown_on>li>a {
+	color: blue;
+	background: none;
+}
+
+#dropdown_on>li>a:hover {
+	color: gray;
+	background: none;
+}
+
+/* itemMapView css  */
+html {
+	height: 100%
+}
+
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+#aside {
+	background-color: #F5F6F7;
+	width: 7%;
+	height: 100%;
+	float: left;
+	margin-top: 53px;
+	text-align: center;
+	border: 1px solid #BCBCBC;
+}
+
+#aside_detail {
+	background-color: #FFFFFF;
+	width: 22%;
+	height: 100%;
+	float: left;
+	margin-top: 53px;
+	text-align: center;
+	border-top: 1px solid #BCBCBC;
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#map_canvas {
+	float: left;
+	margin-top: 53px;
+	border-left: 1px solid #BCBCBC;
+	border-top: 1px solid #BCBCBC;
+}
+
+/* 상품등록 css  */
+#sellbtn {
+	width: 100px;
+}
+
+#buybtn {
+	width: 100px;
+}
+
+#popover-content {
+	margin-left: 200px;
+	width: 600px;
+	height: 400px;
+}
+
+#item_name {
+	margin-bottom: 10px;
+}
+
+#category1 {
+	margin-bottom: 10px;
+}
+
+.labels {
+	color: red;
+	background-color: white;
+	font-family: "Lucida Grande", "Arial", sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	text-align: center;
+	width: 40px;
+	border: 2px solid black;
+	white-space: nowrap;
+}
+
+<%-- slider bar css --%>
+<%-- 텔 --%>
+#menu1 {
+	transition: all 0.3s ease;
+	position: fixed;
+	width: 0%;
+	top: 0;
+	left: -200px;
+	background: #CDECFA;
+	<%--background: rgb(0, 0, 0); --%>
+	height: 100%;
+	z-index: 999;
+	box-shadow: 0px 0px 10px black;
+	<%-- box-shadow: 0px 0px 10px black; --%>
+}
+
+#menu1 a {
+	color: GRAY;
+	<%--color: white; --%>
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	padding: 10px 10px 10px 10px;
+	margin: 10px 10px 10px 10px;
+	border-radius: 100px;
+	transition: all 0.2s ease;
+}
+
+#menu1 a:hover {
+	background: rgb(50, 50, 50);
+}
+
+#menu-toggle1 {
+	position: fixed;
+	top: 200px;
+	left: 0;
+	background: rgb(3, 0, 102);
+	z-index: 1000;
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	transition: all 0.3s ease;
+}
+
+#menu-toggle1:hover {
+	background: rgb(255, 228, 0);
+	cursor: pointer;
+}
+
+#menu1.open {
+	left: 0;
+	width: 400px;
+	<%--
+	width: 200px;
+	 --%>
+	display: block;
+}
+
+#menu-toggle1.open {
+	left: 400px;
+}
+</style>
+
+
+
+<%--  highlight_styles --%>
+<%--
+<link rel="stylesheet" type="text/css" href="highlight_styles.css" />
+ --%>
+ 
+ 	
 	<!--
 				
 				
@@ -208,8 +283,14 @@
 	
 	-->	
 	
+	
+	
+	<%-- -----------------------------------------------------------------------%>
+	
 	<!-- jquery + UI + CSS google CDN -->
 	
+	<%--panel용 lib --%>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 	
 	
 	<script src="http://code.jquery.com/jquery.min.js"></script>
@@ -237,10 +318,19 @@
 	<script src="resources/js_custom/markerclusterer.js"></script>
 	 --%> 
 	<script src="resources/js_custom/markerwithlabel.js"></script>
+	
+	<%--panel lib --%>
+	<%--
+	<script src="resources/js_custom/jquery.slidePanel.min.js"></script>
+	 --%>
 	<%-- 
 	<link rel="stylesheet" href="/resources/demos/style.css">
 	  --%>
 	 
+	<%-- slider --%>
+	<%--
+	<script src="resources/js_custom/modernizr.custom.js"></script>
+	 --%>
 	
 
 	
@@ -252,8 +342,16 @@
 	<%--
 	<link rel="stylesheet" href="/resources/demos/style.css">
 	--%>
+	
+	<%--slider bar script --%>
+	<%--
+	<script src="resources/js_custom/script.js"></script> 
+	 --%>
+	 <script src="resources/js_custom/slider_script.js"></script> 
 	 
 <script>
+
+
 	//여기부터 clusterer
 		//----------------------------------------------------------	
 	    var script = '<script type="text/javascript" src="resources/js_custom/markerclusterer';
@@ -378,12 +476,12 @@
 							</c:if>
 								,
 						title : '${itemList.itemName}',
-						content : '${itemList.itemNo}',
+						content : '${itemList.itemNo}'
 						//	labelContent: '$425K',
 						//	labelAnchor: new google.maps.Point(22, 0),
 						//    labelClass: "labels", // the CSS class for the label
 						
-						
+						/*
 						content : '<div id="content">'+
 								'<h1 id="head" class="head">${itemList.itemName}</h1>'+
 								 '<div id="bodyContent">'+
@@ -393,7 +491,7 @@
 								 '${itemList.itemInfo}'+
 								 '</div>'+
 								'</div >'
-						/**/
+						*/
 					
 						//labelContent : '${itemList.itemInfo}'
 						})
@@ -466,49 +564,27 @@
 		}
 		// Sets the map on all markers in the array.
 		function markerAddListener(marker, i) {
-		 
+		/* 
 		  var infowindow = new google.maps.InfoWindow({
 			content: marker.content	
 		  });
-		  /* */
+		 */
 		  //console.log("marker.content_"+marker.content);
 		 //var dialogName="#item"+marker.content;
 		  google.maps.event.addListener(marker, 'click', function() {
-			  infowindow.open(marker.get('map'), marker);	
+			  //infowindow.open(marker.get('map'), marker);	
 			  //console.log("뭐지?");
 		  		//alert("휴..");
 		  		
-		
-		   		//$("#item"+marker.content).dialog( "open" );
+		  		//아래는 예제
+		  		//$("#dialog2").dialog( "open" ); 
+		   		$("#item"+marker.content).dialog( "open" );
 		  		
 		  });
 		  
-		  /*
-		  <c:forEach var="itemList" items="${itemList}">
-			<c:set var="i" value="${ i+1 }" />	
-				$(function() {
-				    $( "#item${itemList.itemNo}" ).dialog({
-				      maxHeight:700,
-				      maxWidth: 1000,
-				      minHeight: 700,
-				      minWidth: 1000,
-					  autoOpen: false,
-					  draggable : false,
-					  modal : true ,
-					  resizable : true,
-					  position : { my: "center", at: "center", of: window },
-				      show: {
-				        effect: "blind",
-				        duration: 1000
-				      },
-				      hide: {
-				        effect: "explode",
-				        duration: 1000
-				      }
-				    });
-				});
-			</c:forEach>
-		  */
+		  
+		 
+		  
 		  //아래는 실행가능한 코드
 		  /*
 		  $(function() {
@@ -533,7 +609,47 @@
 		  */
 		  //infowindow.open(marker.get('map'), marker);
 		}
-		
+		<c:forEach var="itemList" items="${itemList}">
+			<c:set var="i" value="${ i+1 }" />	
+				$(function() {
+				    $( "#item${itemList.itemNo}" ).dialog({
+				      maxHeight:700,
+				      maxWidth: 1000,
+				      minHeight: 700,
+				      minWidth: 1000,
+					  autoOpen: false,
+					  draggable : false,
+					  modal : true ,
+					  resizable : true,
+					  closeText : "닫기버튼입니다.",
+					  buttons : {
+						  "문의하기": function() {  window.location = 'http://www.stackoverflow.com'; },
+						   "닫기": function() { $(this).dialog("close"); },
+					  }, 
+				      position : { my: "center", at: "center", of: window },
+				      show: {
+				        effect: "blind",
+				        <%--  effect: "blind", --%>
+				        duration: 400
+				      },
+				      hide: {
+				        effect: "explode",
+				        <%-- effect: "explode",--%>
+				        duration: 300
+				      }
+				}).prev(".ui-dialog-titlebar").css("background","#87cefa");
+
+					<%--    
+				.ui-dialog-title{
+					font-size: 200%;
+			    	color: #FFFFFF ;
+			    	background: #000000 ;
+				};
+				--%>
+				
+			});
+		</c:forEach>
+			
 		
 		//gps module
 		function handleNoGeolocation(errorFlag) {
@@ -717,13 +833,167 @@
 	onLoad=initialize 쓰지마세요. 직접 dom객체에 추가했어요.
  	onload에 추가하면 2번 되서 성능 저하됩니다~~~~~~ 
  -->
-<body onload="init(this.form);">
+<body class="cbp-spmenu-push" data-twttr-rendered="true" onload="init(this.form);">
+<%----------------------------------------------------------- --%>
+
+
+
+
+<%----------------------------------------------------------- --%>
 	
 	<header>
 		<%@include file="header.jsp"%>
 	</header>
 	
+	<div id="menu-toggle1">
+				
+		<img src="resources/imgs/slider/Cloud_Add.png" width=70 height=70 alt="Menu1"></img>
+		<%-- 
+		<img src="resources/imgs/slider/menu.png" width=50 height=50 alt="Menu"></img>
+		--%>
+	</div>
+		<%-- 텔 --%>
+		<nav id="menu1">
+			<br><br><br><br><br><br><br>
+			<div class="tab-pane" id="tab2">
+			<!-- 진행% -->
+			<div class="progress">
+			  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+			    <span class="sr-only">60% Complete</span>
+			  </div>
+			</div> 
+			<form action="" name="form">
+				<div class="panel-group" id="accordion">
+				  <div class="panel panel-default">
+				    <div class="panel-heading">
+				      <h4 class="panel-title">
+				        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+				          Step 1. 거래선택
+				        </a>
+				      </h4>
+				    </div>
+				    <div id="collapseOne" class="panel-collapse collapse in">
+				      <div class="panel-body">
+				     	<input type="button" class="btn btn-default accordion-toggle" id="buybtn" value="삽니다"  data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+						<input type="button" class="btn btn-default accordion-toggle" id="sellbtn" value="팝니다"  data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+				      </div>
+				    </div>
+				  </div>
+				  <div class="panel panel-default">
+				    <div class="panel-heading">
+				      <h4 class="panel-title">
+				        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+				          Step 2. 거래 장소 선택
+				        </a> 
+				      </h4>
+				    </div>
+				    <div id="collapseTwo" class="panel-collapse collapse">
+				      <div class="panel-body">
+				        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, 
+				      </div>
+				    </div>
+				  </div>
+				  <div class="panel panel-default">
+				    <div class="panel-heading">
+				      <h4 class="panel-title">
+				        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+				      	  Step 3. 사진 등록
+				        </a>
+				      </h4>
+				    </div>
+				    <div id="collapseThree" class="panel-collapse collapse">
+				      <div class="panel-body">
+				      	 <div class="form-group">
+						    <input  class="form-control" type="file" id="exampleInputFile">
+						 </div>
+				      </div>
+				    </div>
+				  </div>
+				  <div class="panel panel-default">
+					    <div class="panel-heading">
+					      <h4 class="panel-title">
+					        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+					          Step 4. 카테고리 등록
+					        </a>
+					      </h4>
+					    </div>
+					    <div id="collapseFour" class="panel-collapse collapse" >
+					     
+					      
+					      <div class="panel-body">
+					      	<select id="category1" class="form-control" onchange="itemChange(this.form);" ></select>
+						 	 <select id="category2" class="form-control"></select>
+					 
+					      </div>
+					    </div>
+			 	 	</div>
+				    <div class="panel panel-default">
+					    <div class="panel-heading">
+					      <h4 class="panel-title">
+					        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" >
+					          Step 5. 상세 입력
+					        </a>
+					      </h4>
+					    </div>
+					    <div id="collapseFive" class="panel-collapse collapse">
+				      		<div class="panel-body">
+				      				<!-- Button trigger modal -->
+								<button class="btn btn-default" data-toggle="modal" data-target="#myModal">
+								  입력하기
+								</button>
+								<!-- Modal -->
+								<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								  <div class="modal-dialog">
+								    <div class="modal-content">
+								      <div class="modal-header">								        	
+								       	 	<input id="item_name" type="text" class="form-control input-normal" placeholder="물품명을 입력하세요" >								       
+									        <div class="input-group">
+									        	<span class="input-group-addon">￦</span><input type="text" class="form-control" placeholder="희망가격 입력" >
+								     	 	</div>
+						     	 	  </div>
+								      <div class="modal-body">
+								        <textarea class="form-control" rows="15" cols="80" placeholder="상세내용을 입력하세요"></textarea>
+								      </div>
+								      <div class="modal-footer">
+								        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								        <button type="button" class="btn btn-primary">Save changes</button>
+								      </div>
+								    </div><!-- /.modal-content -->
+								  </div><!-- /.modal-dialog -->
+								</div><!-- /.modal -->				 
+							</div>
+					    </div>
+				  	</div>
+				    
+				</div>	
+				<input id="item_submit" class="btn btn-primary" type="submit" name="commit" value="등록 하기"/>
+			  	<input id="preview" class="btn btn-primary" type="button" value="미리보기">    					
+			</form>
+		</div><!-- end of tap2   -->
+		</nav>	
+	
+	<%--
+	<div id="menu-toggle2">
+				
+		<img src="resources/imgs/slider/Cloud_Add.png" width=70 height=70 alt="Menu2"></img>
+	
+	</div>
+		<nav id="menu2">
+			<br><br><br><br><br><br><br>
+		</nav>
+	 --%>	
+	<%--
+				<nav id="menu">
+					<a href="#">Home</a>
+					<a href="#">About</a>
+					<a href="#">Login</a>
+					<a href="#">A Link</a>
+					<a href="#">Another Link</a>
+				</nav>
+	 --%>
+	 <%--
 	<div id="aside" class="tabbable">
+
 		<ul class="nav">
 			<li class="active">
 				<a href="#tab1" data-toggle="tab">
@@ -740,7 +1010,14 @@
 				거래현황
 				</a>
 			</li>
+			<li>
+				
+			</li>
 	 	</ul>
+	 	
+	 
+		     
+		</ul>
  	</div>	
  	
  	
@@ -867,8 +1144,9 @@
 			<p>또또 안녕</p>
 		</div><!-- end of tap3   -->
 	</div>
-	
-	<div id="map_canvas" style="width:71%; height:100%;">
+	--%>
+	<div id="map_canvas" style="width:100%; height:100%;">
+		
 	</div>
 	
 	<script type="text/javascript">
@@ -893,16 +1171,17 @@
 
 <footer>
 	<!-- footer부분에 modal용 div넣습니다. 레이아웃과 상관없으니 삭제하지 마세요 -->
-		<%--
+		
 		<c:forEach var="itemList" items="${itemList}">
 		<c:set var="i" value="${ i+1 }" />	
 			<div id="item${itemList.itemNo}" title="${itemList.itemName}">
 				
 				<div id="bodyContent">
-				 
-					<c:if test="${itemList.itemPicturePath1!=null}">
-						<img src = "resources/itempictures/${itemList.itemPicturePath1}"></img><br>
-					</c:if>
+				 	<div align="center">
+						<c:if test="${itemList.itemPicturePath1!=null}">
+							<img style="width: 700px; height:auto;", src = "resources/itempictures/${itemList.itemPicturePath1}"></img><br>
+						</c:if>
+					</div>
 				 <!-- -->
 					${itemList.itemInfo}
 				</div>
@@ -913,8 +1192,9 @@
 		<div id="dialog2" class="dialog2" title="Basic dialog">
 			<p>what the?</p>
 		</div>
-		 --%>
+		
 		<!-- footer부분에 modal용 div넣습니다. 레이아웃과 상관없으니 삭제하지 마세요 -->
-</footer>		
+</footer>	
+	
 </body>
 </html>
