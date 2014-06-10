@@ -12,433 +12,206 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
 	<link rel="Stylesheet" href="/resources/css/bootstrap.min.css"/>
+	<link href="resources/css/prettify.css" rel="stylesheet">
 	
-	<%-- Slider css--%>
-	<%--
-	<link rel="stylesheet" type="text/css" href="css/default.css" />
-	<link rel="stylesheet" type="text/css" href="css/component.css" />
-	 --%>	
 	<style>
-.navbar {
-	/* background-image: url("/resources/imgs/bg6.png");
+		.navbar{
+			/* background-image: url("/resources/imgs/bg6.png");
 			 */
-	background-color: #5DCD9D;
-	border-style: none;
-	font-size: 15px;
-	font-familiy: 'Nanum Gothic';
-	margin: 0;
-}
-
-#brand_img {
-	margin-left: 10px;
-}
-
-#start,#signin,#signin_on {
-	padding-top: 18px;
-	color: white;
-	background: none;
-}
-
-/* 페이지에 따라 알아서 색깔 바뀌게 수정해야함  */
-#deal,#deal:hover {
-	background-color: #33A876;
-	padding-top: 18px;
-	color: white;
-	height: 53px;
-}
-
-#start:hover,#signin:hover,#signin_on:hover {
-	color: gray;
-	background: none;
-}
-
-#search {
-	margin-top: 10px;
-}
-
-body {
-	background-image: url("/resources/imgs/bg6.png");
-}
-
-.dropdown-menu {
-	padding: 15px;
-	padding-bottom: 15px;
-	top: 54px;
-	left: -180px;
-	margin-right: 20px;
-	border-color: #BCBCBC;
-}
-
-#dropdown_on {
-	padding-right: 0px;
-	padding-left: 0px;
-	padding-top: 15px;
-	padding-bottom: 15px;
-	margin: 0;
-	text-align: right;
-}
-
-#signin_submit {
-	clear: left;
-	width: 100%;
-	height: 32px;
-	font-size: 13px;
-}
-
-#signin_submit.btn {
-	background-color: #00A1DA;
-	border: none;
-	margin-bottom: 5px;
-}
-
-#signup {
-	margin-left: 160px;
-	text-decoration: none;
-}
-
-#signup:hover {
-	color: gray;
-}
-
-#dropdown_on>li>a {
-	color: blue;
-	background: none;
-}
-
-#dropdown_on>li>a:hover {
-	color: gray;
-	background: none;
-}
-
-/* itemMapView css  */
-html {
-	height: 100%
-}
-
-body {
-	height: 100%;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-}
-
-#aside {
-	background-color: #F5F6F7;
-	width: 7%;
-	height: 100%;
-	float: left;
-	margin-top: 53px;
-	text-align: center;
-	border: 1px solid #BCBCBC;
-}
-
-#aside_detail {
-	background-color: #FFFFFF;
-	width: 22%;
-	height: 100%;
-	float: left;
-	margin-top: 53px;
-	text-align: center;
-	border-top: 1px solid #BCBCBC;
-	padding-top: 10px;
-	padding-left: 10px;
-	padding-right: 10px;
-}
-
-#map_canvas {
-	float: left;
-	margin-top: 53px;
-	border-left: 1px solid #BCBCBC;
-	border-top: 1px solid #BCBCBC;
-}
-
-/* 상품등록 css  */
-#sellbtn {
-	width: 100px;
-}
-
-#buybtn {
-	width: 100px;
-}
-
-#popover-content {
-	margin-left: 200px;
-	width: 600px;
-	height: 400px;
-}
-
-#item_name {
-	margin-bottom: 10px;
-}
-
-#category1 {
-	margin-bottom: 10px;
-}
-
-.labels {
-	color: red;
-	background-color: white;
-	font-family: "Lucida Grande", "Arial", sans-serif;
-	font-size: 10px;
-	font-weight: bold;
-	text-align: center;
-	width: 40px;
-	border: 2px solid black;
-	white-space: nowrap;
-}
-
-<%-- slider bar css --%>
-<%-- 텔 --%>
-#menu1 {
-	transition: all 0.3s ease;
-	position: fixed;
-	width: 0%;
-	top: 0;
-	left: -200px;
-	background: #CDECFA;
-	<%--background: rgb(0, 0, 0); --%>
-	height: 100%;
-	z-index: 999;
-	box-shadow: 0px 0px 10px black;
-	<%-- box-shadow: 0px 0px 10px black; --%>
-}
-
-#menu1 a {
-	color: GRAY;
-	<%--color: white; --%>
-	display: block;
-	text-align: center;
-	text-decoration: none;
-	padding: 10px 10px 10px 10px;
-	margin: 10px 10px 10px 10px;
-	border-radius: 100px;
-	transition: all 0.2s ease;
-}
-
-#menu1 a:hover {
-	background: rgb(50, 50, 50);
-}
-
-#menu-toggle1 {
-	position: fixed;
-	top: 200px;
-	left: 0;
-	background: rgb(3, 0, 102);
-	z-index: 1000;
-	padding-left: 10px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	padding-right: 10px;
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
-	transition: all 0.3s ease;
-}
-
-#menu-toggle1:hover {
-	background: rgb(255, 228, 0);
-	cursor: pointer;
-}
-
-#menu1.open {
-	left: 0;
-	width: 400px;
-	<%--
-	width: 200px;
-	 --%>
-	display: block;
-}
-
-#menu-toggle1.open {
-	left: 400px;
-}
-</style>
-
-
-
-<%--  highlight_styles --%>
-<%--
-<link rel="stylesheet" type="text/css" href="highlight_styles.css" />
- --%>
- 
- 	
-	<!--
-				
-				
-				
-				
-				
-	---------------------------------------------------------------------
-								S T A R T!      
+			background-color: #5DCD9D;
+			border-style: none;
+			font-size:15px;
+			font-familiy:'Nanum Gothic';
+			margin:0;
+		}
+		
+		#brand_img{
+			margin-left:10px;
+		}
+		
+		#start,#signin,#signin_on{
+			padding-top:18px;
+			color:white;
+			background:none;
+		}
+	
+		
+		/* 페이지에 따라 알아서 색깔 바뀌게 수정해야함  */
+		#deal, #deal:hover{
+			background-color:#33A876;
+			padding-top:18px;
+			color:white;
+			height:53px;
+		}
+		
+		#start:hover, #signin:hover, #signin_on:hover{
+			color:gray;
+			background:none;
+		}
+		
+		#search{
+			margin-top: 10px;
+		}
+		
+		body{
+			background-image: url("/resources/imgs/bg6.png");
+		} 
+		
+		
+		.dropdown-menu{
+		 	padding: 15px; 
+		 	padding-bottom: 15px;
+		 	top:54px;
+			left:-180px;
+			margin-right:20px;
+			border-color: #BCBCBC;
+		}
+		
+		#dropdown_on{
+			padding-right:0px;
+			padding-left:0px;
+			padding-top:15px;
+			padding-bottom:15px;
+			margin:0;
+			text-align: right;
+		}
+		
+		
+		#signin_submit{
+			clear: left; 
+			width: 100%; 
+			height: 32px; 
+			font-size: 13px;
 			
-			
-				Mr.JaeYoung 코드 시작 지점, 종료지점까지 수정하시면 안됩니다!
+		}
+		
+		#signin_submit.btn{
+			background-color:#00A1DA;
+			border:none;
+			margin-bottom: 5px;
+		}
+		
+		#signup{
+			margin-left:160px;
+			text-decoration: none;
+		}
+		#signup:hover{
+			color: gray;
+		}
+		
+		#dropdown_on>li>a{
+			color:blue;
+		 	background:none;
+		}
+		
+		#dropdown_on>li>a:hover{
+			color:gray;
+		 	background:none;
+		}
+		
+		/* itemMapView css  */
+		
+		html { height: 100% }
+      	body { 
+      		height: 100%; 
+      		margin: 0; 
+      		padding: 0; 
+      		overflow:hidden;
+      	}
+      	
+      	#aside{
+      		background-color:#F5F6F7;
+      		width:7%;
+      		height:100%;
+      		float:left;
+      		margin-top:53px;
+      		text-align:center;
+      		border:1px solid #BCBCBC;
+      		
+      	}
+      	
+      	#aside>ul>li>a{
+      		color:#103425;
+      	}
+      	
+      	#aside>ul>li>a:hover{
+      		color:#5DCD9D;
+      	}
+      	
+      	#aside_detail{
+      		background-color:#FFFFFF;
+      		width:22%;
+      		height:100%;
+      		float:left;
+      		margin-top:53px;
+      		text-align:center;
+      		border-top:1px solid #BCBCBC;
+      		padding-top:10px;
+      		padding-left:10px;
+      		padding-right:10px;
+      	}
+      
+      	#map_canvas{
+      		float:left;
+	      	margin-top:53px;
+	      	border-left:1px solid #BCBCBC;
+      		border-top:1px solid #BCBCBC;
+      		
+      	}
+      	
+      	
+      	/* 상품등록 css  */
+      	#sellbtn{
+      		width:100px;
+      	}
+      	
+      	#buybtn{
+      		width:100px;
+      	}
+      	
+      	#popover-content{
+      		margin-left:200px;
+      		width:600px;
+      		height:400px;
+      	}
+      	
+      	#item_name{
+      		margin-bottom:10px;
+      	}
+      	#category1{
+      		margin-bottom:10px;
+      	}
+      	
+      	#register_tap>li>a{
+      		font-size: 10px;
+      	}
+      	
+		<!-- imageslider -->
+		#imgslider_container{
+		  	margin-top: 20px;
+  			width: 960px;
+		}
+	</style>
 	
+	<!-- step wizard css -->
 	
-								S T A R T!
-	---------------------------------------------------------------------
-	
-	
-	
-	
-	
-	-->	
-	
-	
-	
-	<%-- -----------------------------------------------------------------------%>
-	
-	<!-- jquery + UI + CSS google CDN -->
-	
-	<%--panel용 lib --%>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-	
-	
-	<script src="http://code.jquery.com/jquery.min.js"></script>
-	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-	
-	
-	<!-- GoogleMap API Key -->
-	<script
-	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAX-hWL7tXxRZd2GtUjDME2jf-9qNoiRsE&sensor=false&language=ko">
-	</script>
-
-	<!-- jquery UI google CDN -->
-	<link rel="stylesheet"
-	href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
-	<script
-	src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-
-	<%--
-	<script
-		src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
- 	 --%>
-	
-	<%--
-	<script src="resources/js_custom/markerclusterer_packed.js"></script>
-	<script src="resources/js_custom/markerclusterer.js"></script>
-	 --%> 
-	<script src="resources/js_custom/markerwithlabel.js"></script>
-	
-	<%--panel lib --%>
-	<%--
-	<script src="resources/js_custom/jquery.slidePanel.min.js"></script>
-	 --%>
-	<%-- 
-	<link rel="stylesheet" href="/resources/demos/style.css">
-	  --%>
-	 
-	<%-- slider --%>
-	<%--
-	<script src="resources/js_custom/modernizr.custom.js"></script>
-	 --%>
-	
-
-	
-	<%-- 
-	<script src="resources/js_custom/markerclusterer_packed.js"></script>
-	<script src="resources/js_custom/markerclusterer.js"></script>
-	--%>
-	<script src="resources/js_custom/markerwithlabel.js"></script>
-	<%--
-	<link rel="stylesheet" href="/resources/demos/style.css">
-	--%>
-	
-	<%--slider bar script --%>
-	<%--
-	<script src="resources/js_custom/script.js"></script> 
-	 --%>
-	 <script src="resources/js_custom/slider_script.js"></script> 
-	 
-<script>
-
-
-	//여기부터 clusterer
-		//----------------------------------------------------------	
-	    var script = '<script type="text/javascript" src="resources/js_custom/markerclusterer';
-	    if (document.location.search.indexOf('compiled') !== -1) {
-	      script += '_compiled';
-	    }
-	    script += '.js"><' + '/script>';
-	    document.write(script);
-</script>
-<script async>
-	     var styles = [[{
-	       url: 'resources/imgs/markerclusterer/people35.png',
-	       height: 35,
-	       width: 35,
-	       anchor: [16, 0],
-	       textColor: '#ff00ff',
-	       textSize: 10
-	     }, {
-	       url: 'resources/imgs/markerclusterer/people45.png',
-	       height: 45,
-	       width: 45,
-	       anchor: [24, 0],
-	       textColor: '#ff0000',
-	       textSize: 11
-	     }, {
-	       url: 'resources/imgs/markerclusterer/people55.png',
-	       height: 55,
-	       width: 55,
-	       anchor: [32, 0],
-	       textColor: '#ffffff',
-	       textSize: 12
-	     }], [{
-	       url: 'resources/imgs/markerclusterer/conv30.png',
-	       height: 27,
-	       width: 30,
-	       anchor: [3, 0],
-	       textColor: '#ff00ff',
-	       textSize: 10
-	     }, {
-	       url: 'resources/imgs/markerclusterer/conv40.png',
-	       height: 36,
-	       width: 40,
-	       anchor: [6, 0],
-	       textColor: '#ff0000',
-	       textSize: 11
-	     }, {
-	       url: 'resources/imgs/markerclusterer/conv50.png',
-	       width: 50,
-	       height: 45,
-	       anchor: [8, 0],
-	       textSize: 12
-	     }], [{
-	       url: 'resources/imgs/markerclusterer/heart30.png',
-	       height: 26,
-	       width: 30,
-	       anchor: [4, 0],
-	       textColor: '#ff00ff',
-	       textSize: 10
-	     }, {
-	       url: 'resources/imgs/markerclusterer/heart40.png',
-	       height: 35,
-	       width: 40,
-	       anchor: [8, 0],
-	       textColor: '#ff0000',
-	       textSize: 11
-	     }, {
-	       url: 'resources/imgs/markerclusterer/heart50.png',
-	       width: 50,
-	       height: 44,
-	       anchor: [12, 0],
-	       textSize: 12
-	     }]];
-	     
-		 //-----------------------
-	     //맵 스타일 - Bright & Bubbly
-	     var styles = [ 
-	               ]
-	     //-----------------------
-	     // var zoom = parseInt(document.getElementById('zoom').value, 10);
-	     //var size = parseInt(document.getElementById('size').value, 10);
-	     //var style = parseInt(document.getElementById('style').value, 10);
-	     var zoom = null ;
-	     var size = null ;
-	     var style = null;
-	     //여기까지 clusterer
-		 //----------------------------------------------------------
-		 
+	<script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAX-hWL7tXxRZd2GtUjDME2jf-9qNoiRsE&sensor=false&language=ko">
+    </script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="/resources/js/bootstrap.min.js"></script>
+	<script src="/resources/js/jquery.bootstrap.wizard.js"></script>
+	<script src="/resources/js/prettify.js"></script>
+	<script>
+	$(document).ready(function() {
+	  	$('#rootwizard').bootstrapWizard({onTabShow: function(tab, navigation, index) {
+			var $total = navigation.find('li').length;
+			var $current = index+1;
+			var $percent = ($current/$total) * 100;
+			$('#rootwizard').find('.progress-bar').css({width:$percent+'%'});
+		}});	
+	});	
 	
 	//---------------------------------------
 	var test="${test}";
@@ -447,8 +220,7 @@ body {
 	/**/
 	var sellImage = 'resources/imgs/icons/ssh2.png';
 	var buyImage = 'resources/imgs/icons/bsh2.png';
-	var dealImage = 'resources/imgs/icons/dsh.png';
-	var geoImage = 'resources/imgs/icons/p33.png';
+	var geoImage = 'resources/imgs/icons/pb.png';
 	
 	var map;
 	var markers = [];
@@ -461,7 +233,6 @@ body {
 		<c:set var="i" value="${ i+1 }" />	
 			markers.push(
 					new google.maps.Marker({
-					//new MarkerWithLabel({
 						position : new google.maps.LatLng(${itemList.gridX1} , ${itemList.gridY1} ),
 						map : map,
 						icon:
@@ -471,283 +242,176 @@ body {
 							<c:if test="${itemList.stateCode=='2'}">
 								sellImage
 							</c:if>
-							<c:if test="${itemList.stateCode=='3'}">
-								dealImage
-							</c:if>
 								,
 						title : '${itemList.itemName}',
-						content : '${itemList.itemNo}'
-						//	labelContent: '$425K',
-						//	labelAnchor: new google.maps.Point(22, 0),
-						//    labelClass: "labels", // the CSS class for the label
-						
-						/*
-						content : '<div id="content">'+
-								'<h1 id="head" class="head">${itemList.itemName}</h1>'+
-								 '<div id="bodyContent">'+
-								 <c:if test="${itemList.itemPicturePath1!=null}">
-								 '<img src = "resources/itempictures/${itemList.itemPicturePath1}"></img><br>'+
-								 </c:if>
-								 '${itemList.itemInfo}'+
-								 '</div>'+
-								'</div >'
-						*/
-					
+						content : '${itemList.itemInfo}'
 						//labelContent : '${itemList.itemInfo}'
 						})
 			);
-		</c:forEach>
+	</c:forEach>
 	
-		/*
-		markers.push(
+
+	function initialize() {
+		geocoder = new google.maps.Geocoder();
+		// map = new google.maps.Map(document.getElementById('map-canvas'),
+		//     mapOptions);
+		var mapOptions = {
+			zoom : 12,
+			center : new google.maps.LatLng(-33, 151),
+			disableDefaultUI : true
+		}
+		map = new google.maps.Map(document.getElementById("map_canvas"),
+				mapOptions);
+		//마커찍기
+		
+	     google.maps.event.addListener(map, 'click', function(e) {
+	            placeMarker(e.latLng, map);
+	            codeLatLng();
+	          });
+		
+		//map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
+		// Try HTML5 geolocation
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(function(position) {
+				var pos = new google.maps.LatLng(position.coords.latitude,
+						position.coords.longitude);
+				
 				new google.maps.Marker({
-				position : new google.maps.LatLng(37.500848, 127.053065),
-				map : map,
-				icon: buyImage,
-				title : 'epic',
+					position : new google.maps.LatLng(position.coords.latitude,
+							position.coords.longitude),
+					map : map,
+					/* icon: geoImage	 */				
+					});
 				
-				content :  '<div id="dialog" title="Basic dialog">'+
-							'몰아치는 한숨'+
-							'</div>'
-				})
-			);
-		*/
-
-		function initialize() {
-			
-			var mapOptions = {
-				zoom : 12,
-				center : new google.maps.LatLng(-33, 151),
-				disableDefaultUI : true,
-				styles: styles
-			}
-			map = new google.maps.Map(document.getElementById("map_canvas"),mapOptions);
-			
-			// Try HTML5 geolocation
-			if (navigator.geolocation) {
-				navigator.geolocation.getCurrentPosition(function(position) {
-					var pos = new google.maps.LatLng(position.coords.latitude,
-							position.coords.longitude);
-					
-					new google.maps.Marker({
-						position : new google.maps.LatLng(position.coords.latitude,
-								position.coords.longitude),
-						map : map,
-						icon: geoImage					
-						});
-					
-					map.setCenter(pos);
-					map.setZoom(12);
-				}, function() {
-					handleNoGeolocation(true);
-				});
-			} else {
-				// Browser doesn't support Geolocation
-				handleNoGeolocation(false);
-			}
-
-			markerInitialize(map);
-			markerClusterer = new MarkerClusterer(map, markers, {
-		          //maxZoom: zoom,
-		          gridSize: size
-		          //styles: styles[style]
-		        });
-		}
-		
-
-		function markerInitialize(map) {
-		  for (var i = 0; i < markers.length; i++) {
-			markers[i].setMap(map);   
-			//console.log(markers[i].content); 
-			markerAddListener(markers[i], i);
-		  }
-		}
-		// Sets the map on all markers in the array.
-		function markerAddListener(marker, i) {
-		/* 
-		  var infowindow = new google.maps.InfoWindow({
-			content: marker.content	
-		  });
-		 */
-		  //console.log("marker.content_"+marker.content);
-		 //var dialogName="#item"+marker.content;
-		  google.maps.event.addListener(marker, 'click', function() {
-			  //infowindow.open(marker.get('map'), marker);	
-			  //console.log("뭐지?");
-		  		//alert("휴..");
-		  		
-		  		//아래는 예제
-		  		//$("#dialog2").dialog( "open" ); 
-		   		$("#item"+marker.content).dialog( "open" );
-		  		
-		  });
-		  
-		  
-		 
-		  
-		  //아래는 실행가능한 코드
-		  /*
-		  $(function() {
-			    $( "#dialog2" ).dialog({
-				  autoOpen: false,
-			      show: {
-			        effect: "blind",
-			        duration: 1000
-			      },
-			      hide: {
-			        effect: "explode",
-			        duration: 1000
-			      }
-			    });
+				map.setCenter(pos);
+			}, function() {
+				handleNoGeolocation(true);
 			});
-		  */
-		  
-		  /*
-		  google.maps.event.addListener(marker, 'click', function() {
-		    infowindow.open(marker.get('map'), marker);
-		  });
-		  */
-		  //infowindow.open(marker.get('map'), marker);
+		} else {
+			// Browser doesn't support Geolocation
+			handleNoGeolocation(false);
 		}
-		<c:forEach var="itemList" items="${itemList}">
-			<c:set var="i" value="${ i+1 }" />	
-				$(function() {
-				    $( "#item${itemList.itemNo}" ).dialog({
-				      maxHeight:700,
-				      maxWidth: 1000,
-				      minHeight: 700,
-				      minWidth: 1000,
-					  autoOpen: false,
-					  draggable : false,
-					  modal : true ,
-					  resizable : true,
-					  closeText : "닫기버튼입니다.",
-					  buttons : {
-						  "문의하기": function() {  window.location = 'http://www.stackoverflow.com'; },
-						   "닫기": function() { $(this).dialog("close"); },
-					  }, 
-				      position : { my: "center", at: "center", of: window },
-				      show: {
-				        effect: "blind",
-				        <%--  effect: "blind", --%>
-				        duration: 400
-				      },
-				      hide: {
-				        effect: "explode",
-				        <%-- effect: "explode",--%>
-				        duration: 300
-				      }
-				}).prev(".ui-dialog-titlebar").css("background","#87cefa");
 
-					<%--    
-				.ui-dialog-title{
-					font-size: 200%;
-			    	color: #FFFFFF ;
-			    	background: #000000 ;
-				};
-				--%>
-				
-			});
-		</c:forEach>
-			
-		
-		//gps module
-		function handleNoGeolocation(errorFlag) {
-			if (errorFlag) {
-				var content = 'Error: The Geolocation service failed.';
-			} else {
-				var content = 'Error: Your browser doesn\'t support geolocation.';
-			}
+		markerInitialize(map);
+	}
+	
 
-			var options = {
-				map : map,
-				position : new google.maps.LatLng(60, 105),
-				content : content
-			};
 
-			var infowindow = new google.maps.InfoWindow(options);
-			map.setCenter(options.position);
-		}
-		
-		// Add a marker to the map and push to the array.
-		function addMarker(location) {
-			var marker = new google.maps.Marker({
-				position : location,
-				map : map
-			});
-			markers.push(marker);
-		}
-					
-		google.maps.event.addDomListener(window, 'load', initialize);
-					
-	</script>
-	<!--
-		
-		
-		
-		
-				
-	---------------------------------------------------------------------
-								 THE END !      
-			
-			
-							Mr.JaeYoung 코드 종료 지점
+	// Sets the map on all markers in the array.
+	function markerInitialize(map) {
+	  for (var i = 0; i < markers.length; i++) {
+		markers[i].setMap(map);
+	    
+		console.log(markers[i].content);
+	    
+		markerAddListener(markers[i], i);
+	  }
+	}
+	/*
+	function markerInitialize(map) {
+	  for (var i = 0; i < markers.length; i++) {
+		markers[i].setMap(map);
+	    
+		console.log(markers[i].content);
+	    
+		markerAddListener(markers[i], i);
+	  }
+	}
+	*/
 	
-	
-								 THE END ! 
-	---------------------------------------------------------------------
-	
-	
-	
-	
-	
-	-->	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<!--
-	
-	
-	
-	
-				
-	---------------------------------------------------------------------
-								S T A R T!      
-			
-			
-				Mr.MinSeok 코드 시작 지점, 종료지점까지 수정하시면 안됩니다!
-	
-	
-								S T A R T!
-	---------------------------------------------------------------------
-	
-	
-	
-	
-	
-	-->	
-
-	<script>
-	//로그인 메뉴 
-	$(function() {
-	  // Setup drop down menu
-	  $('.dropdown-toggle').dropdown();
-	 
-	  // Fix input element click problem
-	  $('.dropdown input, .dropdown label').click(function(e) {
-	    e.stopPropagation();
+	// The five markers show a secret message when clicked
+	// but that message is not within the marker's instance data
+	function markerAddListener(marker, i) {
+	  var infowindow = new google.maps.InfoWindow({
+	    content: marker.content
 	  });
-	});
 
+	  google.maps.event.addListener(marker, 'click', function() {
+	    infowindow.open(marker.get('map'), marker);
+	  });
+	  //infowindow.open(marker.get('map'), marker);
+	}
+	
+	//gps module
+	function handleNoGeolocation(errorFlag) {
+		if (errorFlag) {
+			var content = 'Error: The Geolocation service failed.';
+		} else {
+			var content = 'Error: Your browser doesn\'t support geolocation.';
+		}
+
+		var options = {
+			map : map,
+			position : new google.maps.LatLng(60, 105),
+			content : content
+		};
+
+		var infowindow = new google.maps.InfoWindow(options);
+		map.setCenter(options.position);
+	}
+	
+	// Add a marker to the map and push to the array.
+	function addMarker(location) {
+		var marker = new google.maps.Marker({
+			position : location,
+			map : map
+		});
+		markers.push(marker);
+	}
+	
+	// 마커찍기 
+	function placeMarker(position, map) {
+	  if(marekrDropEffect=="active" && markerDropCheck!=1){
+		  var marker = new google.maps.Marker({
+			position: position,
+			map: map,
+			draggable:true,
+			animation: google.maps.Animation.DROP
+		  });
+		  map.panTo(position);
+		  var lat=marker.getPosition().lat();
+		  var lng=marker.getPosition().lng();
+			console.log(lat,lng);
+			document.getElementById("reg_lat").value=lat;
+			document.getElementById("reg_lng").value=lng;
+			document.getElementById("latlng").value=lat+","+lng;
+		marekrDropEffect="false";
+		markerDropCheck=1;
+	  }
+	}
+
+	function markerDrop(){
+		marekrDropEffect="active";
+	}
+	//좌표 주소 전환
+	function codeLatLng() {
+		  var input = document.getElementById('latlng').value;
+		  var latlngStr = input.split(',', 2);
+		  var lat = parseFloat(latlngStr[0]);
+		  var lng = parseFloat(latlngStr[1]);
+		  var latlng = new google.maps.LatLng(lat, lng);
+		  geocoder.geocode({'latLng': latlng}, function(results, status) {
+		    if (status == google.maps.GeocoderStatus.OK) {
+		      if (results[1]) {
+		    	  document.getElementById("reg_add").value=results[1].formatted_address;
+		      } else {
+		        alert('No results found');
+		      }
+		    } else {
+		      alert('Geocoder failed due to: ' + status);
+		    }
+		    
+		  });
+		}
+	
+	
+	google.maps.event.addDomListener(window, 'load', initialize);
+
+	function minseok(){
+		alert('hi');
+		
+	}
+	
 	//셀렉트
 	
 	var f_selbox = new Array('의류', '수입명품', '패션잡화' , '미용',
@@ -805,195 +469,13 @@ body {
 	}
 	
 	</script>
-	
-	<!--
-		
-		
-		
-		
-				
-	---------------------------------------------------------------------
-								 THE END !      
-			
-			
-							Mr.MinSeok 코드 종료 지점
-	
-	
-								 THE END ! 
-	---------------------------------------------------------------------
-	
-	
-	
-	
-	
-	-->	
-	
 </head>
-<!-- 
-	onLoad=initialize 쓰지마세요. 직접 dom객체에 추가했어요.
- 	onload에 추가하면 2번 되서 성능 저하됩니다~~~~~~ 
- -->
-<body class="cbp-spmenu-push" data-twttr-rendered="true" onload="init(this.form);">
-<%----------------------------------------------------------- --%>
-
-
-
-
-<%----------------------------------------------------------- --%>
-	
+<body onload="initialize(); init(this.form);">
 	<header>
 		<%@include file="header.jsp"%>
 	</header>
 	
-	<div id="menu-toggle1">
-				
-		<img src="resources/imgs/slider/Cloud_Add.png" width=70 height=70 alt="Menu1"></img>
-		<%-- 
-		<img src="resources/imgs/slider/menu.png" width=50 height=50 alt="Menu"></img>
-		--%>
-	</div>
-		<%-- 텔 --%>
-		<nav id="menu1">
-			<br><br><br><br><br><br><br>
-			<div class="tab-pane" id="tab2">
-			<!-- 진행% -->
-			<div class="progress">
-			  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-			    <span class="sr-only">60% Complete</span>
-			  </div>
-			</div> 
-			<form action="" name="form">
-				<div class="panel-group" id="accordion">
-				  <div class="panel panel-default">
-				    <div class="panel-heading">
-				      <h4 class="panel-title">
-				        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-				          Step 1. 거래선택
-				        </a>
-				      </h4>
-				    </div>
-				    <div id="collapseOne" class="panel-collapse collapse in">
-				      <div class="panel-body">
-				     	<input type="button" class="btn btn-default accordion-toggle" id="buybtn" value="삽니다"  data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-						<input type="button" class="btn btn-default accordion-toggle" id="sellbtn" value="팝니다"  data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-				      </div>
-				    </div>
-				  </div>
-				  <div class="panel panel-default">
-				    <div class="panel-heading">
-				      <h4 class="panel-title">
-				        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-				          Step 2. 거래 장소 선택
-				        </a> 
-				      </h4>
-				    </div>
-				    <div id="collapseTwo" class="panel-collapse collapse">
-				      <div class="panel-body">
-				        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, 
-				      </div>
-				    </div>
-				  </div>
-				  <div class="panel panel-default">
-				    <div class="panel-heading">
-				      <h4 class="panel-title">
-				        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-				      	  Step 3. 사진 등록
-				        </a>
-				      </h4>
-				    </div>
-				    <div id="collapseThree" class="panel-collapse collapse">
-				      <div class="panel-body">
-				      	 <div class="form-group">
-						    <input  class="form-control" type="file" id="exampleInputFile">
-						 </div>
-				      </div>
-				    </div>
-				  </div>
-				  <div class="panel panel-default">
-					    <div class="panel-heading">
-					      <h4 class="panel-title">
-					        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
-					          Step 4. 카테고리 등록
-					        </a>
-					      </h4>
-					    </div>
-					    <div id="collapseFour" class="panel-collapse collapse" >
-					     
-					      
-					      <div class="panel-body">
-					      	<select id="category1" class="form-control" onchange="itemChange(this.form);" ></select>
-						 	 <select id="category2" class="form-control"></select>
-					 
-					      </div>
-					    </div>
-			 	 	</div>
-				    <div class="panel panel-default">
-					    <div class="panel-heading">
-					      <h4 class="panel-title">
-					        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" >
-					          Step 5. 상세 입력
-					        </a>
-					      </h4>
-					    </div>
-					    <div id="collapseFive" class="panel-collapse collapse">
-				      		<div class="panel-body">
-				      				<!-- Button trigger modal -->
-								<button class="btn btn-default" data-toggle="modal" data-target="#myModal">
-								  입력하기
-								</button>
-								<!-- Modal -->
-								<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-								  <div class="modal-dialog">
-								    <div class="modal-content">
-								      <div class="modal-header">								        	
-								       	 	<input id="item_name" type="text" class="form-control input-normal" placeholder="물품명을 입력하세요" >								       
-									        <div class="input-group">
-									        	<span class="input-group-addon">￦</span><input type="text" class="form-control" placeholder="희망가격 입력" >
-								     	 	</div>
-						     	 	  </div>
-								      <div class="modal-body">
-								        <textarea class="form-control" rows="15" cols="80" placeholder="상세내용을 입력하세요"></textarea>
-								      </div>
-								      <div class="modal-footer">
-								        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								        <button type="button" class="btn btn-primary">Save changes</button>
-								      </div>
-								    </div><!-- /.modal-content -->
-								  </div><!-- /.modal-dialog -->
-								</div><!-- /.modal -->				 
-							</div>
-					    </div>
-				  	</div>
-				    
-				</div>	
-				<input id="item_submit" class="btn btn-primary" type="submit" name="commit" value="등록 하기"/>
-			  	<input id="preview" class="btn btn-primary" type="button" value="미리보기">    					
-			</form>
-		</div><!-- end of tap2   -->
-		</nav>	
-	
-	<%--
-	<div id="menu-toggle2">
-				
-		<img src="resources/imgs/slider/Cloud_Add.png" width=70 height=70 alt="Menu2"></img>
-	
-	</div>
-		<nav id="menu2">
-			<br><br><br><br><br><br><br>
-		</nav>
-	 --%>	
-	<%--
-				<nav id="menu">
-					<a href="#">Home</a>
-					<a href="#">About</a>
-					<a href="#">Login</a>
-					<a href="#">A Link</a>
-					<a href="#">Another Link</a>
-				</nav>
-	 --%>
-	 <%--
 	<div id="aside" class="tabbable">
-
 		<ul class="nav">
 			<li class="active">
 				<a href="#tab1" data-toggle="tab">
@@ -1010,191 +492,229 @@ body {
 				거래현황
 				</a>
 			</li>
-			<li>
-				
-			</li>
 	 	</ul>
-	 	
-	 
-		     
-		</ul>
  	</div>	
  	
  	
  	<div id="aside_detail" class="tab-content">
 		<div class="tab-pane active" id="tab1">
-			<p>안녕</p>
-		</div><!-- end of tap2   -->
-		<div class="tab-pane" id="tab2">
-			<!-- 진행% -->
-			<div class="progress">
-			  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-			    <span class="sr-only">60% Complete</span>
-			  </div>
-			</div> 
-			<form action="" name="form">
-				<div class="panel-group" id="accordion">
-				  <div class="panel panel-default">
-				    <div class="panel-heading">
-				      <h4 class="panel-title">
-				        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-				          Step 1. 거래선택
-				        </a>
-				      </h4>
-				    </div>
-				    <div id="collapseOne" class="panel-collapse collapse in">
-				      <div class="panel-body">
-				     	<input type="button" class="btn btn-default accordion-toggle" id="buybtn" value="삽니다"  data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-						<input type="button" class="btn btn-default accordion-toggle" id="sellbtn" value="팝니다"  data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-				      </div>
-				    </div>
-				  </div>
-				  <div class="panel panel-default">
-				    <div class="panel-heading">
-				      <h4 class="panel-title">
-				        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-				          Step 2. 거래 장소 선택
-				        </a> 
-				      </h4>
-				    </div>
-				    <div id="collapseTwo" class="panel-collapse collapse">
-				      <div class="panel-body">
-				        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, 
-				      </div>
-				    </div>
-				  </div>
-				  <div class="panel panel-default">
-				    <div class="panel-heading">
-				      <h4 class="panel-title">
-				        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-				      	  Step 3. 사진 등록
-				        </a>
-				      </h4>
-				    </div>
-				    <div id="collapseThree" class="panel-collapse collapse">
-				      <div class="panel-body">
-				      	 <div class="form-group">
-						    <input  class="form-control" type="file" id="exampleInputFile">
-						 </div>
-				      </div>
-				    </div>
-				  </div>
-				  <div class="panel panel-default">
-					    <div class="panel-heading">
-					      <h4 class="panel-title">
-					        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
-					          Step 4. 카테고리 등록
-					        </a>
-					      </h4>
-					    </div>
-					    <div id="collapseFour" class="panel-collapse collapse" >
-					     
-					      
-					      <div class="panel-body">
-					      	<select id="category1" class="form-control" onchange="itemChange(this.form);" ></select>
-						 	 <select id="category2" class="form-control"></select>
-					 
-					      </div>
-					    </div>
-			 	 	</div>
-				    <div class="panel panel-default">
-					    <div class="panel-heading">
-					      <h4 class="panel-title">
-					        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" >
-					          Step 5. 상세 입력
-					        </a>
-					      </h4>
-					    </div>
-					    <div id="collapseFive" class="panel-collapse collapse">
-				      		<div class="panel-body">
-				      				<!-- Button trigger modal -->
-								<button class="btn btn-default" data-toggle="modal" data-target="#myModal">
-								  입력하기
-								</button>
-								<!-- Modal -->
-								<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-								  <div class="modal-dialog">
-								    <div class="modal-content">
-								      <div class="modal-header">								        	
-								       	 	<input id="item_name" type="text" class="form-control input-normal" placeholder="물품명을 입력하세요" >								       
-									        <div class="input-group">
-									        	<span class="input-group-addon">￦</span><input type="text" class="form-control" placeholder="희망가격 입력" >
-								     	 	</div>
-						     	 	  </div>
-								      <div class="modal-body">
-								        <textarea class="form-control" rows="15" cols="80" placeholder="상세내용을 입력하세요"></textarea>
-								      </div>
-								      <div class="modal-footer">
-								        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								        <button type="button" class="btn btn-primary">Save changes</button>
-								      </div>
-								    </div><!-- /.modal-content -->
-								  </div><!-- /.modal-dialog -->
-								</div><!-- /.modal -->				 
-							</div>
-					    </div>
-				  	</div>
-				    
-				</div>	
-				<input id="item_submit" class="btn btn-primary" type="submit" name="commit" value="등록 하기"/>
-			  	<input id="preview" class="btn btn-primary" type="button" value="미리보기">    					
+			<form class="navbar-form navbar-left" role="search">
+			    <div class="form-group">
+			        <input type="text" class="form-control" placeholder="Search">
+			    </div>
+			    <button type="submit" class="btn btn-default">검색</button>
+			    <br><br>
+			    <div id="select_loca">
+			    	위치 선택
+		    		<div class="btn-group" data-toggle="buttons" style="margin-left:10px">			    
+				  		<label class="btn btn-default active">
+				    	<input type="radio" name="options" id="option1"> 현재위치
+				  		</label>
+			  			<label class="btn btn-default">
+				    	<input type="radio" name="options" id="option2"> 위치지정
+				  		</label>
+					</div>
+			    </div>
+			    <br>
+			   	<div id="select_deal">
+			    	거래 선택 
+			    	<div class="btn-group" data-toggle="buttons" style="margin-left:10px">			    
+				  		<label class="btn btn-default">
+				    	<input type="radio" name="options" id="option1"> 삽니다
+				  		</label>
+			  			<label class="btn btn-default">
+				    	<input type="radio" name="options" id="option2"> 팝니다
+				  		</label>
+					</div>
+				</div>
+				<br>
+				<div>
+					거래 지역 범위 설정
+				</div>
 			</form>
 		</div><!-- end of tap2   -->
+		<div class="tab-pane" id="tab2">
+	
+			<div id="rootwizard">				
+				<div class="navbar2">
+				  <div class="navbar-inner2">
+				    <div class="container2" style="display:none;">
+						<ul id="register_tap">
+						  	<li><a href="#tab11" data-toggle="tab">1단계</a></li>
+							<li><a href="#tab12" data-toggle="tab">2단계</a></li>
+							<li><a href="#tab13" data-toggle="tab">3단계</a></li>
+							<li><a href="#tab14" data-toggle="tab">4단계</a></li>
+							<li><a href="#tab15" data-toggle="tab">5단계</a></li>
+						</ul>
+				 	</div>
+				  </div>
+				</div>
+				<div id="bar" class="progress progress-striped active">
+				  <div class="progress-bar"></div>
+				</div>
+				
+				<form action="#" name="form" id="register_form" method="post" >
+				<div class="tab-content">
+				 	
+				    <div class="tab-pane" id="tab11">
+				    	<div class="form-group">
+				    		<h4>거래 선택하기</h4>
+				    		<br>
+						   	 <div class="btn-group" data-toggle="buttons">
+							  <label class="btn btn-default">
+							    <input type="radio" name="buyBtn" id="buy"> 삽니다
+							  </label>
+							  <label class="btn btn-default">
+							    <input type="radio" name="sellBtn" id="sell"> 팝니다
+							  </label>							  
+							</div>	
+						</div>
+				    </div>
+				    <div class="tab-pane" id="tab12">
+				    	<div class="form-group">
+				    		<h4>거래할 위치 등록하기</h4>
+				    		<br>
+				    		<input type="hidden" id="reg_lat" value="" style="border: none;">
+				    		<input type="hidden" id="reg_lng" value="" style="border: none;">
+				    		<input id="latlng" type="text" value="" style="display:none;">
+				    		<button class="btn btn-default" onclick="markerDrop();">위치 정하기</button>
+				    		<br><br>
+				    		<textarea id="reg_add" rows="4" cols="40" value="" style="border: none;"></textarea>
+				    	</div>
+				    </div>
+					<div class="tab-pane" id="tab13">
+						<div class="form-group">
+							<h4>사진 등록하기</h4>
+							<br>
+							<input  class="form-control" type="file" multiple="multiple" id="exampleInputFile">						
+				   		</div>
+				    </div>
+					<div class="tab-pane" id="tab14">
+						<div class="form-group">
+							<h4>카테고리 등록하기</h4>
+							<br>
+							<select id="category1" class="form-control" onchange="itemChange(this.form);" ></select>
+							<select id="category2" class="form-control"></select>											 
+					    </div>
+					</div>    
+				    <div class="tab-pane" id="tab15">
+						<div class="form-group">
+							<h4>상세내용 입력하기</h4>
+							<br>	
+							<input id="item_name" type="text" class="form-control input-normal" placeholder="물품명을 입력하세요" >								       
+					        <div class="input-group">
+					        	<span class="input-group-addon">￦</span><input type="text" class="form-control" placeholder="희망가격 입력" >
+				     	 	</div>	
+				     	 	<br>	
+				     	 	<textarea class="form-control" rows="10" cols="80" placeholder="상세내용을 입력하세요"></textarea>
+				     	 	<br>				      				
+							<button class="btn btn-default" data-toggle="modal" href="#previewModal" onclick="return false">
+							미리보기
+							</button>
+							<input type="submit" class="btn btn-primary" value="등록하기" >
+							
+						
+							<!-- preview modal -->
+							<div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							  <div class="modal-dialog">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							        <h4 class="modal-title">제품명<font color="red"> [가격]</font></h4>
+							       
+							      </div>
+							      <div class="modal-body">
+							        <div id="imgslider_container">
+          		
+									  <!-- main slider carousel -->
+									  <div class="row-fluid">
+									    <div class="span12" id="slider">
+									      <div class="row-fluid">
+									        <div class="span8" id="carousel-bounding-box">
+									          <div id="myCarousel" class="carousel slide">
+									            
+									            <!-- main slider carousel items -->
+									            <div class="carousel-inner">
+									              <div class="active item" data-slide-number="0">
+									                <img src="http://placehold.it/640x480&amp;text=one">
+									              </div>
+									              <div class="item" data-slide-number="1">
+									                <img src="http://placehold.it/640x480&amp;text=two">
+									              </div>
+									              <div class="item" data-slide-number="2">
+									                <img src="http://placehold.it/640x480&amp;text=three">
+									              </div>
+									              <div class="item" data-slide-number="3">
+									                <img src="http://placehold.it/640x480&amp;text=four">
+									              </div>
+									               
+									            </div>
+									            
+									            <!-- main slider carousel nav controls -->
+									            <a class="carousel-control left" href="#myCarousel" data-slide="prev">‹</a>
+									            <a class="carousel-control right" href="#myCarousel" data-slide="next">›</a>
+									          </div>
+									        </div>
+									        
+									       
+									      </div>
+									      
+									    </div>
+									  </div> <!--/main slider carousel-->
+									</div><!-- end of image slider -->
+									<br>
+									<p>상세 내용</p>
+									
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							       	<input type="submit" class="btn btn-primary" value="등록하기" >
+							      </div>
+							    </div><!-- /.modal-content -->
+							  </div><!-- /.modal-dialog -->
+							</div><!-- /.modal -->
+												 
+					    </div>
+					</div>   
+					<ul class="pager wizard">
+						<li class="previous first" style="display:none;"><a href="#" onclick="return false">First</a></li>
+						<li class="previous"><a href="#" onclick="return false">Previous</a></li>
+						<li class="next last" style="display:none;"><a href="#" onclick="return false">Last</a></li>
+					  	<li class="next"><a href="#" onclick="return false">Next</a></li>
+					</ul> 
+				</div>	
+				</form>
+			</div>
+		</div><!-- end of tap2   -->
+
 		<div class="tab-pane" id="tab3">
 			<p>또또 안녕</p>
 		</div><!-- end of tap3   -->
 	</div>
-	--%>
-	<div id="map_canvas" style="width:100%; height:100%;">
-		
-	</div>
 	
+	<div id="map_canvas" style="width:71%; height:100%;">
+	
+	</div>
 	<script type="text/javascript">
 	//이메일칸에 입력전에 submit 버튼 활성화/비활성화
-	document.loginform.commit.disabled = true;
-	document.onkeyup = proces;
-	document.onmouseup = proces;
-	document.onmousedown = proces;
+	document.signinform.commit.disabled = true; 
+	document.onkeyup = process;
+	document.onmouseup = process;
+	document.onmousedown = process;
 	
 	//알고리즘 개선하였음.
-	function proces() {
-		if (document.loginform.email.value == '' 
-			||document.loginform.password.value == '') {   
-			document.loginform.commit.disabled = true;
+	function process() {
+		if (document.signinform.email.value == '' 
+			||document.signinform.password.value == '') {   
+			document.signinform.commit.disabled = true;
 		} 
-		else if(document.loginform.password.value != ''
-				&&document.loginform.password.value.length >=8 ){	
-			document.loginform.commit.disabled = false; 
+		else if(document.signinform.password.value != ''
+				&&document.signinform.password.value.length >=8 ){	
+			document.signinform.commit.disabled = false; 
 		}
 	}
 	</script>
 
-<footer>
-	<!-- footer부분에 modal용 div넣습니다. 레이아웃과 상관없으니 삭제하지 마세요 -->
-		
-		<c:forEach var="itemList" items="${itemList}">
-		<c:set var="i" value="${ i+1 }" />	
-			<div id="item${itemList.itemNo}" title="${itemList.itemName}">
-				
-				<div id="bodyContent">
-				 	<div align="center">
-						<c:if test="${itemList.itemPicturePath1!=null}">
-							<img style="width: 700px; height:auto;", src = "resources/itempictures/${itemList.itemPicturePath1}"></img><br>
-						</c:if>
-					</div>
-				 <!-- -->
-					${itemList.itemInfo}
-				</div>
-			</div>
-		</c:forEach>
-		
-		
-		<div id="dialog2" class="dialog2" title="Basic dialog">
-			<p>what the?</p>
-		</div>
-		
-		<!-- footer부분에 modal용 div넣습니다. 레이아웃과 상관없으니 삭제하지 마세요 -->
-</footer>	
-	
+<footer></footer>		
 </body>
 </html>
