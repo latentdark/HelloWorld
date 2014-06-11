@@ -7,8 +7,8 @@ import java.util.Date;
 public class Deal {
     private Integer itemNo;
     private Integer registerUserNo;
-    private Integer contactUserNo;
     private String registerUserName;	//거래 등록자 닉네임
+    private Integer contactUserNo;
     private String contactUserName;		//거래 상대방 닉네임
     private Date dealDate;
     private Time time;			//Date가 날짜만 나와서 만나는 시간 추가함
@@ -34,6 +34,14 @@ public class Deal {
 		this.registerUserNo = registerUserNo;
 	}
 
+	public String getRegisterUserName() {
+		return registerUserName;
+	}
+
+	public void setRegisterUserName(String registerUserName) {
+		this.registerUserName = registerUserName;
+	}
+
 	public Integer getContactUserNo() {
 		return contactUserNo;
 	}
@@ -42,12 +50,28 @@ public class Deal {
 		this.contactUserNo = contactUserNo;
 	}
 
+	public String getContactUserName() {
+		return contactUserName;
+	}
+
+	public void setContactUserName(String contactUserName) {
+		this.contactUserName = contactUserName;
+	}
+
 	public Date getDealDate() {
 		return dealDate;
 	}
 
 	public void setDealDate(Date dealDate) {
 		this.dealDate = dealDate;
+	}
+
+	public Time getTime() {
+		return time;
+	}
+
+	public void setTime(Time time) {
+		this.time = time;
 	}
 
 	public Location getLocation() {
@@ -61,8 +85,12 @@ public class Deal {
 	@Override
 	public String toString() {
 		return "Deal [itemNo=" + itemNo + ", registerUserNo=" + registerUserNo
-				+ ", contactUserNo=" + contactUserNo + ", dealDate=" + dealDate
-				+ ", location=" + location + "]";
+				+ ", registerUserName=" + registerUserName + ", contactUserNo="
+				+ contactUserNo + ", contactUserName=" + contactUserName
+				+ ", dealDate=" + dealDate + ", time=" + time + ", location="
+				+ location + "]";
 	}
+
+	
 	  
 }
