@@ -45,7 +45,7 @@ public class ItemController {
 	public ModelAndView googlemap(Locale locale, Model model) {
 		ModelAndView modelAndView = new ModelAndView();
 		
-		Search search=new Search();
+/*		Search search=new Search();
 		search.setCurrentPage(1);
 		search.setPageSize(100);
 		//search.setPageSize(500);
@@ -56,7 +56,7 @@ public class ItemController {
 		//System.out.println(itemList[0]);
 		
 		modelAndView.addObject("test", "뽑아묵는교?");
-		
+		*/
 		modelAndView.setViewName("web/itemMapView");
 		return modelAndView;
 	}
