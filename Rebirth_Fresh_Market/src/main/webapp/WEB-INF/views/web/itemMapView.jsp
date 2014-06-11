@@ -12,7 +12,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
 	<link rel="Stylesheet" href="/resources/css/bootstrap.min.css"/>
-	
+	<link href="/resources/css/prettify.css" rel="stylesheet">
 	<%-- Slider css--%>
 	<%--
 	<link rel="stylesheet" type="text/css" href="css/default.css" />
@@ -26,7 +26,7 @@
 	border-style: none;
 	font-size: 15px;
 	font-familiy: 'Nanum Gothic';
-	z-index: 2000;
+	/* z-index: 2000; */
 	margin: 0;
 }
 
@@ -123,34 +123,11 @@ body {
 	overflow: hidden;
 }
 
-#aside {
-	background-color: #F5F6F7;
-	width: 7%;
-	height: 100%;
-	float: left;
-	margin-top: 53px;
-	text-align: center;
-	border: 1px solid #BCBCBC;
-}
-
-#aside_detail {
-	background-color: #FFFFFF;
-	width: 22%;
-	height: 100%;
-	float: left;
-	margin-top: 53px;
-	text-align: center;
-	border-top: 1px solid #BCBCBC;
-	padding-top: 10px;
-	padding-left: 10px;
-	padding-right: 10px;
-}
-
 #map_canvas {
 	float: left;
 	margin-top: 53px;
-	border-left: 1px solid #BCBCBC;
-	border-top: 1px solid #BCBCBC;
+	/* border-left: 1px solid #BCBCBC;
+	border-top: 1px solid #BCBCBC; */
 }
 
 /* 상품등록 css  */
@@ -188,46 +165,31 @@ body {
 	white-space: nowrap;
 }
 
-<%-- slider bar css --%>
-<%-- 텔 --%>
+
+/* slider bar css */
+/* 텔 */
 #menu1 {
 	transition: all 0.3s ease;
 	position: fixed;
 	width: 0%;
 	top: 0;
+	margin-top:53px;
 	left: -200px;
-	background: #CDECFA;
-	<%--background: rgb(0, 0, 0); --%>
+	background: #FFFFFF;
 	height: 100%;
 	z-index: 1100;
-	box-shadow: 0px 0px 10px black;
-	<%-- box-shadow: 0px 0px 10px black; --%>
-}
-
-#menu1 a {
-	color: GRAY;
-	<%--color: white; --%>
-	display: block;
-	text-align: center;
-	text-decoration: none;
-	padding: 10px 10px 10px 10px;
-	margin: 10px 10px 10px 10px;
-	border-radius: 100px;
-	transition: all 0.2s ease;
-}
-
-#menu1 a:hover {
-	background: rgb(50, 50, 50);
+	border:1px solid #BCBCBC;
+	padding-top: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 #menu-toggle1 {
 	position: fixed;
 	top: 200px;
 	left: 0;
-	<%-- 아이콘 바탕색 --%>
-	background: rgb(3, 0, 102);
+	background: #5DCD9D;
 	z-index: 1000;	
-	
 	padding-left: 10px;
 	padding-top: 10px;
 	padding-bottom: 10px;
@@ -236,7 +198,6 @@ body {
 	border-bottom-right-radius: 5px;
 	transition: all 0.3s ease;
 }
-
 
 
 <%-- 새로운 시도 시작 --%>
@@ -294,62 +255,46 @@ body {
 
 <%-- 새로운 시도 끝 --%>
 
-
 #menu-toggle1:hover {
 	background: rgb(255, 228, 0);
 	cursor: pointer;
 }
 
 #menu1.open {
+	margin-top:53px;
 	left: 0;
-	width: 400px;
-	<%--
-	width: 200px;
-	 --%>
+	width: 300px;
 	display: block;
 }
 
 #menu-toggle1.open {
-	left: 400px;
+	left: 300px;
 }
 
 
-<%-- Menu2 --%>
+/* Menu2 */
 #menu2 {
 	transition: all 0.3s ease;
 	position: fixed;
 	width: 0%;
 	top: 0;
+	margin-top:53px;
 	left: -200px;
-	background: #CDECFA;
-	<%--background: rgb(0, 0, 0); --%>
+	background: #ffffff;
 	height: 100%;
-	z-index: 1100;
-	box-shadow: 0px 0px 10px black;
-	<%-- box-shadow: 0px 0px 10px black; --%>
-}
-
-#menu2 a {
-	color: GRAY;
-	<%--color: white; --%>
-	display: block;
+	z-index: 1030;
 	text-align: center;
-	text-decoration: none;
-	padding: 10px 10px 10px 10px;
-	margin: 10px 10px 10px 10px;
-	border-radius: 100px;
-	transition: all 0.2s ease;
-}
-
-#menu2 a:hover {
-	background: rgb(50, 50, 50);
+	border: 1px solid #BCBCBC;
+	padding-top: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 #menu-toggle2 {
 	position: fixed;
 	top: 300px;
 	left: 0;
-	background: rgb(3, 0, 102);
+	background: #5DCD9D;
 	z-index: 1000;
 	padding-left: 10px;
 	padding-top: 10px;
@@ -415,62 +360,45 @@ body {
 
 <%-- 새로운 시도 끝 --%>
 
-
 #menu-toggle2:hover {
 	background: rgb(255, 228, 0);
 	cursor: pointer;
 }
 
 #menu2.open {
+	margin-top:53px;
 	left: 0;
-	width: 400px;
-	<%--
-	width: 200px;
-	 --%>
+	width: 300px;
 	display: block;
 }
 
 #menu-toggle2.open {
-	left: 400px;
+	left: 300px;
 }
 
 
-<%-- Menu3 --%>
+/* Menu3 */
 #menu3 {
 	transition: all 0.3s ease;
 	position: fixed;
+	margin-top:53px;
 	width: 0%;
 	top: 0;
 	left: -200px;
-	background: #CDECFA;
-	<%--background: rgb(0, 0, 0); --%>
+	background: #FFFFFF;
 	height: 100%;
 	z-index: 1100;
-	box-shadow: 0px 0px 10px black;
-	<%-- box-shadow: 0px 0px 10px black; --%>
-}
-
-#menu3 a {
-	color: GRAY;
-	<%--color: white; --%>
-	display: block;
-	text-align: center;
-	text-decoration: none;
-	padding: 10px 10px 10px 10px;
-	margin: 10px 10px 10px 10px;
-	border-radius: 100px;
-	transition: all 0.2s ease;
-}
-
-#menu3 a:hover {
-	background: rgb(50, 50, 50);
+	border:1px solid #BCBCBC;
+	padding-top: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 #menu-toggle3 {
 	position: fixed;
 	top: 400px;
 	left: 0;
-	background: rgb(3, 0, 102);
+	background: #5DCD9D;
 	z-index: 1000;
 	padding-left: 10px;
 	padding-top: 10px;
@@ -536,32 +464,38 @@ body {
 
 <%-- 새로운 시도 끝 --%>
 
-
 #menu-toggle3:hover {
 	background: rgb(255, 228, 0);
 	cursor: pointer;
 }
 
 #menu3.open {
+	margin-top:53px;
 	left: 0;
-	width: 400px;
-	<%--
-	width: 200px;
-	 --%>
+	width: 300px;
 	display: block;
 }
 
 #menu-toggle3.open {
-	left: 400px;
+	left: 300px;
 }
+
+#preview_modal{
+	text-align: center;
+}
+
+#tab11,#tab12,#tab13,#tab14,#tab15{
+	height:410px;
+}
+
 </style>
 
 
 
-<%--  highlight_styles --%>
-<%--
+<!-- highlight_styles -->
+<!--
 <link rel="stylesheet" type="text/css" href="highlight_styles.css" />
- --%>
+ -->
  
  	
 	<!--
@@ -588,13 +522,13 @@ body {
 	
 	
 	
-	<%-- -----------------------------------------------------------------------%>
+	<!-- ----------------------------------------------------------------------->
 	
 
 	
 	<!-- jquery + UI + CSS google CDN -->
 	
-	<%--panel용 lib --%>
+	<!--panel용 lib -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 	
 	
@@ -613,51 +547,51 @@ body {
 	<script
 	src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 
-	<%--
+	<!--
 	<script
 		src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
- 	 --%>
+ 	 -->
 	
-	<%--
+	<!--
 	<script src="resources/js_custom/markerclusterer_packed.js"></script>
 	<script src="resources/js_custom/markerclusterer.js"></script>
-	 --%> 
+	 --> 
 	<script src="resources/js_custom/markerwithlabel.js"></script>
 	
-	<%--panel lib --%>
-	<%--
+	<!--panel lib -->
+	<!--
 	<script src="resources/js_custom/jquery.slidePanel.min.js"></script>
-	 --%>
-	<%-- 
+	 -->
+	<!-- 
 	<link rel="stylesheet" href="/resources/demos/style.css">
-	  --%>
+	  -->
 	 
-	<%-- slider --%>
-	<%--
+	<!-- slider -->
+	<!--
 	<script src="resources/js_custom/modernizr.custom.js"></script>
-	 --%>
+	 -->
 	
 
 	
-	<%-- 
+	<!-- 
 	<script src="resources/js_custom/markerclusterer_packed.js"></script>
 	<script src="resources/js_custom/markerclusterer.js"></script>
-	--%>
+	-->
 	<script src="resources/js_custom/markerwithlabel.js"></script>
-	<%--
+	<!--
 	<link rel="stylesheet" href="/resources/demos/style.css">
-	--%>
+	-->
 	
-	<%--slider bar script --%>
-	<%--
+	<!--slider bar script -->
+	<!--
 	<script src="resources/js_custom/script.js"></script> 
-	 --%>
+	 -->
 	<script src="resources/js_custom/slider_script.js"></script> 
 	 
 	<script src="/resources/js/jquery.bootstrap.wizard.js"></script>
 	<script src="/resources/js/prettify.js"></script>
 	
-	<%-- jquery.bootstrap.wizard 화면구성 스크립트 코드 --%>
+	<!-- jquery.bootstrap.wizard 화면구성 스크립트 코드 -->
 	<script>
 	$(document).ready(function() {
 	  	$('#rootwizard').bootstrapWizard({onTabShow: function(tab, navigation, index) {
@@ -761,14 +695,14 @@ body {
 		 
 	
 	//---------------------------------------
-	var test="${test}";
-	console.log(test);
+/* 	var test="${test}";
+	console.log(test); */
 	//HTML5 Geolocation을 이용한 ip trace
 	/**/
 	var sellImage = 'resources/imgs/icons/ssh2.png';
 	var buyImage = 'resources/imgs/icons/bsh2.png';
 	var dealImage = 'resources/imgs/icons/dsh.png';
-	var geoImage = 'resources/imgs/icons/p33.png';
+	var geoImage = 'resources/imgs/icons/people.png';
 	
 	var map;
 	var markers = [];
@@ -834,7 +768,8 @@ body {
 		*/
 
 		function initialize() {
-			
+			//geocoder 좌표->주소 변환 사용
+			geocoder = new google.maps.Geocoder();
 			var mapOptions = {
 				zoom : 12,
 				center : new google.maps.LatLng(-33, 151),
@@ -872,9 +807,74 @@ body {
 		          gridSize: size
 		          //styles: styles[style]
 		        });
+			
+			  google.maps.event.addListener(map, 'click', function(e) {
+		            placeMarker(e.latLng, map);
+
+		          });
 		}
 		
+		 var markerDropCheck;
+		 var markerDropEffect;
+		 var marker;
+		// 마커찍기 
+			function placeMarker(position, map) {
+			  if(markerDropEffect=="active" && markerDropCheck!=1){
+				  marker = new google.maps.Marker({
+					position: position,
+					map: map,
+					/* draggable:true, */
+					animation: google.maps.Animation.DROP
+				  });
+				  map.panTo(position);
+				  var lat=marker.getPosition().lat();
+				  var lng=marker.getPosition().lng();
+					console.log(lat,lng);
+					document.getElementById("reg_lat").value=lat;
+					document.getElementById("reg_lng").value=lng;
+					document.getElementById("latlng").value=lat+","+lng;
+				markerDropEffect="false";
+				markerDropCheck=1;
+	            codeLatLng();
+			  }
+			}
 
+			function markerDrop(){
+				markerDropEffect="active";
+			}
+			
+			function clearMarkers() {
+		    	marker.setOptions({
+		    		map:null,
+		    		visible:false
+		    		
+		    	});
+		    	marker=null;
+		    	markerDropEffect="active";
+		    	markerDropCheck="0";
+			}
+			
+			//좌표 주소 전환
+			function codeLatLng() {
+				  var input = document.getElementById('latlng').value;
+				  var latlngStr = input.split(',', 2);
+				  var lat = parseFloat(latlngStr[0]);
+				  var lng = parseFloat(latlngStr[1]);
+				  var latlng = new google.maps.LatLng(lat, lng);
+				  geocoder.geocode({'latLng': latlng}, function(results, status) {
+				    if (status == google.maps.GeocoderStatus.OK) {
+				      if (results[1]) {
+				    	  document.getElementById("reg_add").value=results[1].formatted_address;
+				      } else {
+				        alert('No results found');
+				      }
+				    } else {
+				      alert('Geocoder failed due to: ' + status);
+				    }
+				    
+				  });
+				}
+						
 		function markerInitialize(map) {
 		  for (var i = 0; i < markers.length; i++) {
 			markers[i].setMap(map);   
@@ -949,23 +949,23 @@ body {
 				      position : { my: "center", at: "center", of: window },
 				      show: {
 				        effect: "blind",
-				        <%--  effect: "blind", --%>
+				        <!--  effect: "blind", -->
 				        duration: 400
 				      },
 				      hide: {
 				        effect: "explode",
-				        <%-- effect: "explode",--%>
+				        <!-- effect: "explode",-->
 				        duration: 300
 				      }
 				}).prev(".ui-dialog-titlebar").css("background","#87cefa");
 
-					<%--    
+					<!--    
 				.ui-dialog-title{
 					font-size: 200%;
 			    	color: #FFFFFF ;
 			    	background: #000000 ;
 				};
-				--%>
+				-->
 				
 			});
 		</c:forEach>
@@ -987,6 +987,10 @@ body {
 
 			var infowindow = new google.maps.InfoWindow(options);
 			map.setCenter(options.position);
+			
+		
+			
+			
 		}
 		
 		// Add a marker to the map and push to the array.
@@ -997,7 +1001,8 @@ body {
 			});
 			markers.push(marker);
 		}
-					
+		
+		
 		google.maps.event.addDomListener(window, 'load', initialize);
 					
 	</script>
@@ -1124,6 +1129,9 @@ body {
 		}
 	}
 	
+
+   </script>
+	
 	</script>
 	
 	<!--
@@ -1154,12 +1162,12 @@ body {
  	onload에 추가하면 2번 되서 성능 저하됩니다~~~~~~ 
  -->
 <body class="cbp-spmenu-push" data-twttr-rendered="true" onload="init(this.form);">
-<%----------------------------------------------------------- --%>
+<!----------------------------------------------------------- -->
 
 
 
 
-<%----------------------------------------------------------- --%>
+<!----------------------------------------------------------- -->
 	
 	<header>
 		<%@include file="header.jsp"%>
@@ -1169,11 +1177,10 @@ body {
 		<a>
 		<img src="resources/imgs/slider/search.png" width=70 height=70 alt="Menu1"></img>
 		<span>상품검색</span>
-		</a>
-		<%-- 
+		</a>		
+		<!-- 
 		<img src="resources/imgs/slider/menu.png" width=50 height=50 alt="Menu"></img>
-		--%>
-		
+		-->
 	</div>
 		<nav id="menu1">
 			<div class="tab-pane active" id="tab1">
@@ -1219,13 +1226,12 @@ body {
 		<img src="resources/imgs/slider/Cloud_Add.png" width=70 height=70 alt="Menu2"></img>
 		<span>물건 팔기/사기</span>
 		</a>		
-		<%-- 
+		<!-- 
 		<img src="resources/imgs/slider/menu.png" width=50 height=50 alt="Menu"></img>
-		--%>
+		-->
 	</div>
-		<%-- 텔 --%>
+		<!-- 텔 -->
 		<nav id="menu2">
-			<br><br><br><br><br><br><br>
 			<div class="tab-pane" id="tab2">
 	
 			<div id="rootwizard">				
@@ -1270,7 +1276,8 @@ body {
 				    		<input type="hidden" id="reg_lat" value="" style="border: none;">
 				    		<input type="hidden" id="reg_lng" value="" style="border: none;">
 				    		<input id="latlng" type="text" value="" style="display:none;">
-				    		<button class="btn btn-default" onclick="markerDrop();">위치 정하기</button>
+				    		<button id="loca_btn" class="btn btn-default" onclick="markerDrop(); return false;"><span>위치 정하기</span></button>
+				    		<button class="btn btn-default" onclick="clearMarkers(); return false;">다시 정하기</button>
 				    		<br><br>
 				    		<textarea id="reg_add" rows="4" cols="40" value="" style="border: none;"></textarea>
 				    	</div>
@@ -1301,80 +1308,23 @@ body {
 				     	 	<br>	
 				     	 	<textarea class="form-control" rows="10" cols="80" placeholder="상세내용을 입력하세요"></textarea>
 				     	 	<br>				      				
-							<button class="btn btn-default" data-toggle="modal" href="#previewModal" onclick="return false">
+							<button class="btn btn-default" data-toggle="modal" href="#preview_modal" onclick="return false">
 							미리보기
 							</button>
 							<input type="submit" class="btn btn-primary" value="등록하기" >
 							
 						
-							<!-- preview modal -->
-							<div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-							  <div class="modal-dialog">
-							    <div class="modal-content">
-							      <div class="modal-header">
-							        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-							        <h4 class="modal-title">제품명<font color="red"> [가격]</font></h4>
-							       
-							      </div>
-							      <div class="modal-body">
-							        <div id="imgslider_container">
-          		
-									  <!-- main slider carousel -->
-									  <div class="row-fluid">
-									    <div class="span12" id="slider">
-									      <div class="row-fluid">
-									        <div class="span8" id="carousel-bounding-box">
-									          <div id="myCarousel" class="carousel slide">
-									            
-									            <!-- main slider carousel items -->
-									            <div class="carousel-inner">
-									              <div class="active item" data-slide-number="0">
-									                <img src="http://placehold.it/640x480&amp;text=one">
-									              </div>
-									              <div class="item" data-slide-number="1">
-									                <img src="http://placehold.it/640x480&amp;text=two">
-									              </div>
-									              <div class="item" data-slide-number="2">
-									                <img src="http://placehold.it/640x480&amp;text=three">
-									              </div>
-									              <div class="item" data-slide-number="3">
-									                <img src="http://placehold.it/640x480&amp;text=four">
-									              </div>
-									               
-									            </div>
-									            
-									            <!-- main slider carousel nav controls -->
-									            <a class="carousel-control left" href="#myCarousel" data-slide="prev">‹</a>
-									            <a class="carousel-control right" href="#myCarousel" data-slide="next">›</a>
-									          </div>
-									        </div>
-									        
-									       
-									      </div>
-									      
-									    </div>
-									  </div> <!--/main slider carousel-->
-									</div><!-- end of image slider -->
-									<br>
-									<p>상세 내용</p>
-									
-							      </div>
-							      <div class="modal-footer">
-							        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							       	<input type="submit" class="btn btn-primary" value="등록하기" >
-							      </div>
-							    </div><!-- /.modal-content -->
-							  </div><!-- /.modal-dialog -->
-							</div><!-- /.modal -->
-												 
+						
 					    </div>
-					</div>   
-					<ul class="pager wizard">
-						<li class="previous first" style="display:none;"><a href="#" onclick="return false">First</a></li>
-						<li class="previous"><a href="#" onclick="return false">Previous</a></li>
-						<li class="next last" style="display:none;"><a href="#" onclick="return false">Last</a></li>
-					  	<li class="next"><a href="#" onclick="return false">Next</a></li>
-					</ul> 
+					</div>
+					<div id="pager_wizard">   
+						<ul class="pager wizard">
+							<li class="previous first" style="display:none;"><a href="#" onclick="return false">First</a></li>
+							<li class="previous"><a href="#" onclick="return false">Previous</a></li>
+							<li class="next last" style="display:none;"><a href="#" onclick="return false">Last</a></li>
+						  	<li class="next"><a href="#" onclick="return false">Next</a></li>
+						</ul> 
+					</div>
 				</div>	
 				</form>
 			</div>
@@ -1385,12 +1335,11 @@ body {
 		<img src="resources/imgs/slider/Handshake-icon.png" width=70 height=70 alt="Menu3"></img>
 		<span>거래현황</span>
 		</a>		
-		<%-- 
+		<!-- 
 		<img src="resources/imgs/slider/menu.png" width=50 height=50 alt="Menu"></img>
-		--%>
+		-->
 	</div>
 		<nav id="menu3">
-			<br><br><br><br><br><br><br>
 			<div class="tab-pane" id="tab3">
 				<p>또또 안녕</p>
 			</div><!-- end of tap3   -->
@@ -1402,26 +1351,87 @@ body {
 	
 	<script type="text/javascript">
 	//이메일칸에 입력전에 submit 버튼 활성화/비활성화
-	document.loginform.commit.disabled = true;
+	document.signinform.commit.disabled = true;
 	document.onkeyup = proces;
 	document.onmouseup = proces;
 	document.onmousedown = proces;
 	
 	//알고리즘 개선하였음.
 	function proces() {
-		if (document.loginform.email.value == '' 
-			||document.loginform.password.value == '') {   
-			document.loginform.commit.disabled = true;
+		if (document.signinform.email.value == '' 
+			||document.signinform.password.value == '') {   
+			document.signinform.commit.disabled = true;
 		} 
-		else if(document.loginform.password.value != ''
-				&&document.loginform.password.value.length >=8 ){	
-			document.loginform.commit.disabled = false; 
+		else if(document.signinform.password.value != ''
+				&&document.signinform.password.value.length >=8 ){	
+			document.signinform.commit.disabled = false; 
 		}
 	}
 	</script>
 
 <footer>
+<!-- preview modal -->
+	<div class="modal fade" id="preview_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	        <h4 class="modal-title">제품명<font color="red"> [가격]</font></h4>
+	       
+	      </div>
+	      <div class="modal-body">
+	        <div id="imgslider_container">
+    		
+			  <!-- main slider carousel -->
+			  <div class="row-fluid">
+			    <div class="span12" id="slider">
+			      <div class="row-fluid">
+			        <div class="span8" id="carousel-bounding-box">
+			          <div id="myCarousel" class="carousel slide">
+			            
+			            <!-- main slider carousel items -->
+			            <div class="carousel-inner">
+			              <div class="active item" data-slide-number="0">
+			                <img src="http://placehold.it/640x480&amp;text=one">
+			              </div>
+			              <div class="item" data-slide-number="1">
+			                <img src="http://placehold.it/640x480&amp;text=two">
+			              </div>
+			              <div class="item" data-slide-number="2">
+			                <img src="http://placehold.it/640x480&amp;text=three">
+			              </div>
+			              <div class="item" data-slide-number="3">
+			                <img src="http://placehold.it/640x480&amp;text=four">
+			              </div>
+			               
+			            </div>
+			            
+			            <!-- main slider carousel nav controls -->
+			            <a class="carousel-control left" href="#myCarousel" data-slide="prev">‹</a>
+			            <a class="carousel-control right" href="#myCarousel" data-slide="next">›</a>
+			          </div>
+			        </div>
+			        
+			       
+			      </div>
+			      
+			    </div>
+			  </div> <!--/main slider carousel-->
+			</div><!-- end of image slider -->
+			<br>
+			<p>상세 내용</p>
+			
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	       	<input type="submit" class="btn btn-primary" value="등록하기" >
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 	<!-- footer부분에 modal용 div넣습니다. 레이아웃과 상관없으니 삭제하지 마세요 -->
+		
+		
 		
 		<c:forEach var="itemList" items="${itemList}">
 		<c:set var="i" value="${ i+1 }" />	
@@ -1443,7 +1453,8 @@ body {
 		<div id="dialog2" class="dialog2" title="Basic dialog">
 			<p>what the?</p>
 		</div>
-		
+			
+												 
 		<!-- footer부분에 modal용 div넣습니다. 레이아웃과 상관없으니 삭제하지 마세요 -->
 </footer>	
 	
