@@ -8,8 +8,6 @@ import com.freshmarket.domain.Item;
 public interface ItemDao {
 
     public Integer addItem(Item item);
-    
-    public Integer findItemNo(Item item);
 
     public Item findItem(Integer itemNo);
 

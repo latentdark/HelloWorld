@@ -35,15 +35,11 @@ public class ItemDaoImpl implements ItemDao {
 	public Integer addItem(Item item) {
 	
 		Integer a = sqlSession.insert("ItemMapper.addItem", item);
-		item.setItemNo(findItemNo(item));
+		item.setItemNo((Integer)sqlSession.selectOne("ItemMapper.findItemNo", item));
 		Integer b = sqlSession.insert("ItemMapper.addLocation", item);
 		Integer c = sqlSession.insert("ItemMapper.addItem_pic", item);
 
 		return a+b+c;
-	}
-
-	public Integer findItemNo(Item item){
-		return sqlSession.selectOne("ItemMapper.findItemNo", item);
 	}
 	
 	@Override
