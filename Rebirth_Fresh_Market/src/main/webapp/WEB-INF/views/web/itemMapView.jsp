@@ -780,8 +780,8 @@ body {
 			//geocoder 좌표->주소 변환 사용
 			geocoder = new google.maps.Geocoder();
 			var mapOptions = {
-				zoom : 12,
-				center : new google.maps.LatLng(-33, 151),
+				zoom : 7,
+				center : new google.maps.LatLng(35.710787, 127.969980),
 				disableDefaultUI : true,
 				styles: styles
 			}
