@@ -13,11 +13,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
 	<link rel="Stylesheet" href="/resources/css/bootstrap.min.css"/>
 	<link href="/resources/css/prettify.css" rel="stylesheet">
-	<%-- Slider css--%>
-	<%--
+	<!-- Slider css -->
+	<!--
 	<link rel="stylesheet" type="text/css" href="css/default.css" />
 	<link rel="stylesheet" type="text/css" href="css/component.css" />
-	 --%>	
+	  -->	
 	<style>
 .navbar {
 	/* background-image: url("/resources/imgs/bg6.png");
@@ -200,7 +200,7 @@ body {
 }
 
 
-<%-- 새로운 시도 시작 --%>
+/* 새로운 시도 시작 */
 #menu-toggle1 span{
 	
 	/* Container properties */
@@ -218,9 +218,6 @@ body {
 
 	/* Text properties */
 	font-familiy: 'Nanum Gothic';
-	<%-- 
-	font-family:'Myriad Pro',Arial, Helvetica, sans-serif;
-	--%>
 	font-size:18px;
 	font-weight:bold;
 	letter-spacing:0.6px;
@@ -234,18 +231,19 @@ body {
 	-moz-transition: 0.25s;
 	transition: 0.25s;
 }
-<%-- span 보여주게 하는 코드 --%>
+/* span 보여주게 하는 코드 */
 #menu-toggle1 a:hover span{ 
 	background-color:rgb(255, 228, 0);
 	color:rgb(3, 0, 102);
-	text-shadow:1px 1px 0 #99bf31;
+	/* text-shadow:1px 1px 0 #99bf31;
+	 */
 	width:auto;
 	padding:0 20px;
-	<%--   --%>
-	overflow:visible; }
+	overflow:visible; 
+	}
 
-<%-- 
-#menu-toggle1 a:hover{
+
+ #menu-toggle1 a:hover{
 	text-decoration:none;
 	
 	/* CSS outer glow with the box-shadow property */
@@ -253,10 +251,10 @@ body {
 	-webkit-box-shadow:0 0 5px #9ddff5;
 	box-shadow:0 0 5px #9ddff5;
 }
---%>
 
 
-<%-- 새로운 시도 끝 --%>
+
+/* 새로운 시도 끝 */
 
 #menu-toggle1:hover {
 	background: rgb(255, 228, 0);
@@ -282,7 +280,7 @@ body {
 	width: 0%;
 	top: 0;
 	margin-top:53px;
-	left: -200px;
+	left: -300px;
 	background: #ffffff;
 	height: 100%;
 	z-index: 1030;
@@ -308,7 +306,7 @@ body {
 	transition: all 0.3s ease;
 }
 
-<%-- 새로운 시도 시작 --%>
+/* 새로운 시도 시작 */
 #menu-toggle2 span{
 	
 	/* Container properties */
@@ -326,9 +324,6 @@ body {
 
 	/* Text properties */
 	font-familiy: 'Nanum Gothic';
-	<%-- 
-	font-family:'Myriad Pro',Arial, Helvetica, sans-serif;
-	--%>
 	font-size:18px;
 	font-weight:bold;
 	letter-spacing:0.6px;
@@ -342,18 +337,17 @@ body {
 	-moz-transition: 0.25s;
 	transition: 0.25s;
 }
-<%-- span 보여주게 하는 코드 --%>
+/* span 보여주게 하는 코드 */
 #menu-toggle2 a:hover span{ 
 	background-color:rgb(255, 228, 0);
 	color:rgb(3, 0, 102);
-	text-shadow:1px 1px 0 #99bf31;
+/* 	text-shadow:1px 1px 0 #99bf31; */
 	width:auto;
 	padding:0 20px;
-	<%--   --%>
 	overflow:visible; }
 
-<%-- 
-#menu-toggle1 a:hover{
+ 
+#menu-toggle2 a:hover{
 	text-decoration:none;
 	
 	/* CSS outer glow with the box-shadow property */
@@ -361,10 +355,10 @@ body {
 	-webkit-box-shadow:0 0 5px #9ddff5;
 	box-shadow:0 0 5px #9ddff5;
 }
---%>
 
 
-<%-- 새로운 시도 끝 --%>
+
+/* 새로운 시도 끝 */
 
 #menu-toggle2:hover {
 	background: rgb(255, 228, 0);
@@ -415,7 +409,7 @@ body {
 	transition: all 0.3s ease;
 }
 
-<%-- 새로운 시도 시작 --%>
+/* 새로운 시도 시작 */
 #menu-toggle3 span{
 	
 	/* Container properties */
@@ -433,9 +427,6 @@ body {
 
 	/* Text properties */
 	font-familiy: 'Nanum Gothic';
-	<%-- 
-	font-family:'Myriad Pro',Arial, Helvetica, sans-serif;
-	--%>
 	font-size:18px;
 	font-weight:bold;
 	letter-spacing:0.6px;
@@ -449,18 +440,17 @@ body {
 	-moz-transition: 0.25s;
 	transition: 0.25s;
 }
-<%-- span 보여주게 하는 코드 --%>
+/* span 보여주게 하는 코드 */
 #menu-toggle3 a:hover span{ 
 	background-color:rgb(255, 228, 0);
 	color:rgb(3, 0, 102);
-	text-shadow:1px 1px 0 #99bf31;
+	/* text-shadow:1px 1px 0 #99bf31; */
 	width:auto;
 	padding:0 20px;
-	<%--   --%>
 	overflow:visible; }
 
-<%-- 
-#menu-toggle1 a:hover{
+
+#menu-toggle3 a:hover{
 	text-decoration:none;
 	
 	/* CSS outer glow with the box-shadow property */
@@ -468,10 +458,10 @@ body {
 	-webkit-box-shadow:0 0 5px #9ddff5;
 	box-shadow:0 0 5px #9ddff5;
 }
---%>
 
 
-<%-- 새로운 시도 끝 --%>
+
+/* 새로운 시도 끝 */
 
 #menu-toggle3:hover {
 	background: rgb(255, 228, 0);
@@ -852,6 +842,8 @@ body {
 				markerDropEffect="active";
 			}
 			
+			
+			//마커지우기(위치 재설정)
 			function clearMarkers() {
 		    	marker.setOptions({
 		    		map:null,
@@ -958,23 +950,15 @@ body {
 				      position : { my: "center", at: "center", of: window },
 				      show: {
 				        effect: "blind",
-				        <!--  effect: "blind", -->
 				        duration: 400
 				      },
 				      hide: {
 				        effect: "explode",
-				        <!-- effect: "explode",-->
 				        duration: 300
 				      }
 				}).prev(".ui-dialog-titlebar").css("background","#87cefa");
 
-					<!--    
-				.ui-dialog-title{
-					font-size: 200%;
-			    	color: #FFFFFF ;
-			    	background: #000000 ;
-				};
-				-->
+				
 				
 			});
 		</c:forEach>
@@ -1192,7 +1176,7 @@ body {
 		-->
 	</div>
 		<nav id="menu1">
-			<div class="tab-pane active" id="tab1">
+			<!-- <div class="tab-pane" id="tab1">
 			<form class="navbar-form navbar-left" role="search">
 			    <div class="form-group">
 			        <input type="text" class="form-control" placeholder="Search">
@@ -1227,8 +1211,41 @@ body {
 					거래 지역 범위 설정
 				</div>
 			</form>
-		</div><!-- end of tap1   -->
-		</nav>
+		</div>end of tap1   -->
+	<div>
+		<form action="">
+			<input type="text" class="form-control" placeholder="Search">		    
+		    <br>
+		    <div id="select_loca">
+		    	위치 선택
+	    		<div class="btn-group" data-toggle="buttons" style="margin-left:10px">			    
+			  		<label class="btn btn-default active">
+			    	<input type="radio" name="options" id="option1"> 현재위치
+			  		</label>
+		  			<label class="btn btn-default">
+			    	<input type="radio" name="options" id="option2"> 위치지정
+			  		</label>
+				</div>
+		    </div>
+		    <br>
+		   	<div id="select_deal">
+		    	거래 선택 
+		    	<div class="btn-group" data-toggle="buttons" style="margin-left:10px">			    
+			  		<label class="btn btn-default">
+			    	<input type="radio" name="options" id="option1"> 삽니다
+			  		</label>
+		  			<label class="btn btn-default">
+			    	<input type="radio" name="options" id="option2"> 팝니다
+			  		</label>
+				</div>
+			</div>
+			<br>
+			<div>
+				거래 지역 범위 설정
+			</div>
+		</form>
+	</div>
+	</nav>
 	
 	<div id="menu-toggle2">
 		<a>
@@ -1288,7 +1305,7 @@ body {
 				    		<button id="loca_btn" class="btn btn-default" onclick="markerDrop(); return false;"><span>위치 정하기</span></button>
 				    		<button class="btn btn-default" onclick="clearMarkers(); return false;">다시 정하기</button>
 				    		<br><br>
-				    		<textarea id="reg_add" rows="4" cols="40" value="" style="border: none;"></textarea>
+				    		<textarea readonly="readonly" id="reg_add" rows="4" cols="40" value="" style="border: none; resize:none;"></textarea>
 				    	</div>
 				    </div>
 					<div class="tab-pane" id="tab13">
@@ -1361,12 +1378,12 @@ body {
 	<script type="text/javascript">
 	//이메일칸에 입력전에 submit 버튼 활성화/비활성화
 	document.signinform.commit.disabled = true;
-	document.onkeyup = proces;
-	document.onmouseup = proces;
-	document.onmousedown = proces;
+	document.onkeyup = process;
+	document.onmouseup = process;
+	document.onmousedown = process;
 	
 	//알고리즘 개선하였음.
-	function proces() {
+	function process() {
 		if (document.signinform.email.value == '' 
 			||document.signinform.password.value == '') {   
 			document.signinform.commit.disabled = true;
