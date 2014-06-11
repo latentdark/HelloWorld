@@ -217,7 +217,10 @@ body {
 	overflow:hidden;
 
 	/* Text properties */
+	font-familiy: 'Nanum Gothic';
+	<%-- 
 	font-family:'Myriad Pro',Arial, Helvetica, sans-serif;
+	--%>
 	font-size:18px;
 	font-weight:bold;
 	letter-spacing:0.6px;
@@ -322,7 +325,10 @@ body {
 	overflow:hidden;
 
 	/* Text properties */
+	font-familiy: 'Nanum Gothic';
+	<%-- 
 	font-family:'Myriad Pro',Arial, Helvetica, sans-serif;
+	--%>
 	font-size:18px;
 	font-weight:bold;
 	letter-spacing:0.6px;
@@ -426,7 +432,10 @@ body {
 	overflow:hidden;
 
 	/* Text properties */
+	font-familiy: 'Nanum Gothic';
+	<%-- 
 	font-family:'Myriad Pro',Arial, Helvetica, sans-serif;
+	--%>
 	font-size:18px;
 	font-weight:bold;
 	letter-spacing:0.6px;
