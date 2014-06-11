@@ -801,7 +801,7 @@ body {
 						});
 					
 					map.setCenter(pos);
-					map.setZoom(12);
+					map.setZoom(13);
 				}, function() {
 					handleNoGeolocation(true);
 				});
