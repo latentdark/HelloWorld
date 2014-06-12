@@ -13,11 +13,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
 	<link rel="Stylesheet" href="/resources/css/bootstrap.min.css"/>
 	<link href="/resources/css/prettify.css" rel="stylesheet">
-	<%-- Slider css--%>
-	<%--
+	<!-- Slider css -->
+	<!--
 	<link rel="stylesheet" type="text/css" href="css/default.css" />
 	<link rel="stylesheet" type="text/css" href="css/component.css" />
-	 --%>	
+	  -->	
 	<style>
 .navbar {
 	/* background-image: url("/resources/imgs/bg6.png");
@@ -199,6 +199,63 @@ body {
 	transition: all 0.3s ease;
 }
 
+
+/* 새로운 시도 시작 */
+#menu-toggle1 span{
+	
+	/* Container properties */
+	
+	width:0;
+	left:90px;
+	top:0px;
+	/*
+	옆에서 얼마나 떨어졌나 지정
+	left:70px;
+	*/
+	padding:0;
+	position:absolute;
+	overflow:hidden;
+
+	/* Text properties */
+	font-familiy: 'Nanum Gothic';
+	font-size:18px;
+	font-weight:bold;
+	letter-spacing:0.6px;
+	white-space:nowrap;
+	line-height:90px;
+	/* 하이라이터 높이 지정 line-height:39px;*/
+	/* CSS3 Transition: */
+	-webkit-transition: 0.25s;
+	
+	/* Future proofing (these do not work yet): */
+	-moz-transition: 0.25s;
+	transition: 0.25s;
+}
+/* span 보여주게 하는 코드 */
+#menu-toggle1 a:hover span{ 
+	background-color:rgb(255, 228, 0);
+	color:rgb(3, 0, 102);
+	/* text-shadow:1px 1px 0 #99bf31;
+	 */
+	width:auto;
+	padding:0 20px;
+	overflow:visible; 
+	}
+
+
+ #menu-toggle1 a:hover{
+	text-decoration:none;
+	
+	/* CSS outer glow with the box-shadow property */
+	-moz-box-shadow:0 0 5px #9ddff5;
+	-webkit-box-shadow:0 0 5px #9ddff5;
+	box-shadow:0 0 5px #9ddff5;
+}
+
+
+
+/* 새로운 시도 끝 */
+
 #menu-toggle1:hover {
 	background: rgb(255, 228, 0);
 	cursor: pointer;
@@ -223,7 +280,7 @@ body {
 	width: 0%;
 	top: 0;
 	margin-top:53px;
-	left: -200px;
+	left: -300px;
 	background: #ffffff;
 	height: 100%;
 	z-index: 1030;
@@ -248,6 +305,60 @@ body {
 	border-bottom-right-radius: 5px;
 	transition: all 0.3s ease;
 }
+
+/* 새로운 시도 시작 */
+#menu-toggle2 span{
+	
+	/* Container properties */
+	
+	width:0;
+	left:90px;
+	top:0px;
+	/*
+	옆에서 얼마나 떨어졌나 지정
+	left:70px;
+	*/
+	padding:0;
+	position:absolute;
+	overflow:hidden;
+
+	/* Text properties */
+	font-familiy: 'Nanum Gothic';
+	font-size:18px;
+	font-weight:bold;
+	letter-spacing:0.6px;
+	white-space:nowrap;
+	line-height:90px;
+	/* 하이라이터 높이 지정 line-height:39px;*/
+	/* CSS3 Transition: */
+	-webkit-transition: 0.25s;
+	
+	/* Future proofing (these do not work yet): */
+	-moz-transition: 0.25s;
+	transition: 0.25s;
+}
+/* span 보여주게 하는 코드 */
+#menu-toggle2 a:hover span{ 
+	background-color:rgb(255, 228, 0);
+	color:rgb(3, 0, 102);
+/* 	text-shadow:1px 1px 0 #99bf31; */
+	width:auto;
+	padding:0 20px;
+	overflow:visible; }
+
+ 
+#menu-toggle2 a:hover{
+	text-decoration:none;
+	
+	/* CSS outer glow with the box-shadow property */
+	-moz-box-shadow:0 0 5px #9ddff5;
+	-webkit-box-shadow:0 0 5px #9ddff5;
+	box-shadow:0 0 5px #9ddff5;
+}
+
+
+
+/* 새로운 시도 끝 */
 
 #menu-toggle2:hover {
 	background: rgb(255, 228, 0);
@@ -297,6 +408,60 @@ body {
 	border-bottom-right-radius: 5px;
 	transition: all 0.3s ease;
 }
+
+/* 새로운 시도 시작 */
+#menu-toggle3 span{
+	
+	/* Container properties */
+	
+	width:0;
+	left:90px;
+	top:0px;
+	/*
+	옆에서 얼마나 떨어졌나 지정
+	left:70px;
+	*/
+	padding:0;
+	position:absolute;
+	overflow:hidden;
+
+	/* Text properties */
+	font-familiy: 'Nanum Gothic';
+	font-size:18px;
+	font-weight:bold;
+	letter-spacing:0.6px;
+	white-space:nowrap;
+	line-height:90px;
+	/* 하이라이터 높이 지정 line-height:39px;*/
+	/* CSS3 Transition: */
+	-webkit-transition: 0.25s;
+	
+	/* Future proofing (these do not work yet): */
+	-moz-transition: 0.25s;
+	transition: 0.25s;
+}
+/* span 보여주게 하는 코드 */
+#menu-toggle3 a:hover span{ 
+	background-color:rgb(255, 228, 0);
+	color:rgb(3, 0, 102);
+	/* text-shadow:1px 1px 0 #99bf31; */
+	width:auto;
+	padding:0 20px;
+	overflow:visible; }
+
+
+#menu-toggle3 a:hover{
+	text-decoration:none;
+	
+	/* CSS outer glow with the box-shadow property */
+	-moz-box-shadow:0 0 5px #9ddff5;
+	-webkit-box-shadow:0 0 5px #9ddff5;
+	box-shadow:0 0 5px #9ddff5;
+}
+
+
+
+/* 새로운 시도 끝 */
 
 #menu-toggle3:hover {
 	background: rgb(255, 228, 0);
@@ -605,8 +770,8 @@ body {
 			//geocoder 좌표->주소 변환 사용
 			geocoder = new google.maps.Geocoder();
 			var mapOptions = {
-				zoom : 12,
-				center : new google.maps.LatLng(-33, 151),
+				zoom : 7,
+				center : new google.maps.LatLng(35.710787, 127.969980),
 				disableDefaultUI : true,
 				styles: styles
 			}
@@ -626,7 +791,7 @@ body {
 						});
 					
 					map.setCenter(pos);
-					map.setZoom(12);
+					map.setZoom(13);
 				}, function() {
 					handleNoGeolocation(true);
 				});
@@ -677,6 +842,8 @@ body {
 				markerDropEffect="active";
 			}
 			
+			
+			//마커지우기(위치 재설정)
 			function clearMarkers() {
 		    	marker.setOptions({
 		    		map:null,
@@ -783,23 +950,15 @@ body {
 				      position : { my: "center", at: "center", of: window },
 				      show: {
 				        effect: "blind",
-				        <!--  effect: "blind", -->
 				        duration: 400
 				      },
 				      hide: {
 				        effect: "explode",
-				        <!-- effect: "explode",-->
 				        duration: 300
 				      }
 				}).prev(".ui-dialog-titlebar").css("background","#87cefa");
 
-					<!--    
-				.ui-dialog-title{
-					font-size: 200%;
-			    	color: #FFFFFF ;
-			    	background: #000000 ;
-				};
-				-->
+				
 				
 			});
 		</c:forEach>
@@ -1008,14 +1167,16 @@ body {
 	</header>
 	
 	<div id="menu-toggle1">
-				
+		<a>
 		<img src="resources/imgs/slider/search.png" width=70 height=70 alt="Menu1"></img>
+		<span>상품검색</span>
+		</a>		
 		<!-- 
 		<img src="resources/imgs/slider/menu.png" width=50 height=50 alt="Menu"></img>
 		-->
 	</div>
 		<nav id="menu1">
-			<div class="tab-pane active" id="tab1">
+			<!-- <div class="tab-pane" id="tab1">
 			<form class="navbar-form navbar-left" role="search">
 			    <div class="form-group">
 			        <input type="text" class="form-control" placeholder="Search">
@@ -1050,12 +1211,47 @@ body {
 					거래 지역 범위 설정
 				</div>
 			</form>
-		</div><!-- end of tap1   -->
-		</nav>
+		</div>end of tap1   -->
+	<div>
+		<form action="">
+			<input type="text" class="form-control" placeholder="Search">		    
+		    <br>
+		    <div id="select_loca">
+		    	위치 선택
+	    		<div class="btn-group" data-toggle="buttons" style="margin-left:10px">			    
+			  		<label class="btn btn-default active">
+			    	<input type="radio" name="options" id="option1"> 현재위치
+			  		</label>
+		  			<label class="btn btn-default">
+			    	<input type="radio" name="options" id="option2"> 위치지정
+			  		</label>
+				</div>
+		    </div>
+		    <br>
+		   	<div id="select_deal">
+		    	거래 선택 
+		    	<div class="btn-group" data-toggle="buttons" style="margin-left:10px">			    
+			  		<label class="btn btn-default">
+			    	<input type="radio" name="options" id="option1"> 삽니다
+			  		</label>
+		  			<label class="btn btn-default">
+			    	<input type="radio" name="options" id="option2"> 팝니다
+			  		</label>
+				</div>
+			</div>
+			<br>
+			<div>
+				거래 지역 범위 설정
+			</div>
+		</form>
+	</div>
+	</nav>
 	
 	<div id="menu-toggle2">
-				
+		<a>
 		<img src="resources/imgs/slider/Cloud_Add.png" width=70 height=70 alt="Menu2"></img>
+		<span>물건 팔기/사기</span>
+		</a>		
 		<!-- 
 		<img src="resources/imgs/slider/menu.png" width=50 height=50 alt="Menu"></img>
 		-->
@@ -1109,7 +1305,7 @@ body {
 				    		<button id="loca_btn" class="btn btn-default" onclick="markerDrop(); return false;"><span>위치 정하기</span></button>
 				    		<button class="btn btn-default" onclick="clearMarkers(); return false;">다시 정하기</button>
 				    		<br><br>
-				    		<textarea id="reg_add" rows="4" cols="40" value="" style="border: none;"></textarea>
+				    		<textarea readonly="readonly" id="reg_add" rows="4" cols="40" value="" style="border: none; resize:none;"></textarea>
 				    	</div>
 				    </div>
 					<div class="tab-pane" id="tab13">
@@ -1161,8 +1357,10 @@ body {
 		</div><!-- end of tap2   -->
 		</nav>	
 	<div id="menu-toggle3">
-				
+		<a>
 		<img src="resources/imgs/slider/Handshake-icon.png" width=70 height=70 alt="Menu3"></img>
+		<span>거래현황</span>
+		</a>		
 		<!-- 
 		<img src="resources/imgs/slider/menu.png" width=50 height=50 alt="Menu"></img>
 		-->
@@ -1180,12 +1378,12 @@ body {
 	<script type="text/javascript">
 	//이메일칸에 입력전에 submit 버튼 활성화/비활성화
 	document.signinform.commit.disabled = true;
-	document.onkeyup = proces;
-	document.onmouseup = proces;
-	document.onmousedown = proces;
+	document.onkeyup = process;
+	document.onmouseup = process;
+	document.onmousedown = process;
 	
 	//알고리즘 개선하였음.
-	function proces() {
+	function process() {
 		if (document.signinform.email.value == '' 
 			||document.signinform.password.value == '') {   
 			document.signinform.commit.disabled = true;
