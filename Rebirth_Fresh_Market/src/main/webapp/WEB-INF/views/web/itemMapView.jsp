@@ -12,7 +12,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
 	<link rel="Stylesheet" href="/resources/css/bootstrap.min.css"/>
-	<link href="/resources/css/prettify.css" rel="stylesheet">
+	<!-- <link href="/resources/css/prettify.css" rel="stylesheet"> -->
 	<!-- Slider css -->
 	<!--
 	<link rel="stylesheet" type="text/css" href="css/default.css" />
@@ -153,7 +153,7 @@ body {
 	margin-bottom: 10px;
 }
 
-.labels {
+/* .labels {
 	color: red;
 	background-color: white;
 	font-family: "Lucida Grande", "Arial", sans-serif;
@@ -163,7 +163,7 @@ body {
 	width: 40px;
 	border: 2px solid black;
 	white-space: nowrap;
-}
+} */
 
 
 /* slider bar css */
@@ -182,6 +182,7 @@ body {
 	padding-top: 20px;
 	padding-left: 10px;
 	padding-right: 10px;
+	text-align: center;
 }
 
 #menu-toggle1 {
@@ -491,11 +492,7 @@ body {
 
 
 
-<!-- highlight_styles -->
-<!--
-<link rel="stylesheet" type="text/css" href="highlight_styles.css" />
- -->
- 
+
  	
 	<!--
 				
@@ -527,12 +524,6 @@ body {
 	
 	<!-- jquery + UI + CSS google CDN -->
 	
-	<!--panel용 lib -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-	
-	
-	<script src="http://code.jquery.com/jquery.min.js"></script>
-	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 	
 	
 	<!-- GoogleMap API Key -->
@@ -546,50 +537,20 @@ body {
 	<script
 	src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 
-	<!--
-	<script
-		src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
- 	 -->
-	
-	<!--
-	<script src="resources/js_custom/markerclusterer_packed.js"></script>
-	<script src="resources/js_custom/markerclusterer.js"></script>
-	 --> 
 	<script src="resources/js_custom/markerwithlabel.js"></script>
 	
-	<!--panel lib -->
-	<!--
-	<script src="resources/js_custom/jquery.slidePanel.min.js"></script>
-	 -->
-	<!-- 
-	<link rel="stylesheet" href="/resources/demos/style.css">
-	  -->
-	 
-	<!-- slider -->
-	<!--
-	<script src="resources/js_custom/modernizr.custom.js"></script>
-	 -->
-	
-
-	
-	<!-- 
-	<script src="resources/js_custom/markerclusterer_packed.js"></script>
-	<script src="resources/js_custom/markerclusterer.js"></script>
-	-->
-	<script src="resources/js_custom/markerwithlabel.js"></script>
-	<!--
-	<link rel="stylesheet" href="/resources/demos/style.css">
-	-->
 	
 	<!--slider bar script -->
-	<!--
-	<script src="resources/js_custom/script.js"></script> 
-	 -->
-	<script src="resources/js_custom/slider_script.js"></script> 
-	 
-	<script src="/resources/js/jquery.bootstrap.wizard.js"></script>
-	<script src="/resources/js/prettify.js"></script>
+	<!--panel용 lib -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 	
+	
+	<script src="http://code.jquery.com/jquery.min.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	
+	<script src="resources/js_custom/slider_script.js"></script> 	 
+	<script src="/resources/js/jquery.bootstrap.wizard.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 	<!-- jquery.bootstrap.wizard 화면구성 스크립트 코드 -->
 	<script>
 	$(document).ready(function() {
@@ -602,7 +563,7 @@ body {
 	});	
 	</script>
 	
-<script>
+	<script>
 
 
 	//여기부터 clusterer
@@ -613,8 +574,8 @@ body {
 	    }
 	    script += '.js"><' + '/script>';
 	    document.write(script);
-</script>
-<script async>
+	</script>
+	<script async>
 	     var styles = [[{
 	       url: 'resources/imgs/markerclusterer/people35.png',
 	       height: 35,
@@ -1154,7 +1115,7 @@ body {
 	onLoad=initialize 쓰지마세요. 직접 dom객체에 추가했어요.
  	onload에 추가하면 2번 되서 성능 저하됩니다~~~~~~ 
  -->
-<body class="cbp-spmenu-push" data-twttr-rendered="true" onload="init(this.form);">
+<body class="cbp-spmenu-push" data-twttr-rendered="true" onload="init(this.searchform); init(this.registerform);">
 <!----------------------------------------------------------- -->
 
 
@@ -1176,16 +1137,14 @@ body {
 		-->
 	</div>
 		<nav id="menu1">
-			<!-- <div class="tab-pane" id="tab1">
-			<form class="navbar-form navbar-left" role="search">
-			    <div class="form-group">
-			        <input type="text" class="form-control" placeholder="Search">
-			    </div>
-			    <button type="submit" class="btn btn-default">검색</button>
-			    <br><br>
+		<div>
+			<form action="#" name="searchform" id="search_form" method="post" >				
+				<input type="text" class="form-control" placeholder="Search">		    
+			    <br>
 			    <div id="select_loca">
 			    	위치 선택
-		    		<div class="btn-group" data-toggle="buttons" style="margin-left:10px">			    
+			    	<br>
+		    		<div class="btn-group" data-toggle="buttons" style="margin-top:10px">			    
 				  		<label class="btn btn-default active">
 				    	<input type="radio" name="options" id="option1"> 현재위치
 				  		</label>
@@ -1196,8 +1155,9 @@ body {
 			    </div>
 			    <br>
 			   	<div id="select_deal">
-			    	거래 선택 
-			    	<div class="btn-group" data-toggle="buttons" style="margin-left:10px">			    
+			    	거래 선택
+			    	<br> 
+			    	<div class="btn-group" data-toggle="buttons" style="margin-top:10px">			    
 				  		<label class="btn btn-default">
 				    	<input type="radio" name="options" id="option1"> 삽니다
 				  		</label>
@@ -1207,44 +1167,38 @@ body {
 					</div>
 				</div>
 				<br>
-				<div>
+				<div id="select_loca_detail">
 					거래 지역 범위 설정
+					<br>
+					<div class="btn-group" data-toggle="buttons" style="margin-top:10px">			    
+				  		<label class="btn btn-default">
+				    	<input type="radio" name="options" id="option1"> 1
+				  		</label>
+			  			<label class="btn btn-default">
+				    	<input type="radio" name="options" id="option2"> 2
+				  		</label>
+				  		<label class="btn btn-default active ">
+				    	<input type="radio" name="options" id="option1"> 3
+				  		</label>
+			  			<label class="btn btn-default">
+				    	<input type="radio" name="options" id="option2"> 4
+				  		</label>
+				  		<label class="btn btn-default">
+				    	<input type="radio" name="options" id="option1"> 5
+				  		</label>
+					</div>	
 				</div>
+				<br>
+				<div class="select_category">
+					검색 카테고리 선택
+					<br>
+					<div id="category-group" style="margin-top: 10px;">
+					<select id="category1" class="form-control" onchange="itemChange(this.form);" ></select>
+					<select id="category2" class="form-control"></select>	
+					</div>
+				</div>	
 			</form>
-		</div>end of tap1   -->
-	<div>
-		<form action="">
-			<input type="text" class="form-control" placeholder="Search">		    
-		    <br>
-		    <div id="select_loca">
-		    	위치 선택
-	    		<div class="btn-group" data-toggle="buttons" style="margin-left:10px">			    
-			  		<label class="btn btn-default active">
-			    	<input type="radio" name="options" id="option1"> 현재위치
-			  		</label>
-		  			<label class="btn btn-default">
-			    	<input type="radio" name="options" id="option2"> 위치지정
-			  		</label>
-				</div>
-		    </div>
-		    <br>
-		   	<div id="select_deal">
-		    	거래 선택 
-		    	<div class="btn-group" data-toggle="buttons" style="margin-left:10px">			    
-			  		<label class="btn btn-default">
-			    	<input type="radio" name="options" id="option1"> 삽니다
-			  		</label>
-		  			<label class="btn btn-default">
-			    	<input type="radio" name="options" id="option2"> 팝니다
-			  		</label>
-				</div>
-			</div>
-			<br>
-			<div>
-				거래 지역 범위 설정
-			</div>
-		</form>
-	</div>
+		</div>
 	</nav>
 	
 	<div id="menu-toggle2">
@@ -1278,14 +1232,14 @@ body {
 				  <div class="progress-bar"></div>
 				</div>
 				
-				<form action="#" name="form" id="register_form" method="post" >
+				<form action="#" name="registerform" id="register_form" method="post" >
 				<div class="tab-content">
 				 	
 				    <div class="tab-pane" id="tab11">
 				    	<div class="form-group">
 				    		<h4>거래 선택하기</h4>
 				    		<br>
-						   	 <div class="btn-group" data-toggle="buttons">
+						   	<div class="btn-group" data-toggle="buttons">
 							  <label class="btn btn-default">
 							    <input type="radio" name="buyBtn" id="buy"> 삽니다
 							  </label>
