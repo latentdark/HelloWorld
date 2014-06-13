@@ -338,6 +338,7 @@ body {
 	-moz-transition: 0.25s;
 	transition: 0.25s;
 }
+
 /* span 보여주게 하는 코드 */
 #menu-toggle2 a:hover span{ 
 	background-color:rgb(255, 228, 0);
@@ -345,8 +346,10 @@ body {
 /* 	text-shadow:1px 1px 0 #99bf31; */
 	width:auto;
 	padding:0 20px;
-	overflow:visible; }
-
+	overflow:visible; 
+	
+	}
+	
  
 #menu-toggle2 a:hover{
 	text-decoration:none;
@@ -522,10 +525,15 @@ body {
 	
 
 	
+
 	<!-- jquery + UI + CSS google CDN -->
 	
+	<!--panel용 lib -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 	
 	
+	<script src="http://code.jquery.com/jquery.min.js"></script>
+
 	<!-- GoogleMap API Key -->
 	<script
 	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAX-hWL7tXxRZd2GtUjDME2jf-9qNoiRsE&sensor=false&language=ko">
@@ -537,20 +545,52 @@ body {
 	<script
 	src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 
+	<!--
+	<script
+		src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+ 	 -->
+	
+	<!--
+	<script src="resources/js_custom/markerclusterer_packed.js"></script>
+	<script src="resources/js_custom/markerclusterer.js"></script>
+	 --> 
 	<script src="resources/js_custom/markerwithlabel.js"></script>
 	
+	<!--panel lib -->
+	<!--
+	<script src="resources/js_custom/jquery.slidePanel.min.js"></script>
+	 -->
+	<!-- 
+	<link rel="stylesheet" href="/resources/demos/style.css">
+	  -->
+	 
+	<!-- slider -->
+	<!--
+	<script src="resources/js_custom/modernizr.custom.js"></script>
+	 -->
+	
+
+	
+	<!-- 
+	<script src="resources/js_custom/markerclusterer_packed.js"></script>
+	<script src="resources/js_custom/markerclusterer.js"></script>
+	-->
+	<script src="resources/js_custom/markerwithlabel.js"></script>
+	<!--
+	<link rel="stylesheet" href="/resources/demos/style.css">
+	-->
 	
 	<!--slider bar script -->
-	<!--panel용 lib -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-	
-	
-	<script src="http://code.jquery.com/jquery.min.js"></script>
-	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-	
-	<script src="resources/js_custom/slider_script.js"></script> 	 
+	<!--
+	<script src="resources/js_custom/script.js"></script> 
+	 -->
+	<script src="resources/js_custom/slider_script.js"></script> 
+	 
 	<script src="/resources/js/jquery.bootstrap.wizard.js"></script>
-	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	<script src="/resources/js/prettify.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	
+	
 	<!-- jquery.bootstrap.wizard 화면구성 스크립트 코드 -->
 	<script>
 	$(document).ready(function() {
@@ -666,8 +706,7 @@ body {
 	
 	var map;
 	var markers = [];
-	
-	
+
 	//var itemList=${itemList};
 	
 	//statCode 1=sell, 2=buy, 3=deal
@@ -748,7 +787,8 @@ body {
 						position : new google.maps.LatLng(position.coords.latitude,
 								position.coords.longitude),
 						map : map,
-						icon: geoImage					
+						icon: geoImage,
+						
 						});
 					
 					map.setCenter(pos);
@@ -767,7 +807,7 @@ body {
 		          gridSize: size
 		          //styles: styles[style]
 		        });
-			
+		
 			  google.maps.event.addListener(map, 'click', function(e) {
 		            placeMarker(e.latLng, map);
 
@@ -864,33 +904,8 @@ body {
 		  		
 		  });
 		  
-		  
-		 
-		  
-		  //아래는 실행가능한 코드
-		  /*
-		  $(function() {
-			    $( "#dialog2" ).dialog({
-				  autoOpen: false,
-			      show: {
-			        effect: "blind",
-			        duration: 1000
-			      },
-			      hide: {
-			        effect: "explode",
-			        duration: 1000
-			      }
-			    });
-			});
-		  */
-		  
-		  /*
-		  google.maps.event.addListener(marker, 'click', function() {
-		    infowindow.open(marker.get('map'), marker);
-		  });
-		  */
-		  //infowindow.open(marker.get('map'), marker);
 		}
+		
 		<c:forEach var="itemList" items="${itemList}">
 			<c:set var="i" value="${ i+1 }" />	
 				$(function() {
@@ -1132,9 +1147,6 @@ body {
 		<img src="resources/imgs/slider/search.png" width=70 height=70 alt="Menu1"></img>
 		<span>상품검색</span>
 		</a>		
-		<!-- 
-		<img src="resources/imgs/slider/menu.png" width=50 height=50 alt="Menu"></img>
-		-->
 	</div>
 		<nav id="menu1">
 		<div>
@@ -1144,6 +1156,7 @@ body {
 			    <div id="select_loca">
 			    	위치 선택
 			    	<br>
+			    	<!-- 아직 미구현  -->
 		    		<div class="btn-group" data-toggle="buttons" style="margin-top:10px">			    
 				  		<label class="btn btn-default active">
 				    	<input type="radio" name="options" id="option1"> 현재위치
@@ -1155,7 +1168,7 @@ body {
 			    </div>
 			    <br>
 			   	<div id="select_deal">
-			    	거래 선택
+			    	거래 선택 
 			    	<br> 
 			    	<div class="btn-group" data-toggle="buttons" style="margin-top:10px">			    
 				  		<label class="btn btn-default">
@@ -1172,29 +1185,29 @@ body {
 					<br>
 					<div class="btn-group" data-toggle="buttons" style="margin-top:10px">			    
 				  		<label class="btn btn-default">
-				    	<input type="radio" name="options" id="option1"> 1
+				    	<input type="radio" name="" id="option1" value="1"> 1
 				  		</label>
 			  			<label class="btn btn-default">
-				    	<input type="radio" name="options" id="option2"> 2
+				    	<input type="radio" name="options" id="option2" value="2"> 2
 				  		</label>
 				  		<label class="btn btn-default active ">
-				    	<input type="radio" name="options" id="option1"> 3
+				    	<input type="radio" name="options" id="option1" value="3"> 3
 				  		</label>
 			  			<label class="btn btn-default">
-				    	<input type="radio" name="options" id="option2"> 4
+				    	<input type="radio" name="options" id="option2" value="4"> 4
 				  		</label>
 				  		<label class="btn btn-default">
-				    	<input type="radio" name="options" id="option1"> 5
+				    	<input type="radio" name="options" id="option1" value="5"> 5
 				  		</label>
 					</div>	
 				</div>
 				<br>
 				<div class="select_category">
-					검색 카테고리 선택
+					검색 카테고리 선택 [필수 아님]
 					<br>
 					<div id="category-group" style="margin-top: 10px;">
-					<select id="category1" class="form-control" onchange="itemChange(this.form);" ></select>
-					<select id="category2" class="form-control"></select>	
+					<select name="category1" id="category1" class="form-control" onchange="itemChange(this.form);" ></select>
+					<select name="category2" id="category2" class="form-control"></select>	
 					</div>
 				</div>	
 			</form>
@@ -1241,10 +1254,10 @@ body {
 				    		<br>
 						   	<div class="btn-group" data-toggle="buttons">
 							  <label class="btn btn-default">
-							    <input type="radio" name="buyBtn" id="buy"> 삽니다
+							    <input type="radio" name="stateCode" id="buybtn" value="2"> 삽니다
 							  </label>
 							  <label class="btn btn-default">
-							    <input type="radio" name="sellBtn" id="sell"> 팝니다
+							    <input type="radio" name="stateCode" id="sellbtn" value="1"> 팝니다
 							  </label>							  
 							</div>	
 						</div>
@@ -1253,8 +1266,8 @@ body {
 				    	<div class="form-group">
 				    		<h4>거래할 위치 등록하기</h4>
 				    		<br>
-				    		<input type="hidden" id="reg_lat" value="" style="border: none;">
-				    		<input type="hidden" id="reg_lng" value="" style="border: none;">
+				    		<input type="hidden" name="gridX1" id="reg_lat" value="" style="border: none;">
+				    		<input type="hidden" name="gridY1" id="reg_lng" value="" style="border: none;">
 				    		<input id="latlng" type="text" value="" style="display:none;">
 				    		<button id="loca_btn" class="btn btn-default" onclick="markerDrop(); return false;"><span>위치 정하기</span></button>
 				    		<button class="btn btn-default" onclick="clearMarkers(); return false;">다시 정하기</button>
@@ -1266,24 +1279,25 @@ body {
 						<div class="form-group">
 							<h4>사진 등록하기</h4>
 							<br>
-							<input  class="form-control" type="file" multiple="multiple" id="exampleInputFile">						
+							<!-- 다등록가능 한데 주소가 어떻게 들어올지 모르겠네 -->
+							<input  class="form-control" name="itemPicturePath1" type="file" multiple="multiple" id="exampleInputFile">						
 				   		</div>
 				    </div>
 					<div class="tab-pane" id="tab14">
 						<div class="form-group">
 							<h4>카테고리 등록하기</h4>
 							<br>
-							<select id="category1" class="form-control" onchange="itemChange(this.form);" ></select>
-							<select id="category2" class="form-control"></select>											 
+							<select name="category1" id="category1" class="form-control" onchange="itemChange(this.form);" ></select>
+							<select name="category2" id="category2" class="form-control"></select>											 
 					    </div>
 					</div>    
 				    <div class="tab-pane" id="tab15">
 						<div class="form-group">
 							<h4>상세내용 입력하기</h4>
 							<br>	
-							<input id="item_name" type="text" class="form-control input-normal" placeholder="물품명을 입력하세요" >								       
+							<input id="item_name" name="itemName" type="text" class="form-control input-normal" placeholder="물품명을 입력하세요" >								       
 					        <div class="input-group">
-					        	<span class="input-group-addon">￦</span><input type="text" class="form-control" placeholder="희망가격 입력" >
+					        	<span class="input-group-addon">￦</span><input type="text" name="price" class="form-control" placeholder="희망가격 입력" >
 				     	 	</div>	
 				     	 	<br>	
 				     	 	<textarea class="form-control" rows="10" cols="80" placeholder="상세내용을 입력하세요"></textarea>
