@@ -706,8 +706,10 @@ body {
 	
 	var map;
 	var markers = [];
-
-	//var itemList=${itemList};
+	var modalInjectionImageArray1=[];
+	var modalInjectionInfoArray=[];
+	
+	<%-- var itemList=${itemList}; --%>
 	
 	//statCode 1=sell, 2=buy, 3=deal
 	<c:forEach var="itemList" items="${itemList}">
@@ -895,50 +897,10 @@ body {
 		 //var dialogName="#item"+marker.content;
 		  google.maps.event.addListener(marker, 'click', function() {
 			  //infowindow.open(marker.get('map'), marker);	
-			  //console.log("뭐지?");
-		  		//alert("휴..");
-		  		
-		  		//아래는 예제
-		  		//$("#dialog2").dialog( "open" ); 
-		   		$("#item"+marker.content).dialog( "open" );
-		  		
+			  modalInjection(marker);
 		  });
 		  
 		}
-		
-		<c:forEach var="itemList" items="${itemList}">
-			<c:set var="i" value="${ i+1 }" />	
-				$(function() {
-				    $( "#item${itemList.itemNo}" ).dialog({
-				      maxHeight:700,
-				      maxWidth: 1000,
-				      minHeight: 700,
-				      minWidth: 1000,
-					  autoOpen: false,
-					  draggable : false,
-					  modal : true ,
-					  resizable : true,
-					  closeText : "닫기버튼입니다.",
-					  buttons : {
-						  "문의하기": function() {  window.location = 'http://www.stackoverflow.com'; },
-						   "닫기": function() { $(this).dialog("close"); },
-					  }, 
-				      position : { my: "center", at: "center", of: window },
-				      show: {
-				        effect: "blind",
-				        duration: 400
-				      },
-				      hide: {
-				        effect: "explode",
-				        duration: 300
-				      }
-				}).prev(".ui-dialog-titlebar").css("background","#87cefa");
-
-				
-				
-			});
-		</c:forEach>
-			
 		
 		//gps module
 		function handleNoGeolocation(errorFlag) {
@@ -1423,34 +1385,84 @@ body {
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
+	
 	<!-- footer부분에 modal용 div넣습니다. 레이아웃과 상관없으니 삭제하지 마세요 -->
-		
-		
-		
-		<c:forEach var="itemList" items="${itemList}">
-		<c:set var="i" value="${ i+1 }" />	
-			<div id="item${itemList.itemNo}" title="${itemList.itemName}">
-				
-				<div id="bodyContent">
-				 	<div align="center">
-						<c:if test="${itemList.itemPicturePath1!=null}">
-							<img style="width: 700px; height:auto;", src = "resources/itempictures/${itemList.itemPicturePath1}"></img><br>
-						</c:if>
-					</div>
-				 <!-- -->
-					${itemList.itemInfo}
-				</div>
-			</div>
-		</c:forEach>
-		
-		
-		<div id="dialog2" class="dialog2" title="Basic dialog">
-			<p>what the?</p>
-		</div>
-			
-												 
-		<!-- footer부분에 modal용 div넣습니다. 레이아웃과 상관없으니 삭제하지 마세요 -->
+		<%-- modal Injection 공간 --%>
+		<div id="htmlInjectionSector" class="htmlInjectionSector" title="htmlInjectionSector">
+		</div>												 
+	<!-- footer부분에 modal용 div넣습니다. 레이아웃과 상관없으니 삭제하지 마세요 -->
+	
 </footer>	
 	
 </body>
 </html>
+
+<%-- 속도향상을 위해 맨 아래로 내림. --%>
+<script>
+<c:forEach var="itemList" items="${itemList}">
+	<c:set var="i" value="${ i+1 }" />	
+		modalInjectionImageArray1[${itemList.itemNo}]=
+			<c:if test="${itemList.itemPicturePath1!=null}">
+				"${itemList.itemPicturePath1}"
+			</c:if>
+			;
+		modalInjectionInfoArray[${itemList.itemNo}]=
+			"${itemList.itemInfo}";
+</c:forEach>
+
+ function modalInjection(marker){
+	  
+	  console.log("marker.content__"+marker.content);
+  	  
+	  new function makeHtml(){
+			console.log("it`s worked");
+			document.getElementById("htmlInjectionSector").innerHTML = 
+			"<div id=\"item"+marker.content+"\" class=\"item"+marker.content+"\" title=\""+marker.title+"\">"+
+				"<div id=\"bodyContent\">"+
+				
+					<%-- 이미지 들어가는 공간 --%>
+					"<div id=\"itemImage\", align=\"left\">"+
+						"<img style=\"width: 600px; height:auto;\", src = \"resources/itempictures/"+modalInjectionImageArray1[marker.content]+"\"></img>"+
+					"</div>"+
+					
+					<%-- ItemInfo 들어가는 공간 --%>
+					"<div id=\"itemInfo\">"+
+						modalInjectionInfoArray[marker.content]+
+					"</div>"+
+					
+					
+				"</div>"+
+			"</div>";
+		};
+		
+		<%-- modal Injection --%>
+		$(function() {
+		    $( "#item"+marker.content ).dialog({
+		      maxHeight:700,
+		      maxWidth: 1000,
+		      minHeight: 700,
+		      minWidth: 1000,
+			  autoOpen: true,
+			  draggable : false,
+			  modal : true ,
+			  resizable : true,
+			  closeText : "닫기버튼입니다.",
+			  buttons : {
+				  "문의하기": function() {  window.location = 'http://www.stackoverflow.com'; },
+				   "닫기": function() { $(this).dialog("close"); },
+			  }, 
+		      position : { my: "center", at: "center", of: window },
+		      show: {
+		        effect: "blind",
+		        duration: 400
+		      },
+		      hide: {
+		        effect: "explode",
+		        duration: 300
+		      }
+		}).prev(".ui-dialog-titlebar").css("background","#87cefa");				
+	});	
+	 
+  }
+
+ </script>

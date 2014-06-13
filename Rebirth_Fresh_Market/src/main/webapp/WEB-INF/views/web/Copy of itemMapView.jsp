@@ -1436,24 +1436,7 @@ body {
  function modalInjection(marker){
 	  
 	  console.log("marker.content__"+marker.content);
-	  //console.log("${itemList[marker.content].itemInfo}__"+${itemList[marker.content].itemInfo});
-	  
-	  <%-- html Injection --%>
-	  <%--
-		modalInjectionImageArray1[${itemList.itemNo}]=
-			<c:if test="${itemList.itemPicturePath1!=null}">
-			"<div id=\"itemImage\", align=\"left\">"+
-				"<img style=\"width: 600px; height:auto;\", src = \"resources/itempictures/${itemList.itemPicturePath1}\"></img>"+
-			"</div>"
-			</c:if>
-			;
-		modalInjectionInfoArray[${itemList.itemNo}]=
-			"<div id=\"itemInfo\">"+
-				"${itemList.itemInfo}"+
-			"</div>"
-			;
-	 --%>
-	  
+  	  
 	  new function makeHtml(){
 			console.log("it`s worked");
 			document.getElementById("htmlInjectionSector").innerHTML = 
