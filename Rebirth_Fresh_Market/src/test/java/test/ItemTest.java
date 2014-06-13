@@ -41,33 +41,34 @@ public class ItemTest {
 		item.setGridY1(127.198934);
 		item.setItemPicturePath1("jjuggumi.jpg");
 		
-		System.out.println("insert 결과 : "+itemService.addItem(item));
+		//System.out.println("insert 결과 : "+itemService.addItem(item));
 		
 		//findItemNo
 		item.setItemNo(itemService.findItemNo(item));
-		System.out.println("지금 등록한 제품의 번호는 " + item.getItemNo());
-		System.out.println(item);
+		//System.out.println("지금 등록한 제품의 번호는 " + item.getItemNo());
+		//System.out.println(item);
 		
 		//findItem
-		System.out.println("selectOne 결과 : "+itemService.findItem(300));
+		//System.out.println("selectOne 결과 : "+itemService.findItem(300));
 		
 		//findItemList
 		Search search = new Search();
 		search.setPageSize(10);
 		search.setCurrentPage(1);
-		//search.setSearchCondition("2");
-		//search.setSearchKeyword("5000");
+		search.setSearchCondition("2");
+		search.setSearchKeyword("5000");
+		System.out.println(search);
 		System.out.println("selectList 결과 : "+itemService.findItemList(search));
 		
 		//updateItem --> 가격변경
 		item.setPrice(45000);
 		item.setItemInfo(item.getItemInfo()+" 아오!안팔려서 가격내립니다.");
-		System.out.println("update 결과 : " +itemService.updateItem(item));
+		//System.out.println("update 결과 : " +itemService.updateItem(item));
 		System.out.println(item);
 		
 		//updateItem --> 판매중 -> 거래중
 		item.setStateCode(3);
-		System.out.println("update 결과 : " +itemService.updateItem(item));
+		//System.out.println("update 결과 : " +itemService.updateItem(item));
 		System.out.println(item);
 		
 		//removeItem
