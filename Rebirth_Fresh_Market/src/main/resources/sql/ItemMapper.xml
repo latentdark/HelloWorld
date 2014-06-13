@@ -26,7 +26,7 @@
 		<result property="itemPicturePath2" column="filepath2" jdbcType="VARCHAR"/>
 		<result property="itemPicturePath3" column="filepath3" jdbcType="VARCHAR"/>
 	</resultMap>
-	
+
 	<insert id="addItem" parameterType="item">
 		INSERT item (	user_no,
 						state_code,
@@ -111,11 +111,11 @@
 						i.category2, l.grid_x1, l.grid_y1, l.grid_x2, 
 						l.grid_y2, l.grid_x3, l.grid_y3,
 						ip.filepath1, ip.filepath2, ip.filepath3
-						FROM item i, location l, item_pic ip
+						FROM item i
+							 LEFT OUTER JOIN location l ON i.item_no = l.item_no
+							 LEFT OUTER JOIN item_pic ip ON i.item_no = ip.item_no
 						<if test="searchKeyword!='' ">
 							<where>
-								i.item_no = l.item_no
-								AND l.item_no = ip.item_no
 								<if test="searchCondition==1">
 									AND item_name LIKE '%${searchKeyword}%'
 								</if>
@@ -130,7 +130,7 @@
 						ORDER BY item_no	) AS inner_table,
 					(	SELECT @RNUM :=0	) AS RNUM
 			WHERE <![CDATA[@RNUM<#{endRowNum}]]>	) AS inner_table
-		WHERE inner_table.row_seq BETWEEN #{startRowNum} AND #{endRowNum}
+ 		WHERE inner_table.row_seq BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
 	
 	<!-- 
