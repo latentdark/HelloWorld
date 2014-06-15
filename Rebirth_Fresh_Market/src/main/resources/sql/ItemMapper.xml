@@ -99,6 +99,44 @@
 	
 	<select id="findItemList" parameterType="search" resultMap="ItemSelectMap">
 		SELECT
+		u.nickname,
+		i.item_no,
+		i.item_name,
+		i.item_info,
+		i.price,
+		i.state_code,
+		i.category1,
+		i.category2,
+		i.regi_date,
+		ip.filepath1,
+		l.grid_x1,
+		l.grid_y1
+		FROM item i
+		LEFT OUTER JOIN item_pic ip ON ip.item_no = i.item_no
+		LEFT OUTER JOIN location l ON l.item_no = i.item_no
+		LEFT OUTER JOIN user u ON i.user_no = u.user_no
+		<if test="searchCondition!=''">
+			<where>
+				<if test="searchCondition==1">
+				i.state_code = 1
+				</if>
+				<if test="searchCondition==2">
+				i.state_code = 2
+				</if>
+				<if test="searchKeyword!=''">
+				AND i.item_name = '%#{searchKeyword}%'
+				</if>
+			</where>
+		</if>
+		<if test="searchCondition==''">
+		WHERE i.item_name LIKE '%#{searchKeyword}%';
+		</if>
+	</select>
+	
+						<!-- ///////////////////////여기서부터 원래코드////////////////////// -->
+	<!-- 
+	<select id="findItemList" parameterType="search" resultMap="ItemSelectMap">
+		SELECT
 		item_no, user_no, state_code, item_name, price, item_info, regi_date, 
 		category1, category2, grid_x1, grid_y1, grid_x2, grid_y2, grid_x3, grid_y3,
 		filepath1, filepath2, filepath3
@@ -132,7 +170,9 @@
 			WHERE <![CDATA[@RNUM<#{endRowNum}]]>	) AS inner_table
  		WHERE inner_table.row_seq BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
-	
+	 -->
+						<!-- ///////////////////////여기까지 원래코드////////////////////// -->
+	 
 	<!-- 
 	<select id="findItemList" parameterType="search" resultMap="ItemSelectMap">
 		SELECT
