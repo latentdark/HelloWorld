@@ -109,8 +109,14 @@
 		i.category2,
 		i.regi_date,
 		ip.filepath1,
+		ip.filepath2,
+		ip.filepath3,
 		l.grid_x1,
-		l.grid_y1
+		l.grid_y1,
+		l.grid_x2,
+		l.grid_y2,
+		l.grid_x3,
+		l.grid_y3
 		FROM item i
 		LEFT OUTER JOIN item_pic ip ON ip.item_no = i.item_no
 		LEFT OUTER JOIN location l ON l.item_no = i.item_no
