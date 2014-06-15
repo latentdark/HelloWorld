@@ -99,7 +99,7 @@
 	
 	<select id="findItemList" parameterType="search" resultMap="ItemSelectMap">
 		SELECT
-		u.nickname,
+		u.user_no,
 		i.item_no,
 		i.item_name,
 		i.item_info,
