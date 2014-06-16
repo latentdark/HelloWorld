@@ -1065,7 +1065,7 @@ body {
 		s_sel.options[0] = new Option("소분류 선택", "");
 
 		for(var i =0; i<f_selbox.length; i++){
-			f_sel.options[i+1] = new Option(f_selbox[i], f_selbox[i]);
+			f_sel.options[i+1] = new Option(f_selbox[i], i);
 		}
 	}
 
@@ -1082,7 +1082,7 @@ body {
 
 		if(sel != 0){
 			for(var i=0; i<s_selbox[sel-1].length; i++){
-				s_sel.options[i+1] = new Option(s_selbox[sel-1][i], s_selbox[sel-1][i]);
+				s_sel.options[i+1] = new Option(s_selbox[sel-1][i],i);
 			}
 		}
 	}
@@ -1090,7 +1090,7 @@ body {
 
    </script>
 	
-	</script>
+
 	
 	<!--
 		
@@ -1119,7 +1119,7 @@ body {
 	onLoad=initialize 쓰지마세요. 직접 dom객체에 추가했어요.
  	onload에 추가하면 2번 되서 성능 저하됩니다~~~~~~ 
  -->
-<body class="cbp-spmenu-push" data-twttr-rendered="true" onload="init(this.searchform); init(this.registerform);">
+<body class="cbp-spmenu-push" data-twttr-rendered="true" onload="init(this.registerform);">
 <!----------------------------------------------------------- -->
 
 
@@ -1140,26 +1140,11 @@ body {
 		<nav id="menu1">
 		<div>
 			<form action="#" name="searchform" id="search_form" method="post" >				
-				<input type="text" class="form-control" placeholder="Search">		    
-			    <br>
-			    <div id="select_loca">
-			    	위치 선택
-			    	<br>
-			    	<!-- 아직 미구현  -->
-		    		<div class="btn-group" data-toggle="buttons" style="margin-top:10px">			    
-				  		<label class="btn btn-default active">
-				    	<input type="radio" name="options" id="option1"> 현재위치
-				  		</label>
-			  			<label class="btn btn-default">
-				    	<input type="radio" name="options" id="option2"> 위치지정
-				  		</label>
-					</div>
-			    </div>
-			    <br>
-			   	<div id="select_deal">
-			    	거래 선택 
-			    	<br> 
+			   	<div id="select_deal"> 
 			    	<div class="btn-group" data-toggle="buttons" style="margin-top:10px">			    
+				  		<label class="btn btn-default active">
+				    	<input type="radio" name="options" id="option1"> 전체검색
+				  		</label>
 				  		<label class="btn btn-default">
 				    	<input type="radio" name="options" id="option1"> 삽니다
 				  		</label>
@@ -1169,36 +1154,8 @@ body {
 					</div>
 				</div>
 				<br>
-				<div id="select_loca_detail">
-					거래 지역 범위 설정
-					<br>
-					<div class="btn-group" data-toggle="buttons" style="margin-top:10px">			    
-				  		<label class="btn btn-default">
-				    	<input type="radio" name="" id="option1" value="1"> 1
-				  		</label>
-			  			<label class="btn btn-default">
-				    	<input type="radio" name="options" id="option2" value="2"> 2
-				  		</label>
-				  		<label class="btn btn-default active ">
-				    	<input type="radio" name="options" id="option1" value="3"> 3
-				  		</label>
-			  			<label class="btn btn-default">
-				    	<input type="radio" name="options" id="option2" value="4"> 4
-				  		</label>
-				  		<label class="btn btn-default">
-				    	<input type="radio" name="options" id="option1" value="5"> 5
-				  		</label>
-					</div>	
-				</div>
-				<br>
-				<div class="select_category">
-					검색 카테고리 선택 [필수 아님]
-					<br>
-					<div id="category-group" style="margin-top: 10px;">
-					<select name="category1" id="category1" class="form-control" onchange="itemChange(this.form);" ></select>
-					<select name="category2" id="category2" class="form-control"></select>	
-					</div>
-				</div>	
+				<input type="text" class="form-control" placeholder="Search">		    
+			    <br>
 			</form>
 		</div>
 	</nav>
@@ -1234,7 +1191,7 @@ body {
 				  <div class="progress-bar"></div>
 				</div>
 				
-				<form action="#" name="registerform" id="register_form" method="post" >
+				<form action="/itemregister" name="registerform" id="register_form" method="post" enctype="multipart/form-data" >
 				<div class="tab-content">
 				 	
 				    <div class="tab-pane" id="tab11">
@@ -1269,7 +1226,9 @@ body {
 							<h4>사진 등록하기</h4>
 							<br>
 							<!-- 다등록가능 한데 주소가 어떻게 들어올지 모르겠네 -->
-							<input  class="form-control" name="itemPicturePath1" type="file" multiple="multiple" id="exampleInputFile">						
+							<input  class="form-control" name="itemPicturePath1" type="file" multiple="multiple"  id="exampleInputFile">						
+				   		
+				   			
 				   		</div>
 				    </div>
 					<div class="tab-pane" id="tab14">
@@ -1277,7 +1236,7 @@ body {
 							<h4>카테고리 등록하기</h4>
 							<br>
 							<select name="category1" id="category1" class="form-control" onchange="itemChange(this.form);" ></select>
-							<select name="category2" id="category2" class="form-control"></select>											 
+							<select name="category2" id="category2" class="form-control" ></select>											 
 					    </div>
 					</div>    
 				    <div class="tab-pane" id="tab15">
@@ -1289,7 +1248,7 @@ body {
 					        	<span class="input-group-addon">￦</span><input type="text" name="price" class="form-control" placeholder="희망가격 입력" >
 				     	 	</div>	
 				     	 	<br>	
-				     	 	<textarea class="form-control" rows="10" cols="80" placeholder="상세내용을 입력하세요"></textarea>
+				     	 	<textarea name="itemInfo" class="form-control" rows="10" cols="80" placeholder="상세내용을 입력하세요"></textarea>
 				     	 	<br>				      				
 							<button class="btn btn-default" data-toggle="modal" href="#preview_modal" onclick="return false">
 							미리보기
