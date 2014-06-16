@@ -12,13 +12,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
 	<link rel="Stylesheet" href="/resources/css/bootstrap.min.css"/>
-	<!-- <link href="/resources/css/prettify.css" rel="stylesheet"> -->
-	<!-- Slider css -->
-	<!--
-	<link rel="stylesheet" type="text/css" href="css/default.css" />
-	<link rel="stylesheet" type="text/css" href="css/component.css" />
-	  -->	
+	
 	<style>
+	
 .navbar {
 	/* background-image: url("/resources/imgs/bg6.png");
 			 */
@@ -195,7 +191,7 @@ body {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	padding-right: 10px;
-	border-top-right-radius: 5px;
+ 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
 	transition: all 0.3s ease;
 }
@@ -231,6 +227,8 @@ body {
 	/* Future proofing (these do not work yet): */
 	-moz-transition: 0.25s;
 	transition: 0.25s;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px; 
 }
 /* span 보여주게 하는 코드 */
 #menu-toggle1 a:hover span{ 
@@ -260,6 +258,8 @@ body {
 #menu-toggle1:hover {
 	background: rgb(255, 228, 0);
 	cursor: pointer;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px; 
 }
 
 #menu1.open {
@@ -337,6 +337,8 @@ body {
 	/* Future proofing (these do not work yet): */
 	-moz-transition: 0.25s;
 	transition: 0.25s;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px; 
 }
 
 /* span 보여주게 하는 코드 */
@@ -367,6 +369,8 @@ body {
 #menu-toggle2:hover {
 	background: rgb(255, 228, 0);
 	cursor: pointer;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px; 
 }
 
 #menu2.open {
@@ -443,6 +447,8 @@ body {
 	/* Future proofing (these do not work yet): */
 	-moz-transition: 0.25s;
 	transition: 0.25s;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px; 
 }
 /* span 보여주게 하는 코드 */
 #menu-toggle3 a:hover span{ 
@@ -470,6 +476,8 @@ body {
 #menu-toggle3:hover {
 	background: rgb(255, 228, 0);
 	cursor: pointer;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px; 
 }
 
 #menu3.open {
@@ -489,6 +497,25 @@ body {
 
 #tab11,#tab12,#tab13,#tab14,#tab15{
 	height:410px;
+}
+
+
+/* menu3 내부 css */
+.list-group.panel > .list-group-item {
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px
+}
+.list-group-submenu {
+  margin-left:20px;
+}
+
+#injection-modal{
+	background-color: white;
+	border-top-right-radius: 4px;
+  	border-top-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+  	border-bottom-left-radius: 4px;
+  	text-align: center;
 }
 
 </style>
@@ -587,8 +614,7 @@ body {
 	<script src="resources/js_custom/slider_script.js"></script> 
 	 
 	<script src="/resources/js/jquery.bootstrap.wizard.js"></script>
-	<script src="/resources/js/prettify.js"></script>
-		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 	
 	
 	<!-- jquery.bootstrap.wizard 화면구성 스크립트 코드 -->
@@ -731,7 +757,8 @@ body {
 							</c:if>
 								,
 						title : '${itemList.itemName}',
-						content : '${itemList.itemNo}'
+						content : '${itemList.itemNo}',
+						price: '${itemList.price}'
 						//	labelContent: '$425K',
 						//	labelAnchor: new google.maps.Point(22, 0),
 						//    labelClass: "labels", // the CSS class for the label
@@ -1297,7 +1324,35 @@ body {
 	</div>
 		<nav id="menu3">
 			<div class="tab-pane" id="tab3">
-				<p>또또 안녕</p>
+			<!-- start of tap3   -->
+			
+				<div id="MainMenu">
+				  <div class="list-group panel">
+				    <a href="#demo3" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Item 3</a>
+				    <div class="collapse" id="demo3">
+				      <a href="#SubMenu1" class="list-group-item" data-toggle="collapse" data-parent="#SubMenu1">Subitem 1 <span class="glyphicon glyphicon-chevron-down"></span></a>
+				      <div class="collapse list-group-submenu" id="SubMenu1">
+				        <a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem 1 a</a>
+				        <a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem 2 b</a>
+				        <a href="#SubSubMenu1" class="list-group-item" data-toggle="collapse" data-parent="#SubSubMenu1">Subitem 3 c <span class="glyphicon glyphicon-chevron-down"></span></a>
+				        <div class="collapse list-group-submenu list-group-submenu-1" id="SubSubMenu1">
+				          <a href="#" class="list-group-item" data-parent="#SubSubMenu1">Sub sub item 1</a>
+				          <a href="#" class="list-group-item" data-parent="#SubSubMenu1">Sub sub item 2</a>
+				        </div>
+				        <a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem 4 d</a>
+				      </div>
+				      <a href="javascript:;" class="list-group-item">Subitem 2</a>
+				      <a href="javascript:;" class="list-group-item">Subitem 3</a>
+				    </div>
+				    <a href="#demo4" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Item 4</a>
+				    <div class="collapse" id="demo4">
+				      <a href="#" class="list-group-item">Subitem 1</a>
+				      <a href="#" class="list-group-item">Subitem 2</a>
+				      <a href="#" class="list-group-item">Subitem 3</a>
+				    </div>
+				  </div>
+				</div>
+				
 			</div><!-- end of tap3   -->
 		</nav>	
 	
@@ -1417,26 +1472,71 @@ body {
 	  new function makeHtml(){
 			console.log("it`s worked");
 			document.getElementById("htmlInjectionSector").innerHTML = 
-			"<div id=\"item"+marker.content+"\" class=\"item"+marker.content+"\" title=\""+marker.title+"\">"+
-				"<div id=\"bodyContent\">"+
-				
-					<%-- 이미지 들어가는 공간 --%>
-					"<div id=\"itemImage\", align=\"left\">"+
-						"<img style=\"width: 600px; height:auto;\", src = \"resources/itempictures/"+modalInjectionImageArray1[marker.content]+"\"></img>"+
-					"</div>"+
-					
-					<%-- ItemInfo 들어가는 공간 --%>
-					"<div id=\"itemInfo\">"+
-						modalInjectionInfoArray[marker.content]+
-					"</div>"+
-					
-					
+			"<div id=\"item"+marker.content+"\" class=\"item"+marker.content+" modal fade\" title=\""+marker.title+"\"  tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">"+
+				"<div id=\"injection-modal\"class=\"modal-dialog\">"+
+					"<div class=\"modal-Content\">"+
+						"<div class=\"modal-header\">"+
+						"<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">×</button>"+
+				        "<h4 class=\"modal-title\">"+marker.title+"<font color=\"red\"> [ "+marker.price+" 원 ]</font></h4>"+
+				       
+						"</div>"+
+						"<div class=\"modal-body\">"+
+						
+					    "<div id=\"imgslider_container\">"+
+						  "<div class=\"row-fluid\">"+
+						    "<div class=\"span12\" id=\"slider\">"+
+						      "<div class=\"row-fluid\">"+
+						        "<div class=\"span8\" id=\"carousel-bounding-box\">"+
+						          "<div id=\"myCarousel\" class=\"carousel slide\">"+
+						            
+						            /* main slider carousel items */
+						            "<div class=\"carousel-inner\">"+
+						              "<div class=\"active item\" data-slide-number=\"0\">"+
+						                "<img  src = \"resources/itempictures/"+modalInjectionImageArray1[marker.content]+"\" style=\"width: 640px; height:480;\">"+
+						              "</div>"+
+						              "<div class=\"item\" data-slide-number=\"1\">"+
+						                "<img src=\"http://placehold.it/640x480&amp;text=two\">"+
+						              "</div>"+
+						              "<div class=\"item\" data-slide-number=\"2\">"+
+						                "<img src=\"http://placehold.it/640x480&amp;text=three\">"+
+						              "</div>"+						            
+						             	
+						              
+						            "</div>"+
+						            
+						            /* main slider carousel nav controls */
+						            "<a class=\"carousel-control left\" href=\"#myCarousel\" data-slide=\"prev\">‹</a>"+
+						            "<a class=\"carousel-control right\" href=\"#myCarousel\" data-slide=\"next\">›</a>"+
+						         "</div>"+
+						       "</div>"+
+						        
+						       
+						     "</div>"+
+						      
+						   "</div>"+
+						 "</div>"+ /* main slider carousel */
+					"</div>"+/* end of image slider */
+							
+							
+							<%-- ItemInfo 들어가는 공간 --%>
+							"<br><div id=\"itemInfo\">"+
+								modalInjectionInfoArray[marker.content]+
+							"</div>"+
+							
+						"</div>"+
+						"<div class=\"modal-footer\">"+
+						"</div>"+
+						"<div class=\"modal-footer\">"+
+						"<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>"+
+						"</div>"+
+					"</div>"+	
 				"</div>"+
-			"</div>";
+			"</div>"+
+			"<a data-toggle=\"modal\" href=\"#item"+marker.content+"\" id=\"modallink\"></a>";
 		};
 		
 		<%-- modal Injection --%>
-		$(function() {
+	/* 	$(function() {
 		    $( "#item"+marker.content ).dialog({
 		      maxHeight:700,
 		      maxWidth: 1000,
@@ -1445,7 +1545,7 @@ body {
 			  autoOpen: true,
 			  draggable : false,
 			  modal : true ,
-			  resizable : true,
+			  resizable : false,
 			  closeText : "닫기버튼입니다.",
 			  buttons : {
 				  "문의하기": function() {  window.location = 'http://www.stackoverflow.com'; },
@@ -1461,8 +1561,8 @@ body {
 		        duration: 300
 		      }
 		}).prev(".ui-dialog-titlebar").css("background","#87cefa");				
-	});	
-	 
+	});	 */
+		document.getElementById("modallink").click();
   }
 
  </script>
