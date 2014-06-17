@@ -116,12 +116,12 @@ body {
 	height: 100%;
 	margin: 0;
 	padding: 0;
-	overflow: hidden;
+	/* overflow: hidden; */
 }
 
 #map_canvas {
 	float: left;
-	margin-top: 53px;
+	/* margin-top: 53px; */
 	/* border-left: 1px solid #BCBCBC;
 	border-top: 1px solid #BCBCBC; */
 }
@@ -172,12 +172,13 @@ body {
 	margin-top:53px;
 	left: -200px;
 	background: #FFFFFF;
-	height: 100%;
+	height:  calc(100% - 53px);
 	z-index: 1100;
 	border:1px solid #BCBCBC;
 	padding-top: 20px;
 	padding-left: 10px;
 	padding-right: 10px;
+	padding-bottom: 20px;
 	text-align: center;
 }
 
@@ -283,13 +284,14 @@ body {
 	margin-top:53px;
 	left: -300px;
 	background: #ffffff;
-	height: 100%;
+	height:  calc(100% - 53px);
 	z-index: 1030;
 	text-align: center;
 	border: 1px solid #BCBCBC;
 	padding-top: 20px;
 	padding-left: 10px;
 	padding-right: 10px;
+	padding-bottom: 20px;
 }
 
 #menu-toggle2 {
@@ -394,12 +396,13 @@ body {
 	top: 0;
 	left: -200px;
 	background: #FFFFFF;
-	height: 100%;
+	height:  calc(100% - 53px);
 	z-index: 1100;
 	border:1px solid #BCBCBC;
 	padding-top: 20px;
 	padding-left: 10px;
 	padding-right: 10px;
+	padding-bottom: 20px;
 }
 
 #menu-toggle3 {
@@ -518,11 +521,25 @@ body {
   	text-align: center;
 }
 
+#search_result {
+	height:  calc(100% - 150px);
+/* 	overflow-y:scroll; */
+}
+
+
+
+
+div.mousescroll {
+    overflow: hidden;
+}
+div.mousescroll:hover {
+    overflow-y: scroll;
+}
+
+
+
+
 </style>
-
-
-
-
  	
 	<!--
 				
@@ -735,7 +752,7 @@ body {
 	var modalInjectionImageArray1=[];
 	var modalInjectionInfoArray=[];
 	
-	<%-- var itemList=${itemList}; --%>
+	/* var itemList=${itemList};  */
 	
 	//statCode 1=sell, 2=buy, 3=deal
 	<c:forEach var="itemList" items="${itemList}">
@@ -1087,7 +1104,239 @@ body {
 		}
 	}
 	
+	(function($) {
 
+	    jQuery.fn.extend({
+	        slimScroll: function(o) {
+
+	            var ops = o;
+	            //do it for every element that matches selector
+	            this.each(function(){
+
+	            var isOverPanel, isOverBar, isDragg, queueHide, barHeight,
+	                divS = '<div></div>',
+	                minBarHeight = 30,
+	                wheelStep = 30,
+	                o = ops || {},
+	                cwidth = o.width || 'auto',
+	                cheight = o.height || '250px',
+	                size = o.size || '7px',
+	                color = o.color || '#000',
+	                position = o.position || 'right',
+	                opacity = o.opacity || .4,
+	                alwaysVisible = o.alwaysVisible === true;
+	            
+	                //used in event handlers and for better minification
+	                var me = $(this);
+
+	                //wrap content
+	                var wrapper = $(divS).css({
+	                    position: 'relative',
+	                    overflow: 'hidden',
+	                    width: cwidth,
+	                    height: cheight
+	                }).attr({ 'class': 'slimScrollDiv' });
+
+	                //update style for the div
+	                me.css({
+	                    overflow: 'hidden',
+	                    width: cwidth,
+	                    height: cheight
+	                });
+
+	                //create scrollbar rail
+	                var rail  = $(divS).css({
+	                    width: '15px',
+	                    height: '100%',
+	                    position: 'absolute',
+	                    top: 0
+	                });
+
+	                //create scrollbar
+	                var bar = $(divS).attr({ 
+	                    'class': 'slimScrollBar ', 
+	                    style: 'border-radius: ' + size 
+	                    }).css({
+	                        background: color,
+	                        width: size,
+	                        position: 'absolute',
+	                        top: 0,
+	                        opacity: opacity,
+	                        display: alwaysVisible ? 'block' : 'none',
+	                        BorderRadius: size,
+	                        MozBorderRadius: size,
+	                        WebkitBorderRadius: size,
+	                        zIndex: 99
+	                });
+
+	                //set position
+	                var posCss = (position == 'right') ? { right: '1px' } : { left: '1px' };
+	                rail.css(posCss);
+	                bar.css(posCss);
+
+	                //wrap it
+	                me.wrap(wrapper);
+
+	                //append to parent div
+	                me.parent().append(bar);
+	                me.parent().append(rail);
+
+	                //make it draggable
+	                bar.draggable({ 
+	                    axis: 'y', 
+	                    containment: 'parent',
+	                    start: function() { isDragg = true; },
+	                    stop: function() { isDragg = false; hideBar(); },
+	                    drag: function(e) 
+	                    { 
+	                        //scroll content
+	                        scrollContent(0, $(this).position().top, false);
+	                    }
+	                });
+
+	                //on rail over
+	                rail.hover(function(){
+	                    showBar();
+	                }, function(){
+	                    hideBar();
+	                });
+
+	                //on bar over
+	                bar.hover(function(){
+	                    isOverBar = true;
+	                }, function(){
+	                    isOverBar = false;
+	                });
+
+	                //show on parent mouseover
+	                me.hover(function(){
+	                    isOverPanel = true;
+	                    showBar();
+	                    hideBar();
+	                }, function(){
+	                    isOverPanel = false;
+	                    hideBar();
+	                });
+
+	                var _onWheel = function(e)
+	                {
+	                    //use mouse wheel only when mouse is over
+	                    if (!isOverPanel) { return; }
+
+	                    var e = e || window.event;
+
+	                    var delta = 0;
+	                    if (e.wheelDelta) { delta = -e.wheelDelta/120; }
+	                    if (e.detail) { delta = e.detail / 3; }
+
+	                    //scroll content
+	                    scrollContent(0, delta, true);
+
+	                    //stop window scroll
+	                    if (e.preventDefault) { e.preventDefault(); }
+	                    e.returnValue = false;
+	                }
+
+	                var scrollContent = function(x, y, isWheel)
+	                {
+	                    var delta = y;
+
+	                    if (isWheel)
+	                    {
+	                        //move bar with mouse wheel
+	                        delta = bar.position().top + y * wheelStep;
+
+	                        //move bar, make sure it doesn't go out
+	                        delta = Math.max(delta, 0);
+	                        var maxTop = me.outerHeight() - bar.outerHeight();
+	                        delta = Math.min(delta, maxTop);
+
+	                        //scroll the scrollbar
+	                        bar.css({ top: delta + 'px' });
+	                    }
+
+	                    //calculate actual scroll amount
+	                    percentScroll = parseInt(bar.position().top) / (me.outerHeight() - bar.outerHeight());
+	                    delta = percentScroll * (me[0].scrollHeight - me.outerHeight());
+
+	                    //scroll content
+	                    me.scrollTop(delta);
+
+	                    //ensure bar is visible
+	                    showBar();
+	                }
+
+	                var attachWheel = function()
+	                {
+	                    if (window.addEventListener)
+	                    {
+	                        this.addEventListener('DOMMouseScroll', _onWheel, false );
+	                        this.addEventListener('mousewheel', _onWheel, false );
+	                    } 
+	                    else
+	                    {
+	                        document.attachEvent("onmousewheel", _onWheel)
+	                    }
+	                }
+
+	                //attach scroll events
+	                attachWheel();
+
+	                var getBarHeight = function()
+	                {
+	                    //calculate scrollbar height and make sure it is not too small
+	                    barHeight = Math.max((me.outerHeight() / me[0].scrollHeight) * me.outerHeight(), minBarHeight);
+	                    bar.css({ height: barHeight + 'px' });
+	                }
+
+	                //set up initial height
+	                getBarHeight();
+
+	                var showBar = function()
+	                {
+	                    //recalculate bar height
+	                    getBarHeight();
+	                    clearTimeout(queueHide);
+	                    
+	                    //show only when required
+	                    if(barHeight >= me.outerHeight()) {
+	                        return;
+	                    }
+	                    bar.fadeIn('fast');
+	                }
+
+	                var hideBar = function()
+	                {
+	                    //only hide when options allow it
+	                    if (!alwaysVisible)
+	                    {
+	                        queueHide = setTimeout(function(){
+	                            if (!isOverBar && !isDragg) { bar.fadeOut('slow'); }
+	                        }, 1000);
+	                    }
+	                }
+
+	            });
+	            
+	            //maintain chainability
+	            return this;
+	        }
+	    });
+
+	    jQuery.fn.extend({
+	        slimscroll: jQuery.fn.slimScroll
+	    });
+
+	})(jQuery);
+
+
+	//invalid name call
+	              $('#chatlist').slimscroll({
+	                  color: '#00f',
+	                  size: '10px',
+	                  width: '50px',
+	                  height: '150px'                  
+	              });
    </script>
 	
 
@@ -1138,10 +1387,11 @@ body {
 		</a>		
 	</div>
 		<nav id="menu1">
-		<div>
+		<div id="search_condition">
 			<form action="#" name="searchform" id="search_form" method="post" >				
+			   	<input type="text" class="form-control" placeholder="Search">		    
 			   	<div id="select_deal"> 
-			    	<div class="btn-group" data-toggle="buttons" style="margin-top:10px">			    
+			    	<div class="btn-group" data-toggle="buttons" style="margin-top: 10px">			    
 				  		<label class="btn btn-default active">
 				    	<input type="radio" name="options" id="option1"> 전체검색
 				  		</label>
@@ -1153,11 +1403,184 @@ body {
 				  		</label>
 					</div>
 				</div>
-				<br>
-				<input type="text" class="form-control" placeholder="Search">		    
-			    <br>
+				<!-- <div class="btn-group" data-toggle="buttons" style="margin-bottom: 10px; margin-top: 10px">
+				  <label class="btn btn-primary">
+				    <input type="checkbox"> 가격순
+				  </label>
+				  <label class="btn btn-primary">
+				    <input type="checkbox"> 거리순
+				  </label>
+				  <label class="btn btn-primary">
+				    <input type="checkbox"> Option 3
+				  </label>
+				</div> -->
+				<div style="margin-bottom: 10px; margin-top: 10px">
+				<label class="checkbox-inline">
+				  <input type="checkbox" id="inlineCheckbox1" value="option1"> 거리순
+				</label>
+				<label class="checkbox-inline">
+				  <input type="checkbox" id="inlineCheckbox2" value="option2"> 가격순
+				</label>
+				<label class="checkbox-inline">
+				  <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+				</label>
+				</Div>
 			</form>
+			<hr>
 		</div>
+		<div id="search_result" class="mousescroll">
+			<h4>안녕 하세요 오오온오농농노온온온온온</h4>
+		    <ul>
+		     <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		         <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		         <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		         <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		         <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		        <li>item</li>
+		
+		  </ul>		  
+		  </div>
 	</nav>
 	
 	<div id="menu-toggle2">
@@ -1218,7 +1641,7 @@ body {
 				    		<button id="loca_btn" class="btn btn-default" onclick="markerDrop(); return false;"><span>위치 정하기</span></button>
 				    		<button class="btn btn-default" onclick="clearMarkers(); return false;">다시 정하기</button>
 				    		<br><br>
-				    		<textarea readonly="readonly" id="reg_add" rows="4" cols="40" value="" style="border: none; resize:none;"></textarea>
+				    		<textarea readonly="readonly" id="reg_add" rows="4" cols="34" value="" style="border: none; resize:none;"></textarea>
 				    	</div>
 				    </div>
 					<div class="tab-pane" id="tab13">
@@ -1305,6 +1728,18 @@ body {
 				    </div>
 				    <a href="#demo4" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Item 4</a>
 				    <div class="collapse" id="demo4">
+				      <a href="#" class="list-group-item">Subitem 1</a>
+				      <a href="#" class="list-group-item">Subitem 2</a>
+				      <a href="#" class="list-group-item">Subitem 3</a>
+				    </div>
+				    <a href="#demo5" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Item 5</a>
+				    <div class="collapse" id="demo5">
+				      <a href="#" class="list-group-item">Subitem 1</a>
+				      <a href="#" class="list-group-item">Subitem 2</a>
+				      <a href="#" class="list-group-item">Subitem 3</a>
+				    </div>
+				    <a href="#demo6" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Item 6</a>
+				    <div class="collapse" id="demo6">
 				      <a href="#" class="list-group-item">Subitem 1</a>
 				      <a href="#" class="list-group-item">Subitem 2</a>
 				      <a href="#" class="list-group-item">Subitem 3</a>
@@ -1486,6 +1921,7 @@ body {
 						"<div class=\"modal-footer\">"+
 						"</div>"+
 						"<div class=\"modal-footer\">"+
+						"<button type=\"button\" class=\"btn btn-danger\" >찜</button>"+
 						"<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>"+
 						"</div>"+
 					"</div>"+	
