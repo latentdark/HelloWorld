@@ -594,12 +594,11 @@ div.mousescroll:hover {
 		src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
  	 -->
 	
-	<!--
-	<script src="resources/js_custom/markerclusterer_packed.js"></script>
 	<script src="resources/js_custom/markerclusterer.js"></script>
-	 --> 
+	<script src="resources/js_custom/markerclusterer_packed.js"></script>
+	<script src="resources/js_custom/markerclustererPlus.js"></script>
 	<script src="resources/js_custom/markerwithlabel.js"></script>
-	
+
 	<!--panel lib -->
 	<!--
 	<script src="resources/js_custom/jquery.slidePanel.min.js"></script>
@@ -614,12 +613,6 @@ div.mousescroll:hover {
 	 -->
 	
 
-	
-	<!-- 
-	<script src="resources/js_custom/markerclusterer_packed.js"></script>
-	<script src="resources/js_custom/markerclusterer.js"></script>
-	-->
-	<script src="resources/js_custom/markerwithlabel.js"></script>
 	<!--
 	<link rel="stylesheet" href="/resources/demos/style.css">
 	-->
@@ -749,69 +742,17 @@ div.mousescroll:hover {
 	
 	var map;
 	var markers = [];
-	var modalInjectionImageArray1=[];
-	var modalInjectionInfoArray=[];
-	
-	/* var itemList=${itemList};  */
-	
-	//statCode 1=sell, 2=buy, 3=deal
-	<c:forEach var="itemList" items="${itemList}">
-		<c:set var="i" value="${ i+1 }" />	
-			markers.push(
-					new google.maps.Marker({
-					//new MarkerWithLabel({
-						position : new google.maps.LatLng(${itemList.gridX1} , ${itemList.gridY1} ),
-						map : map,
-						icon:
-							<c:if test="${itemList.stateCode=='1'}">
-								buyImage
-							</c:if>
-							<c:if test="${itemList.stateCode=='2'}">
-								sellImage
-							</c:if>
-							<c:if test="${itemList.stateCode=='3'}">
-								dealImage
-							</c:if>
-								,
-						title : '${itemList.itemName}',
-						content : '${itemList.itemNo}',
-						price: '${itemList.price}'
-						//	labelContent: '$425K',
-						//	labelAnchor: new google.maps.Point(22, 0),
-						//    labelClass: "labels", // the CSS class for the label
-						
-						/*
-						content : '<div id="content">'+
-								'<h1 id="head" class="head">${itemList.itemName}</h1>'+
-								 '<div id="bodyContent">'+
-								 <c:if test="${itemList.itemPicturePath1!=null}">
-								 '<img src = "resources/itempictures/${itemList.itemPicturePath1}"></img><br>'+
-								 </c:if>
-								 '${itemList.itemInfo}'+
-								 '</div>'+
-								'</div >'
-						*/
-					
-						//labelContent : '${itemList.itemInfo}'
-						})
-			);
-		</c:forEach>
-	
-		/*
-		markers.push(
-				new google.maps.Marker({
-				position : new google.maps.LatLng(37.500848, 127.053065),
-				map : map,
-				icon: buyImage,
-				title : 'epic',
-				
-				content :  '<div id="dialog" title="Basic dialog">'+
-							'몰아치는 한숨'+
-							'</div>'
-				})
-			);
-		*/
-
+//	var modalInjectionImageArray1=[];
+//	var modalInjectionInfoArray=[];
+	var firstMapLoad="true";
+    var markerClusterer;
+	var cluster;
+	var pos;	
+	var myPosition={
+			A:null,
+			k:null
+	};
+		<%-- initialize Start --%>
 		function initialize() {
 			//geocoder 좌표->주소 변환 사용
 			geocoder = new google.maps.Geocoder();
@@ -821,13 +762,27 @@ div.mousescroll:hover {
 				disableDefaultUI : true,
 				styles: styles
 			}
+			//map = null;
 			map = new google.maps.Map(document.getElementById("map_canvas"),mapOptions);
 			
 			// Try HTML5 geolocation
 			if (navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(function(position) {
-					var pos = new google.maps.LatLng(position.coords.latitude,
-							position.coords.longitude);
+
+					if(firstMapLoad=="true"){
+						pos = new google.maps.LatLng(position.coords.latitude,
+								position.coords.longitude);
+					}else{
+						pos=center;
+					}
+					
+					<%-- 임시 --%>
+					myPosition.A=Math.round(pos.A*1000000)/1000000;
+					myPosition.k=Math.round(pos.k*1000000)/1000000;
+					console.log("pos___"+pos);
+					console.log("pos.A___"+Math.round(pos.A*1000000)/1000000);
+					console.log("pos.k___"+Math.round(pos.k*1000000)/1000000);
+					
 					
 					new google.maps.Marker({
 						position : new google.maps.LatLng(position.coords.latitude,
@@ -838,7 +793,13 @@ div.mousescroll:hover {
 						});
 					
 					map.setCenter(pos);
-					map.setZoom(13);
+					if(firstMapLoad=="true"){
+						map.setZoom(13);
+						firstMapLoad="false";
+					}else{
+						map.setZoom(zoomLevel);
+						console.log(zoomLevel);
+					}
 				}, function() {
 					handleNoGeolocation(true);
 				});
@@ -846,91 +807,255 @@ div.mousescroll:hover {
 				// Browser doesn't support Geolocation
 				handleNoGeolocation(false);
 			}
-
-			markerInitialize(map);
+			
+			markersInit(); //marker[]에 itemList push
+			markerInitialize(map); //map객체에 marekr onload
+			//markerClusterer = new MarkerClusterer(map, markers, {
 			markerClusterer = new MarkerClusterer(map, markers, {
-		          //maxZoom: zoom,
-		          gridSize: size
+		          maxZoom: 14,
+		          gridSize: size,
+		          ignoreHidden:true
 		          //styles: styles[style]
 		        });
-		
+			//cluster=new Cluster(MarkerClusterer);
+			//cluster.setIgnoreHidden(true);
+			  //물품등록시 사용할 이벤트, 위치정하기 버튼 누르기 전에 비활성화.
 			  google.maps.event.addListener(map, 'click', function(e) {
 		            placeMarker(e.latLng, map);
-
-		          });
-		}
-		
-		 var markerDropCheck;
-		 var markerDropEffect;
-		 var marker;
+		      });
+		}<%-- initialize End --%>
+	
+		<%-- placeMarker Start --%>
+		var markerDropCheck;
+		var markerDropEffect;
+		var marker;
 		// 마커찍기 
-			function placeMarker(position, map) {
-			  if(markerDropEffect=="active" && markerDropCheck!=1){
-				  marker = new google.maps.Marker({
-					position: position,
-					map: map,
-					/* draggable:true, */
-					animation: google.maps.Animation.DROP
-				  });
-				  map.panTo(position);
-				  var lat=marker.getPosition().lat();
-				  var lng=marker.getPosition().lng();
-					console.log(lat,lng);
-					document.getElementById("reg_lat").value=lat;
-					document.getElementById("reg_lng").value=lng;
-					document.getElementById("latlng").value=lat+","+lng;
-				markerDropEffect="false";
-				markerDropCheck=1;
-	            codeLatLng();
-			  }
-			}
+		function placeMarker(position, map) {
+		  if(markerDropEffect=="active" && markerDropCheck!=1){
+			  marker = new google.maps.Marker({
+				position: position,
+				map: map,
+				/* draggable:true, */
+				animation: google.maps.Animation.DROP
+			  });
+			  map.panTo(position);
+			  var lat=marker.getPosition().lat();
+			  var lng=marker.getPosition().lng();
+				console.log(lat,lng);
+				document.getElementById("reg_lat").value=lat;
+				document.getElementById("reg_lng").value=lng;
+				document.getElementById("latlng").value=lat+","+lng;
+			markerDropEffect="false";
+			markerDropCheck=1;
+            codeLatLng();
+		  }
+		}<%-- placeMarker End --%>
+		
+		<%-- markerDrop Start --%>
+		function markerDrop(){
+			markerDropEffect="active";
+		}<%-- markerDrop End --%>
+			
+			
 
-			function markerDrop(){
-				markerDropEffect="active";
+		<%-- clearMarkers Start --%>
+		//마커지우기(위치 재설정)
+		function clearMarkers() {
+	    	marker.setOptions({
+	    		map:null,
+	    		visible:false
+	    		
+	    	});
+	    	marker=null;
+	    	markerDropEffect="active";
+	    	markerDropCheck="0";
+		}<%-- clearMarkers end --%>
+			
+
+		<%-- codeLatLng Start --%>
+		//좌표 주소 전환
+		function codeLatLng() {
+			  var input = document.getElementById('latlng').value;
+			  var latlngStr = input.split(',', 2);
+			  var lat = parseFloat(latlngStr[0]);
+			  var lng = parseFloat(latlngStr[1]);
+			  var latlng = new google.maps.LatLng(lat, lng);
+			  geocoder.geocode({'latLng': latlng}, function(results, status) {
+			    if (status == google.maps.GeocoderStatus.OK) {
+			      if (results[1]) {
+			    	  document.getElementById("reg_add").value=results[1].formatted_address;
+			      } else {
+			        alert('No results found');
+			      }
+			    } else {
+			      alert('Geocoder failed due to: ' + status);
+			    }
+			    
+			  });
+		}<%-- codeLatLng end --%>
+		
+			
+		
+		<%-- itemSearch Start --%>
+		var searchKeyword;
+		var zoomLevel;
+		var center;
+		function itemSearch(){
+			zoomLevel=map.getZoom();
+			center=map.getCenter();
+			
+			searchKeyword=null;
+			searchKeyword=document.getElementById("searchKeyword").value;
+			console.log(searchKeyword);
+			//alert(searchKeyword);
+			
+			//map=null;
+			//initialize();
+			
+			if(searchKeyword!=null){
+				searchKeyword=searchKeyword.trim().toUpperCase();
 			}
 			
+			markerClusterer.clearMarkers();
 			
-			//마커지우기(위치 재설정)
-			function clearMarkers() {
-		    	marker.setOptions({
-		    		map:null,
-		    		visible:false
-		    		
-		    	});
-		    	marker=null;
-		    	markerDropEffect="active";
-		    	markerDropCheck="0";
-			}
-			
-			//좌표 주소 전환
-			function codeLatLng() {
-				  var input = document.getElementById('latlng').value;
-				  var latlngStr = input.split(',', 2);
-				  var lat = parseFloat(latlngStr[0]);
-				  var lng = parseFloat(latlngStr[1]);
-				  var latlng = new google.maps.LatLng(lat, lng);
-				  geocoder.geocode({'latLng': latlng}, function(results, status) {
-				    if (status == google.maps.GeocoderStatus.OK) {
-				      if (results[1]) {
-				    	  document.getElementById("reg_add").value=results[1].formatted_address;
-				      } else {
-				        alert('No results found');
-				      }
-				    } else {
-				      alert('Geocoder failed due to: ' + status);
-				    }
-				    
-				  });
-				}
+			for(var i=0;i<markers.length;i++){
+				//console.log(markers[i].title.toUpperCase().match(searchKeyword));
 						
+				
+				if(markers[i].title.toUpperCase().match(searchKeyword)!=null){
+					markerClusterer.addMarker(markers[i]);
+					//markers[i].setVisible(true);
+				}else{
+					//markers[i].setVisible(false);
+					//markerClusterer.removeMarker(markers[i]);
+				}
+				/**/
+			}
+			//markerClusterer.clearMarkers();
+			//markerClusterer.setIgnoreHidden(true);
+			//Cluster.
+			//markerClusterer.setMap(null);
+			//markerClusterer.setMap( this.map );
+			markerClusterer.repaint();
+			//markerClusterer.resetViewport();
+			return false;
+			//map.setZoom(zoomLevel-1);
+			//map.setZoom(zoomLevel);
+			//markerClusterer.repaint();
+
+
+			//cluster.repaint();
+			/*
+			markerClusterer = new MarkerClusterer(map, markers, {
+		          maxZoom: 14,
+		          gridSize: size,
+		          ignoreHidden:true
+		          //styles: styles[style]
+		        });
+			*/
+			/*
+			markerCluster.setMap(null);
+			*/
+			
+		
+			
+			
+		}<%-- itemSearch End --%>
+		
+		<%-- markersInit() --%>
+		function markersInit(){
+			//markers=[];
+			//statCode 1=sell, 2=buy, 3=deal
+			<c:forEach var="itemList" items="${itemList}">
+				<c:set var="i" value="${ i+1 }" />	
+				var str="${itemList.itemName}";
+				
+				//console.log(str.match(searchKeyword));
+				
+				if(searchKeyword!=null){
+					searchKeyword=searchKeyword.trim().toUpperCase();
+				}
+				
+				if(str.toUpperCase().match(searchKeyword)!=null){
+					markers.push(
+							new google.maps.Marker({
+							//new MarkerWithLabel({
+								position : new google.maps.LatLng(${itemList.gridX1} , ${itemList.gridY1} ),
+								map : map,
+								icon:
+									<c:if test="${itemList.stateCode=='1'}">
+										buyImage
+									</c:if>
+									<c:if test="${itemList.stateCode=='2'}">
+										sellImage
+									</c:if>
+									<c:if test="${itemList.stateCode=='3'}">
+										dealImage
+									</c:if>
+										,
+								title : '${itemList.itemName}',
+								itemNo : '${itemList.itemNo}',
+								itemInfo : '${itemList.itemInfo}',
+								itemPicturePath1 : '${itemList.itemPicturePath1}',
+								//content : '${itemList.itemNo}',
+								distance:null,
+								distance_m:null,
+								price : '${itemList.price}'
+								//	labelContent: '$425K',
+								//	labelAnchor: new google.maps.Point(22, 0),
+								//    labelClass: "labels", // the CSS class for the label
+								
+								/*
+								content : '<div id="content">'+
+										'<h1 id="head" class="head">${itemList.itemName}</h1>'+
+										 '<div id="bodyContent">'+
+										 <c:if test="${itemList.itemPicturePath1!=null}">
+										 '<img src = "resources/itempictures/${itemList.itemPicturePath1}"></img><br>'+
+										 </c:if>
+										 '${itemList.itemInfo}'+
+										 '</div>'+
+										'</div >'
+								*/
+							
+								//labelContent : '${itemList.itemInfo}'
+								})
+						);
+					}
+			</c:forEach>
+			/*
+			markers.push(
+					new google.maps.Marker({
+					position : new google.maps.LatLng(37.500848, 127.053065),
+					map : map,
+					icon: buyImage,
+					title : 'epic',
+					
+					content :  '<div id="dialog" title="Basic dialog">'+
+								'몰아치는 한숨'+
+								'</div>'
+					})
+				);
+			*/
+			console.log("markers.length__"+markers.length);
+			console.log("markers[0]__"+markers[0]);
+			console.log("markers[0]__"+markers[0].price);
+			console.log("markers[0].position__"+markers[0].position);
+			console.log("markers[0].position__"+markers[0].position.A);
+			console.log("markers[0].position__"+markers[0].position.k);
+		}<%-- markersInit() end --%>
+								
+		
+		<%-- markerInitialize Start --%>
 		function markerInitialize(map) {
 		  for (var i = 0; i < markers.length; i++) {
-			markers[i].setMap(map);   
+			//console.log(markers[i]);
+			//markers[i].setMap(map);   
 			//console.log(markers[i].content); 
 			markerAddListener(markers[i], i);
 		  }
-		}
-		// Sets the map on all markers in the array.
+		}<%-- markerInitialize end --%>
+	
+		<%-- markerAddListener Start--%>
 		function markerAddListener(marker, i) {
 		/* 
 		  var infowindow = new google.maps.InfoWindow({
@@ -944,9 +1069,9 @@ div.mousescroll:hover {
 			  modalInjection(marker);
 		  });
 		  
-		}
+		}<%-- markerAddListener end--%>
 		
-		//gps module
+		<%-- handleNoGeolocation Start --%>
 		function handleNoGeolocation(errorFlag) {
 			if (errorFlag) {
 				var content = 'Error: The Geolocation service failed.';
@@ -962,24 +1087,124 @@ div.mousescroll:hover {
 
 			var infowindow = new google.maps.InfoWindow(options);
 			map.setCenter(options.position);
-			
-		
-			
-			
-		}
+		}<%-- handleNoGeolocation end --%>
 		
 		// Add a marker to the map and push to the array.
+		<%-- addMarker Start --%>
 		function addMarker(location) {
 			var marker = new google.maps.Marker({
 				position : location,
 				map : map
 			});
 			markers.push(marker);
+		}<%-- addMarker end --%>
+		
+		
+		
+		<%-- markersSorting Distance Start --%>
+		function markersSortingDistance(){
+			console.log("markersSortingDistance In__");
+			markers.sort(function(a, b){
+				//geolocation으로 잡은 A,k를 이용해 가져온 a의 절대값과 삼각함수를 이용해 거리측정
+				var a_A	=	Math.abs(myPosition.A-a.position.A);
+				var a_k	=	Math.abs(myPosition.k-a.position.k);
+				var a_distance=Math.pow(a_A, a_A) + Math.pow(a_k, a_k);
+				a.distance=sqrt(a_distance);
+				a.distance_m=
+					getDistanceFromLatLonInKm(myPosition.A, myPosition.k,
+											a.position.A, a.position.k);
+				
+				var b_A	=	Math.abs(myPosition.A-b.position.A);
+				var b_k	=	Math.abs(myPosition.k-b.position.k);
+				var b_distance=Math.pow(b_A, b_A) + Math.pow(b_k, b_k);
+				b.distance=sqrt(a_distance);
+				b.distance_m=
+					getDistanceFromLatLonInKm(myPosition.A, myPosition.k,
+											b.position.A, b.position.k);
+				
+				
+				return a_distance-b_distance
+				});
+				/*
+				(
+					Math.pow( 
+							Math.abs((myPosition.A-markers[0].position.A)) ,
+							Math.abs((myPosition.A-markers[0].position.A))
+							)
+					+
+					Math.pow( 
+							Math.abs((myPosition.k-markers[0].position.k)) ,
+							Math.abs((myPosition.k-markers[0].position.k))
+							)
+				)
+				-
+				(
+						Math.pow( 
+								Math.abs((myPosition.A-markers[0].position.A)) ,
+								Math.abs((myPosition.A-markers[0].position.A))
+								)
+						+
+						Math.pow( 
+								Math.abs((myPosition.k-markers[0].position.k)) ,
+								Math.abs((myPosition.k-markers[0].position.k))
+								)
+				)
+				*/
+				
+			/*
+			console.log("pos.position.A"+pos.position.A);
+			console.log("pos.position.k"+pos.position.k);
+			console.log("markers.length__"+markers.length);
+			console.log("markers[0]__"+markers[0]);
+			console.log("markers[0]__"+markers[0].price);
+			console.log("markers[0].position__"+markers[0].position);
+			console.log("markers[0].position__"+markers[0].position.A);
+			console.log("markers[0].position__"+markers[0].position.k);
+			*/
+		}<%-- markersSorting Distance End --%>
+		
+		
+		
+		<%-- markersSorting Price Start--%>
+		function markersSortingPrice(){
+			markers.sort(function(a, b){
+				return a.price-b.price
+				});
+			
+		}<%--  markersSorting Price End --%>
+		
+		
+		<%-- ‘Haversine’ formula Start--%>
+		function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
+			  var R = 6371; // Radius of the earth in km
+			  var dLat = deg2rad(lat2-lat1);  // deg2rad below
+			  var dLon = deg2rad(lon2-lon1); 
+			  var a = 
+			    Math.sin(dLat/2) * Math.sin(dLat/2) +
+			    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+			    Math.sin(dLon/2) * Math.sin(dLon/2)
+			    ; 
+			  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+			  var d = R * c; // Distance in km
+			  return d;
+			}
+		function deg2rad(deg) {
+		  return deg * (Math.PI/180)
 		}
+		<%-- ‘Haversine’ formula End--%>
 		
 		
 		google.maps.event.addDomListener(window, 'load', initialize);
-					
+		
+		//console.log("pos"+pos);
+		//console.log("pos.position.A"+pos.position.A);
+		//console.log("pos.position.k"+pos.position.k);
+		
+		 markersSortingDistance();
+		 for(var i=0;i<markers.length;i++){
+			 console.log("markers__"+i+"__"+markers[i].distance_m);
+		 };
+		
 	</script>
 	<!--
 		
@@ -1848,6 +2073,8 @@ div.mousescroll:hover {
 
 <%-- 속도향상을 위해 맨 아래로 내림. --%>
 <script>
+<%-- 폐기된 코드. 삭제예정 --%>
+<%--
 <c:forEach var="itemList" items="${itemList}">
 	<c:set var="i" value="${ i+1 }" />	
 		modalInjectionImageArray1[${itemList.itemNo}]=
@@ -1858,15 +2085,17 @@ div.mousescroll:hover {
 		modalInjectionInfoArray[${itemList.itemNo}]=
 			"${itemList.itemInfo}";
 </c:forEach>
+ --%>
 
+ 
  function modalInjection(marker){
 	  
-	  console.log("marker.content__"+marker.content);
+	 console.log("marker.itemNo__"+marker.itemNo);
   	  
 	  new function makeHtml(){
 			console.log("it`s worked");
 			document.getElementById("htmlInjectionSector").innerHTML = 
-			"<div id=\"item"+marker.content+"\" class=\"item"+marker.content+" modal fade\" title=\""+marker.title+"\"  tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">"+
+			"<div id=\"item"+marker.itemNo+"\" class=\"item"+marker.itemNo+" modal fade\" title=\""+marker.title+"\"  tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">"+
 				"<div id=\"injection-modal\"class=\"modal-dialog\">"+
 					"<div class=\"modal-Content\">"+
 						"<div class=\"modal-header\">"+
@@ -1886,7 +2115,7 @@ div.mousescroll:hover {
 						            /* main slider carousel items */
 						            "<div class=\"carousel-inner\">"+
 						              "<div class=\"active item\" data-slide-number=\"0\">"+
-						                "<img  src = \"resources/itempictures/"+modalInjectionImageArray1[marker.content]+"\" style=\"width: 640px; height:480;\">"+
+						                "<img  src = \"resources/itempictures/"+marker.itemPicturePath1+"\" style=\"width: 640px; height:480;\">"+
 						              "</div>"+
 						              "<div class=\"item\" data-slide-number=\"1\">"+
 						                "<img src=\"http://placehold.it/640x480&amp;text=two\">"+
@@ -1914,7 +2143,7 @@ div.mousescroll:hover {
 							
 							<%-- ItemInfo 들어가는 공간 --%>
 							"<br><div id=\"itemInfo\">"+
-								modalInjectionInfoArray[marker.content]+
+								marker.itemInfo+
 							"</div>"+
 							
 						"</div>"+
@@ -1927,7 +2156,7 @@ div.mousescroll:hover {
 					"</div>"+	
 				"</div>"+
 			"</div>"+
-			"<a data-toggle=\"modal\" href=\"#item"+marker.content+"\" id=\"modallink\"></a>";
+			"<a data-toggle=\"modal\" href=\"#item"+marker.itemNo+"\" id=\"modallink\"></a>";
 		};
 		
 		<%-- modal Injection --%>

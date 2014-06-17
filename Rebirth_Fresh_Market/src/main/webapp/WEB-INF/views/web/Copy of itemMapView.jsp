@@ -970,6 +970,8 @@ body {
 										,
 								title : '${itemList.itemName}',
 								itemNo : '${itemList.itemNo}',
+								itemInfo : '${itemList.itemInfo}',
+								itemPicturePath1 : '${itemList.itemPicturePath1}',
 								//content : '${itemList.itemNo}',
 								distance:null,
 								distance_m:null,
@@ -1074,8 +1076,8 @@ body {
 		
 		
 		
-		<%-- markersSorting Range Start --%>
-		function markersSortingRange(){
+		<%-- markersSorting Distance Start --%>
+		function markersSortingDistance(){
 			markers.sort(function(a, b){
 				//geolocation으로 잡은 A,k를 이용해 가져온 a의 절대값과 삼각함수를 이용해 거리측정
 				var a_A	=	Math.abs(myPosition.A-a.position.A);
@@ -1133,7 +1135,7 @@ body {
 			console.log("markers[0].position__"+markers[0].position.A);
 			console.log("markers[0].position__"+markers[0].position.k);
 			*/
-		}<%-- markersSorting Range End --%>
+		}<%-- markersSorting Distance End --%>
 		
 		
 		
