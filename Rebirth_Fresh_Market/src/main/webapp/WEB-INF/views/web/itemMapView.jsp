@@ -779,9 +779,9 @@ div.mousescroll:hover {
 					<%-- 임시 --%>
 					myPosition.A=Math.round(pos.A*1000000)/1000000;
 					myPosition.k=Math.round(pos.k*1000000)/1000000;
-					console.log("pos___"+pos);
-					console.log("pos.A___"+Math.round(pos.A*1000000)/1000000);
-					console.log("pos.k___"+Math.round(pos.k*1000000)/1000000);
+					console.log("initialize()__pos___"+pos);
+					console.log("initialize()__pos.A___"+Math.round(pos.A*1000000)/1000000);
+					console.log("initialize()__pos.k___"+Math.round(pos.k*1000000)/1000000);
 					
 					
 					new google.maps.Marker({
@@ -900,17 +900,28 @@ div.mousescroll:hover {
 		var searchKeyword;
 		var zoomLevel;
 		var center;
-		function itemSearch(){
+		var markersSearchResult=[];
+		var searchOption;
+		/*
+		document.getElementById("options").addEventListener("click", function () {
+			  form.submit();
+			});
+		*/
+		function itemSearch(from){
 			zoomLevel=map.getZoom();
 			center=map.getCenter();
 			
+			markersSearchResult=[];
 			searchKeyword=null;
-			searchKeyword=document.getElementById("searchKeyword").value;
-			console.log(searchKeyword);
-			//alert(searchKeyword);
+			searchOption=null;
 			
-			//map=null;
-			//initialize();
+			if(from=="Quick"){
+				searchKeyword=document.getElementById("searchKeywordQuick").value;
+			}else{
+				searchKeyword=document.getElementById("searchKeywordDetail").value;
+			}
+			
+			console.log(searchKeyword);
 			
 			if(searchKeyword!=null){
 				searchKeyword=searchKeyword.trim().toUpperCase();
@@ -918,18 +929,65 @@ div.mousescroll:hover {
 			
 			markerClusterer.clearMarkers();
 			
-			for(var i=0;i<markers.length;i++){
-				//console.log(markers[i].title.toUpperCase().match(searchKeyword));
-						
+			if(from=="Quick"){
+				for(var i=0;i<markers.length;i++){
+					if(markers[i].title.toUpperCase().match(searchKeyword)!=null){
+						markerClusterer.addMarker(markers[i]);
+					}
+				}
+			}else{
 				
-				if(markers[i].title.toUpperCase().match(searchKeyword)!=null){
-					markerClusterer.addMarker(markers[i]);
-					//markers[i].setVisible(true);
-				}else{
-					//markers[i].setVisible(false);
-					//markerClusterer.removeMarker(markers[i]);
+				//searchOption = document.getElementById("options").value; //cc
+				
+				if(document.getElementById('searchOption1').checked){
+					searchOption = document.getElementById("searchOption1").value;
+				}
+				if(document.getElementById('searchOption2').checked){
+					searchOption = document.getElementById("searchOption2").value;
+				}
+				if(document.getElementById('searchOption3').checked){
+					searchOption = document.getElementById("searchOption3").value;
 				}
 				/**/
+				
+				console.log(searchOption);
+				
+				if(searchOption=="all"){
+					for(var i=0;i<markers.length;i++){
+						//console.log(markers[i].title.toUpperCase().match(searchKeyword));
+			
+						if(markers[i].title.toUpperCase().match(searchKeyword)!=null){
+							markerClusterer.addMarker(markers[i]);
+							markersSearchResult.push(markers[i]);
+							//markers[i].setVisible(true);
+						}else{
+							//markers[i].setVisible(false);
+							//markerClusterer.removeMarker(markers[i]);
+						}
+					}
+				}
+				if(searchOption=="buy"){
+					for(var i=0;i<markers.length;i++){
+						if(markers[i].stateCode==1){
+							if(markers[i].title.toUpperCase().match(searchKeyword)!=null){
+								markerClusterer.addMarker(markers[i]);
+								markersSearchResult.push(markers[i]);	
+							}
+						}
+					}
+				}
+				if(searchOption=="sell"){
+					for(var i=0;i<markers.length;i++){
+						if(markers[i].stateCode==2){
+							if(markers[i].title.toUpperCase().match(searchKeyword)!=null){
+								markerClusterer.addMarker(markers[i]);
+								markersSearchResult.push(markers[i]);	
+							}
+						}
+					}
+				}
+				
+				
 			}
 			//markerClusterer.clearMarkers();
 			//markerClusterer.setIgnoreHidden(true);
@@ -993,6 +1051,7 @@ div.mousescroll:hover {
 										dealImage
 									</c:if>
 										,
+								stateCode : '${itemList.stateCode}',
 								title : '${itemList.itemName}',
 								itemNo : '${itemList.itemNo}',
 								itemInfo : '${itemList.itemInfo}',
@@ -1103,77 +1162,49 @@ div.mousescroll:hover {
 		
 		<%-- markersSorting Distance Start --%>
 		function markersSortingDistance(){
+			//console.log("pos___"+pos);
+			//console.log("pos.A___"+Math.round(pos.A*1000000)/1000000);
+			//console.log("pos.k___"+Math.round(pos.k*1000000)/1000000);
+		
 			console.log("markersSortingDistance In__");
-			markers.sort(function(a, b){
+			markersSearchResult.sort(function(a, b){
+				console.log("markersSearchResult.sort.Distance call");
 				//geolocation으로 잡은 A,k를 이용해 가져온 a의 절대값과 삼각함수를 이용해 거리측정
-				var a_A	=	Math.abs(myPosition.A-a.position.A);
-				var a_k	=	Math.abs(myPosition.k-a.position.k);
-				var a_distance=Math.pow(a_A, a_A) + Math.pow(a_k, a_k);
-				a.distance=sqrt(a_distance);
+				
+				//var a_A	=	Math.abs(myPosition.A-a.position.A);
+				//var a_k	=	Math.abs(myPosition.k-a.position.k);
+				var a_A	=	Math.abs(Math.round(myPosition.A-a.position.A*1000000)/1000000);
+				var a_k	=	Math.abs(Math.round(myPosition.k-a.position.k*1000000)/1000000);
+				//var a_distance=Math.pow(a_A, a_A) + Math.pow(a_k, a_k);
+				//a.distance=Math.sqrt(a_distance);
 				a.distance_m=
-					getDistanceFromLatLonInKm(myPosition.A, myPosition.k,
-											a.position.A, a.position.k);
+					Math.round(getDistanceFromLatLonInKm(myPosition.k, myPosition.A,
+							 					a.position.k, a.position.A)*10000)/10000;
 				
-				var b_A	=	Math.abs(myPosition.A-b.position.A);
-				var b_k	=	Math.abs(myPosition.k-b.position.k);
-				var b_distance=Math.pow(b_A, b_A) + Math.pow(b_k, b_k);
-				b.distance=sqrt(a_distance);
+				//console.log(a_A);
+				//console.log(a_k);
+				//console.log(a_distance);
+				//var b_A	=	Math.abs(myPosition.A-b.position.A);
+				//var b_k	=	Math.abs(myPosition.k-b.position.k);
+				var b_A	=	Math.abs(Math.round(myPosition.A-b.position.A*1000000)/1000000);
+				var b_k	=	Math.abs(Math.round(myPosition.k-b.position.k*1000000)/1000000);
+				//var b_distance=Math.pow(b_A, b_A) + Math.pow(b_k, b_k);
+				//b.distance=Math.sqrt(b_distance);
 				b.distance_m=
-					getDistanceFromLatLonInKm(myPosition.A, myPosition.k,
-											b.position.A, b.position.k);
-				
-				
-				return a_distance-b_distance
-				});
-				/*
-				(
-					Math.pow( 
-							Math.abs((myPosition.A-markers[0].position.A)) ,
-							Math.abs((myPosition.A-markers[0].position.A))
-							)
-					+
-					Math.pow( 
-							Math.abs((myPosition.k-markers[0].position.k)) ,
-							Math.abs((myPosition.k-markers[0].position.k))
-							)
-				)
-				-
-				(
-						Math.pow( 
-								Math.abs((myPosition.A-markers[0].position.A)) ,
-								Math.abs((myPosition.A-markers[0].position.A))
-								)
-						+
-						Math.pow( 
-								Math.abs((myPosition.k-markers[0].position.k)) ,
-								Math.abs((myPosition.k-markers[0].position.k))
-								)
-				)
-				*/
-				
-			/*
-			console.log("pos.position.A"+pos.position.A);
-			console.log("pos.position.k"+pos.position.k);
-			console.log("markers.length__"+markers.length);
-			console.log("markers[0]__"+markers[0]);
-			console.log("markers[0]__"+markers[0].price);
-			console.log("markers[0].position__"+markers[0].position);
-			console.log("markers[0].position__"+markers[0].position.A);
-			console.log("markers[0].position__"+markers[0].position.k);
-			*/
-		}<%-- markersSorting Distance End --%>
-		
-		
-		
-		<%-- markersSorting Price Start--%>
-		function markersSortingPrice(){
-			markers.sort(function(a, b){
-				return a.price-b.price
+					Math.round(getDistanceFromLatLonInKm(myPosition.k, myPosition.A,
+											 b.position.k, b.position.A)*10000)/10000;
+				//console.log(b_A);
+				return a.distance_m-b.distance_m
 				});
 			
-		}<%--  markersSorting Price End --%>
+			//sorting check용 for문, 사용시 주석처리해야함.
+			for(var i=0;i<markers.length;i++){
+				console.log("markersSearchResult"+i+"distance_m"+markersSearchResult[i].distance_m);
+			}
+
+		}<%-- markersSorting Distance End --%>
 		
-		
+
 		<%-- ‘Haversine’ formula Start--%>
 		function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
 			  var R = 6371; // Radius of the earth in km
@@ -1194,17 +1225,35 @@ div.mousescroll:hover {
 		<%-- ‘Haversine’ formula End--%>
 		
 		
-		google.maps.event.addDomListener(window, 'load', initialize);
 		
-		//console.log("pos"+pos);
-		//console.log("pos.position.A"+pos.position.A);
-		//console.log("pos.position.k"+pos.position.k);
+		<%-- markersSorting Price Start--%>
+		function markersSortingPrice(){
+			console.log("markersSorting Price In");
+			markersSearchResult.sort(function(a, b){
+				console.log("markersSearchResult.sort.Price call");
+				return a.price-b.price
+				});
+			//sorting check용 for문, 사용시 주석처리해야함.
+			for(var i=0;i<markers.length;i++){
+				console.log("markersSearchResult__"+i+"price__"+markersSearchResult[i].price);
+			}
+		}<%--  markersSorting Price End --%>
 		
-		 markersSortingDistance();
+		
+		
+		
+		//console.log("after__pos"+pos);
+		//console.log("after__pos.position.A"+pos.position.A);
+		//console.log("after__pos.position.k"+pos.position.k);
+		
+		// markersSortingDistance();
+		/*
 		 for(var i=0;i<markers.length;i++){
 			 console.log("markers__"+i+"__"+markers[i].distance_m);
 		 };
+		*/
 		
+		google.maps.event.addDomListener(window, 'load', initialize);
 	</script>
 	<!--
 		
@@ -1613,19 +1662,30 @@ div.mousescroll:hover {
 	</div>
 		<nav id="menu1">
 		<div id="search_condition">
-			<form action="#" name="searchform" id="search_form" method="post" >				
-			   	<input type="text" class="form-control" placeholder="Search">		    
+			<form action="#" name="searchform" id="search_form" method="post" onsubmit="return itemSearch('Detail')">				
+			   	<input type="text" id="searchKeywordDetail" class="form-control" placeholder="Search">		    
 			   	<div id="select_deal"> 
-			    	<div class="btn-group" data-toggle="buttons" style="margin-top: 10px">			    
+			    	<div class="btn-group" data-toggle="buttons" style="margin-top: 10px" > <%--onclick="itemSearch('Detail')" --%>
 				  		<label class="btn btn-default active">
-				    	<input type="radio" name="options" id="option1"> 전체검색
+				    	<input type="radio" name="options" id="searchOption1" value="all" checked > 전체검색
 				  		</label>
 				  		<label class="btn btn-default">
-				    	<input type="radio" name="options" id="option1"> 삽니다
+				    	<input type="radio" name="options" id="searchOption2" value="buy" > 삽니다
 				  		</label>
 			  			<label class="btn btn-default">
-				    	<input type="radio" name="options" id="option2"> 팝니다
+				    	<input type="radio" name="options" id="searchOption3" value="sell" > 팝니다
 				  		</label>
+				  		<%--
+				  		<label class="btn btn-default active">
+				    	<input type="radio" name="options" id="option"> 전체검색
+				  		</label>
+				  		<label class="btn btn-default">
+				    	<input type="radio" name="options" id="option1" > 삽니다
+				  		</label>
+			  			<label class="btn btn-default">
+				    	<input type="radio" name="options" id="option2" > 팝니다
+				  		</label>
+				  		 --%>
 					</div>
 				</div>
 				<!-- <div class="btn-group" data-toggle="buttons" style="margin-bottom: 10px; margin-top: 10px">
@@ -1641,10 +1701,10 @@ div.mousescroll:hover {
 				</div> -->
 				<div style="margin-bottom: 10px; margin-top: 10px">
 				<label class="checkbox-inline">
-				  <input type="checkbox" id="inlineCheckbox1" value="option1"> 거리순
+				  <input type="checkbox" id="inlineCheckbox1" value="option1" onclick="markersSortingDistance()"> 거리순
 				</label>
 				<label class="checkbox-inline">
-				  <input type="checkbox" id="inlineCheckbox2" value="option2"> 가격순
+				  <input type="checkbox" id="inlineCheckbox2" value="option2" onclick="markersSortingPrice()"> 가격순
 				</label>
 				<label class="checkbox-inline">
 				  <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
@@ -2073,6 +2133,9 @@ div.mousescroll:hover {
 
 <%-- 속도향상을 위해 맨 아래로 내림. --%>
 <script>
+//console.log("after__pos"+pos);
+//console.log("after__pos.position.A"+pos.position.A);
+//console.log("after__pos.position.k"+pos.position.k);
 <%-- 폐기된 코드. 삭제예정 --%>
 <%--
 <c:forEach var="itemList" items="${itemList}">

@@ -56,9 +56,9 @@
 		             
 		      			<!--  로그인버튼, 로그인차, 마이페이지  끝 -->
 		         	
-		          	<form id="search" class="navbar-form navbar-right" role="search" action="#" onsubmit="return itemSearch()">
+		          	<form id="search" class="navbar-form navbar-right" role="search" action="#" onsubmit="return itemSearch('Quick')">
 						<div class="form-group">
-							<input id="searchKeyword" type="text" class="form-control" placeholder="Search" height="10">
+							<input id="searchKeywordQuick" type="text" class="form-control" placeholder="Search" height="10">
 						</div>
 				 	</form> 
 				 	  <%--
