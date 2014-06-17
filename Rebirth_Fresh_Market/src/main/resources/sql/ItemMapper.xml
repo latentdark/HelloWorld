@@ -97,7 +97,7 @@
 				i.item_no=#{value}
 	</select>
 	
-	<select id="findItemList" parameterType="search" resultMap="ItemSelectMap">
+	<select id="findItemList" resultMap="ItemSelectMap">
 		SELECT
 		u.user_no,
 		i.item_no,
@@ -121,7 +121,7 @@
 		LEFT OUTER JOIN item_pic ip ON ip.item_no = i.item_no
 		LEFT OUTER JOIN location l ON l.item_no = i.item_no
 		LEFT OUTER JOIN user u ON i.user_no = u.user_no
-		<if test="searchCondition!=''">
+		<!-- <if test="searchCondition!=''">
 			<where>
 				<if test="searchCondition==1">
 				i.state_code = 1
@@ -135,8 +135,10 @@
 			</where>
 		</if>
 		<if test="searchCondition==''">
-		WHERE i.item_name LIKE '%#{searchKeyword}%';
-		</if>
+			<if test="searchKeyword!=''">
+			WHERE i.item_name LIKE '%#{searchKeyword}%'
+			</if>
+		</if> -->
 	</select>
 	
 						<!-- ///////////////////////여기서부터 원래코드////////////////////// -->
