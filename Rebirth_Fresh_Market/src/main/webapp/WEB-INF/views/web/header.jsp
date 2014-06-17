@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 		<div class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container-fluid">
 				<div class="navbar-header">
@@ -54,13 +55,17 @@
 		           		
 		             
 		      			<!--  로그인버튼, 로그인차, 마이페이지  끝 -->
-		          
-		       		
-		          	<form id="search" class="navbar-form navbar-right" role="search">
+		         	
+		          	<form id="search" class="navbar-form navbar-right" role="search" action="#" onsubmit="return itemSearch()">
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Search" height="10">
+							<input id="searchKeyword" type="text" class="form-control" placeholder="Search" height="10">
 						</div>
-				 	</form>          
+				 	</form> 
+				 	  <%--
+				 	 <div class="form-group">
+							<input id="searchKeyword" type="text" class="form-control" placeholder="Search" height="10" onsubmit="return search()">
+						</div>  
+						 --%>     
 		       	</div><!--/.nav-collapse -->
 		   	</div>
 		</div>

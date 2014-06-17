@@ -12,7 +12,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
 	<link rel="Stylesheet" href="/resources/css/bootstrap.min.css"/>
-	<link href="/resources/css/prettify.css" rel="stylesheet">
+	<!-- <link href="/resources/css/prettify.css" rel="stylesheet"> -->
 	<!-- Slider css -->
 	<!--
 	<link rel="stylesheet" type="text/css" href="css/default.css" />
@@ -153,7 +153,7 @@ body {
 	margin-bottom: 10px;
 }
 
-.labels {
+/* .labels {
 	color: red;
 	background-color: white;
 	font-family: "Lucida Grande", "Arial", sans-serif;
@@ -163,11 +163,16 @@ body {
 	width: 40px;
 	border: 2px solid black;
 	white-space: nowrap;
-}
+} */
 
 
 /* slider bar css */
 /* 텔 */
+
+#bodyContent{
+	background: #000000;
+}
+<%--  --%>
 #menu1 {
 	transition: all 0.3s ease;
 	position: fixed;
@@ -182,6 +187,7 @@ body {
 	padding-top: 20px;
 	padding-left: 10px;
 	padding-right: 10px;
+	text-align: center;
 }
 
 #menu-toggle1 {
@@ -337,6 +343,7 @@ body {
 	-moz-transition: 0.25s;
 	transition: 0.25s;
 }
+
 /* span 보여주게 하는 코드 */
 #menu-toggle2 a:hover span{ 
 	background-color:rgb(255, 228, 0);
@@ -344,8 +351,10 @@ body {
 /* 	text-shadow:1px 1px 0 #99bf31; */
 	width:auto;
 	padding:0 20px;
-	overflow:visible; }
-
+	overflow:visible; 
+	
+	}
+	
  
 #menu-toggle2 a:hover{
 	text-decoration:none;
@@ -491,11 +500,7 @@ body {
 
 
 
-<!-- highlight_styles -->
-<!--
-<link rel="stylesheet" type="text/css" href="highlight_styles.css" />
- -->
- 
+
  	
 	<!--
 				
@@ -525,6 +530,7 @@ body {
 	
 
 	
+
 	<!-- jquery + UI + CSS google CDN -->
 	
 	<!--panel용 lib -->
@@ -532,9 +538,7 @@ body {
 	
 	
 	<script src="http://code.jquery.com/jquery.min.js"></script>
-	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-	
-	
+
 	<!-- GoogleMap API Key -->
 	<script
 	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAX-hWL7tXxRZd2GtUjDME2jf-9qNoiRsE&sensor=false&language=ko">
@@ -552,9 +556,12 @@ body {
  	 -->
 	
 	<!--
-	<script src="resources/js_custom/markerclusterer_packed.js"></script>
-	<script src="resources/js_custom/markerclusterer.js"></script>
+	
 	 --> 
+
+	<script src="resources/js_custom/markerclusterer.js"></script>
+	<script src="resources/js_custom/markerclusterer_packed.js"></script>
+	<script src="resources/js_custom/markerclustererPlus.js"></script>
 	<script src="resources/js_custom/markerwithlabel.js"></script>
 	
 	<!--panel lib -->
@@ -572,10 +579,13 @@ body {
 	
 
 	
+	
+	<%--
 	<!-- 
 	<script src="resources/js_custom/markerclusterer_packed.js"></script>
 	<script src="resources/js_custom/markerclusterer.js"></script>
 	-->
+	 --%>
 	<script src="resources/js_custom/markerwithlabel.js"></script>
 	<!--
 	<link rel="stylesheet" href="/resources/demos/style.css">
@@ -589,6 +599,8 @@ body {
 	 
 	<script src="/resources/js/jquery.bootstrap.wizard.js"></script>
 	<script src="/resources/js/prettify.js"></script>
+		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	
 	
 	<!-- jquery.bootstrap.wizard 화면구성 스크립트 코드 -->
 	<script>
@@ -602,7 +614,7 @@ body {
 	});	
 	</script>
 	
-<script>
+	<script>
 
 
 	//여기부터 clusterer
@@ -613,8 +625,8 @@ body {
 	    }
 	    script += '.js"><' + '/script>';
 	    document.write(script);
-</script>
-<script async>
+	</script>
+	<script async>
 	     var styles = [[{
 	       url: 'resources/imgs/markerclusterer/people35.png',
 	       height: 35,
@@ -707,80 +719,15 @@ body {
 	var markers = [];
 	var modalInjectionImageArray1=[];
 	var modalInjectionInfoArray=[];
-	//var itemList=${itemList};
-	
-	<%-- 뉴텔 --%>
-	//statCode 1=sell, 2=buy, 3=deal
-	<c:forEach var="itemList" items="${itemList}">
-		<c:set var="i" value="${ i+1 }" />	
-		<%--
-			modalInjectionImageArray1[${itemList.itemNo}]=
-				<c:if test="${itemList.itemPicturePath1!=null}">
-				"<div id=\"itemImage\", align=\"left\">"+
-					"<img style=\"width: 600px; height:auto;\", src = \"resources/itempictures/${itemList.itemPicturePath1}\"></img>"+
-				"</div>"
-				</c:if>
-				;
-			modalInjectionInfoArray[${itemList.itemNo}]=
-				"<div id=\"itemInfo\">"+
-					"${itemList.itemInfo}"+
-				"</div>"
-				;
-		 --%>
-			markers.push(
-					new google.maps.Marker({
-					//new MarkerWithLabel({
-						position : new google.maps.LatLng(${itemList.gridX1} , ${itemList.gridY1} ),
-						map : map,
-						icon:
-							<c:if test="${itemList.stateCode=='1'}">
-								buyImage
-							</c:if>
-							<c:if test="${itemList.stateCode=='2'}">
-								sellImage
-							</c:if>
-							<c:if test="${itemList.stateCode=='3'}">
-								dealImage
-							</c:if>
-								,
-						title : '${itemList.itemName}',
-						content : '${itemList.itemNo}'
-						//	labelContent: '$425K',
-						//	labelAnchor: new google.maps.Point(22, 0),
-						//    labelClass: "labels", // the CSS class for the label
-						
-						/*
-						content : '<div id="content">'+
-								'<h1 id="head" class="head">${itemList.itemName}</h1>'+
-								 '<div id="bodyContent">'+
-								 <c:if test="${itemList.itemPicturePath1!=null}">
-								 '<img src = "resources/itempictures/${itemList.itemPicturePath1}"></img><br>'+
-								 </c:if>
-								 '${itemList.itemInfo}'+
-								 '</div>'+
-								'</div >'
-						*/
-					
-						//labelContent : '${itemList.itemInfo}'
-						})
-			);
-		</c:forEach>
-	
-		/*
-		markers.push(
-				new google.maps.Marker({
-				position : new google.maps.LatLng(37.500848, 127.053065),
-				map : map,
-				icon: buyImage,
-				title : 'epic',
-				
-				content :  '<div id="dialog" title="Basic dialog">'+
-							'몰아치는 한숨'+
-							'</div>'
-				})
-			);
-		*/
-
+	var firstMapLoad="true";
+    var markerClusterer;
+	var cluster;
+	var pos;	
+	var myPosition={
+			A:null,
+			k:null
+	};
+		<%-- initialize Start --%>
 		function initialize() {
 			//geocoder 좌표->주소 변환 사용
 			geocoder = new google.maps.Geocoder();
@@ -790,23 +737,44 @@ body {
 				disableDefaultUI : true,
 				styles: styles
 			}
+			//map = null;
 			map = new google.maps.Map(document.getElementById("map_canvas"),mapOptions);
 			
 			// Try HTML5 geolocation
 			if (navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(function(position) {
-					var pos = new google.maps.LatLng(position.coords.latitude,
-							position.coords.longitude);
+
+					if(firstMapLoad=="true"){
+						pos = new google.maps.LatLng(position.coords.latitude,
+								position.coords.longitude);
+					}else{
+						pos=center;
+					}
+					
+					<%-- 임시 --%>
+					myPosition.A=Math.round(pos.A*1000000)/1000000;
+					myPosition.k=Math.round(pos.k*1000000)/1000000;
+					console.log("pos___"+pos);
+					console.log("pos.A___"+Math.round(pos.A*1000000)/1000000);
+					console.log("pos.k___"+Math.round(pos.k*1000000)/1000000);
+					
 					
 					new google.maps.Marker({
 						position : new google.maps.LatLng(position.coords.latitude,
 								position.coords.longitude),
 						map : map,
-						icon: geoImage					
+						icon: geoImage,
+						
 						});
 					
 					map.setCenter(pos);
-					map.setZoom(13);
+					if(firstMapLoad=="true"){
+						map.setZoom(13);
+						firstMapLoad="false";
+					}else{
+						map.setZoom(zoomLevel);
+						console.log(zoomLevel);
+					}
 				}, function() {
 					handleNoGeolocation(true);
 				});
@@ -814,102 +782,269 @@ body {
 				// Browser doesn't support Geolocation
 				handleNoGeolocation(false);
 			}
-
-			markerInitialize(map);
+			
+			markersInit(); //marker[]에 itemList push
+			markerInitialize(map); //map객체에 marekr onload
+			//markerClusterer = new MarkerClusterer(map, markers, {
 			markerClusterer = new MarkerClusterer(map, markers, {
-		          //maxZoom: zoom,
-		          gridSize: size
+		          maxZoom: 14,
+		          gridSize: size,
+		          ignoreHidden:true
 		          //styles: styles[style]
 		        });
-			
+			//cluster=new Cluster(MarkerClusterer);
+			//cluster.setIgnoreHidden(true);
+			  //물품등록시 사용할 이벤트, 위치정하기 버튼 누르기 전에 비활성화.
 			  google.maps.event.addListener(map, 'click', function(e) {
 		            placeMarker(e.latLng, map);
+		      });
+		}<%-- initialize End --%>
+	
+		<%-- placeMarker Start --%>
+		var markerDropCheck;
+		var markerDropEffect;
+		var marker;
+		// 마커찍기 
+		function placeMarker(position, map) {
+		  if(markerDropEffect=="active" && markerDropCheck!=1){
+			  marker = new google.maps.Marker({
+				position: position,
+				map: map,
+				/* draggable:true, */
+				animation: google.maps.Animation.DROP
+			  });
+			  map.panTo(position);
+			  var lat=marker.getPosition().lat();
+			  var lng=marker.getPosition().lng();
+				console.log(lat,lng);
+				document.getElementById("reg_lat").value=lat;
+				document.getElementById("reg_lng").value=lng;
+				document.getElementById("latlng").value=lat+","+lng;
+			markerDropEffect="false";
+			markerDropCheck=1;
+            codeLatLng();
+		  }
+		}<%-- placeMarker End --%>
+		
+		<%-- markerDrop Start --%>
+		function markerDrop(){
+			markerDropEffect="active";
+		}<%-- markerDrop End --%>
+			
+			
 
-		          });
+		<%-- clearMarkers Start --%>
+		//마커지우기(위치 재설정)
+		function clearMarkers() {
+	    	marker.setOptions({
+	    		map:null,
+	    		visible:false
+	    		
+	    	});
+	    	marker=null;
+	    	markerDropEffect="active";
+	    	markerDropCheck="0";
+		}<%-- clearMarkers end --%>
+			
+
+		<%-- codeLatLng Start --%>
+		//좌표 주소 전환
+		function codeLatLng() {
+			  var input = document.getElementById('latlng').value;
+			  var latlngStr = input.split(',', 2);
+			  var lat = parseFloat(latlngStr[0]);
+			  var lng = parseFloat(latlngStr[1]);
+			  var latlng = new google.maps.LatLng(lat, lng);
+			  geocoder.geocode({'latLng': latlng}, function(results, status) {
+			    if (status == google.maps.GeocoderStatus.OK) {
+			      if (results[1]) {
+			    	  document.getElementById("reg_add").value=results[1].formatted_address;
+			      } else {
+			        alert('No results found');
+			      }
+			    } else {
+			      alert('Geocoder failed due to: ' + status);
+			    }
+			    
+			  });
+		}<%-- codeLatLng end --%>
+		
+			
+		
+		
+		var searchKeyword;
+		var zoomLevel;
+		var center;
+		function itemSearch(){
+			zoomLevel=map.getZoom();
+			center=map.getCenter();
+			
+			searchKeyword=null;
+			searchKeyword=document.getElementById("searchKeyword").value;
+			console.log(searchKeyword);
+			//alert(searchKeyword);
+			
+			//map=null;
+			//initialize();
+			
+			if(searchKeyword!=null){
+				searchKeyword=searchKeyword.trim().toUpperCase();
+			}
+			
+			markerClusterer.clearMarkers();
+			
+			for(var i=0;i<markers.length;i++){
+				//console.log(markers[i].title.toUpperCase().match(searchKeyword));
+						
+				
+				if(markers[i].title.toUpperCase().match(searchKeyword)!=null){
+					markerClusterer.addMarker(markers[i]);
+					//markers[i].setVisible(true);
+				}else{
+					//markers[i].setVisible(false);
+					//markerClusterer.removeMarker(markers[i]);
+				}
+				/**/
+			}
+			//markerClusterer.clearMarkers();
+			//markerClusterer.setIgnoreHidden(true);
+			//Cluster.
+			//markerClusterer.setMap(null);
+			//markerClusterer.setMap( this.map );
+			markerClusterer.repaint();
+			//markerClusterer.resetViewport();
+			return false;
+			//map.setZoom(zoomLevel-1);
+			//map.setZoom(zoomLevel);
+			//markerClusterer.repaint();
+
+
+			//cluster.repaint();
+			/*
+			markerClusterer = new MarkerClusterer(map, markers, {
+		          maxZoom: 14,
+		          gridSize: size,
+		          ignoreHidden:true
+		          //styles: styles[style]
+		        });
+			*/
+			/*
+			markerCluster.setMap(null);
+			*/
+			
+		
+			
+			
 		}
 		
-		 var markerDropCheck;
-		 var markerDropEffect;
-		 var marker;
-		// 마커찍기 
-			function placeMarker(position, map) {
-			  if(markerDropEffect=="active" && markerDropCheck!=1){
-				  marker = new google.maps.Marker({
-					position: position,
-					map: map,
-					/* draggable:true, */
-					animation: google.maps.Animation.DROP
-				  });
-				  map.panTo(position);
-				  var lat=marker.getPosition().lat();
-				  var lng=marker.getPosition().lng();
-					console.log(lat,lng);
-					document.getElementById("reg_lat").value=lat;
-					document.getElementById("reg_lng").value=lng;
-					document.getElementById("latlng").value=lat+","+lng;
-				markerDropEffect="false";
-				markerDropCheck=1;
-	            codeLatLng();
-			  }
-			}
-
-			function markerDrop(){
-				markerDropEffect="active";
-			}
-			
-			
-			//마커지우기(위치 재설정)
-			function clearMarkers() {
-		    	marker.setOptions({
-		    		map:null,
-		    		visible:false
-		    		
-		    	});
-		    	marker=null;
-		    	markerDropEffect="active";
-		    	markerDropCheck="0";
-			}
-			
-			//좌표 주소 전환
-			function codeLatLng() {
-				  var input = document.getElementById('latlng').value;
-				  var latlngStr = input.split(',', 2);
-				  var lat = parseFloat(latlngStr[0]);
-				  var lng = parseFloat(latlngStr[1]);
-				  var latlng = new google.maps.LatLng(lat, lng);
-				  geocoder.geocode({'latLng': latlng}, function(results, status) {
-				    if (status == google.maps.GeocoderStatus.OK) {
-				      if (results[1]) {
-				    	  document.getElementById("reg_add").value=results[1].formatted_address;
-				      } else {
-				        alert('No results found');
-				      }
-				    } else {
-				      alert('Geocoder failed due to: ' + status);
-				    }
-				    
-				  });
-			}
-						
+		<%-- markersInit() --%>
+		function markersInit(){
+			//markers=[];
+			//statCode 1=sell, 2=buy, 3=deal
+			<c:forEach var="itemList" items="${itemList}">
+				<c:set var="i" value="${ i+1 }" />	
+				var str="${itemList.itemName}";
+				
+				//console.log(str.match(searchKeyword));
+				
+				if(searchKeyword!=null){
+					searchKeyword=searchKeyword.trim().toUpperCase();
+				}
+				
+				if(str.toUpperCase().match(searchKeyword)!=null){
+					markers.push(
+							new google.maps.Marker({
+							//new MarkerWithLabel({
+								position : new google.maps.LatLng(${itemList.gridX1} , ${itemList.gridY1} ),
+								map : map,
+								icon:
+									<c:if test="${itemList.stateCode=='1'}">
+										buyImage
+									</c:if>
+									<c:if test="${itemList.stateCode=='2'}">
+										sellImage
+									</c:if>
+									<c:if test="${itemList.stateCode=='3'}">
+										dealImage
+									</c:if>
+										,
+								title : '${itemList.itemName}',
+								itemNo : '${itemList.itemNo}',
+								//content : '${itemList.itemNo}',
+								distance:null,
+								distance_m:null,
+								price : '${itemList.price}'
+								//	labelContent: '$425K',
+								//	labelAnchor: new google.maps.Point(22, 0),
+								//    labelClass: "labels", // the CSS class for the label
+								
+								/*
+								content : '<div id="content">'+
+										'<h1 id="head" class="head">${itemList.itemName}</h1>'+
+										 '<div id="bodyContent">'+
+										 <c:if test="${itemList.itemPicturePath1!=null}">
+										 '<img src = "resources/itempictures/${itemList.itemPicturePath1}"></img><br>'+
+										 </c:if>
+										 '${itemList.itemInfo}'+
+										 '</div>'+
+										'</div >'
+								*/
+							
+								//labelContent : '${itemList.itemInfo}'
+								})
+						);
+					}
+			</c:forEach>
+			/*
+			markers.push(
+					new google.maps.Marker({
+					position : new google.maps.LatLng(37.500848, 127.053065),
+					map : map,
+					icon: buyImage,
+					title : 'epic',
+					
+					content :  '<div id="dialog" title="Basic dialog">'+
+								'몰아치는 한숨'+
+								'</div>'
+					})
+				);
+			*/
+			console.log("markers.length__"+markers.length);
+			console.log("markers[0]__"+markers[0]);
+			console.log("markers[0]__"+markers[0].price);
+			console.log("markers[0].position__"+markers[0].position);
+			console.log("markers[0].position__"+markers[0].position.A);
+			console.log("markers[0].position__"+markers[0].position.k);
+		}<%-- markersInit() end --%>
+								
+		
+		<%-- markerInitialize Start --%>
 		function markerInitialize(map) {
 		  for (var i = 0; i < markers.length; i++) {
-			markers[i].setMap(map);   
+			//console.log(markers[i]);
+			//markers[i].setMap(map);   
 			//console.log(markers[i].content); 
 			markerAddListener(markers[i], i);
 		  }
-		}
-		// Sets the map on all markers in the array.
+		}<%-- markerInitialize end --%>
+	
+		<%-- markerAddListener Start--%>
 		function markerAddListener(marker, i) {
-
-		  google.maps.event.addListener(marker, 'click', function() {
-		   		modalInjection(marker);
+		/* 
+		  var infowindow = new google.maps.InfoWindow({
+			content: marker.content	
 		  });
+		 */
+		  //console.log("marker.content_"+marker.content);
+		 //var dialogName="#item"+marker.content;
+		  google.maps.event.addListener(marker, 'click', function() {
+			  //infowindow.open(marker.get('map'), marker);	
+			  modalInjection(marker);
+		  });
+		  
+		}<%-- markerAddListener end--%>
 		
-		}
-		
-		
-		
-		//gps module
+		<%-- handleNoGeolocation Start --%>
 		function handleNoGeolocation(errorFlag) {
 			if (errorFlag) {
 				var content = 'Error: The Geolocation service failed.';
@@ -925,24 +1060,120 @@ body {
 
 			var infowindow = new google.maps.InfoWindow(options);
 			map.setCenter(options.position);
-			
-		
-			
-			
-		}
+		}<%-- handleNoGeolocation end --%>
 		
 		// Add a marker to the map and push to the array.
+		<%-- addMarker Start --%>
 		function addMarker(location) {
 			var marker = new google.maps.Marker({
 				position : location,
 				map : map
 			});
 			markers.push(marker);
+		}<%-- addMarker end --%>
+		
+		
+		
+		<%-- markersSorting Range Start --%>
+		function markersSortingRange(){
+			markers.sort(function(a, b){
+				//geolocation으로 잡은 A,k를 이용해 가져온 a의 절대값과 삼각함수를 이용해 거리측정
+				var a_A	=	Math.abs(myPosition.A-a.position.A);
+				var a_k	=	Math.abs(myPosition.k-a.position.k);
+				var a_distance=Math.pow(a_A, a_A) + Math.pow(a_k, a_k);
+				a.distance=sqrt(a_distance);
+				a.distance_m=
+					getDistanceFromLatLonInKm(myPosition.A, myPosition.k,
+											a.position.A, a.position.k);
+				
+				var b_A	=	Math.abs(myPosition.A-b.position.A);
+				var b_k	=	Math.abs(myPosition.k-b.position.k);
+				var b_distance=Math.pow(b_A, b_A) + Math.pow(b_k, b_k);
+				b.distance=sqrt(a_distance);
+				b.distance_m=
+					getDistanceFromLatLonInKm(myPosition.A, myPosition.k,
+											b.position.A, b.position.k);
+				
+				
+				return a_distance-b_distance
+				});
+				/*
+				(
+					Math.pow( 
+							Math.abs((myPosition.A-markers[0].position.A)) ,
+							Math.abs((myPosition.A-markers[0].position.A))
+							)
+					+
+					Math.pow( 
+							Math.abs((myPosition.k-markers[0].position.k)) ,
+							Math.abs((myPosition.k-markers[0].position.k))
+							)
+				)
+				-
+				(
+						Math.pow( 
+								Math.abs((myPosition.A-markers[0].position.A)) ,
+								Math.abs((myPosition.A-markers[0].position.A))
+								)
+						+
+						Math.pow( 
+								Math.abs((myPosition.k-markers[0].position.k)) ,
+								Math.abs((myPosition.k-markers[0].position.k))
+								)
+				)
+				*/
+				
+			/*
+			console.log("pos.position.A"+pos.position.A);
+			console.log("pos.position.k"+pos.position.k);
+			console.log("markers.length__"+markers.length);
+			console.log("markers[0]__"+markers[0]);
+			console.log("markers[0]__"+markers[0].price);
+			console.log("markers[0].position__"+markers[0].position);
+			console.log("markers[0].position__"+markers[0].position.A);
+			console.log("markers[0].position__"+markers[0].position.k);
+			*/
+		}<%-- markersSorting Range End --%>
+		
+		
+		
+		<%-- markersSorting Price Start--%>
+		function markersSortingPrice(){
+			markers.sort(function(a, b){
+				return a.price-b.price
+				});
+			
+		}<%--  markersSorting Price End --%>
+		
+		
+		<%-- ‘Haversine’ formula Start--%>
+		function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
+			  var R = 6371; // Radius of the earth in km
+			  var dLat = deg2rad(lat2-lat1);  // deg2rad below
+			  var dLon = deg2rad(lon2-lon1); 
+			  var a = 
+			    Math.sin(dLat/2) * Math.sin(dLat/2) +
+			    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+			    Math.sin(dLon/2) * Math.sin(dLon/2)
+			    ; 
+			  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+			  var d = R * c; // Distance in km
+			  return d;
+			}
+		function deg2rad(deg) {
+		  return deg * (Math.PI/180)
 		}
+		<%-- ‘Haversine’ formula End--%>
 		
 		
 		google.maps.event.addDomListener(window, 'load', initialize);
-					
+		
+		//console.log("pos"+pos);
+		//console.log("pos.position.A"+pos.position.A);
+		//console.log("pos.position.k"+pos.position.k);
+		
+		
+		
 	</script>
 	<!--
 		
@@ -1099,7 +1330,7 @@ body {
 	onLoad=initialize 쓰지마세요. 직접 dom객체에 추가했어요.
  	onload에 추가하면 2번 되서 성능 저하됩니다~~~~~~ 
  -->
-<body class="cbp-spmenu-push" data-twttr-rendered="true" onload="init(this.form);">
+<body class="cbp-spmenu-push" data-twttr-rendered="true" onload="init(this.searchform); init(this.registerform);">
 <!----------------------------------------------------------- -->
 
 
@@ -1116,21 +1347,17 @@ body {
 		<img src="resources/imgs/slider/search.png" width=70 height=70 alt="Menu1"></img>
 		<span>상품검색</span>
 		</a>		
-		<!-- 
-		<img src="resources/imgs/slider/menu.png" width=50 height=50 alt="Menu"></img>
-		-->
 	</div>
 		<nav id="menu1">
-			<!-- <div class="tab-pane" id="tab1">
-			<form class="navbar-form navbar-left" role="search">
-			    <div class="form-group">
-			        <input type="text" class="form-control" placeholder="Search">
-			    </div>
-			    <button type="submit" class="btn btn-default">검색</button>
-			    <br><br>
+		<div>
+			<form action="#" name="searchform" id="search_form" method="post" >				
+				<input type="text" class="form-control" placeholder="Search">		    
+			    <br>
 			    <div id="select_loca">
 			    	위치 선택
-		    		<div class="btn-group" data-toggle="buttons" style="margin-left:10px">			    
+			    	<br>
+			    	<!-- 아직 미구현  -->
+		    		<div class="btn-group" data-toggle="buttons" style="margin-top:10px">			    
 				  		<label class="btn btn-default active">
 				    	<input type="radio" name="options" id="option1"> 현재위치
 				  		</label>
@@ -1142,7 +1369,8 @@ body {
 			    <br>
 			   	<div id="select_deal">
 			    	거래 선택 
-			    	<div class="btn-group" data-toggle="buttons" style="margin-left:10px">			    
+			    	<br> 
+			    	<div class="btn-group" data-toggle="buttons" style="margin-top:10px">			    
 				  		<label class="btn btn-default">
 				    	<input type="radio" name="options" id="option1"> 삽니다
 				  		</label>
@@ -1152,44 +1380,38 @@ body {
 					</div>
 				</div>
 				<br>
-				<div>
+				<div id="select_loca_detail">
 					거래 지역 범위 설정
+					<br>
+					<div class="btn-group" data-toggle="buttons" style="margin-top:10px">			    
+				  		<label class="btn btn-default">
+				    	<input type="radio" name="" id="option1" value="1"> 1
+				  		</label>
+			  			<label class="btn btn-default">
+				    	<input type="radio" name="options" id="option2" value="2"> 2
+				  		</label>
+				  		<label class="btn btn-default active ">
+				    	<input type="radio" name="options" id="option1" value="3"> 3
+				  		</label>
+			  			<label class="btn btn-default">
+				    	<input type="radio" name="options" id="option2" value="4"> 4
+				  		</label>
+				  		<label class="btn btn-default">
+				    	<input type="radio" name="options" id="option1" value="5"> 5
+				  		</label>
+					</div>	
 				</div>
+				<br>
+				<div class="select_category">
+					검색 카테고리 선택 [필수 아님]
+					<br>
+					<div id="category-group" style="margin-top: 10px;">
+					<select name="category1" id="category1" class="form-control" onchange="itemChange(this.form);" ></select>
+					<select name="category2" id="category2" class="form-control"></select>	
+					</div>
+				</div>	
 			</form>
-		</div>end of tap1   -->
-	<div>
-		<form action="">
-			<input type="text" class="form-control" placeholder="Search">		    
-		    <br>
-		    <div id="select_loca">
-		    	위치 선택
-	    		<div class="btn-group" data-toggle="buttons" style="margin-left:10px">			    
-			  		<label class="btn btn-default active">
-			    	<input type="radio" name="options" id="option1"> 현재위치
-			  		</label>
-		  			<label class="btn btn-default">
-			    	<input type="radio" name="options" id="option2"> 위치지정
-			  		</label>
-				</div>
-		    </div>
-		    <br>
-		   	<div id="select_deal">
-		    	거래 선택 
-		    	<div class="btn-group" data-toggle="buttons" style="margin-left:10px">			    
-			  		<label class="btn btn-default">
-			    	<input type="radio" name="options" id="option1"> 삽니다
-			  		</label>
-		  			<label class="btn btn-default">
-			    	<input type="radio" name="options" id="option2"> 팝니다
-			  		</label>
-				</div>
-			</div>
-			<br>
-			<div>
-				거래 지역 범위 설정
-			</div>
-		</form>
-	</div>
+		</div>
 	</nav>
 	
 	<div id="menu-toggle2">
@@ -1223,19 +1445,19 @@ body {
 				  <div class="progress-bar"></div>
 				</div>
 				
-				<form action="#" name="form" id="register_form" method="post" >
+				<form action="#" name="registerform" id="register_form" method="post" >
 				<div class="tab-content">
 				 	
 				    <div class="tab-pane" id="tab11">
 				    	<div class="form-group">
 				    		<h4>거래 선택하기</h4>
 				    		<br>
-						   	 <div class="btn-group" data-toggle="buttons">
+						   	<div class="btn-group" data-toggle="buttons">
 							  <label class="btn btn-default">
-							    <input type="radio" name="buyBtn" id="buy"> 삽니다
+							    <input type="radio" name="stateCode" id="buybtn" value="2"> 삽니다
 							  </label>
 							  <label class="btn btn-default">
-							    <input type="radio" name="sellBtn" id="sell"> 팝니다
+							    <input type="radio" name="stateCode" id="sellbtn" value="1"> 팝니다
 							  </label>							  
 							</div>	
 						</div>
@@ -1244,8 +1466,8 @@ body {
 				    	<div class="form-group">
 				    		<h4>거래할 위치 등록하기</h4>
 				    		<br>
-				    		<input type="hidden" id="reg_lat" value="" style="border: none;">
-				    		<input type="hidden" id="reg_lng" value="" style="border: none;">
+				    		<input type="hidden" name="gridX1" id="reg_lat" value="" style="border: none;">
+				    		<input type="hidden" name="gridY1" id="reg_lng" value="" style="border: none;">
 				    		<input id="latlng" type="text" value="" style="display:none;">
 				    		<button id="loca_btn" class="btn btn-default" onclick="markerDrop(); return false;"><span>위치 정하기</span></button>
 				    		<button class="btn btn-default" onclick="clearMarkers(); return false;">다시 정하기</button>
@@ -1257,24 +1479,25 @@ body {
 						<div class="form-group">
 							<h4>사진 등록하기</h4>
 							<br>
-							<input  class="form-control" type="file" multiple="multiple" id="exampleInputFile">						
+							<!-- 다등록가능 한데 주소가 어떻게 들어올지 모르겠네 -->
+							<input  class="form-control" name="itemPicturePath1" type="file" multiple="multiple" id="exampleInputFile">						
 				   		</div>
 				    </div>
 					<div class="tab-pane" id="tab14">
 						<div class="form-group">
 							<h4>카테고리 등록하기</h4>
 							<br>
-							<select id="category1" class="form-control" onchange="itemChange(this.form);" ></select>
-							<select id="category2" class="form-control"></select>											 
+							<select name="category1" id="category1" class="form-control" onchange="itemChange(this.form);" ></select>
+							<select name="category2" id="category2" class="form-control"></select>											 
 					    </div>
 					</div>    
 				    <div class="tab-pane" id="tab15">
 						<div class="form-group">
 							<h4>상세내용 입력하기</h4>
 							<br>	
-							<input id="item_name" type="text" class="form-control input-normal" placeholder="물품명을 입력하세요" >								       
+							<input id="item_name" name="itemName" type="text" class="form-control input-normal" placeholder="물품명을 입력하세요" >								       
 					        <div class="input-group">
-					        	<span class="input-group-addon">￦</span><input type="text" class="form-control" placeholder="희망가격 입력" >
+					        	<span class="input-group-addon">￦</span><input type="text" name="price" class="form-control" placeholder="희망가격 입력" >
 				     	 	</div>	
 				     	 	<br>	
 				     	 	<textarea class="form-control" rows="10" cols="80" placeholder="상세내용을 입력하세요"></textarea>
@@ -1402,23 +1625,15 @@ body {
 	</div><!-- /.modal -->
 	
 	<!-- footer부분에 modal용 div넣습니다. 레이아웃과 상관없으니 삭제하지 마세요 -->
-		
 		<%-- modal Injection 공간 --%>
 		<div id="htmlInjectionSector" class="htmlInjectionSector" title="htmlInjectionSector">
-		</div>
-		
-		<div id="dialog2" class="dialog2" title="Basic dialog">
-			<p>what the?</p>
-		</div>
-			
-												 
+		</div>												 
 	<!-- footer부분에 modal용 div넣습니다. 레이아웃과 상관없으니 삭제하지 마세요 -->
 	
 </footer>	
 	
 </body>
 </html>
-
 
 <%-- 속도향상을 위해 맨 아래로 내림. --%>
 <script>
@@ -1435,22 +1650,22 @@ body {
 
  function modalInjection(marker){
 	  
-	  console.log("marker.content__"+marker.content);
+	  console.log("marker.itemNo__"+marker.itemNo);
   	  
 	  new function makeHtml(){
 			console.log("it`s worked");
 			document.getElementById("htmlInjectionSector").innerHTML = 
-			"<div id=\"item"+marker.content+"\" class=\"item"+marker.content+"\" title=\""+marker.title+"\">"+
+			"<div id=\"item"+marker.itemNo+"\" class=\"item"+marker.itemNo+"\" title=\""+marker.title+"\">"+
 				"<div id=\"bodyContent\">"+
 				
 					<%-- 이미지 들어가는 공간 --%>
 					"<div id=\"itemImage\", align=\"left\">"+
-						"<img style=\"width: 600px; height:auto;\", src = \"resources/itempictures/"+modalInjectionImageArray1[marker.content]+"\"></img>"+
+						"<img style=\"width: 600px; height:auto;\", src = \"resources/itempictures/"+modalInjectionImageArray1[marker.itemNo]+"\"></img>"+
 					"</div>"+
 					
 					<%-- ItemInfo 들어가는 공간 --%>
 					"<div id=\"itemInfo\">"+
-						modalInjectionInfoArray[marker.content]+
+						modalInjectionInfoArray[marker.itemNo]+
 					"</div>"+
 					
 					
@@ -1460,7 +1675,7 @@ body {
 		
 		<%-- modal Injection --%>
 		$(function() {
-		    $( "#item"+marker.content ).dialog({
+		    $( "#item"+marker.itemNo ).dialog({
 		      maxHeight:700,
 		      maxWidth: 1000,
 		      minHeight: 700,
