@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.freshmarket.common.Search;
 import com.freshmarket.domain.Deal;
+import com.freshmarket.domain.Item;
 
 public interface DealDao {
 
@@ -20,5 +21,10 @@ public interface DealDao {
     public List<Deal> findDealList(Search search);
 
     public Integer pushMessage(Integer dealNo);
-
+    
+    public Integer addWish(Integer userNo, Integer itemNo);
+    
+    public Integer removeWish(Integer userNo, Integer itemNo);
+    
+    public List<Item> findWishList(Integer userNo);
 }

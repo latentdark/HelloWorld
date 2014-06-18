@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.freshmarket.common.Search;
 import com.freshmarket.dao.DealDao;
 import com.freshmarket.domain.Deal;
+import com.freshmarket.domain.Item;
 import com.freshmarket.service.DealService;
 
 @Service
@@ -69,6 +70,24 @@ public class DealServiceImpl implements DealService {
 	public Integer pushMessage(Integer dealNo) {
 		// TODO Auto-generated method stub
 		return dealDao.pushMessage(dealNo);
+	}
+
+	@Override
+	public Integer addWish(Integer userNo, Integer itemNo) {
+		// TODO Auto-generated method stub
+		return dealDao.addWish(userNo, itemNo);
+	}
+
+	@Override
+	public Integer removeWish(Integer userNo, Integer itemNo) {
+		// TODO Auto-generated method stub
+		return dealDao.removeWish(userNo, itemNo);
+	}
+
+	@Override
+	public List<Item> findWishList(Integer userNo) {
+		// TODO Auto-generated method stub
+		return dealDao.findWishList(userNo);
 	}
 
 

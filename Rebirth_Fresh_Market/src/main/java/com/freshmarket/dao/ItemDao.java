@@ -16,5 +16,6 @@ public interface ItemDao {
     public Integer removeItem(Integer itemNo);
 
     public List<Item> findItemList(Search search);
-
+    
+    public List<Item> findMyItemList(Integer userNo);
 }

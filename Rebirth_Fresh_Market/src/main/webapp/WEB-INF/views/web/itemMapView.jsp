@@ -1665,7 +1665,7 @@ div.mousescroll:hover {
 			<form action="#" name="searchform" id="search_form" method="post" onsubmit="return itemSearch('Detail')">				
 			   	<input type="text" id="searchKeywordDetail" class="form-control" placeholder="Search">		    
 			   	<div id="select_deal"> 
-			    	<div class="btn-group" data-toggle="buttons" style="margin-top: 10px" > <%--onclick="itemSearch('Detail')" --%>
+			    	<div class="btn-group" data-toggle="buttons" style="margin-top: 10px" onclick="itemSearch('Detail')"> <%-- --%>
 				  		<label class="btn btn-default active">
 				    	<input type="radio" name="options" id="searchOption1" value="all" checked > 전체검색
 				  		</label>

@@ -17,4 +17,5 @@ public interface ItemService {
 
     public List<Item> findItemList(Search search);
 
+    public List<Item> findMyItemList(Integer userNo);
 }

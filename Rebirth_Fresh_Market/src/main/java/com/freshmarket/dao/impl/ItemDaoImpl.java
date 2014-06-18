@@ -62,4 +62,10 @@ public class ItemDaoImpl implements ItemDao {
 		return sqlSession.selectList("ItemMapper.findItemList", search);
 	}
 
+	@Override
+	public List<Item> findMyItemList(Integer userNo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
