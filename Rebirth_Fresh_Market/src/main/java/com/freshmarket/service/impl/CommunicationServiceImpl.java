@@ -6,11 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.freshmarket.dao.ChatDao;
 import com.freshmarket.dao.CommunicationDao;
 import com.freshmarket.domain.Chat;
 import com.freshmarket.domain.Item;
-import com.freshmarket.service.ChatService;
 import com.freshmarket.service.CommunicationService;
 
 @Service
