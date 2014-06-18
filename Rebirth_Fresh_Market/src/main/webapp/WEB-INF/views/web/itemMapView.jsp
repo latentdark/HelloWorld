@@ -173,7 +173,7 @@ body {
 	left: -200px;
 	background: #FFFFFF;
 	height:  calc(100% - 53px);
-	z-index: 1100;
+	z-index: 1030;
 	border:1px solid #BCBCBC;
 	padding-top: 20px;
 	padding-left: 10px;
@@ -397,7 +397,7 @@ body {
 	left: -200px;
 	background: #FFFFFF;
 	height:  calc(100% - 53px);
-	z-index: 1100;
+	z-index: 1030;
 	border:1px solid #BCBCBC;
 	padding-top: 20px;
 	padding-left: 10px;
@@ -1665,7 +1665,7 @@ div.mousescroll:hover {
 			<form action="#" name="searchform" id="search_form" method="post" onsubmit="return itemSearch('Detail')">				
 			   	<input type="text" id="searchKeywordDetail" class="form-control" placeholder="Search">		    
 			   	<div id="select_deal"> 
-			    	<div class="btn-group" data-toggle="buttons" style="margin-top: 10px" onclick="itemSearch('Detail')"> <%-- --%>
+			    	<div class="btn-group" data-toggle="buttons" style="margin-top: 10px" > <%--onclick="itemSearch('Detail')" --%>
 				  		<label class="btn btn-default active">
 				    	<input type="radio" name="options" id="searchOption1" value="all" checked > 전체검색
 				  		</label>
@@ -1675,197 +1675,168 @@ div.mousescroll:hover {
 			  			<label class="btn btn-default">
 				    	<input type="radio" name="options" id="searchOption3" value="sell" > 팝니다
 				  		</label>
-				  		<%--
-				  		<label class="btn btn-default active">
-				    	<input type="radio" name="options" id="option"> 전체검색
-				  		</label>
-				  		<label class="btn btn-default">
-				    	<input type="radio" name="options" id="option1" > 삽니다
-				  		</label>
-			  			<label class="btn btn-default">
-				    	<input type="radio" name="options" id="option2" > 팝니다
-				  		</label>
-				  		 --%>
 					</div>
 				</div>
-				<!-- <div class="btn-group" data-toggle="buttons" style="margin-bottom: 10px; margin-top: 10px">
-				  <label class="btn btn-primary">
-				    <input type="checkbox"> 가격순
-				  </label>
-				  <label class="btn btn-primary">
-				    <input type="checkbox"> 거리순
-				  </label>
-				  <label class="btn btn-primary">
-				    <input type="checkbox"> Option 3
-				  </label>
-				</div> -->
-				<div style="margin-bottom: 10px; margin-top: 10px">
-				<label class="checkbox-inline">
-				  <input type="checkbox" id="inlineCheckbox1" value="option1" onclick="markersSortingDistance()"> 거리순
-				</label>
-				<label class="checkbox-inline">
-				  <input type="checkbox" id="inlineCheckbox2" value="option2" onclick="markersSortingPrice()"> 가격순
-				</label>
-				<label class="checkbox-inline">
-				  <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
-				</label>
+				<div style="margin-top: 10px">
+				<!-- 	<div class="btn-group" data-toggle="buttons">
+					  <label class="btn btn-primary">
+					    <input type="radio" name="options" id="option1" onclick="markersSortingDistance()"> 가격순 정렬
+					  </label>
+					  <label class="btn btn-primary">
+					    <input type="radio" name="options" id="option2" onclick="markersSortingPrice()"> 거리순 정렬
+					  </label>
+					</div> -->
+					
+					 
+					  <label class="radio-inline">
+					    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" onclick="markersSortingPrice()" checked>
+					    가격순
+					  </label>
+				
+					  <label class="radio-inline">
+					    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" onclick="markersSortingDistance()">
+					    거리순
+					  </label>
+					</div>
 				</Div>
 			</form>
-			<hr>
+			<hr style="margin-bottom:10px;">
 		</div>
 		<div id="search_result" class="mousescroll">
-			<h4>안녕 하세요 오오온오농농노온온온온온</h4>
-		    <ul>
-		     <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		         <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		         <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		         <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		         <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		        <li>item</li>
-		
-		  </ul>		  
-		  </div>
+			<table class="table table-striped" style="width:261px;">
+				<thead>
+					<tr>
+						<th id="t1" style="width:54px;">거리(km)</th>
+						<th id="t2" style="width:54px;">가격(만원)</th>
+						<th id="t3" style="width:153px; text-align: center; padding-bottom:18px;">제품명</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>222</td>
+						<td>333</td>
+						<td><a>아이패드 에어 가나다라 마바사 아자 차</a></td>
+					</tr>					
+					<tr>
+						<td>5</td>
+						<td>5</td>
+						<td><a>아이패드 미니</a></td>
+					</tr>		
+					<tr>
+						<td>2</td>
+						<td>5</td>
+						<td><a>아이패드 에어</a></td>
+					</tr>					
+					<tr>
+						<td>5</td>
+						<td>5</td>
+						<td><a>아이패드 미니</a></td>
+					</tr>					
+					
+					<tr>
+						<td>2</td>
+						<td>5</td>
+						<td><a>아이패드 에어</a></td>
+					</tr>					
+					<tr>
+						<td>5</td>
+						<td>5</td>
+						<td><a>아이패드 미니</a></td>
+					</tr>					
+					
+					<tr>
+						<td>2</td>
+						<td>5</td>
+						<td><a>아이패드 에어</a></td>
+					</tr>					
+					<tr>
+						<td>5</td>
+						<td>5</td>
+						<td><a>아이패드 미니</a></td>
+					</tr>					
+					
+					<tr>
+						<td>2</td>
+						<td>5</td>
+						<td><a>아이패드 에어</a></td>
+					</tr>					
+					<tr>
+						<td>5</td>
+						<td>5</td>
+						<td><a>아이패드 미니</a></td>
+					</tr>					
+					
+					<tr>
+						<td>2</td>
+						<td>5</td>
+						<td><a>아이패드 에어</a></td>
+					</tr>					
+					<tr>
+						<td>5</td>
+						<td>5</td>
+						<td><a>아이패드 미니</a></td>
+					</tr>					
+					
+					<tr>
+						<td>2</td>
+						<td>5</td>
+						<td><a>아이패드 에어</a></td>
+					</tr>					
+					<tr>
+						<td>5</td>
+						<td>5</td>
+						<td><a>아이패드 미니</a></td>
+					</tr>					
+					
+					<tr>
+						<td>2</td>
+						<td>5</td>
+						<td><a>아이패드 에어</a></td>
+					</tr>					
+					<tr>
+						<td>5</td>
+						<td>5</td>
+						<td><a>아이패드 미니</a></td>
+					</tr>					
+					
+					<tr>
+						<td>2</td>
+						<td>5</td>
+						<td><a>아이패드 에어</a></td>
+					</tr>					
+					<tr>
+						<td>5</td>
+						<td>5</td>
+						<td><a>아이패드 미니</a></td>
+					</tr>					
+					
+					<tr>
+						<td>2</td>
+						<td>5</td>
+						<td><a>아이패드 에어</a></td>
+					</tr>					
+					<tr>
+						<td>5</td>
+						<td>5</td>
+						<td><a>아이패드 미니</a></td>
+					</tr>					
+					
+					<tr>
+						<td>2</td>
+						<td>5</td>
+						<td><a>아이패드 에어</a></td>
+					</tr>					
+					<tr>
+						<td>5</td>
+						<td>5</td>
+						<td><a>아이패드 미니</a></td>
+					</tr>					
+					
+								
+					
+				</tbody>	
+			</table> 
+	    </div>
 	</nav>
 	
 	<div id="menu-toggle2">
@@ -2221,34 +2192,7 @@ div.mousescroll:hover {
 			"</div>"+
 			"<a data-toggle=\"modal\" href=\"#item"+marker.itemNo+"\" id=\"modallink\"></a>";
 		};
-		
-		<%-- modal Injection --%>
-	/* 	$(function() {
-		    $( "#item"+marker.content ).dialog({
-		      maxHeight:700,
-		      maxWidth: 1000,
-		      minHeight: 700,
-		      minWidth: 1000,
-			  autoOpen: true,
-			  draggable : false,
-			  modal : true ,
-			  resizable : false,
-			  closeText : "닫기버튼입니다.",
-			  buttons : {
-				  "문의하기": function() {  window.location = 'http://www.stackoverflow.com'; },
-				   "닫기": function() { $(this).dialog("close"); },
-			  }, 
-		      position : { my: "center", at: "center", of: window },
-		      show: {
-		        effect: "blind",
-		        duration: 400
-		      },
-		      hide: {
-		        effect: "explode",
-		        duration: 300
-		      }
-		}).prev(".ui-dialog-titlebar").css("background","#87cefa");				
-	});	 */
+
 		document.getElementById("modallink").click();
   }
 
