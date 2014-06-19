@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import net.wimpi.telnetd.io.terminal.ansi;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +24,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.freshmarket.domain.Item;
 import com.freshmarket.domain.User;
 import com.freshmarket.service.ItemService;
-import com.freshmarket.service.impl.ItemServiceImpl;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -141,8 +138,10 @@ public class TestController {
   			item.setItemPicturePath3(imageList.get(2));
   		}
   		
-  		item.setUserNo(5);
-  		System.out.println(user.getUserNo());
+  		
+  		
+  		user=(User)session.getAttribute("user");
+  		item.setUserNo(user.getUserNo());
   		item.setItemName(m.getParameter("itemName"));
   		item.setPrice(Integer.parseInt(m.getParameter("price")));
   		item.setItemInfo(m.getParameter("itemInfo"));
