@@ -737,7 +737,7 @@ div.mousescroll:hover {
 	/**/
 	var sellImage = 'resources/imgs/icons/sell.png';
 	var buyImage = 'resources/imgs/icons/buy.png';
-	var dealImage = 'resources/imgs/icons/deal.png';
+	var dealImage = 'resources/imgs/icons/deal2.png';
 	var geoImage = 'resources/imgs/icons/people.png';
 	
 	var map;
@@ -1611,6 +1611,7 @@ div.mousescroll:hover {
 	                  width: '50px',
 	                  height: '150px'                  
 	              });
+	
    </script>
 	
 
@@ -2199,5 +2200,6 @@ div.mousescroll:hover {
 
 		document.getElementById("modallink").click();
   }
+		
 
  </script>
