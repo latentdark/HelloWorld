@@ -735,9 +735,9 @@ div.mousescroll:hover {
 	console.log(test); */
 	//HTML5 Geolocation을 이용한 ip trace
 	/**/
-	var sellImage = 'resources/imgs/icons/ssh2.png';
-	var buyImage = 'resources/imgs/icons/bsh2.png';
-	var dealImage = 'resources/imgs/icons/dsh.png';
+	var sellImage = 'resources/imgs/icons/sell.png';
+	var buyImage = 'resources/imgs/icons/buy.png';
+	var dealImage = 'resources/imgs/icons/deal.png';
 	var geoImage = 'resources/imgs/icons/people.png';
 	
 	var map;
@@ -1879,10 +1879,10 @@ div.mousescroll:hover {
 				    		<br>
 						   	<div class="btn-group" data-toggle="buttons">
 							  <label class="btn btn-default">
-							    <input type="radio" name="stateCode" id="buybtn" value="2"> 삽니다
+							    <input type="radio" name="stateCode" id="buybtn" value="1"> 삽니다
 							  </label>
 							  <label class="btn btn-default">
-							    <input type="radio" name="stateCode" id="sellbtn" value="1"> 팝니다
+							    <input type="radio" name="stateCode" id="sellbtn" value="2"> 팝니다
 							  </label>							  
 							</div>	
 						</div>
@@ -1905,8 +1905,12 @@ div.mousescroll:hover {
 							<h4>사진 등록하기</h4>
 							<br>
 							<!-- 다등록가능 한데 주소가 어떻게 들어올지 모르겠네 -->
-							<input  class="form-control" name="itemPicturePath1" type="file" multiple="multiple"  id="exampleInputFile">						
-				   		
+							<input  class="form-control" name="itemPicturePath1" type="file"  id="exampleInputFile">						
+				   			<br>
+				   			<input  class="form-control" name="itemPicturePath2" type="file"  id="exampleInputFile">						
+				   			<br>
+				   			<input  class="form-control" name="itemPicturePath3" type="file"  id="exampleInputFile">						
+				   			
 				   			
 				   		</div>
 				    </div>
