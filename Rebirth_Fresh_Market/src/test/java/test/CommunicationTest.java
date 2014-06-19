@@ -37,7 +37,6 @@ public class CommunicationTest {
 		Integer itemNo = item.getItemNo();
 		Integer userNo = user.getUserNo();
 		String content = "너무비싸요 깎아주세요";
-		item.setItemPicturePath1("stick.jpg");
 		
 		System.out.println("insert 결과 : "+communicationService.addInquire(userNo, itemNo, content));
 		
@@ -45,7 +44,7 @@ public class CommunicationTest {
 		//findInquireList
 		System.out.println("selectList 결과 : "+communicationService.findInquireList(userNo));
 		
-		//removeItem
+		//removeInquire
 		System.out.println("delete 결과 : "+communicationService.removeInquire(userNo, itemNo));
 		System.out.println("select 결과 : "+communicationService.findInquireList(userNo));
 	}

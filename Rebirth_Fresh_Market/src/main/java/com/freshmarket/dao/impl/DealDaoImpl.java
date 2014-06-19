@@ -1,5 +1,6 @@
 package com.freshmarket.dao.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -77,19 +78,27 @@ public class DealDaoImpl implements DealDao {
 	@Override
 	public Integer addWish(Integer userNo, Integer itemNo) {
 		// TODO Auto-generated method stub
-		return null;
+		HashMap map = new HashMap();
+		map.put("userNo", userNo);
+		map.put("itemNo", itemNo);
+		
+		return sqlSession.insert("DealMapper.addWish", map);
 	}
 
 	@Override
 	public Integer removeWish(Integer userNo, Integer itemNo) {
 		// TODO Auto-generated method stub
-		return null;
+		HashMap map = new HashMap();
+		map.put("userNo", userNo);
+		map.put("itemNo", itemNo);
+		
+		return sqlSession.delete("DealMapper.removeWish", map);
 	}
 
 	@Override
 	public List<Item> findWishList(Integer userNo) {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectList("DealMapper.findWishList", userNo);
 	}
 
 
