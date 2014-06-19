@@ -1,5 +1,6 @@
 package com.freshmarket.dao.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -70,19 +71,29 @@ public class CommunicationDaoImpl implements CommunicationDao {
 	@Override
 	public Integer addInquire(Integer userNo, Integer itemNo, String content) {
 		// TODO Auto-generated method stub
-		return null;
+		HashMap map = new HashMap();
+		map.put("userNo", userNo);
+		map.put("itemNo", itemNo);
+		map.put("content", content);
+		
+		return sqlSession.insert("CommunicationMapper.addInquire", map)
+				+ sqlSession.insert("CommunicationMapper.addComment", map);
 	}
 
 	@Override
 	public Integer removeInquire(Integer userNo, Integer itemNo) {
 		// TODO Auto-generated method stub
-		return null;
+		HashMap map = new HashMap();
+		map.put("userNo", userNo);
+		map.put("itemNo", itemNo);
+		
+		return sqlSession.delete("CommunicationMapper.removeInquire", map);
 	}
 
 	@Override
 	public List<Item> findInquireList(Integer userNo) {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectList("CommunicationMapper.findInquireList", userNo);
 	}
 
 

@@ -1,1 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<mapper namespace="CommunicationMapper">
+
+	<resultMap id="CommunicationSelectMap" type="item">
+		<result property="itemNo" column="item_no" jdbcType="INTEGER"/>
+		<result property="itemPicturePath1" column="filepath" jdbcType="VARCHAR"/>
+		<result property="itemName" column="item_name" jdbcType="VARCHAR"/>
+		<result property="price" column="price" jdbcType="INTEGER"/>
+	</resultMap>
+	
+	<insert id="addInquire" parameterType="HashMap">
+		INSERT inquire(item_no, user_no, date, time)
+		VALUES(#{itemNo}, #{userNo}, sysdate(), curtime());
+	</insert>
+	
+	<insert id="addComment" parameterType="HashMap">
+		INSERT comment(item_no,user_no, content, regi_date,time)
+		VALUES(#{itemNo}, #{userNo}, #{content}, sysdate(), curtime());
+	</insert>
+	
+	<delete id="removeInquire" parameterType="HashMap">
+		DELETE
+		FROM inquire
+		WHERE user_no = #{userNo}
+			  AND
+			  item_no = #{itemNo}
+	</delete>
+	
+	<select id="findInquireList" parameterType="integer" resultMap="CommunicationSelectMap">
+		SELECT
+		DISTINCT
+		inq.item_no, i.filepath1 AS filepath, i.item_name, i.price
+		FROM inquire AS inq
+			 LEFT OUTER JOIN ( SELECT
+			 				   i.item_no,
+			 				   i.user_no,
+			 				   ip.filepath1,
+			 				   i.item_name,
+			 				   i.price
+			 				   FROM item i
+			 				   		LEFT OUTER JOIN item_pic AS ip ON i.item_no = ip.item_no) AS i ON i.item_no = inq.item_no
+			 LEFT OUTER JOIN user AS u ON u.user_no = inq.user_no
+		WHERE inq.user_no = #{value}
+	</select>
+	
+</mapper>
