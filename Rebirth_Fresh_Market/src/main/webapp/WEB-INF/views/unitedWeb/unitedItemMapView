@@ -604,9 +604,18 @@ div.mousescroll:hover {
 }
 
 
-#addWish_disable{
 
-}	
+/* 새로운 시도 끝 
+
+*/
+/*
+#menu-toggle1:hover {
+	background: rgb(255, 228, 0);
+	cursor: pointer;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px; 
+}
+	*/		
 
 
 </style>
@@ -2180,14 +2189,11 @@ div.mousescroll:hover {
 						if(userNo==marker.userNo){
 							htmlinjec+=
 							"<button type=\"button\" class=\"btn btn-primary\" >수정</button>"+
-							"<button class=\"btn btn-primary\" data-toggle=\"modal\" href=\"#deletepopup\" onclick=\"return false\">삭제</button>"+
-							"<button type=\"button\" id=\"addWish_active\" class=\"btn btn-danger\" >찜</button>";						
-						}else{
-							"<button type=\"button\" id=\"addWish_disable\" class=\"btn btn-danger\" >찜</button>";
-						}
+							"<button class=\"btn btn-primary\" data-toggle=\"modal\" href=\"#deletepopup\" onclick=\"return false\">삭제</button>";						
+							}
 						
 						htmlinjec+=
-						
+						"<button type=\"button\" class=\"btn btn-danger\" >찜</button>"+
 						"<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>"+
 						"</div>"+
 					"</div>"+	
