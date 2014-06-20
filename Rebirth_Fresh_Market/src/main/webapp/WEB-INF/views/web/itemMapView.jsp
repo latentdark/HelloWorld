@@ -1059,6 +1059,7 @@ div.mousescroll:hover {
 								//content : '${itemList.itemNo}',
 								distance:null,
 								distance_m:null,
+								userNo : '${itemList.userNo}',
 								price : '${itemList.price}'
 								//	labelContent: '$425K',
 								//	labelAnchor: new google.maps.Point(22, 0),
@@ -1095,6 +1096,8 @@ div.mousescroll:hover {
 					})
 				);
 			*/
+			
+			
 			console.log("markers.length__"+markers.length);
 			console.log("markers[0]__"+markers[0]);
 			console.log("markers[0]__"+markers[0].price);
@@ -2015,7 +2018,7 @@ div.mousescroll:hover {
 		
 	</div>
 	
-	<script type="text/javascript">
+<!-- 	<script type="text/javascript">
 	//이메일칸에 입력전에 submit 버튼 활성화/비활성화
 	document.signinform.commit.disabled = true;
 	document.onkeyup = process;
@@ -2033,7 +2036,7 @@ div.mousescroll:hover {
 			document.signinform.commit.disabled = false; 
 		}
 	}
-	</script>
+	</script> -->
 
 <footer>
 <!-- preview modal -->
@@ -2130,7 +2133,9 @@ div.mousescroll:hover {
  function modalInjection(marker){
 	  
 	 console.log("marker.itemNo__"+marker.itemNo);
-  	  
+  	  var userNo='${user.userNo}';
+  	  console.log("hi__"+userNo);
+  	  console.log("hi2__"+marker.userNo);
 	  new function makeHtml(){
 			console.log("it`s worked");
 			document.getElementById("htmlInjectionSector").innerHTML = 
@@ -2189,6 +2194,10 @@ div.mousescroll:hover {
 						"<div class=\"modal-footer\">"+
 						"</div>"+
 						"<div class=\"modal-footer\">"+
+							
+							"<button type=\"button\" class=\"btn btn-primary\" >수정</button>"+
+							"<button type=\"button\" class=\"btn btn-primary\" >삭제</button>"+
+						
 						"<button type=\"button\" class=\"btn btn-danger\" >찜</button>"+
 						"<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>"+
 						"</div>"+
@@ -2196,7 +2205,7 @@ div.mousescroll:hover {
 				"</div>"+
 			"</div>"+
 			"<a data-toggle=\"modal\" href=\"#item"+marker.itemNo+"\" id=\"modallink\"></a>";
-		};
+		};};
 
 		document.getElementById("modallink").click();
   }
