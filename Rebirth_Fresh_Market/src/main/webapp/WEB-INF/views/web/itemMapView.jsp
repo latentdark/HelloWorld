@@ -1125,8 +1125,7 @@ div.mousescroll:hover {
 								itemPicturePath1 : '${itemList.itemPicturePath1}',
 								//content : '${itemList.itemNo}',
 								distance:null,
-								distance_m:null,
-								userNo : '${itemList.userNo}',
+								distance_m:null,								
 								price : '${itemList.price}'
 								//	labelContent: '$425K',
 								//	labelAnchor: new google.maps.Point(22, 0),
@@ -2156,13 +2155,10 @@ div.mousescroll:hover {
   	  var userNo='${user.userNo}';
   	  console.log("hi__"+userNo);
   	  console.log("hi2__"+marker.userNo);
-  	  var htmlInjection;
+  	  var htmlinjec;
 	  new function makeHtml(){
 			console.log("it`s worked");
-			console.log("userNo__"+marker.userNo);
-			var userNo='${user.userNo}';
-			//console.log("session_userNo__"+${user.userNo});
-			htmlInjection=
+			htmlinjec=
 			"<div id=\"item"+marker.itemNo+"\" class=\"item"+marker.itemNo+" modal fade\" title=\""+marker.title+"\"  tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">"+
 				"<div id=\"injection-modal\"class=\"modal-dialog\">"+
 					"<div class=\"modal-Content\">"+
@@ -2218,12 +2214,14 @@ div.mousescroll:hover {
 						"<div class=\"modal-footer\">"+
 						"</div>"+
 						"<div class=\"modal-footer\">";
-			<c:if test="${user.userNo}==marker.userNo">
-				htmlInjection+=				
+						
+						if(userNo==marker.userNo){
+							htmlinjec+=
 							"<button type=\"button\" class=\"btn btn-primary\" >수정</button>"+
 							"<button type=\"button\" class=\"btn btn-primary\" >삭제</button>";
-			</c:if>
-						htmlInjection+=
+						}
+						
+						htmlinjec+=
 						"<button type=\"button\" class=\"btn btn-danger\" >찜</button>"+
 						"<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>"+
 						"</div>"+
@@ -2232,9 +2230,9 @@ div.mousescroll:hover {
 			"</div>"+
 			"<a data-toggle=\"modal\" href=\"#item"+marker.itemNo+"\" id=\"modallink\"></a>";
 		};
-		document.getElementById("htmlInjectionSector").innerHTML = htmlInjection;
+		document.getElementById("htmlInjectionSector").innerHTML = htmlinjec;
 		document.getElementById("modallink").click();
-  }
+ }
 		
 
  </script>
