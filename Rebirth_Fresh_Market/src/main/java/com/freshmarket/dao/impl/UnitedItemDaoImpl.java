@@ -16,7 +16,7 @@ import com.freshmarket.domain.Item;
 public class UnitedItemDaoImpl implements UnitedItemDao {
     
 	@Autowired
-	@Qualifier("sqlSessionTemplate")
+	@Qualifier("sqlSessionTemplate2")
 	private SqlSession sqlSession;
 	
 	//Setter Injection
