@@ -75,7 +75,7 @@ public class TestController {
   		System.out.println("_______________________________________________");
  
   		String dir="C:\\0_Revolution_Workspace\\Rebirth_Fresh_Market\\src\\main\\webapp\\resources\\itempictures";
-  		int max = 1 * 640 * 480; //최대 업로드 크기는 5M까지만 허용
+  		int max = 5 * 640 * 480; //최대 업로드 크기는 5M까지만 허용
   		
 	    MultipartRequest m = new MultipartRequest(request, dir, max, "utf-8",new DefaultFileRenamePolicy());
 	   
@@ -169,7 +169,7 @@ public class TestController {
   		return "redirect:/itemMapView";
   	}
 	
-	
+	//제품 삭제
 	
 }
 
