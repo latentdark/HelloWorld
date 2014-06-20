@@ -617,6 +617,7 @@ div.mousescroll:hover {
 }
 	*/		
 
+
 </style>
  	
 	<!--
@@ -813,9 +814,9 @@ div.mousescroll:hover {
 	console.log(test); */
 	//HTML5 Geolocation을 이용한 ip trace
 	/**/
-	var sellImage = 'resources/imgs/icons/ssh2.png';
-	var buyImage = 'resources/imgs/icons/bsh2.png';
-	var dealImage = 'resources/imgs/icons/dsh.png';
+	var sellImage = 'resources/imgs/icons/sell.png';
+	var buyImage = 'resources/imgs/icons/buy.png';
+	var dealImage = 'resources/imgs/icons/deal2.png';
 	var geoImage = 'resources/imgs/icons/people.png';
 	
 	var map;
@@ -1118,12 +1119,13 @@ div.mousescroll:hover {
 										,
 								stateCode : '${itemList.stateCode}',
 								title : '${itemList.itemName}',
+								userNo : '${itemList.userNo}',
 								itemNo : '${itemList.itemNo}',
 								itemInfo : '${itemList.itemInfo}',
 								itemPicturePath1 : '${itemList.itemPicturePath1}',
 								//content : '${itemList.itemNo}',
 								distance:null,
-								distance_m:null,
+								distance_m:null,								
 								price : '${itemList.price}'
 								//	labelContent: '$425K',
 								//	labelAnchor: new google.maps.Point(22, 0),
@@ -1160,6 +1162,8 @@ div.mousescroll:hover {
 					})
 				);
 			*/
+			
+			
 			console.log("markers.length__"+markers.length);
 			console.log("markers[0]__"+markers[0]);
 			console.log("markers[0]__"+markers[0].price);
@@ -1725,6 +1729,7 @@ div.mousescroll:hover {
 	                  width: '50px',
 	                  height: '150px'                  
 	              });
+	
    </script>
 	
 
@@ -1897,10 +1902,10 @@ div.mousescroll:hover {
 				    		<br>
 						   	<div class="btn-group" data-toggle="buttons">
 							  <label class="btn btn-default">
-							    <input type="radio" name="stateCode" id="buybtn" value="2"> 삽니다
+							    <input type="radio" name="stateCode" id="buybtn" value="1"> 삽니다
 							  </label>
 							  <label class="btn btn-default">
-							    <input type="radio" name="stateCode" id="sellbtn" value="1"> 팝니다
+							    <input type="radio" name="stateCode" id="sellbtn" value="2"> 팝니다
 							  </label>							  
 							</div>	
 						</div>
@@ -1923,8 +1928,12 @@ div.mousescroll:hover {
 							<h4>사진 등록하기</h4>
 							<br>
 							<!-- 다등록가능 한데 주소가 어떻게 들어올지 모르겠네 -->
-							<input  class="form-control" name="itemPicturePath1" type="file" multiple="multiple"  id="exampleInputFile">						
-				   		
+							<input  class="form-control" name="itemPicturePath1" type="file"  id="exampleInputFile">						
+				   			<br>
+				   			<input  class="form-control" name="itemPicturePath2" type="file"  id="exampleInputFile">						
+				   			<br>
+				   			<input  class="form-control" name="itemPicturePath3" type="file"  id="exampleInputFile">						
+				   			
 				   			
 				   		</div>
 				    </div>
@@ -2028,7 +2037,7 @@ div.mousescroll:hover {
 		
 	</div>
 	
-	<script type="text/javascript">
+<!-- 	<script type="text/javascript">
 	//이메일칸에 입력전에 submit 버튼 활성화/비활성화
 	document.signinform.commit.disabled = true;
 	document.onkeyup = process;
@@ -2046,7 +2055,7 @@ div.mousescroll:hover {
 			document.signinform.commit.disabled = false; 
 		}
 	}
-	</script>
+	</script> -->
 
 <footer>
 <!-- preview modal -->
@@ -2143,10 +2152,13 @@ div.mousescroll:hover {
  function modalInjection(marker){
 	  
 	 console.log("marker.itemNo__"+marker.itemNo);
-  	  
+  	  var userNo='${user.userNo}';
+  	  console.log("hi__"+userNo);
+  	  console.log("hi2__"+marker.userNo);
+  	  var htmlinjec;
 	  new function makeHtml(){
 			console.log("it`s worked");
-			document.getElementById("htmlInjectionSector").innerHTML = 
+			htmlinjec=
 			"<div id=\"item"+marker.itemNo+"\" class=\"item"+marker.itemNo+" modal fade\" title=\""+marker.title+"\"  tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">"+
 				"<div id=\"injection-modal\"class=\"modal-dialog\">"+
 					"<div class=\"modal-Content\">"+
@@ -2200,8 +2212,16 @@ div.mousescroll:hover {
 							
 						"</div>"+
 						"<div class=\"modal-footer\">"+
-						"</div>"+
-						"<div class=\"modal-footer\">"+
+						"</div>"+ 
+						"<div class=\"modal-footer\">";
+						
+						if(userNo==marker.userNo){
+							htmlinjec+=
+							"<button type=\"button\" class=\"btn btn-primary\" >수정</button>"+
+							"<button type=\"button\" class=\"btn btn-primary\" >삭제</button>";
+						}
+						
+						htmlinjec+=
 						"<button type=\"button\" class=\"btn btn-danger\" >찜</button>"+
 						"<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>"+
 						"</div>"+
@@ -2210,8 +2230,9 @@ div.mousescroll:hover {
 			"</div>"+
 			"<a data-toggle=\"modal\" href=\"#item"+marker.itemNo+"\" id=\"modallink\"></a>";
 		};
-
+		document.getElementById("htmlInjectionSector").innerHTML = htmlinjec;
 		document.getElementById("modallink").click();
-  }
+ }
+		
 
  </script>
