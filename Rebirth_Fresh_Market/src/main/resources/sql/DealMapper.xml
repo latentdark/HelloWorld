@@ -8,36 +8,59 @@
 
 	<resultMap id="DealSelectMap" type="deal">
 		<result property="itemNo" column="item_no" jdbcType="INTEGER"/>
-		<result property="registerUserNo" column="" jdbcType="INTEGER"/>
-		<result property="contactUserNo" column="" jdbcType="INTEGER"/>
-		<result property="registerUserName" column="" jdbcType="VARCHAR"/>
-		<result property="contactUserName" column="" jdbcType="VARCHAR"/>
+		<result property="itemName" column="item_name" jdbcType="VARCHAR"/>
+		<result property="registerUserNo" column="register_user_no" jdbcType="INTEGER"/>
+		<result property="contactUserNo" column="contact_user_no" jdbcType="INTEGER"/>
+		<result property="registerUserName" column="register_user_name" jdbcType="VARCHAR"/>
+		<result property="contactUserName" column="contact_user_name" jdbcType="VARCHAR"/>
 		<result property="dealDate" column="date" jdbcType="DATE"/>
 		<result property="time" column="time" jdbcType="TIME"/>
 		<result property="location.gridX" column="grid_x" jdbcType="DOUBLE"/>
 		<result property="location.gridY" column="grid_y" jdbcType="DOUBLE"/>
 	</resultMap>
 	
+	<resultMap id="WishSelectMap" type="item">
+		<result property="itemNo" column="item_no" jdbcType="INTEGER"/>
+		<result property="userNo" column="user_no" jdbcType="INTEGER"/>
+		<result property="itemPicturePath1" column="filepath" jdbcType="VARCHAR"/>
+		<result property="itemName" column="item_name" jdbcType="VARCHAR"/>
+		<result property="price" column="price" jdbcType="INTEGER"/>
+	</resultMap>
+	
 	<insert id="makeDeal" parameterType="deal">
-		INSERT deal(user_no,
+		<!-- INSERT deal(item_no,
+					user_no,
 					date,
 					time,
 					grid_x,
 					grid_y)
-		VALUES(#{userNo},
-			   #{dealDate},
-			   #{time},
-			   #{location.gridX},
-			   #{location.gridY}	)
+		VALUES(	#{itemNo},
+				#{contactUserNo},
+			  	#{dealDate},
+			  	#{time},
+			  	#{location.gridX},
+			  	#{location.gridY}	) -->
 	</insert>
 	
-	<select id="findDeal">
-		SELECT ???????
-		FROM
-		WHERE 
+	<select id="findDeal" parameterType="integer">
+		<!-- SELECT
+		r.item_no, r.item_name, r.price,
+		r.user_no as register_user_no,
+		r.nickname as register_user_name,
+		c.user_no as contact_user_no,
+		c.nickname as contact_user_name,
+		d.deal_date, d.time, d.grid_x, d.grid_y
+		FROM deal d
+			 LEFT OUTER JOIN ( SELECT
+			  				   i.item_no, i.item_name, i.price, i.user_no,
+			  				   u.nickname
+			  				   FROM item i, user u
+			  				   WHERE i.user_no = u.user_no) r ON r.item_no = d.item_no
+			 LEFT OUTER JOIN user c ON c.user_no = d.user_no
+		WHERE d.item_no = #{value} -->
 	</select>
 	
-	<update id="updateDeal">
+	<!-- <update id="updateDeal">
 		UPDATE deal
 		<set>
 			<if test=""></if>
@@ -62,11 +85,68 @@
 	</update>
 	
 	<select id="findDealList" parameterType="search">
-		SELECT ?????
-		FROM deal d, (SELECT
-					  l.grid_x1,l.grid_y1
-					  FROM item i,location l
-					  WHERE i.item_no=l.item_no	),
-		WHERE 
+		SELECT
+		?????????????????
+		FROM (
+				SELECT
+				inner_table.*, @RNUM:=@RNUM+1 AS row_seq
+				FROM	(
+							SELECT
+							r.item_no, r.item_name, r.price,
+							r.user_no AS register_user_no, r.nickname AS register_user_name,
+							c.user_no AS contact_user_no, c.nickname AS contact_user_name,
+							d.date, d.time, d.grid_x, d.grid_y
+							FROM deal d,
+								 ( SELECT
+					 			   i.item_no, i.item_name, i.price, i.user_no, u.nickname
+								   FROM item i, user u
+					  			   WHERE i.user_no = u.user_no	) r,
+					 			 user c
+							<where>
+								d.item_no = r.item_no
+						  		AND
+						  		c.user_no = d.user_no
+						  		AND
+						  		(r.user_no = #{userNo}
+						  		 OR
+						  		 c.user_no = #{userNo})
+						  		<if test="searchCondition==1">
+						  		AND r.item_name = '%#{itemName}%'
+						  		</if>
+						  		<if test="searchCondition==2">
+						  		AND ????????????????
+						  		</if>
+						  		<if test="searchCondition==3">
+						  		AND ????????????????
+						  		</if>
+					  		</where>
+					  		ORDER BY d.date, d.time		) AS inner_table,
+					  	 (	SELECT @RNUM :=0	) AS RNUM	)
+	</select> -->
+	
+	<insert id="addWish" parameterType="HashMap">
+		INSERT wish(item_no, user_no, date, time)
+		VALUES(#{itemNo}, #{userNo}, sysdate(), curtime())
+	</insert>
+	
+	<delete id="removeWish" parameterType="HashMap">
+		DELETE
+		FROM wish
+		WHERE item_no = #{itemNo}
+			  AND
+			  user_no = #{userNo}
+	</delete>
+	
+	<select id="findWishList" parameterType="integer" resultMap="WishSelectMap">
+		SELECT
+		w.item_no, i.user_no, i.filepath, i.item_name, i.price
+		FROM wish AS w
+			 LEFT OUTER JOIN (  SELECT
+								i.item_no, i.user_no, ip.filepath1 AS filepath, i.item_name, i.price
+								FROM item i
+								     LEFT OUTER JOIN item_pic AS ip ON i.item_no = ip.item_no) AS i ON i.item_no = w.item_no
+		     LEFT OUTER JOIN user AS u ON u.user_no = w.user_no
+		WHERE w.user_no = #{value}
 	</select>
+	
 </mapper>

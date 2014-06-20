@@ -8,6 +8,7 @@
 
 	<resultMap id="CommunicationSelectMap" type="item">
 		<result property="itemNo" column="item_no" jdbcType="INTEGER"/>
+		<result property="userNo" column="user_no" jdbcType="INTEGER"/>
 		<result property="itemPicturePath1" column="filepath" jdbcType="VARCHAR"/>
 		<result property="itemName" column="item_name" jdbcType="VARCHAR"/>
 		<result property="price" column="price" jdbcType="INTEGER"/>
@@ -34,7 +35,7 @@
 	<select id="findInquireList" parameterType="integer" resultMap="CommunicationSelectMap">
 		SELECT
 		DISTINCT
-		inq.item_no, i.filepath1 AS filepath, i.item_name, i.price
+		inq.item_no, i.user_no, i.filepath1 AS filepath, i.item_name, i.price
 		FROM inquire AS inq
 			 LEFT OUTER JOIN ( SELECT
 			 				   i.item_no,

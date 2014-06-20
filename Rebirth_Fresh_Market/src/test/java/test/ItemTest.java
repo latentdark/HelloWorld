@@ -43,20 +43,16 @@ public class ItemTest {
 		
 		//System.out.println("insert 결과 : "+itemService.addItem(item));
 		
-		//findItemNo
-		item.setItemNo(itemService.findItemNo(item));
-		//System.out.println("지금 등록한 제품의 번호는 " + item.getItemNo());
-		//System.out.println(item);
 		
 		//findItem
 		//System.out.println("selectOne 결과 : "+itemService.findItem(300));
 		
 		//findItemList
 		Search search = new Search();
-		search.setPageSize(10);
-		search.setCurrentPage(1);
-		search.setSearchCondition("2");
-		search.setSearchKeyword("5000");
+		//search.setPageSize(10);
+		//search.setCurrentPage(1);
+		//search.setSearchCondition("2");
+		//search.setSearchKeyword("마리오");
 		System.out.println(search);
 		System.out.println("selectList 결과 : "+itemService.findItemList(search));
 		
