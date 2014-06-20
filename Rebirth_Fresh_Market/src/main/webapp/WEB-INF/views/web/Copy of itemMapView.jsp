@@ -12,13 +12,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
 	<link rel="Stylesheet" href="/resources/css/bootstrap.min.css"/>
-	<!-- <link href="/resources/css/prettify.css" rel="stylesheet"> -->
-	<!-- Slider css -->
-	<!--
-	<link rel="stylesheet" type="text/css" href="css/default.css" />
-	<link rel="stylesheet" type="text/css" href="css/component.css" />
-	  -->	
+	
 	<style>
+	
 .navbar {
 	/* background-image: url("/resources/imgs/bg6.png");
 			 */
@@ -120,12 +116,12 @@ body {
 	height: 100%;
 	margin: 0;
 	padding: 0;
-	overflow: hidden;
+	/* overflow: hidden; */
 }
 
 #map_canvas {
 	float: left;
-	margin-top: 53px;
+	/* margin-top: 53px; */
 	/* border-left: 1px solid #BCBCBC;
 	border-top: 1px solid #BCBCBC; */
 }
@@ -168,11 +164,6 @@ body {
 
 /* slider bar css */
 /* 텔 */
-
-#bodyContent{
-	background: #000000;
-}
-<%--  --%>
 #menu1 {
 	transition: all 0.3s ease;
 	position: fixed;
@@ -181,12 +172,13 @@ body {
 	margin-top:53px;
 	left: -200px;
 	background: #FFFFFF;
-	height: 100%;
-	z-index: 1100;
+	height:  calc(100% - 53px);
+	z-index: 1030;
 	border:1px solid #BCBCBC;
 	padding-top: 20px;
 	padding-left: 10px;
 	padding-right: 10px;
+	padding-bottom: 20px;
 	text-align: center;
 }
 
@@ -200,7 +192,7 @@ body {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	padding-right: 10px;
-	border-top-right-radius: 5px;
+ 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
 	transition: all 0.3s ease;
 }
@@ -236,6 +228,8 @@ body {
 	/* Future proofing (these do not work yet): */
 	-moz-transition: 0.25s;
 	transition: 0.25s;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px; 
 }
 /* span 보여주게 하는 코드 */
 #menu-toggle1 a:hover span{ 
@@ -248,16 +242,17 @@ body {
 	overflow:visible; 
 	}
 
-
+/* CSS outer glow with the box-shadow property */
+/*
  #menu-toggle1 a:hover{
 	text-decoration:none;
 	
-	/* CSS outer glow with the box-shadow property */
+	
 	-moz-box-shadow:0 0 5px #9ddff5;
 	-webkit-box-shadow:0 0 5px #9ddff5;
 	box-shadow:0 0 5px #9ddff5;
 }
-
+*/
 
 
 /* 새로운 시도 끝 */
@@ -265,6 +260,8 @@ body {
 #menu-toggle1:hover {
 	background: rgb(255, 228, 0);
 	cursor: pointer;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px; 
 }
 
 #menu1.open {
@@ -288,13 +285,14 @@ body {
 	margin-top:53px;
 	left: -300px;
 	background: #ffffff;
-	height: 100%;
+	height:  calc(100% - 53px);
 	z-index: 1030;
 	text-align: center;
 	border: 1px solid #BCBCBC;
 	padding-top: 20px;
 	padding-left: 10px;
 	padding-right: 10px;
+	padding-bottom: 20px;
 }
 
 #menu-toggle2 {
@@ -342,6 +340,8 @@ body {
 	/* Future proofing (these do not work yet): */
 	-moz-transition: 0.25s;
 	transition: 0.25s;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px; 
 }
 
 /* span 보여주게 하는 코드 */
@@ -355,16 +355,17 @@ body {
 	
 	}
 	
- 
+/* CSS outer glow with the box-shadow property */
+/*
 #menu-toggle2 a:hover{
 	text-decoration:none;
 	
-	/* CSS outer glow with the box-shadow property */
+	
 	-moz-box-shadow:0 0 5px #9ddff5;
 	-webkit-box-shadow:0 0 5px #9ddff5;
 	box-shadow:0 0 5px #9ddff5;
 }
-
+*/
 
 
 /* 새로운 시도 끝 */
@@ -372,6 +373,8 @@ body {
 #menu-toggle2:hover {
 	background: rgb(255, 228, 0);
 	cursor: pointer;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px; 
 }
 
 #menu2.open {
@@ -395,12 +398,13 @@ body {
 	top: 0;
 	left: -200px;
 	background: #FFFFFF;
-	height: 100%;
-	z-index: 1100;
+	height:  calc(100% - 53px);
+	z-index: 1030;
 	border:1px solid #BCBCBC;
 	padding-top: 20px;
 	padding-left: 10px;
 	padding-right: 10px;
+	padding-bottom: 20px;
 }
 
 #menu-toggle3 {
@@ -448,6 +452,8 @@ body {
 	/* Future proofing (these do not work yet): */
 	-moz-transition: 0.25s;
 	transition: 0.25s;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px; 
 }
 /* span 보여주게 하는 코드 */
 #menu-toggle3 a:hover span{ 
@@ -458,16 +464,17 @@ body {
 	padding:0 20px;
 	overflow:visible; }
 
-
+/* CSS outer glow with the box-shadow property */
+/*
 #menu-toggle3 a:hover{
 	text-decoration:none;
 	
-	/* CSS outer glow with the box-shadow property */
+	
 	-moz-box-shadow:0 0 5px #9ddff5;
 	-webkit-box-shadow:0 0 5px #9ddff5;
 	box-shadow:0 0 5px #9ddff5;
 }
-
+*/
 
 
 /* 새로운 시도 끝 */
@@ -475,6 +482,8 @@ body {
 #menu-toggle3:hover {
 	background: rgb(255, 228, 0);
 	cursor: pointer;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px; 
 }
 
 #menu3.open {
@@ -496,11 +505,119 @@ body {
 	height:410px;
 }
 
+
+/* menu3 내부 css */
+.list-group.panel > .list-group-item {
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px
+}
+.list-group-submenu {
+  margin-left:20px;
+}
+
+#injection-modal{
+	background-color: white;
+	border-top-right-radius: 4px;
+  	border-top-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+  	border-bottom-left-radius: 4px;
+  	text-align: center;
+}
+
+#search_result {
+	height:  calc(100% - 150px);
+/* 	overflow-y:scroll; */
+}
+
+
+
+
+div.mousescroll {
+    overflow: hidden;
+}
+div.mousescroll:hover {
+    overflow-y: scroll;
+}
+
+
+
+/* 새로운 시도 시작 */
+#t3 span{
+	
+	/* Container properties */
+	
+	width:0;
+	left:absolute;
+	top:absolute;
+	/*
+	옆에서 얼마나 떨어졌나 지정
+	left:70px;
+	*/
+	padding:0;
+	position:absolute;
+	overflow:hidden;
+
+	/* Text properties */
+	font-familiy: 'Nanum Gothic';
+	font-size:12px;
+	font-weight:bold;
+	letter-spacing:0.6px;
+	white-space:nowrap;
+	line-height:20px;
+	/* 하이라이터 높이 지정 line-height:39px;*/
+	/* CSS3 Transition: */
+	-webkit-transition: 0.25s;
+	
+	/* Future proofing (these do not work yet): */
+	-moz-transition: 0.25s;
+	transition: 0.25s;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px; 
+}
+/* span 보여주게 하는 코드 */
+#t3 a:hover span{ 
+	background-color:rgb(255, 228, 0);
+	color:rgb(3, 0, 102);
+	/* text-shadow:1px 1px 0 #99bf31;
+	 */
+	width:auto;
+	padding:0 20px;
+	/*padding:0 20px;*/
+	overflow:visible; 
+	}
+
+
+#t3 a:hover{
+	background: rgb(255, 228, 0);
+	cursor: pointer;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px; 
+
+	text-decoration:none;
+	
+	-moz-box-shadow:0 0 5px #9ddff5;
+	-webkit-box-shadow:0 0 5px #9ddff5;
+	box-shadow:0 0 5px #9ddff5;
+	
+	/* CSS outer glow with the box-shadow property */
+	
+}
+
+
+
+/* 새로운 시도 끝 
+
+*/
+/*
+#menu-toggle1:hover {
+	background: rgb(255, 228, 0);
+	cursor: pointer;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px; 
+}
+	*/		
+
 </style>
-
-
-
-
  	
 	<!--
 				
@@ -555,15 +672,11 @@ body {
 		src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
  	 -->
 	
-	<!--
-	
-	 --> 
-
 	<script src="resources/js_custom/markerclusterer.js"></script>
 	<script src="resources/js_custom/markerclusterer_packed.js"></script>
 	<script src="resources/js_custom/markerclustererPlus.js"></script>
 	<script src="resources/js_custom/markerwithlabel.js"></script>
-	
+
 	<!--panel lib -->
 	<!--
 	<script src="resources/js_custom/jquery.slidePanel.min.js"></script>
@@ -578,15 +691,6 @@ body {
 	 -->
 	
 
-	
-	
-	<%--
-	<!-- 
-	<script src="resources/js_custom/markerclusterer_packed.js"></script>
-	<script src="resources/js_custom/markerclusterer.js"></script>
-	-->
-	 --%>
-	<script src="resources/js_custom/markerwithlabel.js"></script>
 	<!--
 	<link rel="stylesheet" href="/resources/demos/style.css">
 	-->
@@ -598,8 +702,7 @@ body {
 	<script src="resources/js_custom/slider_script.js"></script> 
 	 
 	<script src="/resources/js/jquery.bootstrap.wizard.js"></script>
-	<script src="/resources/js/prettify.js"></script>
-		<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 	
 	
 	<!-- jquery.bootstrap.wizard 화면구성 스크립트 코드 -->
@@ -717,8 +820,8 @@ body {
 	
 	var map;
 	var markers = [];
-	var modalInjectionImageArray1=[];
-	var modalInjectionInfoArray=[];
+//	var modalInjectionImageArray1=[];
+//	var modalInjectionInfoArray=[];
 	var firstMapLoad="true";
     var markerClusterer;
 	var cluster;
@@ -754,9 +857,9 @@ body {
 					<%-- 임시 --%>
 					myPosition.A=Math.round(pos.A*1000000)/1000000;
 					myPosition.k=Math.round(pos.k*1000000)/1000000;
-					console.log("pos___"+pos);
-					console.log("pos.A___"+Math.round(pos.A*1000000)/1000000);
-					console.log("pos.k___"+Math.round(pos.k*1000000)/1000000);
+					console.log("initialize()__pos___"+pos);
+					console.log("initialize()__pos.A___"+Math.round(pos.A*1000000)/1000000);
+					console.log("initialize()__pos.k___"+Math.round(pos.k*1000000)/1000000);
 					
 					
 					new google.maps.Marker({
@@ -871,21 +974,28 @@ body {
 		
 			
 		
-		
+		<%-- itemSearch Start --%>
 		var searchKeyword;
 		var zoomLevel;
 		var center;
-		function itemSearch(){
+		var markersSearchResult=[];
+		var searchOption;	
+		
+		function itemSearch(from){
 			zoomLevel=map.getZoom();
 			center=map.getCenter();
 			
+			markersSearchResult=[];
 			searchKeyword=null;
-			searchKeyword=document.getElementById("searchKeyword").value;
-			console.log(searchKeyword);
-			//alert(searchKeyword);
+			searchOption=null;
 			
-			//map=null;
-			//initialize();
+			if(from=="Quick"){
+				searchKeyword=document.getElementById("searchKeywordQuick").value;
+			}else{
+				searchKeyword=document.getElementById("searchKeywordDetail").value;
+			}
+			
+			console.log(searchKeyword);
 			
 			if(searchKeyword!=null){
 				searchKeyword=searchKeyword.trim().toUpperCase();
@@ -893,49 +1003,87 @@ body {
 			
 			markerClusterer.clearMarkers();
 			
-			for(var i=0;i<markers.length;i++){
-				//console.log(markers[i].title.toUpperCase().match(searchKeyword));
-						
-				
-				if(markers[i].title.toUpperCase().match(searchKeyword)!=null){
-					markerClusterer.addMarker(markers[i]);
-					//markers[i].setVisible(true);
-				}else{
-					//markers[i].setVisible(false);
-					//markerClusterer.removeMarker(markers[i]);
+			if(from=="Quick"){
+				for(var i=0;i<markers.length;i++){
+					if(markers[i].title.toUpperCase().match(searchKeyword)!=null){
+						markerClusterer.addMarker(markers[i]);
+					}
 				}
-				/**/
-			}
-			//markerClusterer.clearMarkers();
-			//markerClusterer.setIgnoreHidden(true);
-			//Cluster.
-			//markerClusterer.setMap(null);
-			//markerClusterer.setMap( this.map );
-			markerClusterer.repaint();
-			//markerClusterer.resetViewport();
-			return false;
-			//map.setZoom(zoomLevel-1);
-			//map.setZoom(zoomLevel);
-			//markerClusterer.repaint();
-
-
-			//cluster.repaint();
-			/*
-			markerClusterer = new MarkerClusterer(map, markers, {
-		          maxZoom: 14,
-		          gridSize: size,
-		          ignoreHidden:true
-		          //styles: styles[style]
-		        });
-			*/
-			/*
-			markerCluster.setMap(null);
-			*/
-			
+			}else{
 		
-			
-			
-		}
+				console.log("from__debug___"+from);
+				switch(from){
+					case 'all': 
+						searchOption="all";
+						break;
+					case 'buy':
+						searchOption="buy";
+						break;
+					case 'sell':
+						searchOption="sell";
+						break;
+					default:
+						if(document.getElementById('searchOption1').checked){
+							searchOption = document.getElementById("searchOption1").value;
+							console.log("('searchOption1').checked");
+						}
+						if(document.getElementById('searchOption2').checked){
+							searchOption = document.getElementById("searchOption2").value;
+							console.log("('searchOption2').checked");
+						}
+						if(document.getElementById('searchOption3').checked){
+							searchOption = document.getElementById("searchOption3").value;
+							console.log("('searchOption3').checked");
+						}
+				}
+				
+				/**/
+				
+				console.log(searchOption);
+				
+				if(searchOption=="all"){
+					for(var i=0;i<markers.length;i++){
+						//console.log(markers[i].title.toUpperCase().match(searchKeyword));
+						if(markers[i].title.toUpperCase().match(searchKeyword)!=null){
+							markerClusterer.addMarker(markers[i]);
+							markersSearchResult.push(markers[i]);
+						}
+					}
+				}
+				if(searchOption=="buy"){
+					for(var i=0;i<markers.length;i++){
+						if(markers[i].stateCode==1){
+							if(markers[i].title.toUpperCase().match(searchKeyword)!=null){
+								markerClusterer.addMarker(markers[i]);
+								markersSearchResult.push(markers[i]);	
+							}
+						}
+					}
+				}
+				if(searchOption=="sell"){
+					for(var i=0;i<markers.length;i++){
+						if(markers[i].stateCode==2){
+							if(markers[i].title.toUpperCase().match(searchKeyword)!=null){
+								markerClusterer.addMarker(markers[i]);
+								markersSearchResult.push(markers[i]);	
+							}
+						}
+					}
+				}
+				
+				//순순
+				if(document.getElementById('optionsRadios1').checked){
+					markersSortingDistance();
+				}
+				if(document.getElementById('optionsRadios2').checked){
+					markersSortingPrice();
+				}
+								
+				
+			}
+			markerClusterer.repaint();
+			return false;
+		}<%-- itemSearch End --%>
 		
 		<%-- markersInit() --%>
 		function markersInit(){
@@ -968,6 +1116,7 @@ body {
 										dealImage
 									</c:if>
 										,
+								stateCode : '${itemList.stateCode}',
 								title : '${itemList.itemName}',
 								itemNo : '${itemList.itemNo}',
 								itemInfo : '${itemList.itemInfo}',
@@ -1049,14 +1198,17 @@ body {
 		<%-- handleNoGeolocation Start --%>
 		function handleNoGeolocation(errorFlag) {
 			if (errorFlag) {
-				var content = 'Error: The Geolocation service failed.';
+				//var content = 'Error: The Geolocation service failed.';
+				var content = 'Error: 상단에 팝업된 위치액세스를 허용해 주십시오.';
 			} else {
-				var content = 'Error: Your browser doesn\'t support geolocation.';
+				//var content = 'Error: Your browser doesn\'t support geolocation.';
+				var content = 'Error: 당신의 브라우저가 위치액세스를 지원하지않습니다.\n Chrome 브라우저를 권장합니다.';
 			}
 
 			var options = {
 				map : map,
-				position : new google.maps.LatLng(60, 105),
+				zoom : 7,
+				position : new google.maps.LatLng(35.710787, 127.969980),
 				content : content
 			};
 
@@ -1078,76 +1230,45 @@ body {
 		
 		<%-- markersSorting Distance Start --%>
 		function markersSortingDistance(){
-			markers.sort(function(a, b){
+			//console.log("pos___"+pos);
+			//console.log("pos.A___"+Math.round(pos.A*1000000)/1000000);
+			//console.log("pos.k___"+Math.round(pos.k*1000000)/1000000);
+		
+			console.log("markersSortingDistance In__");
+			markersSearchResult.sort(function(a, b){
+				console.log("markersSearchResult.sort.Distance call");
 				//geolocation으로 잡은 A,k를 이용해 가져온 a의 절대값과 삼각함수를 이용해 거리측정
-				var a_A	=	Math.abs(myPosition.A-a.position.A);
-				var a_k	=	Math.abs(myPosition.k-a.position.k);
-				var a_distance=Math.pow(a_A, a_A) + Math.pow(a_k, a_k);
-				a.distance=sqrt(a_distance);
+				
+				//var a_A	=	Math.abs(myPosition.A-a.position.A);
+				//var a_k	=	Math.abs(myPosition.k-a.position.k);
+				var a_A	=	Math.abs(Math.round(myPosition.A-a.position.A*1000000)/1000000);
+				var a_k	=	Math.abs(Math.round(myPosition.k-a.position.k*1000000)/1000000);
+				//var a_distance=Math.pow(a_A, a_A) + Math.pow(a_k, a_k);
+				//a.distance=Math.sqrt(a_distance);
 				a.distance_m=
-					getDistanceFromLatLonInKm(myPosition.A, myPosition.k,
-											a.position.A, a.position.k);
+					Math.round(getDistanceFromLatLonInKm(myPosition.k, myPosition.A,
+							 					a.position.k, a.position.A)*10000)/10000;
 				
-				var b_A	=	Math.abs(myPosition.A-b.position.A);
-				var b_k	=	Math.abs(myPosition.k-b.position.k);
-				var b_distance=Math.pow(b_A, b_A) + Math.pow(b_k, b_k);
-				b.distance=sqrt(a_distance);
+				//console.log(a_A);
+				//console.log(a_k);
+				//console.log(a_distance);
+				//var b_A	=	Math.abs(myPosition.A-b.position.A);
+				//var b_k	=	Math.abs(myPosition.k-b.position.k);
+				var b_A	=	Math.abs(Math.round(myPosition.A-b.position.A*1000000)/1000000);
+				var b_k	=	Math.abs(Math.round(myPosition.k-b.position.k*1000000)/1000000);
+				//var b_distance=Math.pow(b_A, b_A) + Math.pow(b_k, b_k);
+				//b.distance=Math.sqrt(b_distance);
 				b.distance_m=
-					getDistanceFromLatLonInKm(myPosition.A, myPosition.k,
-											b.position.A, b.position.k);
-				
-				
-				return a_distance-b_distance
-				});
-				/*
-				(
-					Math.pow( 
-							Math.abs((myPosition.A-markers[0].position.A)) ,
-							Math.abs((myPosition.A-markers[0].position.A))
-							)
-					+
-					Math.pow( 
-							Math.abs((myPosition.k-markers[0].position.k)) ,
-							Math.abs((myPosition.k-markers[0].position.k))
-							)
-				)
-				-
-				(
-						Math.pow( 
-								Math.abs((myPosition.A-markers[0].position.A)) ,
-								Math.abs((myPosition.A-markers[0].position.A))
-								)
-						+
-						Math.pow( 
-								Math.abs((myPosition.k-markers[0].position.k)) ,
-								Math.abs((myPosition.k-markers[0].position.k))
-								)
-				)
-				*/
-				
-			/*
-			console.log("pos.position.A"+pos.position.A);
-			console.log("pos.position.k"+pos.position.k);
-			console.log("markers.length__"+markers.length);
-			console.log("markers[0]__"+markers[0]);
-			console.log("markers[0]__"+markers[0].price);
-			console.log("markers[0].position__"+markers[0].position);
-			console.log("markers[0].position__"+markers[0].position.A);
-			console.log("markers[0].position__"+markers[0].position.k);
-			*/
-		}<%-- markersSorting Distance End --%>
-		
-		
-		
-		<%-- markersSorting Price Start--%>
-		function markersSortingPrice(){
-			markers.sort(function(a, b){
-				return a.price-b.price
+					Math.round(getDistanceFromLatLonInKm(myPosition.k, myPosition.A,
+											 b.position.k, b.position.A)*10000)/10000;
+				//console.log(b_A);
+				return a.distance_m-b.distance_m
 				});
 			
-		}<%--  markersSorting Price End --%>
+			searchResultInjection();
+		}<%-- markersSorting Distance End --%>
 		
-		
+
 		<%-- ‘Haversine’ formula Start--%>
 		function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
 			  var R = 6371; // Radius of the earth in km
@@ -1168,14 +1289,85 @@ body {
 		<%-- ‘Haversine’ formula End--%>
 		
 		
+		
+		<%-- markersSorting Price Start--%>
+		function markersSortingPrice(){
+			console.log("markersSorting Price In");
+			markersSearchResult.sort(function(a, b){
+				console.log("markersSearchResult.sort.Price call");
+				var a_A	=	Math.abs(Math.round(myPosition.A-a.position.A*1000000)/1000000);
+				var a_k	=	Math.abs(Math.round(myPosition.k-a.position.k*1000000)/1000000);
+				//var a_distance=Math.pow(a_A, a_A) + Math.pow(a_k, a_k);
+				//a.distance=Math.sqrt(a_distance);
+				a.distance_m=
+					Math.round(getDistanceFromLatLonInKm(myPosition.k, myPosition.A,
+							 					a.position.k, a.position.A)*10000)/10000;
+				
+				return a.price-b.price
+				});
+			//sorting check용 for문, 사용시 주석처리해야함.
+			/*
+			for(var i=0;i<markersSearchResult.length;i++){
+				console.log("markersSearchResult__"+i+"price__"+markersSearchResult[i].price);
+			}
+			*/
+			searchResultInjection();
+		}<%--  markersSorting Price End --%>
+
+		
+		var searchResultInjectionHtml;
+		function searchResultInjection(){
+			//sorting check용 for문, 사용시 주석처리해야함.
+			searchResultInjectionHtml=null;
+			
+			if(markersSearchResult.length>1){
+				if(markersSearchResult[0].distance_m < 1.0){
+					markersSearchResult[0].distance_m=Math.round(markersSearchResult[0].distance_m*100)/100+"(m)";
+				}else{
+					markersSearchResult[0].distance_m=Math.round(markersSearchResult[0].distance_m *10)/10+"(km)";
+				}
+				searchResultInjectionHtml=
+					"<tr>"+
+						"<td id=\"t1\" >" + markersSearchResult[0].distance_m + "</td>" +
+						"<td id=\"t2\" >" + markersSearchResult[0].price/10000.0 + "</td>" +
+						"<td id=\"t3\" ><a onclick=\"modalInjection(markersSearchResult["+0+"])\"> " +
+						//"<td><a onclick=\"alert('test')\"> " + 
+								markersSearchResult[0].title+ "<span>클릭하시면 상세정보를 볼수 있습니다.</span></a></td>" +
+					"</tr>";
+			}
+			//searchResultInjectionHtml="<tbody>";
+			for(var i=1;i<markersSearchResult.length;i++){
+				
+				
+				if(markersSearchResult[i].distance_m < 1.0){
+					markersSearchResult[i].distance_m=Math.round(markersSearchResult[i].distance_m*100)/100+"(m)";
+				}else{
+					markersSearchResult[i].distance_m=Math.round(markersSearchResult[i].distance_m *10)/10+"(km)";
+				}	
+				//console.log("markersSearchResult"+i+"distance_m"+markersSearchResult[i].distance_m);
+				//뉴텔
+				searchResultInjectionHtml+=
+					"<tr>"+
+						"<td id=\"t1\" >" + markersSearchResult[i].distance_m + "</td>" +
+						"<td id=\"t2\" >" + markersSearchResult[i].price/10000.0 + "</td>" +
+						"<td id=\"t3\" ><a onclick=\"modalInjection(markersSearchResult["+i+"])\"> " +
+						//"<td><a onclick=\"alert('test')\"> " + 
+								markersSearchResult[i].title+ "<span>클릭하시면 상세정보를 볼수 있습니다.</span></a></td>" +
+					"</tr>";
+			}
+			//searchResultInjectionHtml+="</tbody>";
+			document.getElementById("searchResultInjectionSector").innerHTML =searchResultInjectionHtml;
+			
+			/*
+			<tr>
+				<td>222</td>
+				<td>333</td>
+				<td><a>아이패드 에어 가나다라 마바사 아자 차</a></td>
+			</tr>
+			*/	
+		
+		}
 		google.maps.event.addDomListener(window, 'load', initialize);
-		
-		//console.log("pos"+pos);
-		//console.log("pos.position.A"+pos.position.A);
-		//console.log("pos.position.k"+pos.position.k);
-		
-		
-		
 	</script>
 	<!--
 		
@@ -1278,7 +1470,7 @@ body {
 		s_sel.options[0] = new Option("소분류 선택", "");
 
 		for(var i =0; i<f_selbox.length; i++){
-			f_sel.options[i+1] = new Option(f_selbox[i], f_selbox[i]);
+			f_sel.options[i+1] = new Option(f_selbox[i], i);
 		}
 	}
 
@@ -1295,15 +1487,247 @@ body {
 
 		if(sel != 0){
 			for(var i=0; i<s_selbox[sel-1].length; i++){
-				s_sel.options[i+1] = new Option(s_selbox[sel-1][i], s_selbox[sel-1][i]);
+				s_sel.options[i+1] = new Option(s_selbox[sel-1][i],i);
 			}
 		}
 	}
 	
+	(function($) {
 
+	    jQuery.fn.extend({
+	        slimScroll: function(o) {
+
+	            var ops = o;
+	            //do it for every element that matches selector
+	            this.each(function(){
+
+	            var isOverPanel, isOverBar, isDragg, queueHide, barHeight,
+	                divS = '<div></div>',
+	                minBarHeight = 30,
+	                wheelStep = 30,
+	                o = ops || {},
+	                cwidth = o.width || 'auto',
+	                cheight = o.height || '250px',
+	                size = o.size || '7px',
+	                color = o.color || '#000',
+	                position = o.position || 'right',
+	                opacity = o.opacity || .4,
+	                alwaysVisible = o.alwaysVisible === true;
+	            
+	                //used in event handlers and for better minification
+	                var me = $(this);
+
+	                //wrap content
+	                var wrapper = $(divS).css({
+	                    position: 'relative',
+	                    overflow: 'hidden',
+	                    width: cwidth,
+	                    height: cheight
+	                }).attr({ 'class': 'slimScrollDiv' });
+
+	                //update style for the div
+	                me.css({
+	                    overflow: 'hidden',
+	                    width: cwidth,
+	                    height: cheight
+	                });
+
+	                //create scrollbar rail
+	                var rail  = $(divS).css({
+	                    width: '15px',
+	                    height: '100%',
+	                    position: 'absolute',
+	                    top: 0
+	                });
+
+	                //create scrollbar
+	                var bar = $(divS).attr({ 
+	                    'class': 'slimScrollBar ', 
+	                    style: 'border-radius: ' + size 
+	                    }).css({
+	                        background: color,
+	                        width: size,
+	                        position: 'absolute',
+	                        top: 0,
+	                        opacity: opacity,
+	                        display: alwaysVisible ? 'block' : 'none',
+	                        BorderRadius: size,
+	                        MozBorderRadius: size,
+	                        WebkitBorderRadius: size,
+	                        zIndex: 99
+	                });
+
+	                //set position
+	                var posCss = (position == 'right') ? { right: '1px' } : { left: '1px' };
+	                rail.css(posCss);
+	                bar.css(posCss);
+
+	                //wrap it
+	                me.wrap(wrapper);
+
+	                //append to parent div
+	                me.parent().append(bar);
+	                me.parent().append(rail);
+
+	                //make it draggable
+	                bar.draggable({ 
+	                    axis: 'y', 
+	                    containment: 'parent',
+	                    start: function() { isDragg = true; },
+	                    stop: function() { isDragg = false; hideBar(); },
+	                    drag: function(e) 
+	                    { 
+	                        //scroll content
+	                        scrollContent(0, $(this).position().top, false);
+	                    }
+	                });
+
+	                //on rail over
+	                rail.hover(function(){
+	                    showBar();
+	                }, function(){
+	                    hideBar();
+	                });
+
+	                //on bar over
+	                bar.hover(function(){
+	                    isOverBar = true;
+	                }, function(){
+	                    isOverBar = false;
+	                });
+
+	                //show on parent mouseover
+	                me.hover(function(){
+	                    isOverPanel = true;
+	                    showBar();
+	                    hideBar();
+	                }, function(){
+	                    isOverPanel = false;
+	                    hideBar();
+	                });
+
+	                var _onWheel = function(e)
+	                {
+	                    //use mouse wheel only when mouse is over
+	                    if (!isOverPanel) { return; }
+
+	                    var e = e || window.event;
+
+	                    var delta = 0;
+	                    if (e.wheelDelta) { delta = -e.wheelDelta/120; }
+	                    if (e.detail) { delta = e.detail / 3; }
+
+	                    //scroll content
+	                    scrollContent(0, delta, true);
+
+	                    //stop window scroll
+	                    if (e.preventDefault) { e.preventDefault(); }
+	                    e.returnValue = false;
+	                }
+
+	                var scrollContent = function(x, y, isWheel)
+	                {
+	                    var delta = y;
+
+	                    if (isWheel)
+	                    {
+	                        //move bar with mouse wheel
+	                        delta = bar.position().top + y * wheelStep;
+
+	                        //move bar, make sure it doesn't go out
+	                        delta = Math.max(delta, 0);
+	                        var maxTop = me.outerHeight() - bar.outerHeight();
+	                        delta = Math.min(delta, maxTop);
+
+	                        //scroll the scrollbar
+	                        bar.css({ top: delta + 'px' });
+	                    }
+
+	                    //calculate actual scroll amount
+	                    percentScroll = parseInt(bar.position().top) / (me.outerHeight() - bar.outerHeight());
+	                    delta = percentScroll * (me[0].scrollHeight - me.outerHeight());
+
+	                    //scroll content
+	                    me.scrollTop(delta);
+
+	                    //ensure bar is visible
+	                    showBar();
+	                }
+
+	                var attachWheel = function()
+	                {
+	                    if (window.addEventListener)
+	                    {
+	                        this.addEventListener('DOMMouseScroll', _onWheel, false );
+	                        this.addEventListener('mousewheel', _onWheel, false );
+	                    } 
+	                    else
+	                    {
+	                        document.attachEvent("onmousewheel", _onWheel)
+	                    }
+	                }
+
+	                //attach scroll events
+	                attachWheel();
+
+	                var getBarHeight = function()
+	                {
+	                    //calculate scrollbar height and make sure it is not too small
+	                    barHeight = Math.max((me.outerHeight() / me[0].scrollHeight) * me.outerHeight(), minBarHeight);
+	                    bar.css({ height: barHeight + 'px' });
+	                }
+
+	                //set up initial height
+	                getBarHeight();
+
+	                var showBar = function()
+	                {
+	                    //recalculate bar height
+	                    getBarHeight();
+	                    clearTimeout(queueHide);
+	                    
+	                    //show only when required
+	                    if(barHeight >= me.outerHeight()) {
+	                        return;
+	                    }
+	                    bar.fadeIn('fast');
+	                }
+
+	                var hideBar = function()
+	                {
+	                    //only hide when options allow it
+	                    if (!alwaysVisible)
+	                    {
+	                        queueHide = setTimeout(function(){
+	                            if (!isOverBar && !isDragg) { bar.fadeOut('slow'); }
+	                        }, 1000);
+	                    }
+	                }
+
+	            });
+	            
+	            //maintain chainability
+	            return this;
+	        }
+	    });
+
+	    jQuery.fn.extend({
+	        slimscroll: jQuery.fn.slimScroll
+	    });
+
+	})(jQuery);
+
+
+	//invalid name call
+	              $('#chatlist').slimscroll({
+	                  color: '#00f',
+	                  size: '10px',
+	                  width: '50px',
+	                  height: '150px'                  
+	              });
    </script>
 	
-	</script>
+
 	
 	<!--
 		
@@ -1332,7 +1756,7 @@ body {
 	onLoad=initialize 쓰지마세요. 직접 dom객체에 추가했어요.
  	onload에 추가하면 2번 되서 성능 저하됩니다~~~~~~ 
  -->
-<body class="cbp-spmenu-push" data-twttr-rendered="true" onload="init(this.searchform); init(this.registerform);">
+<body class="cbp-spmenu-push" data-twttr-rendered="true" onload="init(this.registerform);">
 <!----------------------------------------------------------- -->
 
 
@@ -1351,69 +1775,86 @@ body {
 		</a>		
 	</div>
 		<nav id="menu1">
-		<div>
-			<form action="#" name="searchform" id="search_form" method="post" >				
-				<input type="text" class="form-control" placeholder="Search">		    
-			    <br>
-			    <div id="select_loca">
-			    	위치 선택
-			    	<br>
-			    	<!-- 아직 미구현  -->
-		    		<div class="btn-group" data-toggle="buttons" style="margin-top:10px">			    
-				  		<label class="btn btn-default active">
-				    	<input type="radio" name="options" id="option1"> 현재위치
+		<div id="search_condition">
+			<form action="#" name="searchform" id="search_form" method="post" onsubmit="return itemSearch('Detail')">				
+			   	<input type="text" id="searchKeywordDetail" class="form-control" placeholder="Search">		    
+			   	<div id="select_deal"> 
+			    	<div class="btn-group" data-toggle="buttons" style="margin-top: 10px" > <%--onclick="itemSearch('Detail')" --%>
+				  		<label class="btn btn-default active" onclick="itemSearch('all')"  >
+				    	<input type="radio" name="options" id="searchOption1" value="all" checked > 전체검색
 				  		</label>
-			  			<label class="btn btn-default">
-				    	<input type="radio" name="options" id="option2"> 위치지정
+				  		<label class="btn btn-default" onclick="itemSearch('buy')" >
+				    	<input type="radio" name="options" id="searchOption2" value="buy" > 삽니다
 				  		</label>
-					</div>
-			    </div>
-			    <br>
-			   	<div id="select_deal">
-			    	거래 선택 
-			    	<br> 
-			    	<div class="btn-group" data-toggle="buttons" style="margin-top:10px">			    
-				  		<label class="btn btn-default">
-				    	<input type="radio" name="options" id="option1"> 삽니다
-				  		</label>
-			  			<label class="btn btn-default">
-				    	<input type="radio" name="options" id="option2"> 팝니다
+			  			<label class="btn btn-default" onclick="itemSearch('sell')" >
+				    	<input type="radio" name="options" id="searchOption3" value="sell" > 팝니다
 				  		</label>
 					</div>
 				</div>
-				<br>
-				<div id="select_loca_detail">
-					거래 지역 범위 설정
-					<br>
-					<div class="btn-group" data-toggle="buttons" style="margin-top:10px">			    
-				  		<label class="btn btn-default">
-				    	<input type="radio" name="" id="option1" value="1"> 1
-				  		</label>
-			  			<label class="btn btn-default">
-				    	<input type="radio" name="options" id="option2" value="2"> 2
-				  		</label>
-				  		<label class="btn btn-default active ">
-				    	<input type="radio" name="options" id="option1" value="3"> 3
-				  		</label>
-			  			<label class="btn btn-default">
-				    	<input type="radio" name="options" id="option2" value="4"> 4
-				  		</label>
-				  		<label class="btn btn-default">
-				    	<input type="radio" name="options" id="option1" value="5"> 5
-				  		</label>
-					</div>	
-				</div>
-				<br>
-				<div class="select_category">
-					검색 카테고리 선택 [필수 아님]
-					<br>
-					<div id="category-group" style="margin-top: 10px;">
-					<select name="category1" id="category1" class="form-control" onchange="itemChange(this.form);" ></select>
-					<select name="category2" id="category2" class="form-control"></select>	
+				<div style="margin-top: 10px">
+				<!-- 	<div class="btn-group" data-toggle="buttons">
+					  <label class="btn btn-primary">
+					    <input type="radio" name="options" id="option1" onclick="markersSortingDistance()"> 가격순 정렬
+					  </label>
+					  <label class="btn btn-primary">
+					    <input type="radio" name="options" id="option2" onclick="markersSortingPrice()"> 거리순 정렬
+					  </label>
+					</div> -->
+					
+					  <label class="radio-inline">
+					    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" onclick="markersSortingDistance()" checked>
+					    거리순
+					  </label>
+					 
+					  <label class="radio-inline">
+					    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" onclick="markersSortingPrice()" >
+					    가격순
+					  </label>
+				
+					 
 					</div>
-				</div>	
+				</Div>
 			</form>
+			<hr style="margin-bottom:10px;">
 		</div>
+		<div id="search_result" class="mousescroll">
+			<table class="table table-striped" style="width:261px;">
+				<thead>
+					<tr>
+						<th style="width:54px;">거리</th>
+						<th style="width:54px;">가격(만)</th>
+						<th style="width:173px; text-align: center; padding-bottom:18px;">제품명</th>
+					<!-- 
+						<th id="t1" style="width:54px;">거리</th>
+						<th id="t2" style="width:54px;">가격(만원)</th>
+						<th id="t3" style="width:153px; text-align: center; padding-bottom:18px;">제품명</th>
+					 -->
+					</tr>
+				</thead>
+				<!-- 뉴텔
+				<div id="searchResultInjectionSector" class="searchResultInjectionSector" title="searchResultInjectionSector">
+				 -->
+					<tbody id="searchResultInjectionSector">
+			
+						<!-- 
+						<tr>
+							<td>222</td>
+							<td>333</td>
+							<td><a>아이패드 에어 가나다라 마바사 아자 차</a></td>
+						</tr>					
+						<tr>
+							<td>5</td>
+							<td>5</td>
+							<td><a>아이패드 미니</a></td>
+						</tr>		
+						 -->	
+					
+					</tbody>
+				<!-- 
+				</div>	
+				 -->
+			</table> 
+	    </div>
 	</nav>
 	
 	<div id="menu-toggle2">
@@ -1447,7 +1888,7 @@ body {
 				  <div class="progress-bar"></div>
 				</div>
 				
-				<form action="#" name="registerform" id="register_form" method="post" >
+				<form action="/itemregister" name="registerform" id="register_form" method="post" enctype="multipart/form-data" >
 				<div class="tab-content">
 				 	
 				    <div class="tab-pane" id="tab11">
@@ -1474,7 +1915,7 @@ body {
 				    		<button id="loca_btn" class="btn btn-default" onclick="markerDrop(); return false;"><span>위치 정하기</span></button>
 				    		<button class="btn btn-default" onclick="clearMarkers(); return false;">다시 정하기</button>
 				    		<br><br>
-				    		<textarea readonly="readonly" id="reg_add" rows="4" cols="40" value="" style="border: none; resize:none;"></textarea>
+				    		<textarea readonly="readonly" id="reg_add" rows="4" cols="34" value="" style="border: none; resize:none;"></textarea>
 				    	</div>
 				    </div>
 					<div class="tab-pane" id="tab13">
@@ -1482,7 +1923,9 @@ body {
 							<h4>사진 등록하기</h4>
 							<br>
 							<!-- 다등록가능 한데 주소가 어떻게 들어올지 모르겠네 -->
-							<input  class="form-control" name="itemPicturePath1" type="file" multiple="multiple" id="exampleInputFile">						
+							<input  class="form-control" name="itemPicturePath1" type="file" multiple="multiple"  id="exampleInputFile">						
+				   		
+				   			
 				   		</div>
 				    </div>
 					<div class="tab-pane" id="tab14">
@@ -1490,7 +1933,7 @@ body {
 							<h4>카테고리 등록하기</h4>
 							<br>
 							<select name="category1" id="category1" class="form-control" onchange="itemChange(this.form);" ></select>
-							<select name="category2" id="category2" class="form-control"></select>											 
+							<select name="category2" id="category2" class="form-control" ></select>											 
 					    </div>
 					</div>    
 				    <div class="tab-pane" id="tab15">
@@ -1502,7 +1945,7 @@ body {
 					        	<span class="input-group-addon">￦</span><input type="text" name="price" class="form-control" placeholder="희망가격 입력" >
 				     	 	</div>	
 				     	 	<br>	
-				     	 	<textarea class="form-control" rows="10" cols="80" placeholder="상세내용을 입력하세요"></textarea>
+				     	 	<textarea name="itemInfo" class="form-control" rows="10" cols="80" placeholder="상세내용을 입력하세요"></textarea>
 				     	 	<br>				      				
 							<button class="btn btn-default" data-toggle="modal" href="#preview_modal" onclick="return false">
 							미리보기
@@ -1537,7 +1980,47 @@ body {
 	</div>
 		<nav id="menu3">
 			<div class="tab-pane" id="tab3">
-				<p>또또 안녕</p>
+			<!-- start of tap3   -->
+			
+				<div id="MainMenu">
+				  <div class="list-group panel">
+				    <a href="#demo3" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Item 3</a>
+				    <div class="collapse" id="demo3">
+				      <a href="#SubMenu1" class="list-group-item" data-toggle="collapse" data-parent="#SubMenu1">Subitem 1 <span class="glyphicon glyphicon-chevron-down"></span></a>
+				      <div class="collapse list-group-submenu" id="SubMenu1">
+				        <a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem 1 a</a>
+				        <a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem 2 b</a>
+				        <a href="#SubSubMenu1" class="list-group-item" data-toggle="collapse" data-parent="#SubSubMenu1">Subitem 3 c <span class="glyphicon glyphicon-chevron-down"></span></a>
+				        <div class="collapse list-group-submenu list-group-submenu-1" id="SubSubMenu1">
+				          <a href="#" class="list-group-item" data-parent="#SubSubMenu1">Sub sub item 1</a>
+				          <a href="#" class="list-group-item" data-parent="#SubSubMenu1">Sub sub item 2</a>
+				        </div>
+				        <a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem 4 d</a>
+				      </div>
+				      <a href="javascript:;" class="list-group-item">Subitem 2</a>
+				      <a href="javascript:;" class="list-group-item">Subitem 3</a>
+				    </div>
+				    <a href="#demo4" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Item 4</a>
+				    <div class="collapse" id="demo4">
+				      <a href="#" class="list-group-item">Subitem 1</a>
+				      <a href="#" class="list-group-item">Subitem 2</a>
+				      <a href="#" class="list-group-item">Subitem 3</a>
+				    </div>
+				    <a href="#demo5" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Item 5</a>
+				    <div class="collapse" id="demo5">
+				      <a href="#" class="list-group-item">Subitem 1</a>
+				      <a href="#" class="list-group-item">Subitem 2</a>
+				      <a href="#" class="list-group-item">Subitem 3</a>
+				    </div>
+				    <a href="#demo6" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Item 6</a>
+				    <div class="collapse" id="demo6">
+				      <a href="#" class="list-group-item">Subitem 1</a>
+				      <a href="#" class="list-group-item">Subitem 2</a>
+				      <a href="#" class="list-group-item">Subitem 3</a>
+				    </div>
+				  </div>
+				</div>
+				
 			</div><!-- end of tap3   -->
 		</nav>	
 	
@@ -1639,6 +2122,11 @@ body {
 
 <%-- 속도향상을 위해 맨 아래로 내림. --%>
 <script>
+//console.log("after__pos"+pos);
+//console.log("after__pos.position.A"+pos.position.A);
+//console.log("after__pos.position.k"+pos.position.k);
+<%-- 폐기된 코드. 삭제예정 --%>
+<%--
 <c:forEach var="itemList" items="${itemList}">
 	<c:set var="i" value="${ i+1 }" />	
 		modalInjectionImageArray1[${itemList.itemNo}]=
@@ -1649,60 +2137,81 @@ body {
 		modalInjectionInfoArray[${itemList.itemNo}]=
 			"${itemList.itemInfo}";
 </c:forEach>
+ --%>
 
+ 
  function modalInjection(marker){
 	  
-	  console.log("marker.itemNo__"+marker.itemNo);
+	 console.log("marker.itemNo__"+marker.itemNo);
   	  
 	  new function makeHtml(){
 			console.log("it`s worked");
 			document.getElementById("htmlInjectionSector").innerHTML = 
-			"<div id=\"item"+marker.itemNo+"\" class=\"item"+marker.itemNo+"\" title=\""+marker.title+"\">"+
-				"<div id=\"bodyContent\">"+
-				
-					<%-- 이미지 들어가는 공간 --%>
-					"<div id=\"itemImage\", align=\"left\">"+
-						"<img style=\"width: 600px; height:auto;\", src = \"resources/itempictures/"+modalInjectionImageArray1[marker.itemNo]+"\"></img>"+
-					"</div>"+
-					
-					<%-- ItemInfo 들어가는 공간 --%>
-					"<div id=\"itemInfo\">"+
-						modalInjectionInfoArray[marker.itemNo]+
-					"</div>"+
-					
-					
+			"<div id=\"item"+marker.itemNo+"\" class=\"item"+marker.itemNo+" modal fade\" title=\""+marker.title+"\"  tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">"+
+				"<div id=\"injection-modal\"class=\"modal-dialog\">"+
+					"<div class=\"modal-Content\">"+
+						"<div class=\"modal-header\">"+
+						"<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">×</button>"+
+				        "<h4 class=\"modal-title\">"+marker.title+"<font color=\"red\"> [ "+marker.price+" 원 ]</font></h4>"+
+				       
+						"</div>"+
+						"<div class=\"modal-body\">"+
+						
+					    "<div id=\"imgslider_container\">"+
+						  "<div class=\"row-fluid\">"+
+						    "<div class=\"span12\" id=\"slider\">"+
+						      "<div class=\"row-fluid\">"+
+						        "<div class=\"span8\" id=\"carousel-bounding-box\">"+
+						          "<div id=\"myCarousel\" class=\"carousel slide\">"+
+						            
+						            /* main slider carousel items */
+						            "<div class=\"carousel-inner\">"+
+						              "<div class=\"active item\" data-slide-number=\"0\">"+
+						                "<img  src = \"resources/itempictures/"+marker.itemPicturePath1+"\" style=\"width: 640px; height:480;\">"+
+						              "</div>"+
+						              "<div class=\"item\" data-slide-number=\"1\">"+
+						                "<img src=\"http://placehold.it/640x480&amp;text=two\">"+
+						              "</div>"+
+						              "<div class=\"item\" data-slide-number=\"2\">"+
+						                "<img src=\"http://placehold.it/640x480&amp;text=three\">"+
+						              "</div>"+						            
+						             	
+						              
+						            "</div>"+
+						            
+						            /* main slider carousel nav controls */
+						            "<a class=\"carousel-control left\" href=\"#myCarousel\" data-slide=\"prev\">‹</a>"+
+						            "<a class=\"carousel-control right\" href=\"#myCarousel\" data-slide=\"next\">›</a>"+
+						         "</div>"+
+						       "</div>"+
+						        
+						       
+						     "</div>"+
+						      
+						   "</div>"+
+						 "</div>"+ /* main slider carousel */
+					"</div>"+/* end of image slider */
+							
+							
+							<%-- ItemInfo 들어가는 공간 --%>
+							"<br><div id=\"itemInfo\">"+
+								marker.itemInfo+
+							"</div>"+
+							
+						"</div>"+
+						"<div class=\"modal-footer\">"+
+						"</div>"+
+						"<div class=\"modal-footer\">"+
+						"<button type=\"button\" class=\"btn btn-danger\" >찜</button>"+
+						"<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>"+
+						"</div>"+
+					"</div>"+	
 				"</div>"+
-			"</div>";
+			"</div>"+
+			"<a data-toggle=\"modal\" href=\"#item"+marker.itemNo+"\" id=\"modallink\"></a>";
 		};
-		
-		<%-- modal Injection --%>
-		$(function() {
-		    $( "#item"+marker.itemNo ).dialog({
-		      maxHeight:700,
-		      maxWidth: 1000,
-		      minHeight: 700,
-		      minWidth: 1000,
-			  autoOpen: true,
-			  draggable : false,
-			  modal : true ,
-			  resizable : true,
-			  closeText : "닫기버튼입니다.",
-			  buttons : {
-				  "문의하기": function() {  window.location = 'http://www.stackoverflow.com'; },
-				   "닫기": function() { $(this).dialog("close"); },
-			  }, 
-		      position : { my: "center", at: "center", of: window },
-		      show: {
-		        effect: "blind",
-		        duration: 400
-		      },
-		      hide: {
-		        effect: "explode",
-		        duration: 300
-		      }
-		}).prev(".ui-dialog-titlebar").css("background","#87cefa");				
-	});	
-	 
+
+		document.getElementById("modallink").click();
   }
 
  </script>
