@@ -242,16 +242,17 @@ body {
 	overflow:visible; 
 	}
 
-
+/* CSS outer glow with the box-shadow property */
+/*
  #menu-toggle1 a:hover{
 	text-decoration:none;
 	
-	/* CSS outer glow with the box-shadow property */
+	
 	-moz-box-shadow:0 0 5px #9ddff5;
 	-webkit-box-shadow:0 0 5px #9ddff5;
 	box-shadow:0 0 5px #9ddff5;
 }
-
+*/
 
 
 /* 새로운 시도 끝 */
@@ -354,16 +355,17 @@ body {
 	
 	}
 	
- 
+/* CSS outer glow with the box-shadow property */
+/*
 #menu-toggle2 a:hover{
 	text-decoration:none;
 	
-	/* CSS outer glow with the box-shadow property */
+	
 	-moz-box-shadow:0 0 5px #9ddff5;
 	-webkit-box-shadow:0 0 5px #9ddff5;
 	box-shadow:0 0 5px #9ddff5;
 }
-
+*/
 
 
 /* 새로운 시도 끝 */
@@ -462,16 +464,17 @@ body {
 	padding:0 20px;
 	overflow:visible; }
 
-
+/* CSS outer glow with the box-shadow property */
+/*
 #menu-toggle3 a:hover{
 	text-decoration:none;
 	
-	/* CSS outer glow with the box-shadow property */
+	
 	-moz-box-shadow:0 0 5px #9ddff5;
 	-webkit-box-shadow:0 0 5px #9ddff5;
 	box-shadow:0 0 5px #9ddff5;
 }
-
+*/
 
 
 /* 새로운 시도 끝 */
@@ -537,6 +540,82 @@ div.mousescroll:hover {
 }
 
 
+
+/* 새로운 시도 시작 */
+#t3 span{
+	
+	/* Container properties */
+	
+	width:0;
+	left:absolute;
+	top:absolute;
+	/*
+	옆에서 얼마나 떨어졌나 지정
+	left:70px;
+	*/
+	padding:0;
+	position:absolute;
+	overflow:hidden;
+
+	/* Text properties */
+	font-familiy: 'Nanum Gothic';
+	font-size:12px;
+	font-weight:bold;
+	letter-spacing:0.6px;
+	white-space:nowrap;
+	line-height:20px;
+	/* 하이라이터 높이 지정 line-height:39px;*/
+	/* CSS3 Transition: */
+	-webkit-transition: 0.25s;
+	
+	/* Future proofing (these do not work yet): */
+	-moz-transition: 0.25s;
+	transition: 0.25s;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px; 
+}
+/* span 보여주게 하는 코드 */
+#t3 a:hover span{ 
+	background-color:rgb(255, 228, 0);
+	color:rgb(3, 0, 102);
+	/* text-shadow:1px 1px 0 #99bf31;
+	 */
+	width:auto;
+	padding:0 20px;
+	/*padding:0 20px;*/
+	overflow:visible; 
+	}
+
+
+#t3 a:hover{
+	background: rgb(255, 228, 0);
+	cursor: pointer;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px; 
+
+	text-decoration:none;
+	
+	-moz-box-shadow:0 0 5px #9ddff5;
+	-webkit-box-shadow:0 0 5px #9ddff5;
+	box-shadow:0 0 5px #9ddff5;
+	
+	/* CSS outer glow with the box-shadow property */
+	
+}
+
+
+
+/* 새로운 시도 끝 
+
+*/
+/*
+#menu-toggle1:hover {
+	background: rgb(255, 228, 0);
+	cursor: pointer;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px; 
+}
+	*/		
 
 
 </style>
@@ -901,12 +980,8 @@ div.mousescroll:hover {
 		var zoomLevel;
 		var center;
 		var markersSearchResult=[];
-		var searchOption;
-		/*
-		document.getElementById("options").addEventListener("click", function () {
-			  form.submit();
-			});
-		*/
+		var searchOption;	
+		
 		function itemSearch(from){
 			zoomLevel=map.getZoom();
 			center=map.getCenter();
@@ -936,18 +1011,33 @@ div.mousescroll:hover {
 					}
 				}
 			}else{
+		
+				console.log("from__debug___"+from);
+				switch(from){
+					case 'all': 
+						searchOption="all";
+						break;
+					case 'buy':
+						searchOption="buy";
+						break;
+					case 'sell':
+						searchOption="sell";
+						break;
+					default:
+						if(document.getElementById('searchOption1').checked){
+							searchOption = document.getElementById("searchOption1").value;
+							console.log("('searchOption1').checked");
+						}
+						if(document.getElementById('searchOption2').checked){
+							searchOption = document.getElementById("searchOption2").value;
+							console.log("('searchOption2').checked");
+						}
+						if(document.getElementById('searchOption3').checked){
+							searchOption = document.getElementById("searchOption3").value;
+							console.log("('searchOption3').checked");
+						}
+				}
 				
-				//searchOption = document.getElementById("options").value; //cc
-				
-				if(document.getElementById('searchOption1').checked){
-					searchOption = document.getElementById("searchOption1").value;
-				}
-				if(document.getElementById('searchOption2').checked){
-					searchOption = document.getElementById("searchOption2").value;
-				}
-				if(document.getElementById('searchOption3').checked){
-					searchOption = document.getElementById("searchOption3").value;
-				}
 				/**/
 				
 				console.log(searchOption);
@@ -955,14 +1045,9 @@ div.mousescroll:hover {
 				if(searchOption=="all"){
 					for(var i=0;i<markers.length;i++){
 						//console.log(markers[i].title.toUpperCase().match(searchKeyword));
-			
 						if(markers[i].title.toUpperCase().match(searchKeyword)!=null){
 							markerClusterer.addMarker(markers[i]);
 							markersSearchResult.push(markers[i]);
-							//markers[i].setVisible(true);
-						}else{
-							//markers[i].setVisible(false);
-							//markerClusterer.removeMarker(markers[i]);
 						}
 					}
 				}
@@ -987,37 +1072,18 @@ div.mousescroll:hover {
 					}
 				}
 				
+				//순순
+				if(document.getElementById('optionsRadios1').checked){
+					markersSortingDistance();
+				}
+				if(document.getElementById('optionsRadios2').checked){
+					markersSortingPrice();
+				}
+								
 				
 			}
-			//markerClusterer.clearMarkers();
-			//markerClusterer.setIgnoreHidden(true);
-			//Cluster.
-			//markerClusterer.setMap(null);
-			//markerClusterer.setMap( this.map );
 			markerClusterer.repaint();
-			//markerClusterer.resetViewport();
 			return false;
-			//map.setZoom(zoomLevel-1);
-			//map.setZoom(zoomLevel);
-			//markerClusterer.repaint();
-
-
-			//cluster.repaint();
-			/*
-			markerClusterer = new MarkerClusterer(map, markers, {
-		          maxZoom: 14,
-		          gridSize: size,
-		          ignoreHidden:true
-		          //styles: styles[style]
-		        });
-			*/
-			/*
-			markerCluster.setMap(null);
-			*/
-			
-		
-			
-			
 		}<%-- itemSearch End --%>
 		
 		<%-- markersInit() --%>
@@ -1053,6 +1119,7 @@ div.mousescroll:hover {
 										,
 								stateCode : '${itemList.stateCode}',
 								title : '${itemList.itemName}',
+								userNo : '${itemList.userNo}',
 								itemNo : '${itemList.itemNo}',
 								itemInfo : '${itemList.itemInfo}',
 								itemPicturePath1 : '${itemList.itemPicturePath1}',
@@ -1136,14 +1203,17 @@ div.mousescroll:hover {
 		<%-- handleNoGeolocation Start --%>
 		function handleNoGeolocation(errorFlag) {
 			if (errorFlag) {
-				var content = 'Error: The Geolocation service failed.';
+				//var content = 'Error: The Geolocation service failed.';
+				var content = 'Error: 상단에 팝업된 위치액세스를 허용해 주십시오.';
 			} else {
-				var content = 'Error: Your browser doesn\'t support geolocation.';
+				//var content = 'Error: Your browser doesn\'t support geolocation.';
+				var content = 'Error: 당신의 브라우저가 위치액세스를 지원하지않습니다.\n Chrome 브라우저를 권장합니다.';
 			}
 
 			var options = {
 				map : map,
-				position : new google.maps.LatLng(60, 105),
+				zoom : 7,
+				position : new google.maps.LatLng(35.710787, 127.969980),
 				content : content
 			};
 
@@ -1200,11 +1270,7 @@ div.mousescroll:hover {
 				return a.distance_m-b.distance_m
 				});
 			
-			//sorting check용 for문, 사용시 주석처리해야함.
-			for(var i=0;i<markers.length;i++){
-				console.log("markersSearchResult"+i+"distance_m"+markersSearchResult[i].distance_m);
-			}
-
+			searchResultInjection();
 		}<%-- markersSorting Distance End --%>
 		
 
@@ -1234,28 +1300,78 @@ div.mousescroll:hover {
 			console.log("markersSorting Price In");
 			markersSearchResult.sort(function(a, b){
 				console.log("markersSearchResult.sort.Price call");
+				var a_A	=	Math.abs(Math.round(myPosition.A-a.position.A*1000000)/1000000);
+				var a_k	=	Math.abs(Math.round(myPosition.k-a.position.k*1000000)/1000000);
+				//var a_distance=Math.pow(a_A, a_A) + Math.pow(a_k, a_k);
+				//a.distance=Math.sqrt(a_distance);
+				a.distance_m=
+					Math.round(getDistanceFromLatLonInKm(myPosition.k, myPosition.A,
+							 					a.position.k, a.position.A)*10000)/10000;
+				
 				return a.price-b.price
 				});
 			//sorting check용 for문, 사용시 주석처리해야함.
-			for(var i=0;i<markers.length;i++){
+			/*
+			for(var i=0;i<markersSearchResult.length;i++){
 				console.log("markersSearchResult__"+i+"price__"+markersSearchResult[i].price);
 			}
+			*/
+			searchResultInjection();
 		}<%--  markersSorting Price End --%>
+
 		
+		var searchResultInjectionHtml;
+		function searchResultInjection(){
+			//sorting check용 for문, 사용시 주석처리해야함.
+			searchResultInjectionHtml=null;
+			
+			if(markersSearchResult.length>1){
+				if(markersSearchResult[0].distance_m < 1.0){
+					markersSearchResult[0].distance_m=Math.round(markersSearchResult[0].distance_m*100)/100+"(m)";
+				}else{
+					markersSearchResult[0].distance_m=Math.round(markersSearchResult[0].distance_m *10)/10+"(km)";
+				}
+				searchResultInjectionHtml=
+					"<tr>"+
+						"<td id=\"t1\" >" + markersSearchResult[0].distance_m + "</td>" +
+						"<td id=\"t2\" >" + markersSearchResult[0].price/10000.0 + "</td>" +
+						"<td id=\"t3\" ><a onclick=\"modalInjection(markersSearchResult["+0+"])\"> " +
+						//"<td><a onclick=\"alert('test')\"> " + 
+								markersSearchResult[0].title+ "<span>클릭하시면 상세정보를 볼수 있습니다.</span></a></td>" +
+					"</tr>";
+			}
+			//searchResultInjectionHtml="<tbody>";
+			for(var i=1;i<markersSearchResult.length;i++){
+				
+				
+				if(markersSearchResult[i].distance_m < 1.0){
+					markersSearchResult[i].distance_m=Math.round(markersSearchResult[i].distance_m*100)/100+"(m)";
+				}else{
+					markersSearchResult[i].distance_m=Math.round(markersSearchResult[i].distance_m *10)/10+"(km)";
+				}	
+				//console.log("markersSearchResult"+i+"distance_m"+markersSearchResult[i].distance_m);
+				//뉴텔
+				searchResultInjectionHtml+=
+					"<tr>"+
+						"<td id=\"t1\" >" + markersSearchResult[i].distance_m + "</td>" +
+						"<td id=\"t2\" >" + markersSearchResult[i].price/10000.0 + "</td>" +
+						"<td id=\"t3\" ><a onclick=\"modalInjection(markersSearchResult["+i+"])\"> " +
+						//"<td><a onclick=\"alert('test')\"> " + 
+								markersSearchResult[i].title+ "<span>클릭하시면 상세정보를 볼수 있습니다.</span></a></td>" +
+					"</tr>";
+			}
+			//searchResultInjectionHtml+="</tbody>";
+			document.getElementById("searchResultInjectionSector").innerHTML =searchResultInjectionHtml;
+			
+			/*
+			<tr>
+				<td>222</td>
+				<td>333</td>
+				<td><a>아이패드 에어 가나다라 마바사 아자 차</a></td>
+			</tr>
+			*/	
 		
-		
-		
-		//console.log("after__pos"+pos);
-		//console.log("after__pos.position.A"+pos.position.A);
-		//console.log("after__pos.position.k"+pos.position.k);
-		
-		// markersSortingDistance();
-		/*
-		 for(var i=0;i<markers.length;i++){
-			 console.log("markers__"+i+"__"+markers[i].distance_m);
-		 };
-		*/
-		
+		}
 		google.maps.event.addDomListener(window, 'load', initialize);
 	</script>
 	<!--
@@ -1670,13 +1786,13 @@ div.mousescroll:hover {
 			   	<input type="text" id="searchKeywordDetail" class="form-control" placeholder="Search">		    
 			   	<div id="select_deal"> 
 			    	<div class="btn-group" data-toggle="buttons" style="margin-top: 10px" > <%--onclick="itemSearch('Detail')" --%>
-				  		<label class="btn btn-default active">
+				  		<label class="btn btn-default active" onclick="itemSearch('all')"  >
 				    	<input type="radio" name="options" id="searchOption1" value="all" checked > 전체검색
 				  		</label>
-				  		<label class="btn btn-default">
+				  		<label class="btn btn-default" onclick="itemSearch('buy')" >
 				    	<input type="radio" name="options" id="searchOption2" value="buy" > 삽니다
 				  		</label>
-			  			<label class="btn btn-default">
+			  			<label class="btn btn-default" onclick="itemSearch('sell')" >
 				    	<input type="radio" name="options" id="searchOption3" value="sell" > 팝니다
 				  		</label>
 					</div>
@@ -1691,16 +1807,17 @@ div.mousescroll:hover {
 					  </label>
 					</div> -->
 					
+					  <label class="radio-inline">
+					    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" onclick="markersSortingDistance()" checked>
+					    거리순
+					  </label>
 					 
 					  <label class="radio-inline">
-					    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" onclick="markersSortingPrice()" checked>
+					    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" onclick="markersSortingPrice()" >
 					    가격순
 					  </label>
 				
-					  <label class="radio-inline">
-					    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" onclick="markersSortingDistance()">
-					    거리순
-					  </label>
+					 
 					</div>
 				</Div>
 			</form>
@@ -1710,135 +1827,38 @@ div.mousescroll:hover {
 			<table class="table table-striped" style="width:261px;">
 				<thead>
 					<tr>
-						<th id="t1" style="width:54px;">거리(km)</th>
+						<th style="width:54px;">거리</th>
+						<th style="width:54px;">가격(만)</th>
+						<th style="width:173px; text-align: center; padding-bottom:18px;">제품명</th>
+					<!-- 
+						<th id="t1" style="width:54px;">거리</th>
 						<th id="t2" style="width:54px;">가격(만원)</th>
 						<th id="t3" style="width:153px; text-align: center; padding-bottom:18px;">제품명</th>
+					 -->
 					</tr>
 				</thead>
-				<tbody>
-					<tr>
-						<td>222</td>
-						<td>333</td>
-						<td><a>아이패드 에어 가나다라 마바사 아자 차</a></td>
-					</tr>					
-					<tr>
-						<td>5</td>
-						<td>5</td>
-						<td><a>아이패드 미니</a></td>
-					</tr>		
-					<tr>
-						<td>2</td>
-						<td>5</td>
-						<td><a>아이패드 에어</a></td>
-					</tr>					
-					<tr>
-						<td>5</td>
-						<td>5</td>
-						<td><a>아이패드 미니</a></td>
-					</tr>					
+				<!-- 뉴텔
+				<div id="searchResultInjectionSector" class="searchResultInjectionSector" title="searchResultInjectionSector">
+				 -->
+					<tbody id="searchResultInjectionSector">
+			
+						<!-- 
+						<tr>
+							<td>222</td>
+							<td>333</td>
+							<td><a>아이패드 에어 가나다라 마바사 아자 차</a></td>
+						</tr>					
+						<tr>
+							<td>5</td>
+							<td>5</td>
+							<td><a>아이패드 미니</a></td>
+						</tr>		
+						 -->	
 					
-					<tr>
-						<td>2</td>
-						<td>5</td>
-						<td><a>아이패드 에어</a></td>
-					</tr>					
-					<tr>
-						<td>5</td>
-						<td>5</td>
-						<td><a>아이패드 미니</a></td>
-					</tr>					
-					
-					<tr>
-						<td>2</td>
-						<td>5</td>
-						<td><a>아이패드 에어</a></td>
-					</tr>					
-					<tr>
-						<td>5</td>
-						<td>5</td>
-						<td><a>아이패드 미니</a></td>
-					</tr>					
-					
-					<tr>
-						<td>2</td>
-						<td>5</td>
-						<td><a>아이패드 에어</a></td>
-					</tr>					
-					<tr>
-						<td>5</td>
-						<td>5</td>
-						<td><a>아이패드 미니</a></td>
-					</tr>					
-					
-					<tr>
-						<td>2</td>
-						<td>5</td>
-						<td><a>아이패드 에어</a></td>
-					</tr>					
-					<tr>
-						<td>5</td>
-						<td>5</td>
-						<td><a>아이패드 미니</a></td>
-					</tr>					
-					
-					<tr>
-						<td>2</td>
-						<td>5</td>
-						<td><a>아이패드 에어</a></td>
-					</tr>					
-					<tr>
-						<td>5</td>
-						<td>5</td>
-						<td><a>아이패드 미니</a></td>
-					</tr>					
-					
-					<tr>
-						<td>2</td>
-						<td>5</td>
-						<td><a>아이패드 에어</a></td>
-					</tr>					
-					<tr>
-						<td>5</td>
-						<td>5</td>
-						<td><a>아이패드 미니</a></td>
-					</tr>					
-					
-					<tr>
-						<td>2</td>
-						<td>5</td>
-						<td><a>아이패드 에어</a></td>
-					</tr>					
-					<tr>
-						<td>5</td>
-						<td>5</td>
-						<td><a>아이패드 미니</a></td>
-					</tr>					
-					
-					<tr>
-						<td>2</td>
-						<td>5</td>
-						<td><a>아이패드 에어</a></td>
-					</tr>					
-					<tr>
-						<td>5</td>
-						<td>5</td>
-						<td><a>아이패드 미니</a></td>
-					</tr>					
-					
-					<tr>
-						<td>2</td>
-						<td>5</td>
-						<td><a>아이패드 에어</a></td>
-					</tr>					
-					<tr>
-						<td>5</td>
-						<td>5</td>
-						<td><a>아이패드 미니</a></td>
-					</tr>					
-					
-								
-					
-				</tbody>	
+					</tbody>
+				<!-- 
+				</div>	
+				 -->
 			</table> 
 	    </div>
 	</nav>
@@ -2136,9 +2156,13 @@ div.mousescroll:hover {
   	  var userNo='${user.userNo}';
   	  console.log("hi__"+userNo);
   	  console.log("hi2__"+marker.userNo);
+  	  var htmlInjection;
 	  new function makeHtml(){
 			console.log("it`s worked");
-			document.getElementById("htmlInjectionSector").innerHTML = 
+			console.log("userNo__"+marker.userNo);
+			var userNo='${user.userNo}';
+			//console.log("session_userNo__"+${user.userNo});
+			htmlInjection=
 			"<div id=\"item"+marker.itemNo+"\" class=\"item"+marker.itemNo+" modal fade\" title=\""+marker.title+"\"  tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">"+
 				"<div id=\"injection-modal\"class=\"modal-dialog\">"+
 					"<div class=\"modal-Content\">"+
@@ -2193,11 +2217,13 @@ div.mousescroll:hover {
 						"</div>"+
 						"<div class=\"modal-footer\">"+
 						"</div>"+
-						"<div class=\"modal-footer\">"+
-							
+						"<div class=\"modal-footer\">";
+			<c:if test="${user.userNo}==marker.userNo">
+				htmlInjection+=				
 							"<button type=\"button\" class=\"btn btn-primary\" >수정</button>"+
-							"<button type=\"button\" class=\"btn btn-primary\" >삭제</button>"+
-						
+							"<button type=\"button\" class=\"btn btn-primary\" >삭제</button>";
+			</c:if>
+						htmlInjection+=
 						"<button type=\"button\" class=\"btn btn-danger\" >찜</button>"+
 						"<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>"+
 						"</div>"+
@@ -2205,8 +2231,8 @@ div.mousescroll:hover {
 				"</div>"+
 			"</div>"+
 			"<a data-toggle=\"modal\" href=\"#item"+marker.itemNo+"\" id=\"modallink\"></a>";
-		};};
-
+		};
+		document.getElementById("htmlInjectionSector").innerHTML = htmlInjection;
 		document.getElementById("modallink").click();
   }
 		
