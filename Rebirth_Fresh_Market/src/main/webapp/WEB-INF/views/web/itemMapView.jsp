@@ -2212,7 +2212,7 @@ div.mousescroll:hover {
 							
 						"</div>"+
 						"<div class=\"modal-footer\">"+
-						"</div>"+
+						"</div>"+ 
 						"<div class=\"modal-footer\">";
 						
 						if(userNo==marker.userNo){
