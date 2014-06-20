@@ -71,10 +71,10 @@
 		</div>
 		<script type="text/javascript">
 			//이메일칸에 입력전에 submit 버튼 활성화/비활성화
-			/* document.signinform.commit.disabled = true; */
-			document.onkeyup = process;
-			document.onmouseup = process;
-			document.onmousedown = process;
+		 	document.signinform.commit.disabled = true;  
+			document.signinform.onkeyup = process;
+			document.signinform.onmouseup = process;
+			document.signinform.onmousedown = process;
 			
 			function process() {
 				if (document.signinform.email.value == '' 
