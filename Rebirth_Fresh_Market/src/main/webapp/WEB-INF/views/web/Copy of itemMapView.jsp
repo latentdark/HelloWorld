@@ -858,9 +858,6 @@ div.mousescroll:hover {
 					<%-- 임시 --%>
 					myPosition.A=Math.round(pos.A*1000000)/1000000;
 					myPosition.k=Math.round(pos.k*1000000)/1000000;
-					console.log("initialize()__pos___"+pos);
-					console.log("initialize()__pos.A___"+Math.round(pos.A*1000000)/1000000);
-					console.log("initialize()__pos.k___"+Math.round(pos.k*1000000)/1000000);
 					
 					
 					new google.maps.Marker({
@@ -877,7 +874,7 @@ div.mousescroll:hover {
 						firstMapLoad="false";
 					}else{
 						map.setZoom(zoomLevel);
-						console.log(zoomLevel);
+						/* console.log(zoomLevel); */
 					}
 				}, function() {
 					handleNoGeolocation(true);
@@ -920,7 +917,6 @@ div.mousescroll:hover {
 			  map.panTo(position);
 			  var lat=marker.getPosition().lat();
 			  var lng=marker.getPosition().lng();
-				console.log(lat,lng);
 				document.getElementById("reg_lat").value=lat;
 				document.getElementById("reg_lng").value=lng;
 				document.getElementById("latlng").value=lat+","+lng;
@@ -996,7 +992,7 @@ div.mousescroll:hover {
 				searchKeyword=document.getElementById("searchKeywordDetail").value;
 			}
 			
-			console.log(searchKeyword);
+			/* console.log(searchKeyword); */
 			
 			if(searchKeyword!=null){
 				searchKeyword=searchKeyword.trim().toUpperCase();
@@ -1012,7 +1008,7 @@ div.mousescroll:hover {
 				}
 			}else{
 		
-				console.log("from__debug___"+from);
+				/* console.log("from__debug___"+from); */
 				switch(from){
 					case 'all': 
 						searchOption="all";
@@ -1026,21 +1022,21 @@ div.mousescroll:hover {
 					default:
 						if(document.getElementById('searchOption1').checked){
 							searchOption = document.getElementById("searchOption1").value;
-							console.log("('searchOption1').checked");
+							/* console.log("('searchOption1').checked"); */
 						}
 						if(document.getElementById('searchOption2').checked){
 							searchOption = document.getElementById("searchOption2").value;
-							console.log("('searchOption2').checked");
+							/* console.log("('searchOption2').checked"); */
 						}
 						if(document.getElementById('searchOption3').checked){
 							searchOption = document.getElementById("searchOption3").value;
-							console.log("('searchOption3').checked");
+							/* console.log("('searchOption3').checked"); */
 						}
 				}
 				
 				/**/
 				
-				console.log(searchOption);
+				/* console.log(searchOption); */
 				
 				if(searchOption=="all"){
 					for(var i=0;i<markers.length;i++){
@@ -1123,6 +1119,8 @@ div.mousescroll:hover {
 								itemNo : '${itemList.itemNo}',
 								itemInfo : '${itemList.itemInfo}',
 								itemPicturePath1 : '${itemList.itemPicturePath1}',
+								itemPicturePath2 : '${itemList.itemPicturePath2}',
+								itemPicturePath3 : '${itemList.itemPicturePath3}',
 								//content : '${itemList.itemNo}',
 								distance:null,
 								distance_m:null,								
@@ -1164,12 +1162,12 @@ div.mousescroll:hover {
 			*/
 			
 			
-			console.log("markers.length__"+markers.length);
+			/* console.log("markers.length__"+markers.length);
 			console.log("markers[0]__"+markers[0]);
 			console.log("markers[0]__"+markers[0].price);
 			console.log("markers[0].position__"+markers[0].position);
 			console.log("markers[0].position__"+markers[0].position.A);
-			console.log("markers[0].position__"+markers[0].position.k);
+			console.log("markers[0].position__"+markers[0].position.k); */
 		}<%-- markersInit() end --%>
 								
 		
@@ -1238,10 +1236,10 @@ div.mousescroll:hover {
 			//console.log("pos.A___"+Math.round(pos.A*1000000)/1000000);
 			//console.log("pos.k___"+Math.round(pos.k*1000000)/1000000);
 		
-			console.log("markersSortingDistance In__");
+			/* console.log("markersSortingDistance In__"); */
 			markersSearchResult.sort(function(a, b){
-				console.log("markersSearchResult.sort.Distance call");
-				//geolocation으로 잡은 A,k를 이용해 가져온 a의 절대값과 삼각함수를 이용해 거리측정
+				/* console.log("markersSearchResult.sort.Distance call");
+			 */	//geolocation으로 잡은 A,k를 이용해 가져온 a의 절대값과 삼각함수를 이용해 거리측정
 				
 				//var a_A	=	Math.abs(myPosition.A-a.position.A);
 				//var a_k	=	Math.abs(myPosition.k-a.position.k);
@@ -1296,9 +1294,9 @@ div.mousescroll:hover {
 		
 		<%-- markersSorting Price Start--%>
 		function markersSortingPrice(){
-			console.log("markersSorting Price In");
+			/* console.log("markersSorting Price In"); */
 			markersSearchResult.sort(function(a, b){
-				console.log("markersSearchResult.sort.Price call");
+				/* console.log("markersSearchResult.sort.Price call"); */
 				var a_A	=	Math.abs(Math.round(myPosition.A-a.position.A*1000000)/1000000);
 				var a_k	=	Math.abs(Math.round(myPosition.k-a.position.k*1000000)/1000000);
 				//var a_distance=Math.pow(a_A, a_A) + Math.pow(a_k, a_k);
@@ -2037,26 +2035,6 @@ div.mousescroll:hover {
 		
 	</div>
 	
-<!-- 	<script type="text/javascript">
-	//이메일칸에 입력전에 submit 버튼 활성화/비활성화
-	document.signinform.commit.disabled = true;
-	document.onkeyup = process;
-	document.onmouseup = process;
-	document.onmousedown = process;
-	
-	//알고리즘 개선하였음.
-	function process() {
-		if (document.signinform.email.value == '' 
-			||document.signinform.password.value == '') {   
-			document.signinform.commit.disabled = true;
-		} 
-		else if(document.signinform.password.value != ''
-				&&document.signinform.password.value.length >=8 ){	
-			document.signinform.commit.disabled = false; 
-		}
-	}
-	</script> -->
-
 <footer>
 <!-- preview modal -->
 	<div class="modal fade" id="preview_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -2111,8 +2089,22 @@ div.mousescroll:hover {
 			
 	      </div>
 	      <div class="modal-footer">
+	      	<input type="submit" class="btn btn-primary" value="등록하기" >		
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	       	<input type="submit" class="btn btn-primary" value="등록하기" >
+	       	
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	<!--삭제 팝업창  -->
+	<div class="modal fade" id="deletepopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index: 1060;">
+	  <div class="modal-dialog" style="width: 400px;text-align: center;margin-top: 200px;margin-bottom: 200px;">
+	    <div class="modal-content">
+	   
+	      <div class="modal-body">
+	        <p>삭제 하시겠습니까?</p>
+	        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+	        <button type="button" class="btn btn-danger">삭제</button>
 	      </div>
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
@@ -2131,33 +2123,13 @@ div.mousescroll:hover {
 
 <%-- 속도향상을 위해 맨 아래로 내림. --%>
 <script>
-//console.log("after__pos"+pos);
-//console.log("after__pos.position.A"+pos.position.A);
-//console.log("after__pos.position.k"+pos.position.k);
-<%-- 폐기된 코드. 삭제예정 --%>
-<%--
-<c:forEach var="itemList" items="${itemList}">
-	<c:set var="i" value="${ i+1 }" />	
-		modalInjectionImageArray1[${itemList.itemNo}]=
-			<c:if test="${itemList.itemPicturePath1!=null}">
-				"${itemList.itemPicturePath1}"
-			</c:if>
-			;
-		modalInjectionInfoArray[${itemList.itemNo}]=
-			"${itemList.itemInfo}";
-</c:forEach>
- --%>
 
- 
  function modalInjection(marker){
 	  
-	 console.log("marker.itemNo__"+marker.itemNo);
+	  console.log(marker.itemNo);
   	  var userNo='${user.userNo}';
-  	  console.log("hi__"+userNo);
-  	  console.log("hi2__"+marker.userNo);
   	  var htmlinjec;
 	  new function makeHtml(){
-			console.log("it`s worked");
 			htmlinjec=
 			"<div id=\"item"+marker.itemNo+"\" class=\"item"+marker.itemNo+" modal fade\" title=\""+marker.title+"\"  tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">"+
 				"<div id=\"injection-modal\"class=\"modal-dialog\">"+
@@ -2175,17 +2147,16 @@ div.mousescroll:hover {
 						      "<div class=\"row-fluid\">"+
 						        "<div class=\"span8\" id=\"carousel-bounding-box\">"+
 						          "<div id=\"myCarousel\" class=\"carousel slide\">"+
-						            
 						            /* main slider carousel items */
 						            "<div class=\"carousel-inner\">"+
 						              "<div class=\"active item\" data-slide-number=\"0\">"+
 						                "<img  src = \"resources/itempictures/"+marker.itemPicturePath1+"\" style=\"width: 640px; height:480;\">"+
 						              "</div>"+
 						              "<div class=\"item\" data-slide-number=\"1\">"+
-						                "<img src=\"http://placehold.it/640x480&amp;text=two\">"+
-						              "</div>"+
+						              	"<img  src = \"resources/itempictures/"+marker.itemPicturePath2+"\" style=\"width: 640px; height:480;\">"+
+					                  "</div>"+
 						              "<div class=\"item\" data-slide-number=\"2\">"+
-						                "<img src=\"http://placehold.it/640x480&amp;text=three\">"+
+						                "<img  src = \"resources/itempictures/"+marker.itemPicturePath3+"\" style=\"width: 640px; height:480;\">"+
 						              "</div>"+						            
 						             	
 						              
@@ -2218,8 +2189,8 @@ div.mousescroll:hover {
 						if(userNo==marker.userNo){
 							htmlinjec+=
 							"<button type=\"button\" class=\"btn btn-primary\" >수정</button>"+
-							"<button type=\"button\" class=\"btn btn-primary\" >삭제</button>";
-						}
+							"<button class=\"btn btn-primary\" data-toggle=\"modal\" href=\"#deletepopup\" onclick=\"return false\">삭제</button>";						
+							}
 						
 						htmlinjec+=
 						"<button type=\"button\" class=\"btn btn-danger\" >찜</button>"+

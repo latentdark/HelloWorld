@@ -1119,6 +1119,8 @@ div.mousescroll:hover {
 								itemNo : '${itemList.itemNo}',
 								itemInfo : '${itemList.itemInfo}',
 								itemPicturePath1 : '${itemList.itemPicturePath1}',
+								itemPicturePath2 : '${itemList.itemPicturePath2}',
+								itemPicturePath3 : '${itemList.itemPicturePath3}',
 								//content : '${itemList.itemNo}',
 								distance:null,
 								distance_m:null,								
@@ -2124,6 +2126,7 @@ div.mousescroll:hover {
 
  function modalInjection(marker){
 	  
+	  console.log(marker.itemNo);
   	  var userNo='${user.userNo}';
   	  var htmlinjec;
 	  new function makeHtml(){
@@ -2138,12 +2141,12 @@ div.mousescroll:hover {
 						"</div>"+
 						"<div class=\"modal-body\">"+
 						
-					    "<div id=\"imgslider_container\">"+
+					    "<div id=\"imgslider_container_view\">"+
 						  "<div class=\"row-fluid\">"+
 						    "<div class=\"span12\" id=\"slider\">"+
 						      "<div class=\"row-fluid\">"+
 						        "<div class=\"span8\" id=\"carousel-bounding-box\">"+
-						          "<div id=\"myCarousel\" class=\"carousel slide\">"+
+						          "<div id=\"myCarousel_view\" class=\"carousel slide\">"+
 						            /* main slider carousel items */
 						            "<div class=\"carousel-inner\">"+
 						              "<div class=\"active item\" data-slide-number=\"0\">"+
@@ -2160,8 +2163,8 @@ div.mousescroll:hover {
 						            "</div>"+
 						            
 						            /* main slider carousel nav controls */
-						            "<a class=\"carousel-control left\" href=\"#myCarousel\" data-slide=\"prev\">‹</a>"+
-						            "<a class=\"carousel-control right\" href=\"#myCarousel\" data-slide=\"next\">›</a>"+
+						            "<a class=\"carousel-control left\" href=\"#myCarousel_view\" data-slide=\"prev\">‹</a>"+
+						            "<a class=\"carousel-control right\" href=\"#myCarousel_view\" data-slide=\"next\">›</a>"+
 						         "</div>"+
 						       "</div>"+
 						        
