@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE configuration
+ 		 PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ 		"http://mybatis.org/dtd/mybatis-3-config.dtd">			
+
+<configuration>
+
+	<properties resource="config/united.jdbc.properties" />
+	
+	<settings>
+		<setting name="callSettersOnNulls" value="false"/>
+	</settings>
+	
+	 <typeAliases>
+ 		<typeAlias alias="user" type="com.freshmarket.domain.User"/>
+ 		<typeAlias alias="location" type="com.freshmarket.domain.Location"/>
+ 		<typeAlias alias="item" type="com.freshmarket.domain.Item"/>
+ 		<typeAlias alias="deal" type="com.freshmarket.domain.Deal"/>
+ 		<typeAlias alias="search" type="com.freshmarket.common.Search"/>
+ 	</typeAliases>
+ 
+
+  <!-- SQL Definition :: file include -->
+  <mappers>
+	<mapper resource="sql/UnitedItemMapper.xml"/>
+  </mappers>
+
+</configuration>

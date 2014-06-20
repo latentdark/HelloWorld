@@ -38,7 +38,7 @@ public class UnitedItemController {
     public UnitedItemController() {
 		// TODO Auto-generated constructor stub
 		System.out.println("__________________________");
-    	System.out.println("___Item_Controller_Call___");
+    	System.out.println("United_Item_Controller_Call");
     	System.out.println("__________________________");
 	}
     
