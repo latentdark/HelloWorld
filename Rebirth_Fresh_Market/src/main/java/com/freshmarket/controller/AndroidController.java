@@ -41,7 +41,7 @@ public class AndroidController {
 			Search search=new Search();
 			List itemList=itemService.findItemList(search);
 			
-			JSONObject jsonObject = null;
+			JSONObject jsonObject = new JSONObject();
 			jsonObject.put("itemList", itemList);
 			
 			return jsonObject;
