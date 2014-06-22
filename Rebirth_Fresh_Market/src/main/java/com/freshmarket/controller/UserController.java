@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.freshmarket.domain.User;
@@ -45,8 +46,39 @@ public class UserController {
 	}
     
     //signup->signin 으로 교체
-    @RequestMapping("/signin")
-  	public ModelAndView signin (
+    @RequestMapping(value ="/signIn", produces="text/plain;charset=UTF-8")
+  	public @ResponseBody String signIn (
+  			@ModelAttribute("user") User user,
+  			HttpSession session, Locale locale, Model model)
+  					throws Exception{
+  		
+  		System.out.println("_______________________________________________");
+  		System.out.println("==> User /signin __call !!!");
+  		System.out.println("_______________________________________________");
+  		//들어오는 주소 확인해서 다시 그주소로 보내기 위해서 사용했지만
+  		//들어오는 주소가 /signin으로 떠서 망함
+  		//System.out.println(request.getRequestURI());
+  		
+  		
+  		User dbUser=userService.findUser(user.getEmail());
+  		dbUser.setActive(true);
+  		if(dbUser!=null && dbUser.getPassword().equals(user.getPassword()) ){
+  			session.setAttribute("user", dbUser);
+  		}
+  		
+  		//Model model = new Model();
+  		//addObject 사용하면 로그인할 때 바로 이름 뜸 필요에 대한 검증 필요
+  		//signin으로 들어온후 주소창 refresh 되게 만들어야함
+  		//model.addObject("user", dbUser);
+  		//redirect 사용안하면 주소창에 주소가 /signin으로 됨
+  		//modelAndView.setViewName("redirect:/home");
+  		//modelAndView.setViewName("forward:/itemMapView");
+  		System.out.println(dbUser.getNickname());
+  		return dbUser.getNickname();
+  	}
+    /*
+       @RequestMapping("/signIn")
+  	public ModelAndView signIn (
   			@ModelAttribute("user") User user,
   			HttpSession session, HttpServletRequest request, HttpServletResponse response)
   					throws Exception{
@@ -74,6 +106,7 @@ public class UserController {
   		modelAndView.setViewName("forward:/itemMapView");
   		return modelAndView;
   	}
+     */
     
     @RequestMapping("/signout")
     public String signout(HttpServletRequest request, HttpServletResponse response)
