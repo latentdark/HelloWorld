@@ -181,7 +181,18 @@ public class TestController {
   		return "redirect:/itemMapView";
   	}
 	
+	
 	//제품 삭제
+    @RequestMapping("/itemRemove")
+  	public String itemRemove (
+  			@ModelAttribute("Item") Item item,
+  			@ModelAttribute("user") User user,
+  			HttpSession session, HttpServletRequest request, HttpServletResponse response)
+  					throws Exception{
+    		
+    	itemService.removeItem(item.getItemNo());
+    	return "redirect:/itemMapView";
+    }
 	
 }
 
