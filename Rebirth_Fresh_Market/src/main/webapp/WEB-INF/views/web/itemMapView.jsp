@@ -1552,6 +1552,98 @@ div.mousescroll:hover {
 				console.log("ajax error");
 			});
 		}
+		
+		//내가 찜한 물품
+		//findWishList(Integer userNo)
+		function findWishList2(){
+			$.ajax({
+				type:"POST",
+				url:"/findWishList",
+				data:{
+					userNo:'${user.userNo}'
+				}
+			}).done(function(res){
+				console.log("res"+res);
+				var content;
+				
+				content=
+				//"<table class=\"table table-striped\" style=\"width:261px;\">"+
+				"<thead>"+
+					"<tr>"+
+						"<th style=\"width:54px;\">거리</th>"+
+						"<th style=\"width:54px;\">가격(만)</th>"+
+						"<th style=\"width:173px; text-align: center; padding-bottom:18px;\">제품명</th>"+
+					"</tr>"+
+				"</thead>"+
+					"<tbody>";
+				for(var i=0;i<res.length;i++){
+					console.log("i="+i+"_"+res[i].itemNo);
+					content+=
+					"<a href=\"#\" class=\"list-group-item\">"+
+						"<tr>"+
+							"<td>"+res[i].itemNo+"</td>"+
+							"<td>"+res[i].price+"</td>"+
+							"<td>"+res[i].itemName+"</td>"+
+						"</tr>"+	
+					"</a>";
+				}
+				content+=
+					"</tbody>";
+				//"</table>";
+				
+				$('#WishList2').html(content);
+				console.log("ajax 정상응답");
+			}).fail(function(res){
+				console.log(res);
+				console.log("ajax error");
+			});
+		}
+		
+		//내가 찜한 물품
+		//findWishList(Integer userNo)
+		function findWishList3(){
+			$.ajax({
+				type:"POST",
+				url:"/findWishList",
+				data:{
+					userNo:'${user.userNo}'
+				}
+			}).done(function(res){
+				console.log("res"+res);
+				var content;
+				
+				content=
+				"<table class=\"table table-striped\" style=\"width:261px;\">"+
+				"<thead>"+
+					"<tr>"+
+						"<th style=\"width:54px;\">거리</th>"+
+						"<th style=\"width:54px;\">가격(만)</th>"+
+						"<th style=\"width:173px; text-align: center; padding-bottom:18px;\">제품명</th>"+
+					"</tr>"+
+				"</thead>"+
+					"<tbody>";
+				for(var i=0;i<res.length;i++){
+					console.log("i="+i+"_"+res[i].itemNo);
+					content+=
+					"<a href=\"#\" class=\"list-group-item\">"+
+						"<tr>"+
+							"<td>"+res[i].itemNo+"</td>"+
+							"<td>"+res[i].price+"</td>"+
+							"<td>"+res[i].itemName+"</td>"+
+						"</tr>"+	
+					"</a>";
+				}
+				content+=
+					"</tbody>"+
+				"</table>";
+				
+				$('#WishList3').html(content);
+				console.log("ajax 정상응답");
+			}).fail(function(res){
+				console.log(res);
+				console.log("ajax error");
+			});
+		}
 		//내가 문의한 물품
 		//뭐가 될까나?
 		
@@ -2209,6 +2301,20 @@ div.mousescroll:hover {
 				    </div>
 				    <a href="#WishList" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" onclick="findWishList()">내가 찜한 물품</a>
 				    <div class="collapse" id="WishList">
+				      <a href="#" class="list-group-item">Subitem 1</a>
+				      <a href="#" class="list-group-item">Subitem 2</a>
+				      <a href="#" class="list-group-item">Subitem 3</a>
+				    </div>
+				    
+				    <a href="#WishList2" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" onclick="findWishList2()">내가 찜한 물품2</a>
+				    <div class="collapse" id="WishList2">
+				      <a href="#" class="list-group-item">Subitem 1</a>
+				      <a href="#" class="list-group-item">Subitem 2</a>
+				      <a href="#" class="list-group-item">Subitem 3</a>
+				    </div>
+				    
+				     <a href="#WishList3" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" onclick="findWishList3()">내가 찜한 물품3</a>
+				    <div class="collapse" id="WishList3">
 				      <a href="#" class="list-group-item">Subitem 1</a>
 				      <a href="#" class="list-group-item">Subitem 2</a>
 				      <a href="#" class="list-group-item">Subitem 3</a>
