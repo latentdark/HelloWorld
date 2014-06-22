@@ -70,8 +70,8 @@ public class UserController {
   		//signin으로 들어온후 주소창 refresh 되게 만들어야함
   		modelAndView.addObject("user", dbUser);
   		//redirect 사용안하면 주소창에 주소가 /signin으로 됨
-  		modelAndView.setViewName("redirect:/home");
-
+  		//modelAndView.setViewName("redirect:/home");
+  		modelAndView.setViewName("forward:/itemMapView");
   		return modelAndView;
   	}
     

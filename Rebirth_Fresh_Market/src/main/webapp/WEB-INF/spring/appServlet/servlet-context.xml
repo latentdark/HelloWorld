@@ -25,6 +25,23 @@
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
+	<mvc:annotation-driven>
+		<mvc:message-converters register-defaults="true">
+			<beans:bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<beans:property name="objectMapper">
+					<beans:bean class="com.fasterxml.jackson.databind.ObjectMapper">
+						<beans:property name="serializationInclusion">
+							<beans:value type="com.fasterxml.jackson.annotation.JsonInclude.Include">
+								NON_NULL
+							</beans:value>
+						</beans:property>
+						
+					</beans:bean>
+				</beans:property>
+			</beans:bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	
 	
 	<!-- 이거 추가하다가 울뻔했다 -->
 	<!-- 

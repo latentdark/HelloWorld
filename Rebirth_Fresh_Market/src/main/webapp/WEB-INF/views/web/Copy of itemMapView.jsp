@@ -604,18 +604,24 @@ div.mousescroll:hover {
 }
 
 
-
-/* 새로운 시도 끝 
-
-*/
-/*
-#menu-toggle1:hover {
+#addWish_disable{
+	
+}
+#addWish_disable a:hover{
 	background: rgb(255, 228, 0);
 	cursor: pointer;
 	border-top-right-radius: 0px;
 	border-bottom-right-radius: 0px; 
+
+	text-decoration:none;
+	
+	-moz-box-shadow:0 0 5px #9ddff5;
+	-webkit-box-shadow:0 0 5px #9ddff5;
+	box-shadow:0 0 5px #9ddff5;
+	
+	/* CSS outer glow with the box-shadow property */
+	
 }
-	*/		
 
 
 </style>
@@ -1317,6 +1323,7 @@ div.mousescroll:hover {
 		}<%--  markersSorting Price End --%>
 
 		
+		<%-- searchResultInjection Start --%>
 		var searchResultInjectionHtml;
 		function searchResultInjection(){
 			//sorting check용 for문, 사용시 주석처리해야함.
@@ -1368,7 +1375,131 @@ div.mousescroll:hover {
 			</tr>
 			*/	
 		
+		}<%-- searchResultInjection End --%>
+		
+		//ajax를 이용해서 injection방식으로 inner html로 쏴 줘야한다.
+		//내가 등록한 물품
+		//findMyItemList(Integer userNo)
+		<!-- 고2 -->
+		function findMyItemList(){
+			$.ajax({
+				type:"POST",
+				url:"/ajaxTest"//,
+				//data:{test:"success"}
+			}).done(function(msg){
+				console.log(msg);
+				console.log("성공");
+			}).fail(function(msg){
+				console.log(msg);
+				console.log("실패");
+			});
+			
 		}
+		//거래 완료된 물품 
+		//버튼을 판매완료/삭제 로 바꿔야함
+		//findMyItemList(Integer userNo)
+		function findMyItemList2(){
+			console.log("${user}");
+			console.log("${user.userNo}");
+			$.ajax({
+				type:"POST",
+				url:"/findMyItemList",
+				//dataType : "json",
+				data:{userNo:'${user.userNo}'}
+			/*,
+				success : function(result){
+					console.log("result"+result);
+					console.log("key"+key);
+				}
+			*/
+			}).done(function(res){
+				console.log("msg_"+res);
+				console.log("msg.responstext_"+res.responsText);
+				console.log("msg.length_"+res.length);
+				for(var i=0;i<res.length;i++){
+					console.log("i="+i+"_"+res[i]);
+				}
+				console.log("성공");
+			}).fail(function(msg){
+				console.log(msg);
+				console.log(msg.responsText);
+				console.log("실패");
+			});
+			
+		}
+		
+		var markerNo;
+		function addWish(){
+			//addWish_active
+			//itemNo도 뽑아와야 하는데?
+			$.ajax({
+				type:"POST",
+				url:"/addWish",
+				data:{
+					userNo:'${user.userNo}',
+					itemNo:markerNo
+				}
+			}).done(function(res){
+				console.log("res"+res);
+				console.log("ajax 정상응답");
+				aleft("선택하신 상품이 찜 리스트에 추가되었습니다 ^^");
+			}).fail(function(res){
+				console.log(res);
+				console.log("ajax error");
+			});
+		}
+		
+		/*
+		function findMyItemList2(){
+			$.ajax({
+				type:"POST",
+				url:"/ajaxTest2",
+				data:{userNo:'100'}
+			}).done(function(msg){
+				console.log(msg);
+				console.log("성공");
+			}).fail(function(msg){
+				console.log(msg);
+				console.log("실패");
+			});
+			
+		}
+		*/
+		//내가 찜한 물품
+		//findWishList(Integer userNo)
+		function findWishList(){
+			$.ajax({
+				type:"POST",
+				url:"/findWishList",
+				data:{
+					userNo:'${user.userNo}'
+				}
+			}).done(function(res){
+				console.log("res"+res);
+				var content;
+				for(var i=0;i<res.length;i++){
+					console.log("i="+i+"_"+res[i].itemNo);
+					content+=
+					"<a href=\"#\" class=\"list-group-item\">"+
+						"<tr>"+
+							"<td>"+res[i].itemNo+"</td>"+
+							"<td>"+res[i].price+"</td>"+
+							"<td>"+res[i].itemName+"</td>"+
+						"</tr>"+	
+					"</a>";
+				}
+				$('#WishList').html(content);
+				console.log("ajax 정상응답");
+			}).fail(function(res){
+				console.log(res);
+				console.log("ajax error");
+			});
+		}
+		//내가 문의한 물품
+		//뭐가 될까나?
+		
+		
+		
 		google.maps.event.addDomListener(window, 'load', initialize);
 	</script>
 	<!--
@@ -1827,11 +1958,6 @@ div.mousescroll:hover {
 						<th style="width:54px;">거리</th>
 						<th style="width:54px;">가격(만)</th>
 						<th style="width:173px; text-align: center; padding-bottom:18px;">제품명</th>
-					<!-- 
-						<th id="t1" style="width:54px;">거리</th>
-						<th id="t2" style="width:54px;">가격(만원)</th>
-						<th id="t3" style="width:153px; text-align: center; padding-bottom:18px;">제품명</th>
-					 -->
 					</tr>
 				</thead>
 				<!-- 뉴텔
@@ -1990,8 +2116,8 @@ div.mousescroll:hover {
 			<!-- start of tap3   -->
 			
 				<div id="MainMenu">
-				  <div class="list-group panel">
-				    <a href="#demo3" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Item 3</a>
+				  <div class="list-group panel"> <!-- 고2 -->
+				    <a href="#demo3" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" onclick="findMyItemList()">내가 등록한 물품</a>
 				    <div class="collapse" id="demo3">
 				      <a href="#SubMenu1" class="list-group-item" data-toggle="collapse" data-parent="#SubMenu1">Subitem 1 <span class="glyphicon glyphicon-chevron-down"></span></a>
 				      <div class="collapse list-group-submenu" id="SubMenu1">
@@ -2007,20 +2133,20 @@ div.mousescroll:hover {
 				      <a href="javascript:;" class="list-group-item">Subitem 2</a>
 				      <a href="javascript:;" class="list-group-item">Subitem 3</a>
 				    </div>
-				    <a href="#demo4" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Item 4</a>
+				    <a href="#demo4" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" onclick="findMyItemList2()">거래 완료된 물품</a>
 				    <div class="collapse" id="demo4">
 				      <a href="#" class="list-group-item">Subitem 1</a>
 				      <a href="#" class="list-group-item">Subitem 2</a>
 				      <a href="#" class="list-group-item">Subitem 3</a>
 				    </div>
-				    <a href="#demo5" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Item 5</a>
+				    <a href="#demo5" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">내가 문의한 물품</a>
 				    <div class="collapse" id="demo5">
 				      <a href="#" class="list-group-item">Subitem 1</a>
 				      <a href="#" class="list-group-item">Subitem 2</a>
 				      <a href="#" class="list-group-item">Subitem 3</a>
 				    </div>
-				    <a href="#demo6" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Item 6</a>
-				    <div class="collapse" id="demo6">
+				    <a href="#WishList" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" onclick="findWishList()">내가 찜한 물품</a>
+				    <div class="collapse" id="WishList">
 				      <a href="#" class="list-group-item">Subitem 1</a>
 				      <a href="#" class="list-group-item">Subitem 2</a>
 				      <a href="#" class="list-group-item">Subitem 3</a>
@@ -2104,7 +2230,7 @@ div.mousescroll:hover {
 	      <div class="modal-body">
 	        <p>삭제 하시겠습니까?</p>
 	        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-	        <button type="button" class="btn btn-danger">삭제</button>
+	        <button type="button" class="btn  ">삭제</button>
 	      </div>
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
@@ -2126,7 +2252,14 @@ div.mousescroll:hover {
 
  function modalInjection(marker){
 	  
+	  markerNo=marker.itemNo;
 	  console.log(marker.itemNo);
+	  /*
+	  console.log("Path2__"+marker.itemPicturePath2);
+	  console.log("Path2__length__"+marker.itemPicturePath2.length);
+	  console.log("Path3__"+marker.itemPicturePath3);
+	  console.log("Path3__length__"+marker.itemPicturePath3.length);
+	  */
   	  var userNo='${user.userNo}';
   	  var htmlinjec;
 	  new function makeHtml(){
@@ -2141,30 +2274,33 @@ div.mousescroll:hover {
 						"</div>"+
 						"<div class=\"modal-body\">"+
 						
-					    "<div id=\"imgslider_container\">"+
+					    "<div id=\"imgslider_container_view\">"+
 						  "<div class=\"row-fluid\">"+
 						    "<div class=\"span12\" id=\"slider\">"+
 						      "<div class=\"row-fluid\">"+
 						        "<div class=\"span8\" id=\"carousel-bounding-box\">"+
-						          "<div id=\"myCarousel\" class=\"carousel slide\">"+
+						          "<div id=\"myCarousel_view\" class=\"carousel slide\">"+						          
 						            /* main slider carousel items */
-						            "<div class=\"carousel-inner\">"+
+						         	"<div class=\"carousel-inner\">"+
 						              "<div class=\"active item\" data-slide-number=\"0\">"+
 						                "<img  src = \"resources/itempictures/"+marker.itemPicturePath1+"\" style=\"width: 640px; height:480;\">"+
-						              "</div>"+
-						              "<div class=\"item\" data-slide-number=\"1\">"+
+						              "</div>";
+					if(marker.itemPicturePath2.length>0){
+						  htmlinjec+= "<div class=\"item\" data-slide-number=\"1\">"+
 						              	"<img  src = \"resources/itempictures/"+marker.itemPicturePath2+"\" style=\"width: 640px; height:480;\">"+
-					                  "</div>"+
-						              "<div class=\"item\" data-slide-number=\"2\">"+
+					                  "</div>";
+					}
+					if(marker.itemPicturePath3.length>0){
+						  htmlinjec+= "<div class=\"item\" data-slide-number=\"2\">"+
 						                "<img  src = \"resources/itempictures/"+marker.itemPicturePath3+"\" style=\"width: 640px; height:480;\">"+
-						              "</div>"+						            
-						             	
+						              "</div>";					            
+					}	             	
 						              
-						            "</div>"+
+						  htmlinjec+= "</div>"+
 						            
 						            /* main slider carousel nav controls */
-						            "<a class=\"carousel-control left\" href=\"#myCarousel\" data-slide=\"prev\">‹</a>"+
-						            "<a class=\"carousel-control right\" href=\"#myCarousel\" data-slide=\"next\">›</a>"+
+						            "<a class=\"carousel-control left\" href=\"#myCarousel_view\" data-slide=\"prev\">‹</a>"+
+						            "<a class=\"carousel-control right\" href=\"#myCarousel_view\" data-slide=\"next\">›</a>"+
 						         "</div>"+
 						       "</div>"+
 						        
@@ -2189,11 +2325,15 @@ div.mousescroll:hover {
 						if(userNo==marker.userNo){
 							htmlinjec+=
 							"<button type=\"button\" class=\"btn btn-primary\" >수정</button>"+
-							"<button class=\"btn btn-primary\" data-toggle=\"modal\" href=\"#deletepopup\" onclick=\"return false\">삭제</button>";						
-							}
-						
+							"<button class=\"btn btn-primary\" data-toggle=\"modal\" href=\"#deletepopup\" onclick=\"return false\">삭제</button>";					
+						}else{
+							//htmlinjec+="<a href=\"#\" type=\"button\" id=\"addWish_disable\" class=\"btn btn-danger\" >찜</a>";
+						}
+						if(userNo!=null){
+							htmlinjec+=
+							"<button type=\"button\" id=\"addWish_active\" class=\"btn btn-danger\" onclick=\"addWish()\" >찜</button>";	
+						}
 						htmlinjec+=
-						"<button type=\"button\" class=\"btn btn-danger\" >찜</button>"+
 						"<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>"+
 						"</div>"+
 					"</div>"+	
