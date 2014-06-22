@@ -20,9 +20,18 @@
 	</insert>
 	
 	<insert id="addComment" parameterType="HashMap">
-		INSERT comment(item_no,user_no, content, regi_date,time)
-		VALUES(#{itemNo}, #{userNo}, #{content}, sysdate(), curtime());
+		INSERT comment(item_no, user_no, content, regi_date, time, state_code)
+		VALUES(#{itemNo}, #{userNo}, #{content}, sysdate(), curtime(), 1);
 	</insert>
+	
+	<!-- <insert id="addReply" parameterType="">
+		INSERT reply(comment_no,user_no,content,regi_date,time,state_code)
+		VALUES(#{commentNo}, #{userNo}, '#{content}', sysdate(), curtime(), #{stateCode})
+	</insert>
+	
+	<select id="findComment" parameterType="" resultMap="">
+		SELECT
+	</select> -->
 	
 	<delete id="removeInquire" parameterType="HashMap">
 		DELETE

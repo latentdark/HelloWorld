@@ -118,9 +118,9 @@
 		l.grid_x3,
 		l.grid_y3
 		FROM item i
-		LEFT OUTER JOIN item_pic ip ON ip.item_no = i.item_no
-		LEFT OUTER JOIN location l ON l.item_no = i.item_no
-		LEFT OUTER JOIN user u ON i.user_no = u.user_no
+			 LEFT OUTER JOIN item_pic ip ON ip.item_no = i.item_no
+			 LEFT OUTER JOIN location l ON l.item_no = i.item_no
+			 LEFT OUTER JOIN user u ON i.user_no = u.user_no
 		<!-- <if test="searchCondition!=''">
 			<where>
 				<if test="searchCondition==1">
@@ -242,4 +242,31 @@
 		FROM item
 		WHERE item_no = ${value}
 	</delete>
+	
+	<select id="findMyItemList" parameterType="integer" resultMap="ItemSelectMap">
+		SELECT
+		u.user_no,
+		i.item_no,
+		i.item_name,
+		i.item_info,
+		i.price,
+		i.state_code,
+		i.category1,
+		i.category2,
+		i.regi_date,
+		ip.filepath1,
+		ip.filepath2,
+		ip.filepath3,
+		l.grid_x1,
+		l.grid_y1,
+		l.grid_x2,
+		l.grid_y2,
+		l.grid_x3,
+		l.grid_y3
+		FROM item i
+			 LEFT OUTER JOIN item_pic ip ON ip.item_no = i.item_no
+			 LEFT OUTER JOIN location l ON l.item_no = i.item_no
+			 LEFT OUTER JOIN user u ON i.user_no = u.user_no
+		WHERE i.user_no = #{value}
+	</select>
 </mapper>
