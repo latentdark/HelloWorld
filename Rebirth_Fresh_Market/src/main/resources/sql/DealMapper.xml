@@ -22,9 +22,22 @@
 	<resultMap id="WishSelectMap" type="item">
 		<result property="itemNo" column="item_no" jdbcType="INTEGER"/>
 		<result property="userNo" column="user_no" jdbcType="INTEGER"/>
-		<result property="itemPicturePath1" column="filepath" jdbcType="VARCHAR"/>
 		<result property="itemName" column="item_name" jdbcType="VARCHAR"/>
 		<result property="price" column="price" jdbcType="INTEGER"/>
+ 		<result property="itemInfo" column="item_info" jdbcType="VARCHAR"/>
+		<result property="regiDate" column="regi_date" jdbcType="DATE"/>
+		<result property="stateCode" column="state_code" jdbcType="INTEGER"/>
+		<result property="category1" column="category1" jdbcType="INTEGER"/>
+		<result property="category2" column="category2" jdbcType="INTEGER"/>
+		<result property="gridX1" column="grid_x1" jdbcType="DOUBLE"/>
+		<result property="gridY1" column="grid_y1" jdbcType="DOUBLE"/>
+		<result property="gridX2" column="grid_x2" jdbcType="DOUBLE"/>
+		<result property="gridY2" column="grid_y2" jdbcType="DOUBLE"/>
+		<result property="gridX3" column="grid_x3" jdbcType="DOUBLE"/>
+		<result property="gridY3" column="grid_y3" jdbcType="DOUBLE"/>
+		<result property="itemPicturePath1" column="filepath1" jdbcType="VARCHAR"/>
+		<result property="itemPicturePath2" column="filepath2" jdbcType="VARCHAR"/>
+		<result property="itemPicturePath3" column="filepath3" jdbcType="VARCHAR"/>
 	</resultMap>
 	
 	<insert id="makeDeal" parameterType="deal">
@@ -139,12 +152,47 @@
 	
 	<select id="findWishList" parameterType="integer" resultMap="WishSelectMap">
 		SELECT
-		w.item_no, i.user_no, i.filepath, i.item_name, i.price
+		w.item_no,
+		i.user_no,
+		i.item_name,
+		i.item_info,
+		i.price,
+		i.state_code,
+		i.category1,
+		i.category2,
+		i.regi_date,
+		i.filepath1,
+		i.filepath2,
+		i.filepath3,
+		i.grid_x1,
+		i.grid_y1,
+		i.grid_x2,
+		i.grid_y2,
+		i.grid_x3,
+		i.grid_y3
 		FROM wish AS w
 			 LEFT OUTER JOIN (  SELECT
-								i.item_no, i.user_no, ip.filepath1 AS filepath, i.item_name, i.price
+								i.item_no,
+								i.user_no,
+								i.item_name,
+								i.item_info,
+								i.price,
+								i.state_code,
+								i.category1,
+								i.category2,
+								i.regi_date,
+								ip.filepath1,
+								ip.filepath2,
+								ip.filepath3,
+								l.grid_x1,
+								l.grid_y1,
+								l.grid_x2,
+								l.grid_y2,
+								l.grid_x3,
+								l.grid_y3
 								FROM item i
-								     LEFT OUTER JOIN item_pic AS ip ON i.item_no = ip.item_no) AS i ON i.item_no = w.item_no
+								     LEFT OUTER JOIN item_pic AS ip ON i.item_no = ip.item_no
+								     LEFT OUTER JOIN location AS l ON i.item_no = l.item_no	) AS i ON i.item_no = w.item_no
 		     LEFT OUTER JOIN user AS u ON u.user_no = w.user_no
 		WHERE w.user_no = #{value}
 	</select>
