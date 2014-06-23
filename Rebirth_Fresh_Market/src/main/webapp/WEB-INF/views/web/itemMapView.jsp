@@ -1001,15 +1001,21 @@ div.mousescroll:hover {
 					default:
 						if(document.getElementById('searchOption1').checked){
 							searchOption = document.getElementById("searchOption1").value;
+							console.log("searchOption1 debug_"+searchOption);
 							/* console.log("('searchOption1').checked"); */
+							break;
 						}
 						if(document.getElementById('searchOption2').checked){
 							searchOption = document.getElementById("searchOption2").value;
+							console.log("searchOption2 debug_"+searchOption);
 							/* console.log("('searchOption2').checked"); */
+							break;
 						}
 						if(document.getElementById('searchOption3').checked){
 							searchOption = document.getElementById("searchOption3").value;
+							console.log("searchOption3 debug_"+searchOption);
 							/* console.log("('searchOption3').checked"); */
+							break;
 						}
 				}
 				
@@ -1049,9 +1055,11 @@ div.mousescroll:hover {
 				
 				//순순
 				if(document.getElementById('optionsRadios1').checked){
+					console.log("markersSortingDistance run");
 					markersSortingDistance();
 				}
 				if(document.getElementById('optionsRadios2').checked){
+					console.log("markersSortingPrice();");
 					markersSortingPrice();
 				}
 								
@@ -1216,6 +1224,12 @@ div.mousescroll:hover {
 			//console.log("pos.k___"+Math.round(pos.k*1000000)/1000000);
 		
 			/* console.log("markersSortingDistance In__"); */
+			if(markersSearchResult.length==1){
+				markersSearchResult[0].distance_m=
+					Math.round(getDistanceFromLatLonInKm(myPosition.k, myPosition.A,
+							markersSearchResult[0].position.k, markersSearchResult[0].position.A)*10000)/10000;
+			}
+			
 			markersSearchResult.sort(function(a, b){
 				/* console.log("markersSearchResult.sort.Distance call");
 			 */	//geolocation으로 잡은 A,k를 이용해 가져온 a의 절대값과 삼각함수를 이용해 거리측정
@@ -1274,6 +1288,12 @@ div.mousescroll:hover {
 		<%-- markersSorting Price Start--%>
 		function markersSortingPrice(){
 			/* console.log("markersSorting Price In"); */
+			if(markersSearchResult.length==1){
+				markersSearchResult[0].distance_m=
+					Math.round(getDistanceFromLatLonInKm(myPosition.k, myPosition.A,
+							markersSearchResult[0].position.k, markersSearchResult[0].position.A)*10000)/10000;
+			}
+			
 			markersSearchResult.sort(function(a, b){
 				/* console.log("markersSearchResult.sort.Price call"); */
 				var a_A	=	Math.abs(Math.round(myPosition.A-a.position.A*1000000)/1000000);
@@ -1301,8 +1321,8 @@ div.mousescroll:hover {
 		function searchResultInjection(){
 			//sorting check용 for문, 사용시 주석처리해야함.
 			searchResultInjectionHtml=null;
-			
-			if(markersSearchResult.length>1){
+			console.log("markersSearchResult.length__"+markersSearchResult.length);
+			if(markersSearchResult.length>0){
 				if(markersSearchResult[0].distance_m < 1.0){
 					markersSearchResult[0].distance_m=Math.round(markersSearchResult[0].distance_m*100)/100+"(m)";
 				}else{
@@ -1318,24 +1338,26 @@ div.mousescroll:hover {
 					"</tr>";
 			}
 			//searchResultInjectionHtml="<tbody>";
-			for(var i=1;i<markersSearchResult.length;i++){
-				
-				
-				if(markersSearchResult[i].distance_m < 1.0){
-					markersSearchResult[i].distance_m=Math.round(markersSearchResult[i].distance_m*100)/100+"(m)";
-				}else{
-					markersSearchResult[i].distance_m=Math.round(markersSearchResult[i].distance_m *10)/10+"(km)";
-				}	
-				//console.log("markersSearchResult"+i+"distance_m"+markersSearchResult[i].distance_m);
-				//뉴텔
-				searchResultInjectionHtml+=
-					"<tr>"+
-						"<td id=\"t1\" >" + markersSearchResult[i].distance_m + "</td>" +
-						"<td id=\"t2\" >" + markersSearchResult[i].price/10000.0 + "</td>" +
-						"<td id=\"t3\" ><a onclick=\"modalInjection(markersSearchResult["+i+"])\"> " +
-						//"<td><a onclick=\"alert('test')\"> " + 
-								markersSearchResult[i].title+ "<span>클릭하시면 상세정보를 볼수 있습니다.</span></a></td>" +
-					"</tr>";
+			if(markersSearchResult.length>1){
+				for(var i=1;i<markersSearchResult.length;i++){
+					
+					
+					if(markersSearchResult[i].distance_m < 1.0){
+						markersSearchResult[i].distance_m=Math.round(markersSearchResult[i].distance_m*100)/100+"(m)";
+					}else{
+						markersSearchResult[i].distance_m=Math.round(markersSearchResult[i].distance_m *10)/10+"(km)";
+					}	
+					//console.log("markersSearchResult"+i+"distance_m"+markersSearchResult[i].distance_m);
+					//뉴텔
+					searchResultInjectionHtml+=
+						"<tr>"+
+							"<td id=\"t1\" >" + markersSearchResult[i].distance_m + "</td>" +
+							"<td id=\"t2\" >" + markersSearchResult[i].price/10000.0 + "</td>" +
+							"<td id=\"t3\" ><a onclick=\"modalInjection(markersSearchResult["+i+"])\"> " +
+							//"<td><a onclick=\"alert('test')\"> " + 
+									markersSearchResult[i].title+ "<span>클릭하시면 상세정보를 볼수 있습니다.</span></a></td>" +
+						"</tr>";
+				}
 			}
 			//searchResultInjectionHtml+="</tbody>";
 			document.getElementById("searchResultInjectionSector").innerHTML =searchResultInjectionHtml;
