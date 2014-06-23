@@ -622,7 +622,14 @@ div.mousescroll:hover {
 	/* CSS outer glow with the box-shadow property */
 	
 }
+.modal-footer{
+	margin-top: 0px;
+}
 
+/*덧글에 덧글  */
+.reReply{
+	margin-left:20px;
+	}
 
 </style>
  	
@@ -1367,13 +1374,6 @@ div.mousescroll:hover {
 			//searchResultInjectionHtml+="</tbody>";
 			document.getElementById("searchResultInjectionSector").innerHTML =searchResultInjectionHtml;
 			
-			/*
-			<tr>
-				<td>222</td>
-				<td>333</td>
-				<td><a>아이패드 에어 가나다라 마바사 아자 차</a></td>
-			</tr>
-			*/	
 		
 		}<%-- searchResultInjection End --%>
 		
@@ -2075,15 +2075,7 @@ div.mousescroll:hover {
 					</div>
 				</div>
 				<div style="margin-top: 10px">
-				<!-- 	<div class="btn-group" data-toggle="buttons">
-					  <label class="btn btn-primary">
-					    <input type="radio" name="options" id="option1" onclick="markersSortingDistance()"> 가격순 정렬
-					  </label>
-					  <label class="btn btn-primary">
-					    <input type="radio" name="options" id="option2" onclick="markersSortingPrice()"> 거리순 정렬
-					  </label>
-					</div> -->
-					
+								
 					  <label class="radio-inline">
 					    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" onclick="markersSortingDistance()" checked>
 					    거리순
@@ -2104,38 +2096,12 @@ div.mousescroll:hover {
 			<table class="table table-striped" style="width:261px;">
 				<thead>
 					<tr>
-						<th style="width:54px;">거리</th>
-						<th style="width:54px;">가격(만)</th>
-						<th style="width:173px; text-align: center; padding-bottom:18px;">제품명</th>
-					<!-- 
-						<th id="t1" style="width:54px;">거리</th>
-						<th id="t2" style="width:54px;">가격(만원)</th>
-						<th id="t3" style="width:153px; text-align: center; padding-bottom:18px;">제품명</th>
-					 -->
+						<th style="width:80px;">거리(km)</th>
+						<th style="width:80px;">가격(만)</th>
+						<th style="width:100px; text-align: center;">제품명</th>
 					</tr>
 				</thead>
-				<!-- 뉴텔
-				<div id="searchResultInjectionSector" class="searchResultInjectionSector" title="searchResultInjectionSector">
-				 -->
-					<tbody id="searchResultInjectionSector">
-			
-						<!-- 
-						<tr>
-							<td>222</td>
-							<td>333</td>
-							<td><a>아이패드 에어 가나다라 마바사 아자 차</a></td>
-						</tr>					
-						<tr>
-							<td>5</td>
-							<td>5</td>
-							<td><a>아이패드 미니</a></td>
-						</tr>		
-						 -->	
-					
-					</tbody>
-				<!-- 
-				</div>	
-				 -->
+					<tbody id="searchResultInjectionSector"></tbody>
 			</table> 
 	    </div>
 	</nav>
@@ -2352,7 +2318,7 @@ div.mousescroll:hover {
 			            <!-- main slider carousel items -->
 			            <div class="carousel-inner">
 			              <div class="active item" data-slide-number="0">
-			                <img src="http://placehold.it/640x480&amp;text=one">
+			                <img src="http://placehold.it/640x480&amp;text=No%20Image">
 			              </div>
 			              <div class="item" data-slide-number="1">
 			                <img src="http://placehold.it/640x480&amp;text=two">
@@ -2390,20 +2356,25 @@ div.mousescroll:hover {
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
+	
 	<!--삭제 팝업창  -->
 	<div class="modal fade" id="deletepopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index: 1060;">
 	  <div class="modal-dialog" style="width: 400px;text-align: center;margin-top: 200px;margin-bottom: 200px;">
 	    <div class="modal-content">
 	   
 	      <div class="modal-body">
-	        <p>삭제 하시겠습니까?</p>
-	        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-	        <button type="button" class="btn  ">삭제</button>
+  		    <form action="/itemRemove">
+		        <p>삭제 하시겠습니까?</p>
+		        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>  
+	        	<input type="hidden" name="ItemNo" id="deleteItemNo" value="">
+	        	<input type="submit" class="btn btn-danger" value="삭제">
+	      	</form>
 	      </div>
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
-	
+	<!-- 삭제 팝업창 끝 -->
+		
 	<!-- footer부분에 modal용 div넣습니다. 레이아웃과 상관없으니 삭제하지 마세요 -->
 		<%-- modal Injection 공간 --%>
 		<div id="htmlInjectionSector" class="htmlInjectionSector" title="htmlInjectionSector">
@@ -2417,11 +2388,13 @@ div.mousescroll:hover {
 
 <%-- 속도향상을 위해 맨 아래로 내림. --%>
 <script>
-
+ var replyDiv;
+ var returnDiv;
  function modalInjection(marker){
 	  
 	  markerNo=marker.itemNo;
 	  console.log(marker.itemNo);
+	  document.getElementById("deleteItemNo").value=markerNo
 	  /*
 	  console.log("Path2__"+marker.itemPicturePath2);
 	  console.log("Path2__length__"+marker.itemPicturePath2.length);
@@ -2440,7 +2413,7 @@ div.mousescroll:hover {
 				        "<h4 class=\"modal-title\">"+marker.title+"<font color=\"red\"> [ "+marker.price+" 원 ]</font></h4>"+
 				       
 						"</div>"+
-						"<div class=\"modal-body\">"+
+						"<div class=\"modal-body\" id=\"mmodal\">"+
 						
 					    "<div id=\"imgslider_container_view\">"+
 						  "<div class=\"row-fluid\">"+
@@ -2454,14 +2427,14 @@ div.mousescroll:hover {
 						                "<img  src = \"resources/itempictures/"+marker.itemPicturePath1+"\" style=\"width: 640px; height:480;\">"+
 						              "</div>";
 					if(marker.itemPicturePath2.length>0){
-						  htmlinjec+= "<div class=\"item\" data-slide-number=\"1\">"+
+						  htmlinjec+= "<div class=\"item\" data-slide-number=\"1\">"+				
 						              	"<img  src = \"resources/itempictures/"+marker.itemPicturePath2+"\" style=\"width: 640px; height:480;\">"+
 					                  "</div>";
 					}
 					if(marker.itemPicturePath3.length>0){
-						  htmlinjec+= "<div class=\"item\" data-slide-number=\"2\">"+
-						                "<img  src = \"resources/itempictures/"+marker.itemPicturePath3+"\" style=\"width: 640px; height:480;\">"+
-						              "</div>";					            
+						  htmlinjec+= "<div class=\"item\" data-slide-number=\"2\">"+		
+						 			  "<img  src = \"resources/itempictures/"+marker.itemPicturePath3+"\" style=\"width: 640px; height:480;\">"+
+			                	 	  "</div>";					            
 					}	             	
 						              
 						  htmlinjec+= "</div>"+
@@ -2486,8 +2459,6 @@ div.mousescroll:hover {
 							"</div>"+
 							
 						"</div>"+
-						"<div class=\"modal-footer\">"+
-						"</div>"+ 
 						"<div class=\"modal-footer\">";
 						
 						if(userNo==marker.userNo){
@@ -2502,6 +2473,7 @@ div.mousescroll:hover {
 							"<button type=\"button\" id=\"addWish_active\" class=\"btn btn-danger\" onclick=\"addWish()\" >찜</button>";	
 						}
 						htmlinjec+=
+						"<button id=\"replyButton\" class=\"btn btn-primary\" data-toggle=\"modal\" onclick=\"change()\">댓글 <span class=\"badge\">42</span></button>"+
 						"<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>"+
 						"</div>"+
 					"</div>"+	
@@ -2509,9 +2481,110 @@ div.mousescroll:hover {
 			"</div>"+
 			"<a data-toggle=\"modal\" href=\"#item"+marker.itemNo+"\" id=\"modallink\"></a>";
 		};
+	
+		returnDiv="<div id=\"imgslider_container_view\">"+
+				  "<div class=\"row-fluid\">"+
+				    "<div class=\"span12\" id=\"slider\">"+
+				      "<div class=\"row-fluid\">"+
+				        "<div class=\"span8\" id=\"carousel-bounding-box\">"+
+				          "<div id=\"myCarousel_view\" class=\"carousel slide\">"+						          
+				            /* main slider carousel items */
+				         	"<div class=\"carousel-inner\">"+
+				              "<div class=\"active item\" data-slide-number=\"0\">"+
+				                "<img  src = \"resources/itempictures/"+marker.itemPicturePath1+"\" style=\"width: 640px; height:480;\">"+
+				              "</div>";
+			if(marker.itemPicturePath2.length>0){
+				  returnDiv+= "<div class=\"item\" data-slide-number=\"1\">"+				
+				              	"<img  src = \"resources/itempictures/"+marker.itemPicturePath2+"\" style=\"width: 640px; height:480;\">"+
+			                  "</div>";
+			}
+			if(marker.itemPicturePath3.length>0){
+				  returnDiv+= "<div class=\"item\" data-slide-number=\"2\">"+		
+				 			  "<img  src = \"resources/itempictures/"+marker.itemPicturePath3+"\" style=\"width: 640px; height:480;\">"+
+		            	 	  "</div>";					            
+			}	             	
+				              
+				  returnDiv+= "</div>"+
+				            
+				            /* main slider carousel nav controls */
+				            "<a class=\"carousel-control left\" href=\"#myCarousel_view\" data-slide=\"prev\">‹</a>"+
+				            "<a class=\"carousel-control right\" href=\"#myCarousel_view\" data-slide=\"next\">›</a>"+
+				         "</div>"+
+				       "</div>"+
+				        
+				       
+				     "</div>"+
+				      
+				   "</div>"+
+				 "</div>"+ /* main slider carousel */
+			"</div>"+/* end of image slider */
+			
+			
+			<%-- ItemInfo 들어가는 공간 --%>
+			"<br><div id=\"itemInfo\">"+
+				marker.itemInfo+
+			"</div>";
+			
+		
+		replyDiv="<div  class=\"mousescroll\" style=\"height:500px; text-align:left; font-size:13px;\">"+
+					"<table class=\"table\">"+
+						"<tr><td><div>"+
+							"<b>양키</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
+							"<p style=\"margin-left:10px\"><span>가나다라마바사아자차카타파하 개노무 개노무 개노무</span></p>"+
+						"</div></td></tr>"+
+						"<tr><td><div>"+
+							"<b>박준일</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
+							"<p style=\"margin-left:10px\"><span>가나다라마바사아자차카타파하 개노무 개노무 개노무</span></p>"+
+						"</div></td></tr>"+
+						"<tr class=\"success\"><td><div class=\"reReply\">"+
+							"┗<b>이민석</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
+							"<p style=\"margin-left:10px\"><span>가나다라마바사아자차카타파하 개노무 개노무 개노무</span></p>"+
+						"</div></td></tr>"+
+						"<tr><td><div>"+
+							"<b>섭섭맨</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
+							"<p style=\"margin-left:10px\"><span>가나다라마바사아자차카타파하 개노무 개노무 개노무</span></p>"+
+						"</div></td></tr>"+
+						"<tr><td><div>"+
+							"<b>이재영</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
+							"<p style=\"margin-left:10px\"><span>가나다라마바사아자차카타파하 개노무 개노무 개노무</span></p>"+
+						"</div></td></tr>"+
+						/* div class에 reReply 추가하면 덧글답장  */
+						"<tr class=\"success\"><td><div class=\"reReply\">"+
+							"┗ <b>이민석</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
+							"<p style=\"margin-left:10px\"><span>이민석 짱짱장짱</span></p>"+
+						"</div></td></tr>"+
+					"</table>"+
+				"</div>"+
+				"<hr>"+
+		 		"<div style=\"width: 450px;float: left;\">"+
+					"<textarea name=\"replyTextarea\" class=\"form-control\" rows=\"3\" placeholder=\"덧글 내용을 입력하세요\"></textarea>"+
+				"</div>"+
+				"<div>"+	
+					"<button type=\"button\" id=\"replyregi\" class=\"btn btn-default\" onclick=\"\" style=\"margin-top: 40px;\">덧글입력</button>"+
+			    "</div>";
+		
 		document.getElementById("htmlInjectionSector").innerHTML = htmlinjec;
 		document.getElementById("modallink").click();
- }
+		
+		
+ };
+
+ var flag="1";
+ function change(){
+	 
+	 console.log(flag);
+	 if(flag=="1"){
+	 	document.getElementById("mmodal").innerHTML=replyDiv;
+	 	document.getElementById("replyButton").innerHTML="내용보기";
+	 	flag="2";
+	 }else{
+		document.getElementById("mmodal").innerHTML=returnDiv;
+		document.getElementById("replyButton").innerHTML="댓글 <span class=\"badge\">42</span>";
+		flag="1";
+	 }
+}
+ 
+ 
 		
 
  </script>
