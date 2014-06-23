@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.freshmarket.common.Search;
@@ -35,17 +36,18 @@ public class AndroidController {
 	    	System.out.println("__________________________");
 	}
 	 
-	 @RequestMapping(value = "/android/itemMapView")
-		public JSONObject googlemap(Locale locale, Model model) {
-			
-			Search search=new Search();
-			List itemList=itemService.findItemList(search);
-			
-			JSONObject jsonObject = new JSONObject();
-			jsonObject.put("itemList", itemList);
-			
-			return jsonObject;
-		} 
+	@RequestMapping(value = "/android/itemMapView")
+	@ResponseBody
+	public JSONObject googlemap(Locale locale, Model model) {
+		
+		Search search=new Search();
+		List itemList=itemService.findItemList(search);
+		
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("itemList", itemList);
+		
+		return jsonObject;
+	} 
 	 
 	 
 	@RequestMapping(value = "/android")
