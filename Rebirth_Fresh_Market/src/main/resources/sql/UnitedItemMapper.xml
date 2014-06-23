@@ -5,7 +5,9 @@
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 		
 <mapper namespace="UnitedItemMapper">
-
+	
+<!-- teamdwf가 주석처리함... -->
+<!-- 
 	<resultMap id="ItemSelectMap" type="item">
 		<result property="itemNo" column="item_no" jdbcType="INTEGER"/>
 		<result property="userNo" column="user_no" jdbcType="INTEGER"/>
@@ -26,7 +28,24 @@
 		<result property="itemPicturePath2" column="filepath2" jdbcType="VARCHAR"/>
 		<result property="itemPicturePath3" column="filepath3" jdbcType="VARCHAR"/>
 	</resultMap>
+-->
+	
+	
+	<resultMap id="ItemSelectMap" type="item">
+		<result property="itemNo" column="res_id" jdbcType="INTEGER"/>
+		<result property="itemName" column="name" jdbcType="VARCHAR"/>
+		<result property="itemInfo" column="copy_comment" jdbcType="VARCHAR"/>
+		<result property="stateCode" column="res_category" jdbcType="INTEGER"/>
+		<result property="gridX1" column="geo_lat" jdbcType="DOUBLE"/>
+		<result property="gridY1" column="geo_long" jdbcType="DOUBLE"/>
+		<result property="itemPicturePath1" column="img_small1" jdbcType="VARCHAR"/>
+		<result property="itemPicturePath2" column="img_big1" jdbcType="VARCHAR"/>
+		<result property="itemPicturePath3" column="img_menu" jdbcType="VARCHAR"/>
+	</resultMap>
 
+
+<!-- teamdwf가 주석처리함...  -->
+<!-- 
 	<insert id="addItem" parameterType="item">
 		INSERT item (	user_no,
 						state_code,
@@ -73,14 +92,28 @@
 					#{itemPicturePath2},
 					#{itemPicturePath3}		)
 	</insert>
-	
+ -->	
+ 
+ <!-- teamdwf가 주석처리함...  -->
+ <!-- 
 	<select id="findItemNo" parameterType="item" resultType="integer">
 		SELECT MAX(item_no)
 		FROM item
 		WHERE user_no=#{userNo}
 	</select>
-	
+
+
+	<select id="findItemNo" parameterType="item" resultType="integer">
+		SELECT MAX(item_no)
+		FROM item
+		WHERE user_no=#{userNo}
+	</select>
+-->	
+
+<!-- teamdwf가 주석처리함...  -->
+<!--  
 	<select id="findItem" parameterType="integer" resultMap="ItemSelectMap">
+-->
 <!-- 		SELECT -->
 <!-- 		i.item_no, u.nickname, u.user_no, i.state_code, i.item_name, i.price, i.item_info, i.regi_date, i.category1, i.category2, l.grid_x, l.grid_y -->
 <!-- 		FROM user u, item i, location l -->
@@ -89,14 +122,17 @@
 <!-- 			  i.user_no = u.user_no -->
 <!-- 			  AND -->
 <!-- 			  i.item_no = #{value} -->
-		SELECT
+<!-- 	SELECT
 		i.item_no, i.user_no, i.state_code, i.item_name, i.price, i.item_info, i.regi_date, i.category1, i.category2, l.grid_x1, l.grid_y1, l.grid_x2, l.grid_y2, l.grid_x3, l.grid_y3
 		FROM item i, location l
 		WHERE	i.item_no=l.item_no
 				AND
 				i.item_no=#{value}
 	</select>
-	
+ -->	
+ 
+<!-- teamdwf가 주석처리함...  -->
+<!--
 	<select id="findItemList" resultMap="ItemSelectMap">
 		SELECT
 		u.user_no,
@@ -121,6 +157,7 @@
 		LEFT OUTER JOIN item_pic ip ON ip.item_no = i.item_no
 		LEFT OUTER JOIN location l ON l.item_no = i.item_no
 		LEFT OUTER JOIN user u ON i.user_no = u.user_no
+-->
 		<!-- <if test="searchCondition!=''">
 			<where>
 				<if test="searchCondition==1">
@@ -139,7 +176,24 @@
 			WHERE i.item_name LIKE '%#{searchKeyword}%'
 			</if>
 		</if> -->
+<!-- </select> -->	
+
+
+	<select id="findItemList" resultMap="ItemSelectMap">
+		SELECT
+		res_id,
+		name,
+		copy_comment,
+		res_category,
+		geo_lat,
+		geo_long,
+		img_small1,
+		img_big1,
+		img_menu
+		FROM restaurant;
 	</select>
+
+
 	
 						<!-- ///////////////////////여기서부터 원래코드////////////////////// -->
 	<!-- 
@@ -211,7 +265,9 @@
 		WHERE inner_table.row_seq BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
 	 -->
-	
+	 
+<!-- teamdwf가 수정함... -->
+<!-- 
 	<update id="updateItem" parameterType="item">
 		UPDATE item
 		<set>
@@ -242,4 +298,5 @@
 		FROM item
 		WHERE item_no = ${value}
 	</delete>
+-->
 </mapper>
