@@ -139,7 +139,9 @@ public class TestController {
   		}
   		
   		//아이템 채우기
-  		if(imageList.size()==1){
+  		if(imageList.size()==0){
+  			item.setItemPicturePath1("noimage.gif");
+  		}else if(imageList.size()==1){
   			item.setItemPicturePath1(imageList.get(0));			
   		}else if(imageList.size()==2){
   			item.setItemPicturePath1(imageList.get(0));
@@ -189,7 +191,7 @@ public class TestController {
   			@ModelAttribute("user") User user,
   			HttpSession session, HttpServletRequest request, HttpServletResponse response)
   					throws Exception{
-    		
+    	System.out.println("아이템 삭제!");	
     	itemService.removeItem(item.getItemNo());
     	return "redirect:/itemMapView";
     }
