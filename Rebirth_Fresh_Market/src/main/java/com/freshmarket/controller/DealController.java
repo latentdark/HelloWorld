@@ -59,7 +59,7 @@ public class DealController {
     @RequestMapping(value ="/findWishList")
 	public @ResponseBody List findWishList(
 			@RequestParam(value="userNo", required=false, defaultValue="0")Integer userNo){
-		System.out.println("findMyItemList In__");
+		System.out.println("findWishList In__");
 		System.out.println(userNo);
 		List wishList=dealService.findWishList(userNo);
 		for(int i=0;i<wishList.size();i++){

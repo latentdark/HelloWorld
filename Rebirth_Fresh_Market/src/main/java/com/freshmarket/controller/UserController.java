@@ -1,5 +1,7 @@
 package com.freshmarket.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,12 +16,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.freshmarket.domain.User;
 import com.freshmarket.service.UserService;
 
 @Controller
+//@EnableWebMvc
+//@SessionAttributes("user")
 public class UserController {
 	
 	@Autowired
@@ -46,10 +53,12 @@ public class UserController {
 	}
     
     //signup->signin 으로 교체
-    @RequestMapping(value ="/signIn", produces="text/plain;charset=UTF-8")
-  	public @ResponseBody String signIn (
+	@RequestMapping(value ="/signIn", produces="text/plain;charset=UTF-8")
+    @ResponseBody 
+    public String signIn (
   			@ModelAttribute("user") User user,
-  			HttpSession session, Locale locale, Model model)
+  			HttpSession session, Locale locale, Model model,
+  			RedirectAttributes ra)
   					throws Exception{
   		
   		System.out.println("_______________________________________________");
@@ -64,17 +73,20 @@ public class UserController {
   		dbUser.setActive(true);
   		if(dbUser!=null && dbUser.getPassword().equals(user.getPassword()) ){
   			session.setAttribute("user", dbUser);
+  			System.out.println("user_controller_session_hashcode_"+session.hashCode());
+  			System.out.println("user_controller_session_getId_"+session.getId());
+  			//model.addAttribute("user", dbUser);
+  			//ra.addFlashAttribute("user", dbUser);
+  			//System.out.println(dbUser.getNickname());
+  			//List list=new ArrayList();
+  			//list.add(dbUser);
+  			//System.out.println(dbUser.toString());
+  			
+  			
+  			return dbUser.toString();
+  		}else{
+  			return null;
   		}
-  		
-  		//Model model = new Model();
-  		//addObject 사용하면 로그인할 때 바로 이름 뜸 필요에 대한 검증 필요
-  		//signin으로 들어온후 주소창 refresh 되게 만들어야함
-  		//model.addObject("user", dbUser);
-  		//redirect 사용안하면 주소창에 주소가 /signin으로 됨
-  		//modelAndView.setViewName("redirect:/home");
-  		//modelAndView.setViewName("forward:/itemMapView");
-  		System.out.println(dbUser.getNickname());
-  		return dbUser.getNickname();
   	}
     /*
        @RequestMapping("/signIn")

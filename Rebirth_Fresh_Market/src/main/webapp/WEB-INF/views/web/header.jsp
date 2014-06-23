@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <script>
 	//alert("응?");
+	var user;
 	function signIn(){
 		$.ajax({
 			type:"POST",
@@ -10,22 +11,58 @@
 				email:document.getElementById("user_email").value,
 				password:document.getElementById("user_password").value
 				}
-		/*,
-			success : function(result){
-				console.log("result"+result);
-				console.log("key"+key);
-			}
-		*/
 		}).done(function(res){
-			console.log("res"+res);
-			console.log("성공");
+			
+			var temp=res.split(',');
+			for(var i=0;i<temp.length;i++){
+				console.log("i_"+i+"__"+temp[i]);
+			}
+			
+			user={
+				userNo		:	temp[0].substring(temp[0].search("=")+1),
+				email		:	temp[1].substring(temp[1].search("=")+1),
+				phoneNumber :	temp[3].substring(temp[3].search("=")+1),
+				nickname	:	temp[4].substring(temp[4].search("=")+1),
+				active		:	temp[6].substring(temp[6].search("=")+1)
+			};
+		
+			//$.session.set("compareLeftContent","value");
+			//alert($.session.get("compareLeftContent"));
+			/*
+			$.session.set("user",user={
+				userNo		:	temp[0].substring(temp[0].search("=")+1),
+				email		:	temp[1].substring(temp[1].search("=")+1),
+				phoneNumber :	temp[3].substring(temp[3].search("=")+1),
+				nickname	:	temp[4].substring(temp[4].search("=")+1),
+				active		:	temp[6].substring(temp[6].search("=")+1)
+			});
+			*/
+			/*
+			$.session.set("user",user);
+			console.log("userNo"+$.session.get("user").userNo);
+			//$.session.set("user.userNo",user.userNo);
+			//alert($.session.get("user.userNo"));
+		
+			console.log("lenth"+$.session.get('user').length);
+			var temp=$.session.get("user");
+		
+			for(var i=0; i<temp.length;i++){
+				console.log(i+"_"+temp[i]);
+			}
+			var temp2=user($.session.get("user"));
+			for(var i=0; i<temp2.length;i++){
+				console.log(i+"_"+temp2[i]);
+			}
+			*/
+			//console.log("user.nickname"+"${user.nickname}");
+			
 			var content;
 			content=
 				"<ul class=\"nav navbar-nav navbar-right\">"+
     				"<li class=\"divider-vertical\"></li>"+
   						"<li class=\"dropdown\">"+
     						"<a id=\"signin_on\" class=\"dropdown-toggle\" href=\"\" data-toggle=\"dropdown\">"+
-    						res+"님 환영합니다! <strong class=\"caret\"></strong></a>"+
+    						user.nickname+" 님 환영합니다! <strong class=\"caret\"></strong></a>"+
     						
 							"<ul id=\"dropdown_on\" class=\"dropdown-menu\" role=\"menu\">"+
 								"<li><a id=\"mypage\" class=\"dropdown_a\" href=\"\">My Page</a></li>"+

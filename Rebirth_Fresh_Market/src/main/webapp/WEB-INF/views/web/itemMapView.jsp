@@ -691,6 +691,7 @@ div.mousescroll:hover {
 	<script src="resources/js_custom/markerclustererPlus.js"></script>
 	<script src="resources/js_custom/markerwithlabel.js"></script>
 
+	<script src="resources/js_custom/jquery.session.js"></script>
 	<!--panel lib -->
 	<!--
 	<script src="resources/js_custom/jquery.slidePanel.min.js"></script>
@@ -1381,31 +1382,19 @@ div.mousescroll:hover {
 		//내가 등록한 물품
 		//findMyItemList(Integer userNo)
 		<!-- 고2 -->
-		function findMyItemList(){
-			$.ajax({
-				type:"POST",
-				url:"/ajaxTest"//,
-				//data:{test:"success"}
-			}).done(function(msg){
-				console.log(msg);
-				console.log("성공");
-			}).fail(function(msg){
-				console.log(msg);
-				console.log("실패");
-			});
-			
-		}
+		
 		//거래 완료된 물품 
 		//버튼을 판매완료/삭제 로 바꿔야함
 		//findMyItemList(Integer userNo)
-		function findMyItemList2(){
-			console.log("${user}");
-			console.log("${user.userNo}");
+		function findMyItemList(msg){
+			//console.log("${user}");
+			//console.log("${user.userNo}");
+			console.log("debug"+user.userNo);
 			$.ajax({
 				type:"POST",
 				url:"/findMyItemList",
 				//dataType : "json",
-				data:{userNo:'${user.userNo}'}
+				data:{userNo:user.userNo}
 			/*,
 				success : function(result){
 					console.log("result"+result);
@@ -1414,10 +1403,36 @@ div.mousescroll:hover {
 			*/
 			}).done(function(res){
 				console.log("msg_"+res);
-				console.log("msg.responstext_"+res.responsText);
 				console.log("msg.length_"+res.length);
+				
+				var content;
+				
+				content=
+				"<table class=\"table table-striped\" style=\"width:261px;\">"+
+				"<thead>"+
+					"<tr>"+
+						"<th style=\"width:54px;\">등록일자</th>"+
+						"<th style=\"width:54px;\">가격(만)</th>"+
+						"<th style=\"width:173px; text-align: center; padding-bottom:18px;\">제품명</th>"+
+					"</tr>"+
+				"</thead>"+
+					"<tbody>";
 				for(var i=0;i<res.length;i++){
-					console.log("i="+i+"_"+res[i]);
+					console.log("i="+i+"_"+res[i].itemNo);
+					content+=
+					"<tr>"+
+						"<td>"+res[i].regidate+"</td>"+
+						"<td>"+res[i].price+"</td>"+
+						"<td>"+res[i].itemName+"</td>"+
+					"</tr>";
+				}
+				content+=
+					"</tbody>"+
+				"</table>";
+				if(msg=="ing"){
+					$('#MyItemList').html(content);
+				}else{
+					$('#MyItemList2').html(content);
 				}
 				console.log("성공");
 			}).fail(function(msg){
@@ -1436,7 +1451,7 @@ div.mousescroll:hover {
 				type:"POST",
 				url:"/addWish",
 				data:{
-					userNo:'${user.userNo}',
+					userNo:user.userNo,
 					itemNo:markerNo
 				}
 			}).done(function(res){
@@ -1449,22 +1464,7 @@ div.mousescroll:hover {
 			});
 		}
 		
-		/*
-		function findMyItemList2(){
-			$.ajax({
-				type:"POST",
-				url:"/ajaxTest2",
-				data:{userNo:'100'}
-			}).done(function(msg){
-				console.log(msg);
-				console.log("성공");
-			}).fail(function(msg){
-				console.log(msg);
-				console.log("실패");
-			});
-			
-		}
-		*/
+	
 		//내가 찜한 물품
 		//findWishList(Integer userNo)
 		function findWishList(){
@@ -1472,7 +1472,7 @@ div.mousescroll:hover {
 				type:"POST",
 				url:"/findWishList",
 				data:{
-					userNo:'${user.userNo}'
+					userNo:user.userNo
 				}
 			}).done(function(res){
 				console.log("res"+res);
@@ -1560,7 +1560,7 @@ div.mousescroll:hover {
 				type:"POST",
 				url:"/findWishList",
 				data:{
-					userNo:'${user.userNo}'
+					userNo:user.userNo
 				}
 			}).done(function(res){
 				console.log("res"+res);
@@ -1606,7 +1606,7 @@ div.mousescroll:hover {
 				type:"POST",
 				url:"/findWishList",
 				data:{
-					userNo:'${user.userNo}'
+					userNo:user.userNo
 				}
 			}).done(function(res){
 				console.log("res"+res);
@@ -2237,8 +2237,8 @@ div.mousescroll:hover {
 			
 				<div id="MainMenu">
 				  <div class="list-group panel"> <!-- 고2 -->
-				    <a href="#demo3" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" onclick="findMyItemList()">내가 등록한 물품</a>
-				    <div class="collapse" id="demo3">
+				    <a href="#MyItemList" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" onclick="findMyItemList('ing')">내가 등록한 물품</a>
+				    <div class="collapse" id="MyItemList">
 				      <a href="#SubMenu1" class="list-group-item" data-toggle="collapse" data-parent="#SubMenu1">Subitem 1 <span class="glyphicon glyphicon-chevron-down"></span></a>
 				      <div class="collapse list-group-submenu" id="SubMenu1">
 				        <a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem 1 a</a>
@@ -2253,8 +2253,8 @@ div.mousescroll:hover {
 				      <a href="javascript:;" class="list-group-item">Subitem 2</a>
 				      <a href="javascript:;" class="list-group-item">Subitem 3</a>
 				    </div>
-				    <a href="#demo4" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" onclick="findMyItemList2()">거래 완료된 물품</a>
-				    <div class="collapse" id="demo4">
+				    <a href="#MyItemList2" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" onclick="findMyItemList('end')">거래 완료된 물품</a>
+				    <div class="collapse" id="MyItemList2">
 				      <a href="#" class="list-group-item">Subitem 1</a>
 				      <a href="#" class="list-group-item">Subitem 2</a>
 				      <a href="#" class="list-group-item">Subitem 3</a>
@@ -2401,7 +2401,7 @@ div.mousescroll:hover {
 	  console.log("Path3__"+marker.itemPicturePath3);
 	  console.log("Path3__length__"+marker.itemPicturePath3.length);
 	  */
-  	  var userNo='${user.userNo}';
+  	 // var userNo='${user.userNo}';
   	  var htmlinjec;
 	  new function makeHtml(){
 			htmlinjec=
@@ -2461,7 +2461,7 @@ div.mousescroll:hover {
 						"</div>"+
 						"<div class=\"modal-footer\">";
 						
-						if(userNo==marker.userNo){
+						if(user.userNo==marker.userNo){
 							htmlinjec+=
 							"<button type=\"button\" class=\"btn btn-primary\" >수정</button>"+
 							"<button class=\"btn btn-primary\" data-toggle=\"modal\" href=\"#deletepopup\" onclick=\"return false\">삭제</button>";					

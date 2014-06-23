@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.freshmarket.common.Search;
 import com.freshmarket.domain.Item;
+import com.freshmarket.domain.User;
 import com.freshmarket.service.ItemService;
 
 @Controller
@@ -46,15 +49,18 @@ public class ItemController {
     
     
 	@RequestMapping(value = "/itemMapView")
-	public ModelAndView googlemap(Locale locale, Model model) {
+	public ModelAndView googlemap(
+			Locale locale, Model model,	HttpSession session) {
 		ModelAndView modelAndView = new ModelAndView();
 		
-		
+		System.out.println("item_controller_session_hashcode_"+session.hashCode());
+		System.out.println("item_controller_session_getId_"+session.getId());
+		//session.
 		Search search=new Search();
-		
+		/*
 		search.setCurrentPage(1);
 		search.setPageSize(1000);
-		/**/
+		*/
 		//search.setPageSize(500);
 		
 		List itemList=itemService.findItemList(search);
@@ -77,6 +83,7 @@ public class ItemController {
 	public @ResponseBody List findMyItemList(
 			@RequestParam(value="userNo", required=false, defaultValue="0")Integer userNo) {
 		System.out.println("findMyItemList In__");
+		
 		System.out.println(userNo);
 		List itemList=itemService.findMyItemList(userNo);
 		/*

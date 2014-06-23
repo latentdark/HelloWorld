@@ -683,7 +683,8 @@ div.mousescroll:hover {
 	<script src="resources/js_custom/markerclusterer_packed.js"></script>
 	<script src="resources/js_custom/markerclustererPlus.js"></script>
 	<script src="resources/js_custom/markerwithlabel.js"></script>
-
+	
+	<script src="resources/js_custom/jquery.session.js"></script>
 	<!--panel lib -->
 	<!--
 	<script src="resources/js_custom/jquery.slidePanel.min.js"></script>
@@ -1381,6 +1382,7 @@ div.mousescroll:hover {
 		//내가 등록한 물품
 		//findMyItemList(Integer userNo)
 		<!-- 고2 -->
+		/*
 		function findMyItemList(){
 			$.ajax({
 				type:"POST",
@@ -1395,17 +1397,19 @@ div.mousescroll:hover {
 			});
 			
 		}
+		*/
 		//거래 완료된 물품 
 		//버튼을 판매완료/삭제 로 바꿔야함
 		//findMyItemList(Integer userNo)
-		function findMyItemList2(){
-			console.log("${user}");
-			console.log("${user.userNo}");
+		function findMyItemList(){
+			//console.log("${user}");
+			//console.log("${user.userNo}");
+			console.log("debug"+user.userNo);
 			$.ajax({
 				type:"POST",
 				url:"/findMyItemList",
 				//dataType : "json",
-				data:{userNo:'${user.userNo}'}
+				data:{userNo:user.userNo}
 			/*,
 				success : function(result){
 					console.log("result"+result);
@@ -1414,11 +1418,34 @@ div.mousescroll:hover {
 			*/
 			}).done(function(res){
 				console.log("msg_"+res);
-				console.log("msg.responstext_"+res.responsText);
 				console.log("msg.length_"+res.length);
+				
+				var content;
+				
+				content=
+				"<table class=\"table table-striped\" style=\"width:261px;\">"+
+				"<thead>"+
+					"<tr>"+
+						"<th style=\"width:54px;\">등록일자</th>"+
+						"<th style=\"width:54px;\">가격(만)</th>"+
+						"<th style=\"width:173px; text-align: center; padding-bottom:18px;\">제품명</th>"+
+					"</tr>"+
+				"</thead>"+
+					"<tbody>";
 				for(var i=0;i<res.length;i++){
-					console.log("i="+i+"_"+res[i]);
+					console.log("i="+i+"_"+res[i].itemNo);
+					content+=
+					"<tr>"+
+						"<td>"+res[i].regidate+"</td>"+
+						"<td>"+res[i].price+"</td>"+
+						"<td>"+res[i].itemName+"</td>"+
+					"</tr>";
 				}
+				content+=
+					"</tbody>"+
+				"</table>";
+				
+				$('#MyItemList').html(content);
 				console.log("성공");
 			}).fail(function(msg){
 				console.log(msg);
@@ -1436,7 +1463,7 @@ div.mousescroll:hover {
 				type:"POST",
 				url:"/addWish",
 				data:{
-					userNo:'${user.userNo}',
+					userNo:user.userNo,
 					itemNo:markerNo
 				}
 			}).done(function(res){
@@ -1468,15 +1495,27 @@ div.mousescroll:hover {
 		//내가 찜한 물품
 		//findWishList(Integer userNo)
 		function findWishList(){
+			console.log("debug"+user.userNo);
 			$.ajax({
 				type:"POST",
 				url:"/findWishList",
 				data:{
-					userNo:'${user.userNo}'
+					userNo:user.userNo
 				}
 			}).done(function(res){
 				console.log("res"+res);
 				var content;
+				/*
+				content=
+				"<table class=\"table table-striped\" style=\"width:261px;\">"+
+				"<thead>"+
+					"<tr>"+
+						"<th style=\"width:54px;\">거리</th>"+
+						"<th style=\"width:54px;\">가격(만)</th>"+
+						"<th style=\"width:173px; text-align: center; padding-bottom:18px;\">제품명</th>"+
+					"</tr>"+
+				"</thead>"+
+					"<tbody>";
 				for(var i=0;i<res.length;i++){
 					console.log("i="+i+"_"+res[i].itemNo);
 					content+=
@@ -1488,7 +1527,146 @@ div.mousescroll:hover {
 						"</tr>"+	
 					"</a>";
 				}
+				content+=
+					"</tbody>"+
+				"</table>";
+				*/
+				
+				
+				/*
+				content=
+						
+						"<tr>"+
+							"<th style=\"width:34px;\">거리</th>"+
+							"<th style=\"width:34px;\">가격(만)</th>"+
+							"<th style=\"width:153px; text-align: center; padding-bottom:18px;\">제품명</th>"+
+						"</tr>";
+					for(var i=0;i<res.length;i++){
+						console.log("i="+i+"_"+res[i].itemNo);
+						content+=
+						"<a href=\"#\" class=\"list-group-item\">"+
+							"<tr>"+
+								"<th style=\"width:34px;\">"+res[i].itemNo+"</td>"+
+								"<th style=\"width:34px;\">"+res[i].price+"</td>"+
+								"<th style=\"width:153px; text-align: center; padding-bottom:18px;\">"+res[i].itemName+"</td>"+
+							"</tr>"+	
+						"</a>";
+					}
+				*/
+				
+				content=
+					"<a href=\"#\" class=\"list-group-item\">"+
+					"<tr>"+
+						"<th style=\"width:34px;\">거리</th>"+
+						"<th style=\"width:34px;\">가격(만)</th>"+
+						"<th style=\"width:153px; text-align: center; padding-bottom:18px;\">제품명</th>"+
+					"</tr>"+
+					"</a>";
+				for(var i=0;i<res.length;i++){
+					console.log("i="+i+"_"+res[i].itemNo);
+					content+=
+					"<a href=\"#\" class=\"list-group-item\">"+
+						"<tr>"+
+							"<th style=\"width:34px;\">"+res[i].itemNo+"</td>     "+
+							"<th style=\"width:34px; padding-left:5em;\">"+res[i].price+"</td>     "+
+							"<th style=\"width:153px; padding-left:5em; text-align: center; padding-bottom:18px;\">"+res[i].itemName+"</td>"+
+						"</tr>"+	
+					"</a>";
+				}
+				
 				$('#WishList').html(content);
+				console.log("ajax 정상응답");
+			}).fail(function(res){
+				console.log(res);
+				console.log("ajax error");
+			});
+		}
+		
+		//내가 찜한 물품
+		//findWishList(Integer userNo)
+		function findWishList2(){
+			$.ajax({
+				type:"POST",
+				url:"/findWishList",
+				data:{
+					userNo:'${user.userNo}'
+				}
+			}).done(function(res){
+				console.log("res"+res);
+				var content;
+				
+				content=
+				//"<table class=\"table table-striped\" style=\"width:261px;\">"+
+				"<thead>"+
+					"<tr>"+
+						"<th style=\"width:54px;\">거리</th>"+
+						"<th style=\"width:54px;\">가격(만)</th>"+
+						"<th style=\"width:173px; text-align: center; padding-bottom:18px;\">제품명</th>"+
+					"</tr>"+
+				"</thead>"+
+					"<tbody>";
+				for(var i=0;i<res.length;i++){
+					console.log("i="+i+"_"+res[i].itemNo);
+					content+=
+					"<a href=\"#\" class=\"list-group-item\">"+
+						"<tr>"+
+							"<td>"+res[i].itemNo+"</td>"+
+							"<td>"+res[i].price+"</td>"+
+							"<td>"+res[i].itemName+"</td>"+
+						"</tr>"+	
+					"</a>";
+				}
+				content+=
+					"</tbody>";
+				//"</table>";
+				
+				$('#WishList2').html(content);
+				console.log("ajax 정상응답");
+			}).fail(function(res){
+				console.log(res);
+				console.log("ajax error");
+			});
+		}
+		
+		//내가 찜한 물품
+		//findWishList(Integer userNo)
+		function findWishList3(){
+			$.ajax({
+				type:"POST",
+				url:"/findWishList",
+				data:{
+					userNo:'${user.userNo}'
+				}
+			}).done(function(res){
+				console.log("res"+res);
+				var content;
+				
+				content=
+				"<table class=\"table table-striped\" style=\"width:261px;\">"+
+				"<thead>"+
+					"<tr>"+
+						"<th style=\"width:54px;\">거리</th>"+
+						"<th style=\"width:54px;\">가격(만)</th>"+
+						"<th style=\"width:173px; text-align: center; padding-bottom:18px;\">제품명</th>"+
+					"</tr>"+
+				"</thead>"+
+					"<tbody>";
+				for(var i=0;i<res.length;i++){
+					console.log("i="+i+"_"+res[i].itemNo);
+					content+=
+					"<a href=\"#\" class=\"list-group-item\">"+
+						"<tr>"+
+							"<td>"+res[i].itemNo+"</td>"+
+							"<td>"+res[i].price+"</td>"+
+							"<td>"+res[i].itemName+"</td>"+
+						"</tr>"+	
+					"</a>";
+				}
+				content+=
+					"</tbody>"+
+				"</table>";
+				
+				$('#WishList3').html(content);
 				console.log("ajax 정상응답");
 			}).fail(function(res){
 				console.log(res);
@@ -1958,6 +2136,11 @@ div.mousescroll:hover {
 						<th style="width:54px;">거리</th>
 						<th style="width:54px;">가격(만)</th>
 						<th style="width:173px; text-align: center; padding-bottom:18px;">제품명</th>
+					<!-- 
+						<th id="t1" style="width:54px;">거리</th>
+						<th id="t2" style="width:54px;">가격(만원)</th>
+						<th id="t3" style="width:153px; text-align: center; padding-bottom:18px;">제품명</th>
+					 -->
 					</tr>
 				</thead>
 				<!-- 뉴텔
@@ -2117,8 +2300,8 @@ div.mousescroll:hover {
 			
 				<div id="MainMenu">
 				  <div class="list-group panel"> <!-- 고2 -->
-				    <a href="#demo3" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" onclick="findMyItemList()">내가 등록한 물품</a>
-				    <div class="collapse" id="demo3">
+				    <a href="#MyItemList" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" onclick="findMyItemList()">내가 등록한 물품</a>
+				    <div class="collapse" id="MyItemList">
 				      <a href="#SubMenu1" class="list-group-item" data-toggle="collapse" data-parent="#SubMenu1">Subitem 1 <span class="glyphicon glyphicon-chevron-down"></span></a>
 				      <div class="collapse list-group-submenu" id="SubMenu1">
 				        <a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem 1 a</a>
@@ -2133,7 +2316,7 @@ div.mousescroll:hover {
 				      <a href="javascript:;" class="list-group-item">Subitem 2</a>
 				      <a href="javascript:;" class="list-group-item">Subitem 3</a>
 				    </div>
-				    <a href="#demo4" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" onclick="findMyItemList2()">거래 완료된 물품</a>
+				    <a href="#demo4" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" onclick="findMyItemList()">거래 완료된 물품</a>
 				    <div class="collapse" id="demo4">
 				      <a href="#" class="list-group-item">Subitem 1</a>
 				      <a href="#" class="list-group-item">Subitem 2</a>
@@ -2147,6 +2330,20 @@ div.mousescroll:hover {
 				    </div>
 				    <a href="#WishList" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" onclick="findWishList()">내가 찜한 물품</a>
 				    <div class="collapse" id="WishList">
+				      <a href="#" class="list-group-item">Subitem 1</a>
+				      <a href="#" class="list-group-item">Subitem 2</a>
+				      <a href="#" class="list-group-item">Subitem 3</a>
+				    </div>
+				    
+				    <a href="#WishList2" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" onclick="findWishList2()">내가 찜한 물품2</a>
+				    <div class="collapse" id="WishList2">
+				      <a href="#" class="list-group-item">Subitem 1</a>
+				      <a href="#" class="list-group-item">Subitem 2</a>
+				      <a href="#" class="list-group-item">Subitem 3</a>
+				    </div>
+				    
+				     <a href="#WishList3" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" onclick="findWishList3()">내가 찜한 물품3</a>
+				    <div class="collapse" id="WishList3">
 				      <a href="#" class="list-group-item">Subitem 1</a>
 				      <a href="#" class="list-group-item">Subitem 2</a>
 				      <a href="#" class="list-group-item">Subitem 3</a>
