@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
@@ -7,14 +7,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Fresh Market</title>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
-	<link rel="Stylesheet" href="/resources/css/bootstrap.min.css"/>
-	
-	<style>
-	
+<meta charset="UTF-8">
+<title>Fresh Market</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+<link rel="Stylesheet" href="/resources/css/bootstrap.min.css" />
+
+<style>
 .navbar {
 	/* background-image: url("/resources/imgs/bg6.png");
 			 */
@@ -161,7 +161,6 @@ body {
 	white-space: nowrap;
 } */
 
-
 /* slider bar css */
 /* 텔 */
 #menu1 {
@@ -169,12 +168,12 @@ body {
 	position: fixed;
 	width: 0%;
 	top: 0;
-	margin-top:53px;
+	margin-top: 53px;
 	left: -200px;
 	background: #FFFFFF;
-	height:  calc(100% - 53px);
+	height: calc(100% - 53px);
 	z-index: 1030;
-	border:1px solid #BCBCBC;
+	border: 1px solid #BCBCBC;
 	padding-top: 20px;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -187,60 +186,55 @@ body {
 	top: 200px;
 	left: 0;
 	background: #5DCD9D;
-	z-index: 1000;	
+	z-index: 1000;
 	padding-left: 10px;
 	padding-top: 10px;
 	padding-bottom: 10px;
 	padding-right: 10px;
- 	border-top-right-radius: 5px;
+	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
 	transition: all 0.3s ease;
 }
 
-
 /* 새로운 시도 시작 */
-#menu-toggle1 span{
-	
+#menu-toggle1 span {
 	/* Container properties */
-	
-	width:0;
-	left:90px;
-	top:0px;
+	width: 0;
+	left: 90px;
+	top: 0px;
 	/*
 	옆에서 얼마나 떨어졌나 지정
 	left:70px;
 	*/
-	padding:0;
-	position:absolute;
-	overflow:hidden;
-
+	padding: 0;
+	position: absolute;
+	overflow: hidden;
 	/* Text properties */
 	font-familiy: 'Nanum Gothic';
-	font-size:18px;
-	font-weight:bold;
-	letter-spacing:0.6px;
-	white-space:nowrap;
-	line-height:90px;
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: 0.6px;
+	white-space: nowrap;
+	line-height: 90px;
 	/* 하이라이터 높이 지정 line-height:39px;*/
 	/* CSS3 Transition: */
 	-webkit-transition: 0.25s;
-	
 	/* Future proofing (these do not work yet): */
 	-moz-transition: 0.25s;
 	transition: 0.25s;
 	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px; 
+	border-bottom-right-radius: 5px;
 }
 /* span 보여주게 하는 코드 */
-#menu-toggle1 a:hover span{ 
-	background-color:rgb(255, 228, 0);
-	color:rgb(3, 0, 102);
+#menu-toggle1 a:hover span {
+	background-color: rgb(255, 228, 0);
+	color: rgb(3, 0, 102);
 	/* text-shadow:1px 1px 0 #99bf31;
 	 */
-	width:auto;
-	padding:0 20px;
-	overflow:visible; 
-	}
+	width: auto;
+	padding: 0 20px;
+	overflow: visible;
+}
 
 /* CSS outer glow with the box-shadow property */
 /*
@@ -254,18 +248,16 @@ body {
 }
 */
 
-
 /* 새로운 시도 끝 */
-
 #menu-toggle1:hover {
 	background: rgb(255, 228, 0);
 	cursor: pointer;
 	border-top-right-radius: 0px;
-	border-bottom-right-radius: 0px; 
+	border-bottom-right-radius: 0px;
 }
 
 #menu1.open {
-	margin-top:53px;
+	margin-top: 53px;
 	left: 0;
 	width: 300px;
 	display: block;
@@ -275,17 +267,16 @@ body {
 	left: 300px;
 }
 
-
 /* Menu2 */
 #menu2 {
 	transition: all 0.3s ease;
 	position: fixed;
 	width: 0%;
 	top: 0;
-	margin-top:53px;
+	margin-top: 53px;
 	left: -300px;
 	background: #ffffff;
-	height:  calc(100% - 53px);
+	height: calc(100% - 53px);
 	z-index: 1030;
 	text-align: center;
 	border: 1px solid #BCBCBC;
@@ -311,50 +302,45 @@ body {
 }
 
 /* 새로운 시도 시작 */
-#menu-toggle2 span{
-	
+#menu-toggle2 span {
 	/* Container properties */
-	
-	width:0;
-	left:90px;
-	top:0px;
+	width: 0;
+	left: 90px;
+	top: 0px;
 	/*
 	옆에서 얼마나 떨어졌나 지정
 	left:70px;
 	*/
-	padding:0;
-	position:absolute;
-	overflow:hidden;
-
+	padding: 0;
+	position: absolute;
+	overflow: hidden;
 	/* Text properties */
 	font-familiy: 'Nanum Gothic';
-	font-size:18px;
-	font-weight:bold;
-	letter-spacing:0.6px;
-	white-space:nowrap;
-	line-height:90px;
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: 0.6px;
+	white-space: nowrap;
+	line-height: 90px;
 	/* 하이라이터 높이 지정 line-height:39px;*/
 	/* CSS3 Transition: */
 	-webkit-transition: 0.25s;
-	
 	/* Future proofing (these do not work yet): */
 	-moz-transition: 0.25s;
 	transition: 0.25s;
 	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px; 
+	border-bottom-right-radius: 5px;
 }
 
 /* span 보여주게 하는 코드 */
-#menu-toggle2 a:hover span{ 
-	background-color:rgb(255, 228, 0);
-	color:rgb(3, 0, 102);
-/* 	text-shadow:1px 1px 0 #99bf31; */
-	width:auto;
-	padding:0 20px;
-	overflow:visible; 
-	
-	}
-	
+#menu-toggle2 a:hover span {
+	background-color: rgb(255, 228, 0);
+	color: rgb(3, 0, 102);
+	/* 	text-shadow:1px 1px 0 #99bf31; */
+	width: auto;
+	padding: 0 20px;
+	overflow: visible;
+}
+
 /* CSS outer glow with the box-shadow property */
 /*
 #menu-toggle2 a:hover{
@@ -367,18 +353,16 @@ body {
 }
 */
 
-
 /* 새로운 시도 끝 */
-
 #menu-toggle2:hover {
 	background: rgb(255, 228, 0);
 	cursor: pointer;
 	border-top-right-radius: 0px;
-	border-bottom-right-radius: 0px; 
+	border-bottom-right-radius: 0px;
 }
 
 #menu2.open {
-	margin-top:53px;
+	margin-top: 53px;
 	left: 0;
 	width: 300px;
 	display: block;
@@ -388,19 +372,18 @@ body {
 	left: 300px;
 }
 
-
 /* Menu3 */
 #menu3 {
 	transition: all 0.3s ease;
 	position: fixed;
-	margin-top:53px;
+	margin-top: 53px;
 	width: 0%;
 	top: 0;
 	left: -200px;
 	background: #FFFFFF;
-	height:  calc(100% - 53px);
+	height: calc(100% - 53px);
 	z-index: 1030;
-	border:1px solid #BCBCBC;
+	border: 1px solid #BCBCBC;
 	padding-top: 20px;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -423,46 +406,43 @@ body {
 }
 
 /* 새로운 시도 시작 */
-#menu-toggle3 span{
-	
+#menu-toggle3 span {
 	/* Container properties */
-	
-	width:0;
-	left:90px;
-	top:0px;
+	width: 0;
+	left: 90px;
+	top: 0px;
 	/*
 	옆에서 얼마나 떨어졌나 지정
 	left:70px;
 	*/
-	padding:0;
-	position:absolute;
-	overflow:hidden;
-
+	padding: 0;
+	position: absolute;
+	overflow: hidden;
 	/* Text properties */
 	font-familiy: 'Nanum Gothic';
-	font-size:18px;
-	font-weight:bold;
-	letter-spacing:0.6px;
-	white-space:nowrap;
-	line-height:90px;
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: 0.6px;
+	white-space: nowrap;
+	line-height: 90px;
 	/* 하이라이터 높이 지정 line-height:39px;*/
 	/* CSS3 Transition: */
 	-webkit-transition: 0.25s;
-	
 	/* Future proofing (these do not work yet): */
 	-moz-transition: 0.25s;
 	transition: 0.25s;
 	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px; 
+	border-bottom-right-radius: 5px;
 }
 /* span 보여주게 하는 코드 */
-#menu-toggle3 a:hover span{ 
-	background-color:rgb(255, 228, 0);
-	color:rgb(3, 0, 102);
+#menu-toggle3 a:hover span {
+	background-color: rgb(255, 228, 0);
+	color: rgb(3, 0, 102);
 	/* text-shadow:1px 1px 0 #99bf31; */
-	width:auto;
-	padding:0 20px;
-	overflow:visible; }
+	width: auto;
+	padding: 0 20px;
+	overflow: visible;
+}
 
 /* CSS outer glow with the box-shadow property */
 /*
@@ -476,18 +456,16 @@ body {
 }
 */
 
-
 /* 새로운 시도 끝 */
-
 #menu-toggle3:hover {
 	background: rgb(255, 228, 0);
 	cursor: pointer;
 	border-top-right-radius: 0px;
-	border-bottom-right-radius: 0px; 
+	border-bottom-right-radius: 0px;
 }
 
 #menu3.open {
-	margin-top:53px;
+	margin-top: 53px;
 	left: 0;
 	width: 300px;
 	display: block;
@@ -497,143 +475,128 @@ body {
 	left: 300px;
 }
 
-#preview_modal{
+#preview_modal {
 	text-align: center;
 }
 
-#tab11,#tab12,#tab13,#tab14,#tab15{
-	height:410px;
+#tab11,#tab12,#tab13,#tab14,#tab15 {
+	height: 410px;
 }
-
 
 /* menu3 내부 css */
-.list-group.panel > .list-group-item {
-  border-bottom-right-radius: 4px;
-  border-bottom-left-radius: 4px
-}
-.list-group-submenu {
-  margin-left:20px;
+.list-group.panel>.list-group-item {
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px
 }
 
-#injection-modal{
+.list-group-submenu {
+	margin-left: 20px;
+}
+
+#injection-modal {
 	background-color: white;
 	border-top-right-radius: 4px;
-  	border-top-left-radius: 4px;
+	border-top-left-radius: 4px;
 	border-bottom-right-radius: 4px;
-  	border-bottom-left-radius: 4px;
-  	text-align: center;
+	border-bottom-left-radius: 4px;
+	text-align: center;
 }
 
 #search_result {
-	height:  calc(100% - 150px);
-/* 	overflow-y:scroll; */
+	height: calc(100% - 150px);
+	/* 	overflow-y:scroll; */
 }
-
-
-
 
 div.mousescroll {
-    overflow: hidden;
+	overflow: hidden;
 }
+
 div.mousescroll:hover {
-    overflow-y: scroll;
+	overflow-y: scroll;
 }
-
-
 
 /* 새로운 시도 시작 */
-#t3 span{
-	
+#t3 span {
 	/* Container properties */
-	
-	width:0;
-	left:absolute;
-	top:absolute;
+	width: 0;
+	left: absolute;
+	top: absolute;
 	/*
 	옆에서 얼마나 떨어졌나 지정
 	left:70px;
 	*/
-	padding:0;
-	position:absolute;
-	overflow:hidden;
-
+	padding: 0;
+	position: absolute;
+	overflow: hidden;
 	/* Text properties */
 	font-familiy: 'Nanum Gothic';
-	font-size:12px;
-	font-weight:bold;
-	letter-spacing:0.6px;
-	white-space:nowrap;
-	line-height:20px;
+	font-size: 12px;
+	font-weight: bold;
+	letter-spacing: 0.6px;
+	white-space: nowrap;
+	line-height: 20px;
 	/* 하이라이터 높이 지정 line-height:39px;*/
 	/* CSS3 Transition: */
 	-webkit-transition: 0.25s;
-	
 	/* Future proofing (these do not work yet): */
 	-moz-transition: 0.25s;
 	transition: 0.25s;
 	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px; 
+	border-bottom-right-radius: 5px;
 }
 /* span 보여주게 하는 코드 */
-#t3 a:hover span{ 
-	background-color:rgb(255, 228, 0);
-	color:rgb(3, 0, 102);
+#t3 a:hover span {
+	background-color: rgb(255, 228, 0);
+	color: rgb(3, 0, 102);
 	/* text-shadow:1px 1px 0 #99bf31;
 	 */
-	width:auto;
-	padding:0 20px;
+	width: auto;
+	padding: 0 20px;
 	/*padding:0 20px;*/
-	overflow:visible; 
-	}
+	overflow: visible;
+}
 
-
-#t3 a:hover{
+#t3 a:hover {
 	background: rgb(255, 228, 0);
 	cursor: pointer;
 	border-top-right-radius: 0px;
-	border-bottom-right-radius: 0px; 
+	border-bottom-right-radius: 0px;
+	text-decoration: none;
+	-moz-box-shadow: 0 0 5px #9ddff5;
+	-webkit-box-shadow: 0 0 5px #9ddff5;
+	box-shadow: 0 0 5px #9ddff5;
 
-	text-decoration:none;
-	
-	-moz-box-shadow:0 0 5px #9ddff5;
-	-webkit-box-shadow:0 0 5px #9ddff5;
-	box-shadow:0 0 5px #9ddff5;
-	
 	/* CSS outer glow with the box-shadow property */
+}
+
+#addWish_disable {
 	
 }
 
-
-#addWish_disable{
-	
-}
-#addWish_disable a:hover{
+#addWish_disable a:hover {
 	background: rgb(255, 228, 0);
 	cursor: pointer;
 	border-top-right-radius: 0px;
-	border-bottom-right-radius: 0px; 
+	border-bottom-right-radius: 0px;
+	text-decoration: none;
+	-moz-box-shadow: 0 0 5px #9ddff5;
+	-webkit-box-shadow: 0 0 5px #9ddff5;
+	box-shadow: 0 0 5px #9ddff5;
 
-	text-decoration:none;
-	
-	-moz-box-shadow:0 0 5px #9ddff5;
-	-webkit-box-shadow:0 0 5px #9ddff5;
-	box-shadow:0 0 5px #9ddff5;
-	
 	/* CSS outer glow with the box-shadow property */
-	
 }
-.modal-footer{
+
+.modal-footer {
 	margin-top: 0px;
 }
 
 /*덧글에 덧글  */
-.reReply{
-	margin-left:20px;
-	}
-
+.reReply {
+	margin-left: 20px;
+}
 </style>
- 	
-	<!--
+
+<!--
 				
 				
 				
@@ -653,75 +616,77 @@ div.mousescroll:hover {
 	
 	
 	
-	-->	
-	
-	
-	
-	<!-- ----------------------------------------------------------------------->
-	
+	-->
 
-	
 
-	<!-- jquery + UI + CSS google CDN -->
-	
-	<!--panel용 lib -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-	
-	
-	<script src="http://code.jquery.com/jquery.min.js"></script>
 
-	<!-- GoogleMap API Key -->
-	<script
+<!-- ----------------------------------------------------------------------->
+
+
+
+
+<!-- jquery + UI + CSS google CDN -->
+
+<!--panel용 lib -->
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+
+<script src="http://code.jquery.com/jquery.min.js"></script>
+
+<!-- GoogleMap API Key -->
+<script
 	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAX-hWL7tXxRZd2GtUjDME2jf-9qNoiRsE&sensor=false&language=ko">
 	</script>
 
-	<!-- jquery UI google CDN -->
-	<link rel="stylesheet"
+<!-- jquery UI google CDN -->
+<link rel="stylesheet"
 	href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
-	<script
+<script
 	src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 
-	<!--
+<!--
 	<script
 		src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
  	 -->
-	
-	<script src="resources/js_custom/markerclusterer.js"></script>
-	<script src="resources/js_custom/markerclusterer_packed.js"></script>
-	<script src="resources/js_custom/markerclustererPlus.js"></script>
-	<script src="resources/js_custom/markerwithlabel.js"></script>
 
-	<script src="resources/js_custom/jquery.session.js"></script>
-	<!--panel lib -->
-	<!--
+<script src="resources/js_custom/markerclusterer.js"></script>
+<script src="resources/js_custom/markerclusterer_packed.js"></script>
+<script src="resources/js_custom/markerclustererPlus.js"></script>
+<script src="resources/js_custom/markerwithlabel.js"></script>
+
+<script src="resources/js_custom/jquery.session.js"></script>
+<!--panel lib -->
+<!--
 	<script src="resources/js_custom/jquery.slidePanel.min.js"></script>
 	 -->
-	<!-- 
+<!-- 
 	<link rel="stylesheet" href="/resources/demos/style.css">
 	  -->
-	 
-	<!-- slider -->
-	<!--
+
+<!-- slider -->
+<!--
 	<script src="resources/js_custom/modernizr.custom.js"></script>
 	 -->
-	
 
-	<!--
+
+<!--
 	<link rel="stylesheet" href="/resources/demos/style.css">
 	-->
-	
-	<!--slider bar script -->
-	<!--
+
+<!--slider bar script -->
+<!--
 	<script src="resources/js_custom/script.js"></script> 
 	 -->
-	<script src="resources/js_custom/slider_script.js"></script> 
-	 
-	<script src="/resources/js/jquery.bootstrap.wizard.js"></script>
-	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-	
-	
-	<!-- jquery.bootstrap.wizard 화면구성 스크립트 코드 -->
-	<script>
+<script src="resources/js_custom/slider_script.js"></script>
+
+<script src="/resources/js/jquery.bootstrap.wizard.js"></script>
+<script
+	src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+
+<!-- jquery.bootstrap.wizard 화면구성 스크립트 코드 -->
+<script>
 	$(document).ready(function() {
 	  	$('#rootwizard').bootstrapWizard({onTabShow: function(tab, navigation, index) {
 			var $total = navigation.find('li').length;
@@ -731,8 +696,8 @@ div.mousescroll:hover {
 		}});	
 	});	
 	</script>
-	
-	<script>
+
+<script>
 
 
 	//여기부터 clusterer
@@ -744,7 +709,7 @@ div.mousescroll:hover {
 	    script += '.js"><' + '/script>';
 	    document.write(script);
 	</script>
-	<script async>
+<script async>
 	     var styles = [[{
 	       url: 'resources/imgs/markerclusterer/people35.png',
 	       height: 35,
@@ -1651,7 +1616,7 @@ div.mousescroll:hover {
 		
 		google.maps.event.addDomListener(window, 'load', initialize);
 	</script>
-	<!--
+<!--
 		
 		
 		
@@ -1671,20 +1636,20 @@ div.mousescroll:hover {
 	
 	
 	
-	-->	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<!--
+	-->
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
 	
 	
 	
@@ -1704,9 +1669,9 @@ div.mousescroll:hover {
 	
 	
 	
-	-->	
+	-->
 
-	<script>
+<script>
 	//로그인 메뉴 
 	$(function() {
 	  // Setup drop down menu
@@ -2009,10 +1974,10 @@ div.mousescroll:hover {
 	              });
 	
    </script>
-	
 
-	
-	<!--
+
+
+<!--
 		
 		
 		
@@ -2032,357 +1997,409 @@ div.mousescroll:hover {
 	
 	
 	
-	-->	
-	
+	-->
+
 </head>
 <!-- 
 	onLoad=initialize 쓰지마세요. 직접 dom객체에 추가했어요.
  	onload에 추가하면 2번 되서 성능 저하됩니다~~~~~~ 
  -->
-<body class="cbp-spmenu-push" data-twttr-rendered="true" onload="init(this.registerform);">
-<!----------------------------------------------------------- -->
+<body class="cbp-spmenu-push" data-twttr-rendered="true"
+	onload="init(this.registerform);">
+	<!----------------------------------------------------------- -->
 
 
 
 
-<!----------------------------------------------------------- -->
-	
+	<!----------------------------------------------------------- -->
+
 	<header>
 		<%@include file="header.jsp"%>
 	</header>
-	
+
 	<div id="menu-toggle1">
-		<a>
-		<img src="resources/imgs/slider/search.png" width=70 height=70 alt="Menu1"></img>
-		<span>상품검색</span>
-		</a>		
+		<a> <img src="resources/imgs/slider/search.png" width=70 height=70
+			alt="Menu1"></img> <span>상품검색</span>
+		</a>
 	</div>
-		<nav id="menu1">
+	<nav id="menu1">
 		<div id="search_condition">
-			<form action="#" name="searchform" id="search_form" method="post" onsubmit="return itemSearch('Detail')">				
-			   	<input type="text" id="searchKeywordDetail" class="form-control" placeholder="Search">		    
-			   	<div id="select_deal"> 
-			    	<div class="btn-group" data-toggle="buttons" style="margin-top: 10px" > <%--onclick="itemSearch('Detail')" --%>
-				  		<label class="btn btn-default active" onclick="itemSearch('all')"  >
-				    	<input type="radio" name="options" id="searchOption1" value="all" checked > 전체검색
-				  		</label>
-				  		<label class="btn btn-default" onclick="itemSearch('buy')" >
-				    	<input type="radio" name="options" id="searchOption2" value="buy" > 삽니다
-				  		</label>
-			  			<label class="btn btn-default" onclick="itemSearch('sell')" >
-				    	<input type="radio" name="options" id="searchOption3" value="sell" > 팝니다
-				  		</label>
+			<form action="#" name="searchform" id="search_form" method="post"
+				onsubmit="return itemSearch('Detail')">
+				<input type="text" id="searchKeywordDetail" class="form-control"
+					placeholder="Search">
+				<div id="select_deal">
+					<div class="btn-group" data-toggle="buttons"
+						style="margin-top: 10px">
+						<%--onclick="itemSearch('Detail')" --%>
+						<label class="btn btn-default active" onclick="itemSearch('all')">
+							<input type="radio" name="options" id="searchOption1" value="all"
+							checked> 전체검색
+						</label> <label class="btn btn-default" onclick="itemSearch('buy')">
+							<input type="radio" name="options" id="searchOption2" value="buy">
+							삽니다
+						</label> <label class="btn btn-default" onclick="itemSearch('sell')">
+							<input type="radio" name="options" id="searchOption3"
+							value="sell"> 팝니다
+						</label>
 					</div>
 				</div>
 				<div style="margin-top: 10px">
-								
-					  <label class="radio-inline">
-					    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" onclick="markersSortingDistance()" checked>
-					    거리순
-					  </label>
-					 
-					  <label class="radio-inline">
-					    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" onclick="markersSortingPrice()" >
-					    가격순
-					  </label>
-				
-					 
-					</div>
-				</Div>
-			</form>
-			<hr style="margin-bottom:10px;">
+
+					<label class="radio-inline"> <input type="radio"
+						name="optionsRadios" id="optionsRadios1" value="option1"
+						onclick="markersSortingDistance()" checked> 거리순
+					</label> <label class="radio-inline"> <input type="radio"
+						name="optionsRadios" id="optionsRadios2" value="option2"
+						onclick="markersSortingPrice()"> 가격순
+					</label>
+
+
+				</div>
+		</Div>
+		</form>
+		<hr style="margin-bottom: 10px;">
 		</div>
 		<div id="search_result" class="mousescroll">
-			<table class="table table-striped" style="width:261px;">
+			<table class="table table-striped" style="width: 261px;">
 				<thead>
 					<tr>
-						<th style="width:80px;">거리(km)</th>
-						<th style="width:80px;">가격(만)</th>
-						<th style="width:100px; text-align: center;">제품명</th>
+						<th style="width: 80px;">거리(km)</th>
+						<th style="width: 80px;">가격(만)</th>
+						<th style="width: 100px; text-align: center;">제품명</th>
 					</tr>
 				</thead>
-					<tbody id="searchResultInjectionSector"></tbody>
-			</table> 
-	    </div>
+				<tbody id="searchResultInjectionSector"></tbody>
+			</table>
+		</div>
 	</nav>
-	
+
 	<div id="menu-toggle2">
-		<a>
-		<img src="resources/imgs/slider/Cloud_Add.png" width=70 height=70 alt="Menu2"></img>
-		<span>물건 팔기/사기</span>
-		</a>		
+		<a> <img src="resources/imgs/slider/Cloud_Add.png" width=70
+			height=70 alt="Menu2"></img> <span>물건 팔기/사기</span>
+		</a>
 		<!-- 
 		<img src="resources/imgs/slider/menu.png" width=50 height=50 alt="Menu"></img>
 		-->
 	</div>
-		<!-- 텔 -->
-		<nav id="menu2">
-			<div class="tab-pane" id="tab2">
-	
-			<div id="rootwizard">				
+	<!-- 텔 -->
+	<nav id="menu2">
+		<div class="tab-pane" id="tab2">
+
+			<div id="rootwizard">
 				<div class="navbar2">
-				  <div class="navbar-inner2">
-				    <div class="container2" style="display:none;">
-						<ul id="register_tap">
-						  	<li><a href="#tab11" data-toggle="tab">1단계</a></li>
-							<li><a href="#tab12" data-toggle="tab">2단계</a></li>
-							<li><a href="#tab13" data-toggle="tab">3단계</a></li>
-							<li><a href="#tab14" data-toggle="tab">4단계</a></li>
-							<li><a href="#tab15" data-toggle="tab">5단계</a></li>
-						</ul>
-				 	</div>
-				  </div>
+					<div class="navbar-inner2">
+						<div class="container2" style="display: none;">
+							<ul id="register_tap">
+								<li><a href="#tab11" data-toggle="tab">1단계</a></li>
+								<li><a href="#tab12" data-toggle="tab">2단계</a></li>
+								<li><a href="#tab13" data-toggle="tab">3단계</a></li>
+								<li><a href="#tab14" data-toggle="tab">4단계</a></li>
+								<li><a href="#tab15" data-toggle="tab">5단계</a></li>
+							</ul>
+						</div>
+					</div>
 				</div>
 				<div id="bar" class="progress progress-striped active">
-				  <div class="progress-bar"></div>
+					<div class="progress-bar"></div>
 				</div>
-				
-				<form action="/itemregister" name="registerform" id="register_form" method="post" enctype="multipart/form-data" >
-				<div class="tab-content">
-				 	
-				    <div class="tab-pane" id="tab11">
-				    	<div class="form-group">
-				    		<h4>거래 선택하기</h4>
-				    		<br>
-						   	<div class="btn-group" data-toggle="buttons">
-							  <label class="btn btn-default">
-							    <input type="radio" name="stateCode" id="buybtn" value="1"> 삽니다
-							  </label>
-							  <label class="btn btn-default">
-							    <input type="radio" name="stateCode" id="sellbtn" value="2"> 팝니다
-							  </label>							  
-							</div>	
+
+				<form action="/itemregister" name="registerform" id="register_form"
+					method="post" enctype="multipart/form-data">
+					<div class="tab-content">
+
+						<div class="tab-pane" id="tab11">
+							<div class="form-group">
+								<h4>거래 선택하기</h4>
+								<br>
+								<div class="btn-group" data-toggle="buttons">
+									<label class="btn btn-default"> <input type="radio"
+										name="stateCode" id="buybtn" value="1"> 삽니다
+									</label> <label class="btn btn-default"> <input type="radio"
+										name="stateCode" id="sellbtn" value="2"> 팝니다
+									</label>
+								</div>
+							</div>
 						</div>
-				    </div>
-				    <div class="tab-pane" id="tab12">
-				    	<div class="form-group">
-				    		<h4>거래할 위치 등록하기</h4>
-				    		<br>
-				    		<input type="hidden" name="gridX1" id="reg_lat" value="" style="border: none;">
-				    		<input type="hidden" name="gridY1" id="reg_lng" value="" style="border: none;">
-				    		<input id="latlng" type="text" value="" style="display:none;">
-				    		<button id="loca_btn" class="btn btn-default" onclick="markerDrop(); return false;"><span>위치 정하기</span></button>
-				    		<button class="btn btn-default" onclick="clearMarkers(); return false;">다시 정하기</button>
-				    		<br><br>
-				    		<textarea readonly="readonly" id="reg_add" rows="4" cols="34" value="" style="border: none; resize:none;"></textarea>
-				    	</div>
-				    </div>
-					<div class="tab-pane" id="tab13">
-						<div class="form-group">
-							<h4>사진 등록하기</h4>
-							<br>
-							<!-- 다등록가능 한데 주소가 어떻게 들어올지 모르겠네 -->
-							<input  class="form-control" name="itemPicturePath1" type="file"  id="exampleInputFile">						
-				   			<br>
-				   			<input  class="form-control" name="itemPicturePath2" type="file"  id="exampleInputFile">						
-				   			<br>
-				   			<input  class="form-control" name="itemPicturePath3" type="file"  id="exampleInputFile">						
-				   			
-				   			
-				   		</div>
-				    </div>
-					<div class="tab-pane" id="tab14">
-						<div class="form-group">
-							<h4>카테고리 등록하기</h4>
-							<br>
-							<select name="category1" id="category1" class="form-control" onchange="itemChange(this.form);" ></select>
-							<select name="category2" id="category2" class="form-control" ></select>											 
-					    </div>
-					</div>    
-				    <div class="tab-pane" id="tab15">
-						<div class="form-group">
-							<h4>상세내용 입력하기</h4>
-							<br>	
-							<input id="item_name" name="itemName" type="text" class="form-control input-normal" placeholder="물품명을 입력하세요" >								       
-					        <div class="input-group">
-					        	<span class="input-group-addon">￦</span><input type="text" name="price" class="form-control" placeholder="희망가격 입력" >
-				     	 	</div>	
-				     	 	<br>	
-				     	 	<textarea name="itemInfo" class="form-control" rows="10" cols="80" placeholder="상세내용을 입력하세요"></textarea>
-				     	 	<br>				      				
-							<button class="btn btn-default" data-toggle="modal" href="#preview_modal" onclick="return false">
-							미리보기
-							</button>
-							<input type="submit" class="btn btn-primary" value="등록하기" >
-							
-						
-						
-					    </div>
+						<div class="tab-pane" id="tab12">
+							<div class="form-group">
+								<h4>거래할 위치 등록하기</h4>
+								<br> <input type="hidden" name="gridX1" id="reg_lat"
+									value="" style="border: none;"> <input type="hidden"
+									name="gridY1" id="reg_lng" value="" style="border: none;">
+								<input id="latlng" type="text" value="" style="display: none;">
+								<button id="loca_btn" class="btn btn-default"
+									onclick="markerDrop(); return false;">
+									<span>위치 정하기</span>
+								</button>
+								<button class="btn btn-default"
+									onclick="clearMarkers(); return false;">다시 정하기</button>
+								<br>
+								<br>
+								<textarea readonly="readonly" id="reg_add" rows="4" cols="34"
+									value="" style="border: none; resize: none;"></textarea>
+							</div>
+						</div>
+						<div class="tab-pane" id="tab13">
+							<div class="form-group">
+								<h4>사진 등록하기</h4>
+								<br>
+								<!-- 다등록가능 한데 주소가 어떻게 들어올지 모르겠네 -->
+								<input class="form-control" name="itemPicturePath1" type="file"
+									id="exampleInputFile"> <br> <input
+									class="form-control" name="itemPicturePath2" type="file"
+									id="exampleInputFile"> <br> <input
+									class="form-control" name="itemPicturePath3" type="file"
+									id="exampleInputFile">
+
+
+							</div>
+						</div>
+						<div class="tab-pane" id="tab14">
+							<div class="form-group">
+								<h4>카테고리 등록하기</h4>
+								<br> <select name="category1" id="category1"
+									class="form-control" onchange="itemChange(this.form);"></select>
+								<select name="category2" id="category2" class="form-control"></select>
+							</div>
+						</div>
+						<div class="tab-pane" id="tab15">
+							<div class="form-group">
+								<h4>상세내용 입력하기</h4>
+								<br> <input id="item_name" name="itemName" type="text"
+									class="form-control input-normal" placeholder="물품명을 입력하세요">
+								<div class="input-group">
+									<span class="input-group-addon">￦</span><input type="text"
+										name="price" class="form-control" placeholder="희망가격 입력">
+								</div>
+								<br>
+								<textarea name="itemInfo" class="form-control" rows="10"
+									cols="80" placeholder="상세내용을 입력하세요"></textarea>
+								<br>
+								<button class="btn btn-default" data-toggle="modal"
+									href="#preview_modal" onclick="return false">미리보기</button>
+								<input type="submit" class="btn btn-primary" value="등록하기">
+
+
+
+							</div>
+						</div>
+						<div id="pager_wizard">
+							<ul class="pager wizard">
+								<li class="previous first" style="display: none;"><a
+									href="#" onclick="return false">First</a></li>
+								<li class="previous"><a href="#" onclick="return false">Previous</a></li>
+								<li class="next last" style="display: none;"><a href="#"
+									onclick="return false">Last</a></li>
+								<li class="next"><a href="#" onclick="return false">Next</a></li>
+							</ul>
+						</div>
 					</div>
-					<div id="pager_wizard">   
-						<ul class="pager wizard">
-							<li class="previous first" style="display:none;"><a href="#" onclick="return false">First</a></li>
-							<li class="previous"><a href="#" onclick="return false">Previous</a></li>
-							<li class="next last" style="display:none;"><a href="#" onclick="return false">Last</a></li>
-						  	<li class="next"><a href="#" onclick="return false">Next</a></li>
-						</ul> 
-					</div>
-				</div>	
 				</form>
 			</div>
-		</div><!-- end of tap2   -->
-		</nav>	
+		</div>
+		<!-- end of tap2   -->
+	</nav>
 	<div id="menu-toggle3">
-		<a>
-		<img src="resources/imgs/slider/Handshake-icon.png" width=70 height=70 alt="Menu3"></img>
-		<span>거래현황</span>
-		</a>		
+		<a> <img src="resources/imgs/slider/Handshake-icon.png" width=70
+			height=70 alt="Menu3"></img> <span>거래현황</span>
+		</a>
 		<!-- 
 		<img src="resources/imgs/slider/menu.png" width=50 height=50 alt="Menu"></img>
 		-->
 	</div>
-		<nav id="menu3">
-			<div class="tab-pane" id="tab3">
+	<nav id="menu3">
+		<div class="tab-pane" id="tab3">
 			<!-- start of tap3   -->
-			
-				<div id="MainMenu">
-				  <div class="list-group panel"> <!-- 고2 -->
-				    <a href="#MyItemList" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" onclick="findMyItemList('ing')">내가 등록한 물품</a>
-				    <div class="collapse" id="MyItemList">
-				      <a href="#SubMenu1" class="list-group-item" data-toggle="collapse" data-parent="#SubMenu1">Subitem 1 <span class="glyphicon glyphicon-chevron-down"></span></a>
-				      <div class="collapse list-group-submenu" id="SubMenu1">
-				        <a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem 1 a</a>
-				        <a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem 2 b</a>
-				        <a href="#SubSubMenu1" class="list-group-item" data-toggle="collapse" data-parent="#SubSubMenu1">Subitem 3 c <span class="glyphicon glyphicon-chevron-down"></span></a>
-				        <div class="collapse list-group-submenu list-group-submenu-1" id="SubSubMenu1">
-				          <a href="#" class="list-group-item" data-parent="#SubSubMenu1">Sub sub item 1</a>
-				          <a href="#" class="list-group-item" data-parent="#SubSubMenu1">Sub sub item 2</a>
-				        </div>
-				        <a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem 4 d</a>
-				      </div>
-				      <a href="javascript:;" class="list-group-item">Subitem 2</a>
-				      <a href="javascript:;" class="list-group-item">Subitem 3</a>
-				    </div>
-				    <a href="#MyItemList2" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" onclick="findMyItemList('end')">거래 완료된 물품</a>
-				    <div class="collapse" id="MyItemList2">
-				      <a href="#" class="list-group-item">Subitem 1</a>
-				      <a href="#" class="list-group-item">Subitem 2</a>
-				      <a href="#" class="list-group-item">Subitem 3</a>
-				    </div>
-				    <a href="#demo5" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">내가 문의한 물품</a>
-				    <div class="collapse" id="demo5">
-				      <a href="#" class="list-group-item">Subitem 1</a>
-				      <a href="#" class="list-group-item">Subitem 2</a>
-				      <a href="#" class="list-group-item">Subitem 3</a>
-				    </div>
-				    <a href="#WishList" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" onclick="findWishList()">내가 찜한 물품</a>
-				    <div class="collapse" id="WishList">
-				      <a href="#" class="list-group-item">Subitem 1</a>
-				      <a href="#" class="list-group-item">Subitem 2</a>
-				      <a href="#" class="list-group-item">Subitem 3</a>
-				    </div>
-				    
-				    <a href="#WishList2" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" onclick="findWishList2()">내가 찜한 물품2</a>
-				    <div class="collapse" id="WishList2">
-				      <a href="#" class="list-group-item">Subitem 1</a>
-				      <a href="#" class="list-group-item">Subitem 2</a>
-				      <a href="#" class="list-group-item">Subitem 3</a>
-				    </div>
-				    
-				     <a href="#WishList3" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" onclick="findWishList3()">내가 찜한 물품3</a>
-				    <div class="collapse" id="WishList3">
-				      <a href="#" class="list-group-item">Subitem 1</a>
-				      <a href="#" class="list-group-item">Subitem 2</a>
-				      <a href="#" class="list-group-item">Subitem 3</a>
-				    </div>
-				  </div>
+
+			<div id="MainMenu">
+				<div class="list-group panel">
+					<!-- 고2 -->
+					<a href="#MyItemList"
+						class="list-group-item list-group-item-success"
+						data-toggle="collapse" data-parent="#MainMenu"
+						onclick="findMyItemList('ing')">내가 등록한 물품</a>
+					<div class="collapse" id="MyItemList">
+						<a href="#SubMenu1" class="list-group-item" data-toggle="collapse"
+							data-parent="#SubMenu1">Subitem 1 <span
+							class="glyphicon glyphicon-chevron-down"></span></a>
+						<div class="collapse list-group-submenu" id="SubMenu1">
+							<a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem
+								1 a</a> <a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem
+								2 b</a> <a href="#SubSubMenu1" class="list-group-item"
+								data-toggle="collapse" data-parent="#SubSubMenu1">Subitem 3
+								c <span class="glyphicon glyphicon-chevron-down"></span>
+							</a>
+							<div class="collapse list-group-submenu list-group-submenu-1"
+								id="SubSubMenu1">
+								<a href="#" class="list-group-item" data-parent="#SubSubMenu1">Sub
+									sub item 1</a> <a href="#" class="list-group-item"
+									data-parent="#SubSubMenu1">Sub sub item 2</a>
+							</div>
+							<a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem
+								4 d</a>
+						</div>
+						<a href="javascript:;" class="list-group-item">Subitem 2</a> <a
+							href="javascript:;" class="list-group-item">Subitem 3</a>
+					</div>
+					<a href="#MyItemList2"
+						class="list-group-item list-group-item-success"
+						data-toggle="collapse" data-parent="#MainMenu"
+						onclick="findMyItemList('end')">거래 완료된 물품</a>
+					<div class="collapse" id="MyItemList2">
+						<a href="#" class="list-group-item">Subitem 1</a> <a href="#"
+							class="list-group-item">Subitem 2</a> <a href="#"
+							class="list-group-item">Subitem 3</a>
+					</div>
+					<a href="#demo5" class="list-group-item list-group-item-success"
+						data-toggle="collapse" data-parent="#MainMenu">내가 문의한 물품</a>
+					<div class="collapse" id="demo5">
+						<a href="#" class="list-group-item">Subitem 1</a> <a href="#"
+							class="list-group-item">Subitem 2</a> <a href="#"
+							class="list-group-item">Subitem 3</a>
+					</div>
+					<a href="#WishList" class="list-group-item list-group-item-success"
+						data-toggle="collapse" data-parent="#MainMenu"
+						onclick="findWishList()">내가 찜한 물품</a>
+					<div class="collapse" id="WishList">
+						<a href="#" class="list-group-item">Subitem 1</a> <a href="#"
+							class="list-group-item">Subitem 2</a> <a href="#"
+							class="list-group-item">Subitem 3</a>
+					</div>
+
+					<a href="#WishList2"
+						class="list-group-item list-group-item-success"
+						data-toggle="collapse" data-parent="#MainMenu"
+						onclick="findWishList2()">내가 찜한 물품2</a>
+					<div class="collapse" id="WishList2">
+						<a href="#" class="list-group-item">Subitem 1</a> <a href="#"
+							class="list-group-item">Subitem 2</a> <a href="#"
+							class="list-group-item">Subitem 3</a>
+					</div>
+
+					<a href="#WishList3"
+						class="list-group-item list-group-item-success"
+						data-toggle="collapse" data-parent="#MainMenu"
+						onclick="findWishList3()">내가 찜한 물품3</a>
+					<div class="collapse" id="WishList3">
+						<a href="#" class="list-group-item">Subitem 1</a> <a href="#"
+							class="list-group-item">Subitem 2</a> <a href="#"
+							class="list-group-item">Subitem 3</a>
+					</div>
 				</div>
-				
-			</div><!-- end of tap3   -->
-		</nav>	
-	
-	<div id="map_canvas" style="width:100%; height:100%;">
-		
-	</div>
-	
-<footer>
-<!-- preview modal -->
-	<div class="modal fade" id="preview_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-	        <h4 class="modal-title">제품명<font color="red"> [가격]</font></h4>
-	       
-	      </div>
-	      <div class="modal-body">
-	        <div id="imgslider_container">
-    		
-			  <!-- main slider carousel -->
-			  <div class="row-fluid">
-			    <div class="span12" id="slider">
-			      <div class="row-fluid">
-			        <div class="span8" id="carousel-bounding-box">
-			          <div id="myCarousel" class="carousel slide">
-			            
-			            <!-- main slider carousel items -->
-			            <div class="carousel-inner">
-			              <div class="active item" data-slide-number="0">
-			                <img src="http://placehold.it/640x480&amp;text=No%20Image">
-			              </div>
-			              <div class="item" data-slide-number="1">
-			                <img src="http://placehold.it/640x480&amp;text=two">
-			              </div>
-			              <div class="item" data-slide-number="2">
-			                <img src="http://placehold.it/640x480&amp;text=three">
-			              </div>
-			              <div class="item" data-slide-number="3">
-			                <img src="http://placehold.it/640x480&amp;text=four">
-			              </div>
-			               
-			            </div>
-			            
-			            <!-- main slider carousel nav controls -->
-			            <a class="carousel-control left" href="#myCarousel" data-slide="prev">‹</a>
-			            <a class="carousel-control right" href="#myCarousel" data-slide="next">›</a>
-			          </div>
-			        </div>
-			        
-			       
-			      </div>
-			      
-			    </div>
-			  </div> <!--/main slider carousel-->
-			</div><!-- end of image slider -->
-			<br>
-			<p>상세 내용</p>
-			
-	      </div>
-	      <div class="modal-footer">
-	      	<input type="submit" class="btn btn-primary" value="등록하기" >		
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	       	
-	      </div>
-	    </div><!-- /.modal-content -->
-	  </div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
-	
-	<!--삭제 팝업창  -->
-	<div class="modal fade" id="deletepopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index: 1060;">
-	  <div class="modal-dialog" style="width: 400px;text-align: center;margin-top: 200px;margin-bottom: 200px;">
-	    <div class="modal-content">
-	   
-	      <div class="modal-body">
-  		    <form action="/itemRemove">
-		        <p>삭제 하시겠습니까?</p>
-		        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>  
-	        	<input type="hidden" name="ItemNo" id="deleteItemNo" value="">
-	        	<input type="submit" class="btn btn-danger" value="삭제">
-	      	</form>
-	      </div>
-	    </div><!-- /.modal-content -->
-	  </div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
-	<!-- 삭제 팝업창 끝 -->
-		
-	<!-- footer부분에 modal용 div넣습니다. 레이아웃과 상관없으니 삭제하지 마세요 -->
+			</div>
+
+		</div>
+		<!-- end of tap3   -->
+	</nav>
+
+	<div id="map_canvas" style="width: 100%; height: 100%;"></div>
+
+	<footer>
+		<!-- preview modal -->
+		<div class="modal fade" id="preview_modal" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">×</button>
+						<h4 class="modal-title">
+							제품명<font color="red"> [가격]</font>
+						</h4>
+
+					</div>
+					<div class="modal-body">
+						<div id="imgslider_container">
+
+							<!-- main slider carousel -->
+							<div class="row-fluid">
+								<div class="span12" id="slider">
+									<div class="row-fluid">
+										<div class="span8" id="carousel-bounding-box">
+											<div id="myCarousel" class="carousel slide">
+
+												<!-- main slider carousel items -->
+												<div class="carousel-inner">
+													<div class="active item" data-slide-number="0">
+														<img src="http://placehold.it/640x480&amp;text=No%20Image">
+													</div>
+													<div class="item" data-slide-number="1">
+														<img src="http://placehold.it/640x480&amp;text=two">
+													</div>
+													<div class="item" data-slide-number="2">
+														<img src="http://placehold.it/640x480&amp;text=three">
+													</div>
+													<div class="item" data-slide-number="3">
+														<img src="http://placehold.it/640x480&amp;text=four">
+													</div>
+
+												</div>
+
+												<!-- main slider carousel nav controls -->
+												<a class="carousel-control left" href="#myCarousel"
+													data-slide="prev">‹</a> <a class="carousel-control right"
+													href="#myCarousel" data-slide="next">›</a>
+											</div>
+										</div>
+
+
+									</div>
+
+								</div>
+							</div>
+							<!--/main slider carousel-->
+						</div>
+						<!-- end of image slider -->
+						<br>
+						<p>상세 내용</p>
+
+					</div>
+					<div class="modal-footer">
+						<input type="submit" class="btn btn-primary" value="등록하기">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+		<!-- /.modal -->
+
+		<!--삭제 팝업창  -->
+		<div class="modal fade" id="deletepopup" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="true"
+			style="z-index: 1060;">
+			<div class="modal-dialog"
+				style="width: 400px; text-align: center; margin-top: 200px; margin-bottom: 200px;">
+				<div class="modal-content">
+
+					<div class="modal-body">
+						<form action="/itemRemove">
+							<p>삭제 하시겠습니까?</p>
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">취소</button>
+							<input type="hidden" name="ItemNo" id="deleteItemNo" value="">
+							<input type="submit" class="btn btn-danger" value="삭제">
+						</form>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+		<!-- /.modal -->
+		<!-- 삭제 팝업창 끝 -->
+
+		<!-- footer부분에 modal용 div넣습니다. 레이아웃과 상관없으니 삭제하지 마세요 -->
 		<%-- modal Injection 공간 --%>
-		<div id="htmlInjectionSector" class="htmlInjectionSector" title="htmlInjectionSector">
-		</div>												 
-	<!-- footer부분에 modal용 div넣습니다. 레이아웃과 상관없으니 삭제하지 마세요 -->
-	
-</footer>	
-	
+		<div id="htmlInjectionSector" class="htmlInjectionSector"
+			title="htmlInjectionSector"></div>
+		<!-- footer부분에 modal용 div넣습니다. 레이아웃과 상관없으니 삭제하지 마세요 -->
+
+	</footer>
+
 </body>
 </html>
 
@@ -2460,7 +2477,7 @@ div.mousescroll:hover {
 							
 						"</div>"+
 						"<div class=\"modal-footer\">";
-						
+					if(user!=null){
 						if(user.userNo==marker.userNo){
 							htmlinjec+=
 							"<button type=\"button\" class=\"btn btn-primary\" >수정</button>"+
@@ -2468,10 +2485,11 @@ div.mousescroll:hover {
 						}else{
 							//htmlinjec+="<a href=\"#\" type=\"button\" id=\"addWish_disable\" class=\"btn btn-danger\" >찜</a>";
 						}
-						if(userNo!=null){
+						if(user.userNo!=null){
 							htmlinjec+=
 							"<button type=\"button\" id=\"addWish_active\" class=\"btn btn-danger\" onclick=\"addWish()\" >찜</button>";	
 						}
+					}
 						htmlinjec+=
 						"<button id=\"replyButton\" class=\"btn btn-primary\" data-toggle=\"modal\" onclick=\"change()\">댓글 <span class=\"badge\">42</span></button>"+
 						"<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>"+
