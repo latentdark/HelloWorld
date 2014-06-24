@@ -810,8 +810,64 @@ div.mousescroll:hover {
 			A:null,
 			k:null
 	};
+	var itemList; 
+	
+	<%-- initData() refreshData() Start--%>
+	function initData(){
+		console.log("initData()__Inn");
+		
+		$.ajax({
+			type:"POST",
+			url:"/itemList"	
+		}).done(function(res){
+			console.log("res.length__"+res.length);
+			//console.log("itemList.length_"+itemList.length);
+			itemList=res;
+			console.log("itemList.length_"+itemList.length);
+			initialize();
+			console.log("성공");
+		}).fail(function(res){
+			console.log(res);
+			console.log("실패");
+		});
+		
+
+	}
+	function refreshData(){
+		console.log("refreshData()__Inn");
+		
+		$.ajax({
+			type:"POST",
+			url:"/itemList"	
+		}).done(function(res){
+			console.log("res.length__"+res.length);
+			//console.log("itemList.length_"+itemList.length);
+			itemList=res;
+			console.log("itemList.length_"+itemList.length);
+			
+			markersInit(); //marker[]에 itemList push
+			markerInitialize(map); //map객체에 marekr onload
+			console.log("markersInit() after");
+			//markerClusterer = new MarkerClusterer(map, markers, {
+			markerClusterer = new MarkerClusterer(map, markers, {
+		          maxZoom: 14,
+		          gridSize: size,
+		          ignoreHidden:true
+		          //styles: styles[style]
+		        });
+			
+			console.log("성공");
+		}).fail(function(res){
+			console.log(res);
+			console.log("실패");
+		});
+		
+
+	}<%-- initData() refreshData() End--%>
+	
 		<%-- initialize Start --%>
 		function initialize() {
+			console.log("initialize() Inn");
 			//geocoder 좌표->주소 변환 사용
 			geocoder = new google.maps.Geocoder();
 			var mapOptions = {
@@ -863,8 +919,10 @@ div.mousescroll:hover {
 				handleNoGeolocation(false);
 			}
 			
+			console.log("markersInit() before");
 			markersInit(); //marker[]에 itemList push
 			markerInitialize(map); //map객체에 marekr onload
+			console.log("markersInit() after");
 			//markerClusterer = new MarkerClusterer(map, markers, {
 			markerClusterer = new MarkerClusterer(map, markers, {
 		          maxZoom: 14,
@@ -1071,6 +1129,55 @@ div.mousescroll:hover {
 		
 		<%-- markersInit() --%>
 		function markersInit(){
+			console.log("markersInit()_Inn");
+			//markers=[];
+			//statCode 1=sell, 2=buy, 3=deal
+			console.log(itemList);
+			console.log("markersInit()__itemList.length__"+itemList.length);
+			for(var i=0;i<itemList.length;i++){
+				
+				var markerImage;
+				console.log("itemList[i].stateCode_"+itemList[i].stateCode);
+				switch(itemList[i].stateCode){
+					case 1:
+						markerImage=buyImage;
+						console.log("buyImage");
+						break;
+					case 2:
+						markerImage=sellImage;
+						console.log("sellImage");
+						break;
+					case 3:
+						markerImage=dealImage;
+						console.log("dealImage");
+						break;
+				}
+				markers.push(
+							new google.maps.Marker({
+		
+								position : new google.maps.LatLng(itemList[i].gridX1 , itemList[i].gridY1 ),
+								map : map,
+								icon: markerImage,
+								stateCode : itemList[i].stateCode,
+								title : itemList[i].itemName,
+								userNo : itemList[i].userNo,
+								itemNo : itemList[i].itemNo,
+								itemInfo : itemList[i].itemInfo,
+								itemPicturePath1 : itemList[i].itemPicturePath1,
+								itemPicturePath2 : itemList[i].itemPicturePath2,
+								itemPicturePath3 : itemList[i].itemPicturePath3,
+								
+								distance:null,
+								distance_m:null,								
+								price : itemList[i].price
+								
+								})
+						);
+					
+			}
+		}<%-- markersInit() end --%>
+		<%-- 
+		function markersInit(){
 			//markers=[];
 			//statCode 1=sell, 2=buy, 3=deal
 			<c:forEach var="itemList" items="${itemList}">
@@ -1155,11 +1262,13 @@ div.mousescroll:hover {
 			console.log("markers[0].position__"+markers[0].position);
 			console.log("markers[0].position__"+markers[0].position.A);
 			console.log("markers[0].position__"+markers[0].position.k); */
-		}<%-- markersInit() end --%>
+		}
+		--%>
 								
 		
 		<%-- markerInitialize Start --%>
 		function markerInitialize(map) {
+		  console.log("markerInitialize(map) Inn");
 		  for (var i = 0; i < markers.length; i++) {
 			//console.log(markers[i]);
 			//markers[i].setMap(map);   
@@ -1170,6 +1279,7 @@ div.mousescroll:hover {
 	
 		<%-- markerAddListener Start--%>
 		function markerAddListener(marker, i) {
+		 console.log("markerAddListener() Inn");
 		/* 
 		  var infowindow = new google.maps.InfoWindow({
 			content: marker.content	
@@ -1231,26 +1341,17 @@ div.mousescroll:hover {
 			}
 			
 			markersSearchResult.sort(function(a, b){
-				/* console.log("markersSearchResult.sort.Distance call");
-			 */	//geolocation으로 잡은 A,k를 이용해 가져온 a의 절대값과 삼각함수를 이용해 거리측정
-				
-				//var a_A	=	Math.abs(myPosition.A-a.position.A);
-				//var a_k	=	Math.abs(myPosition.k-a.position.k);
-				var a_A	=	Math.abs(Math.round(myPosition.A-a.position.A*1000000)/1000000);
-				var a_k	=	Math.abs(Math.round(myPosition.k-a.position.k*1000000)/1000000);
+			
+				//var a_A	=	Math.abs(Math.round(myPosition.A-a.position.A*1000000)/1000000);
+				//var a_k	=	Math.abs(Math.round(myPosition.k-a.position.k*1000000)/1000000);
 				//var a_distance=Math.pow(a_A, a_A) + Math.pow(a_k, a_k);
 				//a.distance=Math.sqrt(a_distance);
 				a.distance_m=
 					Math.round(getDistanceFromLatLonInKm(myPosition.k, myPosition.A,
 							 					a.position.k, a.position.A)*10000)/10000;
 				
-				//console.log(a_A);
-				//console.log(a_k);
-				//console.log(a_distance);
-				//var b_A	=	Math.abs(myPosition.A-b.position.A);
-				//var b_k	=	Math.abs(myPosition.k-b.position.k);
-				var b_A	=	Math.abs(Math.round(myPosition.A-b.position.A*1000000)/1000000);
-				var b_k	=	Math.abs(Math.round(myPosition.k-b.position.k*1000000)/1000000);
+				//var b_A	=	Math.abs(Math.round(myPosition.A-b.position.A*1000000)/1000000);
+				//var b_k	=	Math.abs(Math.round(myPosition.k-b.position.k*1000000)/1000000);
 				//var b_distance=Math.pow(b_A, b_A) + Math.pow(b_k, b_k);
 				//b.distance=Math.sqrt(b_distance);
 				b.distance_m=
@@ -1296,8 +1397,8 @@ div.mousescroll:hover {
 			
 			markersSearchResult.sort(function(a, b){
 				/* console.log("markersSearchResult.sort.Price call"); */
-				var a_A	=	Math.abs(Math.round(myPosition.A-a.position.A*1000000)/1000000);
-				var a_k	=	Math.abs(Math.round(myPosition.k-a.position.k*1000000)/1000000);
+				//var a_A	=	Math.abs(Math.round(myPosition.A-a.position.A*1000000)/1000000);
+				//var a_k	=	Math.abs(Math.round(myPosition.k-a.position.k*1000000)/1000000);
 				//var a_distance=Math.pow(a_A, a_A) + Math.pow(a_k, a_k);
 				//a.distance=Math.sqrt(a_distance);
 				a.distance_m=
@@ -1636,7 +1737,7 @@ div.mousescroll:hover {
 		
 		
 		
-		google.maps.event.addDomListener(window, 'load', initialize);
+		google.maps.event.addDomListener(window, 'load', initData);
 	</script>
 <!--
 		
@@ -2468,12 +2569,12 @@ div.mousescroll:hover {
 						              "<div class=\"active item\" data-slide-number=\"0\">"+
 						                "<img  src = \"resources/itempictures/"+marker.itemPicturePath1+"\" style=\"width: 640px; height:480;\">"+
 						              "</div>";
-					if(marker.itemPicturePath2.length>0){
+					if(marker.itemPicturePath2!=null){
 						  htmlinjec+= "<div class=\"item\" data-slide-number=\"1\">"+				
 						              	"<img  src = \"resources/itempictures/"+marker.itemPicturePath2+"\" style=\"width: 640px; height:480;\">"+
 					                  "</div>";
 					}
-					if(marker.itemPicturePath3.length>0){
+					if(marker.itemPicturePath3!=null){
 						  htmlinjec+= "<div class=\"item\" data-slide-number=\"2\">"+		
 						 			  "<img  src = \"resources/itempictures/"+marker.itemPicturePath3+"\" style=\"width: 640px; height:480;\">"+
 			                	 	  "</div>";					            
@@ -2538,12 +2639,12 @@ div.mousescroll:hover {
 				              "<div class=\"active item\" data-slide-number=\"0\">"+
 				                "<img  src = \"resources/itempictures/"+marker.itemPicturePath1+"\" style=\"width: 640px; height:480;\">"+
 				              "</div>";
-			if(marker.itemPicturePath2.length>0){
+			if(marker.itemPicturePath2!=null){
 				  returnDiv+= "<div class=\"item\" data-slide-number=\"1\">"+				
 				              	"<img  src = \"resources/itempictures/"+marker.itemPicturePath2+"\" style=\"width: 640px; height:480;\">"+
 			                  "</div>";
 			}
-			if(marker.itemPicturePath3.length>0){
+			if(marker.itemPicturePath3!=null){
 				  returnDiv+= "<div class=\"item\" data-slide-number=\"2\">"+		
 				 			  "<img  src = \"resources/itempictures/"+marker.itemPicturePath3+"\" style=\"width: 640px; height:480;\">"+
 		            	 	  "</div>";					            
