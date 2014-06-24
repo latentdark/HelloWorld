@@ -2166,7 +2166,6 @@ div.mousescroll:hover {
 							<div class="form-group">
 								<h4>사진 등록하기</h4>
 								<br>
-								<!-- 다등록가능 한데 주소가 어떻게 들어올지 모르겠네 -->
 								<input class="form-control" name="itemPicturePath1" type="file"
 									id="exampleInputFile"> <br> <input
 									class="form-control" name="itemPicturePath2" type="file"
@@ -2219,6 +2218,7 @@ div.mousescroll:hover {
 					</div>
 				</form>
 			</div>
+			
 		</div>
 		<!-- end of tap2   -->
 	</nav>
@@ -2660,6 +2660,99 @@ div.mousescroll:hover {
 		console.log("누른후 "+flag);
 	 }
 };
+
+ var modifyHtml="<div id=\"rootwizard\">"+
+	"<div class=\"navbar2\">"+
+	"<div class=\"navbar-inner2\">"+
+		"<div class=\"container2\" style=\"display: none;\">"+
+			"<ul id=\"register_tap\">"+
+				"<li><a href=\"#tab11\" data-toggle=\"tab\">1단계</a></li>"+
+				"<li><a href=\"#tab12\" data-toggle=\"tab\">2단계</a></li>"+
+				"<li><a href=\"#tab13\" data-toggle=\"tab\">3단계</a></li>"+
+				"<li><a href=\"#tab14\" data-toggle=\"tab\">4단계</a></li>"+
+				"<li><a href=\"#tab15\" data-toggle=\"tab\">5단계</a></li>"+
+			"</ul>"+
+		"</div>"+
+	"</div>"+
+"</div>"+
+"<div id=\"bar\" class=\"progress progress-striped active\">"+
+	"<div class=\"progress-bar\"></div>"+
+"</div>"+
+
+"<form action=\"/itemregister\" name=\"registerform\" id=\"register_form\" method=\"post\" enctype=\"multipart/form-data\">"+
+	"<div class=\"tab-content\">"+
+
+		"<div class=\"tab-pane\" id=\"tab11\">"+
+			"<div class=\"form-group\">"+
+				"<h4>거래 선택하기 수정 수정</h4>"+
+				"<br>"+
+				"<div class=\"btn-group\" data-toggle=\"buttons\">"+
+					"<label class=\"btn btn-default\">"+ 
+					 	"<input type=\"radio\"name=\"stateCode\" id=\"buybtn\" value=\"1\"> 삽니다</label>"+ 
+					 "<label class=\"btn btn-default\">"+ 
+					 	"<input type=\"radio\"name=\"stateCode\" id=\"sellbtn\" value=\"2\"> 팝니다</label>"+
+				"</div>"+
+			"</div>"+
+		"</div>"+
+		"<div class=\"tab-pane\" id=\"tab12\">"+
+			"<div class=\"form-group\">"+
+				"<h4>거래할 위치 등록하기</h4>"+
+				"<br><input type=\"hidden\" name=\"gridX1\" id=\"reg_lat\" value=\"\" style=\"border: none;\">"+ 
+			     "<input type=\"hidden\"name=\"gridY1\" id=\"reg_lng\" value=\"\" style=\"border: none;\">"+
+				 "<input id=\"latlng\" type=\"text\" value=\"\" style=\"display: none;\">"+
+				 "<button id=\"loca_btn\" class=\"btn btn-default\" onclick=\"markerDrop(); return false;\">"+
+				"<span>위치 정하기</span>"+
+				"</button>"+
+				"<button class=\"btn btn-default\" onclick=\"clearMarkers(); return false;\">다시 정하기</button>"+
+				"<br><br>"+
+				"<textarea readonly=\"readonly\" id=\"reg_add\" rows=\"4\" cols=\"34\" value=\"\" style=\"border: none; resize: none;\"></textarea>"+
+			"</div>"+
+		"</div>"+
+		"<div class=\"tab-pane\" id=\"tab13\">"+
+			"<div class=\"form-group\">"+
+				"<h4>사진 등록하기</h4>"+
+				"<br>"+
+				"<input class=\"form-control\" name=\"itemPicturePath1\" type=\"file\" id=\"exampleInputFile\">"+ 
+				 "<br><input class=\"form-control\" name=\"itemPicturePath2\" type=\"file\" id=\"exampleInputFile\">"+
+				 "<br><input class=\"form-control\" name=\"itemPicturePath3\" type=\"file\"id=\"exampleInputFile\">"+
+			"</div>"+
+		"</div>"+
+		"<div class=\"tab-pane\" id=\"tab14\">"+
+			"<div class=\"form-group\">"+
+				"<h4>카테고리 등록하기</h4>"+
+				"<br><select name=\"category1\" id=\"category1\" class=\"form-control\" onchange=\"itemChange(this.form);\"></select>"+
+				"<select name=\"category2\" id=\"category2\" class=\"form-control\"></select>"+
+			"</div>"+
+		"</div>"+
+		"<div class=\"tab-pane\" id=\"tab15\">"+
+			"<div class=\"form-group\">"+
+				"<h4>상세내용 입력하기</h4>"+
+				"<br><input id=\"item_name\" name=\"itemName\" type=\"text\" class=\"form-control input-normal\" placeholder=\"물품명을 입력하세요\">"+
+				"<div class=\"input-group\">"+
+					"<span class=\"input-group-addon\">￦</span><input type=\"text\" name=\"price\" class=\"form-control\" placeholder=\"희망가격 입력\">"+
+				"</div>"+
+				"<br>"+
+				"<textarea name=\"itemInfo\" class=\"form-control\" rows=\"10\" cols=\"80\" placeholder=\"상세내용을 입력하세요\"></textarea>"+
+				"<br>"+
+				"<button class=\"btn btn-default\" data-toggle=\"modal\" href=\"#preview_modal\" onclick=\"return false\">미리보기</button>"+
+				"<input type=\"submit\" class=\"btn btn-primary\" value=\"등록하기\">"+
+
+
+
+			"</div>"+
+		"</div>"+
+		"<div id=\"pager_wizard\">"+
+			"<ul class=\"pager wizard\">"+
+				"<li class=\"previous first\" style=\"display: none;\"><a href=\"#\" onclick=\"return false\">First</a></li>"+
+				"<li class=\"previous\"><a href=\"#\" onclick=\"return false\">Previous</a></li>"+
+				"<li class=\"next last\" style=\"display: none;\"><a href=\"#\" onclick=\"return false\">Last</a></li>"+
+				"<li class=\"next\"><a href=\"#\" onclick=\"return false\">Next</a></li>"+
+			"</ul>"+
+		"</div>"+
+	"</div>"+
+"</form>"+
+"</div>";
+ 
  function modify(){
 	console.log("수정모드");	
 	console.log(markerNo);
@@ -2667,7 +2760,7 @@ div.mousescroll:hover {
 	$('#menu-toggle2').addClass('open');
 	$('#item'+markerNo).removeClass('in');
 	document.getElementById("closemodal").click();
-	
+	document.getElementById("tab2").innerHTML=modifyHtml;
 
 };
  
