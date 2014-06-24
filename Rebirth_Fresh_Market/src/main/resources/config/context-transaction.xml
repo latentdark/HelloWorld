@@ -28,6 +28,22 @@
 		<property name="maxActive" value="${jdbc.maxActive}" />
 		 -->
 	</bean>
+	
+		<!-- PropertyPlaceholderConfigurer 로 로드된 resource 는 ${ } 로 접근 가능 -->
+		<!-- 
+	<bean id="propertyConfigurer2"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:config/united.jdbc.properties" />
+	</bean>
+ -->
+	<!-- 네엣 : DBCP (Apache Commons Database Connection) 사용 -->
+	
+	<bean id="unitedDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://teamdwf.cafe24.com/teamdwf" />
+		<property name="username" value="teamdwf" />
+		<property name="password" value="systemtastyroad6" />
+	</bean>
 
 
 	<!-- TransactioManager instance 생성 -->

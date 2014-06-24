@@ -85,7 +85,7 @@ public class UserController {
   			
   			return dbUser.toString();
   		}else{
-  			return null;
+  			return "fail";
   		}
   	}
     /*
@@ -120,12 +120,13 @@ public class UserController {
   	}
      */
     
-    @RequestMapping("/signout")
-    public String signout(HttpServletRequest request, HttpServletResponse response)
+    @RequestMapping("/signOut")
+    @ResponseBody
+    public String signOut(HttpServletRequest request, HttpServletResponse response)
 		throws Exception{
     	HttpSession session=request.getSession();
 		session.invalidate();
-    	return "redirect:/home";
+    	return "session.invalidate() success";
     }
     
     

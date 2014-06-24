@@ -98,6 +98,8 @@ public class HomeController {
 	    return resolver;
 	}
 	*/
+	
+	/*
 	@RequestMapping("/")
     public String home(SitePreference sitePreference, Model model) {
 		System.out.println("들어오긴함?");
@@ -115,6 +117,7 @@ public class HomeController {
             return "web/home";
         }
     }
+    */
 	
 	
 	

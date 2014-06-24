@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
@@ -7,14 +7,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Fresh Market</title>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
-	<link rel="Stylesheet" href="/resources/css/bootstrap.min.css"/>
-	
-	<style>
-	
+<meta charset="UTF-8">
+<title>Fresh Market</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+<link rel="Stylesheet" href="/resources/css/bootstrap.min.css" />
+
+<style>
 .navbar {
 	/* background-image: url("/resources/imgs/bg6.png");
 			 */
@@ -161,7 +161,6 @@ body {
 	white-space: nowrap;
 } */
 
-
 /* slider bar css */
 /* 텔 */
 #menu1 {
@@ -169,12 +168,12 @@ body {
 	position: fixed;
 	width: 0%;
 	top: 0;
-	margin-top:53px;
+	margin-top: 53px;
 	left: -200px;
 	background: #FFFFFF;
-	height:  calc(100% - 53px);
+	height: calc(100% - 53px);
 	z-index: 1030;
-	border:1px solid #BCBCBC;
+	border: 1px solid #BCBCBC;
 	padding-top: 20px;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -187,60 +186,55 @@ body {
 	top: 200px;
 	left: 0;
 	background: #5DCD9D;
-	z-index: 1000;	
+	z-index: 1000;
 	padding-left: 10px;
 	padding-top: 10px;
 	padding-bottom: 10px;
 	padding-right: 10px;
- 	border-top-right-radius: 5px;
+	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
 	transition: all 0.3s ease;
 }
 
-
 /* 새로운 시도 시작 */
-#menu-toggle1 span{
-	
+#menu-toggle1 span {
 	/* Container properties */
-	
-	width:0;
-	left:90px;
-	top:0px;
+	width: 0;
+	left: 90px;
+	top: 0px;
 	/*
 	옆에서 얼마나 떨어졌나 지정
 	left:70px;
 	*/
-	padding:0;
-	position:absolute;
-	overflow:hidden;
-
+	padding: 0;
+	position: absolute;
+	overflow: hidden;
 	/* Text properties */
 	font-familiy: 'Nanum Gothic';
-	font-size:18px;
-	font-weight:bold;
-	letter-spacing:0.6px;
-	white-space:nowrap;
-	line-height:90px;
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: 0.6px;
+	white-space: nowrap;
+	line-height: 90px;
 	/* 하이라이터 높이 지정 line-height:39px;*/
 	/* CSS3 Transition: */
 	-webkit-transition: 0.25s;
-	
 	/* Future proofing (these do not work yet): */
 	-moz-transition: 0.25s;
 	transition: 0.25s;
 	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px; 
+	border-bottom-right-radius: 5px;
 }
 /* span 보여주게 하는 코드 */
-#menu-toggle1 a:hover span{ 
-	background-color:rgb(255, 228, 0);
-	color:rgb(3, 0, 102);
+#menu-toggle1 a:hover span {
+	background-color: rgb(255, 228, 0);
+	color: rgb(3, 0, 102);
 	/* text-shadow:1px 1px 0 #99bf31;
 	 */
-	width:auto;
-	padding:0 20px;
-	overflow:visible; 
-	}
+	width: auto;
+	padding: 0 20px;
+	overflow: visible;
+}
 
 /* CSS outer glow with the box-shadow property */
 /*
@@ -254,18 +248,16 @@ body {
 }
 */
 
-
 /* 새로운 시도 끝 */
-
 #menu-toggle1:hover {
 	background: rgb(255, 228, 0);
 	cursor: pointer;
 	border-top-right-radius: 0px;
-	border-bottom-right-radius: 0px; 
+	border-bottom-right-radius: 0px;
 }
 
 #menu1.open {
-	margin-top:53px;
+	margin-top: 53px;
 	left: 0;
 	width: 300px;
 	display: block;
@@ -275,17 +267,16 @@ body {
 	left: 300px;
 }
 
-
 /* Menu2 */
 #menu2 {
 	transition: all 0.3s ease;
 	position: fixed;
 	width: 0%;
 	top: 0;
-	margin-top:53px;
+	margin-top: 53px;
 	left: -300px;
 	background: #ffffff;
-	height:  calc(100% - 53px);
+	height: calc(100% - 53px);
 	z-index: 1030;
 	text-align: center;
 	border: 1px solid #BCBCBC;
@@ -311,50 +302,45 @@ body {
 }
 
 /* 새로운 시도 시작 */
-#menu-toggle2 span{
-	
+#menu-toggle2 span {
 	/* Container properties */
-	
-	width:0;
-	left:90px;
-	top:0px;
+	width: 0;
+	left: 90px;
+	top: 0px;
 	/*
 	옆에서 얼마나 떨어졌나 지정
 	left:70px;
 	*/
-	padding:0;
-	position:absolute;
-	overflow:hidden;
-
+	padding: 0;
+	position: absolute;
+	overflow: hidden;
 	/* Text properties */
 	font-familiy: 'Nanum Gothic';
-	font-size:18px;
-	font-weight:bold;
-	letter-spacing:0.6px;
-	white-space:nowrap;
-	line-height:90px;
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: 0.6px;
+	white-space: nowrap;
+	line-height: 90px;
 	/* 하이라이터 높이 지정 line-height:39px;*/
 	/* CSS3 Transition: */
 	-webkit-transition: 0.25s;
-	
 	/* Future proofing (these do not work yet): */
 	-moz-transition: 0.25s;
 	transition: 0.25s;
 	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px; 
+	border-bottom-right-radius: 5px;
 }
 
 /* span 보여주게 하는 코드 */
-#menu-toggle2 a:hover span{ 
-	background-color:rgb(255, 228, 0);
-	color:rgb(3, 0, 102);
-/* 	text-shadow:1px 1px 0 #99bf31; */
-	width:auto;
-	padding:0 20px;
-	overflow:visible; 
-	
-	}
-	
+#menu-toggle2 a:hover span {
+	background-color: rgb(255, 228, 0);
+	color: rgb(3, 0, 102);
+	/* 	text-shadow:1px 1px 0 #99bf31; */
+	width: auto;
+	padding: 0 20px;
+	overflow: visible;
+}
+
 /* CSS outer glow with the box-shadow property */
 /*
 #menu-toggle2 a:hover{
@@ -367,18 +353,16 @@ body {
 }
 */
 
-
 /* 새로운 시도 끝 */
-
 #menu-toggle2:hover {
 	background: rgb(255, 228, 0);
 	cursor: pointer;
 	border-top-right-radius: 0px;
-	border-bottom-right-radius: 0px; 
+	border-bottom-right-radius: 0px;
 }
 
 #menu2.open {
-	margin-top:53px;
+	margin-top: 53px;
 	left: 0;
 	width: 300px;
 	display: block;
@@ -388,19 +372,18 @@ body {
 	left: 300px;
 }
 
-
 /* Menu3 */
 #menu3 {
 	transition: all 0.3s ease;
 	position: fixed;
-	margin-top:53px;
+	margin-top: 53px;
 	width: 0%;
 	top: 0;
 	left: -200px;
 	background: #FFFFFF;
-	height:  calc(100% - 53px);
+	height: calc(100% - 53px);
 	z-index: 1030;
-	border:1px solid #BCBCBC;
+	border: 1px solid #BCBCBC;
 	padding-top: 20px;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -423,46 +406,43 @@ body {
 }
 
 /* 새로운 시도 시작 */
-#menu-toggle3 span{
-	
+#menu-toggle3 span {
 	/* Container properties */
-	
-	width:0;
-	left:90px;
-	top:0px;
+	width: 0;
+	left: 90px;
+	top: 0px;
 	/*
 	옆에서 얼마나 떨어졌나 지정
 	left:70px;
 	*/
-	padding:0;
-	position:absolute;
-	overflow:hidden;
-
+	padding: 0;
+	position: absolute;
+	overflow: hidden;
 	/* Text properties */
 	font-familiy: 'Nanum Gothic';
-	font-size:18px;
-	font-weight:bold;
-	letter-spacing:0.6px;
-	white-space:nowrap;
-	line-height:90px;
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: 0.6px;
+	white-space: nowrap;
+	line-height: 90px;
 	/* 하이라이터 높이 지정 line-height:39px;*/
 	/* CSS3 Transition: */
 	-webkit-transition: 0.25s;
-	
 	/* Future proofing (these do not work yet): */
 	-moz-transition: 0.25s;
 	transition: 0.25s;
 	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px; 
+	border-bottom-right-radius: 5px;
 }
 /* span 보여주게 하는 코드 */
-#menu-toggle3 a:hover span{ 
-	background-color:rgb(255, 228, 0);
-	color:rgb(3, 0, 102);
+#menu-toggle3 a:hover span {
+	background-color: rgb(255, 228, 0);
+	color: rgb(3, 0, 102);
 	/* text-shadow:1px 1px 0 #99bf31; */
-	width:auto;
-	padding:0 20px;
-	overflow:visible; }
+	width: auto;
+	padding: 0 20px;
+	overflow: visible;
+}
 
 /* CSS outer glow with the box-shadow property */
 /*
@@ -476,18 +456,16 @@ body {
 }
 */
 
-
 /* 새로운 시도 끝 */
-
 #menu-toggle3:hover {
 	background: rgb(255, 228, 0);
 	cursor: pointer;
 	border-top-right-radius: 0px;
-	border-bottom-right-radius: 0px; 
+	border-bottom-right-radius: 0px;
 }
 
 #menu3.open {
-	margin-top:53px;
+	margin-top: 53px;
 	left: 0;
 	width: 300px;
 	display: block;
@@ -497,136 +475,128 @@ body {
 	left: 300px;
 }
 
-#preview_modal{
+#preview_modal {
 	text-align: center;
 }
 
-#tab11,#tab12,#tab13,#tab14,#tab15{
-	height:410px;
+#tab11,#tab12,#tab13,#tab14,#tab15 {
+	height: 410px;
 }
-
 
 /* menu3 내부 css */
-.list-group.panel > .list-group-item {
-  border-bottom-right-radius: 4px;
-  border-bottom-left-radius: 4px
-}
-.list-group-submenu {
-  margin-left:20px;
+.list-group.panel>.list-group-item {
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px
 }
 
-#injection-modal{
+.list-group-submenu {
+	margin-left: 20px;
+}
+
+#injection-modal {
 	background-color: white;
 	border-top-right-radius: 4px;
-  	border-top-left-radius: 4px;
+	border-top-left-radius: 4px;
 	border-bottom-right-radius: 4px;
-  	border-bottom-left-radius: 4px;
-  	text-align: center;
+	border-bottom-left-radius: 4px;
+	text-align: center;
 }
 
 #search_result {
-	height:  calc(100% - 150px);
-/* 	overflow-y:scroll; */
+	height: calc(100% - 150px);
+	/* 	overflow-y:scroll; */
 }
-
-
-
 
 div.mousescroll {
-    overflow: hidden;
+	overflow: hidden;
 }
+
 div.mousescroll:hover {
-    overflow-y: scroll;
+	overflow-y: scroll;
 }
-
-
 
 /* 새로운 시도 시작 */
-#t3 span{
-	
+#t3 span {
 	/* Container properties */
-	
-	width:0;
-	left:absolute;
-	top:absolute;
+	width: 0;
+	left: absolute;
+	top: absolute;
 	/*
 	옆에서 얼마나 떨어졌나 지정
 	left:70px;
 	*/
-	padding:0;
-	position:absolute;
-	overflow:hidden;
-
+	padding: 0;
+	position: absolute;
+	overflow: hidden;
 	/* Text properties */
 	font-familiy: 'Nanum Gothic';
-	font-size:12px;
-	font-weight:bold;
-	letter-spacing:0.6px;
-	white-space:nowrap;
-	line-height:20px;
+	font-size: 12px;
+	font-weight: bold;
+	letter-spacing: 0.6px;
+	white-space: nowrap;
+	line-height: 20px;
 	/* 하이라이터 높이 지정 line-height:39px;*/
 	/* CSS3 Transition: */
 	-webkit-transition: 0.25s;
-	
 	/* Future proofing (these do not work yet): */
 	-moz-transition: 0.25s;
 	transition: 0.25s;
 	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px; 
+	border-bottom-right-radius: 5px;
 }
 /* span 보여주게 하는 코드 */
-#t3 a:hover span{ 
-	background-color:rgb(255, 228, 0);
-	color:rgb(3, 0, 102);
+#t3 a:hover span {
+	background-color: rgb(255, 228, 0);
+	color: rgb(3, 0, 102);
 	/* text-shadow:1px 1px 0 #99bf31;
 	 */
-	width:auto;
-	padding:0 20px;
+	width: auto;
+	padding: 0 20px;
 	/*padding:0 20px;*/
-	overflow:visible; 
-	}
+	overflow: visible;
+}
 
-
-#t3 a:hover{
+#t3 a:hover {
 	background: rgb(255, 228, 0);
 	cursor: pointer;
 	border-top-right-radius: 0px;
-	border-bottom-right-radius: 0px; 
+	border-bottom-right-radius: 0px;
+	text-decoration: none;
+	-moz-box-shadow: 0 0 5px #9ddff5;
+	-webkit-box-shadow: 0 0 5px #9ddff5;
+	box-shadow: 0 0 5px #9ddff5;
 
-	text-decoration:none;
-	
-	-moz-box-shadow:0 0 5px #9ddff5;
-	-webkit-box-shadow:0 0 5px #9ddff5;
-	box-shadow:0 0 5px #9ddff5;
-	
 	/* CSS outer glow with the box-shadow property */
+}
+
+#addWish_disable {
 	
 }
 
-
-#addWish_disable{
-	
-}
-#addWish_disable a:hover{
+#addWish_disable a:hover {
 	background: rgb(255, 228, 0);
 	cursor: pointer;
 	border-top-right-radius: 0px;
-	border-bottom-right-radius: 0px; 
+	border-bottom-right-radius: 0px;
+	text-decoration: none;
+	-moz-box-shadow: 0 0 5px #9ddff5;
+	-webkit-box-shadow: 0 0 5px #9ddff5;
+	box-shadow: 0 0 5px #9ddff5;
 
-	text-decoration:none;
-	
-	-moz-box-shadow:0 0 5px #9ddff5;
-	-webkit-box-shadow:0 0 5px #9ddff5;
-	box-shadow:0 0 5px #9ddff5;
-	
 	/* CSS outer glow with the box-shadow property */
-	
 }
 
+.modal-footer {
+	margin-top: 0px;
+}
 
+/*덧글에 덧글  */
+.reReply {
+	margin-left: 20px;
+}
 </style>
- 	
-	<!--
+
+<!--
 				
 				
 				
@@ -646,75 +616,77 @@ div.mousescroll:hover {
 	
 	
 	
-	-->	
-	
-	
-	
-	<!-- ----------------------------------------------------------------------->
-	
+	-->
 
-	
 
-	<!-- jquery + UI + CSS google CDN -->
-	
-	<!--panel용 lib -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-	
-	
-	<script src="http://code.jquery.com/jquery.min.js"></script>
 
-	<!-- GoogleMap API Key -->
-	<script
+<!-- ----------------------------------------------------------------------->
+
+
+
+
+<!-- jquery + UI + CSS google CDN -->
+
+<!--panel용 lib -->
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+
+<script src="http://code.jquery.com/jquery.min.js"></script>
+
+<!-- GoogleMap API Key -->
+<script
 	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAX-hWL7tXxRZd2GtUjDME2jf-9qNoiRsE&sensor=false&language=ko">
 	</script>
 
-	<!-- jquery UI google CDN -->
-	<link rel="stylesheet"
+<!-- jquery UI google CDN -->
+<link rel="stylesheet"
 	href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
-	<script
+<script
 	src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 
-	<!--
+<!--
 	<script
 		src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
  	 -->
-	
-	<script src="resources/js_custom/markerclusterer.js"></script>
-	<script src="resources/js_custom/markerclusterer_packed.js"></script>
-	<script src="resources/js_custom/markerclustererPlus.js"></script>
-	<script src="resources/js_custom/markerwithlabel.js"></script>
-	
-	<script src="resources/js_custom/jquery.session.js"></script>
-	<!--panel lib -->
-	<!--
+
+<script src="resources/js_custom/markerclusterer.js"></script>
+<script src="resources/js_custom/markerclusterer_packed.js"></script>
+<script src="resources/js_custom/markerclustererPlus.js"></script>
+<script src="resources/js_custom/markerwithlabel.js"></script>
+
+<script src="resources/js_custom/jquery.session.js"></script>
+<!--panel lib -->
+<!--
 	<script src="resources/js_custom/jquery.slidePanel.min.js"></script>
 	 -->
-	<!-- 
+<!-- 
 	<link rel="stylesheet" href="/resources/demos/style.css">
 	  -->
-	 
-	<!-- slider -->
-	<!--
+
+<!-- slider -->
+<!--
 	<script src="resources/js_custom/modernizr.custom.js"></script>
 	 -->
-	
 
-	<!--
+
+<!--
 	<link rel="stylesheet" href="/resources/demos/style.css">
 	-->
-	
-	<!--slider bar script -->
-	<!--
+
+<!--slider bar script -->
+<!--
 	<script src="resources/js_custom/script.js"></script> 
 	 -->
-	<script src="resources/js_custom/slider_script.js"></script> 
-	 
-	<script src="/resources/js/jquery.bootstrap.wizard.js"></script>
-	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-	
-	
-	<!-- jquery.bootstrap.wizard 화면구성 스크립트 코드 -->
-	<script>
+<script src="resources/js_custom/slider_script.js"></script>
+
+<script src="/resources/js/jquery.bootstrap.wizard.js"></script>
+<script
+	src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+
+<!-- jquery.bootstrap.wizard 화면구성 스크립트 코드 -->
+<script>
 	$(document).ready(function() {
 	  	$('#rootwizard').bootstrapWizard({onTabShow: function(tab, navigation, index) {
 			var $total = navigation.find('li').length;
@@ -724,8 +696,8 @@ div.mousescroll:hover {
 		}});	
 	});	
 	</script>
-	
-	<script>
+
+<script>
 
 
 	//여기부터 clusterer
@@ -737,7 +709,7 @@ div.mousescroll:hover {
 	    script += '.js"><' + '/script>';
 	    document.write(script);
 	</script>
-	<script async>
+<script async>
 	     var styles = [[{
 	       url: 'resources/imgs/markerclusterer/people35.png',
 	       height: 35,
@@ -838,8 +810,65 @@ div.mousescroll:hover {
 			A:null,
 			k:null
 	};
+	
+	var itemList; 
+		
+	function initData(){
+		console.log("initData()__Inn");
+		
+		$.ajax({
+			type:"POST",
+			url:"/itemList"	
+		}).done(function(res){
+			console.log("res.length__"+res.length);
+			//console.log("itemList.length_"+itemList.length);
+			itemList=res;
+			console.log("itemList.length_"+itemList.length);
+			initialize();
+			console.log("성공");
+		}).fail(function(res){
+			console.log(res);
+			console.log("실패");
+		});
+		
+
+	}
+	function refreshData(){
+		console.log("refreshData()__Inn");
+		
+		$.ajax({
+			type:"POST",
+			url:"/itemList"	
+		}).done(function(res){
+			console.log("res.length__"+res.length);
+			//console.log("itemList.length_"+itemList.length);
+			itemList=res;
+			console.log("itemList.length_"+itemList.length);
+			
+			markersInit(); //marker[]에 itemList push
+			markerInitialize(map); //map객체에 marekr onload
+			console.log("markersInit() after");
+			//markerClusterer = new MarkerClusterer(map, markers, {
+			markerClusterer = new MarkerClusterer(map, markers, {
+		          maxZoom: 14,
+		          gridSize: size,
+		          ignoreHidden:true
+		          //styles: styles[style]
+		        });
+			
+			console.log("성공");
+		}).fail(function(res){
+			console.log(res);
+			console.log("실패");
+		});
+		
+
+	}
+		
+	
 		<%-- initialize Start --%>
 		function initialize() {
+			console.log("initialize() Inn");
 			//geocoder 좌표->주소 변환 사용
 			geocoder = new google.maps.Geocoder();
 			var mapOptions = {
@@ -891,8 +920,10 @@ div.mousescroll:hover {
 				handleNoGeolocation(false);
 			}
 			
+			console.log("markersInit() before");
 			markersInit(); //marker[]에 itemList push
 			markerInitialize(map); //map객체에 marekr onload
+			console.log("markersInit() after");
 			//markerClusterer = new MarkerClusterer(map, markers, {
 			markerClusterer = new MarkerClusterer(map, markers, {
 		          maxZoom: 14,
@@ -906,6 +937,7 @@ div.mousescroll:hover {
 			  google.maps.event.addListener(map, 'click', function(e) {
 		            placeMarker(e.latLng, map);
 		      });
+			console.log("initialize() End");
 		}<%-- initialize End --%>
 	
 		<%-- placeMarker Start --%>
@@ -1029,15 +1061,21 @@ div.mousescroll:hover {
 					default:
 						if(document.getElementById('searchOption1').checked){
 							searchOption = document.getElementById("searchOption1").value;
+							console.log("searchOption1 debug_"+searchOption);
 							/* console.log("('searchOption1').checked"); */
+							break;
 						}
 						if(document.getElementById('searchOption2').checked){
 							searchOption = document.getElementById("searchOption2").value;
+							console.log("searchOption2 debug_"+searchOption);
 							/* console.log("('searchOption2').checked"); */
+							break;
 						}
 						if(document.getElementById('searchOption3').checked){
 							searchOption = document.getElementById("searchOption3").value;
+							console.log("searchOption3 debug_"+searchOption);
 							/* console.log("('searchOption3').checked"); */
+							break;
 						}
 				}
 				
@@ -1077,9 +1115,11 @@ div.mousescroll:hover {
 				
 				//순순
 				if(document.getElementById('optionsRadios1').checked){
+					console.log("markersSortingDistance run");
 					markersSortingDistance();
 				}
 				if(document.getElementById('optionsRadios2').checked){
+					console.log("markersSortingPrice();");
 					markersSortingPrice();
 				}
 								
@@ -1090,6 +1130,55 @@ div.mousescroll:hover {
 		}<%-- itemSearch End --%>
 		
 		<%-- markersInit() --%>
+		function markersInit(){
+			console.log("markersInit()_Inn");
+			//markers=[];
+			//statCode 1=sell, 2=buy, 3=deal
+			console.log(itemList);
+			console.log("markersInit()__itemList.length__"+itemList.length);
+			for(var i=0;i<itemList.length;i++){
+				
+				var markerImage;
+				console.log("itemList[i].stateCode_"+itemList[i].stateCode);
+				switch(itemList[i].stateCode){
+					case 1:
+						markerImage=buyImage;
+						console.log("buyImage");
+						break;
+					case 2:
+						markerImage=sellImage;
+						console.log("sellImage");
+						break;
+					case 3:
+						markerImage=dealImage;
+						console.log("dealImage");
+						break;
+				}
+				markers.push(
+							new google.maps.Marker({
+		
+								position : new google.maps.LatLng(itemList[i].gridX1 , itemList[i].gridY1 ),
+								map : map,
+								icon: markerImage,
+								stateCode : itemList[i].stateCode,
+								title : itemList[i].itemName,
+								userNo : itemList[i].userNo,
+								itemNo : itemList[i].itemNo,
+								itemInfo : itemList[i].itemInfo,
+								itemPicturePath1 : itemList[i].itemPicturePath1,
+								itemPicturePath2 : itemList[i].itemPicturePath2,
+								itemPicturePath3 : itemList[i].itemPicturePath3,
+								
+								distance:null,
+								distance_m:null,								
+								price : itemList[i].price
+								
+								})
+						);
+					
+			}
+		}		<%-- markersInit() end --%>
+		<%-- 
 		function markersInit(){
 			//markers=[];
 			//statCode 1=sell, 2=buy, 3=deal
@@ -1175,11 +1264,14 @@ div.mousescroll:hover {
 			console.log("markers[0].position__"+markers[0].position);
 			console.log("markers[0].position__"+markers[0].position.A);
 			console.log("markers[0].position__"+markers[0].position.k); */
-		}<%-- markersInit() end --%>
+		}
+		--%>
+
 								
 		
 		<%-- markerInitialize Start --%>
 		function markerInitialize(map) {
+		  console.log("markerInitialize(map) Inn");
 		  for (var i = 0; i < markers.length; i++) {
 			//console.log(markers[i]);
 			//markers[i].setMap(map);   
@@ -1190,6 +1282,7 @@ div.mousescroll:hover {
 	
 		<%-- markerAddListener Start--%>
 		function markerAddListener(marker, i) {
+		 console.log("markerAddListener() Inn");
 		/* 
 		  var infowindow = new google.maps.InfoWindow({
 			content: marker.content	
@@ -1244,27 +1337,24 @@ div.mousescroll:hover {
 			//console.log("pos.k___"+Math.round(pos.k*1000000)/1000000);
 		
 			/* console.log("markersSortingDistance In__"); */
+			if(markersSearchResult.length==1){
+				markersSearchResult[0].distance_m=
+					Math.round(getDistanceFromLatLonInKm(myPosition.k, myPosition.A,
+							markersSearchResult[0].position.k, markersSearchResult[0].position.A)*10000)/10000;
+			}
+			
 			markersSearchResult.sort(function(a, b){
-				/* console.log("markersSearchResult.sort.Distance call");
-			 */	//geolocation으로 잡은 A,k를 이용해 가져온 a의 절대값과 삼각함수를 이용해 거리측정
-				
-				//var a_A	=	Math.abs(myPosition.A-a.position.A);
-				//var a_k	=	Math.abs(myPosition.k-a.position.k);
-				var a_A	=	Math.abs(Math.round(myPosition.A-a.position.A*1000000)/1000000);
-				var a_k	=	Math.abs(Math.round(myPosition.k-a.position.k*1000000)/1000000);
+			
+				//var a_A	=	Math.abs(Math.round(myPosition.A-a.position.A*1000000)/1000000);
+				//var a_k	=	Math.abs(Math.round(myPosition.k-a.position.k*1000000)/1000000);
 				//var a_distance=Math.pow(a_A, a_A) + Math.pow(a_k, a_k);
 				//a.distance=Math.sqrt(a_distance);
 				a.distance_m=
 					Math.round(getDistanceFromLatLonInKm(myPosition.k, myPosition.A,
 							 					a.position.k, a.position.A)*10000)/10000;
 				
-				//console.log(a_A);
-				//console.log(a_k);
-				//console.log(a_distance);
-				//var b_A	=	Math.abs(myPosition.A-b.position.A);
-				//var b_k	=	Math.abs(myPosition.k-b.position.k);
-				var b_A	=	Math.abs(Math.round(myPosition.A-b.position.A*1000000)/1000000);
-				var b_k	=	Math.abs(Math.round(myPosition.k-b.position.k*1000000)/1000000);
+				//var b_A	=	Math.abs(Math.round(myPosition.A-b.position.A*1000000)/1000000);
+				//var b_k	=	Math.abs(Math.round(myPosition.k-b.position.k*1000000)/1000000);
 				//var b_distance=Math.pow(b_A, b_A) + Math.pow(b_k, b_k);
 				//b.distance=Math.sqrt(b_distance);
 				b.distance_m=
@@ -1302,10 +1392,16 @@ div.mousescroll:hover {
 		<%-- markersSorting Price Start--%>
 		function markersSortingPrice(){
 			/* console.log("markersSorting Price In"); */
+			if(markersSearchResult.length==1){
+				markersSearchResult[0].distance_m=
+					Math.round(getDistanceFromLatLonInKm(myPosition.k, myPosition.A,
+							markersSearchResult[0].position.k, markersSearchResult[0].position.A)*10000)/10000;
+			}
+			
 			markersSearchResult.sort(function(a, b){
 				/* console.log("markersSearchResult.sort.Price call"); */
-				var a_A	=	Math.abs(Math.round(myPosition.A-a.position.A*1000000)/1000000);
-				var a_k	=	Math.abs(Math.round(myPosition.k-a.position.k*1000000)/1000000);
+				//var a_A	=	Math.abs(Math.round(myPosition.A-a.position.A*1000000)/1000000);
+				//var a_k	=	Math.abs(Math.round(myPosition.k-a.position.k*1000000)/1000000);
 				//var a_distance=Math.pow(a_A, a_A) + Math.pow(a_k, a_k);
 				//a.distance=Math.sqrt(a_distance);
 				a.distance_m=
@@ -1329,8 +1425,8 @@ div.mousescroll:hover {
 		function searchResultInjection(){
 			//sorting check용 for문, 사용시 주석처리해야함.
 			searchResultInjectionHtml=null;
-			
-			if(markersSearchResult.length>1){
+			console.log("markersSearchResult.length__"+markersSearchResult.length);
+			if(markersSearchResult.length>0){
 				if(markersSearchResult[0].distance_m < 1.0){
 					markersSearchResult[0].distance_m=Math.round(markersSearchResult[0].distance_m*100)/100+"(m)";
 				}else{
@@ -1346,35 +1442,30 @@ div.mousescroll:hover {
 					"</tr>";
 			}
 			//searchResultInjectionHtml="<tbody>";
-			for(var i=1;i<markersSearchResult.length;i++){
-				
-				
-				if(markersSearchResult[i].distance_m < 1.0){
-					markersSearchResult[i].distance_m=Math.round(markersSearchResult[i].distance_m*100)/100+"(m)";
-				}else{
-					markersSearchResult[i].distance_m=Math.round(markersSearchResult[i].distance_m *10)/10+"(km)";
-				}	
-				//console.log("markersSearchResult"+i+"distance_m"+markersSearchResult[i].distance_m);
-				//뉴텔
-				searchResultInjectionHtml+=
-					"<tr>"+
-						"<td id=\"t1\" >" + markersSearchResult[i].distance_m + "</td>" +
-						"<td id=\"t2\" >" + markersSearchResult[i].price/10000.0 + "</td>" +
-						"<td id=\"t3\" ><a onclick=\"modalInjection(markersSearchResult["+i+"])\"> " +
-						//"<td><a onclick=\"alert('test')\"> " + 
-								markersSearchResult[i].title+ "<span>클릭하시면 상세정보를 볼수 있습니다.</span></a></td>" +
-					"</tr>";
+			if(markersSearchResult.length>1){
+				for(var i=1;i<markersSearchResult.length;i++){
+					
+					
+					if(markersSearchResult[i].distance_m < 1.0){
+						markersSearchResult[i].distance_m=Math.round(markersSearchResult[i].distance_m*100)/100+"(m)";
+					}else{
+						markersSearchResult[i].distance_m=Math.round(markersSearchResult[i].distance_m *10)/10+"(km)";
+					}	
+					//console.log("markersSearchResult"+i+"distance_m"+markersSearchResult[i].distance_m);
+					//뉴텔
+					searchResultInjectionHtml+=
+						"<tr>"+
+							"<td id=\"t1\" >" + markersSearchResult[i].distance_m + "</td>" +
+							"<td id=\"t2\" >" + markersSearchResult[i].price/10000.0 + "</td>" +
+							"<td id=\"t3\" ><a onclick=\"modalInjection(markersSearchResult["+i+"])\"> " +
+							//"<td><a onclick=\"alert('test')\"> " + 
+									markersSearchResult[i].title+ "<span>클릭하시면 상세정보를 볼수 있습니다.</span></a></td>" +
+						"</tr>";
+				}
 			}
 			//searchResultInjectionHtml+="</tbody>";
 			document.getElementById("searchResultInjectionSector").innerHTML =searchResultInjectionHtml;
 			
-			/*
-			<tr>
-				<td>222</td>
-				<td>333</td>
-				<td><a>아이패드 에어 가나다라 마바사 아자 차</a></td>
-			</tr>
-			*/	
 		
 		}<%-- searchResultInjection End --%>
 		
@@ -1382,26 +1473,11 @@ div.mousescroll:hover {
 		//내가 등록한 물품
 		//findMyItemList(Integer userNo)
 		<!-- 고2 -->
-		/*
-		function findMyItemList(){
-			$.ajax({
-				type:"POST",
-				url:"/ajaxTest"//,
-				//data:{test:"success"}
-			}).done(function(msg){
-				console.log(msg);
-				console.log("성공");
-			}).fail(function(msg){
-				console.log(msg);
-				console.log("실패");
-			});
-			
-		}
-		*/
+		
 		//거래 완료된 물품 
 		//버튼을 판매완료/삭제 로 바꿔야함
 		//findMyItemList(Integer userNo)
-		function findMyItemList(){
+		function findMyItemList(msg){
 			//console.log("${user}");
 			//console.log("${user.userNo}");
 			console.log("debug"+user.userNo);
@@ -1444,8 +1520,11 @@ div.mousescroll:hover {
 				content+=
 					"</tbody>"+
 				"</table>";
-				
-				$('#MyItemList').html(content);
+				if(msg=="ing"){
+					$('#MyItemList').html(content);
+				}else{
+					$('#MyItemList2').html(content);
+				}
 				console.log("성공");
 			}).fail(function(msg){
 				console.log(msg);
@@ -1476,26 +1555,10 @@ div.mousescroll:hover {
 			});
 		}
 		
-		/*
-		function findMyItemList2(){
-			$.ajax({
-				type:"POST",
-				url:"/ajaxTest2",
-				data:{userNo:'100'}
-			}).done(function(msg){
-				console.log(msg);
-				console.log("성공");
-			}).fail(function(msg){
-				console.log(msg);
-				console.log("실패");
-			});
-			
-		}
-		*/
+	
 		//내가 찜한 물품
 		//findWishList(Integer userNo)
 		function findWishList(){
-			console.log("debug"+user.userNo);
 			$.ajax({
 				type:"POST",
 				url:"/findWishList",
@@ -1553,7 +1616,6 @@ div.mousescroll:hover {
 						"</a>";
 					}
 				*/
-				
 				content=
 					"<a href=\"#\" class=\"list-group-item\">"+
 					"<tr>"+
@@ -1589,7 +1651,7 @@ div.mousescroll:hover {
 				type:"POST",
 				url:"/findWishList",
 				data:{
-					userNo:'${user.userNo}'
+					userNo:user.userNo
 				}
 			}).done(function(res){
 				console.log("res"+res);
@@ -1635,7 +1697,7 @@ div.mousescroll:hover {
 				type:"POST",
 				url:"/findWishList",
 				data:{
-					userNo:'${user.userNo}'
+					userNo:user.userNo
 				}
 			}).done(function(res){
 				console.log("res"+res);
@@ -1678,9 +1740,9 @@ div.mousescroll:hover {
 		
 		
 		
-		google.maps.event.addDomListener(window, 'load', initialize);
+		google.maps.event.addDomListener(window, 'load', initData);
 	</script>
-	<!--
+<!--
 		
 		
 		
@@ -1700,20 +1762,20 @@ div.mousescroll:hover {
 	
 	
 	
-	-->	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<!--
+	-->
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
 	
 	
 	
@@ -1733,9 +1795,9 @@ div.mousescroll:hover {
 	
 	
 	
-	-->	
+	-->
 
-	<script>
+<script>
 	//로그인 메뉴 
 	$(function() {
 	  // Setup drop down menu
@@ -2038,10 +2100,10 @@ div.mousescroll:hover {
 	              });
 	
    </script>
-	
 
-	
-	<!--
+
+
+<!--
 		
 		
 		
@@ -2061,403 +2123,430 @@ div.mousescroll:hover {
 	
 	
 	
-	-->	
-	
+	-->
+
 </head>
 <!-- 
 	onLoad=initialize 쓰지마세요. 직접 dom객체에 추가했어요.
  	onload에 추가하면 2번 되서 성능 저하됩니다~~~~~~ 
  -->
-<body class="cbp-spmenu-push" data-twttr-rendered="true" onload="init(this.registerform);">
-<!----------------------------------------------------------- -->
+<body class="cbp-spmenu-push" data-twttr-rendered="true"
+	onload="init(this.registerform);">
+	<!----------------------------------------------------------- -->
 
 
 
 
-<!----------------------------------------------------------- -->
-	
+	<!----------------------------------------------------------- -->
+
 	<header>
-		<%@include file="header.jsp"%>
+	<%@include file="header.jsp"%>
 	</header>
 	
+	
+
 	<div id="menu-toggle1">
-		<a>
-		<img src="resources/imgs/slider/search.png" width=70 height=70 alt="Menu1"></img>
-		<span>상품검색</span>
-		</a>		
+		<a> <img src="resources/imgs/slider/search.png" width=70 height=70
+			alt="Menu1"></img> <span>상품검색</span>
+		</a>
 	</div>
-		<nav id="menu1">
+	<nav id="menu1">
 		<div id="search_condition">
-			<form action="#" name="searchform" id="search_form" method="post" onsubmit="return itemSearch('Detail')">				
-			   	<input type="text" id="searchKeywordDetail" class="form-control" placeholder="Search">		    
-			   	<div id="select_deal"> 
-			    	<div class="btn-group" data-toggle="buttons" style="margin-top: 10px" > <%--onclick="itemSearch('Detail')" --%>
-				  		<label class="btn btn-default active" onclick="itemSearch('all')"  >
-				    	<input type="radio" name="options" id="searchOption1" value="all" checked > 전체검색
-				  		</label>
-				  		<label class="btn btn-default" onclick="itemSearch('buy')" >
-				    	<input type="radio" name="options" id="searchOption2" value="buy" > 삽니다
-				  		</label>
-			  			<label class="btn btn-default" onclick="itemSearch('sell')" >
-				    	<input type="radio" name="options" id="searchOption3" value="sell" > 팝니다
-				  		</label>
+			<form action="#" name="searchform" id="search_form" method="post"
+				onsubmit="return itemSearch('Detail')">
+				<input type="text" id="searchKeywordDetail" class="form-control"
+					placeholder="Search">
+				<div id="select_deal">
+					<div class="btn-group" data-toggle="buttons"
+						style="margin-top: 10px">
+						<%--onclick="itemSearch('Detail')" --%>
+						<label class="btn btn-default active" onclick="itemSearch('all')">
+							<input type="radio" name="options" id="searchOption1" value="all"
+							checked> 전체검색
+						</label> <label class="btn btn-default" onclick="itemSearch('buy')">
+							<input type="radio" name="options" id="searchOption2" value="buy">
+							삽니다
+						</label> <label class="btn btn-default" onclick="itemSearch('sell')">
+							<input type="radio" name="options" id="searchOption3"
+							value="sell"> 팝니다
+						</label>
 					</div>
 				</div>
 				<div style="margin-top: 10px">
-				<!-- 	<div class="btn-group" data-toggle="buttons">
-					  <label class="btn btn-primary">
-					    <input type="radio" name="options" id="option1" onclick="markersSortingDistance()"> 가격순 정렬
-					  </label>
-					  <label class="btn btn-primary">
-					    <input type="radio" name="options" id="option2" onclick="markersSortingPrice()"> 거리순 정렬
-					  </label>
-					</div> -->
-					
-					  <label class="radio-inline">
-					    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" onclick="markersSortingDistance()" checked>
-					    거리순
-					  </label>
-					 
-					  <label class="radio-inline">
-					    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" onclick="markersSortingPrice()" >
-					    가격순
-					  </label>
-				
-					 
-					</div>
-				</Div>
-			</form>
-			<hr style="margin-bottom:10px;">
+
+					<label class="radio-inline"> <input type="radio"
+						name="optionsRadios" id="optionsRadios1" value="option1"
+						onclick="markersSortingDistance()" checked> 거리순
+					</label> <label class="radio-inline"> <input type="radio"
+						name="optionsRadios" id="optionsRadios2" value="option2"
+						onclick="markersSortingPrice()"> 가격순
+					</label>
+
+
+				</div>
+		</Div>
+		</form>
+		<hr style="margin-bottom: 10px;">
 		</div>
 		<div id="search_result" class="mousescroll">
-			<table class="table table-striped" style="width:261px;">
+			<table class="table table-striped" style="width: 261px;">
 				<thead>
 					<tr>
-						<th style="width:54px;">거리</th>
-						<th style="width:54px;">가격(만)</th>
-						<th style="width:173px; text-align: center; padding-bottom:18px;">제품명</th>
-					<!-- 
-						<th id="t1" style="width:54px;">거리</th>
-						<th id="t2" style="width:54px;">가격(만원)</th>
-						<th id="t3" style="width:153px; text-align: center; padding-bottom:18px;">제품명</th>
-					 -->
+						<th style="width: 80px;">거리(km)</th>
+						<th style="width: 80px;">가격(만)</th>
+						<th style="width: 100px; text-align: center;">제품명</th>
 					</tr>
 				</thead>
-				<!-- 뉴텔
-				<div id="searchResultInjectionSector" class="searchResultInjectionSector" title="searchResultInjectionSector">
-				 -->
-					<tbody id="searchResultInjectionSector">
-			
-						<!-- 
-						<tr>
-							<td>222</td>
-							<td>333</td>
-							<td><a>아이패드 에어 가나다라 마바사 아자 차</a></td>
-						</tr>					
-						<tr>
-							<td>5</td>
-							<td>5</td>
-							<td><a>아이패드 미니</a></td>
-						</tr>		
-						 -->	
-					
-					</tbody>
-				<!-- 
-				</div>	
-				 -->
-			</table> 
-	    </div>
+				<tbody id="searchResultInjectionSector"></tbody>
+			</table>
+		</div>
 	</nav>
-	
+
 	<div id="menu-toggle2">
-		<a>
-		<img src="resources/imgs/slider/Cloud_Add.png" width=70 height=70 alt="Menu2"></img>
-		<span>물건 팔기/사기</span>
-		</a>		
+		<a> <img src="resources/imgs/slider/Cloud_Add.png" width=70
+			height=70 alt="Menu2"></img> <span>물건 팔기/사기</span>
+		</a>
 		<!-- 
 		<img src="resources/imgs/slider/menu.png" width=50 height=50 alt="Menu"></img>
 		-->
 	</div>
-		<!-- 텔 -->
-		<nav id="menu2">
-			<div class="tab-pane" id="tab2">
-	
-			<div id="rootwizard">				
+	<!-- 텔 -->
+	<nav id="menu2">
+		<div class="tab-pane" id="tab2">
+
+			<div id="rootwizard">
 				<div class="navbar2">
-				  <div class="navbar-inner2">
-				    <div class="container2" style="display:none;">
-						<ul id="register_tap">
-						  	<li><a href="#tab11" data-toggle="tab">1단계</a></li>
-							<li><a href="#tab12" data-toggle="tab">2단계</a></li>
-							<li><a href="#tab13" data-toggle="tab">3단계</a></li>
-							<li><a href="#tab14" data-toggle="tab">4단계</a></li>
-							<li><a href="#tab15" data-toggle="tab">5단계</a></li>
-						</ul>
-				 	</div>
-				  </div>
+					<div class="navbar-inner2">
+						<div class="container2" style="display: none;">
+							<ul id="register_tap">
+								<li><a href="#tab11" data-toggle="tab">1단계</a></li>
+								<li><a href="#tab12" data-toggle="tab">2단계</a></li>
+								<li><a href="#tab13" data-toggle="tab">3단계</a></li>
+								<li><a href="#tab14" data-toggle="tab">4단계</a></li>
+								<li><a href="#tab15" data-toggle="tab">5단계</a></li>
+							</ul>
+						</div>
+					</div>
 				</div>
 				<div id="bar" class="progress progress-striped active">
-				  <div class="progress-bar"></div>
+					<div class="progress-bar"></div>
 				</div>
-				
-				<form action="/itemregister" name="registerform" id="register_form" method="post" enctype="multipart/form-data" >
-				<div class="tab-content">
-				 	
-				    <div class="tab-pane" id="tab11">
-				    	<div class="form-group">
-				    		<h4>거래 선택하기</h4>
-				    		<br>
-						   	<div class="btn-group" data-toggle="buttons">
-							  <label class="btn btn-default">
-							    <input type="radio" name="stateCode" id="buybtn" value="1"> 삽니다
-							  </label>
-							  <label class="btn btn-default">
-							    <input type="radio" name="stateCode" id="sellbtn" value="2"> 팝니다
-							  </label>							  
-							</div>	
+
+				<form action="/itemregister" name="registerform" id="register_form"
+					method="post" enctype="multipart/form-data">
+					<div class="tab-content">
+
+						<div class="tab-pane" id="tab11">
+							<div class="form-group">
+								<h4>거래 선택하기</h4>
+								<br>
+								<div class="btn-group" data-toggle="buttons">
+									<label class="btn btn-default"> <input type="radio"
+										name="stateCode" id="buybtn" value="1"> 삽니다
+									</label> <label class="btn btn-default"> <input type="radio"
+										name="stateCode" id="sellbtn" value="2"> 팝니다
+									</label>
+								</div>
+							</div>
 						</div>
-				    </div>
-				    <div class="tab-pane" id="tab12">
-				    	<div class="form-group">
-				    		<h4>거래할 위치 등록하기</h4>
-				    		<br>
-				    		<input type="hidden" name="gridX1" id="reg_lat" value="" style="border: none;">
-				    		<input type="hidden" name="gridY1" id="reg_lng" value="" style="border: none;">
-				    		<input id="latlng" type="text" value="" style="display:none;">
-				    		<button id="loca_btn" class="btn btn-default" onclick="markerDrop(); return false;"><span>위치 정하기</span></button>
-				    		<button class="btn btn-default" onclick="clearMarkers(); return false;">다시 정하기</button>
-				    		<br><br>
-				    		<textarea readonly="readonly" id="reg_add" rows="4" cols="34" value="" style="border: none; resize:none;"></textarea>
-				    	</div>
-				    </div>
-					<div class="tab-pane" id="tab13">
-						<div class="form-group">
-							<h4>사진 등록하기</h4>
-							<br>
-							<!-- 다등록가능 한데 주소가 어떻게 들어올지 모르겠네 -->
-							<input  class="form-control" name="itemPicturePath1" type="file"  id="exampleInputFile">						
-				   			<br>
-				   			<input  class="form-control" name="itemPicturePath2" type="file"  id="exampleInputFile">						
-				   			<br>
-				   			<input  class="form-control" name="itemPicturePath3" type="file"  id="exampleInputFile">						
-				   			
-				   			
-				   		</div>
-				    </div>
-					<div class="tab-pane" id="tab14">
-						<div class="form-group">
-							<h4>카테고리 등록하기</h4>
-							<br>
-							<select name="category1" id="category1" class="form-control" onchange="itemChange(this.form);" ></select>
-							<select name="category2" id="category2" class="form-control" ></select>											 
-					    </div>
-					</div>    
-				    <div class="tab-pane" id="tab15">
-						<div class="form-group">
-							<h4>상세내용 입력하기</h4>
-							<br>	
-							<input id="item_name" name="itemName" type="text" class="form-control input-normal" placeholder="물품명을 입력하세요" >								       
-					        <div class="input-group">
-					        	<span class="input-group-addon">￦</span><input type="text" name="price" class="form-control" placeholder="희망가격 입력" >
-				     	 	</div>	
-				     	 	<br>	
-				     	 	<textarea name="itemInfo" class="form-control" rows="10" cols="80" placeholder="상세내용을 입력하세요"></textarea>
-				     	 	<br>				      				
-							<button class="btn btn-default" data-toggle="modal" href="#preview_modal" onclick="return false">
-							미리보기
-							</button>
-							<input type="submit" class="btn btn-primary" value="등록하기" >
-							
-						
-						
-					    </div>
+						<div class="tab-pane" id="tab12">
+							<div class="form-group">
+								<h4>거래할 위치 등록하기</h4>
+								<br> <input type="hidden" name="gridX1" id="reg_lat"
+									value="" style="border: none;"> <input type="hidden"
+									name="gridY1" id="reg_lng" value="" style="border: none;">
+								<input id="latlng" type="text" value="" style="display: none;">
+								<button id="loca_btn" class="btn btn-default"
+									onclick="markerDrop(); return false;">
+									<span>위치 정하기</span>
+								</button>
+								<button class="btn btn-default"
+									onclick="clearMarkers(); return false;">다시 정하기</button>
+								<br>
+								<br>
+								<textarea readonly="readonly" id="reg_add" rows="4" cols="34"
+									value="" style="border: none; resize: none;"></textarea>
+							</div>
+						</div>
+						<div class="tab-pane" id="tab13">
+							<div class="form-group">
+								<h4>사진 등록하기</h4>
+								<br>
+								<!-- 다등록가능 한데 주소가 어떻게 들어올지 모르겠네 -->
+								<input class="form-control" name="itemPicturePath1" type="file"
+									id="exampleInputFile"> <br> <input
+									class="form-control" name="itemPicturePath2" type="file"
+									id="exampleInputFile"> <br> <input
+									class="form-control" name="itemPicturePath3" type="file"
+									id="exampleInputFile">
+
+
+							</div>
+						</div>
+						<div class="tab-pane" id="tab14">
+							<div class="form-group">
+								<h4>카테고리 등록하기</h4>
+								<br> <select name="category1" id="category1"
+									class="form-control" onchange="itemChange(this.form);"></select>
+								<select name="category2" id="category2" class="form-control"></select>
+							</div>
+						</div>
+						<div class="tab-pane" id="tab15">
+							<div class="form-group">
+								<h4>상세내용 입력하기</h4>
+								<br> <input id="item_name" name="itemName" type="text"
+									class="form-control input-normal" placeholder="물품명을 입력하세요">
+								<div class="input-group">
+									<span class="input-group-addon">￦</span><input type="text"
+										name="price" class="form-control" placeholder="희망가격 입력">
+								</div>
+								<br>
+								<textarea name="itemInfo" class="form-control" rows="10"
+									cols="80" placeholder="상세내용을 입력하세요"></textarea>
+								<br>
+								<button class="btn btn-default" data-toggle="modal"
+									href="#preview_modal" onclick="return false">미리보기</button>
+								<input type="submit" class="btn btn-primary" value="등록하기">
+
+
+
+							</div>
+						</div>
+						<div id="pager_wizard">
+							<ul class="pager wizard">
+								<li class="previous first" style="display: none;"><a
+									href="#" onclick="return false">First</a></li>
+								<li class="previous"><a href="#" onclick="return false">Previous</a></li>
+								<li class="next last" style="display: none;"><a href="#"
+									onclick="return false">Last</a></li>
+								<li class="next"><a href="#" onclick="return false">Next</a></li>
+							</ul>
+						</div>
 					</div>
-					<div id="pager_wizard">   
-						<ul class="pager wizard">
-							<li class="previous first" style="display:none;"><a href="#" onclick="return false">First</a></li>
-							<li class="previous"><a href="#" onclick="return false">Previous</a></li>
-							<li class="next last" style="display:none;"><a href="#" onclick="return false">Last</a></li>
-						  	<li class="next"><a href="#" onclick="return false">Next</a></li>
-						</ul> 
-					</div>
-				</div>	
 				</form>
 			</div>
-		</div><!-- end of tap2   -->
-		</nav>	
+		</div>
+		<!-- end of tap2   -->
+	</nav>
 	<div id="menu-toggle3">
-		<a>
-		<img src="resources/imgs/slider/Handshake-icon.png" width=70 height=70 alt="Menu3"></img>
-		<span>거래현황</span>
-		</a>		
+		<a> <img src="resources/imgs/slider/Handshake-icon.png" width=70
+			height=70 alt="Menu3"></img> <span>거래현황</span>
+		</a>
 		<!-- 
 		<img src="resources/imgs/slider/menu.png" width=50 height=50 alt="Menu"></img>
 		-->
 	</div>
-		<nav id="menu3">
-			<div class="tab-pane" id="tab3">
+	<nav id="menu3">
+		<div class="tab-pane" id="tab3">
 			<!-- start of tap3   -->
-			
-				<div id="MainMenu">
-				  <div class="list-group panel"> <!-- 고2 -->
-				    <a href="#MyItemList" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" onclick="findMyItemList()">내가 등록한 물품</a>
-				    <div class="collapse" id="MyItemList">
-				      <a href="#SubMenu1" class="list-group-item" data-toggle="collapse" data-parent="#SubMenu1">Subitem 1 <span class="glyphicon glyphicon-chevron-down"></span></a>
-				      <div class="collapse list-group-submenu" id="SubMenu1">
-				        <a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem 1 a</a>
-				        <a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem 2 b</a>
-				        <a href="#SubSubMenu1" class="list-group-item" data-toggle="collapse" data-parent="#SubSubMenu1">Subitem 3 c <span class="glyphicon glyphicon-chevron-down"></span></a>
-				        <div class="collapse list-group-submenu list-group-submenu-1" id="SubSubMenu1">
-				          <a href="#" class="list-group-item" data-parent="#SubSubMenu1">Sub sub item 1</a>
-				          <a href="#" class="list-group-item" data-parent="#SubSubMenu1">Sub sub item 2</a>
-				        </div>
-				        <a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem 4 d</a>
-				      </div>
-				      <a href="javascript:;" class="list-group-item">Subitem 2</a>
-				      <a href="javascript:;" class="list-group-item">Subitem 3</a>
-				    </div>
-				    <a href="#demo4" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" onclick="findMyItemList()">거래 완료된 물품</a>
-				    <div class="collapse" id="demo4">
-				      <a href="#" class="list-group-item">Subitem 1</a>
-				      <a href="#" class="list-group-item">Subitem 2</a>
-				      <a href="#" class="list-group-item">Subitem 3</a>
-				    </div>
-				    <a href="#demo5" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">내가 문의한 물품</a>
-				    <div class="collapse" id="demo5">
-				      <a href="#" class="list-group-item">Subitem 1</a>
-				      <a href="#" class="list-group-item">Subitem 2</a>
-				      <a href="#" class="list-group-item">Subitem 3</a>
-				    </div>
-				    <a href="#WishList" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" onclick="findWishList()">내가 찜한 물품</a>
-				    <div class="collapse" id="WishList">
-				      <a href="#" class="list-group-item">Subitem 1</a>
-				      <a href="#" class="list-group-item">Subitem 2</a>
-				      <a href="#" class="list-group-item">Subitem 3</a>
-				    </div>
-				    
-				    <a href="#WishList2" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" onclick="findWishList2()">내가 찜한 물품2</a>
-				    <div class="collapse" id="WishList2">
-				      <a href="#" class="list-group-item">Subitem 1</a>
-				      <a href="#" class="list-group-item">Subitem 2</a>
-				      <a href="#" class="list-group-item">Subitem 3</a>
-				    </div>
-				    
-				     <a href="#WishList3" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" onclick="findWishList3()">내가 찜한 물품3</a>
-				    <div class="collapse" id="WishList3">
-				      <a href="#" class="list-group-item">Subitem 1</a>
-				      <a href="#" class="list-group-item">Subitem 2</a>
-				      <a href="#" class="list-group-item">Subitem 3</a>
-				    </div>
-				  </div>
+
+			<div id="MainMenu">
+				<div class="list-group panel">
+					<!-- 고2 -->
+					<a href="#MyItemList"
+						class="list-group-item list-group-item-success"
+						data-toggle="collapse" data-parent="#MainMenu"
+						onclick="findMyItemList('ing')">내가 등록한 물품</a>
+					<div class="collapse" id="MyItemList">
+						<a href="#SubMenu1" class="list-group-item" data-toggle="collapse"
+							data-parent="#SubMenu1">Subitem 1 <span
+							class="glyphicon glyphicon-chevron-down"></span></a>
+						<div class="collapse list-group-submenu" id="SubMenu1">
+							<a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem
+								1 a</a> <a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem
+								2 b</a> <a href="#SubSubMenu1" class="list-group-item"
+								data-toggle="collapse" data-parent="#SubSubMenu1">Subitem 3
+								c <span class="glyphicon glyphicon-chevron-down"></span>
+							</a>
+							<div class="collapse list-group-submenu list-group-submenu-1"
+								id="SubSubMenu1">
+								<a href="#" class="list-group-item" data-parent="#SubSubMenu1">Sub
+									sub item 1</a> <a href="#" class="list-group-item"
+									data-parent="#SubSubMenu1">Sub sub item 2</a>
+							</div>
+							<a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem
+								4 d</a>
+						</div>
+						<a href="javascript:;" class="list-group-item">Subitem 2</a> <a
+							href="javascript:;" class="list-group-item">Subitem 3</a>
+					</div>
+					<a href="#MyItemList2"
+						class="list-group-item list-group-item-success"
+						data-toggle="collapse" data-parent="#MainMenu"
+						onclick="findMyItemList('end')">거래 완료된 물품</a>
+					<div class="collapse" id="MyItemList2">
+						<a href="#" class="list-group-item">Subitem 1</a> <a href="#"
+							class="list-group-item">Subitem 2</a> <a href="#"
+							class="list-group-item">Subitem 3</a>
+					</div>
+					<a href="#demo5" class="list-group-item list-group-item-success"
+						data-toggle="collapse" data-parent="#MainMenu">내가 문의한 물품</a>
+					<div class="collapse" id="demo5">
+						<a href="#" class="list-group-item">Subitem 1</a> <a href="#"
+							class="list-group-item">Subitem 2</a> <a href="#"
+							class="list-group-item">Subitem 3</a>
+					</div>
+					<a href="#WishList" class="list-group-item list-group-item-success"
+						data-toggle="collapse" data-parent="#MainMenu"
+						onclick="findWishList()">내가 찜한 물품</a>
+					<div class="collapse" id="WishList">
+						<a href="#" class="list-group-item">Subitem 1</a> <a href="#"
+							class="list-group-item">Subitem 2</a> <a href="#"
+							class="list-group-item">Subitem 3</a>
+					</div>
+
+					<a href="#WishList2"
+						class="list-group-item list-group-item-success"
+						data-toggle="collapse" data-parent="#MainMenu"
+						onclick="findWishList2()">내가 찜한 물품2</a>
+					<div class="collapse" id="WishList2">
+						<a href="#" class="list-group-item">Subitem 1</a> <a href="#"
+							class="list-group-item">Subitem 2</a> <a href="#"
+							class="list-group-item">Subitem 3</a>
+					</div>
+
+					<a href="#WishList3"
+						class="list-group-item list-group-item-success"
+						data-toggle="collapse" data-parent="#MainMenu"
+						onclick="findWishList3()">내가 찜한 물품3</a>
+					<div class="collapse" id="WishList3">
+						<a href="#" class="list-group-item">Subitem 1</a> <a href="#"
+							class="list-group-item">Subitem 2</a> <a href="#"
+							class="list-group-item">Subitem 3</a>
+					</div>
 				</div>
-				
-			</div><!-- end of tap3   -->
-		</nav>	
-	
-	<div id="map_canvas" style="width:100%; height:100%;">
-		
-	</div>
-	
-<footer>
-<!-- preview modal -->
-	<div class="modal fade" id="preview_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-	        <h4 class="modal-title">제품명<font color="red"> [가격]</font></h4>
-	       
-	      </div>
-	      <div class="modal-body">
-	        <div id="imgslider_container">
-    		
-			  <!-- main slider carousel -->
-			  <div class="row-fluid">
-			    <div class="span12" id="slider">
-			      <div class="row-fluid">
-			        <div class="span8" id="carousel-bounding-box">
-			          <div id="myCarousel" class="carousel slide">
-			            
-			            <!-- main slider carousel items -->
-			            <div class="carousel-inner">
-			              <div class="active item" data-slide-number="0">
-			                <img src="http://placehold.it/640x480&amp;text=one">
-			              </div>
-			              <div class="item" data-slide-number="1">
-			                <img src="http://placehold.it/640x480&amp;text=two">
-			              </div>
-			              <div class="item" data-slide-number="2">
-			                <img src="http://placehold.it/640x480&amp;text=three">
-			              </div>
-			              <div class="item" data-slide-number="3">
-			                <img src="http://placehold.it/640x480&amp;text=four">
-			              </div>
-			               
-			            </div>
-			            
-			            <!-- main slider carousel nav controls -->
-			            <a class="carousel-control left" href="#myCarousel" data-slide="prev">‹</a>
-			            <a class="carousel-control right" href="#myCarousel" data-slide="next">›</a>
-			          </div>
-			        </div>
-			        
-			       
-			      </div>
-			      
-			    </div>
-			  </div> <!--/main slider carousel-->
-			</div><!-- end of image slider -->
-			<br>
-			<p>상세 내용</p>
-			
-	      </div>
-	      <div class="modal-footer">
-	      	<input type="submit" class="btn btn-primary" value="등록하기" >		
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	       	
-	      </div>
-	    </div><!-- /.modal-content -->
-	  </div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
-	<!--삭제 팝업창  -->
-	<div class="modal fade" id="deletepopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index: 1060;">
-	  <div class="modal-dialog" style="width: 400px;text-align: center;margin-top: 200px;margin-bottom: 200px;">
-	    <div class="modal-content">
-	   
-	      <div class="modal-body">
-	        <p>삭제 하시겠습니까?</p>
-	        <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-	        <button type="button" class="btn  ">삭제</button>
-	      </div>
-	    </div><!-- /.modal-content -->
-	  </div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
-	
-	<!-- footer부분에 modal용 div넣습니다. 레이아웃과 상관없으니 삭제하지 마세요 -->
+			</div>
+
+		</div>
+		<!-- end of tap3   -->
+	</nav>
+
+	<div id="map_canvas" style="width: 100%; height: 100%;"></div>
+
+	<footer>
+		<!-- preview modal -->
+		<div class="modal fade" id="preview_modal" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">×</button>
+						<h4 class="modal-title">
+							제품명<font color="red"> [가격]</font>
+						</h4>
+
+					</div>
+					<div class="modal-body">
+						<div id="imgslider_container">
+
+							<!-- main slider carousel -->
+							<div class="row-fluid">
+								<div class="span12" id="slider">
+									<div class="row-fluid">
+										<div class="span8" id="carousel-bounding-box">
+											<div id="myCarousel" class="carousel slide">
+
+												<!-- main slider carousel items -->
+												<div class="carousel-inner">
+													<div class="active item" data-slide-number="0">
+														<img src="http://placehold.it/640x480&amp;text=No%20Image">
+													</div>
+													<div class="item" data-slide-number="1">
+														<img src="http://placehold.it/640x480&amp;text=two">
+													</div>
+													<div class="item" data-slide-number="2">
+														<img src="http://placehold.it/640x480&amp;text=three">
+													</div>
+													<div class="item" data-slide-number="3">
+														<img src="http://placehold.it/640x480&amp;text=four">
+													</div>
+
+												</div>
+
+												<!-- main slider carousel nav controls -->
+												<a class="carousel-control left" href="#myCarousel"
+													data-slide="prev">‹</a> <a class="carousel-control right"
+													href="#myCarousel" data-slide="next">›</a>
+											</div>
+										</div>
+
+
+									</div>
+
+								</div>
+							</div>
+							<!--/main slider carousel-->
+						</div>
+						<!-- end of image slider -->
+						<br>
+						<p>상세 내용</p>
+
+					</div>
+					<div class="modal-footer">
+						<input type="submit" class="btn btn-primary" value="등록하기">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+		<!-- /.modal -->
+
+		<!--삭제 팝업창  -->
+		<div class="modal fade" id="deletepopup" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="true"
+			style="z-index: 1060;">
+			<div class="modal-dialog"
+				style="width: 400px; text-align: center; margin-top: 200px; margin-bottom: 200px;">
+				<div class="modal-content">
+
+					<div class="modal-body">
+						<form action="/itemRemove">
+							<p>삭제 하시겠습니까?</p>
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">취소</button>
+							<input type="hidden" name="ItemNo" id="deleteItemNo" value="">
+							<input type="submit" class="btn btn-danger" value="삭제">
+						</form>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+		<!-- /.modal -->
+		<!-- 삭제 팝업창 끝 -->
+
+		<!-- footer부분에 modal용 div넣습니다. 레이아웃과 상관없으니 삭제하지 마세요 -->
 		<%-- modal Injection 공간 --%>
-		<div id="htmlInjectionSector" class="htmlInjectionSector" title="htmlInjectionSector">
-		</div>												 
-	<!-- footer부분에 modal용 div넣습니다. 레이아웃과 상관없으니 삭제하지 마세요 -->
-	
-</footer>	
-	
+		<div id="htmlInjectionSector" class="htmlInjectionSector"
+			title="htmlInjectionSector"></div>
+		<!-- footer부분에 modal용 div넣습니다. 레이아웃과 상관없으니 삭제하지 마세요 -->
+
+	</footer>
+
 </body>
 </html>
 
 <%-- 속도향상을 위해 맨 아래로 내림. --%>
 <script>
-
+ var replyDiv;
+ var returnDiv;
  function modalInjection(marker){
 	  
 	  markerNo=marker.itemNo;
 	  console.log(marker.itemNo);
+	  document.getElementById("deleteItemNo").value=markerNo
 	  /*
 	  console.log("Path2__"+marker.itemPicturePath2);
 	  console.log("Path2__length__"+marker.itemPicturePath2.length);
 	  console.log("Path3__"+marker.itemPicturePath3);
 	  console.log("Path3__length__"+marker.itemPicturePath3.length);
 	  */
-  	  var userNo='${user.userNo}';
+  	 // var userNo='${user.userNo}';
   	  var htmlinjec;
 	  new function makeHtml(){
 			htmlinjec=
@@ -2469,7 +2558,7 @@ div.mousescroll:hover {
 				        "<h4 class=\"modal-title\">"+marker.title+"<font color=\"red\"> [ "+marker.price+" 원 ]</font></h4>"+
 				       
 						"</div>"+
-						"<div class=\"modal-body\">"+
+						"<div class=\"modal-body\" id=\"mmodal\">"+
 						
 					    "<div id=\"imgslider_container_view\">"+
 						  "<div class=\"row-fluid\">"+
@@ -2482,15 +2571,15 @@ div.mousescroll:hover {
 						              "<div class=\"active item\" data-slide-number=\"0\">"+
 						                "<img  src = \"resources/itempictures/"+marker.itemPicturePath1+"\" style=\"width: 640px; height:480;\">"+
 						              "</div>";
-					if(marker.itemPicturePath2.length>0){
-						  htmlinjec+= "<div class=\"item\" data-slide-number=\"1\">"+
+					if(marker.itemPicturePath2!=null){
+						  htmlinjec+= "<div class=\"item\" data-slide-number=\"1\">"+				
 						              	"<img  src = \"resources/itempictures/"+marker.itemPicturePath2+"\" style=\"width: 640px; height:480;\">"+
 					                  "</div>";
 					}
-					if(marker.itemPicturePath3.length>0){
-						  htmlinjec+= "<div class=\"item\" data-slide-number=\"2\">"+
-						                "<img  src = \"resources/itempictures/"+marker.itemPicturePath3+"\" style=\"width: 640px; height:480;\">"+
-						              "</div>";					            
+					if(marker.itemPicturePath3!=null){
+						  htmlinjec+= "<div class=\"item\" data-slide-number=\"2\">"+		
+						 			  "<img  src = \"resources/itempictures/"+marker.itemPicturePath3+"\" style=\"width: 640px; height:480;\">"+
+			                	 	  "</div>";					            
 					}	             	
 						              
 						  htmlinjec+= "</div>"+
@@ -2515,22 +2604,22 @@ div.mousescroll:hover {
 							"</div>"+
 							
 						"</div>"+
-						"<div class=\"modal-footer\">"+
-						"</div>"+ 
 						"<div class=\"modal-footer\">";
-						
-						if(userNo==marker.userNo){
+					if(user!=null){
+						if(user.userNo==marker.userNo){
 							htmlinjec+=
 							"<button type=\"button\" class=\"btn btn-primary\" >수정</button>"+
 							"<button class=\"btn btn-primary\" data-toggle=\"modal\" href=\"#deletepopup\" onclick=\"return false\">삭제</button>";					
 						}else{
 							//htmlinjec+="<a href=\"#\" type=\"button\" id=\"addWish_disable\" class=\"btn btn-danger\" >찜</a>";
 						}
-						if(userNo!=null){
+						if(user.userNo!=null){
 							htmlinjec+=
 							"<button type=\"button\" id=\"addWish_active\" class=\"btn btn-danger\" onclick=\"addWish()\" >찜</button>";	
 						}
+					}
 						htmlinjec+=
+						"<button id=\"replyButton\" class=\"btn btn-primary\" data-toggle=\"modal\" onclick=\"change()\">댓글 <span class=\"badge\">42</span></button>"+
 						"<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>"+
 						"</div>"+
 					"</div>"+	
@@ -2538,9 +2627,110 @@ div.mousescroll:hover {
 			"</div>"+
 			"<a data-toggle=\"modal\" href=\"#item"+marker.itemNo+"\" id=\"modallink\"></a>";
 		};
+	
+		returnDiv="<div id=\"imgslider_container_view\">"+
+				  "<div class=\"row-fluid\">"+
+				    "<div class=\"span12\" id=\"slider\">"+
+				      "<div class=\"row-fluid\">"+
+				        "<div class=\"span8\" id=\"carousel-bounding-box\">"+
+				          "<div id=\"myCarousel_view\" class=\"carousel slide\">"+						          
+				            /* main slider carousel items */
+				         	"<div class=\"carousel-inner\">"+
+				              "<div class=\"active item\" data-slide-number=\"0\">"+
+				                "<img  src = \"resources/itempictures/"+marker.itemPicturePath1+"\" style=\"width: 640px; height:480;\">"+
+				              "</div>";
+			if(marker.itemPicturePath2!=null){
+				  returnDiv+= "<div class=\"item\" data-slide-number=\"1\">"+				
+				              	"<img  src = \"resources/itempictures/"+marker.itemPicturePath2+"\" style=\"width: 640px; height:480;\">"+
+			                  "</div>";
+			}
+			if(marker.itemPicturePath3!=null){
+				  returnDiv+= "<div class=\"item\" data-slide-number=\"2\">"+		
+				 			  "<img  src = \"resources/itempictures/"+marker.itemPicturePath3+"\" style=\"width: 640px; height:480;\">"+
+		            	 	  "</div>";					            
+			}	             	
+				              
+				  returnDiv+= "</div>"+
+				            
+				            /* main slider carousel nav controls */
+				            "<a class=\"carousel-control left\" href=\"#myCarousel_view\" data-slide=\"prev\">‹</a>"+
+				            "<a class=\"carousel-control right\" href=\"#myCarousel_view\" data-slide=\"next\">›</a>"+
+				         "</div>"+
+				       "</div>"+
+				        
+				       
+				     "</div>"+
+				      
+				   "</div>"+
+				 "</div>"+ /* main slider carousel */
+			"</div>"+/* end of image slider */
+			
+			
+			<%-- ItemInfo 들어가는 공간 --%>
+			"<br><div id=\"itemInfo\">"+
+				marker.itemInfo+
+			"</div>";
+			
+		
+		replyDiv="<div  class=\"mousescroll\" style=\"height:500px; text-align:left; font-size:13px;\">"+
+					"<table class=\"table\">"+
+						"<tr><td><div>"+
+							"<b>양키</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
+							"<p style=\"margin-left:10px\"><span>가나다라마바사아자차카타파하 개노무 개노무 개노무</span></p>"+
+						"</div></td></tr>"+
+						"<tr><td><div>"+
+							"<b>박준일</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
+							"<p style=\"margin-left:10px\"><span>가나다라마바사아자차카타파하 개노무 개노무 개노무</span></p>"+
+						"</div></td></tr>"+
+						"<tr class=\"success\"><td><div class=\"reReply\">"+
+							"┗<b>이민석</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
+							"<p style=\"margin-left:10px\"><span>가나다라마바사아자차카타파하 개노무 개노무 개노무</span></p>"+
+						"</div></td></tr>"+
+						"<tr><td><div>"+
+							"<b>섭섭맨</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
+							"<p style=\"margin-left:10px\"><span>가나다라마바사아자차카타파하 개노무 개노무 개노무</span></p>"+
+						"</div></td></tr>"+
+						"<tr><td><div>"+
+							"<b>이재영</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
+							"<p style=\"margin-left:10px\"><span>가나다라마바사아자차카타파하 개노무 개노무 개노무</span></p>"+
+						"</div></td></tr>"+
+						/* div class에 reReply 추가하면 덧글답장  */
+						"<tr class=\"success\"><td><div class=\"reReply\">"+
+							"┗ <b>이민석</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
+							"<p style=\"margin-left:10px\"><span>이민석 짱짱장짱</span></p>"+
+						"</div></td></tr>"+
+					"</table>"+
+				"</div>"+
+				"<hr>"+
+		 		"<div style=\"width: 450px;float: left;\">"+
+					"<textarea name=\"replyTextarea\" class=\"form-control\" rows=\"3\" placeholder=\"덧글 내용을 입력하세요\"></textarea>"+
+				"</div>"+
+				"<div>"+	
+					"<button type=\"button\" id=\"replyregi\" class=\"btn btn-default\" onclick=\"\" style=\"margin-top: 40px;\">덧글입력</button>"+
+			    "</div>";
+		
 		document.getElementById("htmlInjectionSector").innerHTML = htmlinjec;
 		document.getElementById("modallink").click();
- }
+		
+		
+ };
+
+ var flag="1";
+ function change(){
+	 
+	 console.log(flag);
+	 if(flag=="1"){
+	 	document.getElementById("mmodal").innerHTML=replyDiv;
+	 	document.getElementById("replyButton").innerHTML="내용보기";
+	 	flag="2";
+	 }else{
+		document.getElementById("mmodal").innerHTML=returnDiv;
+		document.getElementById("replyButton").innerHTML="댓글 <span class=\"badge\">42</span>";
+		flag="1";
+	 }
+}
+ 
+ 
 		
 
  </script>

@@ -47,8 +47,8 @@ public class ItemController {
     	System.out.println("__________________________");
 	}
     
-    
-	@RequestMapping(value = "/itemMapView")
+    //@RequestMapping(value = "/itemMapView")
+	@RequestMapping(value = "/")
 	public ModelAndView googlemap(
 			Locale locale, Model model,	HttpSession session) {
 		ModelAndView modelAndView = new ModelAndView();
@@ -63,15 +63,29 @@ public class ItemController {
 		*/
 		//search.setPageSize(500);
 		
-		List itemList=itemService.findItemList(search);
-		modelAndView.addObject("itemList", itemService.findItemList(search));
+		//List itemList=itemService.findItemList(search);
+		//modelAndView.addObject("itemList", itemService.findItemList(search));
 		
 		//System.out.println(itemList[0]);
 		
-		modelAndView.addObject("test", "뽑아묵는교?");
+		//modelAndView.addObject("test", "뽑아묵는교?");
 		
 		modelAndView.setViewName("web/itemMapView");
 		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/itemList")
+	@ResponseBody
+	public List itemList(
+			Locale locale, Model model,	HttpSession session) {
+		
+		
+		System.out.println("item_controller_session_hashcode_"+session.hashCode());
+		System.out.println("item_controller_session_getId_"+session.getId());
+		
+		List itemList=itemService.findItemList(null);
+	
+		return itemList;
 	}
 	
 	@RequestMapping(value ="/ajaxTest")
