@@ -934,7 +934,7 @@ div.mousescroll:hover {
 				// Browser doesn't support Geolocation
 				handleNoGeolocation(false);
 			}
-			
+			/*
 			console.log("markersInit() before");
 			markersInit(); //marker[]에 itemList push
 			markerInitialize(map); //map객체에 marekr onload
@@ -948,10 +948,12 @@ div.mousescroll:hover {
 		        });
 			//cluster=new Cluster(MarkerClusterer);
 			//cluster.setIgnoreHidden(true);
+			*/
 			  //물품등록시 사용할 이벤트, 위치정하기 버튼 누르기 전에 비활성화.
 			  google.maps.event.addListener(map, 'click', function(e) {
 		            placeMarker(e.latLng, map);
 		      });
+			//refreshData();
 		}<%-- initialize End --%>
 	
 		<%-- placeMarker Start --%>
@@ -1753,7 +1755,8 @@ div.mousescroll:hover {
 		
 		
 		
-		google.maps.event.addDomListener(window, 'load', initData);
+		google.maps.event.addDomListener(window, 'load', initialize);
+		google.maps.event.addDomListener(window, 'load', refreshData);
 	</script>
 <!--
 		
