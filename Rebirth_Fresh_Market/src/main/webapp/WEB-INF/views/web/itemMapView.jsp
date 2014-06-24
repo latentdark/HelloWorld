@@ -865,6 +865,22 @@ div.mousescroll:hover {
 
 	}<%-- initData() refreshData() End--%>
 	
+	function removeItem(){
+		$.ajax({
+			type:"POST",
+			url:"/removeItem",
+			data:itemNo
+		}).done(function(res){
+			console.log(res);
+			refreshData();
+			console.log("성공");
+		}).fail(function(res){
+			console.log(res);
+			console.log("실패");
+		});
+		
+	}
+	
 		<%-- initialize Start --%>
 		function initialize() {
 			console.log("initialize() Inn");
@@ -2499,7 +2515,7 @@ div.mousescroll:hover {
 				<div class="modal-content">
 
 					<div class="modal-body">
-						<form action="/itemRemove">
+						<form action="#" onsubmit="return removeItem()">
 							<p>삭제 하시겠습니까?</p>
 							<button type="button" class="btn btn-default"
 								data-dismiss="modal">취소</button>
@@ -2532,12 +2548,12 @@ div.mousescroll:hover {
  var replyDiv;
  var returnDiv;
  var flag;
-
+ var itemNo;
  function modalInjection(marker){
 	 flag="1"; 
 	  markerNo=marker.itemNo;
 	  console.log(marker.itemNo);
-	  document.getElementById("deleteItemNo").value=markerNo
+	  itemNo=document.getElementById("deleteItemNo").value=markerNo;
 	  /*
 	  console.log("Path2__"+marker.itemPicturePath2);
 	  console.log("Path2__length__"+marker.itemPicturePath2.length);
