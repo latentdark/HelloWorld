@@ -75,8 +75,8 @@ public class TestController {
 	
 	
 	//제품 등록 테스트
-    @RequestMapping("/itemregister")
-  	public String itemRegister (
+    @RequestMapping(value={"/addItem","/itemregister"})
+  	public String addItem (
   			@ModelAttribute("Item") Item item,
   			@ModelAttribute("user") User user,
   			HttpSession session, HttpServletRequest request, HttpServletResponse response)
@@ -180,11 +180,22 @@ public class TestController {
   		
   		itemService.addItem(item);
   		
-  		return "redirect:/itemMapView";
+  		return "redirect:/";
   	}
 	
 	
 	//제품 삭제
+    @RequestMapping("/removeItem")
+    @ResponseBody
+  	public String removeItem (
+  			@RequestParam(value="ItemNo")Integer ItemNo)
+  					throws Exception{
+    	System.out.println("아이템 삭제!");	
+    	itemService.removeItem(ItemNo);
+    	return "removeItem success";
+    }
+	//제품 삭제
+    /*
     @RequestMapping("/itemRemove")
   	public String itemRemove (
   			@ModelAttribute("Item") Item item,
@@ -195,6 +206,7 @@ public class TestController {
     	itemService.removeItem(item.getItemNo());
     	return "redirect:/itemMapView";
     }
+    */
 	
 }
 
