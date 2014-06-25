@@ -3,6 +3,7 @@ package com.freshmarket.service;
 import java.util.List;
 
 import com.freshmarket.domain.Chat;
+import com.freshmarket.domain.Comment;
 import com.freshmarket.domain.Item;
 
 public interface CommunicationService {
@@ -24,4 +25,16 @@ public interface CommunicationService {
     public Integer removeInquire(Integer userNo, Integer itemNo);
     
     public List<Item> findInquireList(Integer userNo);
+    
+    public Integer addReply(Integer commentNo, Integer userNo, String content);
+    
+    public Integer removeReply(Integer replyNo);
+    
+    public List<Comment> findComment(Integer itemNo);
+    
+    public Integer updateComment(Integer commentNo, String content);
+    
+    public Integer updateReply(Integer replyNo, String content);
+    
+    public Integer removeComment(Integer commentNo);
 }

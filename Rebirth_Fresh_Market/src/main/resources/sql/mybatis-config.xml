@@ -17,6 +17,7 @@
  		<typeAlias alias="location" type="com.freshmarket.domain.Location"/>
  		<typeAlias alias="item" type="com.freshmarket.domain.Item"/>
  		<typeAlias alias="deal" type="com.freshmarket.domain.Deal"/>
+ 		<typeAlias alias="comment" type="com.freshmarket.domain.Comment"/>
  		<typeAlias alias="search" type="com.freshmarket.common.Search"/>
  	</typeAliases>
  

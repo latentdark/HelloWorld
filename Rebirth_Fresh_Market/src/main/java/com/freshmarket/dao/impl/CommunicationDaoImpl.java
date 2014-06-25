@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.freshmarket.dao.CommunicationDao;
 import com.freshmarket.domain.Chat;
+import com.freshmarket.domain.Comment;
 import com.freshmarket.domain.Item;
 
 @Repository
@@ -96,5 +97,46 @@ public class CommunicationDaoImpl implements CommunicationDao {
 		return sqlSession.selectList("CommunicationMapper.findInquireList", userNo);
 	}
 
-
+	@Override
+	public Integer addReply(Integer commentNo, Integer userNo, String content){
+		HashMap map = new HashMap();
+		map.put("commentNo", commentNo);
+		map.put("userNo", userNo);
+		map.put("content", content);
+		
+		return sqlSession.insert("CommunicationMapper.addReply", map);
+	}
+	
+	@Override
+	public Integer removeReply(Integer replyNo){
+		return sqlSession.delete("CommunicationMapper.removeReply", replyNo);
+	}
+	
+	@Override
+	public List<Comment> findComment(Integer itemNo){
+		return sqlSession.selectList("CommunicationMapper.findComment", itemNo);
+	}
+	
+	@Override
+	public Integer updateComment(Integer commentNo, String content){
+		HashMap map = new HashMap();
+		map.put("commentNo", commentNo);
+		map.put("content", content);
+		
+		return sqlSession.update("CommunicationMapper.updateComment", map);
+	}
+    
+	@Override
+    public Integer updateReply(Integer replyNo, String content){
+    	HashMap map = new HashMap();
+		map.put("replyNo", replyNo);
+		map.put("content", content);
+		
+		return sqlSession.update("CommunicationMapper.updateReply", map);
+    }
+    
+	@Override
+    public Integer removeComment(Integer commentNo){
+    	return sqlSession.delete("CommunicationMapper.removeComment", commentNo); 
+    }
 }

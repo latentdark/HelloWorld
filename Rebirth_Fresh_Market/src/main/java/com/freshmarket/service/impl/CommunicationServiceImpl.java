@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.freshmarket.dao.CommunicationDao;
 import com.freshmarket.domain.Chat;
+import com.freshmarket.domain.Comment;
 import com.freshmarket.domain.Item;
 import com.freshmarket.service.CommunicationService;
 
@@ -82,5 +83,31 @@ public class CommunicationServiceImpl implements CommunicationService {
 		// TODO Auto-generated method stub
 		return communicationDao.findInquireList(userNo);
 	}
+	
+	@Override
+	public Integer addReply(Integer commentNo, Integer userNo, String content){
+		return communicationDao.addReply(commentNo, userNo, content);
+	}
 
+	@Override
+	public Integer removeReply(Integer replyNo){
+		return communicationDao.removeReply(replyNo);
+	}
+	
+	@Override
+	public List<Comment> findComment(Integer itemNo){
+		return communicationDao.findComment(itemNo);
+	}
+	
+	public Integer updateComment(Integer commentNo, String content){
+		return communicationDao.updateComment(commentNo, content);
+	}
+    
+    public Integer updateReply(Integer replyNo, String content){
+    	return communicationDao.updateComment(replyNo, content);
+    }
+    
+    public Integer removeComment(Integer commentNo){
+    	return communicationDao.removeComment(commentNo);
+    }
 }

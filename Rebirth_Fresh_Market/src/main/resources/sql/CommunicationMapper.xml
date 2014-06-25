@@ -14,6 +14,21 @@
 		<result property="price" column="price" jdbcType="INTEGER"/>
 	</resultMap>
 	
+	<resultMap id="CommentSelectMap" type="comment">
+		<result property="commentNo" column="comment_no" jdbcType="INTEGER"/>
+		<result property="replyNo" column="reply_no" jdbcType="INTEGER"/>
+		<result property="commentWriter" column="comment_writer" jdbcType="VARCHAR"/>
+		<result property="replyWriter" column="reply_writer" jdbcType="VARCHAR"/>
+		<result property="commentContent" column="comment_content" jdbcType="VARCHAR"/>
+		<result property="replyContent" column="reply_content" jdbcType="VARCHAR"/>
+		<result property="commentRegiDate" column="comment_regi_date" jdbcType="DATE"/>
+		<result property="replyRegiDate" column="reply_regi_date" jdbcType="DATE"/>
+		<result property="commentTime" column="comment_time" jdbcType="TIME"/>
+		<result property="replyTime" column="reply_time" jdbcType="TIME"/>
+		<result property="commentStateCode" column="comment_state_code" jdbcType="INTEGER"/>
+		<result property="replyStateCode" column="reply_state_code" jdbcType="INTEGER"/>
+	</resultMap>
+	 
 	<insert id="addInquire" parameterType="HashMap">
 		INSERT inquire(item_no, user_no, date, time)
 		VALUES(#{itemNo}, #{userNo}, sysdate(), curtime());
@@ -24,15 +39,68 @@
 		VALUES(#{itemNo}, #{userNo}, #{content}, sysdate(), curtime(), 1);
 	</insert>
 	
-	<!-- <insert id="addReply" parameterType="">
-		INSERT reply(comment_no,user_no,content,regi_date,time,state_code)
-		VALUES(#{commentNo}, #{userNo}, '#{content}', sysdate(), curtime(), #{stateCode})
+	<insert id="addReply" parameterType="HashMap">
+		INSERT reply(comment_no,user_no, content, regi_date,time, state_code)
+		VALUES(#{commentNo}, #{userNo}, #{content}, sysdate(), curtime(), 2)
 	</insert>
 	
-	<select id="findComment" parameterType="" resultMap="">
-		SELECT
-	</select> -->
+	<update id="updateComment" parameterType="HashMap">
+		UPDATE comment
+		SET
+		content = #{content},
+		regi_date = sysdate(),
+		time = curtime()
+		WHERE comment_no = #{commentNo}
+	</update>
 	
+	<update id="updateReply" parameterType="HashMap">
+		UPDATE reply
+		SET
+		content = #{content},
+		regi_date = sysdate(),
+		time = curtime()
+		WHERE reply_no = #{replyNo}
+	</update>
+	
+	<delete id="removeReply" parameterType="integer">
+		DELETE FROM reply WHERE reply_no = #{value}
+	</delete>
+	
+	<select id="findComment" parameterType="integer" resultMap="CommentSelectMap">
+		SELECT
+		c.comment_no,
+		u.nickname AS comment_writer,
+		c.content AS comment_content,
+		c.regi_date AS comment_regi_date,
+		c.time AS comment_time,
+		c.state_code AS comment_state_code,
+		r.reply_no,
+		r.nickname AS reply_witer,
+		r.content AS reply_content,
+		r.regi_date AS reply_regi_date,
+		r.time AS reply_time,
+		r.state_code AS reply_state_code
+		FROM comment AS c
+		     LEFT OUTER JOIN user AS u ON c.user_no = u.user_no
+		     LEFT OUTER JOIN item AS i ON c.item_no = i.item_no
+		     LEFT OUTER JOIN (	SELECT
+								r.comment_no, r.reply_no, u.nickname, r.content, r.regi_date, r.time, r.state_code
+								FROM reply AS r
+								     LEFT OUTER JOIN comment AS c ON r.comment_no = c.comment_no
+								     LEFT OUTER JOIN user AS u ON u.user_no = r.user_no
+								ORDER BY r.reply_no	)AS r ON c.comment_no = r.comment_no
+		WHERE c.item_no = #{value}
+		ORDER BY c.comment_no;
+	</select>
+	
+	<delete id="removeComment" parameterType="integer">
+		DELETE comment, reply
+		FROM comment, reply
+		WHERE comment.comment_no = #{value}
+			  AND
+			  reply.comment_no = #{value}
+	</delete>
+		 
 	<delete id="removeInquire" parameterType="HashMap">
 		DELETE
 		FROM inquire

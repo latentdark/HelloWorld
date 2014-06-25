@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
-import com.freshmarket.common.Search;
+import com.freshmarket.domain.Comment;
 import com.freshmarket.domain.Item;
 import com.freshmarket.domain.User;
 import com.freshmarket.service.CommunicationService;
@@ -33,12 +33,12 @@ public class CommunicationTest {
 		Item item = new Item();
 		User user = new User();
 		item.setItemNo(419);
-		user.setUserNo(1);
+		user.setUserNo(1); 
 		Integer itemNo = item.getItemNo();
 		Integer userNo = user.getUserNo();
 		String content = "너무비싸요 깎아주세요";
 		
-		System.out.println("insert 결과 : "+communicationService.addInquire(userNo, itemNo, content));
+		//System.out.println("insert 결과 : "+communicationService.addInquire(userNo, itemNo, content));
 		
 		
 		//findInquireList
@@ -47,5 +47,33 @@ public class CommunicationTest {
 		//removeInquire
 		System.out.println("delete 결과 : "+communicationService.removeInquire(userNo, itemNo));
 		System.out.println("select 결과 : "+communicationService.findInquireList(userNo));
+		
+		//updateComment
+		Comment comment = new Comment();
+		comment.setCommentNo(22);
+		Integer commentNo = comment.getCommentNo();
+		content = "완전짱짱비쌈 깎아주세요";
+		System.out.println("update 결과 : "+communicationService.updateComment(commentNo, content));
+		
+		//addReply
+		user.setUserNo(5);
+		userNo = user.getUserNo();
+		content = "안되욤";
+		//System.out.println("insert 결과 : "+communicationService.addReply(commentNo, userNo, content));
+		
+		//findComment
+		System.out.println("selectList 결과: "+communicationService.findComment(itemNo));
+		
+		//updateReply
+		comment.setReplyNo(12);
+		content = "네 안되욤";
+		Integer replyNo = comment.getReplyNo();
+		System.out.println("update 결과 : "+communicationService.updateReply(replyNo, content));
+		
+		//removeComment
+		System.out.println("delete 결과 : "+communicationService.removeComment(commentNo));
+		
+		//removeReply
+		System.out.println("delete 결과 : "+communicationService.removeReply(replyNo));
 	}
 }
