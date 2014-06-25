@@ -516,46 +516,44 @@ div.mousescroll:hover {
 }
 
 /* 새로운 시도 시작 */
+/**/
 #t3 span {
-	/* Container properties */
+	
 	width: 0;
 	left: absolute;
 	top: absolute;
-	/*
-	옆에서 얼마나 떨어졌나 지정
-	left:70px;
-	*/
+
 	padding: 0;
 	position: absolute;
 	overflow: hidden;
-	/* Text properties */
+
 	font-familiy: 'Nanum Gothic';
 	font-size: 12px;
 	font-weight: bold;
 	letter-spacing: 0.6px;
 	white-space: nowrap;
 	line-height: 20px;
-	/* 하이라이터 높이 지정 line-height:39px;*/
-	/* CSS3 Transition: */
+
 	-webkit-transition: 0.25s;
-	/* Future proofing (these do not work yet): */
+	
 	-moz-transition: 0.25s;
 	transition: 0.25s;
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
 }
+
 /* span 보여주게 하는 코드 */
+/*
 #t3 a:hover span {
 	background-color: rgb(255, 228, 0);
 	color: rgb(3, 0, 102);
-	/* text-shadow:1px 1px 0 #99bf31;
-	 */
+
 	width: auto;
 	padding: 0 20px;
-	/*padding:0 20px;*/
+	
 	overflow: visible;
 }
-
+*/
 #t3 a:hover {
 	background: rgb(255, 228, 0);
 	cursor: pointer;
@@ -568,6 +566,140 @@ div.mousescroll:hover {
 
 	/* CSS outer glow with the box-shadow property */
 }
+
+/*
+#menu-toggle2-injection start
+로그인 비활성화시 기존 toggle overview
+*/
+#menu-toggle2-mirror {
+	position: fixed;
+	top: 300px;
+	left: 0;
+	background: #5DCD9D;
+	z-index: 1010;
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	transition: all 0.3s ease;
+}
+
+#menu-toggle2-mirror span {
+	/* Container properties */
+	width: 0;
+	left: 90px;
+	top: 0px;
+	/*
+	옆에서 얼마나 떨어졌나 지정
+	left:70px;
+	*/
+	padding: 0;
+	position: absolute;
+	overflow: hidden;
+	/* Text properties */
+	font-familiy: 'Nanum Gothic';
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: 0.6px;
+	white-space: nowrap;
+	line-height: 45px;
+	/* 하이라이터 높이 지정 line-height:39px;*/
+	/* CSS3 Transition: */
+	-webkit-transition: 0.25s;
+	/* Future proofing (these do not work yet): */
+	-moz-transition: 0.25s;
+	transition: 0.25s;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+/* span 보여주게 하는 코드 */
+#menu-toggle2-mirror a:hover span {
+	background-color: #BDBDBD;
+	color: #0100FF;
+	/* 	text-shadow:1px 1px 0 #99bf31; */
+	width: auto;
+	padding: 0 20px;
+	overflow: visible;
+}
+
+#menu-toggle2-mirror:hover {
+	background: #BDBDBD;
+	cursor: pointer;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+/*#menu-toggle2-injection end*/
+
+/*
+#menu-toggle3-injection start
+로그인 비활성화시 기존 toggle overview
+*/
+#menu-toggle3-mirror {
+	position: fixed;
+	top: 400px;
+	left: 0;
+	background: #5DCD9D;
+	z-index: 1010;
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	transition: all 0.3s ease;
+}
+
+#menu-toggle3-mirror span {
+	/* Container properties */
+	width: 0;
+	left: 90px;
+	top: 0px;
+	/*
+	옆에서 얼마나 떨어졌나 지정
+	left:70px;
+	*/
+	padding: 0;
+	position: absolute;
+	overflow: hidden;
+	/* Text properties */
+	font-familiy: 'Nanum Gothic';
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: 0.6px;
+	white-space: nowrap;
+	line-height: 45px;
+	/* 하이라이터 높이 지정 line-height:39px;*/
+	/* CSS3 Transition: */
+	-webkit-transition: 0.25s;
+	/* Future proofing (these do not work yet): */
+	-moz-transition: 0.25s;
+	transition: 0.25s;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+/* span 보여주게 하는 코드 */
+#menu-toggle3-mirror a:hover span {
+	background-color: #BDBDBD;
+	color: #0100FF;
+	/* 	text-shadow:1px 1px 0 #99bf31; */
+	width: auto;
+	padding: 0 20px;
+	overflow: visible;
+}
+
+#menu-toggle3-mirror:hover {
+	background: #BDBDBD;
+	cursor: pointer;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+/*#menu-toggle2-injection end*/
 
 #addWish_disable {
 	
@@ -807,12 +939,12 @@ div.mousescroll:hover {
 	var cluster;
 	var pos;	
 	var myPosition={
-			A:null,
-			k:null
+			k:null,
+			A:null			
 	};
-	
 	var itemList; 
-		
+	
+	<%-- initData() refreshData() Start--%>
 	function initData(){
 		console.log("initData()__Inn");
 		
@@ -824,7 +956,17 @@ div.mousescroll:hover {
 			//console.log("itemList.length_"+itemList.length);
 			itemList=res;
 			console.log("itemList.length_"+itemList.length);
-			initialize();
+			markersInit(); //marker[]에 itemList push
+			markerInitialize(map); //map객체에 marekr onload
+			
+			markerClusterer = new MarkerClusterer(map, markers, {
+		          maxZoom: 14,
+		          gridSize: size,
+		          ignoreHidden:true
+		          //styles: styles[style]
+		        });
+		    //cluster=new Cluster(markerClusterer);
+		    
 			console.log("성공");
 		}).fail(function(res){
 			console.log(res);
@@ -845,16 +987,19 @@ div.mousescroll:hover {
 			itemList=res;
 			console.log("itemList.length_"+itemList.length);
 			
+			
 			markersInit(); //marker[]에 itemList push
 			markerInitialize(map); //map객체에 marekr onload
 			console.log("markersInit() after");
-			//markerClusterer = new MarkerClusterer(map, markers, {
+			markerClusterer.clearMarkers();
+			
 			markerClusterer = new MarkerClusterer(map, markers, {
 		          maxZoom: 14,
 		          gridSize: size,
 		          ignoreHidden:true
 		          //styles: styles[style]
 		        });
+		    //cluster=new Cluster(markerClusterer);
 			
 			console.log("성공");
 		}).fail(function(res){
@@ -863,8 +1008,67 @@ div.mousescroll:hover {
 		});
 		
 
-	}
+	}<%-- initData() refreshData() End--%>
+	
+	var itemNo;
+	function removeItem(){
+		$.ajax({
+			type:"POST",
+			url:"/removeItem",
+			data:{
+				ItemNo:itemNo
+			}
+		}).done(function(res){
+			console.log(res);
+			refreshData();
+			var combine="'#item"+markerNo+"'";
+			$('#item'+markerNo).modal('hide');
+			alert('삭제되었습니다.');
+			return true;
+			console.log("성공");
+		}).fail(function(res){
+			console.log(res);
+			console.log("실패");
+		});
 		
+	}
+	
+	function addItem(){
+		var stateCode;
+		if(document.getElementById('buybtn').checked){
+			stateCode=1;
+		}
+		if(document.getElementById('buybtn').checked){
+			stateCode=2;
+		}
+		$.ajax({
+			type:"POST",
+			url:"/addItem",
+			data:{
+				stateCode		:stateCode,
+				gridX1			:document.getElementById("reg_lat").value,
+				gridY1			:document.getElementById("reg_lng").value,
+				itemPicturePath1:document.getElementById("itemPicturePath1").value,
+				itemPicturePath2:document.getElementById("itemPicturePath2").value,
+				itemPicturePath3:document.getElementById("itemPicturePath3").value,
+				category1:document.getElementById("category1").value,
+				category2:document.getElementById("category2").value,
+				item_name:document.getElementById("item_name").value,
+				price:document.getElementById("price").value,
+				itemInfo:document.getElementById("itemInfo").value
+			}
+		}).done(function(res){
+			console.log(res);
+			refreshData();
+			console.log("성공");
+			alert("아이템이 정상적으로 등록되었습니다. ^^");
+			return true;
+		}).fail(function(res){
+			console.log(res);
+			console.log("실패");
+		});
+		
+	}
 	
 		<%-- initialize Start --%>
 		function initialize() {
@@ -895,6 +1099,11 @@ div.mousescroll:hover {
 					myPosition.A=Math.round(pos.A*1000000)/1000000;
 					myPosition.k=Math.round(pos.k*1000000)/1000000;
 					
+					console.log("myPosition Debug____");
+					console.log(myPosition.A);
+					console.log(myPosition.k);
+					console.log("myPosition Debug____");
+					
 					
 					new google.maps.Marker({
 						position : new google.maps.LatLng(position.coords.latitude,
@@ -919,7 +1128,7 @@ div.mousescroll:hover {
 				// Browser doesn't support Geolocation
 				handleNoGeolocation(false);
 			}
-			
+			/*
 			console.log("markersInit() before");
 			markersInit(); //marker[]에 itemList push
 			markerInitialize(map); //map객체에 marekr onload
@@ -933,11 +1142,14 @@ div.mousescroll:hover {
 		        });
 			//cluster=new Cluster(MarkerClusterer);
 			//cluster.setIgnoreHidden(true);
+			*/
 			  //물품등록시 사용할 이벤트, 위치정하기 버튼 누르기 전에 비활성화.
 			  google.maps.event.addListener(map, 'click', function(e) {
 		            placeMarker(e.latLng, map);
 		      });
-			console.log("initialize() End");
+			//refreshData();
+			
+			
 		}<%-- initialize End --%>
 	
 		<%-- placeMarker Start --%>
@@ -1041,7 +1253,7 @@ div.mousescroll:hover {
 			
 			if(from=="Quick"){
 				for(var i=0;i<markers.length;i++){
-					if(markers[i].title.toUpperCase().match(searchKeyword)!=null){
+					if(markers[i].itemName.toUpperCase().match(searchKeyword)!=null){
 						markerClusterer.addMarker(markers[i]);
 					}
 				}
@@ -1086,7 +1298,7 @@ div.mousescroll:hover {
 				if(searchOption=="all"){
 					for(var i=0;i<markers.length;i++){
 						//console.log(markers[i].title.toUpperCase().match(searchKeyword));
-						if(markers[i].title.toUpperCase().match(searchKeyword)!=null){
+						if(markers[i].itemName.toUpperCase().match(searchKeyword)!=null){
 							markerClusterer.addMarker(markers[i]);
 							markersSearchResult.push(markers[i]);
 						}
@@ -1095,7 +1307,7 @@ div.mousescroll:hover {
 				if(searchOption=="buy"){
 					for(var i=0;i<markers.length;i++){
 						if(markers[i].stateCode==1){
-							if(markers[i].title.toUpperCase().match(searchKeyword)!=null){
+							if(markers[i].itemName.toUpperCase().match(searchKeyword)!=null){
 								markerClusterer.addMarker(markers[i]);
 								markersSearchResult.push(markers[i]);	
 							}
@@ -1105,7 +1317,7 @@ div.mousescroll:hover {
 				if(searchOption=="sell"){
 					for(var i=0;i<markers.length;i++){
 						if(markers[i].stateCode==2){
-							if(markers[i].title.toUpperCase().match(searchKeyword)!=null){
+							if(markers[i].itemName.toUpperCase().match(searchKeyword)!=null){
 								markerClusterer.addMarker(markers[i]);
 								markersSearchResult.push(markers[i]);	
 							}
@@ -1132,26 +1344,26 @@ div.mousescroll:hover {
 		<%-- markersInit() --%>
 		function markersInit(){
 			console.log("markersInit()_Inn");
-			//markers=[];
+			markers=[];
 			//statCode 1=sell, 2=buy, 3=deal
 			console.log(itemList);
 			console.log("markersInit()__itemList.length__"+itemList.length);
 			for(var i=0;i<itemList.length;i++){
 				
 				var markerImage;
-				console.log("itemList[i].stateCode_"+itemList[i].stateCode);
+				//console.log("itemList[i].stateCode_"+itemList[i].stateCode);
 				switch(itemList[i].stateCode){
 					case 1:
 						markerImage=buyImage;
-						console.log("buyImage");
+						//console.log("buyImage");
 						break;
 					case 2:
 						markerImage=sellImage;
-						console.log("sellImage");
+						//console.log("sellImage");
 						break;
 					case 3:
 						markerImage=dealImage;
-						console.log("dealImage");
+						//console.log("dealImage");
 						break;
 				}
 				markers.push(
@@ -1161,7 +1373,8 @@ div.mousescroll:hover {
 								map : map,
 								icon: markerImage,
 								stateCode : itemList[i].stateCode,
-								title : itemList[i].itemName,
+								//title : itemList[i].itemName,
+								itemName : itemList[i].itemName,
 								userNo : itemList[i].userNo,
 								itemNo : itemList[i].itemNo,
 								itemInfo : itemList[i].itemInfo,
@@ -1177,7 +1390,7 @@ div.mousescroll:hover {
 						);
 					
 			}
-		}		<%-- markersInit() end --%>
+		}<%-- markersInit() end --%>
 		<%-- 
 		function markersInit(){
 			//markers=[];
@@ -1266,7 +1479,6 @@ div.mousescroll:hover {
 			console.log("markers[0].position__"+markers[0].position.k); */
 		}
 		--%>
-
 								
 		
 		<%-- markerInitialize Start --%>
@@ -1274,28 +1486,214 @@ div.mousescroll:hover {
 		  console.log("markerInitialize(map) Inn");
 		  for (var i = 0; i < markers.length; i++) {
 			//console.log(markers[i]);
-			//markers[i].setMap(map);   
+			markers[i].setMap(map);   
 			//console.log(markers[i].content); 
 			markerAddListener(markers[i], i);
 		  }
 		}<%-- markerInitialize end --%>
 	
 		<%-- markerAddListener Start--%>
+		var bounds = new google.maps.LatLngBounds();
+		
 		function markerAddListener(marker, i) {
 		 console.log("markerAddListener() Inn");
-		/* 
-		  var infowindow = new google.maps.InfoWindow({
-			content: marker.content	
-		  });
-		 */
+			
+		 var content=
+			 "<div id=\"infowindow\">"+
+			 	"<h1>"+
+			 		"<font color=\"red\">"+"[ "+marker.price+" ]</font> "+
+			 		marker.itemName+
+			 	"</h1>"+
+			 "</div>";
+		 var infowindow = new google.maps.InfoWindow({
+				content: content	
+		 });
+		  
+		  /*  */
 		  //console.log("marker.content_"+marker.content);
 		 //var dialogName="#item"+marker.content;
-		  google.maps.event.addListener(marker, 'click', function() {
+		 google.maps.event.addListener(marker, 'mouseover', function() {
+			 //alert("mouseover");
+			
 			  //infowindow.open(marker.get('map'), marker);	
+			 infowindow.open(marker.get('map'), marker);
+			 
+		  });
+		 
+		 google.maps.event.addListener(marker, 'mouseout', function() {	
+			 // infowindow.open(marker.get('map'), marker);
+			  infowindow.close();
+		  });
+		 
+		  google.maps.event.addListener(marker, 'click', function() {
+			  	  
 			  modalInjection(marker);
 		  });
 		  
-		}<%-- markerAddListener end--%>
+		}
+		
+		
+		<%-- searchListMarkerFocus Start --%>
+		var infowindow;
+		var position;
+		var flightPath;
+		var polyline = [] ;
+		var mapCenter;
+		function searchListMarkerFocusIn(marker){
+			var content=
+				 "<div id=\"infowindow\">"+
+				 	"<h1>"+
+				 		"<font color=\"red\">"+"[ "+marker.price+" ]</font> "+
+				 		marker.itemName+
+				 	"</h1>"+
+				 "</div>";
+			infowindow = new google.maps.InfoWindow({
+					content: content	
+			 });
+			console.log("markerFocus__INN");
+			//var markerBounds = new google.maps.LatLngBounds();
+			
+			//이건 줌이 너무 많이 땡겨져.
+			//map.setBounds(marker.position);
+			
+			//it`s too fast.
+			//map.setCenter(marker.position); 
+			
+			// start coordinates
+			var start = [ 
+			      new google.maps.LatLng(marker.position.k, marker.position.A), 
+			      new google.maps.LatLng(marker.position.k, marker.position.A),
+			      new google.maps.LatLng(marker.position.k, marker.position.A),
+			      new google.maps.LatLng(marker.position.k, marker.position.A)
+			      ];
+
+			// end coordinates
+			var end = [
+		          new google.maps.LatLng(marker.position.k-1, marker.position.A), 
+			      new google.maps.LatLng(marker.position.k+1, marker.position.A),
+			      new google.maps.LatLng(marker.position.k, marker.position.A-1),
+			      new google.maps.LatLng(marker.position.k, marker.position.A+1)
+			      ];
+			for (var i=0; i < end.length; i++){
+			      calcRoute(start[i], end [i]);
+			}
+			
+		
+			function calcRoute(source,destination){
+				polyline.push(
+					new google.maps.Polyline({
+				     path: [source,destination],
+				     //strokeColor: '#FF0000',
+				     strokeColor: '#1650F0',
+				     strokeWeight: 5,
+				     strokeOpacity: 0.5
+			 		})
+				);
+				  //polyline.setMap(map);
+			}
+			
+			for(var i=0;i<polyline.length;i++){
+				polyline[i].setMap(map);
+			}
+			
+			/*
+			var flightPlanCoordinates = [
+                new google.maps.LatLng(marker.position.k, marker.position.A),
+                new google.maps.LatLng(marker.position.k-1, marker.position.A)
+              ];
+				
+			
+            flightPath = new google.maps.Polyline({
+              path: flightPlanCoordinates,
+              strokeColor: '#FF0000',
+              strokeOpacity: 1.0,
+              strokeWeight: 2
+            });
+            flightPath.setMap(map);
+			
+			*/
+			mapCenter=map.getCenter();
+			map.panTo(marker.position);
+			//map.panToBounds(marker.position);
+			/*
+			position=map.getCenter();
+			var result = [marker.position.k, marker.position.A];
+			transition(result);
+			*/
+			
+			//infowindow.setZIndex(3000);
+			infowindow.setPosition(marker.position);
+			infowindow.open(marker.get('map'));
+			//infowindow.open(marker.get('map'), marker);
+		}
+		function searchListMarkerFocusOut(marker){
+			console.log("markerFocus__Out");
+			for(var i=0;i<polyline.length;i++){
+				polyline[i].setMap(null);
+			}
+			polyline = [];
+			//flightPath.setMap(null);
+			
+			//map.panToBounds(pos);
+			
+			
+			//markerClusterer.getMarkers().close();
+			//markerClusterer.infowindow.close();
+			infowindow.close();
+			moveCheck=mapCenter;
+			setTimeout(function(){positionReturn()},1000*2);			
+		}
+		
+		var moveCheck;
+		function positionReturn(){
+			if(moveCheck==mapCenter){
+				map.panTo(mapCenter);
+			}
+		}
+		<%-- searchListMarkerFocus End --%>
+		
+		
+		
+		
+		<%-- Marker Smooth Move Start--%>
+		var numDeltas = 100;
+		var delay = 10; //milliseconds
+		var i = 0;
+		var deltaLat;
+		var deltaLng;
+		function transition(result){
+		    i = 0;
+		    deltaLat = (result[0] - position[0])/numDeltas;
+		    deltaLng = (result[1] - position[1])/numDeltas;
+		    moveMarker();
+		}
+
+		function moveMarker(){
+		    position[0] += deltaLat;
+		    position[1] += deltaLng;
+		    var latlng = new google.maps.LatLng(position[0], position[1]);
+		    map.setCenter(latlng);
+		    //marker.setPosition(latlng);
+		    if(i!=numDeltas){
+		        i++;
+		        setTimeout(moveMarker, delay);
+		    }
+		}
+		<%-- Marker Smooth Move Start--%>
+		<%-- 
+		 google.maps.event.addListener(map, 'zoom_changed', function() {
+			        zoomChangeBoundsListener = google.maps.event.addListener(map, 'bounds_changed', function(event) {
+			            if (this.getZoom() > 10) // Change max/min zoom here
+			                this.setZoom(13);
+
+			            google.maps.event.removeListener(zoomChangeBoundsListener);
+			        });
+				});
+		
+		--%>
+
+		
+		<%-- markerAddListener end--%>
 		
 		<%-- handleNoGeolocation Start --%>
 		function handleNoGeolocation(errorFlag) {
@@ -1436,9 +1834,16 @@ div.mousescroll:hover {
 					"<tr>"+
 						"<td id=\"t1\" >" + markersSearchResult[0].distance_m + "</td>" +
 						"<td id=\"t2\" >" + markersSearchResult[0].price/10000.0 + "</td>" +
-						"<td id=\"t3\" ><a onclick=\"modalInjection(markersSearchResult["+0+"])\"> " +
+						"<td id=\"t3\" ><a"+
+						
+						" onmouseover=searchListMarkerFocusIn(markersSearchResult["+0+"])"+
+						" onmouseout=searchListMarkerFocusOut(markersSearchResult["+0+"])"+
+						//" onmouseover=searchListMarkerFocusIn(markerclusterer["+0+"])"+
+						//" onmouseout=searchListMarkerFocusOut(markerclusterer["+0+"])"+
+						" onclick=\"modalInjection(markersSearchResult["+0+"])\"> " +
+						
 						//"<td><a onclick=\"alert('test')\"> " + 
-								markersSearchResult[0].title+ "<span>클릭하시면 상세정보를 볼수 있습니다.</span></a></td>" +
+								markersSearchResult[0].itemName+ "<span>클릭하시면 상세정보를 볼수 있습니다.</span></a></td>" +
 					"</tr>";
 			}
 			//searchResultInjectionHtml="<tbody>";
@@ -1457,9 +1862,14 @@ div.mousescroll:hover {
 						"<tr>"+
 							"<td id=\"t1\" >" + markersSearchResult[i].distance_m + "</td>" +
 							"<td id=\"t2\" >" + markersSearchResult[i].price/10000.0 + "</td>" +
-							"<td id=\"t3\" ><a onclick=\"modalInjection(markersSearchResult["+i+"])\"> " +
+							"<td id=\"t3\" ><a"+
+							" onmouseover=searchListMarkerFocusIn(markersSearchResult["+i+"])"+
+							" onmouseout=searchListMarkerFocusOut(markersSearchResult["+i+"])"+
+							//" onmouseover=searchListMarkerFocusIn(markerclusterer["+i+"])"+
+							//" onmouseout=searchListMarkerFocusOut(markerclusterer["+i+"])"+
+							" onclick=\"modalInjection(markersSearchResult["+i+"])\"> " +
 							//"<td><a onclick=\"alert('test')\"> " + 
-									markersSearchResult[i].title+ "<span>클릭하시면 상세정보를 볼수 있습니다.</span></a></td>" +
+									markersSearchResult[i].itemName+ "<span>클릭하시면 상세정보를 볼수 있습니다.</span></a></td>" +
 						"</tr>";
 				}
 			}
@@ -1740,6 +2150,7 @@ div.mousescroll:hover {
 		
 		
 		
+		google.maps.event.addDomListener(window, 'load', initialize);
 		google.maps.event.addDomListener(window, 'load', initData);
 	</script>
 <!--
@@ -2140,11 +2551,32 @@ div.mousescroll:hover {
 	<!----------------------------------------------------------- -->
 
 	<header>
-	<%@include file="header.jsp"%>
+		<%@include file="header.jsp"%>
 	</header>
 	
+	<div id="menu-toggle2-injection">
+		<c:if test="${user==null}">
+		<div id="menu-toggle2-mirror">
+			<a> <img src="resources/imgs/slider/Cloud_Add.png" width=70
+				height=70 ></img> 
+				<span>물건 팔기/사기<br>로그인이 필요합니다.</span>
+			</a>
+		</div>
+		</c:if>	
+	</div>
 	
-
+	<div id="menu-toggle3-injection">
+		<c:if test="${user==null}">
+		<div id="menu-toggle3-mirror">
+			<a> <img src="resources/imgs/slider/Handshake-icon.png" width=70
+				height=70></img> 
+				<span>거래현황<br>로그인이 필요합니다.</span>
+			</a>
+		</div>
+		</c:if>
+	</div>
+	
+	
 	<div id="menu-toggle1">
 		<a> <img src="resources/imgs/slider/search.png" width=70 height=70
 			alt="Menu1"></img> <span>상품검색</span>
@@ -2201,16 +2633,32 @@ div.mousescroll:hover {
 			</table>
 		</div>
 	</nav>
-
+	
+	<script>
+	/*
+		if(user!=null){
+			document.write(
+				"<div id=\"menu-toggle2\">"+
+					"<a> <img src=\"resources/imgs/slider/Cloud_Add.png\" width=70\"+
+						"height=70 alt=\"Menu2\"></img> <span>물건 팔기/사기</span>"+
+					"</a>"+
+				"</div>";		
+			);
+		}
+	*/
+	</script>
+	 
+	
+	
 	<div id="menu-toggle2">
 		<a> <img src="resources/imgs/slider/Cloud_Add.png" width=70
 			height=70 alt="Menu2"></img> <span>물건 팔기/사기</span>
 		</a>
-		<!-- 
-		<img src="resources/imgs/slider/menu.png" width=50 height=50 alt="Menu"></img>
-		-->
 	</div>
-	<!-- 텔 -->
+	
+	<!-- -->
+	
+	<!-- 텔 -->	
 	<nav id="menu2">
 		<div class="tab-pane" id="tab2">
 
@@ -2232,7 +2680,7 @@ div.mousescroll:hover {
 					<div class="progress-bar"></div>
 				</div>
 
-				<form action="/itemregister" name="registerform" id="register_form"
+				<form action="/addItem" name="registerform" id="register_form"
 					method="post" enctype="multipart/form-data">
 					<div class="tab-content">
 
@@ -2272,13 +2720,12 @@ div.mousescroll:hover {
 							<div class="form-group">
 								<h4>사진 등록하기</h4>
 								<br>
-								<!-- 다등록가능 한데 주소가 어떻게 들어올지 모르겠네 -->
 								<input class="form-control" name="itemPicturePath1" type="file"
-									id="exampleInputFile"> <br> <input
+									id="itemPicturePath1"> <br> <input
 									class="form-control" name="itemPicturePath2" type="file"
-									id="exampleInputFile"> <br> <input
+									id="itemPicturePath2"> <br> <input
 									class="form-control" name="itemPicturePath3" type="file"
-									id="exampleInputFile">
+									id="itemPicturePath3">
 
 
 							</div>
@@ -2298,10 +2745,10 @@ div.mousescroll:hover {
 									class="form-control input-normal" placeholder="물품명을 입력하세요">
 								<div class="input-group">
 									<span class="input-group-addon">￦</span><input type="text"
-										name="price" class="form-control" placeholder="희망가격 입력">
+										name="price" id="price" class="form-control" placeholder="희망가격 입력">
 								</div>
 								<br>
-								<textarea name="itemInfo" class="form-control" rows="10"
+								<textarea name="itemInfo" id="itemInfo" class="form-control" rows="10"
 									cols="80" placeholder="상세내용을 입력하세요"></textarea>
 								<br>
 								<button class="btn btn-default" data-toggle="modal"
@@ -2325,17 +2772,19 @@ div.mousescroll:hover {
 					</div>
 				</form>
 			</div>
+			
 		</div>
 		<!-- end of tap2   -->
 	</nav>
+	
+	
 	<div id="menu-toggle3">
 		<a> <img src="resources/imgs/slider/Handshake-icon.png" width=70
 			height=70 alt="Menu3"></img> <span>거래현황</span>
 		</a>
-		<!-- 
-		<img src="resources/imgs/slider/menu.png" width=50 height=50 alt="Menu"></img>
-		-->
 	</div>
+	
+	
 	<nav id="menu3">
 		<div class="tab-pane" id="tab3">
 			<!-- start of tap3   -->
@@ -2433,7 +2882,7 @@ div.mousescroll:hover {
 						<button type="button" class="close" data-dismiss="modal"
 							aria-hidden="true">×</button>
 						<h4 class="modal-title">
-							제품명<font color="red"> [가격]</font>
+							제품명<font color="crimson"> [가격]</font>
 						</h4>
 
 					</div>
@@ -2504,13 +2953,13 @@ div.mousescroll:hover {
 				<div class="modal-content">
 
 					<div class="modal-body">
-						<form action="/itemRemove">
+						<!-- <form action="#" >  -->
 							<p>삭제 하시겠습니까?</p>
 							<button type="button" class="btn btn-default"
 								data-dismiss="modal">취소</button>
 							<input type="hidden" name="ItemNo" id="deleteItemNo" value="">
-							<input type="submit" class="btn btn-danger" value="삭제">
-						</form>
+							<input type="button" class="btn btn-danger" data-dismiss="modal" value="삭제" onclick="return removeItem()">
+						<!-- </form>  -->
 					</div>
 				</div>
 				<!-- /.modal-content -->
@@ -2531,15 +2980,19 @@ div.mousescroll:hover {
 </body>
 </html>
 
+
 <%-- 속도향상을 위해 맨 아래로 내림. --%>
 <script>
  var replyDiv;
  var returnDiv;
+ var flag;
+
  function modalInjection(marker){
-	  
+	 flag="1"; 
 	  markerNo=marker.itemNo;
+	  itemNo=marker.itemNo;
 	  console.log(marker.itemNo);
-	  document.getElementById("deleteItemNo").value=markerNo
+	  document.getElementById("deleteItemNo").value=markerNo;
 	  /*
 	  console.log("Path2__"+marker.itemPicturePath2);
 	  console.log("Path2__length__"+marker.itemPicturePath2.length);
@@ -2550,12 +3003,12 @@ div.mousescroll:hover {
   	  var htmlinjec;
 	  new function makeHtml(){
 			htmlinjec=
-			"<div id=\"item"+marker.itemNo+"\" class=\"item"+marker.itemNo+" modal fade\" title=\""+marker.title+"\"  tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">"+
+			"<div id=\"item"+marker.itemNo+"\" class=\"item"+marker.itemNo+" modal fade\" title=\""+marker.itemName+"\"  tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">"+
 				"<div id=\"injection-modal\"class=\"modal-dialog\">"+
 					"<div class=\"modal-Content\">"+
 						"<div class=\"modal-header\">"+
-						"<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">×</button>"+
-				        "<h4 class=\"modal-title\">"+marker.title+"<font color=\"red\"> [ "+marker.price+" 원 ]</font></h4>"+
+						"<button id=\"closemodal\" type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">×</button>"+
+				        "<h4 class=\"modal-title\">"+marker.itemName+"<font color=\"red\"> [ "+marker.price+" 원 ]</font></h4>"+
 				       
 						"</div>"+
 						"<div class=\"modal-body\" id=\"mmodal\">"+
@@ -2608,7 +3061,7 @@ div.mousescroll:hover {
 					if(user!=null){
 						if(user.userNo==marker.userNo){
 							htmlinjec+=
-							"<button type=\"button\" class=\"btn btn-primary\" >수정</button>"+
+							"<button class=\"btn btn-primary\" href=\"#\" onclick=\"modify()\">수정</button>"+
 							"<button class=\"btn btn-primary\" data-toggle=\"modal\" href=\"#deletepopup\" onclick=\"return false\">삭제</button>";					
 						}else{
 							//htmlinjec+="<a href=\"#\" type=\"button\" id=\"addWish_disable\" class=\"btn btn-danger\" >찜</a>";
@@ -2627,7 +3080,9 @@ div.mousescroll:hover {
 			"</div>"+
 			"<a data-toggle=\"modal\" href=\"#item"+marker.itemNo+"\" id=\"modallink\"></a>";
 		};
-	
+		
+		
+		//덧글보러 갔다가 다시 내용으로 돌아올 때 innerHTML
 		returnDiv="<div id=\"imgslider_container_view\">"+
 				  "<div class=\"row-fluid\">"+
 				    "<div class=\"span12\" id=\"slider\">"+
@@ -2671,34 +3126,64 @@ div.mousescroll:hover {
 				marker.itemInfo+
 			"</div>";
 			
-		
-		replyDiv="<div  class=\"mousescroll\" style=\"height:500px; text-align:left; font-size:13px;\">"+
+		//덧글 innerHTML
+		replyDiv="<div  class=\"mousescroll\" style=\"height:500px; text-align:left; font-size:13px;\" id=\"accordion\">"+
 					"<table class=\"table\">"+
 						"<tr><td><div>"+
-							"<b>양키</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
-							"<p style=\"margin-left:10px\"><span>가나다라마바사아자차카타파하 개노무 개노무 개노무</span></p>"+
+							"<b>양키</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a class=\"accordion-toggle\" data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#replyacco\">답글</a>"+
+							"<p><span>가나다라마바사아자차카타파하</span></p>"+
+							"<div id=\"replyacco\"  class=\"panel-collapse collapse\">"+
+						      "<div class=\"panel-body\" style=\"padding-top:0px; padding-bottom:5px; padding-left:0px; padding-right:0px\">"+
+							      "<hr>"+
+							      "<span style=\"float:left;color: orangered;\">┗</span>"+
+						    	  "<div style=\"width:380px; float:left; margin-right:10px; margin-left:5px;\">"+
+							  	  	"<textarea name=\"replyTextarea\" class=\"form-control\" rows=\"3\" placeholder=\"덧글 내용을 입력하세요\"></textarea>"+
+							      "</div>"+
+							  	  "<div>"+	
+								  	"<button type=\"button\" id=\"replyregi\" class=\"btn btn-default\" onclick=\"\" style=\"margin-top: 40px;\">덧글입력</button>"+
+							      "</div>"+
+						 	  "</div>"+
+						    "</div>"+
 						"</div></td></tr>"+
+						
 						"<tr><td><div>"+
 							"<b>박준일</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
-							"<p style=\"margin-left:10px\"><span>가나다라마바사아자차카타파하 개노무 개노무 개노무</span></p>"+
+							"<p><span>가나다라마바사아자차카타파하 </span></p>"+
 						"</div></td></tr>"+
+						
 						"<tr class=\"success\"><td><div class=\"reReply\">"+
-							"┗<b>이민석</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
-							"<p style=\"margin-left:10px\"><span>가나다라마바사아자차카타파하 개노무 개노무 개노무</span></p>"+
+							"<span style=\"float:left;color: orangered;margin-right:3.3px;\">┗</span><b>이민석</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a class=\"accordion-toggle\" data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#replyacco2\">답글</a>"+							
+							"<p style=\"margin-left:16.5px;\"><span>가나다라마바사아자차카타파하</span></p>"+
+							"<div id=\"replyacco2\"  class=\"panel-collapse collapse\">"+
+						      "<div class=\"panel-body\" style=\"padding-top:0px; padding-bottom:5px; padding-left:0px; padding-right:0px\">"+
+							      "<hr>"+
+							      "<span style=\"float:left;color: orangered;\">┗</span>"+
+						    	  "<div style=\"width:380px; float:left; margin-right:10px; margin-left:5px;\">"+
+							  	  	"<textarea name=\"replyTextarea\" class=\"form-control\" rows=\"3\" placeholder=\"덧글 내용을 입력하세요\"></textarea>"+
+							      "</div>"+
+							  	  "<div>"+	
+								  	"<button type=\"button\" id=\"replyregi\" class=\"btn btn-default\" onclick=\"\" style=\"margin-top: 40px;\">덧글입력</button>"+
+							      "</div>"+
+						 	  "</div>"+
+						    "</div>"+
 						"</div></td></tr>"+
+						
 						"<tr><td><div>"+
 							"<b>섭섭맨</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
-							"<p style=\"margin-left:10px\"><span>가나다라마바사아자차카타파하 개노무 개노무 개노무</span></p>"+
+							"<p><span>가나다라마바사아자차카타파하 </span></p>"+
 						"</div></td></tr>"+
+						
 						"<tr><td><div>"+
-							"<b>이재영</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
-							"<p style=\"margin-left:10px\"><span>가나다라마바사아자차카타파하 개노무 개노무 개노무</span></p>"+
+							"<b> 이재영</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
+							"<p><span>가나다라마바사아자차카타파하 </span></p>"+
 						"</div></td></tr>"+
+						
 						/* div class에 reReply 추가하면 덧글답장  */
 						"<tr class=\"success\"><td><div class=\"reReply\">"+
-							"┗ <b>이민석</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
-							"<p style=\"margin-left:10px\"><span>이민석 짱짱장짱</span></p>"+
+						 	"<span style=\"float:left;color: orangered;margin-right:3.3px;\">┗</span><b>이민석</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
+							"<p style=\"margin-left:16.5px\"><span>이민석 짱짱장짱</span></p>"+
 						"</div></td></tr>"+
+					
 					"</table>"+
 				"</div>"+
 				"<hr>"+
@@ -2715,21 +3200,125 @@ div.mousescroll:hover {
 		
  };
 
- var flag="1";
+ 
  function change(){
 	 
-	 console.log(flag);
+	 console.log("누르기 전 "+flag);
 	 if(flag=="1"){
 	 	document.getElementById("mmodal").innerHTML=replyDiv;
 	 	document.getElementById("replyButton").innerHTML="내용보기";
 	 	flag="2";
+	 	console.log("누른후 "+flag);
 	 }else{
 		document.getElementById("mmodal").innerHTML=returnDiv;
 		document.getElementById("replyButton").innerHTML="댓글 <span class=\"badge\">42</span>";
 		flag="1";
+		console.log("누른후 "+flag);
 	 }
-}
+};
+
+ var modifyHtml="<div id=\"rootwizard\">"+
+	"<div class=\"navbar2\">"+
+	"<div class=\"navbar-inner2\">"+
+		"<div class=\"container2\" style=\"display: none;\">"+
+			"<ul id=\"register_tap\">"+
+				"<li><a href=\"#tab11\" data-toggle=\"tab\">1단계</a></li>"+
+				"<li><a href=\"#tab12\" data-toggle=\"tab\">2단계</a></li>"+
+				"<li><a href=\"#tab13\" data-toggle=\"tab\">3단계</a></li>"+
+				"<li><a href=\"#tab14\" data-toggle=\"tab\">4단계</a></li>"+
+				"<li><a href=\"#tab15\" data-toggle=\"tab\">5단계</a></li>"+
+			"</ul>"+
+		"</div>"+
+	"</div>"+
+"</div>"+
+"<div id=\"bar\" class=\"progress progress-striped active\">"+
+	"<div class=\"progress-bar\"></div>"+
+"</div>"+
+
+"<form action=\"/itemregister\" name=\"registerform\" id=\"register_form\" method=\"post\" enctype=\"multipart/form-data\">"+
+	"<div class=\"tab-content\">"+
+
+		"<div class=\"tab-pane\" id=\"tab11\">"+
+			"<div class=\"form-group\">"+
+				"<h4>거래 선택하기 수정 수정</h4>"+
+				"<br>"+
+				"<div class=\"btn-group\" data-toggle=\"buttons\">"+
+					"<label class=\"btn btn-default\">"+ 
+					 	"<input type=\"radio\"name=\"stateCode\" id=\"buybtn\" value=\"1\"> 삽니다</label>"+ 
+					 "<label class=\"btn btn-default\">"+ 
+					 	"<input type=\"radio\"name=\"stateCode\" id=\"sellbtn\" value=\"2\"> 팝니다</label>"+
+				"</div>"+
+			"</div>"+
+		"</div>"+
+		"<div class=\"tab-pane\" id=\"tab12\">"+
+			"<div class=\"form-group\">"+
+				"<h4>거래할 위치 등록하기</h4>"+
+				"<br><input type=\"hidden\" name=\"gridX1\" id=\"reg_lat\" value=\"\" style=\"border: none;\">"+ 
+			     "<input type=\"hidden\"name=\"gridY1\" id=\"reg_lng\" value=\"\" style=\"border: none;\">"+
+				 "<input id=\"latlng\" type=\"text\" value=\"\" style=\"display: none;\">"+
+				 "<button id=\"loca_btn\" class=\"btn btn-default\" onclick=\"markerDrop(); return false;\">"+
+				"<span>위치 정하기</span>"+
+				"</button>"+
+				"<button class=\"btn btn-default\" onclick=\"clearMarkers(); return false;\">다시 정하기</button>"+
+				"<br><br>"+
+				"<textarea readonly=\"readonly\" id=\"reg_add\" rows=\"4\" cols=\"34\" value=\"\" style=\"border: none; resize: none;\"></textarea>"+
+			"</div>"+
+		"</div>"+
+		"<div class=\"tab-pane\" id=\"tab13\">"+
+			"<div class=\"form-group\">"+
+				"<h4>사진 등록하기</h4>"+
+				"<br>"+
+				"<input class=\"form-control\" name=\"itemPicturePath1\" type=\"file\" id=\"exampleInputFile\">"+ 
+				 "<br><input class=\"form-control\" name=\"itemPicturePath2\" type=\"file\" id=\"exampleInputFile\">"+
+				 "<br><input class=\"form-control\" name=\"itemPicturePath3\" type=\"file\"id=\"exampleInputFile\">"+
+			"</div>"+
+		"</div>"+
+		"<div class=\"tab-pane\" id=\"tab14\">"+
+			"<div class=\"form-group\">"+
+				"<h4>카테고리 등록하기</h4>"+
+				"<br><select name=\"category1\" id=\"category1\" class=\"form-control\" onchange=\"itemChange(this.form);\"></select>"+
+				"<select name=\"category2\" id=\"category2\" class=\"form-control\"></select>"+
+			"</div>"+
+		"</div>"+
+		"<div class=\"tab-pane\" id=\"tab15\">"+
+			"<div class=\"form-group\">"+
+				"<h4>상세내용 입력하기</h4>"+
+				"<br><input id=\"item_name\" name=\"itemName\" type=\"text\" class=\"form-control input-normal\" placeholder=\"물품명을 입력하세요\">"+
+				"<div class=\"input-group\">"+
+					"<span class=\"input-group-addon\">￦</span><input type=\"text\" name=\"price\" class=\"form-control\" placeholder=\"희망가격 입력\">"+
+				"</div>"+
+				"<br>"+
+				"<textarea name=\"itemInfo\" class=\"form-control\" rows=\"10\" cols=\"80\" placeholder=\"상세내용을 입력하세요\"></textarea>"+
+				"<br>"+
+				"<button class=\"btn btn-default\" data-toggle=\"modal\" href=\"#preview_modal\" onclick=\"return false\">미리보기</button>"+
+				"<input type=\"submit\" class=\"btn btn-primary\" value=\"등록하기\">"+
+
+
+
+			"</div>"+
+		"</div>"+
+		"<div id=\"pager_wizard\">"+
+			"<ul class=\"pager wizard\">"+
+				"<li class=\"previous first\" style=\"display: none;\"><a href=\"#\" onclick=\"return false\">First</a></li>"+
+				"<li class=\"previous\"><a href=\"#\" onclick=\"return false\">Previous</a></li>"+
+				"<li class=\"next last\" style=\"display: none;\"><a href=\"#\" onclick=\"return false\">Last</a></li>"+
+				"<li class=\"next\"><a href=\"#\" onclick=\"return false\">Next</a></li>"+
+			"</ul>"+
+		"</div>"+
+	"</div>"+
+"</form>"+
+"</div>";
  
+ function modify(){
+	console.log("수정모드");	
+	console.log(markerNo);
+	$('#menu2').addClass('open');
+	$('#menu-toggle2').addClass('open');
+	$('#item'+markerNo).removeClass('in');
+	document.getElementById("closemodal").click();
+	document.getElementById("tab2").innerHTML=modifyHtml;
+
+};
  
 		
 

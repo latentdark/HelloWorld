@@ -243,6 +243,15 @@ position: fixed;
 			          			"</ul>"+    
 	   				"</ul>";
 				$('#loginInjection').html(content);
+				
+				
+				//var menu_toggle2_injection;
+				$('#menu-toggle2-injection').html("");
+					
+				
+				//var menu_toggle3_injection;
+				$('#menu-toggle3-injection').html("");
+				
 			}else{
 				alert("아이디 또는 비밀번호가 일치하지 않습니다.");
 			}
@@ -283,6 +292,26 @@ position: fixed;
 		            "</li>"+
 		        "</ul>";
 			$('#loginInjection').html(content);
+			
+			
+			var menu_toggle2_injection=
+				"<div id=\"menu-toggle2-mirror\">"+
+					"<a> <img src=\"resources/imgs/slider/Cloud_Add.png\" width=70"+
+						"height=70 ></img>"+ 
+						"<span>물건 팔기/사기<br>로그인이 필요합니다.</span>"+
+					"</a>"+
+				"</div>";	
+			$('#menu-toggle2-injection').html(menu_toggle2_injection);
+				
+			
+			var menu_toggle3_injection=
+				"<div id=\"menu-toggle3-mirror\">"+
+					"<a> <img src=\"resources/imgs/slider/Handshake-icon.png\" width=70"+
+						"height=70></img>"+ 
+						"<span>거래현황<br>로그인이 필요합니다.</span>"+
+					"</a>"+
+				"</div>";
+			$('#menu-toggle3-injection').html(menu_toggle3_injection);
 		}).fail(function(res){
 			console.log(res);
 			console.log("실패");
@@ -301,6 +330,7 @@ position: fixed;
 	console.log("user.phoneNumber __"+user.phoneNumber);
 	console.log("user.nickname __"+user.nickname);
 	console.log("user.active __"+user.active);
+	
 </script>
 <div id="searchBar">
 	<form class="form-wrapper cf" action="#" onsubmit="return itemSearch('Quick')">
