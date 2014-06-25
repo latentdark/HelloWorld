@@ -516,44 +516,46 @@ div.mousescroll:hover {
 }
 
 /* 새로운 시도 시작 */
-/**/
 #t3 span {
-	
+	/* Container properties */
 	width: 0;
 	left: absolute;
 	top: absolute;
-
+	/*
+	옆에서 얼마나 떨어졌나 지정
+	left:70px;
+	*/
 	padding: 0;
 	position: absolute;
 	overflow: hidden;
-
+	/* Text properties */
 	font-familiy: 'Nanum Gothic';
 	font-size: 12px;
 	font-weight: bold;
 	letter-spacing: 0.6px;
 	white-space: nowrap;
 	line-height: 20px;
-
+	/* 하이라이터 높이 지정 line-height:39px;*/
+	/* CSS3 Transition: */
 	-webkit-transition: 0.25s;
-	
+	/* Future proofing (these do not work yet): */
 	-moz-transition: 0.25s;
 	transition: 0.25s;
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
 }
-
 /* span 보여주게 하는 코드 */
-/*
 #t3 a:hover span {
 	background-color: rgb(255, 228, 0);
 	color: rgb(3, 0, 102);
-
+	/* text-shadow:1px 1px 0 #99bf31;
+	 */
 	width: auto;
 	padding: 0 20px;
-	
+	/*padding:0 20px;*/
 	overflow: visible;
 }
-*/
+
 #t3 a:hover {
 	background: rgb(255, 228, 0);
 	cursor: pointer;
@@ -921,19 +923,14 @@ div.mousescroll:hover {
 		 
 	
 	//---------------------------------------
-/* 	var test="${test}";
-	console.log(test); */
-	//HTML5 Geolocation을 이용한 ip trace
-	/**/
-	var sellImage = 'resources/imgs/icons/sell.png';
-	var buyImage = 'resources/imgs/icons/buy.png';
+
+	var sellImage = 'resources/imgs/icons/s3.png';
+	var buyImage = 'resources/imgs/icons/b3.png';
 	var dealImage = 'resources/imgs/icons/deal2.png';
 	var geoImage = 'resources/imgs/icons/people.png';
 	
 	var map;
 	var markers = [];
-//	var modalInjectionImageArray1=[];
-//	var modalInjectionInfoArray=[];
 	var firstMapLoad="true";
     var markerClusterer;
 	var cluster;
@@ -1009,7 +1006,7 @@ div.mousescroll:hover {
 		
 
 	}<%-- initData() refreshData() End--%>
-	
+
 	var itemNo;
 	function removeItem(){
 		$.ajax({
@@ -1069,6 +1066,7 @@ div.mousescroll:hover {
 		});
 		
 	}
+	
 	
 		<%-- initialize Start --%>
 		function initialize() {
@@ -1143,13 +1141,11 @@ div.mousescroll:hover {
 			//cluster=new Cluster(MarkerClusterer);
 			//cluster.setIgnoreHidden(true);
 			*/
-			  //물품등록시 사용할 이벤트, 위치정하기 버튼 누르기 전에 비활성화.
-			  google.maps.event.addListener(map, 'click', function(e) {
-		            placeMarker(e.latLng, map);
-		      });
-			//refreshData();
 			
-			
+			//물품등록시 사용할 이벤트, 위치정하기 버튼 누르기 전에 비활성화.
+		   google.maps.event.addListener(map, 'click', function(e) {
+	            placeMarker(e.latLng, map);
+	       });			
 		}<%-- initialize End --%>
 	
 		<%-- placeMarker Start --%>
@@ -1174,6 +1170,7 @@ div.mousescroll:hover {
 			markerDropEffect="false";
 			markerDropCheck=1;
             codeLatLng();
+            map.panTo(gridXY);
 		  }
 		}<%-- placeMarker End --%>
 		
@@ -1325,7 +1322,6 @@ div.mousescroll:hover {
 					}
 				}
 				
-				//순순
 				if(document.getElementById('optionsRadios1').checked){
 					console.log("markersSortingDistance run");
 					markersSortingDistance();
@@ -1478,8 +1474,7 @@ div.mousescroll:hover {
 			console.log("markers[0].position__"+markers[0].position.A);
 			console.log("markers[0].position__"+markers[0].position.k); */
 		}
-		--%>
-								
+		--%>						
 		
 		<%-- markerInitialize Start --%>
 		function markerInitialize(map) {
@@ -1491,6 +1486,47 @@ div.mousescroll:hover {
 			markerAddListener(markers[i], i);
 		  }
 		}<%-- markerInitialize end --%>
+	
+		<%-- markerAddListener Start--%>
+		var bounds = new google.maps.LatLngBounds();
+		
+		
+		function markerAddListener(marker, i) {
+		 console.log("markerAddListener() Inn");
+			
+		 var content=
+			 "<div id=\"infowindow\">"+
+			 	"<h1>"+
+			 		"<font color=\"red\">"+"[ "+marker.price+" ]</font> "+
+			 		marker.itemName+
+			 	"</h1>"+
+			 "</div>";
+		 var infowindow = new google.maps.InfoWindow({
+				content: content	
+		 });
+		  
+		  /*  */
+		  //console.log("marker.content_"+marker.content);
+		 //var dialogName="#item"+marker.content;
+		 google.maps.event.addListener(marker, 'mouseover', function() {
+			 //alert("mouseover");
+			
+			  //infowindow.open(marker.get('map'), marker);	
+			 infowindow.open(marker.get('map'), marker);
+			 
+		  });
+		 
+		 google.maps.event.addListener(marker, 'mouseout', function() {	
+			 // infowindow.open(marker.get('map'), marker);
+			  infowindow.close();
+		  });
+		 
+		  google.maps.event.addListener(marker, 'click', function() {
+			  	  
+			  modalInjection(marker);
+		  });
+		  
+		}
 	
 		<%-- markerAddListener Start--%>
 		var bounds = new google.maps.LatLngBounds();
@@ -1879,6 +1915,7 @@ div.mousescroll:hover {
 		
 		}<%-- searchResultInjection End --%>
 		
+		
 		//ajax를 이용해서 injection방식으로 inner html로 쏴 줘야한다.
 		//내가 등록한 물품
 		//findMyItemList(Integer userNo)
@@ -2246,19 +2283,24 @@ div.mousescroll:hover {
 	s_selbox[16] = new Array('학습/사전/참고서', '문학/과학/경영', '월간/계간/잡지', '여행/취미/레저', '예술/디자인도서','컴퓨터/인터넷도서','아동/어린이도서','소설/만화책','전집');
 
 
-	function init(f){
+	function init(f,c1){
 		var f_sel = f.category1;
 		var s_sel = f.category2;
-
+	
+		console.log(c1+"대분류 번호 들어옴?");
 		f_sel.options[0] = new Option("대분류 선택", "");
 		s_sel.options[0] = new Option("소분류 선택", "");
 
-		for(var i =0; i<f_selbox.length; i++){
-			f_sel.options[i+1] = new Option(f_selbox[i], i);
+		for(var i =0; i<f_selbox.length; i++){		
+			if(i==c1){
+				f_sel.options[i+1] = new Option(f_selbox[i], i,true,true);
+			}else{
+				f_sel.options[i+1] = new Option(f_selbox[i], i);
+			}
 		}
 	}
 
-	function itemChange(f){
+	function itemChange(f,c2){
 		var f_sel = f.category1;
 		var s_sel = f.category2;
 
@@ -2266,12 +2308,17 @@ div.mousescroll:hover {
 		for(var i=s_sel.length; i>=0; i--){
 			s_sel.options[i] = null;
 		}
-
+		console.log(c2+"소분류 번호 들어옴?");
 		s_sel.options[0] = new Option("소분류 선택", "");
 
 		if(sel != 0){
 			for(var i=0; i<s_selbox[sel-1].length; i++){
-				s_sel.options[i+1] = new Option(s_selbox[sel-1][i],i);
+				if(c2==i){
+					s_sel.options[i+1] = new Option(s_selbox[sel-1][i],i,true,true);				
+				}
+				else{
+					s_sel.options[i+1] = new Option(s_selbox[sel-1][i],i);				
+				}
 			}
 		}
 	}
@@ -2553,7 +2600,6 @@ div.mousescroll:hover {
 	<header>
 		<%@include file="header.jsp"%>
 	</header>
-	
 	<div id="menu-toggle2-injection">
 		<c:if test="${user==null}">
 		<div id="menu-toggle2-mirror">
@@ -2582,6 +2628,7 @@ div.mousescroll:hover {
 			alt="Menu1"></img> <span>상품검색</span>
 		</a>
 	</div>
+	
 	<nav id="menu1">
 		<div id="search_condition">
 			<form action="#" name="searchform" id="search_form" method="post"
@@ -2633,32 +2680,16 @@ div.mousescroll:hover {
 			</table>
 		</div>
 	</nav>
-	
-	<script>
-	/*
-		if(user!=null){
-			document.write(
-				"<div id=\"menu-toggle2\">"+
-					"<a> <img src=\"resources/imgs/slider/Cloud_Add.png\" width=70\"+
-						"height=70 alt=\"Menu2\"></img> <span>물건 팔기/사기</span>"+
-					"</a>"+
-				"</div>";		
-			);
-		}
-	*/
-	</script>
-	 
-	
-	
+
 	<div id="menu-toggle2">
 		<a> <img src="resources/imgs/slider/Cloud_Add.png" width=70
 			height=70 alt="Menu2"></img> <span>물건 팔기/사기</span>
 		</a>
+		<!-- 
+		<img src="resources/imgs/slider/menu.png" width=50 height=50 alt="Menu"></img>
+		-->
 	</div>
-	
-	<!-- -->
-	
-	<!-- 텔 -->	
+	<!-- 텔 -->
 	<nav id="menu2">
 		<div class="tab-pane" id="tab2">
 
@@ -2721,11 +2752,11 @@ div.mousescroll:hover {
 								<h4>사진 등록하기</h4>
 								<br>
 								<input class="form-control" name="itemPicturePath1" type="file"
-									id="itemPicturePath1"> <br> <input
+									id="exampleInputFile"> <br> <input
 									class="form-control" name="itemPicturePath2" type="file"
-									id="itemPicturePath2"> <br> <input
+									id="exampleInputFile"> <br> <input
 									class="form-control" name="itemPicturePath3" type="file"
-									id="itemPicturePath3">
+									id="exampleInputFile">
 
 
 							</div>
@@ -2745,10 +2776,10 @@ div.mousescroll:hover {
 									class="form-control input-normal" placeholder="물품명을 입력하세요">
 								<div class="input-group">
 									<span class="input-group-addon">￦</span><input type="text"
-										name="price" id="price" class="form-control" placeholder="희망가격 입력">
+										name="price" class="form-control" placeholder="희망가격 입력">
 								</div>
 								<br>
-								<textarea name="itemInfo" id="itemInfo" class="form-control" rows="10"
+								<textarea name="itemInfo" class="form-control" rows="10"
 									cols="80" placeholder="상세내용을 입력하세요"></textarea>
 								<br>
 								<button class="btn btn-default" data-toggle="modal"
@@ -2776,15 +2807,14 @@ div.mousescroll:hover {
 		</div>
 		<!-- end of tap2   -->
 	</nav>
-	
-	
 	<div id="menu-toggle3">
 		<a> <img src="resources/imgs/slider/Handshake-icon.png" width=70
 			height=70 alt="Menu3"></img> <span>거래현황</span>
 		</a>
+		<!-- 
+		<img src="resources/imgs/slider/menu.png" width=50 height=50 alt="Menu"></img>
+		-->
 	</div>
-	
-	
 	<nav id="menu3">
 		<div class="tab-pane" id="tab3">
 			<!-- start of tap3   -->
@@ -2869,9 +2899,11 @@ div.mousescroll:hover {
 		</div>
 		<!-- end of tap3   -->
 	</nav>
-
+   <!--  <div id="main_logo">
+		<img src="resources/imgs/logo5re.png">
+	</div> -->
 	<div id="map_canvas" style="width: 100%; height: 100%;"></div>
-
+	
 	<footer>
 		<!-- preview modal -->
 		<div class="modal fade" id="preview_modal" tabindex="-1" role="dialog"
@@ -2953,13 +2985,13 @@ div.mousescroll:hover {
 				<div class="modal-content">
 
 					<div class="modal-body">
-						<!-- <form action="#" >  -->
+						<form action="#" onsubmit="return removeItem()">
 							<p>삭제 하시겠습니까?</p>
 							<button type="button" class="btn btn-default"
 								data-dismiss="modal">취소</button>
 							<input type="hidden" name="ItemNo" id="deleteItemNo" value="">
-							<input type="button" class="btn btn-danger" data-dismiss="modal" value="삭제" onclick="return removeItem()">
-						<!-- </form>  -->
+							<input type="submit" class="btn btn-danger" value="삭제">
+						</form>
 					</div>
 				</div>
 				<!-- /.modal-content -->
@@ -2986,21 +3018,27 @@ div.mousescroll:hover {
  var replyDiv;
  var returnDiv;
  var flag;
-
+ var itemNo;
+ var modifyHtml;
+ var gridXY;
+ var cate1;
+ var cate2;
  function modalInjection(marker){
 	 flag="1"; 
+	  console.log(marker.stateCode+"state");
 	  markerNo=marker.itemNo;
-	  itemNo=marker.itemNo;
 	  console.log(marker.itemNo);
-	  document.getElementById("deleteItemNo").value=markerNo;
-	  /*
-	  console.log("Path2__"+marker.itemPicturePath2);
-	  console.log("Path2__length__"+marker.itemPicturePath2.length);
-	  console.log("Path3__"+marker.itemPicturePath3);
-	  console.log("Path3__length__"+marker.itemPicturePath3.length);
-	  */
-  	 // var userNo='${user.userNo}';
-  	  var htmlinjec;
+	  console.log(marker.gridX1);
+	  console.log(marker.gridY1);
+	  gridXY=marker.gridX1+","+marker.gridY1;
+	  console.log(gridXY);
+	  cate1=marker.category1;
+	  cate2=marker.category2;
+	  console.log(cate1);
+	  console.log(cate2);
+	  
+	  itemNo=document.getElementById("deleteItemNo").value=markerNo;	  
+	  var htmlinjec;
 	  new function makeHtml(){
 			htmlinjec=
 			"<div id=\"item"+marker.itemNo+"\" class=\"item"+marker.itemNo+" modal fade\" title=\""+marker.itemName+"\"  tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">"+
@@ -3072,7 +3110,7 @@ div.mousescroll:hover {
 						}
 					}
 						htmlinjec+=
-						"<button id=\"replyButton\" class=\"btn btn-primary\" data-toggle=\"modal\" onclick=\"change()\">댓글 <span class=\"badge\">42</span></button>"+
+						"<button id=\"replyButton\" class=\"btn btn-primary\" data-toggle=\"modal\" onclick=\"change()\">댓글 <span class=\"badge\">32</span></button>"+
 						"<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>"+
 						"</div>"+
 					"</div>"+	
@@ -3152,7 +3190,7 @@ div.mousescroll:hover {
 						"</div></td></tr>"+
 						
 						"<tr class=\"success\"><td><div class=\"reReply\">"+
-							"<span style=\"float:left;color: orangered;margin-right:3.3px;\">┗</span><b>이민석</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a class=\"accordion-toggle\" data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#replyacco2\">답글</a>"+							
+							"<span style=\"float:left;color: orangered;margin-right:3.3px;\">┗</span><b>이민석</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a> 수정</a><a> 삭제</a><a class=\"accordion-toggle\" data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#replyacco2\"> 답글</a>"+							
 							"<p style=\"margin-left:16.5px;\"><span>가나다라마바사아자차카타파하</span></p>"+
 							"<div id=\"replyacco2\"  class=\"panel-collapse collapse\">"+
 						      "<div class=\"panel-body\" style=\"padding-top:0px; padding-bottom:5px; padding-left:0px; padding-right:0px\">"+
@@ -3180,7 +3218,7 @@ div.mousescroll:hover {
 						
 						/* div class에 reReply 추가하면 덧글답장  */
 						"<tr class=\"success\"><td><div class=\"reReply\">"+
-						 	"<span style=\"float:left;color: orangered;margin-right:3.3px;\">┗</span><b>이민석</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
+						 	"<span style=\"float:left;color: orangered;margin-right:3.3px;\">┗</span><b>이민석</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a> 수정</a><a> 삭제</a><a> 답글</a>"+
 							"<p style=\"margin-left:16.5px\"><span>이민석 짱짱장짱</span></p>"+
 						"</div></td></tr>"+
 					
@@ -3196,6 +3234,123 @@ div.mousescroll:hover {
 		
 		document.getElementById("htmlInjectionSector").innerHTML = htmlinjec;
 		document.getElementById("modallink").click();
+		
+		modifyHtml="<div id=\"rootwizard\">"+
+			"<div class=\"navbar2\">"+
+			"<div class=\"navbar-inner2\">"+
+				"<div class=\"container2\" style=\"display: none;\">"+
+					"<ul id=\"register_tap\">"+
+						"<li><a href=\"#tab11\" data-toggle=\"tab\">1단계</a></li>"+
+						"<li><a href=\"#tab12\" data-toggle=\"tab\">2단계</a></li>"+
+						"<li><a href=\"#tab13\" data-toggle=\"tab\">3단계</a></li>"+
+						"<li><a href=\"#tab14\" data-toggle=\"tab\">4단계</a></li>"+
+						"<li><a href=\"#tab15\" data-toggle=\"tab\">5단계</a></li>"+
+					"</ul>"+
+				"</div>"+
+			"</div>"+
+		"</div>"+
+		"<div id=\"bar\" class=\"progress progress-striped active\">"+
+			"<div class=\"progress-bar progress-bar-success\"></div>"+
+		"</div>"+
+
+		"<form action=\"/itemModify\" name=\"modifyform\" id=\"modify_form\" method=\"post\" enctype=\"multipart/form-data\">"+
+			"<div class=\"tab-content\">"+
+
+				"<div class=\"tab-pane\" id=\"tab11\">"+
+					"<div class=\"form-group\">"+
+						"<h4>거래 선택하기</h4>"+
+						"<br>"+
+						"<div class=\"btn-group\" data-toggle=\"buttons\">"+
+							"<label id=\"statebuy\" class=\"btn btn-default ";
+							if(marker.stateCode==1){
+								modifyHtml+="active";
+							}
+							modifyHtml+="\">"+ 
+							 	"<input type=\"radio\"name=\"stateCode\" id=\"buybtn\" value=\"1\"";
+							if(marker.stateCode==1){
+								modifyHtml+="checked=\"checked\"";
+							}							
+							modifyHtml+="> 삽니다</label>"+ 
+							 "<label id=\"stateSell\" class=\"btn btn-default ";
+							
+							if(marker.stateCode==2){
+								modifyHtml+="active";
+							}	
+							modifyHtml+="\">"+ 
+							 	"<input type=\"radio\"name=\"stateCode\" id=\"sellbtn\" value=\"2\"";
+							if(marker.stateCode==2){
+								modifyHtml+="checked=\"checked\"";
+							}								
+							modifyHtml+="> 팝니다</label>"+
+						"</div>"+
+					"</div>"+
+				"</div>"+
+				"<div class=\"tab-pane\" id=\"tab12\">"+
+					"<div class=\"form-group\">"+
+						"<h4>거래할 위치 등록하기</h4>"+
+						"<br><input type=\"hidden\" name=\"gridX1\" id=\"reg_lat\" value=\""+marker.gridX1+"\" style=\"border: none;\">"+ 
+					     "<input type=\"hidden\"name=\"gridY1\" id=\"reg_lng\" value=\""+marker.gridY1+"\" style=\"border: none;\">"+
+						 "<input id=\"latlng\" type=\"text\" value=\""+gridXY+"\" style=\"display: none;\">"+
+						 "<button id=\"loca_btn\" class=\"btn btn-default\" onclick=\"markerDrop(); return false;\">"+
+						"<span>위치 정하기</span>"+
+						"</button>"+
+						" <button class=\"btn btn-default\" onclick=\"clearMarkers(); return false;\">다시 정하기</button>"+
+						"<br><br>"+
+						"<textarea readonly=\"readonly\" id=\"reg_add\" rows=\"4\" cols=\"34\" value=\"\" style=\"border: none; resize: none;\"></textarea>"+
+					"</div>"+
+				"</div>"+
+				"<div class=\"tab-pane\" id=\"tab13\">"+
+					"<div class=\"form-group\">"+
+						"<h4>사진 등록하기</h4>"+
+						"<br>"+
+						"<input class=\"form-control\" name=\"itemPicturePath1\" type=\"file\" id=\"exampleInputFile\">"+ 
+						 "<br><input class=\"form-control\" name=\"itemPicturePath2\" type=\"file\" id=\"exampleInputFile\">"+
+						 "<br><input class=\"form-control\" name=\"itemPicturePath3\" type=\"file\"id=\"exampleInputFile\">"+
+						
+						 "<input type=\"hidden\"name=\"xItemPicture1\" value=\""+marker.itemPicturePath1+"\">"+
+						 "<input type=\"hidden\"name=\"xItemPicture2\" value=\""+marker.itemPicturePath2+"\">"+
+						 "<input type=\"hidden\"name=\"xItemPicture3\" value=\""+marker.itemPicturePath3+"\">"+
+									
+						 
+					"</div>"+
+				"</div>"+
+				"<div class=\"tab-pane\" id=\"tab14\">"+
+					"<div class=\"form-group\">"+
+						"<h4>카테고리 등록하기</h4>"+
+						"<br><select name=\"category1\" id=\"category1\" class=\"form-control\" onchange=\"itemChange(this.form);\"></select>"+
+						"<select name=\"category2\" id=\"category2\" class=\"form-control\"></select>"+
+					"</div>"+
+				"</div>"+
+				"<div class=\"tab-pane\" id=\"tab15\">"+
+					"<div class=\"form-group\">"+
+						"<h4>상세내용 입력하기</h4>"+
+						"<br><input id=\"item_name\" name=\"itemName\" type=\"text\" class=\"form-control input-normal\" placeholder=\"물품명을 입력하세요\" value=\""+marker.itemName+"\">"+
+						"<div class=\"input-group\">"+
+							"<span class=\"input-group-addon\">￦</span><input type=\"text\" name=\"price\" class=\"form-control\" placeholder=\"희망가격 입력\" value=\""+marker.price+"\">"+
+						"</div>"+
+						"<input type=\"hidden\"name=\"itemNo\" value=\""+marker.itemNo+"\">"+
+						"<br>"+
+						"<textarea name=\"itemInfo\" class=\"form-control\" rows=\"10\" cols=\"80\" placeholder=\"상세내용을 입력하세요\">"+marker.itemInfo+"</textarea>"+
+						"<br>"+
+						"<button class=\"btn btn-default\" data-toggle=\"modal\" href=\"#preview_modal\" onclick=\"return false\">미리보기</button> "+
+						"<input type=\"submit\" class=\"btn btn-success\" value=\"수정하기\">"+
+
+
+
+					"</div>"+
+				"</div>"+
+				"<div id=\"pager_wizard\">"+
+					"<ul class=\"pager wizard\">"+
+						"<li class=\"previous first\" style=\"display: none;\"><a href=\"#\" onclick=\"return false\">First</a></li>"+
+						"<li class=\"previous\"><a href=\"#\" onclick=\"return false\">Previous</a></li>"+
+						"<li class=\"next last\" style=\"display: none;\"><a href=\"#\" onclick=\"return false\">Last</a></li>"+
+						"<li class=\"next\"><a href=\"#\" onclick=\"return false\">Next</a></li>"+
+					"</ul>"+
+				"</div>"+
+			"</div>"+
+		"</form>"+
+		"</div>";
+		 
 		
 		
  };
@@ -3217,98 +3372,6 @@ div.mousescroll:hover {
 	 }
 };
 
- var modifyHtml="<div id=\"rootwizard\">"+
-	"<div class=\"navbar2\">"+
-	"<div class=\"navbar-inner2\">"+
-		"<div class=\"container2\" style=\"display: none;\">"+
-			"<ul id=\"register_tap\">"+
-				"<li><a href=\"#tab11\" data-toggle=\"tab\">1단계</a></li>"+
-				"<li><a href=\"#tab12\" data-toggle=\"tab\">2단계</a></li>"+
-				"<li><a href=\"#tab13\" data-toggle=\"tab\">3단계</a></li>"+
-				"<li><a href=\"#tab14\" data-toggle=\"tab\">4단계</a></li>"+
-				"<li><a href=\"#tab15\" data-toggle=\"tab\">5단계</a></li>"+
-			"</ul>"+
-		"</div>"+
-	"</div>"+
-"</div>"+
-"<div id=\"bar\" class=\"progress progress-striped active\">"+
-	"<div class=\"progress-bar\"></div>"+
-"</div>"+
-
-"<form action=\"/itemregister\" name=\"registerform\" id=\"register_form\" method=\"post\" enctype=\"multipart/form-data\">"+
-	"<div class=\"tab-content\">"+
-
-		"<div class=\"tab-pane\" id=\"tab11\">"+
-			"<div class=\"form-group\">"+
-				"<h4>거래 선택하기 수정 수정</h4>"+
-				"<br>"+
-				"<div class=\"btn-group\" data-toggle=\"buttons\">"+
-					"<label class=\"btn btn-default\">"+ 
-					 	"<input type=\"radio\"name=\"stateCode\" id=\"buybtn\" value=\"1\"> 삽니다</label>"+ 
-					 "<label class=\"btn btn-default\">"+ 
-					 	"<input type=\"radio\"name=\"stateCode\" id=\"sellbtn\" value=\"2\"> 팝니다</label>"+
-				"</div>"+
-			"</div>"+
-		"</div>"+
-		"<div class=\"tab-pane\" id=\"tab12\">"+
-			"<div class=\"form-group\">"+
-				"<h4>거래할 위치 등록하기</h4>"+
-				"<br><input type=\"hidden\" name=\"gridX1\" id=\"reg_lat\" value=\"\" style=\"border: none;\">"+ 
-			     "<input type=\"hidden\"name=\"gridY1\" id=\"reg_lng\" value=\"\" style=\"border: none;\">"+
-				 "<input id=\"latlng\" type=\"text\" value=\"\" style=\"display: none;\">"+
-				 "<button id=\"loca_btn\" class=\"btn btn-default\" onclick=\"markerDrop(); return false;\">"+
-				"<span>위치 정하기</span>"+
-				"</button>"+
-				"<button class=\"btn btn-default\" onclick=\"clearMarkers(); return false;\">다시 정하기</button>"+
-				"<br><br>"+
-				"<textarea readonly=\"readonly\" id=\"reg_add\" rows=\"4\" cols=\"34\" value=\"\" style=\"border: none; resize: none;\"></textarea>"+
-			"</div>"+
-		"</div>"+
-		"<div class=\"tab-pane\" id=\"tab13\">"+
-			"<div class=\"form-group\">"+
-				"<h4>사진 등록하기</h4>"+
-				"<br>"+
-				"<input class=\"form-control\" name=\"itemPicturePath1\" type=\"file\" id=\"exampleInputFile\">"+ 
-				 "<br><input class=\"form-control\" name=\"itemPicturePath2\" type=\"file\" id=\"exampleInputFile\">"+
-				 "<br><input class=\"form-control\" name=\"itemPicturePath3\" type=\"file\"id=\"exampleInputFile\">"+
-			"</div>"+
-		"</div>"+
-		"<div class=\"tab-pane\" id=\"tab14\">"+
-			"<div class=\"form-group\">"+
-				"<h4>카테고리 등록하기</h4>"+
-				"<br><select name=\"category1\" id=\"category1\" class=\"form-control\" onchange=\"itemChange(this.form);\"></select>"+
-				"<select name=\"category2\" id=\"category2\" class=\"form-control\"></select>"+
-			"</div>"+
-		"</div>"+
-		"<div class=\"tab-pane\" id=\"tab15\">"+
-			"<div class=\"form-group\">"+
-				"<h4>상세내용 입력하기</h4>"+
-				"<br><input id=\"item_name\" name=\"itemName\" type=\"text\" class=\"form-control input-normal\" placeholder=\"물품명을 입력하세요\">"+
-				"<div class=\"input-group\">"+
-					"<span class=\"input-group-addon\">￦</span><input type=\"text\" name=\"price\" class=\"form-control\" placeholder=\"희망가격 입력\">"+
-				"</div>"+
-				"<br>"+
-				"<textarea name=\"itemInfo\" class=\"form-control\" rows=\"10\" cols=\"80\" placeholder=\"상세내용을 입력하세요\"></textarea>"+
-				"<br>"+
-				"<button class=\"btn btn-default\" data-toggle=\"modal\" href=\"#preview_modal\" onclick=\"return false\">미리보기</button>"+
-				"<input type=\"submit\" class=\"btn btn-primary\" value=\"등록하기\">"+
-
-
-
-			"</div>"+
-		"</div>"+
-		"<div id=\"pager_wizard\">"+
-			"<ul class=\"pager wizard\">"+
-				"<li class=\"previous first\" style=\"display: none;\"><a href=\"#\" onclick=\"return false\">First</a></li>"+
-				"<li class=\"previous\"><a href=\"#\" onclick=\"return false\">Previous</a></li>"+
-				"<li class=\"next last\" style=\"display: none;\"><a href=\"#\" onclick=\"return false\">Last</a></li>"+
-				"<li class=\"next\"><a href=\"#\" onclick=\"return false\">Next</a></li>"+
-			"</ul>"+
-		"</div>"+
-	"</div>"+
-"</form>"+
-"</div>";
- 
  function modify(){
 	console.log("수정모드");	
 	console.log(markerNo);
@@ -3317,7 +3380,15 @@ div.mousescroll:hover {
 	$('#item'+markerNo).removeClass('in');
 	document.getElementById("closemodal").click();
 	document.getElementById("tab2").innerHTML=modifyHtml;
-
+	$('#rootwizard').bootstrapWizard({onTabShow: function(tab, navigation, index) {
+		var $total = navigation.find('li').length;
+		var $current = index+1;
+		var $percent = ($current/$total) * 100;
+		$('#rootwizard').find('.progress-bar').css({width:$percent+'%'});
+	}});
+	window.onload=init(modifyform,cate1);
+	window.onload=itemChange(modifyform,cate2);
+	codeLatLng();
 };
  
 		

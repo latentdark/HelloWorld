@@ -569,6 +569,140 @@ div.mousescroll:hover {
 	/* CSS outer glow with the box-shadow property */
 }
 
+/*
+#menu-toggle2-injection start
+로그인 비활성화시 기존 toggle overview
+*/
+#menu-toggle2-mirror {
+	position: fixed;
+	top: 300px;
+	left: 0;
+	background: #5DCD9D;
+	z-index: 1010;
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	transition: all 0.3s ease;
+}
+
+#menu-toggle2-mirror span {
+	/* Container properties */
+	width: 0;
+	left: 90px;
+	top: 0px;
+	/*
+	옆에서 얼마나 떨어졌나 지정
+	left:70px;
+	*/
+	padding: 0;
+	position: absolute;
+	overflow: hidden;
+	/* Text properties */
+	font-familiy: 'Nanum Gothic';
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: 0.6px;
+	white-space: nowrap;
+	line-height: 45px;
+	/* 하이라이터 높이 지정 line-height:39px;*/
+	/* CSS3 Transition: */
+	-webkit-transition: 0.25s;
+	/* Future proofing (these do not work yet): */
+	-moz-transition: 0.25s;
+	transition: 0.25s;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+/* span 보여주게 하는 코드 */
+#menu-toggle2-mirror a:hover span {
+	background-color: #BDBDBD;
+	color: #0100FF;
+	/* 	text-shadow:1px 1px 0 #99bf31; */
+	width: auto;
+	padding: 0 20px;
+	overflow: visible;
+}
+
+#menu-toggle2-mirror:hover {
+	background: #BDBDBD;
+	cursor: pointer;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+/*#menu-toggle2-injection end*/
+
+/*
+#menu-toggle3-injection start
+로그인 비활성화시 기존 toggle overview
+*/
+#menu-toggle3-mirror {
+	position: fixed;
+	top: 400px;
+	left: 0;
+	background: #5DCD9D;
+	z-index: 1010;
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	transition: all 0.3s ease;
+}
+
+#menu-toggle3-mirror span {
+	/* Container properties */
+	width: 0;
+	left: 90px;
+	top: 0px;
+	/*
+	옆에서 얼마나 떨어졌나 지정
+	left:70px;
+	*/
+	padding: 0;
+	position: absolute;
+	overflow: hidden;
+	/* Text properties */
+	font-familiy: 'Nanum Gothic';
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: 0.6px;
+	white-space: nowrap;
+	line-height: 45px;
+	/* 하이라이터 높이 지정 line-height:39px;*/
+	/* CSS3 Transition: */
+	-webkit-transition: 0.25s;
+	/* Future proofing (these do not work yet): */
+	-moz-transition: 0.25s;
+	transition: 0.25s;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+/* span 보여주게 하는 코드 */
+#menu-toggle3-mirror a:hover span {
+	background-color: #BDBDBD;
+	color: #0100FF;
+	/* 	text-shadow:1px 1px 0 #99bf31; */
+	width: auto;
+	padding: 0 20px;
+	overflow: visible;
+}
+
+#menu-toggle3-mirror:hover {
+	background: #BDBDBD;
+	cursor: pointer;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+/*#menu-toggle2-injection end*/
+
 #addWish_disable {
 	
 }
@@ -789,10 +923,7 @@ div.mousescroll:hover {
 		 
 	
 	//---------------------------------------
-/* 	var test="${test}";
-	console.log(test); */
-	//HTML5 Geolocation을 이용한 ip trace
-	/**/
+
 	var sellImage = 'resources/imgs/icons/s3.png';
 	var buyImage = 'resources/imgs/icons/b3.png';
 	var dealImage = 'resources/imgs/icons/deal2.png';
@@ -800,15 +931,13 @@ div.mousescroll:hover {
 	
 	var map;
 	var markers = [];
-//	var modalInjectionImageArray1=[];
-//	var modalInjectionInfoArray=[];
 	var firstMapLoad="true";
     var markerClusterer;
 	var cluster;
 	var pos;	
 	var myPosition={
-			A:null,
-			k:null
+			k:null,
+			A:null			
 	};
 	var itemList; 
 	
@@ -824,7 +953,17 @@ div.mousescroll:hover {
 			//console.log("itemList.length_"+itemList.length);
 			itemList=res;
 			console.log("itemList.length_"+itemList.length);
-			initialize();
+			markersInit(); //marker[]에 itemList push
+			markerInitialize(map); //map객체에 marekr onload
+			
+			markerClusterer = new MarkerClusterer(map, markers, {
+		          maxZoom: 14,
+		          gridSize: size,
+		          ignoreHidden:true
+		          //styles: styles[style]
+		        });
+		    //cluster=new Cluster(markerClusterer);
+		    
 			console.log("성공");
 		}).fail(function(res){
 			console.log(res);
@@ -845,16 +984,19 @@ div.mousescroll:hover {
 			itemList=res;
 			console.log("itemList.length_"+itemList.length);
 			
+			
 			markersInit(); //marker[]에 itemList push
 			markerInitialize(map); //map객체에 marekr onload
 			console.log("markersInit() after");
-			//markerClusterer = new MarkerClusterer(map, markers, {
+			markerClusterer.clearMarkers();
+			
 			markerClusterer = new MarkerClusterer(map, markers, {
 		          maxZoom: 14,
 		          gridSize: size,
 		          ignoreHidden:true
 		          //styles: styles[style]
 		        });
+		    //cluster=new Cluster(markerClusterer);
 			
 			console.log("성공");
 		}).fail(function(res){
@@ -864,15 +1006,22 @@ div.mousescroll:hover {
 		
 
 	}<%-- initData() refreshData() End--%>
-	
+
+	var itemNo;
 	function removeItem(){
 		$.ajax({
 			type:"POST",
 			url:"/removeItem",
-			data:itemNo
+			data:{
+				ItemNo:itemNo
+			}
 		}).done(function(res){
 			console.log(res);
 			refreshData();
+			var combine="'#item"+markerNo+"'";
+			$('#item'+markerNo).modal('hide');
+			alert('삭제되었습니다.');
+			return true;
 			console.log("성공");
 		}).fail(function(res){
 			console.log(res);
@@ -880,6 +1029,44 @@ div.mousescroll:hover {
 		});
 		
 	}
+	
+	function addItem(){
+		var stateCode;
+		if(document.getElementById('buybtn').checked){
+			stateCode=1;
+		}
+		if(document.getElementById('buybtn').checked){
+			stateCode=2;
+		}
+		$.ajax({
+			type:"POST",
+			url:"/addItem",
+			data:{
+				stateCode		:stateCode,
+				gridX1			:document.getElementById("reg_lat").value,
+				gridY1			:document.getElementById("reg_lng").value,
+				itemPicturePath1:document.getElementById("itemPicturePath1").value,
+				itemPicturePath2:document.getElementById("itemPicturePath2").value,
+				itemPicturePath3:document.getElementById("itemPicturePath3").value,
+				category1:document.getElementById("category1").value,
+				category2:document.getElementById("category2").value,
+				item_name:document.getElementById("item_name").value,
+				price:document.getElementById("price").value,
+				itemInfo:document.getElementById("itemInfo").value
+			}
+		}).done(function(res){
+			console.log(res);
+			refreshData();
+			console.log("성공");
+			alert("아이템이 정상적으로 등록되었습니다. ^^");
+			return true;
+		}).fail(function(res){
+			console.log(res);
+			console.log("실패");
+		});
+		
+	}
+	
 	
 		<%-- initialize Start --%>
 		function initialize() {
@@ -910,6 +1097,11 @@ div.mousescroll:hover {
 					myPosition.A=Math.round(pos.A*1000000)/1000000;
 					myPosition.k=Math.round(pos.k*1000000)/1000000;
 					
+					console.log("myPosition Debug____");
+					console.log(myPosition.A);
+					console.log(myPosition.k);
+					console.log("myPosition Debug____");
+					
 					
 					new google.maps.Marker({
 						position : new google.maps.LatLng(position.coords.latitude,
@@ -934,12 +1126,26 @@ div.mousescroll:hover {
 				// Browser doesn't support Geolocation
 				handleNoGeolocation(false);
 			}
+			/*
+			console.log("markersInit() before");
+			markersInit(); //marker[]에 itemList push
+			markerInitialize(map); //map객체에 marekr onload
+			console.log("markersInit() after");
+			//markerClusterer = new MarkerClusterer(map, markers, {
+			markerClusterer = new MarkerClusterer(map, markers, {
+		          maxZoom: 14,
+		          gridSize: size,
+		          ignoreHidden:true
+		          //styles: styles[style]
+		        });
+			//cluster=new Cluster(MarkerClusterer);
+			//cluster.setIgnoreHidden(true);
+			*/
 			
-			  //물품등록시 사용할 이벤트, 위치정하기 버튼 누르기 전에 비활성화.
-			  google.maps.event.addListener(map, 'click', function(e) {
-		            placeMarker(e.latLng, map);
-		      });
-			//refreshData();
+			//물품등록시 사용할 이벤트, 위치정하기 버튼 누르기 전에 비활성화.
+		   google.maps.event.addListener(map, 'click', function(e) {
+	            placeMarker(e.latLng, map);
+	       });			
 		}<%-- initialize End --%>
 	
 		<%-- placeMarker Start --%>
@@ -1044,7 +1250,7 @@ div.mousescroll:hover {
 			
 			if(from=="Quick"){
 				for(var i=0;i<markers.length;i++){
-					if(markers[i].title.toUpperCase().match(searchKeyword)!=null){
+					if(markers[i].itemName.toUpperCase().match(searchKeyword)!=null){
 						markerClusterer.addMarker(markers[i]);
 					}
 				}
@@ -1089,7 +1295,7 @@ div.mousescroll:hover {
 				if(searchOption=="all"){
 					for(var i=0;i<markers.length;i++){
 						//console.log(markers[i].title.toUpperCase().match(searchKeyword));
-						if(markers[i].title.toUpperCase().match(searchKeyword)!=null){
+						if(markers[i].itemName.toUpperCase().match(searchKeyword)!=null){
 							markerClusterer.addMarker(markers[i]);
 							markersSearchResult.push(markers[i]);
 						}
@@ -1098,7 +1304,7 @@ div.mousescroll:hover {
 				if(searchOption=="buy"){
 					for(var i=0;i<markers.length;i++){
 						if(markers[i].stateCode==1){
-							if(markers[i].title.toUpperCase().match(searchKeyword)!=null){
+							if(markers[i].itemName.toUpperCase().match(searchKeyword)!=null){
 								markerClusterer.addMarker(markers[i]);
 								markersSearchResult.push(markers[i]);	
 							}
@@ -1108,7 +1314,7 @@ div.mousescroll:hover {
 				if(searchOption=="sell"){
 					for(var i=0;i<markers.length;i++){
 						if(markers[i].stateCode==2){
-							if(markers[i].title.toUpperCase().match(searchKeyword)!=null){
+							if(markers[i].itemName.toUpperCase().match(searchKeyword)!=null){
 								markerClusterer.addMarker(markers[i]);
 								markersSearchResult.push(markers[i]);	
 							}
@@ -1116,7 +1322,6 @@ div.mousescroll:hover {
 					}
 				}
 				
-				//순순
 				if(document.getElementById('optionsRadios1').checked){
 					console.log("markersSortingDistance run");
 					markersSortingDistance();
@@ -1135,26 +1340,26 @@ div.mousescroll:hover {
 		<%-- markersInit() --%>
 		function markersInit(){
 			console.log("markersInit()_Inn");
-			//markers=[];
+			markers=[];
 			//statCode 1=sell, 2=buy, 3=deal
 			console.log(itemList);
 			console.log("markersInit()__itemList.length__"+itemList.length);
 			for(var i=0;i<itemList.length;i++){
 				
 				var markerImage;
-				console.log("itemList[i].stateCode_"+itemList[i].stateCode);
+				//console.log("itemList[i].stateCode_"+itemList[i].stateCode);
 				switch(itemList[i].stateCode){
 					case 1:
 						markerImage=buyImage;
-						console.log("buyImage");
+						//console.log("buyImage");
 						break;
 					case 2:
 						markerImage=sellImage;
-						console.log("sellImage");
+						//console.log("sellImage");
 						break;
 					case 3:
 						markerImage=dealImage;
-						console.log("dealImage");
+						//console.log("dealImage");
 						break;
 				}
 				markers.push(
@@ -1164,57 +1369,367 @@ div.mousescroll:hover {
 								map : map,
 								icon: markerImage,
 								stateCode : itemList[i].stateCode,
-								title : itemList[i].itemName,
+								//title : itemList[i].itemName,
+								itemName : itemList[i].itemName,
 								userNo : itemList[i].userNo,
 								itemNo : itemList[i].itemNo,
 								itemInfo : itemList[i].itemInfo,
 								itemPicturePath1 : itemList[i].itemPicturePath1,
 								itemPicturePath2 : itemList[i].itemPicturePath2,
 								itemPicturePath3 : itemList[i].itemPicturePath3,
-								category1:itemList[i].category1,
-								category2:itemList[i].category2,
-								gridX1 : itemList[i].gridX1,
-								gridY1 : itemList[i].gridY1,
-								price : itemList[i].price,
 								
 								distance:null,
-								distance_m:null								
-								
+								distance_m:null,								
+								price : itemList[i].price
 								
 								})
 						);
 					
 			}
-		}
+		}<%-- markersInit() end --%>
+		<%-- 
+		function markersInit(){
+			//markers=[];
+			//statCode 1=sell, 2=buy, 3=deal
+			<c:forEach var="itemList" items="${itemList}">
+				<c:set var="i" value="${ i+1 }" />	
+				var str="${itemList.itemName}";
+				
+				//console.log(str.match(searchKeyword));
+				
+				if(searchKeyword!=null){
+					searchKeyword=searchKeyword.trim().toUpperCase();
+				}
+				
+				if(str.toUpperCase().match(searchKeyword)!=null){
+					markers.push(
+							new google.maps.Marker({
+							//new MarkerWithLabel({
+								position : new google.maps.LatLng(${itemList.gridX1} , ${itemList.gridY1} ),
+								map : map,
+								icon:
+									<c:if test="${itemList.stateCode=='1'}">
+										buyImage
+									</c:if>
+									<c:if test="${itemList.stateCode=='2'}">
+										sellImage
+									</c:if>
+									<c:if test="${itemList.stateCode=='3'}">
+										dealImage
+									</c:if>
+										,
+								stateCode : '${itemList.stateCode}',
+								title : '${itemList.itemName}',
+								userNo : '${itemList.userNo}',
+								itemNo : '${itemList.itemNo}',
+								itemInfo : '${itemList.itemInfo}',
+								itemPicturePath1 : '${itemList.itemPicturePath1}',
+								itemPicturePath2 : '${itemList.itemPicturePath2}',
+								itemPicturePath3 : '${itemList.itemPicturePath3}',
+								//content : '${itemList.itemNo}',
+								distance:null,
+								distance_m:null,								
+								price : '${itemList.price}'
+								//	labelContent: '$425K',
+								//	labelAnchor: new google.maps.Point(22, 0),
+								//    labelClass: "labels", // the CSS class for the label
 								
+								/*
+								content : '<div id="content">'+
+										'<h1 id="head" class="head">${itemList.itemName}</h1>'+
+										 '<div id="bodyContent">'+
+										 <c:if test="${itemList.itemPicturePath1!=null}">
+										 '<img src = "resources/itempictures/${itemList.itemPicturePath1}"></img><br>'+
+										 </c:if>
+										 '${itemList.itemInfo}'+
+										 '</div>'+
+										'</div >'
+								*/
+							
+								//labelContent : '${itemList.itemInfo}'
+								})
+						);
+					}
+			</c:forEach>
+			/*
+			markers.push(
+					new google.maps.Marker({
+					position : new google.maps.LatLng(37.500848, 127.053065),
+					map : map,
+					icon: buyImage,
+					title : 'epic',
+					
+					content :  '<div id="dialog" title="Basic dialog">'+
+								'몰아치는 한숨'+
+								'</div>'
+					})
+				);
+			*/
+			
+			
+			/* console.log("markers.length__"+markers.length);
+			console.log("markers[0]__"+markers[0]);
+			console.log("markers[0]__"+markers[0].price);
+			console.log("markers[0].position__"+markers[0].position);
+			console.log("markers[0].position__"+markers[0].position.A);
+			console.log("markers[0].position__"+markers[0].position.k); */
+		}
+		--%>						
 		
 		<%-- markerInitialize Start --%>
 		function markerInitialize(map) {
 		  console.log("markerInitialize(map) Inn");
 		  for (var i = 0; i < markers.length; i++) {
 			//console.log(markers[i]);
-			//markers[i].setMap(map);   
+			markers[i].setMap(map);   
 			//console.log(markers[i].content); 
 			markerAddListener(markers[i], i);
 		  }
 		}<%-- markerInitialize end --%>
 	
 		<%-- markerAddListener Start--%>
+		var bounds = new google.maps.LatLngBounds();
+		
+		
 		function markerAddListener(marker, i) {
 		 console.log("markerAddListener() Inn");
-		/* 
-		  var infowindow = new google.maps.InfoWindow({
-			content: marker.content	
-		  });
-		 */
+			
+		 var content=
+			 "<div id=\"infowindow\">"+
+			 	"<h1>"+
+			 		"<font color=\"red\">"+"[ "+marker.price+" ]</font> "+
+			 		marker.itemName+
+			 	"</h1>"+
+			 "</div>";
+		 var infowindow = new google.maps.InfoWindow({
+				content: content	
+		 });
+		  
+		  /*  */
 		  //console.log("marker.content_"+marker.content);
 		 //var dialogName="#item"+marker.content;
-		  google.maps.event.addListener(marker, 'click', function() {
+		 google.maps.event.addListener(marker, 'mouseover', function() {
+			 //alert("mouseover");
+			
 			  //infowindow.open(marker.get('map'), marker);	
+			 infowindow.open(marker.get('map'), marker);
+			 
+		  });
+		 
+		 google.maps.event.addListener(marker, 'mouseout', function() {	
+			 // infowindow.open(marker.get('map'), marker);
+			  infowindow.close();
+		  });
+		 
+		  google.maps.event.addListener(marker, 'click', function() {
+			  	  
 			  modalInjection(marker);
 		  });
 		  
-		}<%-- markerAddListener end--%>
+		}
+	
+		<%-- markerAddListener Start--%>
+		var bounds = new google.maps.LatLngBounds();
+		
+		function markerAddListener(marker, i) {
+		 console.log("markerAddListener() Inn");
+			
+		 var content=
+			 "<div id=\"infowindow\">"+
+			 	"<h1>"+
+			 		"<font color=\"red\">"+"[ "+marker.price+" ]</font> "+
+			 		marker.itemName+
+			 	"</h1>"+
+			 "</div>";
+		 var infowindow = new google.maps.InfoWindow({
+				content: content	
+		 });
+		  
+		  /*  */
+		  //console.log("marker.content_"+marker.content);
+		 //var dialogName="#item"+marker.content;
+		 google.maps.event.addListener(marker, 'mouseover', function() {
+			 //alert("mouseover");
+			
+			  //infowindow.open(marker.get('map'), marker);	
+			 infowindow.open(marker.get('map'), marker);
+			 
+		  });
+		 
+		 google.maps.event.addListener(marker, 'mouseout', function() {	
+			 // infowindow.open(marker.get('map'), marker);
+			  infowindow.close();
+		  });
+		 
+		  google.maps.event.addListener(marker, 'click', function() {
+			  	  
+			  modalInjection(marker);
+		  });
+		  
+		}
+		
+		
+		<%-- searchListMarkerFocus Start --%>
+		var infowindow;
+		var position;
+		var flightPath;
+		var polyline = [] ;
+		var mapCenter;
+		function searchListMarkerFocusIn(marker){
+			var content=
+				 "<div id=\"infowindow\">"+
+				 	"<h1>"+
+				 		"<font color=\"red\">"+"[ "+marker.price+" ]</font> "+
+				 		marker.itemName+
+				 	"</h1>"+
+				 "</div>";
+			infowindow = new google.maps.InfoWindow({
+					content: content	
+			 });
+			console.log("markerFocus__INN");
+			//var markerBounds = new google.maps.LatLngBounds();
+			
+			//이건 줌이 너무 많이 땡겨져.
+			//map.setBounds(marker.position);
+			
+			//it`s too fast.
+			//map.setCenter(marker.position); 
+			
+			// start coordinates
+			var start = [ 
+			      new google.maps.LatLng(marker.position.k, marker.position.A), 
+			      new google.maps.LatLng(marker.position.k, marker.position.A),
+			      new google.maps.LatLng(marker.position.k, marker.position.A),
+			      new google.maps.LatLng(marker.position.k, marker.position.A)
+			      ];
+
+			// end coordinates
+			var end = [
+		          new google.maps.LatLng(marker.position.k-1, marker.position.A), 
+			      new google.maps.LatLng(marker.position.k+1, marker.position.A),
+			      new google.maps.LatLng(marker.position.k, marker.position.A-1),
+			      new google.maps.LatLng(marker.position.k, marker.position.A+1)
+			      ];
+			for (var i=0; i < end.length; i++){
+			      calcRoute(start[i], end [i]);
+			}
+			
+		
+			function calcRoute(source,destination){
+				polyline.push(
+					new google.maps.Polyline({
+				     path: [source,destination],
+				     //strokeColor: '#FF0000',
+				     strokeColor: '#1650F0',
+				     strokeWeight: 5,
+				     strokeOpacity: 0.5
+			 		})
+				);
+				  //polyline.setMap(map);
+			}
+			
+			for(var i=0;i<polyline.length;i++){
+				polyline[i].setMap(map);
+			}
+			
+			/*
+			var flightPlanCoordinates = [
+                new google.maps.LatLng(marker.position.k, marker.position.A),
+                new google.maps.LatLng(marker.position.k-1, marker.position.A)
+              ];
+				
+			
+            flightPath = new google.maps.Polyline({
+              path: flightPlanCoordinates,
+              strokeColor: '#FF0000',
+              strokeOpacity: 1.0,
+              strokeWeight: 2
+            });
+            flightPath.setMap(map);
+			
+			*/
+			mapCenter=map.getCenter();
+			map.panTo(marker.position);
+			//map.panToBounds(marker.position);
+			/*
+			position=map.getCenter();
+			var result = [marker.position.k, marker.position.A];
+			transition(result);
+			*/
+			
+			//infowindow.setZIndex(3000);
+			infowindow.setPosition(marker.position);
+			infowindow.open(marker.get('map'));
+			//infowindow.open(marker.get('map'), marker);
+		}
+		function searchListMarkerFocusOut(marker){
+			console.log("markerFocus__Out");
+			for(var i=0;i<polyline.length;i++){
+				polyline[i].setMap(null);
+			}
+			polyline = [];
+			//flightPath.setMap(null);
+			
+			//map.panToBounds(pos);
+			
+			
+			//markerClusterer.getMarkers().close();
+			//markerClusterer.infowindow.close();
+			infowindow.close();
+			moveCheck=mapCenter;
+			setTimeout(function(){positionReturn()},1000*2);			
+		}
+		
+		var moveCheck;
+		function positionReturn(){
+			if(moveCheck==mapCenter){
+				map.panTo(mapCenter);
+			}
+		}
+		<%-- searchListMarkerFocus End --%>
+		
+		
+		
+		
+		<%-- Marker Smooth Move Start--%>
+		var numDeltas = 100;
+		var delay = 10; //milliseconds
+		var i = 0;
+		var deltaLat;
+		var deltaLng;
+		function transition(result){
+		    i = 0;
+		    deltaLat = (result[0] - position[0])/numDeltas;
+		    deltaLng = (result[1] - position[1])/numDeltas;
+		    moveMarker();
+		}
+
+		function moveMarker(){
+		    position[0] += deltaLat;
+		    position[1] += deltaLng;
+		    var latlng = new google.maps.LatLng(position[0], position[1]);
+		    map.setCenter(latlng);
+		    //marker.setPosition(latlng);
+		    if(i!=numDeltas){
+		        i++;
+		        setTimeout(moveMarker, delay);
+		    }
+		}
+		<%-- Marker Smooth Move Start--%>
+		<%-- 
+		 google.maps.event.addListener(map, 'zoom_changed', function() {
+			        zoomChangeBoundsListener = google.maps.event.addListener(map, 'bounds_changed', function(event) {
+			            if (this.getZoom() > 10) // Change max/min zoom here
+			                this.setZoom(13);
+
+			            google.maps.event.removeListener(zoomChangeBoundsListener);
+			        });
+				});
+		
+		--%>
+
+		
+		<%-- markerAddListener end--%>
 		
 		<%-- handleNoGeolocation Start --%>
 		function handleNoGeolocation(errorFlag) {
@@ -1355,9 +1870,16 @@ div.mousescroll:hover {
 					"<tr>"+
 						"<td id=\"t1\" >" + markersSearchResult[0].distance_m + "</td>" +
 						"<td id=\"t2\" >" + markersSearchResult[0].price/10000.0 + "</td>" +
-						"<td id=\"t3\" ><a onclick=\"modalInjection(markersSearchResult["+0+"])\"> " +
+						"<td id=\"t3\" ><a"+
+						
+						" onmouseover=searchListMarkerFocusIn(markersSearchResult["+0+"])"+
+						" onmouseout=searchListMarkerFocusOut(markersSearchResult["+0+"])"+
+						//" onmouseover=searchListMarkerFocusIn(markerclusterer["+0+"])"+
+						//" onmouseout=searchListMarkerFocusOut(markerclusterer["+0+"])"+
+						" onclick=\"modalInjection(markersSearchResult["+0+"])\"> " +
+						
 						//"<td><a onclick=\"alert('test')\"> " + 
-								markersSearchResult[0].title+ "<span>클릭하시면 상세정보를 볼수 있습니다.</span></a></td>" +
+								markersSearchResult[0].itemName+ "<span>클릭하시면 상세정보를 볼수 있습니다.</span></a></td>" +
 					"</tr>";
 			}
 			//searchResultInjectionHtml="<tbody>";
@@ -1376,9 +1898,14 @@ div.mousescroll:hover {
 						"<tr>"+
 							"<td id=\"t1\" >" + markersSearchResult[i].distance_m + "</td>" +
 							"<td id=\"t2\" >" + markersSearchResult[i].price/10000.0 + "</td>" +
-							"<td id=\"t3\" ><a onclick=\"modalInjection(markersSearchResult["+i+"])\"> " +
+							"<td id=\"t3\" ><a"+
+							" onmouseover=searchListMarkerFocusIn(markersSearchResult["+i+"])"+
+							" onmouseout=searchListMarkerFocusOut(markersSearchResult["+i+"])"+
+							//" onmouseover=searchListMarkerFocusIn(markerclusterer["+i+"])"+
+							//" onmouseout=searchListMarkerFocusOut(markerclusterer["+i+"])"+
+							" onclick=\"modalInjection(markersSearchResult["+i+"])\"> " +
 							//"<td><a onclick=\"alert('test')\"> " + 
-									markersSearchResult[i].title+ "<span>클릭하시면 상세정보를 볼수 있습니다.</span></a></td>" +
+									markersSearchResult[i].itemName+ "<span>클릭하시면 상세정보를 볼수 있습니다.</span></a></td>" +
 						"</tr>";
 				}
 			}
@@ -1387,6 +1914,7 @@ div.mousescroll:hover {
 			
 		
 		}<%-- searchResultInjection End --%>
+		
 		
 		//ajax를 이용해서 injection방식으로 inner html로 쏴 줘야한다.
 		//내가 등록한 물품
@@ -1660,7 +2188,7 @@ div.mousescroll:hover {
 		
 		
 		google.maps.event.addDomListener(window, 'load', initialize);
-		google.maps.event.addDomListener(window, 'load', refreshData);
+		google.maps.event.addDomListener(window, 'load', initData);
 	</script>
 <!--
 		
@@ -2072,11 +2600,35 @@ div.mousescroll:hover {
 	<header>
 		<%@include file="header.jsp"%>
 	</header>
+	<div id="menu-toggle2-injection">
+		<c:if test="${user==null}">
+		<div id="menu-toggle2-mirror">
+			<a> <img src="resources/imgs/slider/Cloud_Add.png" width=70
+				height=70 ></img> 
+				<span>물건 팔기/사기<br>로그인이 필요합니다.</span>
+			</a>
+		</div>
+		</c:if>	
+	</div>
+	
+	<div id="menu-toggle3-injection">
+		<c:if test="${user==null}">
+		<div id="menu-toggle3-mirror">
+			<a> <img src="resources/imgs/slider/Handshake-icon.png" width=70
+				height=70></img> 
+				<span>거래현황<br>로그인이 필요합니다.</span>
+			</a>
+		</div>
+		</c:if>
+	</div>
+	
+	
 	<div id="menu-toggle1">
 		<a> <img src="resources/imgs/slider/search.png" width=70 height=70
 			alt="Menu1"></img> <span>상품검색</span>
 		</a>
 	</div>
+	
 	<nav id="menu1">
 		<div id="search_condition">
 			<form action="#" name="searchform" id="search_form" method="post"
@@ -2159,7 +2711,7 @@ div.mousescroll:hover {
 					<div class="progress-bar"></div>
 				</div>
 
-				<form action="/itemRegister" name="registerform" id="register_form"
+				<form action="/addItem" name="registerform" id="register_form"
 					method="post" enctype="multipart/form-data">
 					<div class="tab-content">
 
@@ -2489,12 +3041,12 @@ div.mousescroll:hover {
 	  var htmlinjec;
 	  new function makeHtml(){
 			htmlinjec=
-			"<div id=\"item"+marker.itemNo+"\" class=\"item"+marker.itemNo+" modal fade\" title=\""+marker.title+"\"  tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">"+
+			"<div id=\"item"+marker.itemNo+"\" class=\"item"+marker.itemNo+" modal fade\" title=\""+marker.itemName+"\"  tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">"+
 				"<div id=\"injection-modal\"class=\"modal-dialog\">"+
 					"<div class=\"modal-Content\">"+
 						"<div class=\"modal-header\">"+
 						"<button id=\"closemodal\" type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">×</button>"+
-				        "<h4 class=\"modal-title\">"+marker.title+"<font color=\"red\"> [ "+marker.price+" 원 ]</font></h4>"+
+				        "<h4 class=\"modal-title\">"+marker.itemName+"<font color=\"red\"> [ "+marker.price+" 원 ]</font></h4>"+
 				       
 						"</div>"+
 						"<div class=\"modal-body\" id=\"mmodal\">"+
@@ -2772,7 +3324,7 @@ div.mousescroll:hover {
 				"<div class=\"tab-pane\" id=\"tab15\">"+
 					"<div class=\"form-group\">"+
 						"<h4>상세내용 입력하기</h4>"+
-						"<br><input id=\"item_name\" name=\"itemName\" type=\"text\" class=\"form-control input-normal\" placeholder=\"물품명을 입력하세요\" value=\""+marker.title+"\">"+
+						"<br><input id=\"item_name\" name=\"itemName\" type=\"text\" class=\"form-control input-normal\" placeholder=\"물품명을 입력하세요\" value=\""+marker.itemName+"\">"+
 						"<div class=\"input-group\">"+
 							"<span class=\"input-group-addon\">￦</span><input type=\"text\" name=\"price\" class=\"form-control\" placeholder=\"희망가격 입력\" value=\""+marker.price+"\">"+
 						"</div>"+
