@@ -198,7 +198,13 @@ position: fixed;
 </head>
 <script>
 	//alert("응?");
-	var user;
+	var user={
+			userNo		:	null,
+			email		:	null,
+			phoneNumber :	null,
+			nickname	:	null,
+			active		:	null
+		};
 	function signIn(){
 		$.ajax({
 			type:"POST",
@@ -215,13 +221,11 @@ position: fixed;
 					console.log("i_"+i+"__"+temp[i]);
 				}
 				
-				user={
-					userNo		:	temp[0].substring(temp[0].search("=")+1),
-					email		:	temp[1].substring(temp[1].search("=")+1),
-					phoneNumber :	temp[3].substring(temp[3].search("=")+1),
-					nickname	:	temp[4].substring(temp[4].search("=")+1),
-					active		:	temp[6].substring(temp[6].search("=")+1)
-				};
+				user.userNo		=temp[0].substring(temp[0].search("=")+1);
+				user.email		=temp[1].substring(temp[1].search("=")+1);
+				user.phoneNumber=temp[3].substring(temp[3].search("=")+1);
+				user.nickname	=temp[4].substring(temp[4].search("=")+1);
+				user.active		=temp[6].substring(temp[6].search("=")+1);
 			
 				var content;
 				content=
@@ -285,6 +289,18 @@ position: fixed;
 		});
 		console.log("나가네");
 	}
+	<c:if test="${user!=null}">
+		user.userNo		='${user.userNo}';
+		user.email		='${user.email}';
+		user.phoneNumber='${user.phoneNumber}';
+		user.nickname	='${user.nickname}';
+		user.active		='${user.active}';
+	</c:if>
+	console.log("user.usreNo __"+user.userNo);
+	console.log("user.email __"+user.email);
+	console.log("user.phoneNumber __"+user.phoneNumber);
+	console.log("user.nickname __"+user.nickname);
+	console.log("user.active __"+user.active);
 </script>
 <div id="searchBar">
 	<form class="form-wrapper cf" action="#" onsubmit="return itemSearch('Quick')">
@@ -295,6 +311,7 @@ position: fixed;
 	 
 </div>
 
+<c:if test='${user==null}'>
 <div id="loginInjection">		     		
  	   <ul class="nav navbar-nav pull-right">
  	     		<li class="divider-vertical"></li>
@@ -313,9 +330,27 @@ position: fixed;
 		</form>
           </div>
           </li>
-      </ul>
+      </ul>  
 </div>
-	
+</c:if>	
+
+<c:if test='${user!=null}'>
+<div id="loginInjection">
+	<ul class="nav navbar-nav navbar-right">
+		<li class="divider-vertical"></li>
+			<li class="dropdown">
+				<a id="signin_on" class="dropdown-toggle" href="" data-toggle="dropdown">
+				${user.nickname} 님  <strong class="caret"></strong></a>
+						
+		<ul id="dropdown_on" class="dropdown-menu" role="menu">
+			<li><a id="mypage" class="dropdown_a" href="">My Page</a></li>
+				<li><a id="signout" class="dropdown_a" href="">Your Page</a></li>	
+				<li role="presentation" class="divider"></li>		              			    	
+      			<li><a id="signout" class="dropdown_a" href="#" onclick="signOut()">Sign Out</a></li>	
+      	</ul>   
+	</ul>
+</div>
+</c:if>	
 <script type="text/javascript">
 	//이메일칸에 입력전에 submit 버튼 활성화/비활성화
  	document.signinform.commit.disabled = true;  
