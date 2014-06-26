@@ -171,7 +171,7 @@ body {
 	margin-top: 53px;
 	left: -200px;
 	background: #FFFFFF;
-	height: calc(100% - 53px);
+	height: calc(100% - 106px);
 	z-index: 1030;
 	border: 1px solid #BCBCBC;
 	padding-top: 20px;
@@ -276,7 +276,7 @@ body {
 	margin-top: 53px;
 	left: -300px;
 	background: #ffffff;
-	height: calc(100% - 53px);
+	height: 540px;
 	z-index: 1030;
 	text-align: center;
 	border: 1px solid #BCBCBC;
@@ -381,7 +381,7 @@ body {
 	top: 0;
 	left: -200px;
 	background: #FFFFFF;
-	height: calc(100% - 53px);
+	height: calc(100% - 106px);
 	z-index: 1030;
 	border: 1px solid #BCBCBC;
 	padding-top: 20px;
@@ -1177,6 +1177,8 @@ div.mousescroll:hover {
 		<%-- markerDrop Start --%>
 		function markerDrop(){
 			markerDropEffect="active";
+			$('#re-markerdrop').removeClass('disabled');
+			$('#loca_btn').addClass('disabled');
 		}<%-- markerDrop End --%>
 			
 			
@@ -1192,6 +1194,8 @@ div.mousescroll:hover {
 	    	marker=null;
 	    	markerDropEffect="active";
 	    	markerDropCheck="0";
+	    	$('#re-markerdrop').addClass('disabled');
+			$('#loca_btn').removeClass('disabled');
 		}<%-- clearMarkers end --%>
 			
 
@@ -1377,6 +1381,10 @@ div.mousescroll:hover {
 								itemPicturePath1 : itemList[i].itemPicturePath1,
 								itemPicturePath2 : itemList[i].itemPicturePath2,
 								itemPicturePath3 : itemList[i].itemPicturePath3,
+								category1: itemList[i].category1,
+								category2: itemList[i].category2,
+								gridX1: itemList[i].gridX1,
+								gridY1: itemList[i].gridY1,
 								
 								distance:null,
 								distance_m:null,								
@@ -1496,10 +1504,8 @@ div.mousescroll:hover {
 			
 		 var content=
 			 "<div id=\"infowindow\">"+
-			 	"<h1>"+
 			 		"<font color=\"red\">"+"[ "+marker.price+" ]</font> "+
 			 		marker.itemName+
-			 	"</h1>"+
 			 "</div>";
 		 var infowindow = new google.maps.InfoWindow({
 				content: content	
@@ -1536,10 +1542,8 @@ div.mousescroll:hover {
 			
 		 var content=
 			 "<div id=\"infowindow\">"+
-			 	"<h1>"+
 			 		"<font color=\"red\">"+"[ "+marker.price+" ]</font> "+
 			 		marker.itemName+
-			 	"</h1>"+
 			 "</div>";
 		 var infowindow = new google.maps.InfoWindow({
 				content: content	
@@ -1578,10 +1582,8 @@ div.mousescroll:hover {
 		function searchListMarkerFocusIn(marker){
 			var content=
 				 "<div id=\"infowindow\">"+
-				 	"<h1>"+
 				 		"<font color=\"red\">"+"[ "+marker.price+" ]</font> "+
 				 		marker.itemName+
-				 	"</h1>"+
 				 "</div>";
 			infowindow = new google.maps.InfoWindow({
 					content: content	
@@ -2557,6 +2559,7 @@ div.mousescroll:hover {
 	                  height: '150px'                  
 	              });
 	
+
    </script>
 
 
@@ -2735,11 +2738,9 @@ div.mousescroll:hover {
 									value="" style="border: none;"> <input type="hidden"
 									name="gridY1" id="reg_lng" value="" style="border: none;">
 								<input id="latlng" type="text" value="" style="display: none;">
-								<button id="loca_btn" class="btn btn-default"
-									onclick="markerDrop(); return false;">
-									<span>위치 정하기</span>
-								</button>
-								<button class="btn btn-default"
+								<button id="loca_btn" class="btn btn-default" 
+									onclick="markerDrop(); return false;">위치 정하기</button>
+								<button class="btn btn-default disabled" id="re-markerdrop"
 									onclick="clearMarkers(); return false;">다시 정하기</button>
 								<br>
 								<br>
@@ -2776,15 +2777,15 @@ div.mousescroll:hover {
 									class="form-control input-normal" placeholder="물품명을 입력하세요">
 								<div class="input-group">
 									<span class="input-group-addon">￦</span><input type="text"
-										name="price" class="form-control" placeholder="희망가격 입력">
+										name="price" class="form-control" placeholder="희망가격 입력" onKeypress="if(event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" style="IME-MODE:disabled;" >
 								</div>
 								<br>
 								<textarea name="itemInfo" class="form-control" rows="10"
 									cols="80" placeholder="상세내용을 입력하세요"></textarea>
 								<br>
 								<button class="btn btn-default" data-toggle="modal"
-									href="#preview_modal" onclick="return false">미리보기</button>
-								<input type="submit" class="btn btn-primary" value="등록하기">
+									href="#preview_modal" onclick="return false">미리보기</button>							
+								<input type="submit" class="btn btn-primary"  value="등록하기">
 
 
 
@@ -3294,7 +3295,7 @@ div.mousescroll:hover {
 						 "<button id=\"loca_btn\" class=\"btn btn-default\" onclick=\"markerDrop(); return false;\">"+
 						"<span>위치 정하기</span>"+
 						"</button>"+
-						" <button class=\"btn btn-default\" onclick=\"clearMarkers(); return false;\">다시 정하기</button>"+
+						" <button id=\"re-markerdrop\" class=\"btn btn-default disabled\" onclick=\"clearMarkers();  return false;\">다시 정하기</button>"+
 						"<br><br>"+
 						"<textarea readonly=\"readonly\" id=\"reg_add\" rows=\"4\" cols=\"34\" value=\"\" style=\"border: none; resize: none;\"></textarea>"+
 					"</div>"+
@@ -3326,7 +3327,7 @@ div.mousescroll:hover {
 						"<h4>상세내용 입력하기</h4>"+
 						"<br><input id=\"item_name\" name=\"itemName\" type=\"text\" class=\"form-control input-normal\" placeholder=\"물품명을 입력하세요\" value=\""+marker.itemName+"\">"+
 						"<div class=\"input-group\">"+
-							"<span class=\"input-group-addon\">￦</span><input type=\"text\" name=\"price\" class=\"form-control\" placeholder=\"희망가격 입력\" value=\""+marker.price+"\">"+
+							"<span class=\"input-group-addon\">￦</span><input type=\"text\" name=\"price\" class=\"form-control\" placeholder=\"희망가격 입력\" value=\""+marker.price+"\" onKeypress=\"if(event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;\" style=\"IME-MODE:disabled;\">"+
 						"</div>"+
 						"<input type=\"hidden\"name=\"itemNo\" value=\""+marker.itemNo+"\">"+
 						"<br>"+

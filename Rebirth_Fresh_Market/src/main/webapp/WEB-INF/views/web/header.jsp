@@ -2,32 +2,17 @@
 <head>
 <style type="text/css">
 #searchBar {
-/*position: fixed;*/
-	position: fixed;
-	
-	top: 50px;
-	left: 440px;
-	/*
-	background: #A2F6FF;
-	*/
+	position: fixed;	
+	top: 40px;
+	left:calc(50% - 205px);
+	margin:auto;
 	z-index: 1000;
-	/*
-	padding-left: 10px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	padding-right: 10px;
-	*/
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
 	transition: all 0.3s ease;
-	
-	
-	
 	width: 410px;
     z-index: 500;
-   
     padding: 5px;
-    /* margin: 150px auto 50px auto; */
     background: #444;
     background: rgba(0,0,0,.2);
     border-radius: 10px;
@@ -194,6 +179,15 @@ position: fixed;
     border: 0;
     padding: 0;
 }    
+
+
+#mainlogo{
+	position: fixed;
+	z-index: 1000;
+	bottom:1px;
+	right:1px;
+	width: 700px;
+}
 </style>
 </head>
 <script>
@@ -334,11 +328,14 @@ position: fixed;
 </script>
 <div id="searchBar">
 	<form class="form-wrapper cf" action="#" onsubmit="return itemSearch('Quick')">
-	        <input id="searchKeywordQuick" type="text" placeholder="검색어를 입력해주세요" ><!-- required -->
+	        <input id="searchKeywordQuick" type="text" placeholder=" 물품명을 입력해주세요" ><!-- required -->
 	        <button type="submit">Search</button>
 	        	
-	</form>  
-	 
+	</form>  	 
+</div>
+
+<div>
+	<img id="mainlogo" src="resources/imgs/logo5re.png">
 </div>
 
 <c:if test='${user==null}'>
