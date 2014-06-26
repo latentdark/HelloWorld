@@ -110,4 +110,8 @@ public class CommunicationServiceImpl implements CommunicationService {
     public Integer removeComment(Integer commentNo){
     	return communicationDao.removeComment(commentNo);
     }
+    
+    public Integer countComment(Integer itemNo){
+    	return communicationDao.countComment(itemNo);
+    }
 }

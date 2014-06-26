@@ -37,4 +37,6 @@ public interface CommunicationDao {
     public Integer updateReply(Integer replyNo, String content);
     
     public Integer removeComment(Integer commentNo);
+    
+    public Integer countComment(Integer itemNo);
 }

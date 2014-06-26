@@ -126,4 +126,12 @@
 		WHERE inq.user_no = #{value}
 	</select>
 	
+	<select id="countComment" parameterType="integer" resultType="integer">
+		SELECT
+		COUNT(DISTINCT c.content) + COUNT(r.content)
+		FROM comment AS c
+			 LEFT OUTER JOIN reply AS r ON r.comment_no = c.comment_no
+		WHERE c.item_no = #{value}
+	</select>
+	
 </mapper>
