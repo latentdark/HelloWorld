@@ -3253,7 +3253,7 @@ div.mousescroll:hover {
 			"<div class=\"progress-bar progress-bar-success\"></div>"+
 		"</div>"+
 
-		"<form action=\"/itemModify\" name=\"modifyform\" id=\"modify_form\" method=\"post\" enctype=\"multipart/form-data\">"+
+		"<form action=\"/updateItem\" name=\"modifyform\" id=\"modify_form\" method=\"post\" enctype=\"multipart/form-data\">"+
 			"<div class=\"tab-content\">"+
 
 				"<div class=\"tab-pane\" id=\"tab11\">"+

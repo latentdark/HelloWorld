@@ -58,6 +58,106 @@ public class TestController {
     	System.out.println("__________________________");
 	}
 
+	//제품 수정
+    @RequestMapping("/updateItem")
+  	public String updateItem (
+  			@ModelAttribute("Item") Item item,
+  			@ModelAttribute("user") User user,
+  			HttpSession session, HttpServletRequest request, HttpServletResponse response)
+  					throws Exception{
+    	System.out.println("아이템 수정!");	
+    	String dir="C:\\0_Revolution_Workspace\\Rebirth_Fresh_Market\\src\\main\\webapp\\resources\\itempictures";
+  		int max = 5 * 640 * 480; //최대 업로드 크기는 5M까지만 허용
+  		
+	    MultipartRequest m = new MultipartRequest(request, dir, max, "utf-8",new DefaultFileRenamePolicy());
+	   	  
+  		List<String> images=new ArrayList<String>();
+  		if(m.getOriginalFileName("itemPicturePath1")!=null){
+  			images.add(m.getOriginalFileName("itemPicturePath1"));
+  		}
+  		if(m.getOriginalFileName("itemPicturePath2")!=null){
+  			images.add(m.getOriginalFileName("itemPicturePath2"));
+  		}
+  		if(m.getOriginalFileName("itemPicturePath3")!=null){
+  			images.add(m.getOriginalFileName("itemPicturePath3"));
+  		}
+  		
+  		//파일명 변경
+  		String fileName;
+  		String[] extension;
+  		String newFileName;
+  		List<String> imageList = new ArrayList<String>();
+  		
+  		for (int i=0;i<images.size();i++){
+	  		fileName=images.get(i);
+	  		System.out.println(fileName);
+	  		extension=fileName.split("\\.");
+	  		newFileName=new SimpleDateFormat("yyyyMMddHmsS").format(new Date())+((int)(Math.random()*100))+"."+extension[1];
+	  		
+	  		if(!fileName.equals("")) {
+	  		     // 원본이 업로드된 절대경로와 파일명를 구한다.
+	  		     String fullFileName = dir + "/" + fileName;
+	  		     File f1 = new File(fullFileName);
+	  		     if(f1.exists()) {     // 업로드된 파일명이 존재하면 Rename한다.
+	  		          File newFile = new File(dir + "/" + newFileName);
+	  		          f1.renameTo(newFile);   // rename...
+	  		          imageList.add(newFileName);
+	  		          System.out.println(imageList.get(i));
+	  		     }else{
+	  		     System.out.println("아이템 등록 실패");
+	  		     }
+	  		}
+  		}
+  		
+  		//아이템 채우기
+  		if(imageList.size()==0){
+  			item.setItemPicturePath1("noimage.gif");
+  			item.setItemPicturePath1((m.getParameter("xItemPicture1")));
+  			item.setItemPicturePath2((m.getParameter("xItemPicture2")));
+  			item.setItemPicturePath3((m.getParameter("xItemPicture3")));
+  		}else if(imageList.size()==1){
+  			item.setItemPicturePath1(imageList.get(0));			
+  		}else if(imageList.size()==2){
+  			item.setItemPicturePath1(imageList.get(0));
+  			item.setItemPicturePath2(imageList.get(1));
+  		}else if(imageList.size()==3){
+  			item.setItemPicturePath1(imageList.get(0));
+  			item.setItemPicturePath2(imageList.get(1));
+  			item.setItemPicturePath3(imageList.get(2));
+  		}
+  		
+  		
+  		
+  		user=(User)session.getAttribute("user");
+  		item.setUserNo(user.getUserNo());
+  		item.setItemNo(Integer.parseInt(m.getParameter("itemNo")));
+  		item.setItemName(m.getParameter("itemName"));
+  		item.setPrice(Integer.parseInt(m.getParameter("price")));
+  		item.setItemInfo(m.getParameter("itemInfo"));
+  		item.setGridX1(Double.parseDouble(m.getParameter("gridX1")));
+  		item.setGridY1(Double.parseDouble(m.getParameter("gridY1")));
+  		item.setCategory1(Integer.parseInt(m.getParameter("category1")));
+  		item.setCategory2(Integer.parseInt(m.getParameter("category2")));
+  		item.setStateCode(Integer.parseInt(m.getParameter("stateCode")));
+  		
+  		
+  		System.out.println("아이템 번호 : "+item.getItemNo());
+  		System.out.println("아이템 이름 : "+item.getItemName());
+  		System.out.println("상세 내용 : "+item.getItemInfo());
+  		System.out.println("가격 : "+item.getPrice());
+  		System.out.println("x좌표 : "+item.getGridX1());
+  		System.out.println("y좌표 : "+item.getGridY1());
+  		System.out.println("대분류 : "+item.getCategory1());
+  		System.out.println("소분류 : "+item.getCategory2());
+  		System.out.println("사진 1 : "+item.getItemPicturePath1());
+  		System.out.println("사진 2 : "+item.getItemPicturePath2());
+  		System.out.println("사진 3 : "+item.getItemPicturePath3());
+  		System.out.println("상태 : "+item.getStateCode());
+  		
+  		itemService.updateItem(item);
+    	return "redirect:/";
+    }
+	
 	@RequestMapping(value ="/dialog")
 	public String home(Locale locale, Model model) {
 		return "Test/Dialog";

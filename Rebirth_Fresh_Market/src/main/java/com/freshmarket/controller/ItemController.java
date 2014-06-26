@@ -124,7 +124,7 @@ public class ItemController {
   			HttpSession session, HttpServletRequest request, HttpServletResponse response)
   					throws Exception{
   		
-  		System.out.println("_______________________________________________");
+ 		System.out.println("_______________________________________________");
   		System.out.println("==> 아이템 등록 테스트");
   		System.out.println("_______________________________________________");
  
@@ -132,16 +132,7 @@ public class ItemController {
   		int max = 5 * 640 * 480; //최대 업로드 크기는 5M까지만 허용
   		
 	    MultipartRequest m = new MultipartRequest(request, dir, max, "utf-8",new DefaultFileRenamePolicy());
-	   
-	    //다중 등록
-	    /* Enumeration e=m.getFileNames();
-	    String names;
-	    while(e.hasMoreElements()){
-	    	names=(String)e.nextElement(); 	
-	    	System.out.println("나와라 :"+m.getFilesystemName(names));
-	    }
-	   */
-	  
+	   	  
   		List<String> images=new ArrayList<String>();
   		if(m.getOriginalFileName("itemPicturePath1")!=null){
   			images.add(m.getOriginalFileName("itemPicturePath1"));
