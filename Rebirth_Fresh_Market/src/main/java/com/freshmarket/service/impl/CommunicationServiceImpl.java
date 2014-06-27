@@ -85,6 +85,11 @@ public class CommunicationServiceImpl implements CommunicationService {
 	}
 	
 	@Override
+	public Integer addComment(Integer itemNo, Integer userNo, String content){
+		return communicationDao.addComment(itemNo, userNo, content);
+	}
+	
+	@Override
 	public Integer addReply(Integer commentNo, Integer userNo, String content){
 		return communicationDao.addReply(commentNo, userNo, content);
 	}

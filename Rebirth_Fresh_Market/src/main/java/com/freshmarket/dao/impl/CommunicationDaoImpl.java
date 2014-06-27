@@ -98,6 +98,16 @@ public class CommunicationDaoImpl implements CommunicationDao {
 	}
 
 	@Override
+	public Integer addComment(Integer itemNo, Integer userNo, String content){
+		HashMap map = new HashMap();
+		map.put("itemNo", itemNo);
+		map.put("userNo", userNo);
+		map.put("content", content);
+		
+		return sqlSession.insert("CommunicationMapper.addComment", map);
+	}
+	
+	@Override
 	public Integer addReply(Integer commentNo, Integer userNo, String content){
 		HashMap map = new HashMap();
 		map.put("commentNo", commentNo);

@@ -100,7 +100,7 @@ public class Comment {
 				+ commentRegiDate + ", replyRegiDate=" + replyRegiDate
 				+ ", commentTime=" + commentTime + ", replyTime=" + replyTime
 				+ ", commentStateCode=" + commentStateCode
-				+ ", replyStateCode=" + replyStateCode + "]";
+				+ ", replyStateCode=" + replyStateCode + "]"+"\n";
 	}
 	
 }

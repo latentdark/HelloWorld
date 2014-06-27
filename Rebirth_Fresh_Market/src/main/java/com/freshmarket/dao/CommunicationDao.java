@@ -26,6 +26,8 @@ public interface CommunicationDao {
     
     public List<Item> findInquireList(Integer userNo);
     
+    public Integer addComment(Integer itemNo, Integer userNo, String content);
+    
     public Integer addReply(Integer commentNo, Integer userNo, String content);
     
     public Integer removeReply(Integer replyNo);
