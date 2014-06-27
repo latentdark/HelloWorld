@@ -90,7 +90,7 @@
 								     LEFT OUTER JOIN user AS u ON u.user_no = r.user_no
 								ORDER BY r.reply_no	)AS r ON c.comment_no = r.comment_no
 		WHERE c.item_no = #{value}
-		ORDER BY c.comment_no;
+		ORDER BY c.comment_no, r.reply_no
 	</select>
 	
 	<delete id="removeComment" parameterType="integer">
