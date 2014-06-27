@@ -75,7 +75,7 @@
 		c.time AS comment_time,
 		c.state_code AS comment_state_code,
 		r.reply_no,
-		r.nickname AS reply_witer,
+		r.nickname AS reply_writer,
 		r.content AS reply_content,
 		r.regi_date AS reply_regi_date,
 		r.time AS reply_time,
