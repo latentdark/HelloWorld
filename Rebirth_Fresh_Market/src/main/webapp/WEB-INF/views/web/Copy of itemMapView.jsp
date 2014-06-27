@@ -1493,7 +1493,7 @@ div.mousescroll:hover {
 		
 		function markerAddListener(marker, i) {
 		 console.log("markerAddListener() Inn");
-			
+		
 		 var content=
 			 "<div id=\"infowindow\">"+
 			 	"<h1>"+
@@ -1510,10 +1510,8 @@ div.mousescroll:hover {
 		 //var dialogName="#item"+marker.content;
 		 google.maps.event.addListener(marker, 'mouseover', function() {
 			 //alert("mouseover");
-			
-			  //infowindow.open(marker.get('map'), marker);	
 			 infowindow.open(marker.get('map'), marker);
-			 
+			 countComment(marker);
 		  });
 		 
 		 google.maps.event.addListener(marker, 'mouseout', function() {	
@@ -1522,13 +1520,18 @@ div.mousescroll:hover {
 		  });
 		 
 		  google.maps.event.addListener(marker, 'click', function() {
-			  	  
-			  modalInjection(marker);
+			//var count=countComment(marker.itemNo);
+			
+			 
+			 // if(countComment()==true){
+				  modalInjection(marker,countCommentResult);
+			 // }
 		  });
 		  
-		}
-	
+		}<%-- markerAddListener End--%>
+		
 		<%-- markerAddListener Start--%>
+		<%-- 
 		var bounds = new google.maps.LatLngBounds();
 		
 		function markerAddListener(marker, i) {
@@ -1568,7 +1571,7 @@ div.mousescroll:hover {
 		  
 		}
 		
-		
+		--%>
 		<%-- searchListMarkerFocus Start --%>
 		var infowindow;
 		var position;
@@ -3023,7 +3026,7 @@ div.mousescroll:hover {
  var gridXY;
  var cate1;
  var cate2;
- function modalInjection(marker){
+ function modalInjection(marker,countCommentResult){
 	 flag="1"; 
 	  console.log(marker.stateCode+"state");
 	  markerNo=marker.itemNo;
@@ -3039,6 +3042,8 @@ div.mousescroll:hover {
 	  
 	  itemNo=document.getElementById("deleteItemNo").value=markerNo;	  
 	  var htmlinjec;
+	  
+	  
 	  new function makeHtml(){
 			htmlinjec=
 			"<div id=\"item"+marker.itemNo+"\" class=\"item"+marker.itemNo+" modal fade\" title=\""+marker.itemName+"\"  tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">"+
@@ -3110,7 +3115,9 @@ div.mousescroll:hover {
 						}
 					}
 						htmlinjec+=
-						"<button id=\"replyButton\" class=\"btn btn-primary\" data-toggle=\"modal\" onclick=\"change()\">댓글 <span class=\"badge\">32</span></button>"+
+						"<button id=\"replyButton\" class=\"btn btn-primary\" data-toggle=\"modal\" onclick=\"change()\">댓글 "+
+						//"<span class=\"badge\">"+32+"</span></button>"+
+						"<span class=\"badge\">"+countCommentResult+"</span></button>"+
 						"<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>"+
 						"</div>"+
 					"</div>"+	
@@ -3168,8 +3175,10 @@ div.mousescroll:hover {
 		replyDiv="<div  class=\"mousescroll\" style=\"height:500px; text-align:left; font-size:13px;\" id=\"accordion\">"+
 					"<table class=\"table\">"+
 						"<tr><td><div>"+
+						
 							"<b>양키</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a class=\"accordion-toggle\" data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#replyacco\">답글</a>"+
 							"<p><span>가나다라마바사아자차카타파하</span></p>"+
+							
 							"<div id=\"replyacco\"  class=\"panel-collapse collapse\">"+
 						      "<div class=\"panel-body\" style=\"padding-top:0px; padding-bottom:5px; padding-left:0px; padding-right:0px\">"+
 							      "<hr>"+
@@ -3182,6 +3191,7 @@ div.mousescroll:hover {
 							      "</div>"+
 						 	  "</div>"+
 						    "</div>"+
+						    
 						"</div></td></tr>"+
 						
 						"<tr><td><div>"+
@@ -3253,7 +3263,7 @@ div.mousescroll:hover {
 			"<div class=\"progress-bar progress-bar-success\"></div>"+
 		"</div>"+
 
-		"<form action=\"/itemModify\" name=\"modifyform\" id=\"modify_form\" method=\"post\" enctype=\"multipart/form-data\">"+
+		"<form action=\"/updateItem\" name=\"modifyform\" id=\"modify_form\" method=\"post\" enctype=\"multipart/form-data\">"+
 			"<div class=\"tab-content\">"+
 
 				"<div class=\"tab-pane\" id=\"tab11\">"+
@@ -3366,10 +3376,13 @@ div.mousescroll:hover {
 	 	console.log("누른후 "+flag);
 	 }else{
 		document.getElementById("mmodal").innerHTML=returnDiv;
-		document.getElementById("replyButton").innerHTML="댓글 <span class=\"badge\">42</span>";
+		document.getElementById("replyButton").innerHTML=
+			"댓글 <span class=\"badge\">"+countCommentResult+"</span>";
 		flag="1";
 		console.log("누른후 "+flag);
 	 }
+	 
+	 findComment();
 };
 
  function modify(){
