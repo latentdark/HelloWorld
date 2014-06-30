@@ -147,7 +147,8 @@ public class CommunicationDaoImpl implements CommunicationDao {
     
 	@Override
     public Integer removeComment(Integer commentNo){
-    	return sqlSession.delete("CommunicationMapper.removeComment", commentNo); 
+    	return sqlSession.delete("CommunicationMapper.removeComment1", commentNo)
+    			+ sqlSession.delete("CommunicationMapper.removeComment2", commentNo); 
     }
 	
 	@Override
