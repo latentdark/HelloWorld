@@ -1385,7 +1385,7 @@ div.mousescroll:hover {
 								category2: itemList[i].category2,
 								gridX1: itemList[i].gridX1,
 								gridY1: itemList[i].gridY1,
-								
+								regiDate : itemList[i].regiDate,
 								distance:null,
 								distance_m:null,								
 								price : itemList[i].price
@@ -2559,7 +2559,69 @@ div.mousescroll:hover {
 	                  height: '150px'                  
 	              });
 	
+	//숫자만 입력되게 
+	function onlyNumber(){
+	   if((event.keyCode<48)||(event.keyCode>57))
+	      event.returnValue=false;
+	}
 
+	//유효성 체크	
+	function checkValid(){
+		var itemNM=document.getElementById("item_name");
+		var itemPRC=document.getElementById("price");
+		var itemLC=document.getElementById("reg_add");
+		var radioBuy=document.getElementById("buybtn");
+		var radioSell=document.getElementById("sellbtn");
+		var btnLC=document.getElementById("loca_btn");
+		
+		var alertMS='';
+		var checkState='0';
+		
+		if(itemNM.value.length==0){
+			alertMS+="물품명을 입력하세요\n";
+			checkState='1';
+		}
+		if(itemPRC.value.length==0){
+			alertMS+="희망가격을 입력하세요\n";
+			checkState='2';
+		}
+		if(itemLC.value.length==0){
+			alertMS+="거래할 위치를 지정하세요\n";
+			checkState='3';
+		}	
+		if(radioBuy.checked==false&&radioSell.checked==false){
+			alertMS+="거래를 선택해주세요\n";
+			checkState='4';
+			/* 		
+	$('#tab15').removeClass('active');
+			$('#tab11').addClass('active'); */
+		}
+		
+		if(alertMS!=''){
+			alert(alertMS);
+			if(checkState=='1'){
+				itemNM.focus();
+				itemNM.select();
+			}else if(checkState=='2'){
+				itemPRC.focus();
+				itemPRC.select();
+			}else if(checkState=='3'){
+				document.getElementById("previousA").click();
+				document.getElementById("previousA").click();
+				document.getElementById("previousA").click();
+			}else if(checkState=='4'){
+				document.getElementById("previousA").click();
+				document.getElementById("previousA").click();
+				document.getElementById("previousA").click();
+				document.getElementById("previousA").click();
+			}
+			return false;
+		}else{
+			return true;
+		}
+	}
+				
+	
    </script>
 
 
@@ -2715,7 +2777,7 @@ div.mousescroll:hover {
 				</div>
 
 				<form action="/addItem" name="registerform" id="register_form"
-					method="post" enctype="multipart/form-data">
+					method="post" enctype="multipart/form-data" onsubmit="return checkValid();">
 					<div class="tab-content">
 
 						<div class="tab-pane" id="tab11">
@@ -2776,15 +2838,15 @@ div.mousescroll:hover {
 								<br> <input id="item_name" name="itemName" type="text"
 									class="form-control input-normal" placeholder="물품명을 입력하세요">
 								<div class="input-group">
-									<span class="input-group-addon">￦</span><input type="text"
-										name="price" class="form-control" placeholder="희망가격 입력" onKeypress="if(event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" style="IME-MODE:disabled;" >
+									<span class="input-group-addon">￦</span><input type="text" id="price"
+										name="price" class="form-control" placeholder="희망가격 입력" onKeypress="onlyNumber();" style="IME-MODE:disabled;" >
 								</div>
 								<br>
 								<textarea name="itemInfo" class="form-control" rows="10"
 									cols="80" placeholder="상세내용을 입력하세요"></textarea>
 								<br>
 								<button class="btn btn-default" data-toggle="modal"
-									href="#preview_modal" onclick="return false">미리보기</button>							
+									href="#preview_modal" onclick="return false">미리보기</button>						
 								<input type="submit" class="btn btn-primary"  value="등록하기">
 
 
@@ -2795,7 +2857,7 @@ div.mousescroll:hover {
 							<ul class="pager wizard">
 								<li class="previous first" style="display: none;"><a
 									href="#" onclick="return false">First</a></li>
-								<li class="previous"><a href="#" onclick="return false">Previous</a></li>
+								<li class="previous"><a id="previousA" href="#" onclick="return false">Previous</a></li>
 								<li class="next last" style="display: none;"><a href="#"
 									onclick="return false">Last</a></li>
 								<li class="next"><a href="#" onclick="return false">Next</a></li>
@@ -3050,8 +3112,8 @@ div.mousescroll:hover {
 				        "<h4 class=\"modal-title\">"+marker.itemName+"<font color=\"red\"> [ "+marker.price+" 원 ]</font></h4>"+
 				       
 						"</div>"+
-						"<div class=\"modal-body\" id=\"mmodal\">"+
-						
+						"<div class=\"modal-body\" id=\"mmodal\" style=\"padding-top:10px\">"+
+						"<div style=\"text-align:right;padding-bottom: 10px;color: gray;\">"+marker.regiDate+"</div>"+
 					    "<div id=\"imgslider_container_view\">"+
 						  "<div class=\"row-fluid\">"+
 						    "<div class=\"span12\" id=\"slider\">"+
@@ -3254,7 +3316,7 @@ div.mousescroll:hover {
 			"<div class=\"progress-bar progress-bar-success\"></div>"+
 		"</div>"+
 
-		"<form action=\"/updateItem\" name=\"modifyform\" id=\"modify_form\" method=\"post\" enctype=\"multipart/form-data\">"+
+		"<form action=\"/updateItem\" name=\"modifyform\" id=\"modify_form\" method=\"post\" enctype=\"multipart/form-data\" onsubmit=\"return checkValid();\">"+
 			"<div class=\"tab-content\">"+
 
 				"<div class=\"tab-pane\" id=\"tab11\">"+
@@ -3327,7 +3389,7 @@ div.mousescroll:hover {
 						"<h4>상세내용 입력하기</h4>"+
 						"<br><input id=\"item_name\" name=\"itemName\" type=\"text\" class=\"form-control input-normal\" placeholder=\"물품명을 입력하세요\" value=\""+marker.itemName+"\">"+
 						"<div class=\"input-group\">"+
-							"<span class=\"input-group-addon\">￦</span><input type=\"text\" name=\"price\" class=\"form-control\" placeholder=\"희망가격 입력\" value=\""+marker.price+"\" onKeypress=\"if(event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;\" style=\"IME-MODE:disabled;\">"+
+							"<span class=\"input-group-addon\">￦</span><input type=\"text\" id=\"price\" name=\"price\" class=\"form-control\" placeholder=\"희망가격 입력\" value=\""+marker.price+"\" onKeypress=\"onlyNumber();\" style=\"IME-MODE:disabled;\">"+
 						"</div>"+
 						"<input type=\"hidden\"name=\"itemNo\" value=\""+marker.itemNo+"\">"+
 						"<br>"+
@@ -3343,7 +3405,7 @@ div.mousescroll:hover {
 				"<div id=\"pager_wizard\">"+
 					"<ul class=\"pager wizard\">"+
 						"<li class=\"previous first\" style=\"display: none;\"><a href=\"#\" onclick=\"return false\">First</a></li>"+
-						"<li class=\"previous\"><a href=\"#\" onclick=\"return false\">Previous</a></li>"+
+						"<li class=\"previous\"><a id=\"previousA\"  href=\"#\" onclick=\"return false\">Previous</a></li>"+
 						"<li class=\"next last\" style=\"display: none;\"><a href=\"#\" onclick=\"return false\">Last</a></li>"+
 						"<li class=\"next\"><a href=\"#\" onclick=\"return false\">Next</a></li>"+
 					"</ul>"+

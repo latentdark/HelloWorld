@@ -184,7 +184,7 @@ position: fixed;
 #mainlogo{
 	position: fixed;
 	z-index: 1000;
-	bottom:1px;
+	bottom:13px;
 	right:1px;
 	width: 700px;
 }
@@ -329,13 +329,15 @@ position: fixed;
 <div id="searchBar">
 	<form class="form-wrapper cf" action="#" onsubmit="return itemSearch('Quick')">
 	        <input id="searchKeywordQuick" type="text" placeholder=" 물품명을 입력해주세요" ><!-- required -->
-	        <button type="submit">Search</button>
+	        <button type="submit"><span class="glyphicon glyphicon-search"></span></button>
 	        	
 	</form>  	 
 </div>
 
 <div>
+<a href="/">
 	<img id="mainlogo" src="resources/imgs/logo5re.png">
+</a>
 </div>
 
 <c:if test='${user==null}'>
