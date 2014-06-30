@@ -97,12 +97,12 @@
 		ORDER BY c.comment_no, r.reply_no
 	</select>
 	
-	<delete id="removeComment" parameterType="integer">
-		DELETE comment, reply
-		FROM comment, reply
-		WHERE comment.comment_no = #{value}
-			  AND
-			  reply.comment_no = #{value}
+	<delete id="removeComment1" parameterType="integer">
+		DELETE FROM comment	WHERE comment_no = #{value}
+	</delete>
+	
+	<delete id="removeComment2" parameterType="integer">
+		DELETE FROM reply WHERE comment_no = #{value}
 	</delete>
 		 
 	<delete id="removeInquire" parameterType="HashMap">
