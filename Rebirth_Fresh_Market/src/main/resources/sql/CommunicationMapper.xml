@@ -16,7 +16,9 @@
 	
 	<resultMap id="CommentSelectMap" type="comment">
 		<result property="commentNo" column="comment_no" jdbcType="INTEGER"/>
+		<result property="commentUserNo" column="commentUserNo" jdbcType="INTEGER"/>
 		<result property="replyNo" column="reply_no" jdbcType="INTEGER"/>
+		<result property="replyUserNo" column="replyUserNo" jdbcType="INTEGER"/>
 		<result property="commentWriter" column="comment_writer" jdbcType="VARCHAR"/>
 		<result property="replyWriter" column="reply_writer" jdbcType="VARCHAR"/>
 		<result property="commentContent" column="comment_content" jdbcType="VARCHAR"/>
@@ -69,12 +71,14 @@
 	<select id="findComment" parameterType="integer" resultMap="CommentSelectMap">
 		SELECT
 		c.comment_no,
+		c.user_no AS commentUserNo,
 		u.nickname AS comment_writer,
 		c.content AS comment_content,
 		c.regi_date AS comment_regi_date,
 		c.time AS comment_time,
 		c.state_code AS comment_state_code,
 		r.reply_no,
+		r.user_no AS replyUserNo,
 		r.nickname AS reply_writer,
 		r.content AS reply_content,
 		r.regi_date AS reply_regi_date,
@@ -84,7 +88,7 @@
 		     LEFT OUTER JOIN user AS u ON c.user_no = u.user_no
 		     LEFT OUTER JOIN item AS i ON c.item_no = i.item_no
 		     LEFT OUTER JOIN (	SELECT
-								r.comment_no, r.reply_no, u.nickname, r.content, r.regi_date, r.time, r.state_code
+								r.comment_no, r.user_no, r.reply_no, u.nickname, r.content, r.regi_date, r.time, r.state_code
 								FROM reply AS r
 								     LEFT OUTER JOIN comment AS c ON r.comment_no = c.comment_no
 								     LEFT OUTER JOIN user AS u ON u.user_no = r.user_no

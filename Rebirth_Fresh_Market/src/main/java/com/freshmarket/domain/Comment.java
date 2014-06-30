@@ -6,7 +6,9 @@ import java.sql.Date;
 public class Comment {
 	
 	Integer commentNo;
+	Integer commentUserNo;
 	Integer replyNo;
+	Integer replyUserNo;
 	String commentWriter;
 	String replyWriter;
 	String commentContent;
@@ -17,18 +19,29 @@ public class Comment {
 	Time replyTime;
 	Integer commentStateCode;
 	Integer replyStateCode;
-	
 	public Integer getCommentNo() {
 		return commentNo;
 	}
 	public void setCommentNo(Integer commentNo) {
 		this.commentNo = commentNo;
 	}
+	public Integer getCommentUserNo() {
+		return commentUserNo;
+	}
+	public void setCommentUserNo(Integer commentUserNo) {
+		this.commentUserNo = commentUserNo;
+	}
 	public Integer getReplyNo() {
 		return replyNo;
 	}
 	public void setReplyNo(Integer replyNo) {
 		this.replyNo = replyNo;
+	}
+	public Integer getReplyUserNo() {
+		return replyUserNo;
+	}
+	public void setReplyUserNo(Integer replyUserNo) {
+		this.replyUserNo = replyUserNo;
 	}
 	public String getCommentWriter() {
 		return commentWriter;
@@ -90,17 +103,18 @@ public class Comment {
 	public void setReplyStateCode(Integer replyStateCode) {
 		this.replyStateCode = replyStateCode;
 	}
-	
 	@Override
 	public String toString() {
-		return "Comment [commentNo=" + commentNo + ", replyNo=" + replyNo
-				+ ", commentWriter=" + commentWriter + ", replyWriter="
-				+ replyWriter + ", commentContent=" + commentContent
-				+ ", replyContent=" + replyContent + ", commentRegiDate="
-				+ commentRegiDate + ", replyRegiDate=" + replyRegiDate
-				+ ", commentTime=" + commentTime + ", replyTime=" + replyTime
-				+ ", commentStateCode=" + commentStateCode
-				+ ", replyStateCode=" + replyStateCode + "]"+"\n";
+		return "Comment [commentNo=" + commentNo + ", commentUserNo="
+				+ commentUserNo + ", replyNo=" + replyNo + ", replyUserNo="
+				+ replyUserNo + ", commentWriter=" + commentWriter
+				+ ", replyWriter=" + replyWriter + ", commentContent="
+				+ commentContent + ", replyContent=" + replyContent
+				+ ", commentRegiDate=" + commentRegiDate + ", replyRegiDate="
+				+ replyRegiDate + ", commentTime=" + commentTime
+				+ ", replyTime=" + replyTime + ", commentStateCode="
+				+ commentStateCode + ", replyStateCode=" + replyStateCode + "]";
 	}
+	
 	
 }

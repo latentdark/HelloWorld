@@ -116,21 +116,15 @@ public class CommunicationController {
 		return "addReply success";
 	}
     
-    /*
-    @RequestMapping(value = "/addReply")
+   
+    @RequestMapping(value = "/removeComment")
 	@ResponseBody
-	public String addReply(
-			@RequestParam(value="commentNo", required=false, defaultValue="0")Integer commentNo,
-			@RequestParam(value="userNo", required=false, defaultValue="0")Integer userNo,
-			@RequestParam(value="content", required=false, defaultValue="0")String content
-			) {
-		System.out.println("commentNo_"+commentNo);
-		System.out.println("userNo_"+userNo);
-		System.out.println("content_"+content);
-		communicationService.removeReply(replyNo);
-	
-		return "addReply success";
+	public String removeComment(
+			@RequestParam(value="commentNo", required=false, defaultValue="0")Integer commentNo) {
+		System.out.println("removeComment _ commentNo_"+commentNo);
+		communicationService.removeComment(commentNo);
+		return "removeComment success";
 	}
-	*/
+    /**/
     
 }
