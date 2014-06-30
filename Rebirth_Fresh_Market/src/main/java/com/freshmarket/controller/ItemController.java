@@ -92,7 +92,6 @@ public class ItemController {
 		System.out.println("item_controller_session_getId_"+session.getId());
 		
 		List itemList=itemService.findItemList(null);
-	
 		return itemList;
 	}
 	
