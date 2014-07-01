@@ -36,44 +36,50 @@ public class CommunicationTest {
 		user.setUserNo(1); 
 		Integer itemNo = item.getItemNo();
 		Integer userNo = user.getUserNo();
-		String content = "너무비싸요 깎아주세요";
+		String content = "";
 		
 		//System.out.println("insert 결과 : "+communicationService.addInquire(userNo, itemNo, content));
 		
+		//addComment
+		content = "댓글잘들어가지나 테스트";
+		//System.out.println("addComment() 결과 : "+communicationService.addComment(itemNo, userNo, content));		
 		
 		//findInquireList
-		System.out.println("selectList 결과 : "+communicationService.findInquireList(userNo));
+		//System.out.println("selectList 결과 : "+communicationService.findInquireList(userNo));
 		
 		//removeInquire
-		System.out.println("delete 결과 : "+communicationService.removeInquire(userNo, itemNo));
-		System.out.println("select 결과 : "+communicationService.findInquireList(userNo));
+		//System.out.println("delete 결과 : "+communicationService.removeInquire(userNo, itemNo));
+		//System.out.println("select 결과 : "+communicationService.findInquireList(userNo));
 		
 		//updateComment
 		Comment comment = new Comment();
-		comment.setCommentNo(22);
+		comment.setCommentNo(43);
 		Integer commentNo = comment.getCommentNo();
-		content = "완전짱짱비쌈 깎아주세요";
-		System.out.println("update 결과 : "+communicationService.updateComment(commentNo, content));
+		content = "테스트잘됫냐 슈발";
+		//System.out.println("update 결과 : "+communicationService.updateComment(commentNo, content));
 		
 		//addReply
 		user.setUserNo(5);
 		userNo = user.getUserNo();
-		content = "안되욤";
+		content = "이거도 잘되나 쓔벌?";
 		//System.out.println("insert 결과 : "+communicationService.addReply(commentNo, userNo, content));
 		
 		//findComment
-		System.out.println("selectList 결과: "+communicationService.findComment(itemNo));
+		//System.out.println("selectList 결과: "+communicationService.findComment(itemNo));
 		
 		//updateReply
-		comment.setReplyNo(12);
-		content = "네 안되욤";
+		comment.setReplyNo(26);
+		content = "잘되는구먼 쓔발";
 		Integer replyNo = comment.getReplyNo();
-		System.out.println("update 결과 : "+communicationService.updateReply(replyNo, content));
+		//System.out.println("update 결과 : "+communicationService.updateReply(replyNo, content));
 		
 		//removeComment
 		System.out.println("delete 결과 : "+communicationService.removeComment(commentNo));
 		
 		//removeReply
-		System.out.println("delete 결과 : "+communicationService.removeReply(replyNo));
+		//System.out.println("delete 결과 : "+communicationService.removeReply(replyNo));
+		
+		//countComment
+		//System.out.println("select 결과 : "+communicationService.countComment(419));
 	}
 }

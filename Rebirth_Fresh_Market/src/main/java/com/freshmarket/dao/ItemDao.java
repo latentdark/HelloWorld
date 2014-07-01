@@ -12,6 +12,10 @@ public interface ItemDao {
     public Item findItem(Integer itemNo);
 
     public Integer updateItem(Item item);
+    
+    public Integer updateItemPicture(Item item);
+    
+    public Integer updateLocation(Item item);
 
     public Integer removeItem(Integer itemNo);
 

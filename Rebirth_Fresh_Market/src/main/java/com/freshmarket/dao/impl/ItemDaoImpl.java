@@ -52,6 +52,14 @@ public class ItemDaoImpl implements ItemDao {
 		return sqlSession.update("ItemMapper.updateItem", item);
 	}
 
+	public Integer updateItemPicture(Item item){
+		return sqlSession.update("ItemMapper.updateItemPicture", item);
+	}
+    
+    public Integer updateLocation(Item item){
+    	return sqlSession.update("ItemMapper.updateLocation", item);
+    }
+    
 	@Override
 	public Integer removeItem(Integer itemNo) {
 		return sqlSession.delete("ItemMapper.removeItem", itemNo);

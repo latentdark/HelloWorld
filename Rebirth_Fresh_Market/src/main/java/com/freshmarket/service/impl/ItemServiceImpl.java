@@ -46,6 +46,14 @@ public class ItemServiceImpl implements ItemService {
 		// TODO Auto-generated method stub
 		return itemDao.updateItem(item);
 	}
+	
+	public Integer updateItemPicture(Item item){
+		return itemDao.updateItemPicture(item);
+	}
+    
+    public Integer updateLocation(Item item){
+    	return itemDao.updateLocation(item);
+    }
 
 	@Override
 	public Integer removeItem(Integer itemNo) {
