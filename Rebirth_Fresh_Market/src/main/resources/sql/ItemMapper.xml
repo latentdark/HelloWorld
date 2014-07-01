@@ -212,6 +212,33 @@
 	</select>
 	 -->
 	
+	<select id="findItemList2" parameterType="search" resultMap="ItemSelectMap">
+		SELECT
+		u.user_no,
+		i.item_no,
+		i.item_name,
+		i.item_info,
+		i.price,
+		i.state_code,
+		i.category1,
+		i.category2,
+		i.regi_date,
+		ip.filepath1,
+		ip.filepath2,
+		ip.filepath3,
+		l.grid_x1,
+		l.grid_y1,
+		l.grid_x2,
+		l.grid_y2,
+		l.grid_x3,
+		l.grid_y3
+		FROM item i
+			 LEFT OUTER JOIN item_pic ip ON ip.item_no = i.item_no
+			 LEFT OUTER JOIN location l ON l.item_no = i.item_no
+			 LEFT OUTER JOIN user u ON i.user_no = u.user_no
+		limit #{startNum}, #{endNum}
+	</select>
+	
 	<update id="updateItem" parameterType="item">
 		UPDATE item
 		<set>
@@ -232,6 +259,47 @@
 			</if>
 			<if test="category2!=null">
 				category2=#{category2, jdbcType=INTEGER}
+			</if>
+		</set>
+		WHERE item_no = #{itemNo, jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateItemPicture" parameterType="item">
+		UPDATE item_pic
+		<set>
+			<if test="itemPicturePath1!=null">
+				filepath1=#{itemPicturePath1, jdbcType=VARCHAR},
+			</if>
+			<if test="itemPicturePath2!=null">
+				filepath2=#{itemPicturePath2, jdbcType=VARCHAR},
+			</if>
+			<if test="itemPicturePath3!=null">
+				filepath3=#{itemPicturePath3, jdbcType=VARCHAR}
+			</if>
+		</set>
+		WHERE item_no = #{itemNo, jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateLocation" parameterType="item">
+		UPDATE location
+		<set>
+			<if test="gridX1!=null">
+				gird_x1=#{gridX1, jdbcType=DOUBLE},
+			</if>
+			<if test="gridY1!=null">
+				gird_y1=#{gridY1, jdbcType=DOUBLE},
+			</if>
+			<if test="gridX2!=null">
+				gird_x2=#{gridX2, jdbcType=DOUBLE},
+			</if>
+			<if test="gridY2!=null">
+				gird_y2=#{gridY2, jdbcType=DOUBLE},
+			</if>
+			<if test="gridX3!=null">
+				gird_x3=#{gridX3, jdbcType=DOUBLE},
+			</if>
+			<if test="gridY3!=null">
+				gird_y3=#{gridY3, jdbcType=DOUBLE}
 			</if>
 		</set>
 		WHERE item_no = #{itemNo, jdbcType=INTEGER}
