@@ -125,6 +125,15 @@ public class CommunicationController {
 		communicationService.removeComment(commentNo);
 		return "removeComment success";
 	}
+    
+    @RequestMapping(value = "/removeReply")
+ 	@ResponseBody
+ 	public String removeReply(
+ 			@RequestParam(value="replyNo", required=false, defaultValue="0")Integer replyNo) {
+ 		System.out.println("removeComment _ commentNo_"+replyNo);
+ 		communicationService.removeReply(replyNo);
+ 		return "removeComment success";
+ 	}
     /**/
     
 }

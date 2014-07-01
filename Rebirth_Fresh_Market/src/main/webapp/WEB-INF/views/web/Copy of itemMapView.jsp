@@ -1342,7 +1342,7 @@ div.mousescroll:hover {
 			console.log("markersInit()_Inn");
 			markers=[];
 			//statCode 1=sell, 2=buy, 3=deal
-			console.log(itemList);
+			//console.log(itemList);
 			console.log("markersInit()__itemList.length__"+itemList.length);
 			for(var i=0;i<itemList.length;i++){
 				
@@ -1512,6 +1512,7 @@ div.mousescroll:hover {
 			 //alert("mouseover");
 			 infowindow.open(marker.get('map'), marker);
 			 countComment(marker);
+			 findComment(marker);
 		  });
 		 
 		 google.maps.event.addListener(marker, 'mouseout', function() {	
@@ -1521,11 +1522,7 @@ div.mousescroll:hover {
 		 
 		  google.maps.event.addListener(marker, 'click', function() {
 			//var count=countComment(marker.itemNo);
-			
-			 
-			 // if(countComment()==true){
-				  modalInjection(marker,countCommentResult);
-			 // }
+			 modalInjection(marker,countCommentResult);
 		  });
 		  
 		}<%-- markerAddListener End--%>
@@ -1875,11 +1872,13 @@ div.mousescroll:hover {
 						"<td id=\"t2\" >" + markersSearchResult[0].price/10000.0 + "</td>" +
 						"<td id=\"t3\" ><a"+
 						
-						" onmouseover=searchListMarkerFocusIn(markersSearchResult["+0+"])"+
+						" onmouseover=\"searchListMarkerFocusIn(markersSearchResult["+0+"]);"+
+									  " countComment(markersSearchResult["+0+"]);"+
+									  " findComment(markersSearchResult["+0+"]);\""+
 						" onmouseout=searchListMarkerFocusOut(markersSearchResult["+0+"])"+
 						//" onmouseover=searchListMarkerFocusIn(markerclusterer["+0+"])"+
 						//" onmouseout=searchListMarkerFocusOut(markerclusterer["+0+"])"+
-						" onclick=\"modalInjection(markersSearchResult["+0+"])\"> " +
+						" onclick=\"modalInjection(markersSearchResult["+0+"],countCommentResult)\"> " +
 						
 						//"<td><a onclick=\"alert('test')\"> " + 
 								markersSearchResult[0].itemName+ "<span>클릭하시면 상세정보를 볼수 있습니다.</span></a></td>" +
@@ -1902,11 +1901,13 @@ div.mousescroll:hover {
 							"<td id=\"t1\" >" + markersSearchResult[i].distance_m + "</td>" +
 							"<td id=\"t2\" >" + markersSearchResult[i].price/10000.0 + "</td>" +
 							"<td id=\"t3\" ><a"+
-							" onmouseover=searchListMarkerFocusIn(markersSearchResult["+i+"])"+
+							" onmouseover=\"searchListMarkerFocusIn(markersSearchResult["+i+"]);"+
+							 			  " countComment(markersSearchResult["+i+"]);"+
+							  			  " findComment(markersSearchResult["+i+"]);\""+
 							" onmouseout=searchListMarkerFocusOut(markersSearchResult["+i+"])"+
 							//" onmouseover=searchListMarkerFocusIn(markerclusterer["+i+"])"+
 							//" onmouseout=searchListMarkerFocusOut(markerclusterer["+i+"])"+
-							" onclick=\"modalInjection(markersSearchResult["+i+"])\"> " +
+							" onclick=\"modalInjection(markersSearchResult["+i+"],countCommentResult)\"> " +
 							//"<td><a onclick=\"alert('test')\"> " + 
 									markersSearchResult[i].itemName+ "<span>클릭하시면 상세정보를 볼수 있습니다.</span></a></td>" +
 						"</tr>";
@@ -3018,7 +3019,7 @@ div.mousescroll:hover {
 
 <%-- 속도향상을 위해 맨 아래로 내림. --%>
 <script>
- var replyDiv;
+
  var returnDiv;
  var flag;
  var itemNo;
@@ -3028,17 +3029,17 @@ div.mousescroll:hover {
  var cate2;
  function modalInjection(marker,countCommentResult){
 	 flag="1"; 
-	  console.log(marker.stateCode+"state");
+	 // console.log(marker.stateCode+"state");
 	  markerNo=marker.itemNo;
-	  console.log(marker.itemNo);
-	  console.log(marker.gridX1);
-	  console.log(marker.gridY1);
+	 // console.log(marker.itemNo);
+	 // console.log(marker.gridX1);
+	 // console.log(marker.gridY1);
 	  gridXY=marker.gridX1+","+marker.gridY1;
-	  console.log(gridXY);
+	//  console.log(gridXY);
 	  cate1=marker.category1;
 	  cate2=marker.category2;
-	  console.log(cate1);
-	  console.log(cate2);
+	//  console.log(cate1);
+	 // console.log(cate2);
 	  
 	  itemNo=document.getElementById("deleteItemNo").value=markerNo;	  
 	  var htmlinjec;
@@ -3172,6 +3173,7 @@ div.mousescroll:hover {
 			"</div>";
 			
 		//덧글 innerHTML
+		  <%--
 		replyDiv="<div  class=\"mousescroll\" style=\"height:500px; text-align:left; font-size:13px;\" id=\"accordion\">"+
 					"<table class=\"table\">"+
 						"<tr><td><div>"+
@@ -3241,7 +3243,7 @@ div.mousescroll:hover {
 				"<div>"+	
 					"<button type=\"button\" id=\"replyregi\" class=\"btn btn-default\" onclick=\"\" style=\"margin-top: 40px;\">덧글입력</button>"+
 			    "</div>";
-		
+			    --%>	    
 		document.getElementById("htmlInjectionSector").innerHTML = htmlinjec;
 		document.getElementById("modallink").click();
 		
@@ -3368,6 +3370,8 @@ div.mousescroll:hover {
  
  function change(){
 	 
+	
+	 
 	 console.log("누르기 전 "+flag);
 	 if(flag=="1"){
 	 	document.getElementById("mmodal").innerHTML=replyDiv;
@@ -3382,7 +3386,7 @@ div.mousescroll:hover {
 		console.log("누른후 "+flag);
 	 }
 	 
-	 findComment();
+	
 };
 
  function modify(){
