@@ -220,7 +220,8 @@ public class ItemController {
   	public String removeItem (
   			@RequestParam(value="ItemNo")Integer ItemNo)
   					throws Exception{
-    	System.out.println("아이템 삭제!");	
+    	System.out.println("아이템 삭제!");
+    	System.out.println(ItemNo);
     	itemService.removeItem(ItemNo);
     	return "removeItem success";
     }

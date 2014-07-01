@@ -21,10 +21,10 @@
 #loginInjection{
 position: fixed;
 	
-	top: 45px;
+	top: 40px;
 	background: #5DCD9D;
 	right:0px;
-	width:100px;
+	width:auto;
 	height:50px;
 	/*
 	left: 860px;
@@ -188,6 +188,8 @@ position: fixed;
 	right:1px;
 	width: 700px;
 }
+
+
 </style>
 </head>
 <script>
@@ -223,7 +225,7 @@ position: fixed;
 			
 				var content;
 				content=
-					"<ul class=\"nav navbar-nav navbar-right\">"+
+					"<ul class=\"nav navbar-nav navbar-right\" >"+
 	    				"<li class=\"divider-vertical\"></li>"+
 	  						"<li class=\"dropdown\">"+
 	    						"<a id=\"signin_on\" class=\"dropdown-toggle\" href=\"\" data-toggle=\"dropdown\">"+
@@ -233,7 +235,7 @@ position: fixed;
 									"<li><a id=\"mypage\" class=\"dropdown_a\" href=\"\">My Page</a></li>"+
 			   						"<li><a id=\"signout\" class=\"dropdown_a\" href=\"\">Your Page</a></li>"+	
 			   						"<li role=\"presentation\" class=\"divider\"></li>"+		              			    	
-			          				"<li><a id=\"signout\" class=\"dropdown_a\" href=\"#\" onclick=\"signOut()\">Sign Out</a></li>"+	
+			          				"<li><a id=\"signout\" class=\"dropdown_a\" href=\"/\" onclick=\"signOut()\">Sign Out</a></li>"+	
 			          			"</ul>"+    
 	   				"</ul>";
 				$('#loginInjection').html(content);
@@ -365,7 +367,7 @@ position: fixed;
 
 <c:if test='${user!=null}'>
 <div id="loginInjection">
-	<ul class="nav navbar-nav navbar-right">
+	<ul class="nav navbar-nav navbar-rightz">
 		<li class="divider-vertical"></li>
 			<li class="dropdown">
 				<a id="signin_on" class="dropdown-toggle" href="" data-toggle="dropdown">

@@ -53,9 +53,7 @@
 	margin-top: 10px;
 }
 
-body {
-	background-image: url("/resources/imgs/bg6.png");
-}
+
 
 .dropdown-menu {
 	padding: 15px;
@@ -379,9 +377,10 @@ body {
 	margin-top: 53px;
 	width: 0%;
 	top: 0;
-	left: -200px;
+	left: -300px;
 	background: #FFFFFF;
-	height: calc(100% - 106px);
+	/* height: calc(100% - 106px); */
+	height:540px;
 	z-index: 1030;
 	border: 1px solid #BCBCBC;
 	padding-top: 20px;
@@ -728,6 +727,9 @@ div.mousescroll:hover {
 .reReply {
 	margin-left: 20px;
 }
+
+
+
 </style>
 
 <!--
@@ -1948,12 +1950,13 @@ div.mousescroll:hover {
 				var content;
 				
 				content=
+				"<div class=\"mousescroll\" style=\"height:300px;\">"+
 				"<table class=\"table table-striped\" style=\"width:261px;\">"+
 				"<thead>"+
 					"<tr>"+
-						"<th style=\"width:54px;\">등록일자</th>"+
-						"<th style=\"width:54px;\">가격(만)</th>"+
-						"<th style=\"width:173px; text-align: center; padding-bottom:18px;\">제품명</th>"+
+						"<th style=\"width:70px;\">등록일자</th>"+
+						"<th style=\"width:80px;\">가격(만)</th>"+
+						"<th style=\"width:100px; text-align: center;\">물품명</th>"+
 					"</tr>"+
 				"</thead>"+
 					"<tbody>";
@@ -1968,7 +1971,8 @@ div.mousescroll:hover {
 				}
 				content+=
 					"</tbody>"+
-				"</table>";
+				"</table>"+
+				"</div>";
 				if(msg=="ing"){
 					$('#MyItemList').html(content);
 				}else{
@@ -2017,167 +2021,33 @@ div.mousescroll:hover {
 			}).done(function(res){
 				console.log("res"+res);
 				var content;
-				/*
+				
 				content=
+				"<div class=\"mousescroll\" style=\"height:300px;\">"+
 				"<table class=\"table table-striped\" style=\"width:261px;\">"+
 				"<thead>"+
 					"<tr>"+
-						"<th style=\"width:54px;\">거리</th>"+
-						"<th style=\"width:54px;\">가격(만)</th>"+
-						"<th style=\"width:173px; text-align: center; padding-bottom:18px;\">제품명</th>"+
+						"<th style=\"width:80px;\">거리</th>"+
+						"<th style=\"width:70px;\">가격(만)</th>"+
+						"<th style=\"width:100px; text-align: center;\">물품명</th>"+
 					"</tr>"+
 				"</thead>"+
 					"<tbody>";
 				for(var i=0;i<res.length;i++){
 					console.log("i="+i+"_"+res[i].itemNo);
 					content+=
-					"<a href=\"#\" class=\"list-group-item\">"+
 						"<tr>"+
 							"<td>"+res[i].itemNo+"</td>"+
 							"<td>"+res[i].price+"</td>"+
 							"<td>"+res[i].itemName+"</td>"+
-						"</tr>"+	
-					"</a>";
+						"</tr>";	
+
 				}
 				content+=
 					"</tbody>"+
-				"</table>";
-				*/
-				
-				
-				/*
-				content=
-						
-						"<tr>"+
-							"<th style=\"width:34px;\">거리</th>"+
-							"<th style=\"width:34px;\">가격(만)</th>"+
-							"<th style=\"width:153px; text-align: center; padding-bottom:18px;\">제품명</th>"+
-						"</tr>";
-					for(var i=0;i<res.length;i++){
-						console.log("i="+i+"_"+res[i].itemNo);
-						content+=
-						"<a href=\"#\" class=\"list-group-item\">"+
-							"<tr>"+
-								"<th style=\"width:34px;\">"+res[i].itemNo+"</td>"+
-								"<th style=\"width:34px;\">"+res[i].price+"</td>"+
-								"<th style=\"width:153px; text-align: center; padding-bottom:18px;\">"+res[i].itemName+"</td>"+
-							"</tr>"+	
-						"</a>";
-					}
-				*/
-				content=
-					"<a href=\"#\" class=\"list-group-item\">"+
-					"<tr>"+
-						"<th style=\"width:34px;\">거리</th>"+
-						"<th style=\"width:34px;\">가격(만)</th>"+
-						"<th style=\"width:153px; text-align: center; padding-bottom:18px;\">제품명</th>"+
-					"</tr>"+
-					"</a>";
-				for(var i=0;i<res.length;i++){
-					console.log("i="+i+"_"+res[i].itemNo);
-					content+=
-					"<a href=\"#\" class=\"list-group-item\">"+
-						"<tr>"+
-							"<th style=\"width:34px;\">"+res[i].itemNo+"</td>     "+
-							"<th style=\"width:34px; padding-left:5em;\">"+res[i].price+"</td>     "+
-							"<th style=\"width:153px; padding-left:5em; text-align: center; padding-bottom:18px;\">"+res[i].itemName+"</td>"+
-						"</tr>"+	
-					"</a>";
-				}
-				
+				"</table>"+
+				"</div>";
 				$('#WishList').html(content);
-				console.log("ajax 정상응답");
-			}).fail(function(res){
-				console.log(res);
-				console.log("ajax error");
-			});
-		}
-		
-		//내가 찜한 물품
-		//findWishList(Integer userNo)
-		function findWishList2(){
-			$.ajax({
-				type:"POST",
-				url:"/findWishList",
-				data:{
-					userNo:user.userNo
-				}
-			}).done(function(res){
-				console.log("res"+res);
-				var content;
-				
-				content=
-				//"<table class=\"table table-striped\" style=\"width:261px;\">"+
-				"<thead>"+
-					"<tr>"+
-						"<th style=\"width:54px;\">거리</th>"+
-						"<th style=\"width:54px;\">가격(만)</th>"+
-						"<th style=\"width:173px; text-align: center; padding-bottom:18px;\">제품명</th>"+
-					"</tr>"+
-				"</thead>"+
-					"<tbody>";
-				for(var i=0;i<res.length;i++){
-					console.log("i="+i+"_"+res[i].itemNo);
-					content+=
-					"<a href=\"#\" class=\"list-group-item\">"+
-						"<tr>"+
-							"<td>"+res[i].itemNo+"</td>"+
-							"<td>"+res[i].price+"</td>"+
-							"<td>"+res[i].itemName+"</td>"+
-						"</tr>"+	
-					"</a>";
-				}
-				content+=
-					"</tbody>";
-				//"</table>";
-				
-				$('#WishList2').html(content);
-				console.log("ajax 정상응답");
-			}).fail(function(res){
-				console.log(res);
-				console.log("ajax error");
-			});
-		}
-		
-		//내가 찜한 물품
-		//findWishList(Integer userNo)
-		function findWishList3(){
-			$.ajax({
-				type:"POST",
-				url:"/findWishList",
-				data:{
-					userNo:user.userNo
-				}
-			}).done(function(res){
-				console.log("res"+res);
-				var content;
-				
-				content=
-				"<table class=\"table table-striped\" style=\"width:261px;\">"+
-				"<thead>"+
-					"<tr>"+
-						"<th style=\"width:54px;\">거리</th>"+
-						"<th style=\"width:54px;\">가격(만)</th>"+
-						"<th style=\"width:173px; text-align: center; padding-bottom:18px;\">제품명</th>"+
-					"</tr>"+
-				"</thead>"+
-					"<tbody>";
-				for(var i=0;i<res.length;i++){
-					console.log("i="+i+"_"+res[i].itemNo);
-					content+=
-					"<a href=\"#\" class=\"list-group-item\">"+
-						"<tr>"+
-							"<td>"+res[i].itemNo+"</td>"+
-							"<td>"+res[i].price+"</td>"+
-							"<td>"+res[i].itemName+"</td>"+
-						"</tr>"+	
-					"</a>";
-				}
-				content+=
-					"</tbody>"+
-				"</table>";
-				
-				$('#WishList3').html(content);
 				console.log("ajax 정상응답");
 			}).fail(function(res){
 				console.log(res);
@@ -2620,8 +2490,162 @@ div.mousescroll:hover {
 			return true;
 		}
 	}
-				
 	
+	function listloader(){
+		window.onload=findMyItemList('ing');
+	}
+	
+	
+	/*이미지 미리보기  */
+	var loadImageFile1 = (
+		
+		function () {
+		if (window.FileReader) {
+		var	oPreviewImg = null, oFReader = new window.FileReader(),
+		rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i;
+
+		oFReader.onload = function (oFREvent) {
+		if (!oPreviewImg) {
+		var newPreview =document.getElementById("imagePreview1");
+		
+		document.getElementById("noimage1").remove();
+		oPreviewImg = new Image();
+		oPreviewImg.style.width = "640px";
+		oPreviewImg.style.height = "480px";
+		newPreview.appendChild(oPreviewImg);
+		}
+		oPreviewImg.src = oFREvent.target.result;
+		};
+
+		return function () {
+		var aFiles = document.getElementById("imageInput1").files;
+		if (aFiles.length === 0) { return; }
+		if (!rFilter.test(aFiles[0].type)) { alert("You must select a valid image file!"); return; }
+		oFReader.readAsDataURL(aFiles[0]);
+		}
+
+		}
+		if (navigator.appName === "Microsoft Internet Explorer") {
+		return function () {
+		document.getElementById("imagePreview1").filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = document.getElementById("imageInput").value;
+
+		}
+		}
+		})();
+	
+	var loadImageFile2 = (
+			
+			function () {
+			if (window.FileReader) {
+			var	oPreviewImg = null, oFReader = new window.FileReader(),
+			rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i;
+
+			oFReader.onload = function (oFREvent) {
+			if (!oPreviewImg) {
+			var newPreview =document.getElementById("imagePreview2");
+			
+			document.getElementById("noimage2").remove();
+			oPreviewImg = new Image();
+			oPreviewImg.style.width = "640px";
+			oPreviewImg.style.height = "480px";
+			newPreview.appendChild(oPreviewImg);
+			}
+			oPreviewImg.src = oFREvent.target.result;
+			};
+
+			return function () {
+			var aFiles = document.getElementById("imageInput2").files;
+			if (aFiles.length === 0) { return; }
+			if (!rFilter.test(aFiles[0].type)) { alert("You must select a valid image file!"); return; }
+			oFReader.readAsDataURL(aFiles[0]);
+			}
+
+			}
+			if (navigator.appName === "Microsoft Internet Explorer") {
+			return function () {
+			document.getElementById("imagePreview2").filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = document.getElementById("imageInput").value;
+
+			}
+			}
+			})();
+	
+	var loadImageFile3 = (
+			
+			function () {
+			if (window.FileReader) {
+			var	oPreviewImg = null, oFReader = new window.FileReader(),
+			rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i;
+
+			oFReader.onload = function (oFREvent) {
+			if (!oPreviewImg) {
+			var newPreview =document.getElementById("imagePreview3");
+			
+			document.getElementById("noimage3").remove();
+			oPreviewImg = new Image();
+			oPreviewImg.style.width = "640px";
+			oPreviewImg.style.height = "480px";
+			newPreview.appendChild(oPreviewImg);
+			}
+			oPreviewImg.src = oFREvent.target.result;
+			};
+
+			return function () {
+			var aFiles = document.getElementById("imageInput3").files;
+			if (aFiles.length === 0) { return; }
+			if (!rFilter.test(aFiles[0].type)) { alert("You must select a valid image file!"); return; }
+			oFReader.readAsDataURL(aFiles[0]);
+			}
+
+			}
+			if (navigator.appName === "Microsoft Internet Explorer") {
+			return function () {
+			document.getElementById("imagePreview3").filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = document.getElementById("imageInput").value;
+
+			}
+			}
+			})();
+	
+	/* 미리 보기 물품명,가격, 내용  */
+	function itemNamePreview(){		
+		var pname=document.getElementById("item_name").value;
+		document.getElementById("previewNameSpan").innerText=pname;	
+	}
+	
+	function itemPricePreview(){		
+		var pprice=document.getElementById("price").value;
+		document.getElementById("previewPriceSpan").innerText=" [ "+pprice+" 원 ]";		
+	}
+	
+	function itemInfoPreview(){		
+		var pinfo=document.getElementById("item_info").value;
+		document.getElementById("previewInfoSpan").innerText=pinfo;		
+	}
+	
+	/* 수정모드 미리보기  */
+	
+	function modifyPreview(){
+		var pname=document.getElementById("item_name").value;
+		console.log("드렁옵"+pname);
+		document.getElementById("previewNameSpan").innerText=pname;	
+		var pprice=document.getElementById("price").value;
+		document.getElementById("previewPriceSpan").innerText=" [ "+pprice+" 원 ]";
+		var pinfo=document.getElementById("item_info").value;
+		document.getElementById("previewInfoSpan").innerText=pinfo;
+		console.log(hiddenPic1.value);
+		console.log(hiddenPic2.value);
+		console.log(hiddenPic3.value);
+		
+		if(hiddenPic1.value!=null){
+			document.getElementById("noimage1").src="resources/itempictures/"+hiddenPic1.value;
+		}
+		if(hiddenPic2.value!=null){
+			document.getElementById("noimage2").src="resources/itempictures/"+hiddenPic2.value;
+		}	
+		if(hiddenPic3.value!=null){
+			document.getElementById("noimage3").src="resources/itempictures/"+hiddenPic3.value;
+		}
+				
+	}
    </script>
 
 
@@ -2738,7 +2762,7 @@ div.mousescroll:hover {
 					<tr>
 						<th style="width: 80px;">거리(km)</th>
 						<th style="width: 80px;">가격(만)</th>
-						<th style="width: 100px; text-align: center;">제품명</th>
+						<th style="width: 100px; text-align: center;">물품명</th>
 					</tr>
 				</thead>
 				<tbody id="searchResultInjectionSector"></tbody>
@@ -2815,11 +2839,11 @@ div.mousescroll:hover {
 								<h4>사진 등록하기</h4>
 								<br>
 								<input class="form-control" name="itemPicturePath1" type="file"
-									id="exampleInputFile"> <br> <input
+									id="imageInput1" onchange="loadImageFile1();"> <br> <input
 									class="form-control" name="itemPicturePath2" type="file"
-									id="exampleInputFile"> <br> <input
+									id="imageInput2" onchange="loadImageFile2();"> <br> <input
 									class="form-control" name="itemPicturePath3" type="file"
-									id="exampleInputFile">
+									id="imageInput3" onchange="loadImageFile3();">
 
 
 							</div>
@@ -2836,14 +2860,14 @@ div.mousescroll:hover {
 							<div class="form-group">
 								<h4>상세내용 입력하기</h4>
 								<br> <input id="item_name" name="itemName" type="text"
-									class="form-control input-normal" placeholder="물품명을 입력하세요">
+									class="form-control input-normal" placeholder="물품명을 입력하세요" onchange="itemNamePreview()">
 								<div class="input-group">
 									<span class="input-group-addon">￦</span><input type="text" id="price"
-										name="price" class="form-control" placeholder="희망가격 입력" onKeypress="onlyNumber();" style="IME-MODE:disabled;" >
+										name="price" class="form-control" placeholder="희망가격 입력" onKeypress="onlyNumber();" onchange="itemPricePreview()" style="IME-MODE:disabled;" >
 								</div>
 								<br>
-								<textarea name="itemInfo" class="form-control" rows="10"
-									cols="80" placeholder="상세내용을 입력하세요"></textarea>
+								<textarea id="item_info" name="itemInfo" class="form-control" rows="10"
+									cols="80" placeholder="상세내용을 입력하세요" onchange="itemInfoPreview()"></textarea>
 								<br>
 								<button class="btn btn-default" data-toggle="modal"
 									href="#preview_modal" onclick="return false">미리보기</button>						
@@ -2872,7 +2896,7 @@ div.mousescroll:hover {
 	</nav>
 	<div id="menu-toggle3">
 		<a> <img src="resources/imgs/slider/Handshake-icon.png" width=70
-			height=70 alt="Menu3"></img> <span>거래현황</span>
+			height=70 alt="Menu3" onclick="findMyItemList('ing');"></img> <span>거래현황</span>
 		</a>
 		<!-- 
 		<img src="resources/imgs/slider/menu.png" width=50 height=50 alt="Menu"></img>
@@ -2882,83 +2906,64 @@ div.mousescroll:hover {
 		<div class="tab-pane" id="tab3">
 			<!-- start of tap3   -->
 
-			<div id="MainMenu">
-				<div class="list-group panel">
-					<!-- 고2 -->
-					<a href="#MyItemList"
-						class="list-group-item list-group-item-success"
-						data-toggle="collapse" data-parent="#MainMenu"
-						onclick="findMyItemList('ing')">내가 등록한 물품</a>
-					<div class="collapse" id="MyItemList">
-						<a href="#SubMenu1" class="list-group-item" data-toggle="collapse"
-							data-parent="#SubMenu1">Subitem 1 <span
-							class="glyphicon glyphicon-chevron-down"></span></a>
-						<div class="collapse list-group-submenu" id="SubMenu1">
-							<a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem
-								1 a</a> <a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem
-								2 b</a> <a href="#SubSubMenu1" class="list-group-item"
-								data-toggle="collapse" data-parent="#SubSubMenu1">Subitem 3
-								c <span class="glyphicon glyphicon-chevron-down"></span>
-							</a>
-							<div class="collapse list-group-submenu list-group-submenu-1"
-								id="SubSubMenu1">
-								<a href="#" class="list-group-item" data-parent="#SubSubMenu1">Sub
-									sub item 1</a> <a href="#" class="list-group-item"
-									data-parent="#SubSubMenu1">Sub sub item 2</a>
-							</div>
-							<a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem
-								4 d</a>
-						</div>
-						<a href="javascript:;" class="list-group-item">Subitem 2</a> <a
-							href="javascript:;" class="list-group-item">Subitem 3</a>
-					</div>
-					<a href="#MyItemList2"
-						class="list-group-item list-group-item-success"
-						data-toggle="collapse" data-parent="#MainMenu"
-						onclick="findMyItemList('end')">거래 완료된 물품</a>
-					<div class="collapse" id="MyItemList2">
-						<a href="#" class="list-group-item">Subitem 1</a> <a href="#"
-							class="list-group-item">Subitem 2</a> <a href="#"
-							class="list-group-item">Subitem 3</a>
-					</div>
-					<a href="#demo5" class="list-group-item list-group-item-success"
-						data-toggle="collapse" data-parent="#MainMenu">내가 문의한 물품</a>
-					<div class="collapse" id="demo5">
-						<a href="#" class="list-group-item">Subitem 1</a> <a href="#"
-							class="list-group-item">Subitem 2</a> <a href="#"
-							class="list-group-item">Subitem 3</a>
-					</div>
-					<a href="#WishList" class="list-group-item list-group-item-success"
-						data-toggle="collapse" data-parent="#MainMenu"
-						onclick="findWishList()">내가 찜한 물품</a>
-					<div class="collapse" id="WishList">
-						<a href="#" class="list-group-item">Subitem 1</a> <a href="#"
-							class="list-group-item">Subitem 2</a> <a href="#"
-							class="list-group-item">Subitem 3</a>
-					</div>
-
-					<a href="#WishList2"
-						class="list-group-item list-group-item-success"
-						data-toggle="collapse" data-parent="#MainMenu"
-						onclick="findWishList2()">내가 찜한 물품2</a>
-					<div class="collapse" id="WishList2">
-						<a href="#" class="list-group-item">Subitem 1</a> <a href="#"
-							class="list-group-item">Subitem 2</a> <a href="#"
-							class="list-group-item">Subitem 3</a>
-					</div>
-
-					<a href="#WishList3"
-						class="list-group-item list-group-item-success"
-						data-toggle="collapse" data-parent="#MainMenu"
-						onclick="findWishList3()">내가 찜한 물품3</a>
-					<div class="collapse" id="WishList3">
-						<a href="#" class="list-group-item">Subitem 1</a> <a href="#"
-							class="list-group-item">Subitem 2</a> <a href="#"
-							class="list-group-item">Subitem 3</a>
-					</div>
-				</div>
+			<div class="panel-group" id="accordion">
+			  <div class="panel panel-info">
+			    <div class="panel-heading">
+			      <h4 class="panel-title">
+			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="findMyItemList('ing')">
+			     	     내가 등록한 물품
+			        </a>
+			      </h4>
+			    </div>
+			    <div id="collapseOne" class="panel-collapse collapse in">
+			      <div class="panel-body" id="MyItemList" style="margin:0px; padding:0px;">
+			      </div>
+			    </div>
+			  </div>
+			  
+			  <div class="panel panel-info">
+			    <div class="panel-heading">
+			      <h4 class="panel-title">
+			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="findMyItemList('end')">
+			     	   거래 완료된 물품
+			        </a>
+			      </h4>
+			    </div>
+			    <div id="collapseTwo" class="panel-collapse collapse">
+			      <div class="panel-body" id="MyItemList2" style="margin:0px; padding:0px;">
+			      </div>
+			    </div>
+			  </div>
+			  
+			  <div class="panel panel-info">
+			    <div class="panel-heading">
+			      <h4 class="panel-title">
+			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+			          내가 문의한 물품
+			        </a>
+			      </h4>
+			    </div>
+			    <div id="collapseThree" class="panel-collapse collapse">
+			      <div class="panel-body" style="margin:0px; padding:0px;">
+			       </div>
+			    </div>
+			  </div>
+			  
+			  <div class="panel panel-info">
+			    <div class="panel-heading">
+			      <h4 class="panel-title">
+			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" onclick="findWishList();">
+			          내가 찜한 물품
+			        </a>
+			      </h4>
+			    </div>
+			    <div id="collapseFour" class="panel-collapse collapse">
+			      <div class="panel-body" id="WishList" style="margin:0px; padding:0px;">
+			       </div>
+			    </div>
+			  </div>
+			  			  
 			</div>
-
 		</div>
 		<!-- end of tap3   -->
 	</nav>
@@ -2977,7 +2982,7 @@ div.mousescroll:hover {
 						<button type="button" class="close" data-dismiss="modal"
 							aria-hidden="true">×</button>
 						<h4 class="modal-title">
-							제품명<font color="crimson"> [가격]</font>
+							<span id="previewNameSpan">물품명</span><font color="crimson"><span id="previewPriceSpan"> [가격]</span></font>
 						</h4>
 
 					</div>
@@ -2993,19 +2998,16 @@ div.mousescroll:hover {
 
 												<!-- main slider carousel items -->
 												<div class="carousel-inner">
-													<div class="active item" data-slide-number="0">
-														<img src="http://placehold.it/640x480&amp;text=No%20Image">
+													<div id="imagePreview1" class="active item" data-slide-number="0">
+													 	<img id="noimage1" src="http://placehold.it/640x480&amp;text=No%20Image"> 
 													</div>
-													<div class="item" data-slide-number="1">
-														<img src="http://placehold.it/640x480&amp;text=two">
+													<div id="imagePreview2" class="item" data-slide-number="1">
+														<img id="noimage2" src="http://placehold.it/640x480&amp;text=No%20Image">
 													</div>
-													<div class="item" data-slide-number="2">
-														<img src="http://placehold.it/640x480&amp;text=three">
+													<div id="imagePreview3" class="item" data-slide-number="2">
+														<img id="noimage3" src="http://placehold.it/640x480&amp;text=No%20Image">
 													</div>
-													<div class="item" data-slide-number="3">
-														<img src="http://placehold.it/640x480&amp;text=four">
-													</div>
-
+					
 												</div>
 
 												<!-- main slider carousel nav controls -->
@@ -3024,13 +3026,11 @@ div.mousescroll:hover {
 						</div>
 						<!-- end of image slider -->
 						<br>
-						<p>상세 내용</p>
+						<p id="previewInfoSpan">상세 내용</p>
 
 					</div>
 					<div class="modal-footer">
-						<input type="submit" class="btn btn-primary" value="등록하기">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
 					</div>
 				</div>
 				<!-- /.modal-content -->
@@ -3366,13 +3366,13 @@ div.mousescroll:hover {
 					"<div class=\"form-group\">"+
 						"<h4>사진 등록하기</h4>"+
 						"<br>"+
-						"<input class=\"form-control\" name=\"itemPicturePath1\" type=\"file\" id=\"exampleInputFile\">"+ 
-						 "<br><input class=\"form-control\" name=\"itemPicturePath2\" type=\"file\" id=\"exampleInputFile\">"+
-						 "<br><input class=\"form-control\" name=\"itemPicturePath3\" type=\"file\"id=\"exampleInputFile\">"+
+						"<input id=\"imageInput1\" class=\"form-control\" name=\"itemPicturePath1\" type=\"file\"  onchange=\"loadImageFile1();\">"+ 
+						 "<br><input id=\"imageInput2\"class=\"form-control\" name=\"itemPicturePath2\" type=\"file\" onchange=\"loadImageFile2();\">"+
+						 "<br><input id=\"imageInput3\" class=\"form-control\" name=\"itemPicturePath3\" type=\"file\" onchange=\"loadImageFile3();\">"+
 						
-						 "<input type=\"hidden\"name=\"xItemPicture1\" value=\""+marker.itemPicturePath1+"\">"+
-						 "<input type=\"hidden\"name=\"xItemPicture2\" value=\""+marker.itemPicturePath2+"\">"+
-						 "<input type=\"hidden\"name=\"xItemPicture3\" value=\""+marker.itemPicturePath3+"\">"+
+						 "<input id=\"hiddenPic1\" type=\"hidden\"name=\"xItemPicture1\" value=\""+marker.itemPicturePath1+"\">"+
+						 "<input id=\"hiddenPic2\" type=\"hidden\"name=\"xItemPicture2\" value=\""+marker.itemPicturePath2+"\">"+
+						 "<input id=\"hiddenPic3\" type=\"hidden\"name=\"xItemPicture3\" value=\""+marker.itemPicturePath3+"\">"+
 									
 						 
 					"</div>"+
@@ -3387,16 +3387,16 @@ div.mousescroll:hover {
 				"<div class=\"tab-pane\" id=\"tab15\">"+
 					"<div class=\"form-group\">"+
 						"<h4>상세내용 입력하기</h4>"+
-						"<br><input id=\"item_name\" name=\"itemName\" type=\"text\" class=\"form-control input-normal\" placeholder=\"물품명을 입력하세요\" value=\""+marker.itemName+"\">"+
+						"<br><input id=\"item_name\" name=\"itemName\" type=\"text\" class=\"form-control input-normal\" placeholder=\"물품명을 입력하세요\" onchange=\"itemNamePreview()\" value=\""+marker.itemName+"\">"+
 						"<div class=\"input-group\">"+
-							"<span class=\"input-group-addon\">￦</span><input type=\"text\" id=\"price\" name=\"price\" class=\"form-control\" placeholder=\"희망가격 입력\" value=\""+marker.price+"\" onKeypress=\"onlyNumber();\" style=\"IME-MODE:disabled;\">"+
+							"<span class=\"input-group-addon\">￦</span><input type=\"text\" id=\"price\" name=\"price\" class=\"form-control\" placeholder=\"희망가격 입력\" value=\""+marker.price+"\" onKeypress=\"onlyNumber();\" onchange=\"itemPricePreview()\" style=\"IME-MODE:disabled;\">"+
 						"</div>"+
 						"<input type=\"hidden\"name=\"itemNo\" value=\""+marker.itemNo+"\">"+
 						"<br>"+
-						"<textarea name=\"itemInfo\" class=\"form-control\" rows=\"10\" cols=\"80\" placeholder=\"상세내용을 입력하세요\">"+marker.itemInfo+"</textarea>"+
+						"<textarea id=\"item_info\" name=\"itemInfo\" class=\"form-control\" rows=\"10\" cols=\"80\" onchange=\"itemInfoPreview()\" placeholder=\"상세내용을 입력하세요\">"+marker.itemInfo+"</textarea>"+
 						"<br>"+
 						"<button class=\"btn btn-default\" data-toggle=\"modal\" href=\"#preview_modal\" onclick=\"return false\">미리보기</button> "+
-						"<input type=\"submit\" class=\"btn btn-success\" value=\"수정하기\">"+
+						"<input type=\"submit\" class=\"btn btn-success\"  value=\"수정하기\">"+
 
 
 
@@ -3451,6 +3451,8 @@ div.mousescroll:hover {
 	}});
 	window.onload=init(modifyform,cate1);
 	window.onload=itemChange(modifyform,cate2);
+	window.onload=modifyPreview();
+	
 	codeLatLng();
 };
  
