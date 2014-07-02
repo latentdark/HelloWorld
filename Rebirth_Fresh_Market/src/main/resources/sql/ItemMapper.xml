@@ -284,22 +284,22 @@
 		UPDATE location
 		<set>
 			<if test="gridX1!=null">
-				gird_x1=#{gridX1, jdbcType=DOUBLE},
+				grid_x1=#{gridX1, jdbcType=DOUBLE},
 			</if>
 			<if test="gridY1!=null">
-				gird_y1=#{gridY1, jdbcType=DOUBLE},
+				grid_y1=#{gridY1, jdbcType=DOUBLE},
 			</if>
 			<if test="gridX2!=null">
-				gird_x2=#{gridX2, jdbcType=DOUBLE},
+				grid_x2=#{gridX2, jdbcType=DOUBLE},
 			</if>
 			<if test="gridY2!=null">
-				gird_y2=#{gridY2, jdbcType=DOUBLE},
+				grid_y2=#{gridY2, jdbcType=DOUBLE},
 			</if>
 			<if test="gridX3!=null">
-				gird_x3=#{gridX3, jdbcType=DOUBLE},
+				grid_x3=#{gridX3, jdbcType=DOUBLE},
 			</if>
 			<if test="gridY3!=null">
-				gird_y3=#{gridY3, jdbcType=DOUBLE}
+				grid_y3=#{gridY3, jdbcType=DOUBLE}
 			</if>
 		</set>
 		WHERE item_no = #{itemNo, jdbcType=INTEGER}
