@@ -543,17 +543,23 @@ div.mousescroll:hover {
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
 }
+
 /* span 보여주게 하는 코드 */
+/*
 #t3 a:hover span {
 	background-color: rgb(255, 228, 0);
 	color: rgb(3, 0, 102);
-	/* text-shadow:1px 1px 0 #99bf31;
-	 */
+*/
+	/* text-shadow:1px 1px 0 #99bf31; */
+/*	 
 	width: auto;
 	padding: 0 20px;
+*/
 	/*padding:0 20px;*/
+/*
 	overflow: visible;
 }
+*/
 
 #t3 a:hover {
 	background: rgb(255, 228, 0);
@@ -1348,7 +1354,7 @@ div.mousescroll:hover {
 			console.log("markersInit()_Inn");
 			markers=[];
 			//statCode 1=sell, 2=buy, 3=deal
-			console.log(itemList);
+			//console.log(itemList);
 			console.log("markersInit()__itemList.length__"+itemList.length);
 			for(var i=0;i<itemList.length;i++){
 				
@@ -1503,11 +1509,13 @@ div.mousescroll:hover {
 		
 		function markerAddListener(marker, i) {
 		 console.log("markerAddListener() Inn");
-			
+			//왜
 		 var content=
 			 "<div id=\"infowindow\">"+
+			 //"<h1>"+
 			 		"<font color=\"red\">"+"[ "+marker.price+" ]</font> "+
 			 		marker.itemName+
+			 //"</h1>"+
 			 "</div>";
 		 var infowindow = new google.maps.InfoWindow({
 				content: content	
@@ -1518,10 +1526,9 @@ div.mousescroll:hover {
 		 //var dialogName="#item"+marker.content;
 		 google.maps.event.addListener(marker, 'mouseover', function() {
 			 //alert("mouseover");
-			
-			  //infowindow.open(marker.get('map'), marker);	
 			 infowindow.open(marker.get('map'), marker);
-			 
+			 countComment(marker);
+			 findComment(marker);
 		  });
 		 
 		 google.maps.event.addListener(marker, 'mouseout', function() {	
@@ -1529,52 +1536,13 @@ div.mousescroll:hover {
 			  infowindow.close();
 		  });
 		 
-		  google.maps.event.addListener(marker, 'click', function() {
-			  	  
-			  modalInjection(marker);
+		 google.maps.event.addListener(marker, 'click', function() {
+				//var count=countComment(marker.itemNo);
+				 modalInjection(marker,countCommentResult);
 		  });
 		  
 		}
-	
-		<%-- markerAddListener Start--%>
-		var bounds = new google.maps.LatLngBounds();
-		
-		function markerAddListener(marker, i) {
-		 console.log("markerAddListener() Inn");
 			
-		 var content=
-			 "<div id=\"infowindow\">"+
-			 		"<font color=\"red\">"+"[ "+marker.price+" ]</font> "+
-			 		marker.itemName+
-			 "</div>";
-		 var infowindow = new google.maps.InfoWindow({
-				content: content	
-		 });
-		  
-		  /*  */
-		  //console.log("marker.content_"+marker.content);
-		 //var dialogName="#item"+marker.content;
-		 google.maps.event.addListener(marker, 'mouseover', function() {
-			 //alert("mouseover");
-			
-			  //infowindow.open(marker.get('map'), marker);	
-			 infowindow.open(marker.get('map'), marker);
-			 
-		  });
-		 
-		 google.maps.event.addListener(marker, 'mouseout', function() {	
-			 // infowindow.open(marker.get('map'), marker);
-			  infowindow.close();
-		  });
-		 
-		  google.maps.event.addListener(marker, 'click', function() {
-			  	  
-			  modalInjection(marker);
-		  });
-		  
-		}
-		
-		
 		<%-- searchListMarkerFocus Start --%>
 		var infowindow;
 		var position;
@@ -1584,8 +1552,10 @@ div.mousescroll:hover {
 		function searchListMarkerFocusIn(marker){
 			var content=
 				 "<div id=\"infowindow\">"+
+				 //"<h1>"+
 				 		"<font color=\"red\">"+"[ "+marker.price+" ]</font> "+
 				 		marker.itemName+
+				 //"</h1>"+
 				 "</div>";
 			infowindow = new google.maps.InfoWindow({
 					content: content	
@@ -1876,11 +1846,13 @@ div.mousescroll:hover {
 						"<td id=\"t2\" >" + markersSearchResult[0].price/10000.0 + "</td>" +
 						"<td id=\"t3\" ><a"+
 						
-						" onmouseover=searchListMarkerFocusIn(markersSearchResult["+0+"])"+
+						" onmouseover=\"searchListMarkerFocusIn(markersSearchResult["+0+"]);"+
+									  " countComment(markersSearchResult["+0+"]);"+
+									  " findComment(markersSearchResult["+0+"]);\""+
 						" onmouseout=searchListMarkerFocusOut(markersSearchResult["+0+"])"+
 						//" onmouseover=searchListMarkerFocusIn(markerclusterer["+0+"])"+
 						//" onmouseout=searchListMarkerFocusOut(markerclusterer["+0+"])"+
-						" onclick=\"modalInjection(markersSearchResult["+0+"])\"> " +
+						" onclick=\"modalInjection(markersSearchResult["+0+"],countCommentResult)\"> " +
 						
 						//"<td><a onclick=\"alert('test')\"> " + 
 								markersSearchResult[0].itemName+ "<span>클릭하시면 상세정보를 볼수 있습니다.</span></a></td>" +
@@ -1903,11 +1875,13 @@ div.mousescroll:hover {
 							"<td id=\"t1\" >" + markersSearchResult[i].distance_m + "</td>" +
 							"<td id=\"t2\" >" + markersSearchResult[i].price/10000.0 + "</td>" +
 							"<td id=\"t3\" ><a"+
-							" onmouseover=searchListMarkerFocusIn(markersSearchResult["+i+"])"+
+							" onmouseover=\"searchListMarkerFocusIn(markersSearchResult["+i+"]);"+
+							 			  " countComment(markersSearchResult["+i+"]);"+
+							  			  " findComment(markersSearchResult["+i+"]);\""+
 							" onmouseout=searchListMarkerFocusOut(markersSearchResult["+i+"])"+
 							//" onmouseover=searchListMarkerFocusIn(markerclusterer["+i+"])"+
 							//" onmouseout=searchListMarkerFocusOut(markerclusterer["+i+"])"+
-							" onclick=\"modalInjection(markersSearchResult["+i+"])\"> " +
+							" onclick=\"modalInjection(markersSearchResult["+i+"],countCommentResult)\"> " +
 							//"<td><a onclick=\"alert('test')\"> " + 
 									markersSearchResult[i].itemName+ "<span>클릭하시면 상세정보를 볼수 있습니다.</span></a></td>" +
 						"</tr>";
@@ -3173,9 +3147,10 @@ div.mousescroll:hover {
 						}
 					}
 						htmlinjec+=
-						"<button id=\"replyButton\" class=\"btn btn-primary\" data-toggle=\"modal\" onclick=\"change()\">댓글 <span class=\"badge\">32</span></button>"+
-						"<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>"+
-						"</div>"+
+							"<button id=\"replyButton\" class=\"btn btn-primary\" data-toggle=\"modal\" onclick=\"change()\">댓글 "+
+							"<span class=\"badge\">"+countCommentResult+"</span></button>"+
+							"<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>"+
+							"</div>"+
 					"</div>"+	
 				"</div>"+
 			"</div>"+
@@ -3227,73 +3202,78 @@ div.mousescroll:hover {
 				marker.itemInfo+
 			"</div>";
 			
-		//덧글 innerHTML
-		replyDiv="<div  class=\"mousescroll\" style=\"height:500px; text-align:left; font-size:13px;\" id=\"accordion\">"+
-					"<table class=\"table\">"+
-						"<tr><td><div>"+
-							"<b>양키</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a class=\"accordion-toggle\" data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#replyacco\">답글</a>"+
-							"<p><span>가나다라마바사아자차카타파하</span></p>"+
-							"<div id=\"replyacco\"  class=\"panel-collapse collapse\">"+
-						      "<div class=\"panel-body\" style=\"padding-top:0px; padding-bottom:5px; padding-left:0px; padding-right:0px\">"+
-							      "<hr>"+
-							      "<span style=\"float:left;color: orangered;\">┗</span>"+
-						    	  "<div style=\"width:380px; float:left; margin-right:10px; margin-left:5px;\">"+
-							  	  	"<textarea name=\"replyTextarea\" class=\"form-control\" rows=\"3\" placeholder=\"덧글 내용을 입력하세요\"></textarea>"+
-							      "</div>"+
-							  	  "<div>"+	
-								  	"<button type=\"button\" id=\"replyregi\" class=\"btn btn-default\" onclick=\"\" style=\"margin-top: 40px;\">덧글입력</button>"+
-							      "</div>"+
-						 	  "</div>"+
-						    "</div>"+
-						"</div></td></tr>"+
+			//덧글 innerHTML
+			  <%--
+			replyDiv="<div  class=\"mousescroll\" style=\"height:500px; text-align:left; font-size:13px;\" id=\"accordion\">"+
+						"<table class=\"table\">"+
+							"<tr><td><div>"+
+							
+								"<b>양키</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a class=\"accordion-toggle\" data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#replyacco\">답글</a>"+
+								"<p><span>가나다라마바사아자차카타파하</span></p>"+
+								
+								"<div id=\"replyacco\"  class=\"panel-collapse collapse\">"+
+							      "<div class=\"panel-body\" style=\"padding-top:0px; padding-bottom:5px; padding-left:0px; padding-right:0px\">"+
+								      "<hr>"+
+								      "<span style=\"float:left;color: orangered;\">┗</span>"+
+							    	  "<div style=\"width:380px; float:left; margin-right:10px; margin-left:5px;\">"+
+								  	  	"<textarea name=\"replyTextarea\" class=\"form-control\" rows=\"3\" placeholder=\"덧글 내용을 입력하세요\"></textarea>"+
+								      "</div>"+
+								  	  "<div>"+	
+									  	"<button type=\"button\" id=\"replyregi\" class=\"btn btn-default\" onclick=\"\" style=\"margin-top: 40px;\">덧글입력</button>"+
+								      "</div>"+
+							 	  "</div>"+
+							    "</div>"+
+							    
+							"</div></td></tr>"+
+							
+							"<tr><td><div>"+
+								"<b>박준일</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
+								"<p><span>가나다라마바사아자차카타파하 </span></p>"+
+							"</div></td></tr>"+
+							
+							"<tr class=\"success\"><td><div class=\"reReply\">"+
+								"<span style=\"float:left;color: orangered;margin-right:3.3px;\">┗</span><b>이민석</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a> 수정</a><a> 삭제</a><a class=\"accordion-toggle\" data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#replyacco2\"> 답글</a>"+							
+								"<p style=\"margin-left:16.5px;\"><span>가나다라마바사아자차카타파하</span></p>"+
+								"<div id=\"replyacco2\"  class=\"panel-collapse collapse\">"+
+							      "<div class=\"panel-body\" style=\"padding-top:0px; padding-bottom:5px; padding-left:0px; padding-right:0px\">"+
+								      "<hr>"+
+								      "<span style=\"float:left;color: orangered;\">┗</span>"+
+							    	  "<div style=\"width:380px; float:left; margin-right:10px; margin-left:5px;\">"+
+								  	  	"<textarea name=\"replyTextarea\" class=\"form-control\" rows=\"3\" placeholder=\"덧글 내용을 입력하세요\"></textarea>"+
+								      "</div>"+
+								  	  "<div>"+	
+									  	"<button type=\"button\" id=\"replyregi\" class=\"btn btn-default\" onclick=\"\" style=\"margin-top: 40px;\">덧글입력</button>"+
+								      "</div>"+
+							 	  "</div>"+
+							    "</div>"+
+							"</div></td></tr>"+
+							
+							"<tr><td><div>"+
+								"<b>섭섭맨</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
+								"<p><span>가나다라마바사아자차카타파하 </span></p>"+
+							"</div></td></tr>"+
+							
+							"<tr><td><div>"+
+								"<b> 이재영</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
+								"<p><span>가나다라마바사아자차카타파하 </span></p>"+
+							"</div></td></tr>"+
+							
+							/* div class에 reReply 추가하면 덧글답장  */
+							"<tr class=\"success\"><td><div class=\"reReply\">"+
+							 	"<span style=\"float:left;color: orangered;margin-right:3.3px;\">┗</span><b>이민석</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a> 수정</a><a> 삭제</a><a> 답글</a>"+
+								"<p style=\"margin-left:16.5px\"><span>이민석 짱짱장짱</span></p>"+
+							"</div></td></tr>"+
 						
-						"<tr><td><div>"+
-							"<b>박준일</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
-							"<p><span>가나다라마바사아자차카타파하 </span></p>"+
-						"</div></td></tr>"+
-						
-						"<tr class=\"success\"><td><div class=\"reReply\">"+
-							"<span style=\"float:left;color: orangered;margin-right:3.3px;\">┗</span><b>이민석</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a> 수정</a><a> 삭제</a><a class=\"accordion-toggle\" data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#replyacco2\"> 답글</a>"+							
-							"<p style=\"margin-left:16.5px;\"><span>가나다라마바사아자차카타파하</span></p>"+
-							"<div id=\"replyacco2\"  class=\"panel-collapse collapse\">"+
-						      "<div class=\"panel-body\" style=\"padding-top:0px; padding-bottom:5px; padding-left:0px; padding-right:0px\">"+
-							      "<hr>"+
-							      "<span style=\"float:left;color: orangered;\">┗</span>"+
-						    	  "<div style=\"width:380px; float:left; margin-right:10px; margin-left:5px;\">"+
-							  	  	"<textarea name=\"replyTextarea\" class=\"form-control\" rows=\"3\" placeholder=\"덧글 내용을 입력하세요\"></textarea>"+
-							      "</div>"+
-							  	  "<div>"+	
-								  	"<button type=\"button\" id=\"replyregi\" class=\"btn btn-default\" onclick=\"\" style=\"margin-top: 40px;\">덧글입력</button>"+
-							      "</div>"+
-						 	  "</div>"+
-						    "</div>"+
-						"</div></td></tr>"+
-						
-						"<tr><td><div>"+
-							"<b>섭섭맨</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
-							"<p><span>가나다라마바사아자차카타파하 </span></p>"+
-						"</div></td></tr>"+
-						
-						"<tr><td><div>"+
-							"<b> 이재영</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
-							"<p><span>가나다라마바사아자차카타파하 </span></p>"+
-						"</div></td></tr>"+
-						
-						/* div class에 reReply 추가하면 덧글답장  */
-						"<tr class=\"success\"><td><div class=\"reReply\">"+
-						 	"<span style=\"float:left;color: orangered;margin-right:3.3px;\">┗</span><b>이민석</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a> 수정</a><a> 삭제</a><a> 답글</a>"+
-							"<p style=\"margin-left:16.5px\"><span>이민석 짱짱장짱</span></p>"+
-						"</div></td></tr>"+
-					
-					"</table>"+
-				"</div>"+
-				"<hr>"+
-		 		"<div style=\"width: 450px;float: left;\">"+
-					"<textarea name=\"replyTextarea\" class=\"form-control\" rows=\"3\" placeholder=\"덧글 내용을 입력하세요\"></textarea>"+
-				"</div>"+
-				"<div>"+	
-					"<button type=\"button\" id=\"replyregi\" class=\"btn btn-default\" onclick=\"\" style=\"margin-top: 40px;\">덧글입력</button>"+
-			    "</div>";
+						"</table>"+
+					"</div>"+
+					"<hr>"+
+			 		"<div style=\"width: 450px;float: left;\">"+
+						"<textarea name=\"replyTextarea\" class=\"form-control\" rows=\"3\" placeholder=\"덧글 내용을 입력하세요\"></textarea>"+
+					"</div>"+
+					"<div>"+	
+						"<button type=\"button\" id=\"replyregi\" class=\"btn btn-default\" onclick=\"\" style=\"margin-top: 40px;\">덧글입력</button>"+
+				    "</div>";
+				    --%>	
 		
 		document.getElementById("htmlInjectionSector").innerHTML = htmlinjec;
 		document.getElementById("modallink").click();

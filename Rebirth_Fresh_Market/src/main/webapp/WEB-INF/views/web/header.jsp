@@ -321,12 +321,408 @@ position: fixed;
 		user.nickname	='${user.nickname}';
 		user.active		='${user.active}';
 	</c:if>
+	/*디버깅용*/
+	/*
 	console.log("user.usreNo __"+user.userNo);
 	console.log("user.email __"+user.email);
 	console.log("user.phoneNumber __"+user.phoneNumber);
 	console.log("user.nickname __"+user.nickname);
 	console.log("user.active __"+user.active);
+	*/
+	/*임시 작업공간 */
+	var countCommentResult;
+	function countComment(marker){
+		$.ajax({
+			type:"POST",
+			url:"/countComment",
+			data:{
+				itemNo:marker.itemNo
+			}
+		}).done(function(res){
+			console.log("marker.itemNo__"+marker.itemNo);
+			console.log("ajax__countComment__res__"+res);
+			countCommentResult=res;
+			console.log("ajax__countCommentResult__"+countCommentResult);
+			//console.log(res);
+			//refreshData();
+			//var combine="'#item"+markerNo+"'";
+			//$('#item'+markerNo).modal('hide');
+			return true;
+			console.log("성공");
+		}).fail(function(res){
+			console.log(res);
+			console.log("실패");
+			return false;
+		});
+	}
 	
+	
+	function Comment(comment){
+			this.commentNo			=comment.commentNo;
+			this.commentUserNo		=comment.commentUserNo;
+			this.replyNo			=comment.replyNo;
+			this.replyUserNo		=comment.replyUserNo;
+			this.commentWriter		=comment.commentWriter;
+			this.replyWriter		=comment.replyWriter;
+			this.commentContent		=comment.commentContent;
+			this.replyContent		=comment.replyContent;
+			this.commentRegiDate	=comment.commentRegiDate;
+			this.replyRegiDate		=comment.replyRegiDate;
+			this.commentTime		=comment.commentTime;
+			this.replyTime			=comment.replyTime;
+			this.commentStateCode	=comment.commentStateCode;
+			this.replyStateCode		=comment.replyStateCode;
+	}
+	
+	var commentList=[];
+	function findComment(marker){
+		var async_choice=(marker.async==false)?false:true;
+		console.log("marker async 확인_"+marker.async);
+		$.ajax({
+			async : async_choice,
+			type:"POST",
+			url:"/findComment",
+			data:{
+				itemNo:marker.itemNo
+			}
+		}).done(function(res){
+			commentList=[];
+			//var temp=res.split(',');
+			for(var i=0;i<res.length;i++){
+				//console.log("input_i_"+i+"__"+res[i].commentWriter);
+				commentList.push(new Comment(res[i]));
+			}
+			/*디버깅용 - 주석처리*/
+			
+			for(var i=0;i<commentList.length;i++){
+				console.log("push확인_i_"+i+".commentNo________"+commentList[i].commentNo);
+				console.log("push확인_i_"+i+".commentNo________"+commentList[i].commentUserNo);
+				console.log("push확인_i_"+i+".replyNo__________"+commentList[i].replyNo);
+				console.log("push확인_i_"+i+".replyNo__________"+commentList[i].replyUserNo);
+				console.log("push확인_i_"+i+".commentWriter____"+commentList[i].commentWriter);
+				console.log("push확인_i_"+i+".replyWriter______"+commentList[i].replyWriter);
+				console.log("push확인_i_"+i+".commentContent___"+commentList[i].commentContent);
+				console.log("push확인_i_"+i+".replyContent_____"+commentList[i].replyContent);
+				console.log("push확인_i_"+i+".commentStateCode_"+i+commentList[i].commentStateCode);
+				console.log("push확인_i_"+i+".replyStateCode___"+commentList[i].replyStateCode	);
+			}
+			//console.log("itemNo__"+itemNo);
+			//console.log("/findComment__"+res);
+			/**/
+			
+			//덧글 innerHTML
+			
+			replyDiv="<div  class=\"mousescroll\" style=\"height:500px; text-align:left; font-size:13px;\" id=\"accordion\">"+
+					"<table class=\"table\">";
+			
+			for(var i=0;i<commentList.length;i++){				
+				
+				/*디버깅용 주석처리*/
+				/*
+				console.log("outer for - i_"+i+"_");
+				console.log("commentRegiDate- i_"+commentList[i].commentRegiDate +"_");		
+				console.log("commentTime - i_"+ commentList[i].commentTime +"_");	
+				*/
+			
+				replyDiv+="<tr><td><div>";
+				replyDiv+="<b>"+commentList[i].commentWriter+"</b>"+
+							"<span style=\"color:gray; font-size:12px;\">"+ commentList[i].commentRegiDate+ " / "  + commentList[i].commentTime +" </span>"+
+							"<a class=\"accordion-toggle\" data-toggle=\"collapse\" data-parent=\"#accordion\"";
+				if(user.userNo!=null){
+					replyDiv+="href=\"#replyacco"+commentList[i].commentNo+"\">답글</a>";
+				}else{
+					replyDiv+="href=\""+commentList[i].commentNo+"\"></a>";
+				}
+				
+				if(user.userNo==commentList[i].commentUserNo){
+					replyDiv+="<a style=\"cursor:pointer\" onclick=\"removeComment("+commentList[i].commentNo+","+marker.itemNo+")\"> 삭제</a>";
+				}
+				
+				replyDiv+="<p><span>"+commentList[i].commentContent+"</span></p>";
+				
+				//depth 2 level In
+				if(commentList[i].replyNo !=null){
+					var commentNoCheck=commentList[i].commentNo;
+					
+					
+					while(i<commentList.length){
+						/*디버깅용 주석처리*/
+						//console.log("inner for - i_"+i+"_");
+						
+						//depth 2 level comment write
+						replyDiv+="<tr><td><div class=\"reReply\">"+
+									"<span style=\"float:left;color: orangered;margin-right:3.3px;\">"+
+										"┗</span><b>"+commentList[i].replyWriter+"</b>"+
+										"<span style=\"color:gray; font-size:12px;\">"+ commentList[i].replyRegiDate+ " / " + commentList[i].replyTime +
+										" </span><a class=\"accordion-toggle\" data-toggle=\"collapse\" data-parent=\"#accordion\" ";
+						if(user.userNo!=null){
+							replyDiv+="href=\"#replyacco"+commentList[i].commentNo+"\">답글</a>";
+						}else{
+							replyDiv+="href=\""+commentList[i].commentNo+"\"></a>";
+						}
+						if(user.userNo==commentList[i].replyUserNo){
+							replyDiv+="<a style=\"cursor:pointer\" onclick=\"removeReply("+commentList[i].replyNo+","+marker.itemNo+")\"> 삭제</a>";
+						}
+						
+						
+						replyDiv+=		"<p style=\"margin-left:16.5px;\">"+
+										"<span>"+commentList[i].replyContent+"</span></p>"+
+								  "</div></td></tr>";
+						//next not null일경우 
+					    if((i+1)<commentList.length){
+					    	if(commentNoCheck!=commentList[i+1].commentNo){
+					    		replyDiv+=
+					    			"<tr class=\"success\"><td><div class=\"reReply\">"+
+										"<div id=\"replyacco"+commentList[i].commentNo+"\"  class=\"panel-collapse collapse\">"+
+									      "<div class=\"panel-body\" style=\"padding-top:0px; padding-bottom:5px; padding-left:0px; padding-right:0px\">"+
+										     // "<hr>"+
+										      "<span style=\"float:left;color: orangered;\">┗</span>"+
+									    	  "<div style=\"width:380px; float:left; margin-right:10px; margin-left:5px;\">"+
+										  	  	"<textarea id=\"addReplyArea"+commentList[i].commentNo+"\" name=\"replyTextarea\" class=\"form-control\" rows=\"3\" placeholder=\"덧글 내용을 입력하세요\"></textarea>"+
+										      "</div>"+
+										  	  "<div>"+	
+											  	"<button type=\"button\" id=\"replyregi\" class=\"btn btn-default\" onclick=\"addReply("+commentList[i].commentNo+","+marker.itemNo+")\" style=\"margin-top: 40px;\">덧글입력</button>"+
+										      "</div>"+
+										     // "<hr>"+
+									 	  "</div>"+
+									    "</div>"+
+								    "</div></td></tr>";
+								break;
+							}/*else{
+						    	replyDiv+=
+					    			"<tr class=\"success\"><td><div class=\"reReply\">"+
+										"<div id=\"replyacco"+commentList[i].commentNo+"\"  class=\"panel-collapse collapse\">"+
+									      "<div class=\"panel-body\" style=\"padding-top:0px; padding-bottom:5px; padding-left:0px; padding-right:0px\">"+
+										     // "<hr>"+
+										      "<span style=\"float:left;color: orangered;\">┗</span>"+
+									    	  "<div style=\"width:380px; float:left; margin-right:10px; margin-left:5px;\">"+
+										  	  	"<textarea name=\"replyTextarea\" class=\"form-control\" rows=\"3\" placeholder=\"덧글 내용을 입력하세요\"></textarea>"+
+										      "</div>"+
+										  	  "<div>"+	
+											  	"<button type=\"button\" id=\"replyregi\" class=\"btn btn-default\" onclick=\"addReply("+commentList[i].commentNo+","+marker.itemNo+")\" style=\"margin-top: 40px;\">덧글입력</button>"+
+										      "</div>"+
+										     // "<hr>"+
+									 	  "</div>"+
+									    "</div>"+
+								    "</div></td></tr>";
+						    }
+					    	*/
+					    }
+					    i++;
+					}
+				}else{
+			    	replyDiv+=
+		    			"<tr class=\"success\"><td><div class=\"reReply\">"+
+							"<div id=\"replyacco"+commentList[i].commentNo+"\"  class=\"panel-collapse collapse\">"+
+						      "<div class=\"panel-body\" style=\"padding-top:0px; padding-bottom:5px; padding-left:0px; padding-right:0px\">"+
+							     // "<hr>"+
+							      "<span style=\"float:left;color: orangered;\">┗</span>"+
+						    	  "<div style=\"width:380px; float:left; margin-right:10px; margin-left:5px;\">"+
+							  	  	"<textarea id=\"addReplyArea"+commentList[i].commentNo+"\" name=\"replyTextarea\" class=\"form-control\" rows=\"3\" placeholder=\"덧글 내용을 입력하세요\"></textarea>"+
+							      "</div>"+
+							  	  "<div>"+	
+								  	"<button type=\"button\" id=\"replyregi\" class=\"btn btn-default\" onclick=\"addReply("+commentList[i].commentNo+","+marker.itemNo+")\"  style=\"margin-top: 40px;\">덧글입력</button>"+
+							      "</div>"+
+							     // "<hr>"+
+						 	  "</div>"+
+						    "</div>"+
+					    "</div></td></tr>";
+			    }
+				replyDiv+="</div></td></tr>";
+			}
+			replyDiv+=	"</table>"+
+						"</div>";
+						
+			//여기서부터 댓글 섹터
+			if(user.userNo==null){
+				console.log("user==null");
+				replyDiv+=	"<hr>"+
+					 		"<div style=\"width: 450px;float: left;\">"+
+								"<textarea name=\"replyTextarea\" class=\"form-control\" rows=\"3\" placeholder=\"로그인 후에 이용하실수 있습니다.\"></textarea>"+
+							"</div>"+
+							"<div>"+	
+								"<button type=\"button\" id=\"replyregi\" class=\"btn btn-default\" onclick=\"alert('로그인 후에 이용해주세요~^^')\" style=\"margin-top: 40px;\">덧글입력</button>"+
+						    "</div>";
+			}
+			if(user.userNo!=null){
+				console.log("user not null");
+				console.log("user=="+user);
+				replyDiv+=	"<hr>"+
+					 		"<div style=\"width: 450px;float: left;\">"+
+								"<textarea id=\"addCommentArea\" name=\"replyTextarea\" class=\"form-control\" rows=\"3\" placeholder=\"덧글 내용을 입력하세요\"></textarea>"+
+							"</div>"+
+							"<div>"+	
+								"<button type=\"button\" id=\"replyregi\" class=\"btn btn-default\" onclick=\"addComment("+marker.itemNo+")\"  style=\"margin-top: 40px;\">덧글입력</button>"+
+						    "</div>";
+			}
+			//-----------------------------------------------------------------------
+			
+			console.log("findComment(marker) 성공 및 완료");
+			if(async_choice==false){
+				$('#mmodal').html(replyDiv);
+				$('#replyButton').html("내용보기");
+			}
+			return "success";
+		}).fail(function(res){
+			console.log(res);
+			console.log("실패");
+			return "fail";
+		});
+	}
+	
+	function addComment(itemNo_temp){
+		var content=document.getElementById("addCommentArea").value;
+		if(content.length<2){
+			alert("댓글은 2자 이상 입력하셔야 합니다.");
+			return false;
+		}
+		
+		//var userNo;
+		$.ajax({
+			async : false,
+			type:"POST",
+			url:"/addComment",
+			data:{
+				itemNo:itemNo,
+				userNo:user.userNo,
+				content:content
+			}
+		}).done(function(res){
+			var temp={
+					itemNo:itemNo_temp,
+					async : false
+			}
+			console.log("temp async 확인_"+temp.async);
+			findComment(temp);
+
+			console.log("/addComment 종료지점");
+			console.log(res);
+			
+			console.log("addComment(itemNo_temp) 성공 및 완료");
+			return true;
+			
+		}).fail(function(res){
+			console.log(res);
+			console.log("실패");
+			return false;
+		});
+	}
+	
+	
+	function addReply(commentNo,itemNo_temp){
+		var content=document.getElementById("addReplyArea"+commentNo).value;
+		if(content.length<2){
+			alert("댓글은 2자 이상 입력하셔야 합니다.");
+			return false;
+		}
+		
+		//var userNo;
+		$.ajax({
+			async : false,
+			type:"POST",
+			url:"/addReply",
+			data:{
+				commentNo:commentNo,
+				userNo:user.userNo,
+				content:content
+			}
+		}).done(function(res){
+			var temp={
+					itemNo:itemNo_temp,
+					async : false
+			}
+			console.log("temp async 확인_"+temp.async);
+			findComment(temp);
+			
+			console.log("/addReply 종료지점");
+			console.log(res);
+			
+			console.log("addReply(itemNo_temp) 성공 및 완료");
+			return true;
+			
+		}).fail(function(res){
+			console.log(res);
+			console.log("실패");
+			return false;
+		});
+	}
+	
+	function removeComment(commentNo, itemNo_temp){
+		if(confirm("정말 삭제하시겠습니까?")){
+	        alert("삭제되었습니다.");
+	    }else{
+	        alert("삭제취소"); 
+	       	return false;
+	    }
+		console.log("remove Comment Half");
+		console.log("commentNo_"+commentNo);
+		//var userNo;
+		$.ajax({
+			async : false,
+			type:"POST",
+			url:"/removeComment",
+			data:{
+				commentNo:commentNo
+			}
+		}).done(function(res){
+			var temp={
+					itemNo:itemNo_temp,
+					async : false
+			}
+			console.log("temp async 확인_"+temp.async);
+			findComment(temp);
+			
+			console.log("/removeComment 종료지점");
+			console.log(res);
+			
+			console.log("removeComment(itemNo_temp) 성공 및 완료");
+			return true;
+			
+		}).fail(function(res){
+			console.log(res);
+			console.log("실패");
+			return false;
+		});
+	}
+	
+	function removeReply(replyNo, itemNo_temp){
+		if(confirm("정말 삭제하시겠습니까?")){
+	        alert("삭제되었습니다.");
+	    }else{
+	        alert("삭제취소"); 
+	       	return false;
+	    }
+		console.log("removeReply Half");
+		console.log("replyNo_"+replyNo);
+		//var userNo;
+		$.ajax({
+			async : false,
+			type:"POST",
+			url:"/removeReply",
+			data:{
+				replyNo:replyNo
+			}
+		}).done(function(res){
+			var temp={
+					itemNo:itemNo_temp,
+					async : false
+			}
+			console.log("temp async 확인_"+temp.async);
+			findComment(temp);
+			
+			console.log("/removeComment 종료지점");
+			console.log(res);
+			
+			console.log("removeComment(itemNo_temp) 성공 및 완료");
+			return true;
+			
+		}).fail(function(res){
+			console.log(res);
+			console.log("실패");
+			return false;
+		});
+	}
+	/*임시 작업공간 */
 </script>
 <div id="searchBar">
 	<form class="form-wrapper cf" action="#" onsubmit="return itemSearch('Quick')">
