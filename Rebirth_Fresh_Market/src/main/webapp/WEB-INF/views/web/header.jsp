@@ -388,7 +388,7 @@ position: fixed;
 							"<input id=\"user_remember_me\" type=\"checkbox\" name=\"user[remember_me]\" value=\"1\" />"+
 							"<label class=\"string optional\" for=\"user_remember_me\"> Remember me</label>"+
 						 	"<input id=\"signin_submit\" class=\"btn btn-primary\" type=\"submit\" name=\"commit\" value=\"Sign In\" onchange='process()'/>"+
-						  	"<a id=\"signup\" href=\"http://192.168.200.56:3000/\">Sign Up</a>"+
+						  	"<a id=\"signup\" href=\"http://192.168.200.4:3000/\">Sign Up</a>"+
 						"</form>"+
 		            "</div>"+
 		            "</li>"+
@@ -903,7 +903,7 @@ position: fixed;
 			<label class="string optional" for="user_remember_me"> Remember me</label>
 		 	<!--  아직 적용안됐음 (remember me) -->
 		  	<input id="signin_submit" class="btn btn-primary" type="submit" name="commit" value="Sign In" onchange='process()'/>
-		  	<a id="signup" href="http://192.168.200.56:3000/">Sign Up</a>
+		  	<a id="signup" href="http://192.168.200.4:3000/">Sign Up</a>
 		</form>
           </div>
           </li>
