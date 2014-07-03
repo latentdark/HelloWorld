@@ -92,7 +92,7 @@ body {
 
 #menu-toggle1 {
 	position: fixed;
-	top: 200px;
+	top: 15%;
 	left: 0;
 	background: #5DCD9D;
 	z-index: 1000;
@@ -198,7 +198,7 @@ body {
 
 #menu-toggle2 {
 	position: fixed;
-	top: 300px;
+	top: 25%;
 	left: 0;
 	background: #5DCD9D;
 	z-index: 1000;
@@ -305,7 +305,7 @@ body {
 
 #menu-toggle3 {
 	position: fixed;
-	top: 400px;
+	top: 35%;
 	left: 0;
 	background: #5DCD9D;
 	z-index: 1000;
@@ -389,6 +389,330 @@ body {
 	left: 300px;
 }
 */
+
+
+/*444*/
+/* Menu3 */
+#menu4 {
+	transition: all 0.3s ease;
+	position: fixed;
+	margin-top: 53px;
+	width: 0%;
+	top: 0;
+	left: -300px;
+	background: #FFFFFF;
+	/* height: calc(100% - 106px); */
+	height:540px;
+	z-index: 1030;
+	border: 1px solid #BCBCBC;
+	padding-top: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 20px;
+}
+
+#menu-toggle4 {
+	position: fixed;
+	top: 45%;
+	left: 0;
+	background: #5DCD9D;
+	z-index: 1000;
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	transition: all 0.3s ease;
+}
+
+/* 새로운 시도 시작 */
+#menu-toggle4 span {
+	/* Container properties */
+	width: 0;
+	left: 90px;
+	top: 0px;
+	/*
+	옆에서 얼마나 떨어졌나 지정
+	left:70px;
+	*/
+	padding: 0;
+	position: absolute;
+	overflow: hidden;
+	/* Text properties */
+	font-familiy: 'Nanum Gothic';
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: 0.6px;
+	white-space: nowrap;
+	line-height: 90px;
+	/* 하이라이터 높이 지정 line-height:39px;*/
+	/* CSS3 Transition: */
+	-webkit-transition: 0.25s;
+	/* Future proofing (these do not work yet): */
+	-moz-transition: 0.25s;
+	transition: 0.25s;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+/* span 보여주게 하는 코드 */
+#menu-toggle4 a:hover span {
+	background-color: rgb(255, 228, 0);
+	color: rgb(3, 0, 102);
+	/* text-shadow:1px 1px 0 #99bf31; */
+	width: auto;
+	padding: 0 20px;
+	overflow: visible;
+}
+
+/* CSS outer glow with the box-shadow property */
+/*
+#menu-toggle3 a:hover{
+	text-decoration:none;
+	
+	
+	-moz-box-shadow:0 0 5px #9ddff5;
+	-webkit-box-shadow:0 0 5px #9ddff5;
+	box-shadow:0 0 5px #9ddff5;
+}
+*/
+
+/* 새로운 시도 끝 */
+#menu-toggle4:hover {
+	background: rgb(255, 228, 0);
+	cursor: pointer;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+/*
+#menu4.open {
+	margin-top: 53px;
+	left: 0;
+	width: 300px;
+	display: block;
+}
+
+#menu-toggle4.open {
+	left: 300px;
+}
+*/
+
+/*555*/
+/* Menu3 */
+#menu5 {
+	transition: all 0.3s ease;
+	position: fixed;
+	margin-top: 53px;
+	width: 0%;
+	top: 0;
+	left: -300px;
+	background: #FFFFFF;
+	/* height: calc(100% - 106px); */
+	height:540px;
+	z-index: 1030;
+	border: 1px solid #BCBCBC;
+	padding-top: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 20px;
+}
+
+#menu-toggle5 {
+	position: fixed;
+	top: 55%;
+	left: 0;
+	background: #5DCD9D;
+	z-index: 1000;
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	transition: all 0.3s ease;
+}
+
+/* 새로운 시도 시작 */
+#menu-toggle5 span {
+	/* Container properties */
+	width: 0;
+	left: 90px;
+	top: 0px;
+	/*
+	옆에서 얼마나 떨어졌나 지정
+	left:70px;
+	*/
+	padding: 0;
+	position: absolute;
+	overflow: hidden;
+	/* Text properties */
+	font-familiy: 'Nanum Gothic';
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: 0.6px;
+	white-space: nowrap;
+	line-height: 90px;
+	/* 하이라이터 높이 지정 line-height:39px;*/
+	/* CSS3 Transition: */
+	-webkit-transition: 0.25s;
+	/* Future proofing (these do not work yet): */
+	-moz-transition: 0.25s;
+	transition: 0.25s;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+/* span 보여주게 하는 코드 */
+#menu-toggle5 a:hover span {
+	background-color: rgb(255, 228, 0);
+	color: rgb(3, 0, 102);
+	/* text-shadow:1px 1px 0 #99bf31; */
+	width: auto;
+	padding: 0 20px;
+	overflow: visible;
+}
+
+/* CSS outer glow with the box-shadow property */
+/*
+#menu-toggle5 a:hover{
+	text-decoration:none;
+	
+	
+	-moz-box-shadow:0 0 5px #9ddff5;
+	-webkit-box-shadow:0 0 5px #9ddff5;
+	box-shadow:0 0 5px #9ddff5;
+}
+*/
+
+/* 새로운 시도 끝 */
+#menu-toggle5:hover {
+	background: rgb(255, 228, 0);
+	cursor: pointer;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+/*
+#menu5.open {
+	margin-top: 53px;
+	left: 0;
+	width: 300px;
+	display: block;
+}
+
+#menu-toggle5.open {
+	left: 300px;
+}
+*/
+
+/*666*/
+/* Menu3 */
+#menu6 {
+	transition: all 0.3s ease;
+	position: fixed;
+	margin-top: 53px;
+	width: 0%;
+	top: 0;
+	left: -300px;
+	background: #FFFFFF;
+	/* height: calc(100% - 106px); */
+	height:540px;
+	z-index: 1030;
+	border: 1px solid #BCBCBC;
+	padding-top: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 20px;
+}
+
+#menu-toggle6 {
+	position: fixed;
+	top: 65%;
+	left: 0;
+	background: #5DCD9D;
+	z-index: 1000;
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	transition: all 0.3s ease;
+}
+
+/* 새로운 시도 시작 */
+#menu-toggle6 span {
+	/* Container properties */
+	width: 0;
+	left: 90px;
+	top: 0px;
+	/*
+	옆에서 얼마나 떨어졌나 지정
+	left:70px;
+	*/
+	padding: 0;
+	position: absolute;
+	overflow: hidden;
+	/* Text properties */
+	font-familiy: 'Nanum Gothic';
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: 0.6px;
+	white-space: nowrap;
+	line-height: 90px;
+	/* 하이라이터 높이 지정 line-height:39px;*/
+	/* CSS3 Transition: */
+	-webkit-transition: 0.25s;
+	/* Future proofing (these do not work yet): */
+	-moz-transition: 0.25s;
+	transition: 0.25s;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+/* span 보여주게 하는 코드 */
+#menu-toggle6 a:hover span {
+	background-color: rgb(255, 228, 0);
+	color: rgb(3, 0, 102);
+	/* text-shadow:1px 1px 0 #99bf31; */
+	width: auto;
+	padding: 0 20px;
+	overflow: visible;
+}
+
+/* CSS outer glow with the box-shadow property */
+/*
+#menu-toggle6 a:hover{
+	text-decoration:none;
+	
+	
+	-moz-box-shadow:0 0 5px #9ddff5;
+	-webkit-box-shadow:0 0 5px #9ddff5;
+	box-shadow:0 0 5px #9ddff5;
+}
+*/
+
+/* 새로운 시도 끝 */
+#menu-toggle6:hover {
+	background: rgb(255, 228, 0);
+	cursor: pointer;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+/*
+#menu5.open {
+	margin-top: 53px;
+	left: 0;
+	width: 300px;
+	display: block;
+}
+
+#menu-toggle5.open {
+	left: 300px;
+}
+*/
+
+
 #preview_modal {
 	text-align: center;
 }
@@ -1825,23 +2149,45 @@ div.mousescroll:hover {
 	<div id="menu-toggle1">
 		<a>
 		<img src="resources/imgs/TastyRoadIcon/tab/view.png" width=70 height=70 ></img>
-		<span>상품검색</span>
+		<span>전체보기</span>
 		</a>		
 	</div>
 	
 	
 	<div id="menu-toggle2">
 		<a>
-		<img src="resources/imgs/TastyRoadIcon/Cloud_Add.png" width=70 height=70 ></img>
-		<span>물건 팔기/사기</span>
+		<img src="resources/imgs/TastyRoadIcon/tab/korean.png" width=70 height=70 ></img>
+		<span>한식</span>
 		</a>		
 
 	</div>
 	
 	<div id="menu-toggle3">
 		<a>
-		<img src="resources/imgs/slider/Handshake-icon.png" width=70 height=70 ></img>
-		<span>거래현황</span>
+		<img src="resources/imgs/TastyRoadIcon/tab/japaness.png" width=70 height=70 ></img>
+		<span>일식</span>
+		</a>		
+	</div>
+	
+	<div id="menu-toggle4">
+		<a>
+		<img src="resources/imgs/TastyRoadIcon/tab/chiness.png" width=70 height=70 ></img>
+		<span>중식</span>
+		</a>		
+	</div>
+	
+	<div id="menu-toggle5">
+		<a>
+		<img src="resources/imgs/TastyRoadIcon/tab/american.png" width=70 height=70 ></img>
+		<span>양식</span>
+		</a>		
+	</div>
+	
+	
+	<div id="menu-toggle6">
+		<a>
+		<img src="resources/imgs/TastyRoadIcon/tab/cafe.png" width=70 height=70 ></img>
+		<span>카페</span>
 		</a>		
 	</div>
 	

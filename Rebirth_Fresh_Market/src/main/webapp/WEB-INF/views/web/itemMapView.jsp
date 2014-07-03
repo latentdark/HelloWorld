@@ -3088,16 +3088,16 @@ div.mousescroll:hover {
 						            /* main slider carousel items */
 						         	"<div class=\"carousel-inner\">"+
 						              "<div class=\"active item\" data-slide-number=\"0\">"+
-						                "<img  src = \"resources/itempictures/"+marker.itemPicturePath1+"\" style=\"width: 640px; height:480;\">"+
+						                "<img  src = \"http://imageserver.iisweb.kr/freshmarket/itempictures/"+marker.itemPicturePath1+"\" style=\"width: 640px; height:480;\">"+
 						              "</div>";
 					if(marker.itemPicturePath2!=null){
 						  htmlinjec+= "<div class=\"item\" data-slide-number=\"1\">"+				
-						              	"<img  src = \"resources/itempictures/"+marker.itemPicturePath2+"\" style=\"width: 640px; height:480;\">"+
+						              	"<img  src = \"http://imageserver.iisweb.kr/freshmarket/itempictures/"+marker.itemPicturePath2+"\" style=\"width: 640px; height:480;\">"+
 					                  "</div>";
 					}
 					if(marker.itemPicturePath3!=null){
 						  htmlinjec+= "<div class=\"item\" data-slide-number=\"2\">"+		
-						 			  "<img  src = \"resources/itempictures/"+marker.itemPicturePath3+"\" style=\"width: 640px; height:480;\">"+
+						 			  "<img  src = \"http://imageserver.iisweb.kr/freshmarket/itempictures/"+marker.itemPicturePath3+"\" style=\"width: 640px; height:480;\">"+
 			                	 	  "</div>";					            
 					}	             	
 						              
@@ -3159,16 +3159,16 @@ div.mousescroll:hover {
 				            /* main slider carousel items */
 				         	"<div class=\"carousel-inner\">"+
 				              "<div class=\"active item\" data-slide-number=\"0\">"+
-				                "<img  src = \"resources/itempictures/"+marker.itemPicturePath1+"\" style=\"width: 640px; height:480;\">"+
+				                "<img  src = \"http://imageserver.iisweb.kr/freshmarket/itempictures/"+marker.itemPicturePath1+"\" style=\"width: 640px; height:480;\">"+
 				              "</div>";
 			if(marker.itemPicturePath2!=null){
 				  returnDiv+= "<div class=\"item\" data-slide-number=\"1\">"+				
-				              	"<img  src = \"resources/itempictures/"+marker.itemPicturePath2+"\" style=\"width: 640px; height:480;\">"+
+				              	"<img  src = \"http://imageserver.iisweb.kr/freshmarket/itempictures/"+marker.itemPicturePath2+"\" style=\"width: 640px; height:480;\">"+
 			                  "</div>";
 			}
 			if(marker.itemPicturePath3!=null){
 				  returnDiv+= "<div class=\"item\" data-slide-number=\"2\">"+		
-				 			  "<img  src = \"resources/itempictures/"+marker.itemPicturePath3+"\" style=\"width: 640px; height:480;\">"+
+				 			  "<img  src = \"http://imageserver.iisweb.kr/freshmarket/itempictures/"+marker.itemPicturePath3+"\" style=\"width: 640px; height:480;\">"+
 		            	 	  "</div>";					            
 			}	             	
 				              

@@ -2,6 +2,14 @@
 <head>
 <style type="text/css">
 
+#mainlogo{
+	position: fixed;
+	z-index: 1000;
+	bottom:13px;
+	right:1px;
+	width: 500px;
+}
+
 #searchBar {
 	position: fixed;	
 	top: 40px;
@@ -171,4 +179,10 @@
 	        <button type="submit"><span class="glyphicon glyphicon-search"></span></button>
 	        	
 	</form>  	 
+</div>
+
+<div>
+<a href="/">
+	<img id="mainlogo" src="resources/imgs/TastyRoadIcon/Title/FreshMaket-TastyRoad.png">
+</a>
 </div>
