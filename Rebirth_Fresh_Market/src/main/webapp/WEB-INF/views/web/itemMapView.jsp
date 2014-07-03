@@ -1972,7 +1972,7 @@ div.mousescroll:hover {
 				var content;
 				
 				content=
-				"<div class=\"mousescroll\" style=\"height:600px;\">"+
+				"<div class=\"mousescroll\" style=\"height:400px;\">"+
 				"<table class=\"table table-striped\" style=\"width:261px;\">"+
 				"<thead>"+
 					"<tr>"+
@@ -2073,7 +2073,7 @@ div.mousescroll:hover {
 					findWishListResult.push(new FakeMarker(res[i],FakeMap));
 				}
 				content=
-				"<div class=\"mousescroll\" style=\"height:600px;\">"+
+				"<div class=\"mousescroll\" style=\"height:400px;\">"+
 				"<table class=\"table table-striped\" style=\"width:261px;\">"+
 				"<thead>"+
 					"<tr>"+
