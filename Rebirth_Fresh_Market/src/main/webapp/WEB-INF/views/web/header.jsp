@@ -292,6 +292,10 @@ position: fixed;
 			this.itemPicturePath1	=data.itemPicturePath1;
 			this.itemPicturePath2	=data.itemPicturePath2;
 			this.itemPicturePath3	=data.itemPicturePath3;
+			this.category1			=data.category1;
+			this.category2			=data.category2;
+			this.gridX1				=data.gridX1,
+			this.gridY1				=data.gridY1,
 			this.distance			=data.distance;
 			this.distance_m			=(Math.round(getDistanceFromLatLonInKm(myPosition.k, myPosition.A, data.gridX1, data.gridY1))*10000)/10000;
 			this.price				=data.price;
@@ -372,6 +376,10 @@ position: fixed;
 			url:"/signOut"
 		}).done(function(res){
 			user=null;
+			if(res.redirect){
+	            window.location.href = response.redirect;
+	        }
+			/*
 			console.log(res);
 			console.log("성공");
 			var content;
@@ -414,6 +422,7 @@ position: fixed;
 					"</a>"+
 				"</div>";
 			$('#menu-toggle3-injection').html(menu_toggle3_injection);
+			*/
 		}).fail(function(res){
 			console.log(res);
 			console.log("실패");
@@ -500,6 +509,7 @@ position: fixed;
 			}
 			/*디버깅용 - 주석처리*/
 			
+			/*
 			for(var i=0;i<commentList.length;i++){
 				console.log("push확인_i_"+i+".commentNo________"+commentList[i].commentNo);
 				console.log("push확인_i_"+i+".commentNo________"+commentList[i].commentUserNo);
@@ -512,6 +522,7 @@ position: fixed;
 				console.log("push확인_i_"+i+".commentStateCode_"+i+commentList[i].commentStateCode);
 				console.log("push확인_i_"+i+".replyStateCode___"+commentList[i].replyStateCode	);
 			}
+			*/
 			//console.log("itemNo__"+itemNo);
 			//console.log("/findComment__"+res);
 			/**/
@@ -876,7 +887,6 @@ position: fixed;
 	</form>  	 
 </div>
 
-
 <div>
 <a href="/">
 	<img id="whoMadeIt"  src="resources/imgs/WMI3.png">
@@ -904,7 +914,7 @@ position: fixed;
 			<label class="string optional" for="user_remember_me"> Remember me</label>
 		 	<!--  아직 적용안됐음 (remember me) -->
 		  	<input id="signin_submit" class="btn btn-primary" type="submit" name="commit" value="Sign In" onchange='process()'/>
-		  	<a id="signup" href="http://192.168.200.4:3000/">Sign Up</a>
+		  	<a id="signup" href="http://192.168.200.80:3000/">Sign Up</a>
 		</form>
           </div>
           </li>
@@ -924,7 +934,7 @@ position: fixed;
 			<li><a id="mypage" class="dropdown_a" href="">My Page</a></li>
 				<li><a id="signout" class="dropdown_a" href="">Your Page</a></li>	
 				<li role="presentation" class="divider"></li>		              			    	
-      			<li><a id="signout" class="dropdown_a" href="#" onclick="signOut()">Sign Out</a></li>	
+      			<li><a id="signout" class="dropdown_a" href="" onclick="signOut()">Sign Out</a></li>	
       	</ul>   
 	</ul>
 </div>

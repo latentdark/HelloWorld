@@ -874,10 +874,12 @@ div.mousescroll:hover {
 		
 
 	}
-	function refreshData(){
+	function refreshData(async_option){
 		console.log("refreshData()__Inn");
-		
+		var async_choice=(async_option==false)?false:true;
+		console.log("async_option__"+async_option);
 		$.ajax({
+			async : async_choice,
 			type:"POST",
 			url:"/itemList"	
 		}).done(function(res){
@@ -912,6 +914,7 @@ div.mousescroll:hover {
 	var itemNo;
 	function removeItem(){
 		$.ajax({
+			async : true,
 			type:"POST",
 			url:"/removeItem",
 			data:{
@@ -920,10 +923,16 @@ div.mousescroll:hover {
 		}).done(function(res){
 			console.log(res);
 			refreshData();
-			var combine="'#item"+markerNo+"'";
+			//var combine="'#item"+markerNo+"'";
+			
+			$('#deletepopup').modal('hide');
 			$('#item'+markerNo).modal('hide');
+			
+			console.log("removeItem() Debug");
 			alert('삭제되었습니다.');
-			return true;
+			console.log("removeItem() Debug");
+			
+			return false;
 			console.log("성공");
 		}).fail(function(res){
 			console.log(res);
@@ -3013,13 +3022,17 @@ div.mousescroll:hover {
 				<div class="modal-content">
 
 					<div class="modal-body">
-						<form action="#" onsubmit="return removeItem()">
+						<!--  
+						<form action="" onsubmit="return removeItem()">
+						-->
 							<p>삭제 하시겠습니까?</p>
 							<button type="button" class="btn btn-default"
 								data-dismiss="modal">취소</button>
 							<input type="hidden" name="ItemNo" id="deleteItemNo" value="">
-							<input type="submit" class="btn btn-danger" value="삭제">
+							<input type="button" onclick="removeItem()" class="btn btn-danger" value="삭제">
+						<!-- 
 						</form>
+						 -->
 					</div>
 				</div>
 				<!-- /.modal-content -->

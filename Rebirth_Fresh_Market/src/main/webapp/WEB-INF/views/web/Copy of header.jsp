@@ -2,32 +2,17 @@
 <head>
 <style type="text/css">
 #searchBar {
-/*position: fixed;*/
-	position: fixed;
-	
-	top: 50px;
-	left: 440px;
-	/*
-	background: #A2F6FF;
-	*/
+	position: fixed;	
+	top: 40px;
+	left:calc(50% - 205px);
+	margin:auto;
 	z-index: 1000;
-	/*
-	padding-left: 10px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	padding-right: 10px;
-	*/
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
 	transition: all 0.3s ease;
-	
-	
-	
 	width: 410px;
     z-index: 500;
-   
     padding: 5px;
-    /* margin: 150px auto 50px auto; */
     background: #444;
     background: rgba(0,0,0,.2);
     border-radius: 10px;
@@ -36,10 +21,10 @@
 #loginInjection{
 position: fixed;
 	
-	top: 45px;
+	top: 40px;
 	background: #5DCD9D;
 	right:0px;
-	width:100px;
+	width:auto;
 	height:50px;
 	/*
 	left: 860px;
@@ -69,16 +54,6 @@ position: fixed;
 .form-wrapper {
 
     width: 400px;
- /* 
-    z-index: 1000;
-   
-    padding: 15px;
-    margin: 150px auto 50px auto;
-    background: #444;
-    background: rgba(0,0,0,.2);
-    border-radius: 10px;
-    box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
- */   
 }
 
  
@@ -89,7 +64,6 @@ position: fixed;
     height: 40px;
     padding: 10px 5px;
     float: left;    
-    font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
     border: 0;
     background: #eee;
     border-radius: 3px 0 0 3px;      
@@ -113,13 +87,11 @@ position: fixed;
 .form-wrapper input:-moz-placeholder {
     color: #999;
     font-weight: normal;
-    font-style: italic;
 }
  
 .form-wrapper input:-ms-input-placeholder {
     color: #999;
     font-weight: normal;
-    font-style: italic;
 }    
  
 /* Form submit button */
@@ -150,7 +122,7 @@ position: fixed;
     cursor: pointer;
     height: 40px;
     width: 70px;
-    font: bold 15px/40px 'lucida sans', 'trebuchet MS', 'Tahoma';
+    font: bold 15px/40px;
     color: #fff;
     text-transform: uppercase;
     background: #d83c3c;
@@ -194,10 +166,144 @@ position: fixed;
     border: 0;
     padding: 0;
 }    
+
+
+#mainlogo{
+	position: fixed;
+	z-index: 1000;
+	bottom:13px;
+	right:1px;
+	width: 700px;
+}
+
+#whoMadeIt{
+	position: fixed;
+	z-index: 1000;
+	bottom:-10px;
+	left:60px;
+	height:45px;
+}
+
+.navbar {
+	/* background-image: url("/resources/imgs/bg6.png");
+			 */
+	background-color: #5DCD9D;
+	border-style: none;
+	font-size: 15px;
+	font-familiy: 'Nanum Gothic';
+	/* z-index: 2000; */
+	margin: 0;
+}
+
+#brand_img {
+	margin-left: 10px;
+}
+
+#start,#signin,#signin_on {
+	padding-top: 18px;
+	color: white;
+	background: none;
+}
+
+/* 페이지에 따라 알아서 색깔 바뀌게 수정해야함  */
+#deal,#deal:hover {
+	background-color: #33A876;
+	padding-top: 18px;
+	color: white;
+	height: 53px;
+}
+
+#start:hover,#signin:hover,#signin_on:hover {
+	color: gray;
+	background: none;
+}
+
+#search {
+	margin-top: 10px;
+}
+
+
+
+#sign_in_menu {
+	padding: 15px;
+	padding-bottom: 15px;
+	top: 54px;
+	left: -180px;
+	margin-right: 20px;
+	border-color: #BCBCBC;
+}
+
+#dropdown_on {
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	left:-75px;
+	margin: 0;
+	text-align: right;
+}
+
+
+#signin_submit {
+	clear: left;
+	width: 100%;
+	height: 32px;
+	font-size: 13px;
+}
+
+#signin_submit.btn {
+	background-color: #00A1DA;
+	border: none;
+	margin-bottom: 5px;
+}
+
+#signup {
+	margin-left: 160px;
+	text-decoration: none;
+}
+
+#signup:hover {
+	color: gray;
+}
+
+#dropdown_on>li>a {
+	color: blue;
+	background: none;
+}
+
+#dropdown_on>li>a:hover {
+	color: gray;
+	background: none;
+}
+
 </style>
 </head>
 <script>
 	//alert("응?");
+	function FakeMarker(data,map){
+			this.position			=new google.maps.LatLng(data.gridX1 , data.gridY1 );
+			this.map				=map;
+			this.icon				=data.markerImage;
+			this.stateCode			=data.stateCode;
+			this.itemName			=data.itemName;
+			this.userNo				=data.userNo;
+			this.itemNo				=data.itemNo;
+			this.itemInfo			=data.itemInfo;
+			this.itemPicturePath1	=data.itemPicturePath1;
+			this.itemPicturePath2	=data.itemPicturePath2;
+			this.itemPicturePath3	=data.itemPicturePath3;
+			this.category1			=data.category1;
+			this.category2			=data.category2;
+			this.gridX1				=data.gridX1,
+			this.gridY1				=data.gridY1,
+			this.distance			=data.distance;
+			this.distance_m			=(Math.round(getDistanceFromLatLonInKm(myPosition.k, myPosition.A, data.gridX1, data.gridY1))*10000)/10000;
+			this.price				=data.price;
+			this.regiDate			=data.regiDate;
+			this.identity			='fake';
+		}
+	
+	
 	var user={
 			userNo		:	null,
 			email		:	null,
@@ -229,17 +335,17 @@ position: fixed;
 			
 				var content;
 				content=
-					"<ul class=\"nav navbar-nav navbar-right\">"+
+					"<ul class=\"nav navbar-nav navbar-right\" >"+
 	    				"<li class=\"divider-vertical\"></li>"+
 	  						"<li class=\"dropdown\">"+
 	    						"<a id=\"signin_on\" class=\"dropdown-toggle\" href=\"\" data-toggle=\"dropdown\">"+
 	    						"["+user.nickname+"] 님  <strong class=\"caret\"></strong></a>"+
 	    						
-								"<ul id=\"dropdown_on\" class=\"dropdown-menu\" role=\"menu\">"+
+								"<ul id=\"dropdown_on\"  class=\"dropdown-menu\" role=\"menu\">"+
 									"<li><a id=\"mypage\" class=\"dropdown_a\" href=\"\">My Page</a></li>"+
 			   						"<li><a id=\"signout\" class=\"dropdown_a\" href=\"\">Your Page</a></li>"+	
 			   						"<li role=\"presentation\" class=\"divider\"></li>"+		              			    	
-			          				"<li><a id=\"signout\" class=\"dropdown_a\" href=\"#\" onclick=\"signOut()\">Sign Out</a></li>"+	
+			          				"<li><a id=\"signout\" class=\"dropdown_a\" href=\"/\" onclick=\"signOut()\">Sign Out</a></li>"+	
 			          			"</ul>"+    
 	   				"</ul>";
 				$('#loginInjection').html(content);
@@ -270,6 +376,10 @@ position: fixed;
 			url:"/signOut"
 		}).done(function(res){
 			user=null;
+			if(res.redirect){
+	            window.location.href = response.redirect;
+	        }
+			/*
 			console.log(res);
 			console.log("성공");
 			var content;
@@ -278,7 +388,7 @@ position: fixed;
 	     			"<li class=\"divider-vertical\"></li>"+
   						"<li class=\"dropdown\">"+
  	  					"<a id=\"signin\" class=\"dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\">Sign In <strong class=\"caret\"></strong></a>"+
-        				"<div class=\"dropdown-menu\">"+
+        				"<div id=\"sign_in_menu\"  class=\"dropdown-menu\">"+
                
             			"<form name=\"signinform\" action=\"#\" method=\"post\" onsubmit=\"return signIn()\">"+
 							"<input class=\"form-control\" id=\"user_email\" style=\"margin-bottom: 15px;\" type=\"email\" name=\"email\" size=\"30\" placeholder=\" 이메일\"/>"+
@@ -286,7 +396,7 @@ position: fixed;
 							"<input id=\"user_remember_me\" type=\"checkbox\" name=\"user[remember_me]\" value=\"1\" />"+
 							"<label class=\"string optional\" for=\"user_remember_me\"> Remember me</label>"+
 						 	"<input id=\"signin_submit\" class=\"btn btn-primary\" type=\"submit\" name=\"commit\" value=\"Sign In\" onchange='process()'/>"+
-						  	"<a id=\"signup\" href=\"http://192.168.200.56:3000/node.js/signupForm\">Sign Up</a>"+
+						  	"<a id=\"signup\" href=\"http://192.168.200.4:3000/\">Sign Up</a>"+
 						"</form>"+
 		            "</div>"+
 		            "</li>"+
@@ -296,7 +406,7 @@ position: fixed;
 			
 			var menu_toggle2_injection=
 				"<div id=\"menu-toggle2-mirror\">"+
-					"<a> <img src=\"resources/imgs/slider/Cloud_Add.png\" width=70"+
+					"<a> <img src=\"resources/imgs/slider/Cloud_Add_black.png\" width=70"+
 						"height=70 ></img>"+ 
 						"<span>물건 팔기/사기<br>로그인이 필요합니다.</span>"+
 					"</a>"+
@@ -312,6 +422,7 @@ position: fixed;
 					"</a>"+
 				"</div>";
 			$('#menu-toggle3-injection').html(menu_toggle3_injection);
+			*/
 		}).fail(function(res){
 			console.log(res);
 			console.log("실패");
@@ -398,6 +509,7 @@ position: fixed;
 			}
 			/*디버깅용 - 주석처리*/
 			
+			/*
 			for(var i=0;i<commentList.length;i++){
 				console.log("push확인_i_"+i+".commentNo________"+commentList[i].commentNo);
 				console.log("push확인_i_"+i+".commentNo________"+commentList[i].commentUserNo);
@@ -410,6 +522,7 @@ position: fixed;
 				console.log("push확인_i_"+i+".commentStateCode_"+i+commentList[i].commentStateCode);
 				console.log("push확인_i_"+i+".replyStateCode___"+commentList[i].replyStateCode	);
 			}
+			*/
 			//console.log("itemNo__"+itemNo);
 			//console.log("/findComment__"+res);
 			/**/
@@ -511,6 +624,23 @@ position: fixed;
 								    "</div></td></tr>";
 						    }
 					    	*/
+					    }else{
+					    	replyDiv+=
+				    			"<tr class=\"success\"><td><div class=\"reReply\">"+
+									"<div id=\"replyacco"+commentList[i].commentNo+"\"  class=\"panel-collapse collapse\">"+
+								      "<div class=\"panel-body\" style=\"padding-top:0px; padding-bottom:5px; padding-left:0px; padding-right:0px\">"+
+									     // "<hr>"+
+									      "<span style=\"float:left;color: orangered;\">┗</span>"+
+								    	  "<div style=\"width:380px; float:left; margin-right:10px; margin-left:5px;\">"+
+									  	  	"<textarea id=\"addReplyArea"+commentList[i].commentNo+"\" name=\"replyTextarea\" class=\"form-control\" rows=\"3\" placeholder=\"덧글 내용을 입력하세요\"></textarea>"+
+									      "</div>"+
+									  	  "<div>"+	
+										  	"<button type=\"button\" id=\"replyregi\" class=\"btn btn-default\" onclick=\"addReply("+commentList[i].commentNo+","+marker.itemNo+")\" style=\"margin-top: 40px;\">덧글입력</button>"+
+									      "</div>"+
+									     // "<hr>"+
+								 	  "</div>"+
+								    "</div>"+
+							    "</div></td></tr>";
 					    }
 					    i++;
 					}
@@ -726,15 +856,47 @@ position: fixed;
 			return false;
 		});
 	}
+	
+	function removeWish(temp_itemNo){			
+		$.ajax({
+			async : false,
+			type:"POST",
+			url:"/removeWish",
+			data:{
+				userNo:user.userNo,
+				itemNo:temp_itemNo
+			}
+		}).done(function(res){
+			console.log("res"+res);
+			console.log("ajax 정상응답");
+			findWishList(false);
+			aleft("삭제되었습니다.");
+			
+		}).fail(function(res){
+			console.log(res);
+			console.log("ajax error");
+		});
+	}
 	/*임시 작업공간 */
 </script>
 <div id="searchBar">
 	<form class="form-wrapper cf" action="#" onsubmit="return itemSearch('Quick')">
-	        <input id="searchKeywordQuick" type="text" placeholder="검색어를 입력해주세요" ><!-- required -->
-	        <button type="submit">Search</button>
+	        <input id="searchKeywordQuick" type="text" placeholder=" 물품명을 입력해주세요" ><!-- required -->
+	        <button type="submit"><span class="glyphicon glyphicon-search"></span></button>
 	        	
-	</form>  
-	 
+	</form>  	 
+</div>
+
+<div>
+<a href="/">
+	<img id="whoMadeIt"  src="resources/imgs/WMI3.png">
+</a>
+</div>
+
+<div>
+<a href="/">
+	<img id="mainlogo" src="resources/imgs/logo5re.png">
+</a>
 </div>
 
 <c:if test='${user==null}'>
@@ -743,7 +905,7 @@ position: fixed;
  	     		<li class="divider-vertical"></li>
       			<li class="dropdown">
      	  		<a id="signin" class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
-         	<div class="dropdown-menu">
+         	<div id="sign_in_menu" class="dropdown-menu">
               <!-- Login form here -->
             	<form name="signinform" action="#" method="post" onsubmit="return signIn()">
 			<input class="form-control" id="user_email" style="margin-bottom: 15px;" type="email" name="email" size="30" placeholder=" 이메일"/>
@@ -752,7 +914,7 @@ position: fixed;
 			<label class="string optional" for="user_remember_me"> Remember me</label>
 		 	<!--  아직 적용안됐음 (remember me) -->
 		  	<input id="signin_submit" class="btn btn-primary" type="submit" name="commit" value="Sign In" onchange='process()'/>
-		  	<a id="signup" href="http://192.168.200.56:3000/node.js/signupForm">Sign Up</a>
+		  	<a id="signup" href="http://192.168.200.80:3000/">Sign Up</a>
 		</form>
           </div>
           </li>
@@ -762,7 +924,7 @@ position: fixed;
 
 <c:if test='${user!=null}'>
 <div id="loginInjection">
-	<ul class="nav navbar-nav navbar-right">
+	<ul class="nav navbar-nav navbar-rightz">
 		<li class="divider-vertical"></li>
 			<li class="dropdown">
 				<a id="signin_on" class="dropdown-toggle" href="" data-toggle="dropdown">
@@ -772,7 +934,7 @@ position: fixed;
 			<li><a id="mypage" class="dropdown_a" href="">My Page</a></li>
 				<li><a id="signout" class="dropdown_a" href="">Your Page</a></li>	
 				<li role="presentation" class="divider"></li>		              			    	
-      			<li><a id="signout" class="dropdown_a" href="#" onclick="signOut()">Sign Out</a></li>	
+      			<li><a id="signout" class="dropdown_a" href="" onclick="signOut()">Sign Out</a></li>	
       	</ul>   
 	</ul>
 </div>
