@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
@@ -7,105 +7,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Fresh Market</title>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
-	<link rel="Stylesheet" href="/resources/css/bootstrap.min.css"/>
-	
-	<style>
-	
-.navbar {
-	/* background-image: url("/resources/imgs/bg6.png");
-			 */
-	background-color: #5DCD9D;
-	border-style: none;
-	font-size: 15px;
-	font-familiy: 'Nanum Gothic';
-	/* z-index: 2000; */
-	margin: 0;
-}
+<meta charset="UTF-8">
+<title>Fresh Market</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+<link rel="Stylesheet" href="/resources/css/bootstrap.min.css" />
 
-#brand_img {
-	margin-left: 10px;
-}
-
-#start,#signin,#signin_on {
-	padding-top: 18px;
-	color: white;
-	background: none;
-}
-
-/* 페이지에 따라 알아서 색깔 바뀌게 수정해야함  */
-#deal,#deal:hover {
-	background-color: #33A876;
-	padding-top: 18px;
-	color: white;
-	height: 53px;
-}
-
-#start:hover,#signin:hover,#signin_on:hover {
-	color: gray;
-	background: none;
-}
-
-#search {
-	margin-top: 10px;
-}
-
-body {
-	background-image: url("/resources/imgs/bg6.png");
-}
-
-.dropdown-menu {
-	padding: 15px;
-	padding-bottom: 15px;
-	top: 54px;
-	left: -180px;
-	margin-right: 20px;
-	border-color: #BCBCBC;
-}
-
-#dropdown_on {
-	padding-right: 0px;
-	padding-left: 0px;
-	padding-top: 15px;
-	padding-bottom: 15px;
-	margin: 0;
-	text-align: right;
-}
-
-#signin_submit {
-	clear: left;
-	width: 100%;
-	height: 32px;
-	font-size: 13px;
-}
-
-#signin_submit.btn {
-	background-color: #00A1DA;
-	border: none;
-	margin-bottom: 5px;
-}
-
-#signup {
-	margin-left: 160px;
-	text-decoration: none;
-}
-
-#signup:hover {
-	color: gray;
-}
-
-#dropdown_on>li>a {
-	color: blue;
-	background: none;
-}
-
-#dropdown_on>li>a:hover {
-	color: gray;
-	background: none;
-}
+<style>
 
 /* itemMapView css  */
 html {
@@ -161,7 +70,6 @@ body {
 	white-space: nowrap;
 } */
 
-
 /* slider bar css */
 /* 텔 */
 #menu1 {
@@ -169,12 +77,12 @@ body {
 	position: fixed;
 	width: 0%;
 	top: 0;
-	margin-top:53px;
+	margin-top: 53px;
 	left: -200px;
 	background: #FFFFFF;
-	height:  calc(100% - 53px);
+	height: calc(100% - 106px);
 	z-index: 1030;
-	border:1px solid #BCBCBC;
+	border: 1px solid #BCBCBC;
 	padding-top: 20px;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -187,60 +95,55 @@ body {
 	top: 200px;
 	left: 0;
 	background: #5DCD9D;
-	z-index: 1000;	
+	z-index: 1000;
 	padding-left: 10px;
 	padding-top: 10px;
 	padding-bottom: 10px;
 	padding-right: 10px;
- 	border-top-right-radius: 5px;
+	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
 	transition: all 0.3s ease;
 }
 
-
 /* 새로운 시도 시작 */
-#menu-toggle1 span{
-	
+#menu-toggle1 span {
 	/* Container properties */
-	
-	width:0;
-	left:90px;
-	top:0px;
+	width: 0;
+	left: 90px;
+	top: 0px;
 	/*
 	옆에서 얼마나 떨어졌나 지정
 	left:70px;
 	*/
-	padding:0;
-	position:absolute;
-	overflow:hidden;
-
+	padding: 0;
+	position: absolute;
+	overflow: hidden;
 	/* Text properties */
 	font-familiy: 'Nanum Gothic';
-	font-size:18px;
-	font-weight:bold;
-	letter-spacing:0.6px;
-	white-space:nowrap;
-	line-height:90px;
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: 0.6px;
+	white-space: nowrap;
+	line-height: 90px;
 	/* 하이라이터 높이 지정 line-height:39px;*/
 	/* CSS3 Transition: */
 	-webkit-transition: 0.25s;
-	
 	/* Future proofing (these do not work yet): */
 	-moz-transition: 0.25s;
 	transition: 0.25s;
 	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px; 
+	border-bottom-right-radius: 5px;
 }
 /* span 보여주게 하는 코드 */
-#menu-toggle1 a:hover span{ 
-	background-color:rgb(255, 228, 0);
-	color:rgb(3, 0, 102);
+#menu-toggle1 a:hover span {
+	background-color: rgb(255, 228, 0);
+	color: rgb(3, 0, 102);
 	/* text-shadow:1px 1px 0 #99bf31;
 	 */
-	width:auto;
-	padding:0 20px;
-	overflow:visible; 
-	}
+	width: auto;
+	padding: 0 20px;
+	overflow: visible;
+}
 
 /* CSS outer glow with the box-shadow property */
 /*
@@ -254,18 +157,17 @@ body {
 }
 */
 
-
 /* 새로운 시도 끝 */
-
 #menu-toggle1:hover {
 	background: rgb(255, 228, 0);
 	cursor: pointer;
 	border-top-right-radius: 0px;
-	border-bottom-right-radius: 0px; 
+	border-bottom-right-radius: 0px;
 }
 
+/*
 #menu1.open {
-	margin-top:53px;
+	margin-top: 53px;
 	left: 0;
 	width: 300px;
 	display: block;
@@ -274,18 +176,17 @@ body {
 #menu-toggle1.open {
 	left: 300px;
 }
-
-
+*/
 /* Menu2 */
 #menu2 {
 	transition: all 0.3s ease;
 	position: fixed;
 	width: 0%;
 	top: 0;
-	margin-top:53px;
+	margin-top: 53px;
 	left: -300px;
 	background: #ffffff;
-	height:  calc(100% - 53px);
+	height: 540px;
 	z-index: 1030;
 	text-align: center;
 	border: 1px solid #BCBCBC;
@@ -311,50 +212,45 @@ body {
 }
 
 /* 새로운 시도 시작 */
-#menu-toggle2 span{
-	
+#menu-toggle2 span {
 	/* Container properties */
-	
-	width:0;
-	left:90px;
-	top:0px;
+	width: 0;
+	left: 90px;
+	top: 0px;
 	/*
 	옆에서 얼마나 떨어졌나 지정
 	left:70px;
 	*/
-	padding:0;
-	position:absolute;
-	overflow:hidden;
-
+	padding: 0;
+	position: absolute;
+	overflow: hidden;
 	/* Text properties */
 	font-familiy: 'Nanum Gothic';
-	font-size:18px;
-	font-weight:bold;
-	letter-spacing:0.6px;
-	white-space:nowrap;
-	line-height:90px;
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: 0.6px;
+	white-space: nowrap;
+	line-height: 90px;
 	/* 하이라이터 높이 지정 line-height:39px;*/
 	/* CSS3 Transition: */
 	-webkit-transition: 0.25s;
-	
 	/* Future proofing (these do not work yet): */
 	-moz-transition: 0.25s;
 	transition: 0.25s;
 	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px; 
+	border-bottom-right-radius: 5px;
 }
 
 /* span 보여주게 하는 코드 */
-#menu-toggle2 a:hover span{ 
-	background-color:rgb(255, 228, 0);
-	color:rgb(3, 0, 102);
-/* 	text-shadow:1px 1px 0 #99bf31; */
-	width:auto;
-	padding:0 20px;
-	overflow:visible; 
-	
-	}
-	
+#menu-toggle2 a:hover span {
+	background-color: rgb(255, 228, 0);
+	color: rgb(3, 0, 102);
+	/* 	text-shadow:1px 1px 0 #99bf31; */
+	width: auto;
+	padding: 0 20px;
+	overflow: visible;
+}
+
 /* CSS outer glow with the box-shadow property */
 /*
 #menu-toggle2 a:hover{
@@ -367,18 +263,17 @@ body {
 }
 */
 
-
 /* 새로운 시도 끝 */
-
 #menu-toggle2:hover {
 	background: rgb(255, 228, 0);
 	cursor: pointer;
 	border-top-right-radius: 0px;
-	border-bottom-right-radius: 0px; 
+	border-bottom-right-radius: 0px;
 }
 
+/*
 #menu2.open {
-	margin-top:53px;
+	margin-top: 53px;
 	left: 0;
 	width: 300px;
 	display: block;
@@ -387,20 +282,21 @@ body {
 #menu-toggle2.open {
 	left: 300px;
 }
-
+*/
 
 /* Menu3 */
 #menu3 {
 	transition: all 0.3s ease;
 	position: fixed;
-	margin-top:53px;
+	margin-top: 53px;
 	width: 0%;
 	top: 0;
-	left: -200px;
+	left: -300px;
 	background: #FFFFFF;
-	height:  calc(100% - 53px);
+	/* height: calc(100% - 106px); */
+	height:540px;
 	z-index: 1030;
-	border:1px solid #BCBCBC;
+	border: 1px solid #BCBCBC;
 	padding-top: 20px;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -423,46 +319,43 @@ body {
 }
 
 /* 새로운 시도 시작 */
-#menu-toggle3 span{
-	
+#menu-toggle3 span {
 	/* Container properties */
-	
-	width:0;
-	left:90px;
-	top:0px;
+	width: 0;
+	left: 90px;
+	top: 0px;
 	/*
 	옆에서 얼마나 떨어졌나 지정
 	left:70px;
 	*/
-	padding:0;
-	position:absolute;
-	overflow:hidden;
-
+	padding: 0;
+	position: absolute;
+	overflow: hidden;
 	/* Text properties */
 	font-familiy: 'Nanum Gothic';
-	font-size:18px;
-	font-weight:bold;
-	letter-spacing:0.6px;
-	white-space:nowrap;
-	line-height:90px;
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: 0.6px;
+	white-space: nowrap;
+	line-height: 90px;
 	/* 하이라이터 높이 지정 line-height:39px;*/
 	/* CSS3 Transition: */
 	-webkit-transition: 0.25s;
-	
 	/* Future proofing (these do not work yet): */
 	-moz-transition: 0.25s;
 	transition: 0.25s;
 	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px; 
+	border-bottom-right-radius: 5px;
 }
 /* span 보여주게 하는 코드 */
-#menu-toggle3 a:hover span{ 
-	background-color:rgb(255, 228, 0);
-	color:rgb(3, 0, 102);
+#menu-toggle3 a:hover span {
+	background-color: rgb(255, 228, 0);
+	color: rgb(3, 0, 102);
 	/* text-shadow:1px 1px 0 #99bf31; */
-	width:auto;
-	padding:0 20px;
-	overflow:visible; }
+	width: auto;
+	padding: 0 20px;
+	overflow: visible;
+}
 
 /* CSS outer glow with the box-shadow property */
 /*
@@ -476,18 +369,17 @@ body {
 }
 */
 
-
 /* 새로운 시도 끝 */
-
 #menu-toggle3:hover {
 	background: rgb(255, 228, 0);
 	cursor: pointer;
 	border-top-right-radius: 0px;
-	border-bottom-right-radius: 0px; 
+	border-bottom-right-radius: 0px;
 }
 
+/*
 #menu3.open {
-	margin-top:53px;
+	margin-top: 53px;
 	left: 0;
 	width: 300px;
 	display: block;
@@ -496,130 +388,270 @@ body {
 #menu-toggle3.open {
 	left: 300px;
 }
-
-#preview_modal{
+*/
+#preview_modal {
 	text-align: center;
 }
 
-#tab11,#tab12,#tab13,#tab14,#tab15{
-	height:410px;
+#tab11,#tab12,#tab13,#tab14,#tab15 {
+	height: 410px;
 }
-
 
 /* menu3 내부 css */
-.list-group.panel > .list-group-item {
-  border-bottom-right-radius: 4px;
-  border-bottom-left-radius: 4px
-}
-.list-group-submenu {
-  margin-left:20px;
+.list-group.panel>.list-group-item {
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px
 }
 
-#injection-modal{
+.list-group-submenu {
+	margin-left: 20px;
+}
+
+#injection-modal {
 	background-color: white;
 	border-top-right-radius: 4px;
-  	border-top-left-radius: 4px;
+	border-top-left-radius: 4px;
 	border-bottom-right-radius: 4px;
-  	border-bottom-left-radius: 4px;
-  	text-align: center;
+	border-bottom-left-radius: 4px;
+	text-align: center;
 }
 
 #search_result {
-	height:  calc(100% - 150px);
-/* 	overflow-y:scroll; */
+	height: calc(100% - 150px);
+	/* 	overflow-y:scroll; */
 }
-
-
-
 
 div.mousescroll {
-    overflow: hidden;
+	overflow: hidden;
 }
+
 div.mousescroll:hover {
-    overflow-y: scroll;
+	overflow-y: scroll;
 }
-
-
 
 /* 새로운 시도 시작 */
-#t3 span{
-	
+#t3 span {
 	/* Container properties */
-	
-	width:0;
-	left:absolute;
-	top:absolute;
+	width: 0;
+	left: absolute;
+	top: absolute;
 	/*
 	옆에서 얼마나 떨어졌나 지정
 	left:70px;
 	*/
-	padding:0;
-	position:absolute;
-	overflow:hidden;
-
+	padding: 0;
+	position: absolute;
+	overflow: hidden;
 	/* Text properties */
 	font-familiy: 'Nanum Gothic';
-	font-size:12px;
-	font-weight:bold;
-	letter-spacing:0.6px;
-	white-space:nowrap;
-	line-height:20px;
+	font-size: 12px;
+	font-weight: bold;
+	letter-spacing: 0.6px;
+	white-space: nowrap;
+	line-height: 20px;
 	/* 하이라이터 높이 지정 line-height:39px;*/
 	/* CSS3 Transition: */
 	-webkit-transition: 0.25s;
-	
 	/* Future proofing (these do not work yet): */
 	-moz-transition: 0.25s;
 	transition: 0.25s;
 	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px; 
+	border-bottom-right-radius: 5px;
 }
+
 /* span 보여주게 하는 코드 */
-#t3 a:hover span{ 
-	background-color:rgb(255, 228, 0);
-	color:rgb(3, 0, 102);
-	/* text-shadow:1px 1px 0 #99bf31;
-	 */
-	width:auto;
-	padding:0 20px;
-	/*padding:0 20px;*/
-	overflow:visible; 
-	}
-
-
-#t3 a:hover{
-	background: rgb(255, 228, 0);
-	cursor: pointer;
-	border-top-right-radius: 0px;
-	border-bottom-right-radius: 0px; 
-
-	text-decoration:none;
-	
-	-moz-box-shadow:0 0 5px #9ddff5;
-	-webkit-box-shadow:0 0 5px #9ddff5;
-	box-shadow:0 0 5px #9ddff5;
-	
-	/* CSS outer glow with the box-shadow property */
-	
-}
-
-
-
-/* 새로운 시도 끝 
-
-*/
 /*
-#menu-toggle1:hover {
+#t3 a:hover span {
+	background-color: rgb(255, 228, 0);
+	color: rgb(3, 0, 102);
+*/
+	/* text-shadow:1px 1px 0 #99bf31; */
+/*	 
+	width: auto;
+	padding: 0 20px;
+*/
+	/*padding:0 20px;*/
+/*
+	overflow: visible;
+}
+*/
+
+#t3 a:hover {
 	background: rgb(255, 228, 0);
 	cursor: pointer;
 	border-top-right-radius: 0px;
-	border-bottom-right-radius: 0px; 
+	border-bottom-right-radius: 0px;
+	text-decoration: none;
+	-moz-box-shadow: 0 0 5px #9ddff5;
+	-webkit-box-shadow: 0 0 5px #9ddff5;
+	box-shadow: 0 0 5px #9ddff5;
+
+	/* CSS outer glow with the box-shadow property */
 }
-	*/		
+
+/*
+#menu-toggle2-injection start
+로그인 비활성화시 기존 toggle overview
+*/
+#menu-toggle2-mirror {
+	position: fixed;
+	top: 300px;
+	left: 0;
+	background: #5DCD9D;
+	z-index: 1010;
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	transition: all 0.3s ease;
+}
+
+#menu-toggle2-mirror span {
+	/* Container properties */
+	width: 0;
+	left: 90px;
+	top: 0px;
+	/*
+	옆에서 얼마나 떨어졌나 지정
+	left:70px;
+	*/
+	padding: 0;
+	position: absolute;
+	overflow: hidden;
+	/* Text properties */
+	font-familiy: 'Nanum Gothic';
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: 0.6px;
+	white-space: nowrap;
+	line-height: 45px;
+	/* 하이라이터 높이 지정 line-height:39px;*/
+	/* CSS3 Transition: */
+	-webkit-transition: 0.25s;
+	/* Future proofing (these do not work yet): */
+	-moz-transition: 0.25s;
+	transition: 0.25s;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+/* span 보여주게 하는 코드 */
+#menu-toggle2-mirror a:hover span {
+	background-color: #BDBDBD;
+	color: #515151;
+	/* 	text-shadow:1px 1px 0 #99bf31; */
+	width: auto;
+	padding: 0 20px;
+	overflow: visible;
+}
+
+#menu-toggle2-mirror:hover {
+	background: #BDBDBD;
+	cursor: pointer;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+/*#menu-toggle2-injection end*/
+
+/*
+#menu-toggle3-injection start
+로그인 비활성화시 기존 toggle overview
+*/
+#menu-toggle3-mirror {
+	position: fixed;
+	top: 400px;
+	left: 0;
+	background: #5DCD9D;
+	z-index: 1010;
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	transition: all 0.3s ease;
+}
+
+#menu-toggle3-mirror span {
+	/* Container properties */
+	width: 0;
+	left: 90px;
+	top: 0px;
+	/*
+	옆에서 얼마나 떨어졌나 지정
+	left:70px;
+	*/
+	padding: 0;
+	position: absolute;
+	overflow: hidden;
+	/* Text properties */
+	font-familiy: 'Nanum Gothic';
+	font-size: 18px;
+	font-weight: bold;
+	letter-spacing: 0.6px;
+	white-space: nowrap;
+	line-height: 45px;
+	/* 하이라이터 높이 지정 line-height:39px;*/
+	/* CSS3 Transition: */
+	-webkit-transition: 0.25s;
+	/* Future proofing (these do not work yet): */
+	-moz-transition: 0.25s;
+	transition: 0.25s;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+/* span 보여주게 하는 코드 */
+#menu-toggle3-mirror a:hover span {
+	background-color: #BDBDBD;
+	color: #515151;
+	/* 	text-shadow:1px 1px 0 #99bf31; */
+	width: auto;
+	padding: 0 20px;
+	overflow: visible;
+}
+
+#menu-toggle3-mirror:hover {
+	background: #BDBDBD;
+	cursor: pointer;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+/*#menu-toggle2-injection end*/
+
+#addWish_disable {
+	
+}
+
+#addWish_disable a:hover {
+	background: rgb(255, 228, 0);
+	cursor: pointer;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+	text-decoration: none;
+	-moz-box-shadow: 0 0 5px #9ddff5;
+	-webkit-box-shadow: 0 0 5px #9ddff5;
+	box-shadow: 0 0 5px #9ddff5;
+
+	/* CSS outer glow with the box-shadow property */
+}
+
+.modal-footer {
+	margin-top: 0px;
+}
+
+/*덧글에 덧글  */
+.reReply {
+	margin-left: 20px;
+}
+
 
 
 </style>
- 	
 	<!--
 				
 				
@@ -1792,263 +1824,27 @@ div.mousescroll:hover {
 	
 	<div id="menu-toggle1">
 		<a>
-		<img src="resources/imgs/slider/search.png" width=70 height=70 alt="Menu1"></img>
+		<img src="resources/imgs/TastyRoadIcon/tab/view.png" width=70 height=70 ></img>
 		<span>상품검색</span>
 		</a>		
 	</div>
-		<nav id="menu1">
-		<div id="search_condition">
-			<form action="#" name="searchform" id="search_form" method="post" onsubmit="return itemSearch('Detail')">				
-			   	<input type="text" id="searchKeywordDetail" class="form-control" placeholder="Search">		    
-			   	<div id="select_deal"> 
-			    	<div class="btn-group" data-toggle="buttons" style="margin-top: 10px" > <%--onclick="itemSearch('Detail')" --%>
-				  		<label class="btn btn-default active" onclick="itemSearch('all')"  >
-				    	<input type="radio" name="options" id="searchOption1" value="all" checked > 전체검색
-				  		</label>
-				  		<label class="btn btn-default" onclick="itemSearch('buy')" >
-				    	<input type="radio" name="options" id="searchOption2" value="buy" > 삽니다
-				  		</label>
-			  			<label class="btn btn-default" onclick="itemSearch('sell')" >
-				    	<input type="radio" name="options" id="searchOption3" value="sell" > 팝니다
-				  		</label>
-					</div>
-				</div>
-				<div style="margin-top: 10px">
-				<!-- 	<div class="btn-group" data-toggle="buttons">
-					  <label class="btn btn-primary">
-					    <input type="radio" name="options" id="option1" onclick="markersSortingDistance()"> 가격순 정렬
-					  </label>
-					  <label class="btn btn-primary">
-					    <input type="radio" name="options" id="option2" onclick="markersSortingPrice()"> 거리순 정렬
-					  </label>
-					</div> -->
-					
-					  <label class="radio-inline">
-					    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" onclick="markersSortingDistance()" checked>
-					    거리순
-					  </label>
-					 
-					  <label class="radio-inline">
-					    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" onclick="markersSortingPrice()" >
-					    가격순
-					  </label>
-				
-					 
-					</div>
-				</Div>
-			</form>
-			<hr style="margin-bottom:10px;">
-		</div>
-		<div id="search_result" class="mousescroll">
-			<table class="table table-striped" style="width:261px;">
-				<thead>
-					<tr>
-						<th style="width:54px;">거리</th>
-						<th style="width:54px;">가격(만)</th>
-						<th style="width:173px; text-align: center; padding-bottom:18px;">제품명</th>
-					<!-- 
-						<th id="t1" style="width:54px;">거리</th>
-						<th id="t2" style="width:54px;">가격(만원)</th>
-						<th id="t3" style="width:153px; text-align: center; padding-bottom:18px;">제품명</th>
-					 -->
-					</tr>
-				</thead>
-				<!-- 뉴텔
-				<div id="searchResultInjectionSector" class="searchResultInjectionSector" title="searchResultInjectionSector">
-				 -->
-					<tbody id="searchResultInjectionSector">
-			
-						<!-- 
-						<tr>
-							<td>222</td>
-							<td>333</td>
-							<td><a>아이패드 에어 가나다라 마바사 아자 차</a></td>
-						</tr>					
-						<tr>
-							<td>5</td>
-							<td>5</td>
-							<td><a>아이패드 미니</a></td>
-						</tr>		
-						 -->	
-					
-					</tbody>
-				<!-- 
-				</div>	
-				 -->
-			</table> 
-	    </div>
-	</nav>
+	
 	
 	<div id="menu-toggle2">
 		<a>
-		<img src="resources/imgs/slider/Cloud_Add.png" width=70 height=70 alt="Menu2"></img>
+		<img src="resources/imgs/TastyRoadIcon/Cloud_Add.png" width=70 height=70 ></img>
 		<span>물건 팔기/사기</span>
 		</a>		
-		<!-- 
-		<img src="resources/imgs/slider/menu.png" width=50 height=50 alt="Menu"></img>
-		-->
+
 	</div>
-		<!-- 텔 -->
-		<nav id="menu2">
-			<div class="tab-pane" id="tab2">
 	
-			<div id="rootwizard">				
-				<div class="navbar2">
-				  <div class="navbar-inner2">
-				    <div class="container2" style="display:none;">
-						<ul id="register_tap">
-						  	<li><a href="#tab11" data-toggle="tab">1단계</a></li>
-							<li><a href="#tab12" data-toggle="tab">2단계</a></li>
-							<li><a href="#tab13" data-toggle="tab">3단계</a></li>
-							<li><a href="#tab14" data-toggle="tab">4단계</a></li>
-							<li><a href="#tab15" data-toggle="tab">5단계</a></li>
-						</ul>
-				 	</div>
-				  </div>
-				</div>
-				<div id="bar" class="progress progress-striped active">
-				  <div class="progress-bar"></div>
-				</div>
-				
-				<form action="/itemregister" name="registerform" id="register_form" method="post" enctype="multipart/form-data" >
-				<div class="tab-content">
-				 	
-				    <div class="tab-pane" id="tab11">
-				    	<div class="form-group">
-				    		<h4>거래 선택하기</h4>
-				    		<br>
-						   	<div class="btn-group" data-toggle="buttons">
-							  <label class="btn btn-default">
-							    <input type="radio" name="stateCode" id="buybtn" value="1"> 삽니다
-							  </label>
-							  <label class="btn btn-default">
-							    <input type="radio" name="stateCode" id="sellbtn" value="2"> 팝니다
-							  </label>							  
-							</div>	
-						</div>
-				    </div>
-				    <div class="tab-pane" id="tab12">
-				    	<div class="form-group">
-				    		<h4>거래할 위치 등록하기</h4>
-				    		<br>
-				    		<input type="hidden" name="gridX1" id="reg_lat" value="" style="border: none;">
-				    		<input type="hidden" name="gridY1" id="reg_lng" value="" style="border: none;">
-				    		<input id="latlng" type="text" value="" style="display:none;">
-				    		<button id="loca_btn" class="btn btn-default" onclick="markerDrop(); return false;"><span>위치 정하기</span></button>
-				    		<button class="btn btn-default" onclick="clearMarkers(); return false;">다시 정하기</button>
-				    		<br><br>
-				    		<textarea readonly="readonly" id="reg_add" rows="4" cols="34" value="" style="border: none; resize:none;"></textarea>
-				    	</div>
-				    </div>
-					<div class="tab-pane" id="tab13">
-						<div class="form-group">
-							<h4>사진 등록하기</h4>
-							<br>
-							<!-- 다등록가능 한데 주소가 어떻게 들어올지 모르겠네 -->
-							<input  class="form-control" name="itemPicturePath1" type="file"  id="exampleInputFile">						
-				   			<br>
-				   			<input  class="form-control" name="itemPicturePath2" type="file"  id="exampleInputFile">						
-				   			<br>
-				   			<input  class="form-control" name="itemPicturePath3" type="file"  id="exampleInputFile">						
-				   			
-				   			
-				   		</div>
-				    </div>
-					<div class="tab-pane" id="tab14">
-						<div class="form-group">
-							<h4>카테고리 등록하기</h4>
-							<br>
-							<select name="category1" id="category1" class="form-control" onchange="itemChange(this.form);" ></select>
-							<select name="category2" id="category2" class="form-control" ></select>											 
-					    </div>
-					</div>    
-				    <div class="tab-pane" id="tab15">
-						<div class="form-group">
-							<h4>상세내용 입력하기</h4>
-							<br>	
-							<input id="item_name" name="itemName" type="text" class="form-control input-normal" placeholder="물품명을 입력하세요" >								       
-					        <div class="input-group">
-					        	<span class="input-group-addon">￦</span><input type="text" name="price" class="form-control" placeholder="희망가격 입력" >
-				     	 	</div>	
-				     	 	<br>	
-				     	 	<textarea name="itemInfo" class="form-control" rows="10" cols="80" placeholder="상세내용을 입력하세요"></textarea>
-				     	 	<br>				      				
-							<button class="btn btn-default" data-toggle="modal" href="#preview_modal" onclick="return false">
-							미리보기
-							</button>
-							<input type="submit" class="btn btn-primary" value="등록하기" >
-							
-						
-						
-					    </div>
-					</div>
-					<div id="pager_wizard">   
-						<ul class="pager wizard">
-							<li class="previous first" style="display:none;"><a href="#" onclick="return false">First</a></li>
-							<li class="previous"><a href="#" onclick="return false">Previous</a></li>
-							<li class="next last" style="display:none;"><a href="#" onclick="return false">Last</a></li>
-						  	<li class="next"><a href="#" onclick="return false">Next</a></li>
-						</ul> 
-					</div>
-				</div>	
-				</form>
-			</div>
-		</div><!-- end of tap2   -->
-		</nav>	
 	<div id="menu-toggle3">
 		<a>
-		<img src="resources/imgs/slider/Handshake-icon.png" width=70 height=70 alt="Menu3"></img>
+		<img src="resources/imgs/slider/Handshake-icon.png" width=70 height=70 ></img>
 		<span>거래현황</span>
 		</a>		
-		<!-- 
-		<img src="resources/imgs/slider/menu.png" width=50 height=50 alt="Menu"></img>
-		-->
 	</div>
-		<nav id="menu3">
-			<div class="tab-pane" id="tab3">
-			<!-- start of tap3   -->
-			
-				<div id="MainMenu">
-				  <div class="list-group panel">
-				    <a href="#demo3" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Item 3</a>
-				    <div class="collapse" id="demo3">
-				      <a href="#SubMenu1" class="list-group-item" data-toggle="collapse" data-parent="#SubMenu1">Subitem 1 <span class="glyphicon glyphicon-chevron-down"></span></a>
-				      <div class="collapse list-group-submenu" id="SubMenu1">
-				        <a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem 1 a</a>
-				        <a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem 2 b</a>
-				        <a href="#SubSubMenu1" class="list-group-item" data-toggle="collapse" data-parent="#SubSubMenu1">Subitem 3 c <span class="glyphicon glyphicon-chevron-down"></span></a>
-				        <div class="collapse list-group-submenu list-group-submenu-1" id="SubSubMenu1">
-				          <a href="#" class="list-group-item" data-parent="#SubSubMenu1">Sub sub item 1</a>
-				          <a href="#" class="list-group-item" data-parent="#SubSubMenu1">Sub sub item 2</a>
-				        </div>
-				        <a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem 4 d</a>
-				      </div>
-				      <a href="javascript:;" class="list-group-item">Subitem 2</a>
-				      <a href="javascript:;" class="list-group-item">Subitem 3</a>
-				    </div>
-				    <a href="#demo4" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Item 4</a>
-				    <div class="collapse" id="demo4">
-				      <a href="#" class="list-group-item">Subitem 1</a>
-				      <a href="#" class="list-group-item">Subitem 2</a>
-				      <a href="#" class="list-group-item">Subitem 3</a>
-				    </div>
-				    <a href="#demo5" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Item 5</a>
-				    <div class="collapse" id="demo5">
-				      <a href="#" class="list-group-item">Subitem 1</a>
-				      <a href="#" class="list-group-item">Subitem 2</a>
-				      <a href="#" class="list-group-item">Subitem 3</a>
-				    </div>
-				    <a href="#demo6" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Item 6</a>
-				    <div class="collapse" id="demo6">
-				      <a href="#" class="list-group-item">Subitem 1</a>
-				      <a href="#" class="list-group-item">Subitem 2</a>
-				      <a href="#" class="list-group-item">Subitem 3</a>
-				    </div>
-				  </div>
-				</div>
-				
-			</div><!-- end of tap3   -->
-		</nav>	
+	
 	
 	<div id="map_canvas" style="width:100%; height:100%;">
 		
