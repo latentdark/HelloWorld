@@ -54,16 +54,6 @@ position: fixed;
 .form-wrapper {
 
     width: 400px;
- /* 
-    z-index: 1000;
-   
-    padding: 15px;
-    margin: 150px auto 50px auto;
-    background: #444;
-    background: rgba(0,0,0,.2);
-    border-radius: 10px;
-    box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
- */   
 }
 
  
@@ -74,7 +64,6 @@ position: fixed;
     height: 40px;
     padding: 10px 5px;
     float: left;    
-    font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
     border: 0;
     background: #eee;
     border-radius: 3px 0 0 3px;      
@@ -98,13 +87,11 @@ position: fixed;
 .form-wrapper input:-moz-placeholder {
     color: #999;
     font-weight: normal;
-    font-style: italic;
 }
  
 .form-wrapper input:-ms-input-placeholder {
     color: #999;
     font-weight: normal;
-    font-style: italic;
 }    
  
 /* Form submit button */
@@ -135,7 +122,7 @@ position: fixed;
     cursor: pointer;
     height: 40px;
     width: 70px;
-    font: bold 15px/40px 'lucida sans', 'trebuchet MS', 'Tahoma';
+    font: bold 15px/40px;
     color: #fff;
     text-transform: uppercase;
     background: #d83c3c;

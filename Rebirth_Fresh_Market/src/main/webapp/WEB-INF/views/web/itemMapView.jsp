@@ -22,6 +22,7 @@ html {
 }
 
 body {
+    font-family: 'Nanum Gothic';
 	height: 100%;
 	margin: 0;
 	padding: 0;
@@ -57,18 +58,6 @@ body {
 #category1 {
 	margin-bottom: 10px;
 }
-
-/* .labels {
-	color: red;
-	background-color: white;
-	font-family: "Lucida Grande", "Arial", sans-serif;
-	font-size: 10px;
-	font-weight: bold;
-	text-align: center;
-	width: 40px;
-	border: 2px solid black;
-	white-space: nowrap;
-} */
 
 /* slider bar css */
 /* 텔 */
@@ -119,7 +108,6 @@ body {
 	position: absolute;
 	overflow: hidden;
 	/* Text properties */
-	font-familiy: 'Nanum Gothic';
 	font-size: 18px;
 	font-weight: bold;
 	letter-spacing: 0.6px;
@@ -224,7 +212,6 @@ body {
 	position: absolute;
 	overflow: hidden;
 	/* Text properties */
-	font-familiy: 'Nanum Gothic';
 	font-size: 18px;
 	font-weight: bold;
 	letter-spacing: 0.6px;
@@ -329,7 +316,6 @@ body {
 	position: absolute;
 	overflow: hidden;
 	/* Text properties */
-	font-familiy: 'Nanum Gothic';
 	font-size: 18px;
 	font-weight: bold;
 	letter-spacing: 0.6px;
@@ -439,7 +425,6 @@ div.mousescroll:hover {
 	position: absolute;
 	overflow: hidden;
 	/* Text properties */
-	font-familiy: 'Nanum Gothic';
 	font-size: 12px;
 	font-weight: bold;
 	letter-spacing: 0.6px;
@@ -517,7 +502,6 @@ div.mousescroll:hover {
 	position: absolute;
 	overflow: hidden;
 	/* Text properties */
-	font-familiy: 'Nanum Gothic';
 	font-size: 18px;
 	font-weight: bold;
 	letter-spacing: 0.6px;
@@ -584,7 +568,6 @@ div.mousescroll:hover {
 	position: absolute;
 	overflow: hidden;
 	/* Text properties */
-	font-familiy: 'Nanum Gothic';
 	font-size: 18px;
 	font-weight: bold;
 	letter-spacing: 0.6px;
