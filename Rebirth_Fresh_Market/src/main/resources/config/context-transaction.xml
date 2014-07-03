@@ -37,14 +37,24 @@
 	</bean>
  -->
 	<!-- 네엣 : DBCP (Apache Commons Database Connection) 사용 -->
-	
+	<!--  
 	<bean id="unitedDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://teamdwf.cafe24.com/teamdwf" />
 		<property name="username" value="teamdwf" />
 		<property name="password" value="systemtastyroad6" />
 	</bean>
-
+	-->
+	<!-- unitedDataSource 수정. by teamdwf. -2014.07-03- -->
+	<bean id="unitedDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://112.175.14.230/teamdwf" />
+		<property name="username" value="teamdwf" />
+		<property name="password" value="systemtastyroad6" />
+		<property name="validationQuery" value="SELECT 1"/>
+		<property name="testOnBorrow" value="true"/>
+	</bean>
+	
 
 	<!-- TransactioManager instance 생성 -->
 	<!-- 
