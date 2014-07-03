@@ -1124,7 +1124,7 @@ div.mousescroll:hover {
 			      if (results[1]) {
 			    	  document.getElementById("reg_add").value=results[1].formatted_address;
 			      } else {
-			        alert('No results found');
+			        /* alert('No results found'); */
 			      }
 			    } else {
 			      alert('Geocoder failed due to: ' + status);
@@ -3338,6 +3338,13 @@ div.mousescroll:hover {
  function modify(){
 	console.log("수정모드");	
 	console.log(markerNo);
+	$('#menu1').removeClass('open');
+	$('#menu-toggle1').removeClass('open');
+	$('#menu2').removeClass('open');
+	$('#menu-toggle2').removeClass('open');
+	$('#menu3').removeClass('open');
+	$('#menu-toggle3').removeClass('open');
+	
 	$('#menu2').addClass('open');
 	$('#menu-toggle2').addClass('open');
 	$('#item'+markerNo).removeClass('in');
