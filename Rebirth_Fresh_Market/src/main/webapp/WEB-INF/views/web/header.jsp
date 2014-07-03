@@ -189,6 +189,97 @@ position: fixed;
 	width: 700px;
 }
 
+.navbar {
+	/* background-image: url("/resources/imgs/bg6.png");
+			 */
+	background-color: #5DCD9D;
+	border-style: none;
+	font-size: 15px;
+	font-familiy: 'Nanum Gothic';
+	/* z-index: 2000; */
+	margin: 0;
+}
+
+#brand_img {
+	margin-left: 10px;
+}
+
+#start,#signin,#signin_on {
+	padding-top: 18px;
+	color: white;
+	background: none;
+}
+
+/* 페이지에 따라 알아서 색깔 바뀌게 수정해야함  */
+#deal,#deal:hover {
+	background-color: #33A876;
+	padding-top: 18px;
+	color: white;
+	height: 53px;
+}
+
+#start:hover,#signin:hover,#signin_on:hover {
+	color: gray;
+	background: none;
+}
+
+#search {
+	margin-top: 10px;
+}
+
+
+
+#sign_in_menu {
+	padding: 15px;
+	padding-bottom: 15px;
+	top: 54px;
+	left: -180px;
+	margin-right: 20px;
+	border-color: #BCBCBC;
+}
+
+#dropdown_on {
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	left:-75px;
+	margin: 0;
+	text-align: right;
+}
+
+
+#signin_submit {
+	clear: left;
+	width: 100%;
+	height: 32px;
+	font-size: 13px;
+}
+
+#signin_submit.btn {
+	background-color: #00A1DA;
+	border: none;
+	margin-bottom: 5px;
+}
+
+#signup {
+	margin-left: 160px;
+	text-decoration: none;
+}
+
+#signup:hover {
+	color: gray;
+}
+
+#dropdown_on>li>a {
+	color: blue;
+	background: none;
+}
+
+#dropdown_on>li>a:hover {
+	color: gray;
+	background: none;
+}
 
 </style>
 </head>
@@ -251,7 +342,7 @@ position: fixed;
 	    						"<a id=\"signin_on\" class=\"dropdown-toggle\" href=\"\" data-toggle=\"dropdown\">"+
 	    						"["+user.nickname+"] 님  <strong class=\"caret\"></strong></a>"+
 	    						
-								"<ul id=\"dropdown_on\" class=\"dropdown-menu\" role=\"menu\">"+
+								"<ul id=\"dropdown_on\"  class=\"dropdown-menu\" role=\"menu\">"+
 									"<li><a id=\"mypage\" class=\"dropdown_a\" href=\"\">My Page</a></li>"+
 			   						"<li><a id=\"signout\" class=\"dropdown_a\" href=\"\">Your Page</a></li>"+	
 			   						"<li role=\"presentation\" class=\"divider\"></li>"+		              			    	
@@ -294,7 +385,7 @@ position: fixed;
 	     			"<li class=\"divider-vertical\"></li>"+
   						"<li class=\"dropdown\">"+
  	  					"<a id=\"signin\" class=\"dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\">Sign In <strong class=\"caret\"></strong></a>"+
-        				"<div class=\"dropdown-menu\">"+
+        				"<div id=\"sign_in_menu\"  class=\"dropdown-menu\">"+
                
             			"<form name=\"signinform\" action=\"#\" method=\"post\" onsubmit=\"return signIn()\">"+
 							"<input class=\"form-control\" id=\"user_email\" style=\"margin-bottom: 15px;\" type=\"email\" name=\"email\" size=\"30\" placeholder=\" 이메일\"/>"+
@@ -312,7 +403,7 @@ position: fixed;
 			
 			var menu_toggle2_injection=
 				"<div id=\"menu-toggle2-mirror\">"+
-					"<a> <img src=\"resources/imgs/slider/Cloud_Add.png\" width=70"+
+					"<a> <img src=\"resources/imgs/slider/Cloud_Add_black.png\" width=70"+
 						"height=70 ></img>"+ 
 						"<span>물건 팔기/사기<br>로그인이 필요합니다.</span>"+
 					"</a>"+
@@ -802,7 +893,7 @@ position: fixed;
  	     		<li class="divider-vertical"></li>
       			<li class="dropdown">
      	  		<a id="signin" class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
-         	<div class="dropdown-menu">
+         	<div id="sign_in_menu" class="dropdown-menu">
               <!-- Login form here -->
             	<form name="signinform" action="#" method="post" onsubmit="return signIn()">
 			<input class="form-control" id="user_email" style="margin-bottom: 15px;" type="email" name="email" size="30" placeholder=" 이메일"/>

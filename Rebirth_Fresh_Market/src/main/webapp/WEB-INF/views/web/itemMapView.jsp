@@ -15,95 +15,6 @@
 <link rel="Stylesheet" href="/resources/css/bootstrap.min.css" />
 
 <style>
-.navbar {
-	/* background-image: url("/resources/imgs/bg6.png");
-			 */
-	background-color: #5DCD9D;
-	border-style: none;
-	font-size: 15px;
-	font-familiy: 'Nanum Gothic';
-	/* z-index: 2000; */
-	margin: 0;
-}
-
-#brand_img {
-	margin-left: 10px;
-}
-
-#start,#signin,#signin_on {
-	padding-top: 18px;
-	color: white;
-	background: none;
-}
-
-/* 페이지에 따라 알아서 색깔 바뀌게 수정해야함  */
-#deal,#deal:hover {
-	background-color: #33A876;
-	padding-top: 18px;
-	color: white;
-	height: 53px;
-}
-
-#start:hover,#signin:hover,#signin_on:hover {
-	color: gray;
-	background: none;
-}
-
-#search {
-	margin-top: 10px;
-}
-
-
-
-.dropdown-menu {
-	padding: 15px;
-	padding-bottom: 15px;
-	top: 54px;
-	left: -180px;
-	margin-right: 20px;
-	border-color: #BCBCBC;
-}
-
-#dropdown_on {
-	padding-right: 0px;
-	padding-left: 0px;
-	padding-top: 15px;
-	padding-bottom: 15px;
-	margin: 0;
-	text-align: right;
-}
-
-#signin_submit {
-	clear: left;
-	width: 100%;
-	height: 32px;
-	font-size: 13px;
-}
-
-#signin_submit.btn {
-	background-color: #00A1DA;
-	border: none;
-	margin-bottom: 5px;
-}
-
-#signup {
-	margin-left: 160px;
-	text-decoration: none;
-}
-
-#signup:hover {
-	color: gray;
-}
-
-#dropdown_on>li>a {
-	color: blue;
-	background: none;
-}
-
-#dropdown_on>li>a:hover {
-	color: gray;
-	background: none;
-}
 
 /* itemMapView css  */
 html {
@@ -625,7 +536,7 @@ div.mousescroll:hover {
 /* span 보여주게 하는 코드 */
 #menu-toggle2-mirror a:hover span {
 	background-color: #BDBDBD;
-	color: #0100FF;
+	color: #515151;
 	/* 	text-shadow:1px 1px 0 #99bf31; */
 	width: auto;
 	padding: 0 20px;
@@ -692,7 +603,7 @@ div.mousescroll:hover {
 /* span 보여주게 하는 코드 */
 #menu-toggle3-mirror a:hover span {
 	background-color: #BDBDBD;
-	color: #0100FF;
+	color: #515151;
 	/* 	text-shadow:1px 1px 0 #99bf31; */
 	width: auto;
 	padding: 0 20px;
@@ -1522,10 +1433,10 @@ div.mousescroll:hover {
 			//왜
 		 var content=
 			 "<div id=\"infowindow\">"+
-			 	"<h2>"+
+
 			 		"<font color=\"red\">"+"[ "+marker.price+" ]</font> "+
 			 		marker.itemName+
-			 	"</h2>"+
+
 			 "</div>";
 		 var infowindow = new google.maps.InfoWindow({
 				content: content	
@@ -1562,10 +1473,10 @@ div.mousescroll:hover {
 		function searchListMarkerFocusIn(marker){
 			var content=
 				 "<div id=\"infowindow\">"+
-				 	"<h2>"+
+
 				 		"<font color=\"red\">"+"[ "+marker.price+" ]</font> "+
 				 		marker.itemName+
-				 	"</h2>"+
+
 				 "</div>";
 			infowindow = new google.maps.InfoWindow({
 					content: content	
@@ -2761,7 +2672,7 @@ div.mousescroll:hover {
 	<div id="menu-toggle2-injection">
 		<c:if test="${user==null}">
 		<div id="menu-toggle2-mirror">
-			<a> <img src="resources/imgs/slider/Cloud_Add.png" width=70
+			<a> <img src="resources/imgs/slider/Cloud_Add_black.png" width=70
 				height=70 ></img> 
 				<span>물건 팔기/사기<br>로그인이 필요합니다.</span>
 			</a>
@@ -2782,7 +2693,7 @@ div.mousescroll:hover {
 	
 	
 	<div id="menu-toggle1">
-		<a> <img src="resources/imgs/slider/search.png" width=70 height=70
+		<a> <img src="resources/imgs/slider/search_black.png" width=70 height=70
 			alt="Menu1"></img> <span>상품검색</span>
 		</a>
 	</div>
@@ -2840,7 +2751,7 @@ div.mousescroll:hover {
 	</nav>
 
 	<div id="menu-toggle2">
-		<a> <img src="resources/imgs/slider/Cloud_Add.png" width=70
+		<a> <img src="resources/imgs/slider/Cloud_Add_black.png" width=70
 			height=70 alt="Menu2"></img> <span>물건 팔기/사기</span>
 		</a>
 		<!-- 
