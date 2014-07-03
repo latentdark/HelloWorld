@@ -336,5 +336,6 @@
 			 LEFT OUTER JOIN location l ON l.item_no = i.item_no
 			 LEFT OUTER JOIN user u ON i.user_no = u.user_no
 		WHERE i.user_no = #{value}
+		ORDER BY i.item_no
 	</select>
 </mapper>
