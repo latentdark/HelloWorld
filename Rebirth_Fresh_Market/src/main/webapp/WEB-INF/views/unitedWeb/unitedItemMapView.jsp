@@ -814,10 +814,31 @@ div.mousescroll:hover {
 	console.log(test); */
 	//HTML5 Geolocation을 이용한 ip trace
 	/**/
+	
+	//==================================<코드수정부분...by teamdwf>==========================================
+	
+	//지도상에 찍히는 마커 이미지를 한식,일식,중식,양식,카페에 맞게 보여주기 위함.
+	//state_code 변수로 나눔. 각 마커이미지의 state_code는 한식부터 차례대로 1~5번임.
+	//5개의 이미지 파일은 'HelloWorld'팀의 이미지 파일들과 분리시켜 관리함. 
+	//이를 위해 '../resource/imgs' 아래 unitedIcons 폴더를 새로 생성하여 이미지 파일들을 관리함.
+	
+	//주석처리부분...
+	/*//--주석을 풀 때 여길 풀어주세요.by teamdwf
 	var sellImage = 'resources/imgs/icons/sell.png';
 	var buyImage = 'resources/imgs/icons/buy.png';
 	var dealImage = 'resources/imgs/icons/deal2.png';
 	var geoImage = 'resources/imgs/icons/people.png';
+	*///--주석을 풀 때 여길 풀어주세요.by teamdwf
+	
+	//새로 추가된 코드부분...
+	var koreanImage = '../resources/imgs/unitedIcons/mapkorean.png';
+	var japaneseImage = '../resources/imgs/unitedIcons/mapjapanese.png';
+	var chineseImage = '../resources/imgs/unitedIcons/mapchinese.png';
+	var westernImage = '../resources/imgs/unitedIcons/mapwestern.png';
+	var cafeImage = '../resources/imgs/unitedIcons/mapcafe.png';
+	var geoImage = '../resources/imgs/unitedIcons/people.png';
+	
+	//==================================<코드수정끝...by teamdwf>==========================================
 	
 	var map;
 	var markers = [];
@@ -1082,6 +1103,8 @@ div.mousescroll:hover {
 			return false;
 		}<%-- itemSearch End --%>
 		
+		
+		
 		<%-- markersInit() --%>
 		function markersInit(){
 			//markers=[];
@@ -1095,81 +1118,77 @@ div.mousescroll:hover {
 				if(searchKeyword!=null){
 					searchKeyword=searchKeyword.trim().toUpperCase();
 				}
-				
-				if(str.toUpperCase().match(searchKeyword)!=null){
-					markers.push(
-							new google.maps.Marker({
-							//new MarkerWithLabel({
-								position : new google.maps.LatLng(${itemList.gridX1} , ${itemList.gridY1} ),
-								map : map,
-								icon:
-									<c:if test="${itemList.stateCode=='1'}">
-										buyImage
-									</c:if>
-									<c:if test="${itemList.stateCode=='2'}">
-										sellImage
-									</c:if>
-									<c:if test="${itemList.stateCode=='3'}">
-										dealImage
-									</c:if>
-										,
-								stateCode : '${itemList.stateCode}',
-								title : '${itemList.itemName}',
-								userNo : '${itemList.userNo}',
-								itemNo : '${itemList.itemNo}',
-								itemInfo : '${itemList.itemInfo}',
-								itemPicturePath1 : '${itemList.itemPicturePath1}',
-								itemPicturePath2 : '${itemList.itemPicturePath2}',
-								itemPicturePath3 : '${itemList.itemPicturePath3}',
-								//content : '${itemList.itemNo}',
-								distance:null,
-								distance_m:null,								
-								price : '${itemList.price}'
-								//	labelContent: '$425K',
-								//	labelAnchor: new google.maps.Point(22, 0),
-								//    labelClass: "labels", // the CSS class for the label
-								
-								/*
-								content : '<div id="content">'+
-										'<h1 id="head" class="head">${itemList.itemName}</h1>'+
-										 '<div id="bodyContent">'+
-										 <c:if test="${itemList.itemPicturePath1!=null}">
-										 '<img src = "resources/itempictures/${itemList.itemPicturePath1}"></img><br>'+
-										 </c:if>
-										 '${itemList.itemInfo}'+
-										 '</div>'+
-										'</div >'
-								*/
-							
-								//labelContent : '${itemList.itemInfo}'
-								})
-						);
-					}
-			</c:forEach>
-			/*
+		
+		if(str.toUpperCase().match(searchKeyword)!=null){
 			markers.push(
 					new google.maps.Marker({
-					position : new google.maps.LatLng(37.500848, 127.053065),
-					map : map,
-					icon: buyImage,
-					title : 'epic',
-					
-					content :  '<div id="dialog" title="Basic dialog">'+
-								'몰아치는 한숨'+
-								'</div>'
-					})
-				);
-			*/
-			
-			
-			/* console.log("markers.length__"+markers.length);
-			console.log("markers[0]__"+markers[0]);
-			console.log("markers[0]__"+markers[0].price);
-			console.log("markers[0].position__"+markers[0].position);
-			console.log("markers[0].position__"+markers[0].position.A);
-			console.log("markers[0].position__"+markers[0].position.k); */
-		}<%-- markersInit() end --%>
+					//new MarkerWithLabel({
+						position : new google.maps.LatLng(${itemList.gridX1} , ${itemList.gridY1} ),
+						map : map,
+						icon:
+	
+							
+	//=====================================<코드수정부분...by teamdwf>=======================================
+						
+		//line 834~839에서 추가한 이미지를 적용함.
+		
+							//주석처리부분...
+							/*//--주석을 풀 때 여길 풀어주세요.by teamdwf
+							
+							<c:if test="${itemList.stateCode=='1'}">
+								buyImage
+							</c:if>
+							<c:if test="${itemList.stateCode=='2'}">
+								sellImage
+							</c:if>
+							<c:if test="${itemList.stateCode=='3'}">
+								dealImage
+							</c:if>
+							
+							*///--주석을 풀 때 여길 풀어주세요.by teamdwf	
+							
+							
+							//새로 추가된 코드부분...	
+							<c:if test="${itemList.stateCode=='1'}">
+								koreanImage
+							</c:if>
+							<c:if test="${itemList.stateCode=='2'}">
+								japaneseImage
+							</c:if>
+							<c:if test="${itemList.stateCode=='3'}">
+								chineseImage
+							</c:if>
+							<c:if test="${itemList.stateCode=='4'}">
+								westernImage
+							</c:if>
+							<c:if test="${itemList.stateCode=='5'}">
+								cafeImage
+							</c:if>
+								,
 								
+	//====================================<코드수정끝...by teamdwf>==========================================								
+						
+						stateCode : '${itemList.stateCode}',
+						title : '${itemList.itemName}',
+						userNo : '${itemList.userNo}',
+						itemNo : '${itemList.itemNo}',
+						itemInfo : '${itemList.itemInfo}',
+						itemPicturePath1 : '${itemList.itemPicturePath1}',
+						itemPicturePath2 : '${itemList.itemPicturePath2}',
+						itemPicturePath3 : '${itemList.itemPicturePath3}',
+						//content : '${itemList.itemNo}',
+						distance:null,
+						distance_m:null,								
+						price : '${itemList.price}'
+						
+							})
+					);
+				}
+		</c:forEach>
+		}
+		<%-- markersInit() end --%>
+		
+		
 		
 		<%-- markerInitialize Start --%>
 		function markerInitialize(map) {
