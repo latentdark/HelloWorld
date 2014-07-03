@@ -1124,7 +1124,7 @@ div.mousescroll:hover {
 			      if (results[1]) {
 			    	  document.getElementById("reg_add").value=results[1].formatted_address;
 			      } else {
-			        /* alert('No results found'); */
+			         alert('No results found'); 
 			      }
 			    } else {
 			      alert('Geocoder failed due to: ' + status);

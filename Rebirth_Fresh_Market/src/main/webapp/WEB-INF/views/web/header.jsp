@@ -176,12 +176,12 @@ position: fixed;
 	width: 700px;
 }
 
-#whoMakeIt{
+#whoMadeIt{
 	position: fixed;
 	z-index: 1000;
-	bottom:0px;
-	left:70px;
-	height:30px;
+	bottom:-10px;
+	left:60px;
+	height:45px;
 }
 
 .navbar {
@@ -878,7 +878,7 @@ position: fixed;
 
 <div>
 <a href="/">
-	<img id="whoMakeIt"  src="resources/imgs/WMI.png">
+	<img id="whoMadeIt"  src="resources/imgs/WMI3.png">
 </a>
 </div>
 
