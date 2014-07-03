@@ -176,6 +176,14 @@ position: fixed;
 	width: 700px;
 }
 
+#whoMakeIt{
+	position: fixed;
+	z-index: 1000;
+	bottom:0px;
+	left:70px;
+	height:30px;
+}
+
 .navbar {
 	/* background-image: url("/resources/imgs/bg6.png");
 			 */
@@ -866,6 +874,12 @@ position: fixed;
 	        <button type="submit"><span class="glyphicon glyphicon-search"></span></button>
 	        	
 	</form>  	 
+</div>
+
+<div>
+<a href="/">
+	<img id="whoMakeIt"  src="resources/imgs/WMI.png">
+</a>
 </div>
 
 <div>
