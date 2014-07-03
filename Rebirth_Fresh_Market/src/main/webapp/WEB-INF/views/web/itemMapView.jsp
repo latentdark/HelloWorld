@@ -1102,14 +1102,24 @@ div.mousescroll:hover {
 					}
 					
 					<%-- 임시 --%>
-					myPosition.A=Math.round(pos.A*1000000)/1000000;
-					myPosition.k=Math.round(pos.k*1000000)/1000000;
+					//myPosition.A=Math.round(pos.A*1000000)/1000000;
+					//myPosition.k=Math.round(pos.k*1000000)/1000000;
+					myPosition.A=Math.round(pos.lng()*1000000)/1000000;
+					myPosition.k=Math.round(pos.lat()*1000000)/1000000;
 					
+					//lat()
+					//lng()
+					
+					/*
+					console.log("pos__++__++"+pos);
+					console.log("pos__++__++"+pos.A);
+					console.log("pos__++__++"+pos.a);
+					console.log("pos__++__++"+pos.k);
 					console.log("myPosition Debug____");
 					console.log(myPosition.A);
 					console.log(myPosition.k);
 					console.log("myPosition Debug____");
-					
+					*/
 					
 					new google.maps.Marker({
 						position : new google.maps.LatLng(position.coords.latitude,
@@ -1508,14 +1518,14 @@ div.mousescroll:hover {
 		
 		
 		function markerAddListener(marker, i) {
-		 console.log("markerAddListener() Inn");
+		 //console.log("markerAddListener() Inn");
 			//왜
 		 var content=
 			 "<div id=\"infowindow\">"+
-			 //"<h1>"+
+			 	"<h2>"+
 			 		"<font color=\"red\">"+"[ "+marker.price+" ]</font> "+
 			 		marker.itemName+
-			 //"</h1>"+
+			 	"</h2>"+
 			 "</div>";
 		 var infowindow = new google.maps.InfoWindow({
 				content: content	
@@ -1552,10 +1562,10 @@ div.mousescroll:hover {
 		function searchListMarkerFocusIn(marker){
 			var content=
 				 "<div id=\"infowindow\">"+
-				 //"<h1>"+
+				 	"<h2>"+
 				 		"<font color=\"red\">"+"[ "+marker.price+" ]</font> "+
 				 		marker.itemName+
-				 //"</h1>"+
+				 	"</h2>"+
 				 "</div>";
 			infowindow = new google.maps.InfoWindow({
 					content: content	
@@ -1569,6 +1579,7 @@ div.mousescroll:hover {
 			//it`s too fast.
 			//map.setCenter(marker.position); 
 			
+			/*
 			// start coordinates
 			var start = [ 
 			      new google.maps.LatLng(marker.position.k, marker.position.A), 
@@ -1583,6 +1594,22 @@ div.mousescroll:hover {
 			      new google.maps.LatLng(marker.position.k+1, marker.position.A),
 			      new google.maps.LatLng(marker.position.k, marker.position.A-1),
 			      new google.maps.LatLng(marker.position.k, marker.position.A+1)
+			      ];
+			*/
+			// start coordinates
+			var start = [ 
+			      new google.maps.LatLng(marker.position.lat(), marker.position.lng()), 
+			      new google.maps.LatLng(marker.position.lat(), marker.position.lng()),
+			      new google.maps.LatLng(marker.position.lat(), marker.position.lng()),
+			      new google.maps.LatLng(marker.position.lat(), marker.position.lng())
+			      ];
+
+			// end coordinates
+			var end = [
+		          new google.maps.LatLng(marker.position.lat()-1, marker.position.lng()), 
+			      new google.maps.LatLng(marker.position.lat()+1, marker.position.lng()),
+			      new google.maps.LatLng(marker.position.lat(), marker.position.lng()-1),
+			      new google.maps.LatLng(marker.position.lat(), marker.position.lng()+1)
 			      ];
 			for (var i=0; i < end.length; i++){
 			      calcRoute(start[i], end [i]);
@@ -1633,7 +1660,11 @@ div.mousescroll:hover {
 			
 			//infowindow.setZIndex(3000);
 			infowindow.setPosition(marker.position);
-			infowindow.open(marker.get('map'));
+			if(marker.identity=='fake'){
+				infowindow.open(marker.map);
+			}else{
+				infowindow.open(marker.get('map'), marker);
+			}
 			//infowindow.open(marker.get('map'), marker);
 		}
 		function searchListMarkerFocusOut(marker){
@@ -1748,7 +1779,8 @@ div.mousescroll:hover {
 			if(markersSearchResult.length==1){
 				markersSearchResult[0].distance_m=
 					Math.round(getDistanceFromLatLonInKm(myPosition.k, myPosition.A,
-							markersSearchResult[0].position.k, markersSearchResult[0].position.A)*10000)/10000;
+							//markersSearchResult[0].position.k, markersSearchResult[0].position.A)*10000)/10000;
+							markersSearchResult[0].position.lat(), markersSearchResult[0].position.lng())*10000)/10000;
 			}
 			
 			markersSearchResult.sort(function(a, b){
@@ -1759,15 +1791,24 @@ div.mousescroll:hover {
 				//a.distance=Math.sqrt(a_distance);
 				a.distance_m=
 					Math.round(getDistanceFromLatLonInKm(myPosition.k, myPosition.A,
-							 					a.position.k, a.position.A)*10000)/10000;
+							 					//a.position.k, a.position.A)*10000)/10000;
+												a.position.lat(), a.position.lng())*10000)/10000;
 				
+				/*
+				console.log("distance_m___DEBUG__"+myPosition.k);
+				console.log("distance_m___DEBUG__"+myPosition.A);
+				console.log("distance_m___DEBUG__"+a.position.k);
+				console.log("distance_m___DEBUG__"+a.position.A);
+				console.log("distance_m___DEBUG__"+a.distance_m);
+				*/
 				//var b_A	=	Math.abs(Math.round(myPosition.A-b.position.A*1000000)/1000000);
 				//var b_k	=	Math.abs(Math.round(myPosition.k-b.position.k*1000000)/1000000);
 				//var b_distance=Math.pow(b_A, b_A) + Math.pow(b_k, b_k);
 				//b.distance=Math.sqrt(b_distance);
 				b.distance_m=
 					Math.round(getDistanceFromLatLonInKm(myPosition.k, myPosition.A,
-											 b.position.k, b.position.A)*10000)/10000;
+											// b.position.k, b.position.A)*10000)/10000;
+											b.position.lat(), b.position.lng())*10000)/10000;
 				//console.log(b_A);
 				return a.distance_m-b.distance_m
 				});
@@ -1803,7 +1844,8 @@ div.mousescroll:hover {
 			if(markersSearchResult.length==1){
 				markersSearchResult[0].distance_m=
 					Math.round(getDistanceFromLatLonInKm(myPosition.k, myPosition.A,
-							markersSearchResult[0].position.k, markersSearchResult[0].position.A)*10000)/10000;
+							//markersSearchResult[0].position.k, markersSearchResult[0].position.A)*10000)/10000;
+							markersSearchResult[0].position.lat(), markersSearchResult[0].position.lng())*10000)/10000;
 			}
 			
 			markersSearchResult.sort(function(a, b){
@@ -1814,7 +1856,8 @@ div.mousescroll:hover {
 				//a.distance=Math.sqrt(a_distance);
 				a.distance_m=
 					Math.round(getDistanceFromLatLonInKm(myPosition.k, myPosition.A,
-							 					a.position.k, a.position.A)*10000)/10000;
+							 					//a.position.k, a.position.A)*10000)/10000;
+												a.position.lat(), a.position.lng())*10000)/10000;
 				
 				return a.price-b.price
 				});
@@ -1902,6 +1945,7 @@ div.mousescroll:hover {
 		//거래 완료된 물품 
 		//버튼을 판매완료/삭제 로 바꿔야함
 		//findMyItemList(Integer userNo)
+		var findMyItemListResult=[];
 		function findMyItemList(msg){
 			//console.log("${user}");
 			//console.log("${user.userNo}");
@@ -1918,22 +1962,27 @@ div.mousescroll:hover {
 				}
 			*/
 			}).done(function(res){
-				console.log("msg_"+res);
+				//console.log("msg_"+res);
 				console.log("msg.length_"+res.length);
+				findMyItemListResult=[];
+				for(var i=0;i<res.length;i++){
+					findMyItemListResult.push(new FakeMarker(res[i],FakeMap));
+				}
 				
 				var content;
 				
 				content=
-				"<div class=\"mousescroll\" style=\"height:300px;\">"+
+				"<div class=\"mousescroll\" style=\"height:600px;\">"+
 				"<table class=\"table table-striped\" style=\"width:261px;\">"+
 				"<thead>"+
 					"<tr>"+
-						"<th style=\"width:70px;\">등록일자</th>"+
+						"<th style=\"width:90px;\">등록일자</th>"+
 						"<th style=\"width:80px;\">가격(만)</th>"+
 						"<th style=\"width:100px; text-align: center;\">물품명</th>"+
 					"</tr>"+
 				"</thead>"+
 					"<tbody>";
+				/*
 				for(var i=0;i<res.length;i++){
 					console.log("i="+i+"_"+res[i].itemNo);
 					content+=
@@ -1942,6 +1991,23 @@ div.mousescroll:hover {
 						"<td>"+res[i].price+"</td>"+
 						"<td>"+res[i].itemName+"</td>"+
 					"</tr>";
+				}
+				*/
+				for(var i=0;i<findMyItemListResult.length;i++){
+					//console.log("i="+i+"_"+findWishListResult[i].itemNo);
+					content+=
+						"<tr>"+
+							"<td id=\"t1\" >" + (findMyItemListResult[i].regiDate+"").substring(2) + "</td>" +
+							"<td id=\"t2\" >" + findMyItemListResult[i].price/10000.0 + "</td>" +
+							"<td id=\"t3\" ><a"+
+							" onmouseover=\"searchListMarkerFocusIn(findMyItemListResult["+i+"]);"+
+							 			  " countComment(findMyItemListResult["+i+"]);"+
+							  			  " findComment(findMyItemListResult["+i+"]);\""+
+							" onmouseout=searchListMarkerFocusOut(findMyItemListResult["+i+"])"+
+							" onclick=\"modalInjection(findMyItemListResult["+i+"],countCommentResult)\"> " +
+							findMyItemListResult[i].itemName+ "<span>클릭하시면 상세정보를 볼수 있습니다.</span></a></td>" +
+						"</tr>";
+
 				}
 				content+=
 					"</tbody>"+
@@ -1985,8 +2051,14 @@ div.mousescroll:hover {
 	
 		//내가 찜한 물품
 		//findWishList(Integer userNo)
-		function findWishList(){
+		var findWishListResult=[];
+		
+		var FakeMap=map;
+		function findWishList(async_option){
+			var async_choice=(async_option==false)?false:true;
+			console.log("async_choice 확인_"+async_choice);
 			$.ajax({
+				async : false,
 				type:"POST",
 				url:"/findWishList",
 				data:{
@@ -1995,26 +2067,49 @@ div.mousescroll:hover {
 			}).done(function(res){
 				console.log("res"+res);
 				var content;
-				
+				findWishListResult=[];
+				//findWishListResult=res;
+				for(var i=0;i<res.length;i++){
+					findWishListResult.push(new FakeMarker(res[i],FakeMap));
+				}
 				content=
-				"<div class=\"mousescroll\" style=\"height:300px;\">"+
+				"<div class=\"mousescroll\" style=\"height:600px;\">"+
 				"<table class=\"table table-striped\" style=\"width:261px;\">"+
 				"<thead>"+
 					"<tr>"+
-						"<th style=\"width:80px;\">거리</th>"+
-						"<th style=\"width:70px;\">가격(만)</th>"+
-						"<th style=\"width:100px; text-align: center;\">물품명</th>"+
+						"<th style=\"width:50px;\"></th>"+
+						"<th style=\"width:45px;\">거리</th>"+
+						"<th style=\"width:45px;\">가격(만)</th>"+
+						"<th style=\"width:120px; text-align: center;\">물품명</th>"+
+					//	"<th style=\"width:80px;\">거리</th>"+
+					//	"<th style=\"width:70px;\">가격(만)</th>"+
+					//	"<th style=\"width:100px; text-align: center;\">물품명</th>"+
 					"</tr>"+
 				"</thead>"+
 					"<tbody>";
-				for(var i=0;i<res.length;i++){
-					console.log("i="+i+"_"+res[i].itemNo);
+				for(var i=0;i<findWishListResult.length;i++){
+					console.log("i="+i+"_"+findWishListResult[i].itemNo);
 					content+=
+						/*
 						"<tr>"+
 							"<td>"+res[i].itemNo+"</td>"+
 							"<td>"+res[i].price+"</td>"+
 							"<td>"+res[i].itemName+"</td>"+
 						"</tr>";	
+						*/
+						"<tr>"+
+							"<td id=\"t0\" >" + "<a style=\"cursor:pointer\" onclick=\"removeWish("+findWishListResult[i].itemNo+")\">삭제</a>"+
+												"</td>" +
+							"<td id=\"t1\" >" +	findWishListResult[i].distance_m + "</td>" +
+							"<td id=\"t2\" >" + findWishListResult[i].price/10000.0 + "</td>" +
+							"<td id=\"t3\" ><a"+
+							" onmouseover=\"searchListMarkerFocusIn(findWishListResult["+i+"]);"+
+							 			  " countComment(findWishListResult["+i+"]);"+
+							  			  " findComment(findWishListResult["+i+"]);\""+
+							" onmouseout=searchListMarkerFocusOut(findWishListResult["+i+"])"+
+							" onclick=\"modalInjection(findWishListResult["+i+"],countCommentResult)\"> " +
+							findWishListResult[i].itemName+ "<span>클릭하시면 상세정보를 볼수 있습니다.</span></a></td>" +
+						"</tr>";
 
 				}
 				content+=
@@ -2895,6 +2990,7 @@ div.mousescroll:hover {
 			    </div>
 			  </div>
 			  
+			  <%--
 			  <div class="panel panel-info">
 			    <div class="panel-heading">
 			      <h4 class="panel-title">
@@ -2922,7 +3018,8 @@ div.mousescroll:hover {
 			       </div>
 			    </div>
 			  </div>
-			  
+			   --%>
+			   
 			  <div class="panel panel-info">
 			    <div class="panel-heading">
 			      <h4 class="panel-title">

@@ -53,9 +53,7 @@
 	margin-top: 10px;
 }
 
-body {
-	background-image: url("/resources/imgs/bg6.png");
-}
+
 
 .dropdown-menu {
 	padding: 15px;
@@ -171,7 +169,7 @@ body {
 	margin-top: 53px;
 	left: -200px;
 	background: #FFFFFF;
-	height: calc(100% - 53px);
+	height: calc(100% - 106px);
 	z-index: 1030;
 	border: 1px solid #BCBCBC;
 	padding-top: 20px;
@@ -276,7 +274,7 @@ body {
 	margin-top: 53px;
 	left: -300px;
 	background: #ffffff;
-	height: calc(100% - 53px);
+	height: 540px;
 	z-index: 1030;
 	text-align: center;
 	border: 1px solid #BCBCBC;
@@ -379,9 +377,10 @@ body {
 	margin-top: 53px;
 	width: 0%;
 	top: 0;
-	left: -200px;
+	left: -300px;
 	background: #FFFFFF;
-	height: calc(100% - 53px);
+	/* height: calc(100% - 106px); */
+	height:540px;
 	z-index: 1030;
 	border: 1px solid #BCBCBC;
 	padding-top: 20px;
@@ -544,17 +543,23 @@ div.mousescroll:hover {
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
 }
+
 /* span 보여주게 하는 코드 */
+/*
 #t3 a:hover span {
 	background-color: rgb(255, 228, 0);
 	color: rgb(3, 0, 102);
-	/* text-shadow:1px 1px 0 #99bf31;
-	 */
+*/
+	/* text-shadow:1px 1px 0 #99bf31; */
+/*	 
 	width: auto;
 	padding: 0 20px;
+*/
 	/*padding:0 20px;*/
+/*
 	overflow: visible;
 }
+*/
 
 #t3 a:hover {
 	background: rgb(255, 228, 0);
@@ -728,6 +733,9 @@ div.mousescroll:hover {
 .reReply {
 	margin-left: 20px;
 }
+
+
+
 </style>
 
 <!--
@@ -1094,14 +1102,24 @@ div.mousescroll:hover {
 					}
 					
 					<%-- 임시 --%>
-					myPosition.A=Math.round(pos.A*1000000)/1000000;
-					myPosition.k=Math.round(pos.k*1000000)/1000000;
+					//myPosition.A=Math.round(pos.A*1000000)/1000000;
+					//myPosition.k=Math.round(pos.k*1000000)/1000000;
+					myPosition.A=Math.round(pos.lng()*1000000)/1000000;
+					myPosition.k=Math.round(pos.lat()*1000000)/1000000;
 					
+					//lat()
+					//lng()
+					
+					/*
+					console.log("pos__++__++"+pos);
+					console.log("pos__++__++"+pos.A);
+					console.log("pos__++__++"+pos.a);
+					console.log("pos__++__++"+pos.k);
 					console.log("myPosition Debug____");
 					console.log(myPosition.A);
 					console.log(myPosition.k);
 					console.log("myPosition Debug____");
-					
+					*/
 					
 					new google.maps.Marker({
 						position : new google.maps.LatLng(position.coords.latitude,
@@ -1177,6 +1195,8 @@ div.mousescroll:hover {
 		<%-- markerDrop Start --%>
 		function markerDrop(){
 			markerDropEffect="active";
+			$('#re-markerdrop').removeClass('disabled');
+			$('#loca_btn').addClass('disabled');
 		}<%-- markerDrop End --%>
 			
 			
@@ -1192,6 +1212,8 @@ div.mousescroll:hover {
 	    	marker=null;
 	    	markerDropEffect="active";
 	    	markerDropCheck="0";
+	    	$('#re-markerdrop').addClass('disabled');
+			$('#loca_btn').removeClass('disabled');
 		}<%-- clearMarkers end --%>
 			
 
@@ -1377,7 +1399,11 @@ div.mousescroll:hover {
 								itemPicturePath1 : itemList[i].itemPicturePath1,
 								itemPicturePath2 : itemList[i].itemPicturePath2,
 								itemPicturePath3 : itemList[i].itemPicturePath3,
-								
+								category1: itemList[i].category1,
+								category2: itemList[i].category2,
+								gridX1: itemList[i].gridX1,
+								gridY1: itemList[i].gridY1,
+								regiDate : itemList[i].regiDate,
 								distance:null,
 								distance_m:null,								
 								price : itemList[i].price
@@ -1492,14 +1518,14 @@ div.mousescroll:hover {
 		
 		
 		function markerAddListener(marker, i) {
-		 console.log("markerAddListener() Inn");
-		
+		 //console.log("markerAddListener() Inn");
+			//왜
 		 var content=
 			 "<div id=\"infowindow\">"+
-			 	"<h1>"+
+			 	"<h2>"+
 			 		"<font color=\"red\">"+"[ "+marker.price+" ]</font> "+
 			 		marker.itemName+
-			 	"</h1>"+
+			 	"</h2>"+
 			 "</div>";
 		 var infowindow = new google.maps.InfoWindow({
 				content: content	
@@ -1520,55 +1546,13 @@ div.mousescroll:hover {
 			  infowindow.close();
 		  });
 		 
-		  google.maps.event.addListener(marker, 'click', function() {
-			//var count=countComment(marker.itemNo);
-			 modalInjection(marker,countCommentResult);
-		  });
-		  
-		}<%-- markerAddListener End--%>
-		
-		<%-- markerAddListener Start--%>
-		<%-- 
-		var bounds = new google.maps.LatLngBounds();
-		
-		function markerAddListener(marker, i) {
-		 console.log("markerAddListener() Inn");
-			
-		 var content=
-			 "<div id=\"infowindow\">"+
-			 	"<h1>"+
-			 		"<font color=\"red\">"+"[ "+marker.price+" ]</font> "+
-			 		marker.itemName+
-			 	"</h1>"+
-			 "</div>";
-		 var infowindow = new google.maps.InfoWindow({
-				content: content	
-		 });
-		  
-		  /*  */
-		  //console.log("marker.content_"+marker.content);
-		 //var dialogName="#item"+marker.content;
-		 google.maps.event.addListener(marker, 'mouseover', function() {
-			 //alert("mouseover");
-			
-			  //infowindow.open(marker.get('map'), marker);	
-			 infowindow.open(marker.get('map'), marker);
-			 
-		  });
-		 
-		 google.maps.event.addListener(marker, 'mouseout', function() {	
-			 // infowindow.open(marker.get('map'), marker);
-			  infowindow.close();
-		  });
-		 
-		  google.maps.event.addListener(marker, 'click', function() {
-			  	  
-			  modalInjection(marker);
+		 google.maps.event.addListener(marker, 'click', function() {
+				//var count=countComment(marker.itemNo);
+				 modalInjection(marker,countCommentResult);
 		  });
 		  
 		}
-		
-		--%>
+			
 		<%-- searchListMarkerFocus Start --%>
 		var infowindow;
 		var position;
@@ -1578,10 +1562,10 @@ div.mousescroll:hover {
 		function searchListMarkerFocusIn(marker){
 			var content=
 				 "<div id=\"infowindow\">"+
-				 	"<h1>"+
+				 	"<h2>"+
 				 		"<font color=\"red\">"+"[ "+marker.price+" ]</font> "+
 				 		marker.itemName+
-				 	"</h1>"+
+				 	"</h2>"+
 				 "</div>";
 			infowindow = new google.maps.InfoWindow({
 					content: content	
@@ -1595,6 +1579,7 @@ div.mousescroll:hover {
 			//it`s too fast.
 			//map.setCenter(marker.position); 
 			
+			/*
 			// start coordinates
 			var start = [ 
 			      new google.maps.LatLng(marker.position.k, marker.position.A), 
@@ -1609,6 +1594,22 @@ div.mousescroll:hover {
 			      new google.maps.LatLng(marker.position.k+1, marker.position.A),
 			      new google.maps.LatLng(marker.position.k, marker.position.A-1),
 			      new google.maps.LatLng(marker.position.k, marker.position.A+1)
+			      ];
+			*/
+			// start coordinates
+			var start = [ 
+			      new google.maps.LatLng(marker.position.lat(), marker.position.lng()), 
+			      new google.maps.LatLng(marker.position.lat(), marker.position.lng()),
+			      new google.maps.LatLng(marker.position.lat(), marker.position.lng()),
+			      new google.maps.LatLng(marker.position.lat(), marker.position.lng())
+			      ];
+
+			// end coordinates
+			var end = [
+		          new google.maps.LatLng(marker.position.lat()-1, marker.position.lng()), 
+			      new google.maps.LatLng(marker.position.lat()+1, marker.position.lng()),
+			      new google.maps.LatLng(marker.position.lat(), marker.position.lng()-1),
+			      new google.maps.LatLng(marker.position.lat(), marker.position.lng()+1)
 			      ];
 			for (var i=0; i < end.length; i++){
 			      calcRoute(start[i], end [i]);
@@ -1659,7 +1660,11 @@ div.mousescroll:hover {
 			
 			//infowindow.setZIndex(3000);
 			infowindow.setPosition(marker.position);
-			infowindow.open(marker.get('map'));
+			if(marker.identity=='fake'){
+				infowindow.open(marker.map);
+			}else{
+				infowindow.open(marker.get('map'), marker);
+			}
 			//infowindow.open(marker.get('map'), marker);
 		}
 		function searchListMarkerFocusOut(marker){
@@ -1774,7 +1779,8 @@ div.mousescroll:hover {
 			if(markersSearchResult.length==1){
 				markersSearchResult[0].distance_m=
 					Math.round(getDistanceFromLatLonInKm(myPosition.k, myPosition.A,
-							markersSearchResult[0].position.k, markersSearchResult[0].position.A)*10000)/10000;
+							//markersSearchResult[0].position.k, markersSearchResult[0].position.A)*10000)/10000;
+							markersSearchResult[0].position.lat(), markersSearchResult[0].position.lng())*10000)/10000;
 			}
 			
 			markersSearchResult.sort(function(a, b){
@@ -1785,15 +1791,24 @@ div.mousescroll:hover {
 				//a.distance=Math.sqrt(a_distance);
 				a.distance_m=
 					Math.round(getDistanceFromLatLonInKm(myPosition.k, myPosition.A,
-							 					a.position.k, a.position.A)*10000)/10000;
+							 					//a.position.k, a.position.A)*10000)/10000;
+												a.position.lat(), a.position.lng())*10000)/10000;
 				
+				/*
+				console.log("distance_m___DEBUG__"+myPosition.k);
+				console.log("distance_m___DEBUG__"+myPosition.A);
+				console.log("distance_m___DEBUG__"+a.position.k);
+				console.log("distance_m___DEBUG__"+a.position.A);
+				console.log("distance_m___DEBUG__"+a.distance_m);
+				*/
 				//var b_A	=	Math.abs(Math.round(myPosition.A-b.position.A*1000000)/1000000);
 				//var b_k	=	Math.abs(Math.round(myPosition.k-b.position.k*1000000)/1000000);
 				//var b_distance=Math.pow(b_A, b_A) + Math.pow(b_k, b_k);
 				//b.distance=Math.sqrt(b_distance);
 				b.distance_m=
 					Math.round(getDistanceFromLatLonInKm(myPosition.k, myPosition.A,
-											 b.position.k, b.position.A)*10000)/10000;
+											// b.position.k, b.position.A)*10000)/10000;
+											b.position.lat(), b.position.lng())*10000)/10000;
 				//console.log(b_A);
 				return a.distance_m-b.distance_m
 				});
@@ -1829,7 +1844,8 @@ div.mousescroll:hover {
 			if(markersSearchResult.length==1){
 				markersSearchResult[0].distance_m=
 					Math.round(getDistanceFromLatLonInKm(myPosition.k, myPosition.A,
-							markersSearchResult[0].position.k, markersSearchResult[0].position.A)*10000)/10000;
+							//markersSearchResult[0].position.k, markersSearchResult[0].position.A)*10000)/10000;
+							markersSearchResult[0].position.lat(), markersSearchResult[0].position.lng())*10000)/10000;
 			}
 			
 			markersSearchResult.sort(function(a, b){
@@ -1840,7 +1856,8 @@ div.mousescroll:hover {
 				//a.distance=Math.sqrt(a_distance);
 				a.distance_m=
 					Math.round(getDistanceFromLatLonInKm(myPosition.k, myPosition.A,
-							 					a.position.k, a.position.A)*10000)/10000;
+							 					//a.position.k, a.position.A)*10000)/10000;
+												a.position.lat(), a.position.lng())*10000)/10000;
 				
 				return a.price-b.price
 				});
@@ -1928,6 +1945,7 @@ div.mousescroll:hover {
 		//거래 완료된 물품 
 		//버튼을 판매완료/삭제 로 바꿔야함
 		//findMyItemList(Integer userNo)
+		var findMyItemListResult=[];
 		function findMyItemList(msg){
 			//console.log("${user}");
 			//console.log("${user.userNo}");
@@ -1950,12 +1968,13 @@ div.mousescroll:hover {
 				var content;
 				
 				content=
+				"<div class=\"mousescroll\" style=\"height:300px;\">"+
 				"<table class=\"table table-striped\" style=\"width:261px;\">"+
 				"<thead>"+
 					"<tr>"+
-						"<th style=\"width:54px;\">등록일자</th>"+
-						"<th style=\"width:54px;\">가격(만)</th>"+
-						"<th style=\"width:173px; text-align: center; padding-bottom:18px;\">제품명</th>"+
+						"<th style=\"width:70px;\">등록일자</th>"+
+						"<th style=\"width:80px;\">가격(만)</th>"+
+						"<th style=\"width:100px; text-align: center;\">물품명</th>"+
 					"</tr>"+
 				"</thead>"+
 					"<tbody>";
@@ -1970,7 +1989,8 @@ div.mousescroll:hover {
 				}
 				content+=
 					"</tbody>"+
-				"</table>";
+				"</table>"+
+				"</div>";
 				if(msg=="ing"){
 					$('#MyItemList').html(content);
 				}else{
@@ -2009,6 +2029,9 @@ div.mousescroll:hover {
 	
 		//내가 찜한 물품
 		//findWishList(Integer userNo)
+		var findWishListResult=[];
+		
+		var FakeMap=map;
 		function findWishList(){
 			$.ajax({
 				type:"POST",
@@ -2019,167 +2042,50 @@ div.mousescroll:hover {
 			}).done(function(res){
 				console.log("res"+res);
 				var content;
-				/*
+				findWishListResult=[];
+				//findWishListResult=res;
+				for(var i=0;i<res.length;i++){
+					findWishListResult.push(new FakeMarker(res[i],FakeMap));
+				}
 				content=
+				"<div class=\"mousescroll\" style=\"height:300px;\">"+
 				"<table class=\"table table-striped\" style=\"width:261px;\">"+
 				"<thead>"+
 					"<tr>"+
-						"<th style=\"width:54px;\">거리</th>"+
-						"<th style=\"width:54px;\">가격(만)</th>"+
-						"<th style=\"width:173px; text-align: center; padding-bottom:18px;\">제품명</th>"+
+						"<th style=\"width:80px;\">거리</th>"+
+						"<th style=\"width:70px;\">가격(만)</th>"+
+						"<th style=\"width:100px; text-align: center;\">물품명</th>"+
 					"</tr>"+
 				"</thead>"+
 					"<tbody>";
-				for(var i=0;i<res.length;i++){
-					console.log("i="+i+"_"+res[i].itemNo);
+				for(var i=0;i<findWishListResult.length;i++){
+					console.log("i="+i+"_"+findWishListResult[i].itemNo);
 					content+=
-					"<a href=\"#\" class=\"list-group-item\">"+
+						/*
 						"<tr>"+
 							"<td>"+res[i].itemNo+"</td>"+
 							"<td>"+res[i].price+"</td>"+
 							"<td>"+res[i].itemName+"</td>"+
-						"</tr>"+	
-					"</a>";
-				}
-				content+=
-					"</tbody>"+
-				"</table>";
-				*/
-				
-				
-				/*
-				content=
-						
+						"</tr>";	
+						*/
 						"<tr>"+
-							"<th style=\"width:34px;\">거리</th>"+
-							"<th style=\"width:34px;\">가격(만)</th>"+
-							"<th style=\"width:153px; text-align: center; padding-bottom:18px;\">제품명</th>"+
+							"<td id=\"t1\" >" + findWishListResult[i].distance_m + "</td>" +
+							"<td id=\"t2\" >" + findWishListResult[i].price/10000.0 + "</td>" +
+							"<td id=\"t3\" ><a"+
+							" onmouseover=\"searchListMarkerFocusIn(findWishListResult["+i+"]);"+
+							 			  " countComment(findWishListResult["+i+"]);"+
+							  			  " findComment(findWishListResult["+i+"]);\""+
+							" onmouseout=searchListMarkerFocusOut(findWishListResult["+i+"])"+
+							" onclick=\"modalInjection(findWishListResult["+i+"],countCommentResult)\"> " +
+							findWishListResult[i].itemName+ "<span>클릭하시면 상세정보를 볼수 있습니다.</span></a></td>" +
 						"</tr>";
-					for(var i=0;i<res.length;i++){
-						console.log("i="+i+"_"+res[i].itemNo);
-						content+=
-						"<a href=\"#\" class=\"list-group-item\">"+
-							"<tr>"+
-								"<th style=\"width:34px;\">"+res[i].itemNo+"</td>"+
-								"<th style=\"width:34px;\">"+res[i].price+"</td>"+
-								"<th style=\"width:153px; text-align: center; padding-bottom:18px;\">"+res[i].itemName+"</td>"+
-							"</tr>"+	
-						"</a>";
-					}
-				*/
-				content=
-					"<a href=\"#\" class=\"list-group-item\">"+
-					"<tr>"+
-						"<th style=\"width:34px;\">거리</th>"+
-						"<th style=\"width:34px;\">가격(만)</th>"+
-						"<th style=\"width:153px; text-align: center; padding-bottom:18px;\">제품명</th>"+
-					"</tr>"+
-					"</a>";
-				for(var i=0;i<res.length;i++){
-					console.log("i="+i+"_"+res[i].itemNo);
-					content+=
-					"<a href=\"#\" class=\"list-group-item\">"+
-						"<tr>"+
-							"<th style=\"width:34px;\">"+res[i].itemNo+"</td>     "+
-							"<th style=\"width:34px; padding-left:5em;\">"+res[i].price+"</td>     "+
-							"<th style=\"width:153px; padding-left:5em; text-align: center; padding-bottom:18px;\">"+res[i].itemName+"</td>"+
-						"</tr>"+	
-					"</a>";
-				}
-				
-				$('#WishList').html(content);
-				console.log("ajax 정상응답");
-			}).fail(function(res){
-				console.log(res);
-				console.log("ajax error");
-			});
-		}
-		
-		//내가 찜한 물품
-		//findWishList(Integer userNo)
-		function findWishList2(){
-			$.ajax({
-				type:"POST",
-				url:"/findWishList",
-				data:{
-					userNo:user.userNo
-				}
-			}).done(function(res){
-				console.log("res"+res);
-				var content;
-				
-				content=
-				//"<table class=\"table table-striped\" style=\"width:261px;\">"+
-				"<thead>"+
-					"<tr>"+
-						"<th style=\"width:54px;\">거리</th>"+
-						"<th style=\"width:54px;\">가격(만)</th>"+
-						"<th style=\"width:173px; text-align: center; padding-bottom:18px;\">제품명</th>"+
-					"</tr>"+
-				"</thead>"+
-					"<tbody>";
-				for(var i=0;i<res.length;i++){
-					console.log("i="+i+"_"+res[i].itemNo);
-					content+=
-					"<a href=\"#\" class=\"list-group-item\">"+
-						"<tr>"+
-							"<td>"+res[i].itemNo+"</td>"+
-							"<td>"+res[i].price+"</td>"+
-							"<td>"+res[i].itemName+"</td>"+
-						"</tr>"+	
-					"</a>";
-				}
-				content+=
-					"</tbody>";
-				//"</table>";
-				
-				$('#WishList2').html(content);
-				console.log("ajax 정상응답");
-			}).fail(function(res){
-				console.log(res);
-				console.log("ajax error");
-			});
-		}
-		
-		//내가 찜한 물품
-		//findWishList(Integer userNo)
-		function findWishList3(){
-			$.ajax({
-				type:"POST",
-				url:"/findWishList",
-				data:{
-					userNo:user.userNo
-				}
-			}).done(function(res){
-				console.log("res"+res);
-				var content;
-				
-				content=
-				"<table class=\"table table-striped\" style=\"width:261px;\">"+
-				"<thead>"+
-					"<tr>"+
-						"<th style=\"width:54px;\">거리</th>"+
-						"<th style=\"width:54px;\">가격(만)</th>"+
-						"<th style=\"width:173px; text-align: center; padding-bottom:18px;\">제품명</th>"+
-					"</tr>"+
-				"</thead>"+
-					"<tbody>";
-				for(var i=0;i<res.length;i++){
-					console.log("i="+i+"_"+res[i].itemNo);
-					content+=
-					"<a href=\"#\" class=\"list-group-item\">"+
-						"<tr>"+
-							"<td>"+res[i].itemNo+"</td>"+
-							"<td>"+res[i].price+"</td>"+
-							"<td>"+res[i].itemName+"</td>"+
-						"</tr>"+	
-					"</a>";
+
 				}
 				content+=
 					"</tbody>"+
-				"</table>";
-				
-				$('#WishList3').html(content);
+				"</table>"+
+				"</div>";
+				$('#WishList').html(content);
 				console.log("ajax 정상응답");
 			}).fail(function(res){
 				console.log(res);
@@ -2561,6 +2467,223 @@ div.mousescroll:hover {
 	                  height: '150px'                  
 	              });
 	
+	//숫자만 입력되게 
+	function onlyNumber(){
+	   if((event.keyCode<48)||(event.keyCode>57))
+	      event.returnValue=false;
+	}
+
+	//유효성 체크	
+	function checkValid(){
+		var itemNM=document.getElementById("item_name");
+		var itemPRC=document.getElementById("price");
+		var itemLC=document.getElementById("reg_add");
+		var radioBuy=document.getElementById("buybtn");
+		var radioSell=document.getElementById("sellbtn");
+		var btnLC=document.getElementById("loca_btn");
+		
+		var alertMS='';
+		var checkState='0';
+		
+		if(itemNM.value.length==0){
+			alertMS+="물품명을 입력하세요\n";
+			checkState='1';
+		}
+		if(itemPRC.value.length==0){
+			alertMS+="희망가격을 입력하세요\n";
+			checkState='2';
+		}
+		if(itemLC.value.length==0){
+			alertMS+="거래할 위치를 지정하세요\n";
+			checkState='3';
+		}	
+		if(radioBuy.checked==false&&radioSell.checked==false){
+			alertMS+="거래를 선택해주세요\n";
+			checkState='4';
+			/* 		
+	$('#tab15').removeClass('active');
+			$('#tab11').addClass('active'); */
+		}
+		
+		if(alertMS!=''){
+			alert(alertMS);
+			if(checkState=='1'){
+				itemNM.focus();
+				itemNM.select();
+			}else if(checkState=='2'){
+				itemPRC.focus();
+				itemPRC.select();
+			}else if(checkState=='3'){
+				document.getElementById("previousA").click();
+				document.getElementById("previousA").click();
+				document.getElementById("previousA").click();
+			}else if(checkState=='4'){
+				document.getElementById("previousA").click();
+				document.getElementById("previousA").click();
+				document.getElementById("previousA").click();
+				document.getElementById("previousA").click();
+			}
+			return false;
+		}else{
+			return true;
+		}
+	}
+	
+	function listloader(){
+		window.onload=findMyItemList('ing');
+	}
+	
+	
+	/*이미지 미리보기  */
+	var loadImageFile1 = (
+		
+		function () {
+		if (window.FileReader) {
+		var	oPreviewImg = null, oFReader = new window.FileReader(),
+		rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i;
+
+		oFReader.onload = function (oFREvent) {
+		if (!oPreviewImg) {
+		var newPreview =document.getElementById("imagePreview1");
+		
+		document.getElementById("noimage1").remove();
+		oPreviewImg = new Image();
+		oPreviewImg.style.width = "640px";
+		oPreviewImg.style.height = "480px";
+		newPreview.appendChild(oPreviewImg);
+		}
+		oPreviewImg.src = oFREvent.target.result;
+		};
+
+		return function () {
+		var aFiles = document.getElementById("imageInput1").files;
+		if (aFiles.length === 0) { return; }
+		if (!rFilter.test(aFiles[0].type)) { alert("You must select a valid image file!"); return; }
+		oFReader.readAsDataURL(aFiles[0]);
+		}
+
+		}
+		if (navigator.appName === "Microsoft Internet Explorer") {
+		return function () {
+		document.getElementById("imagePreview1").filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = document.getElementById("imageInput").value;
+
+		}
+		}
+		})();
+	
+	var loadImageFile2 = (
+			
+			function () {
+			if (window.FileReader) {
+			var	oPreviewImg = null, oFReader = new window.FileReader(),
+			rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i;
+
+			oFReader.onload = function (oFREvent) {
+			if (!oPreviewImg) {
+			var newPreview =document.getElementById("imagePreview2");
+			
+			document.getElementById("noimage2").remove();
+			oPreviewImg = new Image();
+			oPreviewImg.style.width = "640px";
+			oPreviewImg.style.height = "480px";
+			newPreview.appendChild(oPreviewImg);
+			}
+			oPreviewImg.src = oFREvent.target.result;
+			};
+
+			return function () {
+			var aFiles = document.getElementById("imageInput2").files;
+			if (aFiles.length === 0) { return; }
+			if (!rFilter.test(aFiles[0].type)) { alert("You must select a valid image file!"); return; }
+			oFReader.readAsDataURL(aFiles[0]);
+			}
+
+			}
+			if (navigator.appName === "Microsoft Internet Explorer") {
+			return function () {
+			document.getElementById("imagePreview2").filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = document.getElementById("imageInput").value;
+
+			}
+			}
+			})();
+	
+	var loadImageFile3 = (
+			
+			function () {
+			if (window.FileReader) {
+			var	oPreviewImg = null, oFReader = new window.FileReader(),
+			rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i;
+
+			oFReader.onload = function (oFREvent) {
+			if (!oPreviewImg) {
+			var newPreview =document.getElementById("imagePreview3");
+			
+			document.getElementById("noimage3").remove();
+			oPreviewImg = new Image();
+			oPreviewImg.style.width = "640px";
+			oPreviewImg.style.height = "480px";
+			newPreview.appendChild(oPreviewImg);
+			}
+			oPreviewImg.src = oFREvent.target.result;
+			};
+
+			return function () {
+			var aFiles = document.getElementById("imageInput3").files;
+			if (aFiles.length === 0) { return; }
+			if (!rFilter.test(aFiles[0].type)) { alert("You must select a valid image file!"); return; }
+			oFReader.readAsDataURL(aFiles[0]);
+			}
+
+			}
+			if (navigator.appName === "Microsoft Internet Explorer") {
+			return function () {
+			document.getElementById("imagePreview3").filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = document.getElementById("imageInput").value;
+
+			}
+			}
+			})();
+	
+	/* 미리 보기 물품명,가격, 내용  */
+	function itemNamePreview(){		
+		var pname=document.getElementById("item_name").value;
+		document.getElementById("previewNameSpan").innerText=pname;	
+	}
+	
+	function itemPricePreview(){		
+		var pprice=document.getElementById("price").value;
+		document.getElementById("previewPriceSpan").innerText=" [ "+pprice+" 원 ]";		
+	}
+	
+	function itemInfoPreview(){		
+		var pinfo=document.getElementById("item_info").value;
+		document.getElementById("previewInfoSpan").innerText=pinfo;		
+	}
+	
+	/* 수정모드 미리보기  */
+	
+	function modifyPreview(){
+		var pname=document.getElementById("item_name").value;
+		console.log("드렁옵"+pname);
+		document.getElementById("previewNameSpan").innerText=pname;	
+		var pprice=document.getElementById("price").value;
+		document.getElementById("previewPriceSpan").innerText=" [ "+pprice+" 원 ]";
+		var pinfo=document.getElementById("item_info").value;
+		document.getElementById("previewInfoSpan").innerText=pinfo;
+		console.log(hiddenPic1.value);
+		console.log(hiddenPic2.value);
+		console.log(hiddenPic3.value);
+		
+		if(hiddenPic1.value!=null){
+			document.getElementById("noimage1").src="resources/itempictures/"+hiddenPic1.value;
+		}
+		if(hiddenPic2.value!=null){
+			document.getElementById("noimage2").src="resources/itempictures/"+hiddenPic2.value;
+		}	
+		if(hiddenPic3.value!=null){
+			document.getElementById("noimage3").src="resources/itempictures/"+hiddenPic3.value;
+		}
+				
+	}
    </script>
 
 
@@ -2677,7 +2800,7 @@ div.mousescroll:hover {
 					<tr>
 						<th style="width: 80px;">거리(km)</th>
 						<th style="width: 80px;">가격(만)</th>
-						<th style="width: 100px; text-align: center;">제품명</th>
+						<th style="width: 100px; text-align: center;">물품명</th>
 					</tr>
 				</thead>
 				<tbody id="searchResultInjectionSector"></tbody>
@@ -2716,7 +2839,7 @@ div.mousescroll:hover {
 				</div>
 
 				<form action="/addItem" name="registerform" id="register_form"
-					method="post" enctype="multipart/form-data">
+					method="post" enctype="multipart/form-data" onsubmit="return checkValid();">
 					<div class="tab-content">
 
 						<div class="tab-pane" id="tab11">
@@ -2739,11 +2862,9 @@ div.mousescroll:hover {
 									value="" style="border: none;"> <input type="hidden"
 									name="gridY1" id="reg_lng" value="" style="border: none;">
 								<input id="latlng" type="text" value="" style="display: none;">
-								<button id="loca_btn" class="btn btn-default"
-									onclick="markerDrop(); return false;">
-									<span>위치 정하기</span>
-								</button>
-								<button class="btn btn-default"
+								<button id="loca_btn" class="btn btn-default" 
+									onclick="markerDrop(); return false;">위치 정하기</button>
+								<button class="btn btn-default disabled" id="re-markerdrop"
 									onclick="clearMarkers(); return false;">다시 정하기</button>
 								<br>
 								<br>
@@ -2756,11 +2877,11 @@ div.mousescroll:hover {
 								<h4>사진 등록하기</h4>
 								<br>
 								<input class="form-control" name="itemPicturePath1" type="file"
-									id="exampleInputFile"> <br> <input
+									id="imageInput1" onchange="loadImageFile1();"> <br> <input
 									class="form-control" name="itemPicturePath2" type="file"
-									id="exampleInputFile"> <br> <input
+									id="imageInput2" onchange="loadImageFile2();"> <br> <input
 									class="form-control" name="itemPicturePath3" type="file"
-									id="exampleInputFile">
+									id="imageInput3" onchange="loadImageFile3();">
 
 
 							</div>
@@ -2777,18 +2898,18 @@ div.mousescroll:hover {
 							<div class="form-group">
 								<h4>상세내용 입력하기</h4>
 								<br> <input id="item_name" name="itemName" type="text"
-									class="form-control input-normal" placeholder="물품명을 입력하세요">
+									class="form-control input-normal" placeholder="물품명을 입력하세요" onchange="itemNamePreview()">
 								<div class="input-group">
-									<span class="input-group-addon">￦</span><input type="text"
-										name="price" class="form-control" placeholder="희망가격 입력">
+									<span class="input-group-addon">￦</span><input type="text" id="price"
+										name="price" class="form-control" placeholder="희망가격 입력" onKeypress="onlyNumber();" onchange="itemPricePreview()" style="IME-MODE:disabled;" >
 								</div>
 								<br>
-								<textarea name="itemInfo" class="form-control" rows="10"
-									cols="80" placeholder="상세내용을 입력하세요"></textarea>
+								<textarea id="item_info" name="itemInfo" class="form-control" rows="10"
+									cols="80" placeholder="상세내용을 입력하세요" onchange="itemInfoPreview()"></textarea>
 								<br>
 								<button class="btn btn-default" data-toggle="modal"
-									href="#preview_modal" onclick="return false">미리보기</button>
-								<input type="submit" class="btn btn-primary" value="등록하기">
+									href="#preview_modal" onclick="return false">미리보기</button>						
+								<input type="submit" class="btn btn-primary"  value="등록하기">
 
 
 
@@ -2798,7 +2919,7 @@ div.mousescroll:hover {
 							<ul class="pager wizard">
 								<li class="previous first" style="display: none;"><a
 									href="#" onclick="return false">First</a></li>
-								<li class="previous"><a href="#" onclick="return false">Previous</a></li>
+								<li class="previous"><a id="previousA" href="#" onclick="return false">Previous</a></li>
 								<li class="next last" style="display: none;"><a href="#"
 									onclick="return false">Last</a></li>
 								<li class="next"><a href="#" onclick="return false">Next</a></li>
@@ -2813,7 +2934,7 @@ div.mousescroll:hover {
 	</nav>
 	<div id="menu-toggle3">
 		<a> <img src="resources/imgs/slider/Handshake-icon.png" width=70
-			height=70 alt="Menu3"></img> <span>거래현황</span>
+			height=70 alt="Menu3" onclick="findMyItemList('ing');"></img> <span>거래현황</span>
 		</a>
 		<!-- 
 		<img src="resources/imgs/slider/menu.png" width=50 height=50 alt="Menu"></img>
@@ -2823,83 +2944,64 @@ div.mousescroll:hover {
 		<div class="tab-pane" id="tab3">
 			<!-- start of tap3   -->
 
-			<div id="MainMenu">
-				<div class="list-group panel">
-					<!-- 고2 -->
-					<a href="#MyItemList"
-						class="list-group-item list-group-item-success"
-						data-toggle="collapse" data-parent="#MainMenu"
-						onclick="findMyItemList('ing')">내가 등록한 물품</a>
-					<div class="collapse" id="MyItemList">
-						<a href="#SubMenu1" class="list-group-item" data-toggle="collapse"
-							data-parent="#SubMenu1">Subitem 1 <span
-							class="glyphicon glyphicon-chevron-down"></span></a>
-						<div class="collapse list-group-submenu" id="SubMenu1">
-							<a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem
-								1 a</a> <a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem
-								2 b</a> <a href="#SubSubMenu1" class="list-group-item"
-								data-toggle="collapse" data-parent="#SubSubMenu1">Subitem 3
-								c <span class="glyphicon glyphicon-chevron-down"></span>
-							</a>
-							<div class="collapse list-group-submenu list-group-submenu-1"
-								id="SubSubMenu1">
-								<a href="#" class="list-group-item" data-parent="#SubSubMenu1">Sub
-									sub item 1</a> <a href="#" class="list-group-item"
-									data-parent="#SubSubMenu1">Sub sub item 2</a>
-							</div>
-							<a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem
-								4 d</a>
-						</div>
-						<a href="javascript:;" class="list-group-item">Subitem 2</a> <a
-							href="javascript:;" class="list-group-item">Subitem 3</a>
-					</div>
-					<a href="#MyItemList2"
-						class="list-group-item list-group-item-success"
-						data-toggle="collapse" data-parent="#MainMenu"
-						onclick="findMyItemList('end')">거래 완료된 물품</a>
-					<div class="collapse" id="MyItemList2">
-						<a href="#" class="list-group-item">Subitem 1</a> <a href="#"
-							class="list-group-item">Subitem 2</a> <a href="#"
-							class="list-group-item">Subitem 3</a>
-					</div>
-					<a href="#demo5" class="list-group-item list-group-item-success"
-						data-toggle="collapse" data-parent="#MainMenu">내가 문의한 물품</a>
-					<div class="collapse" id="demo5">
-						<a href="#" class="list-group-item">Subitem 1</a> <a href="#"
-							class="list-group-item">Subitem 2</a> <a href="#"
-							class="list-group-item">Subitem 3</a>
-					</div>
-					<a href="#WishList" class="list-group-item list-group-item-success"
-						data-toggle="collapse" data-parent="#MainMenu"
-						onclick="findWishList()">내가 찜한 물품</a>
-					<div class="collapse" id="WishList">
-						<a href="#" class="list-group-item">Subitem 1</a> <a href="#"
-							class="list-group-item">Subitem 2</a> <a href="#"
-							class="list-group-item">Subitem 3</a>
-					</div>
-
-					<a href="#WishList2"
-						class="list-group-item list-group-item-success"
-						data-toggle="collapse" data-parent="#MainMenu"
-						onclick="findWishList2()">내가 찜한 물품2</a>
-					<div class="collapse" id="WishList2">
-						<a href="#" class="list-group-item">Subitem 1</a> <a href="#"
-							class="list-group-item">Subitem 2</a> <a href="#"
-							class="list-group-item">Subitem 3</a>
-					</div>
-
-					<a href="#WishList3"
-						class="list-group-item list-group-item-success"
-						data-toggle="collapse" data-parent="#MainMenu"
-						onclick="findWishList3()">내가 찜한 물품3</a>
-					<div class="collapse" id="WishList3">
-						<a href="#" class="list-group-item">Subitem 1</a> <a href="#"
-							class="list-group-item">Subitem 2</a> <a href="#"
-							class="list-group-item">Subitem 3</a>
-					</div>
-				</div>
+			<div class="panel-group" id="accordion">
+			  <div class="panel panel-info">
+			    <div class="panel-heading">
+			      <h4 class="panel-title">
+			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="findMyItemList('ing')">
+			     	     내가 등록한 물품
+			        </a>
+			      </h4>
+			    </div>
+			    <div id="collapseOne" class="panel-collapse collapse in">
+			      <div class="panel-body" id="MyItemList" style="margin:0px; padding:0px;">
+			      </div>
+			    </div>
+			  </div>
+			  
+			  <div class="panel panel-info">
+			    <div class="panel-heading">
+			      <h4 class="panel-title">
+			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="findMyItemList('end')">
+			     	   거래 완료된 물품
+			        </a>
+			      </h4>
+			    </div>
+			    <div id="collapseTwo" class="panel-collapse collapse">
+			      <div class="panel-body" id="MyItemList2" style="margin:0px; padding:0px;">
+			      </div>
+			    </div>
+			  </div>
+			  
+			  <div class="panel panel-info">
+			    <div class="panel-heading">
+			      <h4 class="panel-title">
+			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+			          내가 문의한 물품
+			        </a>
+			      </h4>
+			    </div>
+			    <div id="collapseThree" class="panel-collapse collapse">
+			      <div class="panel-body" style="margin:0px; padding:0px;">
+			       </div>
+			    </div>
+			  </div>
+			  
+			  <div class="panel panel-info">
+			    <div class="panel-heading">
+			      <h4 class="panel-title">
+			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" onclick="findWishList();">
+			          내가 찜한 물품
+			        </a>
+			      </h4>
+			    </div>
+			    <div id="collapseFour" class="panel-collapse collapse">
+			      <div class="panel-body" id="WishList" style="margin:0px; padding:0px;">
+			       </div>
+			    </div>
+			  </div>
+			  			  
 			</div>
-
 		</div>
 		<!-- end of tap3   -->
 	</nav>
@@ -2918,7 +3020,7 @@ div.mousescroll:hover {
 						<button type="button" class="close" data-dismiss="modal"
 							aria-hidden="true">×</button>
 						<h4 class="modal-title">
-							제품명<font color="crimson"> [가격]</font>
+							<span id="previewNameSpan">물품명</span><font color="crimson"><span id="previewPriceSpan"> [가격]</span></font>
 						</h4>
 
 					</div>
@@ -2934,19 +3036,16 @@ div.mousescroll:hover {
 
 												<!-- main slider carousel items -->
 												<div class="carousel-inner">
-													<div class="active item" data-slide-number="0">
-														<img src="http://placehold.it/640x480&amp;text=No%20Image">
+													<div id="imagePreview1" class="active item" data-slide-number="0">
+													 	<img id="noimage1" src="http://placehold.it/640x480&amp;text=No%20Image"> 
 													</div>
-													<div class="item" data-slide-number="1">
-														<img src="http://placehold.it/640x480&amp;text=two">
+													<div id="imagePreview2" class="item" data-slide-number="1">
+														<img id="noimage2" src="http://placehold.it/640x480&amp;text=No%20Image">
 													</div>
-													<div class="item" data-slide-number="2">
-														<img src="http://placehold.it/640x480&amp;text=three">
+													<div id="imagePreview3" class="item" data-slide-number="2">
+														<img id="noimage3" src="http://placehold.it/640x480&amp;text=No%20Image">
 													</div>
-													<div class="item" data-slide-number="3">
-														<img src="http://placehold.it/640x480&amp;text=four">
-													</div>
-
+					
 												</div>
 
 												<!-- main slider carousel nav controls -->
@@ -2965,13 +3064,11 @@ div.mousescroll:hover {
 						</div>
 						<!-- end of image slider -->
 						<br>
-						<p>상세 내용</p>
+						<p id="previewInfoSpan">상세 내용</p>
 
 					</div>
 					<div class="modal-footer">
-						<input type="submit" class="btn btn-primary" value="등록하기">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
 					</div>
 				</div>
 				<!-- /.modal-content -->
@@ -3019,7 +3116,7 @@ div.mousescroll:hover {
 
 <%-- 속도향상을 위해 맨 아래로 내림. --%>
 <script>
-
+ var replyDiv;
  var returnDiv;
  var flag;
  var itemNo;
@@ -3027,24 +3124,22 @@ div.mousescroll:hover {
  var gridXY;
  var cate1;
  var cate2;
- function modalInjection(marker,countCommentResult){
+ function modalInjection(marker){
 	 flag="1"; 
-	 // console.log(marker.stateCode+"state");
+	  console.log(marker.stateCode+"state");
 	  markerNo=marker.itemNo;
-	 // console.log(marker.itemNo);
-	 // console.log(marker.gridX1);
-	 // console.log(marker.gridY1);
+	  console.log(marker.itemNo);
+	  console.log(marker.gridX1);
+	  console.log(marker.gridY1);
 	  gridXY=marker.gridX1+","+marker.gridY1;
-	//  console.log(gridXY);
+	  console.log(gridXY);
 	  cate1=marker.category1;
 	  cate2=marker.category2;
-	//  console.log(cate1);
-	 // console.log(cate2);
+	  console.log(cate1);
+	  console.log(cate2);
 	  
 	  itemNo=document.getElementById("deleteItemNo").value=markerNo;	  
 	  var htmlinjec;
-	  
-	  
 	  new function makeHtml(){
 			htmlinjec=
 			"<div id=\"item"+marker.itemNo+"\" class=\"item"+marker.itemNo+" modal fade\" title=\""+marker.itemName+"\"  tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">"+
@@ -3055,8 +3150,8 @@ div.mousescroll:hover {
 				        "<h4 class=\"modal-title\">"+marker.itemName+"<font color=\"red\"> [ "+marker.price+" 원 ]</font></h4>"+
 				       
 						"</div>"+
-						"<div class=\"modal-body\" id=\"mmodal\">"+
-						
+						"<div class=\"modal-body\" id=\"mmodal\" style=\"padding-top:10px\">"+
+						"<div style=\"text-align:right;padding-bottom: 10px;color: gray;\">"+marker.regiDate+"</div>"+
 					    "<div id=\"imgslider_container_view\">"+
 						  "<div class=\"row-fluid\">"+
 						    "<div class=\"span12\" id=\"slider\">"+
@@ -3116,11 +3211,10 @@ div.mousescroll:hover {
 						}
 					}
 						htmlinjec+=
-						"<button id=\"replyButton\" class=\"btn btn-primary\" data-toggle=\"modal\" onclick=\"change()\">댓글 "+
-						//"<span class=\"badge\">"+32+"</span></button>"+
-						"<span class=\"badge\">"+countCommentResult+"</span></button>"+
-						"<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>"+
-						"</div>"+
+							"<button id=\"replyButton\" class=\"btn btn-primary\" data-toggle=\"modal\" onclick=\"change()\">댓글 "+
+							"<span class=\"badge\">"+countCommentResult+"</span></button>"+
+							"<button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>"+
+							"</div>"+
 					"</div>"+	
 				"</div>"+
 			"</div>"+
@@ -3172,78 +3266,79 @@ div.mousescroll:hover {
 				marker.itemInfo+
 			"</div>";
 			
-		//덧글 innerHTML
-		  <%--
-		replyDiv="<div  class=\"mousescroll\" style=\"height:500px; text-align:left; font-size:13px;\" id=\"accordion\">"+
-					"<table class=\"table\">"+
-						"<tr><td><div>"+
-						
-							"<b>양키</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a class=\"accordion-toggle\" data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#replyacco\">답글</a>"+
-							"<p><span>가나다라마바사아자차카타파하</span></p>"+
+			//덧글 innerHTML
+			  <%--
+			replyDiv="<div  class=\"mousescroll\" style=\"height:500px; text-align:left; font-size:13px;\" id=\"accordion\">"+
+						"<table class=\"table\">"+
+							"<tr><td><div>"+
 							
-							"<div id=\"replyacco\"  class=\"panel-collapse collapse\">"+
-						      "<div class=\"panel-body\" style=\"padding-top:0px; padding-bottom:5px; padding-left:0px; padding-right:0px\">"+
-							      "<hr>"+
-							      "<span style=\"float:left;color: orangered;\">┗</span>"+
-						    	  "<div style=\"width:380px; float:left; margin-right:10px; margin-left:5px;\">"+
-							  	  	"<textarea name=\"replyTextarea\" class=\"form-control\" rows=\"3\" placeholder=\"덧글 내용을 입력하세요\"></textarea>"+
-							      "</div>"+
-							  	  "<div>"+	
-								  	"<button type=\"button\" id=\"replyregi\" class=\"btn btn-default\" onclick=\"\" style=\"margin-top: 40px;\">덧글입력</button>"+
-							      "</div>"+
-						 	  "</div>"+
-						    "</div>"+
-						    
-						"</div></td></tr>"+
+								"<b>양키</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a class=\"accordion-toggle\" data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#replyacco\">답글</a>"+
+								"<p><span>가나다라마바사아자차카타파하</span></p>"+
+								
+								"<div id=\"replyacco\"  class=\"panel-collapse collapse\">"+
+							      "<div class=\"panel-body\" style=\"padding-top:0px; padding-bottom:5px; padding-left:0px; padding-right:0px\">"+
+								      "<hr>"+
+								      "<span style=\"float:left;color: orangered;\">┗</span>"+
+							    	  "<div style=\"width:380px; float:left; margin-right:10px; margin-left:5px;\">"+
+								  	  	"<textarea name=\"replyTextarea\" class=\"form-control\" rows=\"3\" placeholder=\"덧글 내용을 입력하세요\"></textarea>"+
+								      "</div>"+
+								  	  "<div>"+	
+									  	"<button type=\"button\" id=\"replyregi\" class=\"btn btn-default\" onclick=\"\" style=\"margin-top: 40px;\">덧글입력</button>"+
+								      "</div>"+
+							 	  "</div>"+
+							    "</div>"+
+							    
+							"</div></td></tr>"+
+							
+							"<tr><td><div>"+
+								"<b>박준일</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
+								"<p><span>가나다라마바사아자차카타파하 </span></p>"+
+							"</div></td></tr>"+
+							
+							"<tr class=\"success\"><td><div class=\"reReply\">"+
+								"<span style=\"float:left;color: orangered;margin-right:3.3px;\">┗</span><b>이민석</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a> 수정</a><a> 삭제</a><a class=\"accordion-toggle\" data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#replyacco2\"> 답글</a>"+							
+								"<p style=\"margin-left:16.5px;\"><span>가나다라마바사아자차카타파하</span></p>"+
+								"<div id=\"replyacco2\"  class=\"panel-collapse collapse\">"+
+							      "<div class=\"panel-body\" style=\"padding-top:0px; padding-bottom:5px; padding-left:0px; padding-right:0px\">"+
+								      "<hr>"+
+								      "<span style=\"float:left;color: orangered;\">┗</span>"+
+							    	  "<div style=\"width:380px; float:left; margin-right:10px; margin-left:5px;\">"+
+								  	  	"<textarea name=\"replyTextarea\" class=\"form-control\" rows=\"3\" placeholder=\"덧글 내용을 입력하세요\"></textarea>"+
+								      "</div>"+
+								  	  "<div>"+	
+									  	"<button type=\"button\" id=\"replyregi\" class=\"btn btn-default\" onclick=\"\" style=\"margin-top: 40px;\">덧글입력</button>"+
+								      "</div>"+
+							 	  "</div>"+
+							    "</div>"+
+							"</div></td></tr>"+
+							
+							"<tr><td><div>"+
+								"<b>섭섭맨</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
+								"<p><span>가나다라마바사아자차카타파하 </span></p>"+
+							"</div></td></tr>"+
+							
+							"<tr><td><div>"+
+								"<b> 이재영</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
+								"<p><span>가나다라마바사아자차카타파하 </span></p>"+
+							"</div></td></tr>"+
+							
+							/* div class에 reReply 추가하면 덧글답장  */
+							"<tr class=\"success\"><td><div class=\"reReply\">"+
+							 	"<span style=\"float:left;color: orangered;margin-right:3.3px;\">┗</span><b>이민석</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a> 수정</a><a> 삭제</a><a> 답글</a>"+
+								"<p style=\"margin-left:16.5px\"><span>이민석 짱짱장짱</span></p>"+
+							"</div></td></tr>"+
 						
-						"<tr><td><div>"+
-							"<b>박준일</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
-							"<p><span>가나다라마바사아자차카타파하 </span></p>"+
-						"</div></td></tr>"+
-						
-						"<tr class=\"success\"><td><div class=\"reReply\">"+
-							"<span style=\"float:left;color: orangered;margin-right:3.3px;\">┗</span><b>이민석</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a> 수정</a><a> 삭제</a><a class=\"accordion-toggle\" data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#replyacco2\"> 답글</a>"+							
-							"<p style=\"margin-left:16.5px;\"><span>가나다라마바사아자차카타파하</span></p>"+
-							"<div id=\"replyacco2\"  class=\"panel-collapse collapse\">"+
-						      "<div class=\"panel-body\" style=\"padding-top:0px; padding-bottom:5px; padding-left:0px; padding-right:0px\">"+
-							      "<hr>"+
-							      "<span style=\"float:left;color: orangered;\">┗</span>"+
-						    	  "<div style=\"width:380px; float:left; margin-right:10px; margin-left:5px;\">"+
-							  	  	"<textarea name=\"replyTextarea\" class=\"form-control\" rows=\"3\" placeholder=\"덧글 내용을 입력하세요\"></textarea>"+
-							      "</div>"+
-							  	  "<div>"+	
-								  	"<button type=\"button\" id=\"replyregi\" class=\"btn btn-default\" onclick=\"\" style=\"margin-top: 40px;\">덧글입력</button>"+
-							      "</div>"+
-						 	  "</div>"+
-						    "</div>"+
-						"</div></td></tr>"+
-						
-						"<tr><td><div>"+
-							"<b>섭섭맨</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
-							"<p><span>가나다라마바사아자차카타파하 </span></p>"+
-						"</div></td></tr>"+
-						
-						"<tr><td><div>"+
-							"<b> 이재영</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
-							"<p><span>가나다라마바사아자차카타파하 </span></p>"+
-						"</div></td></tr>"+
-						
-						/* div class에 reReply 추가하면 덧글답장  */
-						"<tr class=\"success\"><td><div class=\"reReply\">"+
-						 	"<span style=\"float:left;color: orangered;margin-right:3.3px;\">┗</span><b>이민석</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a> 수정</a><a> 삭제</a><a> 답글</a>"+
-							"<p style=\"margin-left:16.5px\"><span>이민석 짱짱장짱</span></p>"+
-						"</div></td></tr>"+
-					
-					"</table>"+
-				"</div>"+
-				"<hr>"+
-		 		"<div style=\"width: 450px;float: left;\">"+
-					"<textarea name=\"replyTextarea\" class=\"form-control\" rows=\"3\" placeholder=\"덧글 내용을 입력하세요\"></textarea>"+
-				"</div>"+
-				"<div>"+	
-					"<button type=\"button\" id=\"replyregi\" class=\"btn btn-default\" onclick=\"\" style=\"margin-top: 40px;\">덧글입력</button>"+
-			    "</div>";
-			    --%>	    
+						"</table>"+
+					"</div>"+
+					"<hr>"+
+			 		"<div style=\"width: 450px;float: left;\">"+
+						"<textarea name=\"replyTextarea\" class=\"form-control\" rows=\"3\" placeholder=\"덧글 내용을 입력하세요\"></textarea>"+
+					"</div>"+
+					"<div>"+	
+						"<button type=\"button\" id=\"replyregi\" class=\"btn btn-default\" onclick=\"\" style=\"margin-top: 40px;\">덧글입력</button>"+
+				    "</div>";
+				    --%>	
+		
 		document.getElementById("htmlInjectionSector").innerHTML = htmlinjec;
 		document.getElementById("modallink").click();
 		
@@ -3265,7 +3360,7 @@ div.mousescroll:hover {
 			"<div class=\"progress-bar progress-bar-success\"></div>"+
 		"</div>"+
 
-		"<form action=\"/updateItem\" name=\"modifyform\" id=\"modify_form\" method=\"post\" enctype=\"multipart/form-data\">"+
+		"<form action=\"/updateItem\" name=\"modifyform\" id=\"modify_form\" method=\"post\" enctype=\"multipart/form-data\" onsubmit=\"return checkValid();\">"+
 			"<div class=\"tab-content\">"+
 
 				"<div class=\"tab-pane\" id=\"tab11\">"+
@@ -3306,7 +3401,7 @@ div.mousescroll:hover {
 						 "<button id=\"loca_btn\" class=\"btn btn-default\" onclick=\"markerDrop(); return false;\">"+
 						"<span>위치 정하기</span>"+
 						"</button>"+
-						" <button class=\"btn btn-default\" onclick=\"clearMarkers(); return false;\">다시 정하기</button>"+
+						" <button id=\"re-markerdrop\" class=\"btn btn-default disabled\" onclick=\"clearMarkers();  return false;\">다시 정하기</button>"+
 						"<br><br>"+
 						"<textarea readonly=\"readonly\" id=\"reg_add\" rows=\"4\" cols=\"34\" value=\"\" style=\"border: none; resize: none;\"></textarea>"+
 					"</div>"+
@@ -3315,13 +3410,13 @@ div.mousescroll:hover {
 					"<div class=\"form-group\">"+
 						"<h4>사진 등록하기</h4>"+
 						"<br>"+
-						"<input class=\"form-control\" name=\"itemPicturePath1\" type=\"file\" id=\"exampleInputFile\">"+ 
-						 "<br><input class=\"form-control\" name=\"itemPicturePath2\" type=\"file\" id=\"exampleInputFile\">"+
-						 "<br><input class=\"form-control\" name=\"itemPicturePath3\" type=\"file\"id=\"exampleInputFile\">"+
+						"<input id=\"imageInput1\" class=\"form-control\" name=\"itemPicturePath1\" type=\"file\"  onchange=\"loadImageFile1();\">"+ 
+						 "<br><input id=\"imageInput2\"class=\"form-control\" name=\"itemPicturePath2\" type=\"file\" onchange=\"loadImageFile2();\">"+
+						 "<br><input id=\"imageInput3\" class=\"form-control\" name=\"itemPicturePath3\" type=\"file\" onchange=\"loadImageFile3();\">"+
 						
-						 "<input type=\"hidden\"name=\"xItemPicture1\" value=\""+marker.itemPicturePath1+"\">"+
-						 "<input type=\"hidden\"name=\"xItemPicture2\" value=\""+marker.itemPicturePath2+"\">"+
-						 "<input type=\"hidden\"name=\"xItemPicture3\" value=\""+marker.itemPicturePath3+"\">"+
+						 "<input id=\"hiddenPic1\" type=\"hidden\"name=\"xItemPicture1\" value=\""+marker.itemPicturePath1+"\">"+
+						 "<input id=\"hiddenPic2\" type=\"hidden\"name=\"xItemPicture2\" value=\""+marker.itemPicturePath2+"\">"+
+						 "<input id=\"hiddenPic3\" type=\"hidden\"name=\"xItemPicture3\" value=\""+marker.itemPicturePath3+"\">"+
 									
 						 
 					"</div>"+
@@ -3336,16 +3431,16 @@ div.mousescroll:hover {
 				"<div class=\"tab-pane\" id=\"tab15\">"+
 					"<div class=\"form-group\">"+
 						"<h4>상세내용 입력하기</h4>"+
-						"<br><input id=\"item_name\" name=\"itemName\" type=\"text\" class=\"form-control input-normal\" placeholder=\"물품명을 입력하세요\" value=\""+marker.itemName+"\">"+
+						"<br><input id=\"item_name\" name=\"itemName\" type=\"text\" class=\"form-control input-normal\" placeholder=\"물품명을 입력하세요\" onchange=\"itemNamePreview()\" value=\""+marker.itemName+"\">"+
 						"<div class=\"input-group\">"+
-							"<span class=\"input-group-addon\">￦</span><input type=\"text\" name=\"price\" class=\"form-control\" placeholder=\"희망가격 입력\" value=\""+marker.price+"\">"+
+							"<span class=\"input-group-addon\">￦</span><input type=\"text\" id=\"price\" name=\"price\" class=\"form-control\" placeholder=\"희망가격 입력\" value=\""+marker.price+"\" onKeypress=\"onlyNumber();\" onchange=\"itemPricePreview()\" style=\"IME-MODE:disabled;\">"+
 						"</div>"+
 						"<input type=\"hidden\"name=\"itemNo\" value=\""+marker.itemNo+"\">"+
 						"<br>"+
-						"<textarea name=\"itemInfo\" class=\"form-control\" rows=\"10\" cols=\"80\" placeholder=\"상세내용을 입력하세요\">"+marker.itemInfo+"</textarea>"+
+						"<textarea id=\"item_info\" name=\"itemInfo\" class=\"form-control\" rows=\"10\" cols=\"80\" onchange=\"itemInfoPreview()\" placeholder=\"상세내용을 입력하세요\">"+marker.itemInfo+"</textarea>"+
 						"<br>"+
 						"<button class=\"btn btn-default\" data-toggle=\"modal\" href=\"#preview_modal\" onclick=\"return false\">미리보기</button> "+
-						"<input type=\"submit\" class=\"btn btn-success\" value=\"수정하기\">"+
+						"<input type=\"submit\" class=\"btn btn-success\"  value=\"수정하기\">"+
 
 
 
@@ -3354,7 +3449,7 @@ div.mousescroll:hover {
 				"<div id=\"pager_wizard\">"+
 					"<ul class=\"pager wizard\">"+
 						"<li class=\"previous first\" style=\"display: none;\"><a href=\"#\" onclick=\"return false\">First</a></li>"+
-						"<li class=\"previous\"><a href=\"#\" onclick=\"return false\">Previous</a></li>"+
+						"<li class=\"previous\"><a id=\"previousA\"  href=\"#\" onclick=\"return false\">Previous</a></li>"+
 						"<li class=\"next last\" style=\"display: none;\"><a href=\"#\" onclick=\"return false\">Last</a></li>"+
 						"<li class=\"next\"><a href=\"#\" onclick=\"return false\">Next</a></li>"+
 					"</ul>"+
@@ -3370,8 +3465,6 @@ div.mousescroll:hover {
  
  function change(){
 	 
-	
-	 
 	 console.log("누르기 전 "+flag);
 	 if(flag=="1"){
 	 	document.getElementById("mmodal").innerHTML=replyDiv;
@@ -3380,13 +3473,10 @@ div.mousescroll:hover {
 	 	console.log("누른후 "+flag);
 	 }else{
 		document.getElementById("mmodal").innerHTML=returnDiv;
-		document.getElementById("replyButton").innerHTML=
-			"댓글 <span class=\"badge\">"+countCommentResult+"</span>";
+		document.getElementById("replyButton").innerHTML="댓글 <span class=\"badge\">42</span>";
 		flag="1";
 		console.log("누른후 "+flag);
 	 }
-	 
-	
 };
 
  function modify(){
@@ -3405,6 +3495,8 @@ div.mousescroll:hover {
 	}});
 	window.onload=init(modifyform,cate1);
 	window.onload=itemChange(modifyform,cate2);
+	window.onload=modifyPreview();
+	
 	codeLatLng();
 };
  

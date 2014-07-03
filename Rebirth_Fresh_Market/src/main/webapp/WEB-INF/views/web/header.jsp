@@ -194,6 +194,26 @@ position: fixed;
 </head>
 <script>
 	//alert("응?");
+	function FakeMarker(data,map){
+			this.position			=new google.maps.LatLng(data.gridX1 , data.gridY1 );
+			this.map				=map;
+			this.icon				=data.markerImage;
+			this.stateCode			=data.stateCode;
+			this.itemName			=data.itemName;
+			this.userNo				=data.userNo;
+			this.itemNo				=data.itemNo;
+			this.itemInfo			=data.itemInfo;
+			this.itemPicturePath1	=data.itemPicturePath1;
+			this.itemPicturePath2	=data.itemPicturePath2;
+			this.itemPicturePath3	=data.itemPicturePath3;
+			this.distance			=data.distance;
+			this.distance_m			=(Math.round(getDistanceFromLatLonInKm(myPosition.k, myPosition.A, data.gridX1, data.gridY1))*10000)/10000;
+			this.price				=data.price;
+			this.regiDate			=data.regiDate;
+			this.identity			='fake';
+		}
+	
+	
 	var user={
 			userNo		:	null,
 			email		:	null,
@@ -282,7 +302,7 @@ position: fixed;
 							"<input id=\"user_remember_me\" type=\"checkbox\" name=\"user[remember_me]\" value=\"1\" />"+
 							"<label class=\"string optional\" for=\"user_remember_me\"> Remember me</label>"+
 						 	"<input id=\"signin_submit\" class=\"btn btn-primary\" type=\"submit\" name=\"commit\" value=\"Sign In\" onchange='process()'/>"+
-						  	"<a id=\"signup\" href=\"http://192.168.200.56:3000/node.js/signupForm\">Sign Up</a>"+
+						  	"<a id=\"signup\" href=\"http://signup.cafe24app.com\">Sign Up</a>"+
 						"</form>"+
 		            "</div>"+
 		            "</li>"+
@@ -507,6 +527,23 @@ position: fixed;
 								    "</div></td></tr>";
 						    }
 					    	*/
+					    }else{
+					    	replyDiv+=
+				    			"<tr class=\"success\"><td><div class=\"reReply\">"+
+									"<div id=\"replyacco"+commentList[i].commentNo+"\"  class=\"panel-collapse collapse\">"+
+								      "<div class=\"panel-body\" style=\"padding-top:0px; padding-bottom:5px; padding-left:0px; padding-right:0px\">"+
+									     // "<hr>"+
+									      "<span style=\"float:left;color: orangered;\">┗</span>"+
+								    	  "<div style=\"width:380px; float:left; margin-right:10px; margin-left:5px;\">"+
+									  	  	"<textarea id=\"addReplyArea"+commentList[i].commentNo+"\" name=\"replyTextarea\" class=\"form-control\" rows=\"3\" placeholder=\"덧글 내용을 입력하세요\"></textarea>"+
+									      "</div>"+
+									  	  "<div>"+	
+										  	"<button type=\"button\" id=\"replyregi\" class=\"btn btn-default\" onclick=\"addReply("+commentList[i].commentNo+","+marker.itemNo+")\" style=\"margin-top: 40px;\">덧글입력</button>"+
+									      "</div>"+
+									     // "<hr>"+
+								 	  "</div>"+
+								    "</div>"+
+							    "</div></td></tr>";
 					    }
 					    i++;
 					}
@@ -720,6 +757,27 @@ position: fixed;
 			console.log(res);
 			console.log("실패");
 			return false;
+		});
+	}
+	
+	function removeWish(temp_itemNo){			
+		$.ajax({
+			async : false,
+			type:"POST",
+			url:"/removeWish",
+			data:{
+				userNo:user.userNo,
+				itemNo:temp_itemNo
+			}
+		}).done(function(res){
+			console.log("res"+res);
+			console.log("ajax 정상응답");
+			findWishList(false);
+			aleft("삭제되었습니다.");
+			
+		}).fail(function(res){
+			console.log(res);
+			console.log("ajax error");
 		});
 	}
 	/*임시 작업공간 */
