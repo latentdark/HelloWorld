@@ -2140,8 +2140,8 @@ div.mousescroll:hover {
 		var s_sel = f.category2;
 	
 		console.log(c1+"대분류 번호 들어옴?");
-		f_sel.options[0] = new Option("대분류 선택", "");
-		s_sel.options[0] = new Option("소분류 선택", "");
+		f_sel.options[0] = new Option("대분류 선택", "default");
+		s_sel.options[0] = new Option("소분류 선택", "default");
 
 		for(var i =0; i<f_selbox.length; i++){		
 			if(i==c1){
