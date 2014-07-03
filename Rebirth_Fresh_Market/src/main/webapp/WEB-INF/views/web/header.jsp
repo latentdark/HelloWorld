@@ -876,6 +876,7 @@ position: fixed;
 	</form>  	 
 </div>
 
+
 <div>
 <a href="/">
 	<img id="whoMadeIt"  src="resources/imgs/WMI3.png">
