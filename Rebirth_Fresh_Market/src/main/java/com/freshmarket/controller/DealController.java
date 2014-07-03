@@ -56,6 +56,20 @@ public class DealController {
 		}
 	}
     
+    @RequestMapping(value ="/removeWish")
+   	public @ResponseBody String removeWish(
+   			@RequestParam(value="userNo", required=false, defaultValue="0")Integer userNo,
+   			@RequestParam(value="itemNo", required=false, defaultValue="0")Integer itemNo){
+   		System.out.println("findMyItemList In__");
+   		System.out.println(userNo);
+   		Integer result=dealService.removeWish(userNo, itemNo);
+   		if(result==1){
+   			return "removeWish_success";
+   		}else{
+   			return "removeWish_fail";
+   		}
+   	}
+    
     @RequestMapping(value ="/findWishList")
 	public @ResponseBody List findWishList(
 			@RequestParam(value="userNo", required=false, defaultValue="0")Integer userNo){
