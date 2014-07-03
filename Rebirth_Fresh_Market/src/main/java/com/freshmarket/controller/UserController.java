@@ -126,6 +126,7 @@ public class UserController {
 		throws Exception{
     	HttpSession session=request.getSession();
 		session.invalidate();
+		response.sendRedirect("/");
     	return "session.invalidate() success";
     }
     
