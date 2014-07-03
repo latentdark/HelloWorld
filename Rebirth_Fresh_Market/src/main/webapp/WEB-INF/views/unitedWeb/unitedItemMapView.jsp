@@ -836,7 +836,7 @@ div.mousescroll:hover {
 	var chineseImage = '../resources/imgs/unitedIcons/mapchinese.png';
 	var westernImage = '../resources/imgs/unitedIcons/mapwestern.png';
 	var cafeImage = '../resources/imgs/unitedIcons/mapcafe.png';
-	var geoImage = '../resources/imgs/unitedIcons/people.png';
+	var geoImage = '../resources/imgs/icons/people.png';//people.png는 기존 이미지 파일 사용.
 	
 	//==================================<코드수정끝...by teamdwf>==========================================
 	
@@ -2143,11 +2143,18 @@ div.mousescroll:hover {
 <%-- 속도향상을 위해 맨 아래로 내림. --%>
 <script>
 
+<%--======================================<코드수정부분...by teamdwf>======================================--%>
+<%-- 
+ 	수정 내용:
+ 		1. marker.price 삭제. 
+ 		2. 마커 클릭시 보여질 이미지를 이미지 호스팅 서버에서 받아오도록 수정.
+--%>
+ 
  function modalInjection(marker){
 	  
 	  console.log(marker.itemNo);
-  	  var userNo='${user.userNo}';
-  	  var htmlinjec;
+ 	  var userNo='${user.userNo}';
+ 	  var htmlinjec;
 	  new function makeHtml(){
 			htmlinjec=
 			"<div id=\"item"+marker.itemNo+"\" class=\"item"+marker.itemNo+" modal fade\" title=\""+marker.title+"\"  tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">"+
@@ -2155,7 +2162,7 @@ div.mousescroll:hover {
 					"<div class=\"modal-Content\">"+
 						"<div class=\"modal-header\">"+
 						"<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">×</button>"+
-				        "<h4 class=\"modal-title\">"+marker.title+"<font color=\"red\"> [ "+marker.price+" 원 ]</font></h4>"+
+				        "<h4 class=\"modal-title\">"+marker.title+"<font color=\"red\"><%--주석처리부분...[ "+marker.price+" 원 ]--%></font></h4>"+
 				       
 						"</div>"+
 						"<div class=\"modal-body\">"+
@@ -2169,7 +2176,11 @@ div.mousescroll:hover {
 						            /* main slider carousel items */
 						            "<div class=\"carousel-inner\">"+
 						              "<div class=\"active item\" data-slide-number=\"0\">"+
-						                "<img  src = \"resources/itempictures/"+marker.itemPicturePath1+"\" style=\"width: 640px; height:480;\">"+
+						     
+						     <%--주석처리부분...--%>
+						     <%--주석을 풀 때 여길 풀어주세요.by teamdwf
+						     
+						              "<img  src = \"resources/itempictures/"+marker.itemPicturePath1+"\" style=\"width: 640px; height:480;\">"+
 						              "</div>"+
 						              "<div class=\"item\" data-slide-number=\"1\">"+
 						              	"<img  src = \"resources/itempictures/"+marker.itemPicturePath2+"\" style=\"width: 640px; height:480;\">"+
@@ -2177,8 +2188,19 @@ div.mousescroll:hover {
 						              "<div class=\"item\" data-slide-number=\"2\">"+
 						                "<img  src = \"resources/itempictures/"+marker.itemPicturePath3+"\" style=\"width: 640px; height:480;\">"+
 						              "</div>"+						            
-						             	
-						              
+						     
+						     --%><%--주석을 풀 때 여길 풀어주세요.by teamdwf--%>
+						     
+						     <%--새로 추가된 코드부분...--%>
+								      "<img  src = \"http://imageserver.iisweb.kr/teamdwf/"+marker.itemPicturePath1+"\" style=\"width: 640px; height:480;\">"+
+						              "</div>"+
+						              "<div class=\"item\" data-slide-number=\"1\">"+
+						              	"<img  src = \"http://imageserver.iisweb.kr/teamdwf/"+marker.itemPicturePath2+"\" style=\"width: 640px; height:480;\">"+
+					                  "</div>"+
+						              "<div class=\"item\" data-slide-number=\"2\">"+
+						                "<img  src = \"http://imageserver.iisweb.kr/teamdwf/"+marker.itemPicturePath3+"\" style=\"width: 640px; height:480;\">"+
+						              "</div>"+						            
+				             	  
 						            "</div>"+
 						            
 						            /* main slider carousel nav controls */
@@ -2222,7 +2244,8 @@ div.mousescroll:hover {
 		};
 		document.getElementById("htmlInjectionSector").innerHTML = htmlinjec;
 		document.getElementById("modallink").click();
- }
-		
+}
+ 
+<%--======================================<코드수정끝...by teamdwf>======================================--%>
 
  </script>
