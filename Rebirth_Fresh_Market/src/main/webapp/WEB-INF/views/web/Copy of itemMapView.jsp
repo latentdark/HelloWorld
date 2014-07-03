@@ -15,95 +15,6 @@
 <link rel="Stylesheet" href="/resources/css/bootstrap.min.css" />
 
 <style>
-.navbar {
-	/* background-image: url("/resources/imgs/bg6.png");
-			 */
-	background-color: #5DCD9D;
-	border-style: none;
-	font-size: 15px;
-	font-familiy: 'Nanum Gothic';
-	/* z-index: 2000; */
-	margin: 0;
-}
-
-#brand_img {
-	margin-left: 10px;
-}
-
-#start,#signin,#signin_on {
-	padding-top: 18px;
-	color: white;
-	background: none;
-}
-
-/* 페이지에 따라 알아서 색깔 바뀌게 수정해야함  */
-#deal,#deal:hover {
-	background-color: #33A876;
-	padding-top: 18px;
-	color: white;
-	height: 53px;
-}
-
-#start:hover,#signin:hover,#signin_on:hover {
-	color: gray;
-	background: none;
-}
-
-#search {
-	margin-top: 10px;
-}
-
-
-
-.dropdown-menu {
-	padding: 15px;
-	padding-bottom: 15px;
-	top: 54px;
-	left: -180px;
-	margin-right: 20px;
-	border-color: #BCBCBC;
-}
-
-#dropdown_on {
-	padding-right: 0px;
-	padding-left: 0px;
-	padding-top: 15px;
-	padding-bottom: 15px;
-	margin: 0;
-	text-align: right;
-}
-
-#signin_submit {
-	clear: left;
-	width: 100%;
-	height: 32px;
-	font-size: 13px;
-}
-
-#signin_submit.btn {
-	background-color: #00A1DA;
-	border: none;
-	margin-bottom: 5px;
-}
-
-#signup {
-	margin-left: 160px;
-	text-decoration: none;
-}
-
-#signup:hover {
-	color: gray;
-}
-
-#dropdown_on>li>a {
-	color: blue;
-	background: none;
-}
-
-#dropdown_on>li>a:hover {
-	color: gray;
-	background: none;
-}
 
 /* itemMapView css  */
 html {
@@ -111,6 +22,7 @@ html {
 }
 
 body {
+    font-family: 'Nanum Gothic';
 	height: 100%;
 	margin: 0;
 	padding: 0;
@@ -146,18 +58,6 @@ body {
 #category1 {
 	margin-bottom: 10px;
 }
-
-/* .labels {
-	color: red;
-	background-color: white;
-	font-family: "Lucida Grande", "Arial", sans-serif;
-	font-size: 10px;
-	font-weight: bold;
-	text-align: center;
-	width: 40px;
-	border: 2px solid black;
-	white-space: nowrap;
-} */
 
 /* slider bar css */
 /* 텔 */
@@ -208,7 +108,6 @@ body {
 	position: absolute;
 	overflow: hidden;
 	/* Text properties */
-	font-familiy: 'Nanum Gothic';
 	font-size: 18px;
 	font-weight: bold;
 	letter-spacing: 0.6px;
@@ -313,7 +212,6 @@ body {
 	position: absolute;
 	overflow: hidden;
 	/* Text properties */
-	font-familiy: 'Nanum Gothic';
 	font-size: 18px;
 	font-weight: bold;
 	letter-spacing: 0.6px;
@@ -418,7 +316,6 @@ body {
 	position: absolute;
 	overflow: hidden;
 	/* Text properties */
-	font-familiy: 'Nanum Gothic';
 	font-size: 18px;
 	font-weight: bold;
 	letter-spacing: 0.6px;
@@ -528,7 +425,6 @@ div.mousescroll:hover {
 	position: absolute;
 	overflow: hidden;
 	/* Text properties */
-	font-familiy: 'Nanum Gothic';
 	font-size: 12px;
 	font-weight: bold;
 	letter-spacing: 0.6px;
@@ -606,7 +502,6 @@ div.mousescroll:hover {
 	position: absolute;
 	overflow: hidden;
 	/* Text properties */
-	font-familiy: 'Nanum Gothic';
 	font-size: 18px;
 	font-weight: bold;
 	letter-spacing: 0.6px;
@@ -625,7 +520,7 @@ div.mousescroll:hover {
 /* span 보여주게 하는 코드 */
 #menu-toggle2-mirror a:hover span {
 	background-color: #BDBDBD;
-	color: #0100FF;
+	color: #515151;
 	/* 	text-shadow:1px 1px 0 #99bf31; */
 	width: auto;
 	padding: 0 20px;
@@ -673,7 +568,6 @@ div.mousescroll:hover {
 	position: absolute;
 	overflow: hidden;
 	/* Text properties */
-	font-familiy: 'Nanum Gothic';
 	font-size: 18px;
 	font-weight: bold;
 	letter-spacing: 0.6px;
@@ -692,7 +586,7 @@ div.mousescroll:hover {
 /* span 보여주게 하는 코드 */
 #menu-toggle3-mirror a:hover span {
 	background-color: #BDBDBD;
-	color: #0100FF;
+	color: #515151;
 	/* 	text-shadow:1px 1px 0 #99bf31; */
 	width: auto;
 	padding: 0 20px;
@@ -1018,6 +912,7 @@ div.mousescroll:hover {
 	var itemNo;
 	function removeItem(){
 		$.ajax({
+			async : false,
 			type:"POST",
 			url:"/removeItem",
 			data:{
@@ -1026,9 +921,13 @@ div.mousescroll:hover {
 		}).done(function(res){
 			console.log(res);
 			refreshData();
-			var combine="'#item"+markerNo+"'";
+			//var combine="'#item"+markerNo+"'";
 			$('#item'+markerNo).modal('hide');
+			
+			console.log("removeItem() Debug");
 			alert('삭제되었습니다.');
+			console.log("removeItem() Debug");
+			
 			return true;
 			console.log("성공");
 		}).fail(function(res){
@@ -1522,10 +1421,10 @@ div.mousescroll:hover {
 			//왜
 		 var content=
 			 "<div id=\"infowindow\">"+
-			 	"<h2>"+
+
 			 		"<font color=\"red\">"+"[ "+marker.price+" ]</font> "+
 			 		marker.itemName+
-			 	"</h2>"+
+
 			 "</div>";
 		 var infowindow = new google.maps.InfoWindow({
 				content: content	
@@ -1562,10 +1461,10 @@ div.mousescroll:hover {
 		function searchListMarkerFocusIn(marker){
 			var content=
 				 "<div id=\"infowindow\">"+
-				 	"<h2>"+
+
 				 		"<font color=\"red\">"+"[ "+marker.price+" ]</font> "+
 				 		marker.itemName+
-				 	"</h2>"+
+
 				 "</div>";
 			infowindow = new google.maps.InfoWindow({
 					content: content	
@@ -1962,22 +1861,27 @@ div.mousescroll:hover {
 				}
 			*/
 			}).done(function(res){
-				console.log("msg_"+res);
+				//console.log("msg_"+res);
 				console.log("msg.length_"+res.length);
+				findMyItemListResult=[];
+				for(var i=0;i<res.length;i++){
+					findMyItemListResult.push(new FakeMarker(res[i],FakeMap));
+				}
 				
 				var content;
 				
 				content=
-				"<div class=\"mousescroll\" style=\"height:300px;\">"+
+				"<div class=\"mousescroll\" style=\"height:400px;\">"+
 				"<table class=\"table table-striped\" style=\"width:261px;\">"+
 				"<thead>"+
 					"<tr>"+
-						"<th style=\"width:70px;\">등록일자</th>"+
+						"<th style=\"width:90px;\">등록일자</th>"+
 						"<th style=\"width:80px;\">가격(만)</th>"+
 						"<th style=\"width:100px; text-align: center;\">물품명</th>"+
 					"</tr>"+
 				"</thead>"+
 					"<tbody>";
+				/*
 				for(var i=0;i<res.length;i++){
 					console.log("i="+i+"_"+res[i].itemNo);
 					content+=
@@ -1986,6 +1890,23 @@ div.mousescroll:hover {
 						"<td>"+res[i].price+"</td>"+
 						"<td>"+res[i].itemName+"</td>"+
 					"</tr>";
+				}
+				*/
+				for(var i=0;i<findMyItemListResult.length;i++){
+					//console.log("i="+i+"_"+findWishListResult[i].itemNo);
+					content+=
+						"<tr>"+
+							"<td id=\"t1\" >" + (findMyItemListResult[i].regiDate+"").substring(2) + "</td>" +
+							"<td id=\"t2\" >" + findMyItemListResult[i].price/10000.0 + "</td>" +
+							"<td id=\"t3\" ><a"+
+							" onmouseover=\"searchListMarkerFocusIn(findMyItemListResult["+i+"]);"+
+							 			  " countComment(findMyItemListResult["+i+"]);"+
+							  			  " findComment(findMyItemListResult["+i+"]);\""+
+							" onmouseout=searchListMarkerFocusOut(findMyItemListResult["+i+"])"+
+							" onclick=\"modalInjection(findMyItemListResult["+i+"],countCommentResult)\"> " +
+							findMyItemListResult[i].itemName+ "<span>클릭하시면 상세정보를 볼수 있습니다.</span></a></td>" +
+						"</tr>";
+
 				}
 				content+=
 					"</tbody>"+
@@ -2032,8 +1953,11 @@ div.mousescroll:hover {
 		var findWishListResult=[];
 		
 		var FakeMap=map;
-		function findWishList(){
+		function findWishList(async_option){
+			var async_choice=(async_option==false)?false:true;
+			console.log("async_choice 확인_"+async_choice);
 			$.ajax({
+				async : false,
 				type:"POST",
 				url:"/findWishList",
 				data:{
@@ -2048,13 +1972,17 @@ div.mousescroll:hover {
 					findWishListResult.push(new FakeMarker(res[i],FakeMap));
 				}
 				content=
-				"<div class=\"mousescroll\" style=\"height:300px;\">"+
+				"<div class=\"mousescroll\" style=\"height:400px;\">"+
 				"<table class=\"table table-striped\" style=\"width:261px;\">"+
 				"<thead>"+
 					"<tr>"+
-						"<th style=\"width:80px;\">거리</th>"+
-						"<th style=\"width:70px;\">가격(만)</th>"+
-						"<th style=\"width:100px; text-align: center;\">물품명</th>"+
+						"<th style=\"width:50px;\"></th>"+
+						"<th style=\"width:45px;\">거리</th>"+
+						"<th style=\"width:45px;\">가격(만)</th>"+
+						"<th style=\"width:120px; text-align: center;\">물품명</th>"+
+					//	"<th style=\"width:80px;\">거리</th>"+
+					//	"<th style=\"width:70px;\">가격(만)</th>"+
+					//	"<th style=\"width:100px; text-align: center;\">물품명</th>"+
 					"</tr>"+
 				"</thead>"+
 					"<tbody>";
@@ -2069,7 +1997,9 @@ div.mousescroll:hover {
 						"</tr>";	
 						*/
 						"<tr>"+
-							"<td id=\"t1\" >" + findWishListResult[i].distance_m + "</td>" +
+							"<td id=\"t0\" >" + "<a style=\"cursor:pointer\" onclick=\"removeWish("+findWishListResult[i].itemNo+")\">삭제</a>"+
+												"</td>" +
+							"<td id=\"t1\" >" +	findWishListResult[i].distance_m + "</td>" +
 							"<td id=\"t2\" >" + findWishListResult[i].price/10000.0 + "</td>" +
 							"<td id=\"t3\" ><a"+
 							" onmouseover=\"searchListMarkerFocusIn(findWishListResult["+i+"]);"+
@@ -2198,8 +2128,8 @@ div.mousescroll:hover {
 		var s_sel = f.category2;
 	
 		console.log(c1+"대분류 번호 들어옴?");
-		f_sel.options[0] = new Option("대분류 선택", "");
-		s_sel.options[0] = new Option("소분류 선택", "");
+		f_sel.options[0] = new Option("대분류 선택", "default");
+		s_sel.options[0] = new Option("소분류 선택", "default");
 
 		for(var i =0; i<f_selbox.length; i++){		
 			if(i==c1){
@@ -2730,7 +2660,7 @@ div.mousescroll:hover {
 	<div id="menu-toggle2-injection">
 		<c:if test="${user==null}">
 		<div id="menu-toggle2-mirror">
-			<a> <img src="resources/imgs/slider/Cloud_Add.png" width=70
+			<a> <img src="resources/imgs/slider/Cloud_Add_black.png" width=70
 				height=70 ></img> 
 				<span>물건 팔기/사기<br>로그인이 필요합니다.</span>
 			</a>
@@ -2751,7 +2681,7 @@ div.mousescroll:hover {
 	
 	
 	<div id="menu-toggle1">
-		<a> <img src="resources/imgs/slider/search.png" width=70 height=70
+		<a> <img src="resources/imgs/slider/search_black.png" width=70 height=70
 			alt="Menu1"></img> <span>상품검색</span>
 		</a>
 	</div>
@@ -2809,7 +2739,7 @@ div.mousescroll:hover {
 	</nav>
 
 	<div id="menu-toggle2">
-		<a> <img src="resources/imgs/slider/Cloud_Add.png" width=70
+		<a> <img src="resources/imgs/slider/Cloud_Add_black.png" width=70
 			height=70 alt="Menu2"></img> <span>물건 팔기/사기</span>
 		</a>
 		<!-- 
@@ -2959,6 +2889,7 @@ div.mousescroll:hover {
 			    </div>
 			  </div>
 			  
+			  <%--
 			  <div class="panel panel-info">
 			    <div class="panel-heading">
 			      <h4 class="panel-title">
@@ -2986,7 +2917,8 @@ div.mousescroll:hover {
 			       </div>
 			    </div>
 			  </div>
-			  
+			   --%>
+			   
 			  <div class="panel panel-info">
 			    <div class="panel-heading">
 			      <h4 class="panel-title">
@@ -3161,16 +3093,16 @@ div.mousescroll:hover {
 						            /* main slider carousel items */
 						         	"<div class=\"carousel-inner\">"+
 						              "<div class=\"active item\" data-slide-number=\"0\">"+
-						                "<img  src = \"resources/itempictures/"+marker.itemPicturePath1+"\" style=\"width: 640px; height:480;\">"+
+						                "<img  src = \"http://imageserver.iisweb.kr/freshmarket/itempictures/"+marker.itemPicturePath1+"\" style=\"width: 640px; height:480;\">"+
 						              "</div>";
 					if(marker.itemPicturePath2!=null){
 						  htmlinjec+= "<div class=\"item\" data-slide-number=\"1\">"+				
-						              	"<img  src = \"resources/itempictures/"+marker.itemPicturePath2+"\" style=\"width: 640px; height:480;\">"+
+						              	"<img  src = \"http://imageserver.iisweb.kr/freshmarket/itempictures/"+marker.itemPicturePath2+"\" style=\"width: 640px; height:480;\">"+
 					                  "</div>";
 					}
 					if(marker.itemPicturePath3!=null){
 						  htmlinjec+= "<div class=\"item\" data-slide-number=\"2\">"+		
-						 			  "<img  src = \"resources/itempictures/"+marker.itemPicturePath3+"\" style=\"width: 640px; height:480;\">"+
+						 			  "<img  src = \"http://imageserver.iisweb.kr/freshmarket/itempictures/"+marker.itemPicturePath3+"\" style=\"width: 640px; height:480;\">"+
 			                	 	  "</div>";					            
 					}	             	
 						              
@@ -3232,16 +3164,16 @@ div.mousescroll:hover {
 				            /* main slider carousel items */
 				         	"<div class=\"carousel-inner\">"+
 				              "<div class=\"active item\" data-slide-number=\"0\">"+
-				                "<img  src = \"resources/itempictures/"+marker.itemPicturePath1+"\" style=\"width: 640px; height:480;\">"+
+				                "<img  src = \"http://imageserver.iisweb.kr/freshmarket/itempictures/"+marker.itemPicturePath1+"\" style=\"width: 640px; height:480;\">"+
 				              "</div>";
 			if(marker.itemPicturePath2!=null){
 				  returnDiv+= "<div class=\"item\" data-slide-number=\"1\">"+				
-				              	"<img  src = \"resources/itempictures/"+marker.itemPicturePath2+"\" style=\"width: 640px; height:480;\">"+
+				              	"<img  src = \"http://imageserver.iisweb.kr/freshmarket/itempictures/"+marker.itemPicturePath2+"\" style=\"width: 640px; height:480;\">"+
 			                  "</div>";
 			}
 			if(marker.itemPicturePath3!=null){
 				  returnDiv+= "<div class=\"item\" data-slide-number=\"2\">"+		
-				 			  "<img  src = \"resources/itempictures/"+marker.itemPicturePath3+"\" style=\"width: 640px; height:480;\">"+
+				 			  "<img  src = \"http://imageserver.iisweb.kr/freshmarket/itempictures/"+marker.itemPicturePath3+"\" style=\"width: 640px; height:480;\">"+
 		            	 	  "</div>";					            
 			}	             	
 				              
