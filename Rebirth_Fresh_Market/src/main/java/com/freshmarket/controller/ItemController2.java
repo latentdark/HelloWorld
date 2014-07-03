@@ -254,8 +254,12 @@ public class ItemController2 {
   		item.setItemInfo(m.getParameter("itemInfo"));
   		item.setGridX1(Double.parseDouble(m.getParameter("gridX1")));
   		item.setGridY1(Double.parseDouble(m.getParameter("gridY1")));
-  		item.setCategory1(Integer.parseInt(m.getParameter("category1")));
-  		item.setCategory2(Integer.parseInt(m.getParameter("category2")));
+		if(!(m.getParameter("category1").equals("default"))){
+			item.setCategory1(Integer.parseInt(m.getParameter("category1")));
+		}
+		if(!(m.getParameter("category2").equals("default"))){
+			item.setCategory2(Integer.parseInt(m.getParameter("category2")));
+		}
   		item.setStateCode(Integer.parseInt(m.getParameter("stateCode")));
   		
   		//ftp통신.
