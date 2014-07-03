@@ -2599,13 +2599,13 @@ div.mousescroll:hover {
 		console.log(hiddenPic3.value);
 		
 		if(hiddenPic1.value!=null){
-			document.getElementById("noimage1").src="resources/itempictures/"+hiddenPic1.value;
+			document.getElementById("noimage1").src="http://imageserver.iisweb.kr/freshmarket/itempictures/"+hiddenPic1.value;
 		}
 		if(hiddenPic2.value!=null){
-			document.getElementById("noimage2").src="resources/itempictures/"+hiddenPic2.value;
+			document.getElementById("noimage2").src="http://imageserver.iisweb.kr/freshmarket/itempictures/"+hiddenPic2.value;
 		}	
 		if(hiddenPic3.value!=null){
-			document.getElementById("noimage3").src="resources/itempictures/"+hiddenPic3.value;
+			document.getElementById("noimage3").src="http://imageserver.iisweb.kr/freshmarket/itempictures/"+hiddenPic3.value;
 		}
 				
 	}
@@ -3041,7 +3041,7 @@ div.mousescroll:hover {
 </html>
 
 
-<%-- 속도향상을 위해 맨 아래로 내림. --%>
+<!-- 속도향상을 위해 맨 아래로 내림. -->
 <script>
  var replyDiv;
  var returnDiv;
@@ -3194,78 +3194,7 @@ div.mousescroll:hover {
 			"</div>";
 			
 			//덧글 innerHTML
-			  <%--
-			replyDiv="<div  class=\"mousescroll\" style=\"height:500px; text-align:left; font-size:13px;\" id=\"accordion\">"+
-						"<table class=\"table\">"+
-							"<tr><td><div>"+
-							
-								"<b>양키</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a class=\"accordion-toggle\" data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#replyacco\">답글</a>"+
-								"<p><span>가나다라마바사아자차카타파하</span></p>"+
-								
-								"<div id=\"replyacco\"  class=\"panel-collapse collapse\">"+
-							      "<div class=\"panel-body\" style=\"padding-top:0px; padding-bottom:5px; padding-left:0px; padding-right:0px\">"+
-								      "<hr>"+
-								      "<span style=\"float:left;color: orangered;\">┗</span>"+
-							    	  "<div style=\"width:380px; float:left; margin-right:10px; margin-left:5px;\">"+
-								  	  	"<textarea name=\"replyTextarea\" class=\"form-control\" rows=\"3\" placeholder=\"덧글 내용을 입력하세요\"></textarea>"+
-								      "</div>"+
-								  	  "<div>"+	
-									  	"<button type=\"button\" id=\"replyregi\" class=\"btn btn-default\" onclick=\"\" style=\"margin-top: 40px;\">덧글입력</button>"+
-								      "</div>"+
-							 	  "</div>"+
-							    "</div>"+
-							    
-							"</div></td></tr>"+
-							
-							"<tr><td><div>"+
-								"<b>박준일</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
-								"<p><span>가나다라마바사아자차카타파하 </span></p>"+
-							"</div></td></tr>"+
-							
-							"<tr class=\"success\"><td><div class=\"reReply\">"+
-								"<span style=\"float:left;color: orangered;margin-right:3.3px;\">┗</span><b>이민석</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a> 수정</a><a> 삭제</a><a class=\"accordion-toggle\" data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#replyacco2\"> 답글</a>"+							
-								"<p style=\"margin-left:16.5px;\"><span>가나다라마바사아자차카타파하</span></p>"+
-								"<div id=\"replyacco2\"  class=\"panel-collapse collapse\">"+
-							      "<div class=\"panel-body\" style=\"padding-top:0px; padding-bottom:5px; padding-left:0px; padding-right:0px\">"+
-								      "<hr>"+
-								      "<span style=\"float:left;color: orangered;\">┗</span>"+
-							    	  "<div style=\"width:380px; float:left; margin-right:10px; margin-left:5px;\">"+
-								  	  	"<textarea name=\"replyTextarea\" class=\"form-control\" rows=\"3\" placeholder=\"덧글 내용을 입력하세요\"></textarea>"+
-								      "</div>"+
-								  	  "<div>"+	
-									  	"<button type=\"button\" id=\"replyregi\" class=\"btn btn-default\" onclick=\"\" style=\"margin-top: 40px;\">덧글입력</button>"+
-								      "</div>"+
-							 	  "</div>"+
-							    "</div>"+
-							"</div></td></tr>"+
-							
-							"<tr><td><div>"+
-								"<b>섭섭맨</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
-								"<p><span>가나다라마바사아자차카타파하 </span></p>"+
-							"</div></td></tr>"+
-							
-							"<tr><td><div>"+
-								"<b> 이재영</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
-								"<p><span>가나다라마바사아자차카타파하 </span></p>"+
-							"</div></td></tr>"+
-							
-							/* div class에 reReply 추가하면 덧글답장  */
-							"<tr class=\"success\"><td><div class=\"reReply\">"+
-							 	"<span style=\"float:left;color: orangered;margin-right:3.3px;\">┗</span><b>이민석</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a> 수정</a><a> 삭제</a><a> 답글</a>"+
-								"<p style=\"margin-left:16.5px\"><span>이민석 짱짱장짱</span></p>"+
-							"</div></td></tr>"+
-						
-						"</table>"+
-					"</div>"+
-					"<hr>"+
-			 		"<div style=\"width: 450px;float: left;\">"+
-						"<textarea name=\"replyTextarea\" class=\"form-control\" rows=\"3\" placeholder=\"덧글 내용을 입력하세요\"></textarea>"+
-					"</div>"+
-					"<div>"+	
-						"<button type=\"button\" id=\"replyregi\" class=\"btn btn-default\" onclick=\"\" style=\"margin-top: 40px;\">덧글입력</button>"+
-				    "</div>";
-				    --%>	
-		
+					
 		document.getElementById("htmlInjectionSector").innerHTML = htmlinjec;
 		document.getElementById("modallink").click();
 		

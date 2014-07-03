@@ -51,14 +51,15 @@ public class ItemController2 {
 	//@Value("#{commonProperties['pageSize'] ?: 2}")
 	int pageSize;
 
-	
+
+	//===========================================<수정1. by 정준호>===========================================
 	//Field for ftp통신. by 정준호.
 	private static final String SERVER_IP="119.205.211.176";
 	private static final int PORT = 5001;
 	private static final String ID ="imageserver";
 	private static final String PASSWORD = "WeAre47th";
 	private static final String UPLOAD_DIR = "freshmarket";
-	
+	//=====================================================================================================
 	
 	
     public void setItemService(ItemService itemService){
@@ -144,14 +145,186 @@ public class ItemController2 {
   		System.out.println("==> 아이템 등록 테스트");
   		System.out.println("_______________________________________________");
  
+  	//===========================================<수정2. by 정준호>===========================================
   		//String dir="C:\\0_Revolution_Workspace\\Rebirth_Fresh_Market\\src\\main\\webapp\\resources\\itempictures";
   		String dir=request.getRealPath("/")+"resources/itempictures";
+  		
   		System.out.println("dir : " + dir);
   		//Console 출력창 확인. dir : C:\collaborationworkspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Rebirth_Fresh_Market\resources/itempictures
-  		int max = 5 * 640 * 480; //최대 업로드 크기는 5M까지만 허용
+  	//=====================================================================================================	
+  		int max = 10 * 640 * 480; //최대 업로드 크기는 5M까지만 허용
   		
 	    MultipartRequest m = new MultipartRequest(request, dir, max, "utf-8",new DefaultFileRenamePolicy());
-	   	 
+	    
+   //===========================================<수정3. by 정준호>===========================================   	 
+	    /*
+  		List<String> images=new ArrayList<String>();
+  		if(m.getOriginalFileName("itemPicturePath1")!=null){
+  			System.out.println("getOriginalName : "+m.getOriginalFileName("itemPicturePath1"));
+  			//Console 출력창 확인.   
+  			images.add(m.getOriginalFileName("itemPicturePath1"));
+  		}
+  		if(m.getOriginalFileName("itemPicturePath2")!=null){
+  			System.out.println(m.getOriginalFileName("itemPicturePath2"));
+  			//Console 출력창 확인. 
+  			images.add(m.getOriginalFileName("itemPicturePath2"));
+  		}
+  		if(m.getOriginalFileName("itemPicturePath3")!=null){
+  			System.out.println(m.getOriginalFileName("itemPicturePath3"));
+  			//Console 출력창 확인. 
+  			images.add(m.getOriginalFileName("itemPicturePath3"));
+  		}
+  		*/
+	    
+  		List<String> images=new ArrayList<String>();
+  		if(m.getOriginalFileName("itemPicturePath1")!=null){
+  			System.out.println("getOriginalName : "+m.getOriginalFileName("itemPicturePath1"));
+  			//Console 출력창 확인. getOriginalName : IMG_1200.png
+  			images.add(m.getOriginalFileName("itemPicturePath1"));
+  		}
+  		if(m.getOriginalFileName("itemPicturePath2")!=null){
+  			System.out.println(m.getOriginalFileName("itemPicturePath2"));
+  			//Console 출력창 확인. getOriginalName : IMG_1201.png
+  			images.add(m.getOriginalFileName("itemPicturePath2"));
+  		}
+  		if(m.getOriginalFileName("itemPicturePath3")!=null){
+  			System.out.println(m.getOriginalFileName("itemPicturePath3"));
+  			//Console 출력창 확인. getOriginalName : IMG_1202.png
+  			images.add(m.getOriginalFileName("itemPicturePath3"));
+  		}
+  		System.out.println("imageList : "+images);
+  		//Console 출력창 확인. imageList : [IMG_1200.png, IMG_1201.png, IMG_1202.png]
+  		
+  		//파일명 변경
+  		String fileName;
+  		String[] extension;
+  		String newFileName;
+  		List<String> imageList = new ArrayList<String>();
+  		ArrayList<File> imageFileList = new ArrayList<File>();//ftp 통신에 활용할 list.
+  		
+  		for (int i=0;i<images.size();i++){
+	  		fileName=images.get(i);
+	  		System.out.println("fileName : "+fileName);
+	  		//Console 출력창 확인. fileName : IMG_1200.png 
+		  	//Console 출력창 확인. fileName : IMG_1201.png
+		  	//Console 출력창 확인. fileName : IMG_1202.png
+	  		extension=fileName.split("\\.");
+	  		newFileName=new SimpleDateFormat("yyyyMMddHmsS").format(new Date())+((int)(Math.random()*100))+"."+extension[1];
+	  		
+	  		if(!fileName.equals("")) {
+	  		     // 원본이 업로드된 절대경로와 파일명를 구한다.
+	  		     String fullFileName = dir + "/" + fileName;
+	  		     File f1 = new File(fullFileName);
+	  		     if(f1.exists()) {     // 업로드된 파일명이 존재하면 Rename한다.
+	  		          File newFile = new File(dir + "/" + newFileName);
+	  		          System.out.println(newFile.toString());
+	  		          f1.renameTo(newFile);   // rename...
+	  		          imageList.add(newFileName);
+	  		          imageFileList.add(newFile);//ftp통신에 활용할 list.
+	  		          System.out.println("imageList : " + imageList.get(i));
+	  		          //Console 출력창 확인. 201407031535292868.png
+		  		      //Console 출력창 확인. 201407031535293021.png
+		  		      //Console 출력창 확인. 201407031535293261.png
+	  		          System.out.println("imageFileList : "+imageFileList.get(i));
+	  		          //Console 출력창 확인.
+		  		      //Console 출력창 확인.
+		  		      //Console 출력창 확인.
+		  		          
+	  		     }else{
+	  		     System.out.println("아이템 등록 실패");
+	  		     }
+	  		}
+  		}
+  	//===================================================================================================== 		
+  		//아이템 채우기
+  		if(imageList.size()==0){
+  			item.setItemPicturePath1("noimage.gif");
+  		}else if(imageList.size()==1){
+  			item.setItemPicturePath1(imageList.get(0));			
+  		}else if(imageList.size()==2){
+  			item.setItemPicturePath1(imageList.get(0));
+  			item.setItemPicturePath2(imageList.get(1));
+  		}else if(imageList.size()==3){
+  			item.setItemPicturePath1(imageList.get(0));
+  			item.setItemPicturePath2(imageList.get(1));
+  			item.setItemPicturePath3(imageList.get(2));
+  		}
+  		
+  		
+  		
+  		user=(User)session.getAttribute("user");
+  		item.setUserNo(user.getUserNo());
+  		item.setItemName(m.getParameter("itemName"));
+  		item.setPrice(Integer.parseInt(m.getParameter("price")));
+  		item.setItemInfo(m.getParameter("itemInfo"));
+  		item.setGridX1(Double.parseDouble(m.getParameter("gridX1")));
+  		item.setGridY1(Double.parseDouble(m.getParameter("gridY1")));
+		if(!(m.getParameter("category1").equals("default"))){
+			item.setCategory1(Integer.parseInt(m.getParameter("category1")));
+		}
+		if(!(m.getParameter("category2").equals("default"))){
+			item.setCategory2(Integer.parseInt(m.getParameter("category2")));
+		}
+  		item.setStateCode(Integer.parseInt(m.getParameter("stateCode")));
+  	//===========================================<수정4. by 정준호>===========================================	
+  		//ftp통신.
+  		FTPTransfer transfer = new FTPTransfer();
+  		boolean result=transfer.insert(SERVER_IP, PORT, ID, PASSWORD, UPLOAD_DIR, null, imageFileList);
+  		System.out.println("");
+  		
+  		//ftp통신이 완료되면, 로컬파일 시스템에 임시 저장된 이미지 파일들을 삭제.
+  		if(result == true){
+  			
+  			for(int i=0;i<imageFileList.size();i++){
+  				System.out.println("Local File System에 임시 저장된 이미지 파일 삭제를 위한 for문 실행......");
+  				File file = new File(imageFileList.get(i).toString());
+  				file.delete();
+  				
+  				if(file.exists()){
+  					System.out.println("삭제 Failed......");
+  				}
+  				else{
+  					System.out.println("삭제 Success!!!!!!");
+  				}//end Of if
+  			}//end Of for statement
+  		}//end Of if
+  	//=====================================================================================================		
+  		
+  		itemService.addItem(item);
+  		
+  		return "redirect:/";
+  	}
+	
+	@RequestMapping("/removeItem")
+    @ResponseBody
+  	public String removeItem (
+  			@RequestParam(value="ItemNo")Integer ItemNo)
+  					throws Exception{
+    	System.out.println("아이템 삭제!");
+    	System.out.println(ItemNo);
+   	//===========================================<수정5. by 정준호>===========================================
+    	Item item=itemService.findItem(ItemNo);
+    	FTPTransfer transfer = new FTPTransfer();
+    	System.out.println("item : " + item);
+    	transfer.delete(SERVER_IP, PORT, ID, PASSWORD, UPLOAD_DIR ,item);
+    //===================================================================================================== 	
+    	itemService.removeItem(ItemNo);
+    	
+    	return "removeItem success";
+    }
+	
+	//제품 수정
+    @RequestMapping("/updateItem")
+  	public String updateItem (
+  			@ModelAttribute("Item") Item item,
+  			@ModelAttribute("user") User user,
+  			HttpSession session, HttpServletRequest request, HttpServletResponse response)
+  					throws Exception{
+    	System.out.println("아이템 수정!");	
+    	String dir=request.getRealPath("/")+"resources/itempictures";
+    	int max = 10 * 640 * 480; //최대 업로드 크기는 5M까지만 허용
+  		//용량 안될때 예외처리 안되있음 
+	    MultipartRequest m = new MultipartRequest(request, dir, max, "utf-8",new DefaultFileRenamePolicy());
 	    /*
   		List<String> images=new ArrayList<String>();
   		if(m.getOriginalFileName("itemPicturePath1")!=null){
@@ -231,9 +404,12 @@ public class ItemController2 {
 	  		}
   		}
   		
+  		
   		//아이템 채우기
   		if(imageList.size()==0){
-  			item.setItemPicturePath1("noimage.gif");
+  			item.setItemPicturePath1((m.getParameter("xItemPicture1")));
+  			item.setItemPicturePath2((m.getParameter("xItemPicture2")));
+  			item.setItemPicturePath3((m.getParameter("xItemPicture3")));
   		}else if(imageList.size()==1){
   			item.setItemPicturePath1(imageList.get(0));			
   		}else if(imageList.size()==2){
@@ -250,6 +426,7 @@ public class ItemController2 {
   		user=(User)session.getAttribute("user");
   		item.setUserNo(user.getUserNo());
   		item.setItemName(m.getParameter("itemName"));
+  		item.setItemNo(Integer.parseInt(m.getParameter("itemNo")));
   		item.setPrice(Integer.parseInt(m.getParameter("price")));
   		item.setItemInfo(m.getParameter("itemInfo"));
   		item.setGridX1(Double.parseDouble(m.getParameter("gridX1")));
@@ -261,7 +438,7 @@ public class ItemController2 {
 			item.setCategory2(Integer.parseInt(m.getParameter("category2")));
 		}
   		item.setStateCode(Integer.parseInt(m.getParameter("stateCode")));
-  		
+  	//===========================================<수정4. by 정준호>===========================================	
   		//ftp통신.
   		FTPTransfer transfer = new FTPTransfer();
   		boolean result=transfer.insert(SERVER_IP, PORT, ID, PASSWORD, UPLOAD_DIR, null, imageFileList);
@@ -283,174 +460,28 @@ public class ItemController2 {
   				}//end Of if
   			}//end Of for statement
   		}//end Of if
-  		
-  		
-/*  		System.out.println("아이템 이름 : "+item.getItemName());
-  		System.out.println("상세 내용 : "+item.getItemInfo());
-  		System.out.println("가격 : "+item.getPrice());
-  		System.out.println("x좌표 : "+item.getGridX1());
-  		System.out.println("y좌표 : "+item.getGridY1());
-  		System.out.println("대분류 : "+item.getCategory1());
-  		System.out.println("소분류 : "+item.getCategory2());
-  		System.out.println("사진 1 : "+item.getItemPicturePath1());
-  		System.out.println("사진 2 : "+item.getItemPicturePath2());
-  		System.out.println("사진 3 : "+item.getItemPicturePath3());
-  		System.out.println("상태 : "+item.getStateCode());*/
-  		
-  		itemService.addItem(item);
-  		
-  		return "redirect:/";
-  	}
-	
-	@RequestMapping("/removeItem")
-    @ResponseBody
-  	public String removeItem (
-  			@RequestParam(value="ItemNo")Integer ItemNo)
-  					throws Exception{
-    	System.out.println("아이템 삭제!");
-    	System.out.println(ItemNo);
-    	Item item=itemService.findItem(ItemNo);
-    	FTPTransfer transfer = new FTPTransfer();
-    	System.out.println("item : " + item);
-    	transfer.delete(SERVER_IP, PORT, ID, PASSWORD, UPLOAD_DIR ,item);
-    	itemService.removeItem(ItemNo);
-    	
-    	return "removeItem success";
-    }
-	
-	//제품 수정
-    @RequestMapping("/updateItem")
-  	public String updateItem (
-  			@ModelAttribute("Item") Item item,
-  			@ModelAttribute("user") User user,
-  			HttpSession session, HttpServletRequest request, HttpServletResponse response)
-  					throws Exception{
-    	System.out.println("아이템 수정!");	
-    	String dir="C:\\0_Revolution_Workspace\\Rebirth_Fresh_Market\\src\\main\\webapp\\resources\\itempictures";
-  		int max = 5 * 640 * 480; //최대 업로드 크기는 5M까지만 허용
-  		
-	    MultipartRequest m = new MultipartRequest(request, dir, max, "utf-8",new DefaultFileRenamePolicy());
-	   	  
-  		List<String> images=new ArrayList<String>();
-  		if(m.getOriginalFileName("itemPicturePath1")!=null){
-  			images.add(m.getOriginalFileName("itemPicturePath1"));
-  		}
-  		if(m.getOriginalFileName("itemPicturePath2")!=null){
-  			images.add(m.getOriginalFileName("itemPicturePath2"));
-  		}
-  		if(m.getOriginalFileName("itemPicturePath3")!=null){
-  			images.add(m.getOriginalFileName("itemPicturePath3"));
-  		}
-  		
-  		//파일명 변경
-  		String fileName;
-  		String[] extension;
-  		String newFileName;
-  		List<String> imageList = new ArrayList<String>();
-  		
-  		for (int i=0;i<images.size();i++){
-	  		fileName=images.get(i);
-	  		System.out.println(fileName);
-	  		extension=fileName.split("\\.");
-	  		newFileName=new SimpleDateFormat("yyyyMMddHmsS").format(new Date())+((int)(Math.random()*100))+"."+extension[1];
-	  		
-	  		if(!fileName.equals("")) {
-	  		     // 원본이 업로드된 절대경로와 파일명를 구한다.
-	  		     String fullFileName = dir + "/" + fileName;
-	  		     File f1 = new File(fullFileName);
-	  		     if(f1.exists()) {     // 업로드된 파일명이 존재하면 Rename한다.
-	  		          File newFile = new File(dir + "/" + newFileName);
-	  		          f1.renameTo(newFile);   // rename...
-	  		          imageList.add(newFileName);
-	  		          System.out.println(imageList.get(i));
-	  		     }else{
-	  		     System.out.println("아이템 등록 실패");
-	  		     }
-	  		}
-  		}
-  		
-  		//아이템 채우기
-  		if(imageList.size()==0){
-  			item.setItemPicturePath1("noimage.gif");
-  			item.setItemPicturePath1((m.getParameter("xItemPicture1")));
-  			item.setItemPicturePath2((m.getParameter("xItemPicture2")));
-  			item.setItemPicturePath3((m.getParameter("xItemPicture3")));
-  		}else if(imageList.size()==1){
-  			item.setItemPicturePath1(imageList.get(0));			
-  		}else if(imageList.size()==2){
-  			item.setItemPicturePath1(imageList.get(0));
-  			item.setItemPicturePath2(imageList.get(1));
-  		}else if(imageList.size()==3){
-  			item.setItemPicturePath1(imageList.get(0));
-  			item.setItemPicturePath2(imageList.get(1));
-  			item.setItemPicturePath3(imageList.get(2));
-  		}
-  		
-  		
-  		
-  		user=(User)session.getAttribute("user");
-  		item.setUserNo(user.getUserNo());
-  		item.setItemNo(Integer.parseInt(m.getParameter("itemNo")));
-  		item.setItemName(m.getParameter("itemName"));
-  		item.setPrice(Integer.parseInt(m.getParameter("price")));
-  		item.setItemInfo(m.getParameter("itemInfo"));
-  		item.setGridX1(Double.parseDouble(m.getParameter("gridX1")));
-  		item.setGridY1(Double.parseDouble(m.getParameter("gridY1")));
-  		item.setCategory1(Integer.parseInt(m.getParameter("category1")));
-  		item.setCategory2(Integer.parseInt(m.getParameter("category2")));
-  		item.setStateCode(Integer.parseInt(m.getParameter("stateCode")));
-  		
-  		
-/*  	System.out.println("아이템 번호 : "+item.getItemNo());
-  		System.out.println("아이템 이름 : "+item.getItemName());
-  		System.out.println("상세 내용 : "+item.getItemInfo());
-  		System.out.println("가격 : "+item.getPrice());
-  		System.out.println("x좌표 : "+item.getGridX1());
-  		System.out.println("y좌표 : "+item.getGridY1());
-  		System.out.println("대분류 : "+item.getCategory1());
-  		System.out.println("소분류 : "+item.getCategory2());
-  		System.out.println("사진 1 : "+item.getItemPicturePath1());
-  		System.out.println("사진 2 : "+item.getItemPicturePath2());
-  		System.out.println("사진 3 : "+item.getItemPicturePath3());
-  		System.out.println("상태 : "+item.getStateCode());*/
-  		
+  	//=====================================================================================================		
+  		System.out.println("아이템 번호 : "+item.getItemNo());
+		System.out.println("아이템 이름 : "+item.getItemName());
+		System.out.println("상세 내용 : "+item.getItemInfo());
+		System.out.println("가격 : "+item.getPrice());
+		System.out.println("x좌표 : "+item.getGridX1());
+		System.out.println("y좌표 : "+item.getGridY1());
+		System.out.println("대분류 : "+item.getCategory1());
+		System.out.println("소분류 : "+item.getCategory2());
+		System.out.println("사진 1 : "+item.getItemPicturePath1());
+		System.out.println("사진 2 : "+item.getItemPicturePath2());
+		System.out.println("사진 3 : "+item.getItemPicturePath3());
+		System.out.println("상태 : "+item.getStateCode());
+		
   		itemService.updateItem(item);
-  		itemService.updateItemPicture(item);
-  		itemService.updateLocation(item);
-    	return "redirect:/";
-    }
-	/*
-	@RequestMapping(value ="/ajaxTest2")
-	public @ResponseBody JSONObject ajaxTest2(
-			@RequestParam(value="userNo", required=false, defaultValue="0")Integer userNo) {
-		System.out.println("ajaxTest In__");
-		System.out.println(userNo);
-		//List temp = null;
-		//temp.add(new String("성공"));
-		//model.addAttribute("test","성공");
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("test", 1234);
-		//model.add("test",new String("성공"));
-		return jsonObject;
-	}
-	*/
-	/*
-	@RequestMapping(value ="/ajaxTest2")
-	public @ResponseBody Map<?,?> ajaxTest2(
-			@RequestParam(value="userNo", required=false, defaultValue="0")Integer userNo,
-			Locale locale, ModelMap model) {
-		System.out.println("ajaxTest In__");
-		System.out.println(userNo);
-		//List temp = null;
-		//temp.add(new String("성공"));
-		model.put("test", new String("성공"));
-		//model.addAttribute("성공");
-		//model.add("test",new String("성공"));
-		return model;
-	}
-	 */
-    
-    class FTPTransfer{
+		itemService.updateItemPicture(item);
+		itemService.updateLocation(item);	
+		return "redirect:/";
+    }   
+
+
+	class FTPTransfer{
     	
     	//Field
     	FTPClient ftp = null;
@@ -607,5 +638,5 @@ public class ItemController2 {
     	}//end Of Method
     
     }//end Of Inner Class 
-    
+	  
 }// end Of Class
