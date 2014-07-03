@@ -90,11 +90,13 @@
 <!-- 			  AND -->
 <!-- 			  i.item_no = #{value} -->
 		SELECT
-		i.item_no, i.user_no, i.state_code, i.item_name, i.price, i.item_info, i.regi_date, i.category1, i.category2, l.grid_x1, l.grid_y1, l.grid_x2, l.grid_y2, l.grid_x3, l.grid_y3
-		FROM item i, location l
-		WHERE	i.item_no=l.item_no
-				AND
-				i.item_no=#{value}
+		i.item_no, i.user_no, i.state_code, i.item_name, i.price, i.item_info, i.regi_date, i.category1, i.category2,
+		l.grid_x1, l.grid_y1, l.grid_x2, l.grid_y2, l.grid_x3, l.grid_y3,
+		ip.filepath1, ip.filepath2, ip.filepath3
+		FROM item i
+			 LEFT OUTER JOIN location AS l ON i.item_no = l.item_no
+			 LEFT OUTER JOIN item_pic AS ip ON i.item_no = ip.item_no
+		WHERE i.item_no = #{value}
 	</select>
 	
 	<select id="findItemList" resultMap="ItemSelectMap">
