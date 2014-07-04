@@ -186,6 +186,10 @@ position: fixed;
 	color:#5dcd9d;
 }
 
+#whoMadeIt:hover{
+	color:#944AC5;
+}
+
 .navbar {
 	/* background-image: url("/resources/imgs/bg6.png");
 			 */
