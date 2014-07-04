@@ -7,8 +7,14 @@
 	position: fixed;
 	z-index: 1000;
 	bottom:104px;
-	right:1px;
+	right:80px;
 	width: 500px;
+}
+#mainlogo1:hover {
+	background: #0D57B8;
+	cursor: pointer;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
 }
 
 #mainlogo2 {
@@ -17,6 +23,12 @@
 	bottom:13px;
 	right:1px;
 	width: 500px;
+}
+#mainlogo2:hover {
+	background: #B80D4C;
+	cursor: pointer;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
 }
 
 #searchBar {
@@ -180,7 +192,7 @@
     padding: 0;
 }    
 
-#tastyRoad{
+#FreshMarket{
 	position: fixed;
 	z-index: 1000;
 	bottom:3px;
@@ -190,7 +202,7 @@
 	color:#FF6600;
 }
 
-#tastyRoad:hover{
+#FreshMarket:hover{
 	color:#d83c3c;
 }
 
@@ -226,8 +238,8 @@
 	 --></div>
 </div><!-- /.modal -->
 
-<a href="http://tastyroad.cafe24.com" id="tastyRoad" data-target="#wmimodal">
- TastyRoad
+<a href="/" id="FreshMarket" data-target="#wmimodal">
+ FreshMarket
  </a>
 </div>
 
@@ -245,9 +257,9 @@
 	<!--
 	<img id="mainlogo" src="resources/imgs/TastyRoadIcon/Title/FreshMaket-TastyRoad.png">
 	-->
-	<img id="mainlogo1" src="resources/imgs/TastyRoadIcon/Title/FreshMaket-TastyRoad orange1.png">
+	<img id="mainlogo1" src="resources/imgs/TastyRoadIcon/logo/FreshMarekt_Logo.png">
 </a>
-<a href="/unitedItemMapView">	
-	<img id="mainlogo2" src="resources/imgs/TastyRoadIcon/Title/FreshMaket-TastyRoad orange2.png">
+<a href="/TastyRoad">	
+	<img id="mainlogo2" src="resources/imgs/TastyRoadIcon/logo/TastyRoad_Logo.png">
 </a>
 </div>
