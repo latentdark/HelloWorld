@@ -2,6 +2,7 @@
 <head>
 <style type="text/css">
 
+/*로고 크기,위치 결정*/
 #mainlogo{
 	position: fixed;
 	z-index: 1000;
@@ -181,6 +182,7 @@
 	</form>  	 
 </div>
 
+<!-- 로고 소스 -->
 <div>
 <a href="/">
 	<!--

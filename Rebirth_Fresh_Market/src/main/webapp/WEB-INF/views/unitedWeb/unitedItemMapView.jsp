@@ -1375,11 +1375,20 @@ div.mousescroll:hover {
 			searchKeyword=null;
 			searchOption=null;
 			
+			/*
 			if(from=="Quick"){
 				searchKeyword=document.getElementById("searchKeywordQuick").value;
 			}else{
 				searchKeyword=document.getElementById("searchKeywordDetail").value;
 			}
+			*/
+			if(from=="Quick"){
+				searchKeyword=document.getElementById("searchKeywordQuick").value;
+			}else{
+				console.log("from_Debug___"+from);
+				searchKeyword=from;
+			}
+			
 			
 			/* console.log(searchKeyword); */
 			
@@ -1398,74 +1407,70 @@ div.mousescroll:hover {
 			}else{
 		
 				/* console.log("from__debug___"+from); */
+				
 				switch(from){
 					case 'all': 
 						searchOption="all";
 						break;
-					case 'buy':
-						searchOption="buy";
+					case '1': 
+						searchOption="1";
 						break;
-					case 'sell':
-						searchOption="sell";
+					case '2':
+						searchOption="2";
+						break;
+					case '3':
+						searchOption="3";
+						break;
+					case '4':
+						searchOption="4";
+						break;
+					case '5':
+						searchOption="5";
 						break;
 					default:
-						if(document.getElementById('searchOption1').checked){
-							searchOption = document.getElementById("searchOption1").value;
-							/* console.log("('searchOption1').checked"); */
-						}
-						if(document.getElementById('searchOption2').checked){
-							searchOption = document.getElementById("searchOption2").value;
-							/* console.log("('searchOption2').checked"); */
-						}
-						if(document.getElementById('searchOption3').checked){
-							searchOption = document.getElementById("searchOption3").value;
-							/* console.log("('searchOption3').checked"); */
-						}
+						break;
 				}
+				/**/
 				
 				/**/
 				
 				/* console.log(searchOption); */
-				
 				if(searchOption=="all"){
 					for(var i=0;i<markers.length;i++){
-						//console.log(markers[i].title.toUpperCase().match(searchKeyword));
-						if(markers[i].title.toUpperCase().match(searchKeyword)!=null){
-							markerClusterer.addMarker(markers[i]);
-							markersSearchResult.push(markers[i]);
-						}
+						markerClusterer.addMarker(markers[i]);
+						markersSearchResult.push(markers[i]);
 					}
-				}
-				if(searchOption=="buy"){
+				}else{
 					for(var i=0;i<markers.length;i++){
-						if(markers[i].stateCode==1){
-							if(markers[i].title.toUpperCase().match(searchKeyword)!=null){
-								markerClusterer.addMarker(markers[i]);
-								markersSearchResult.push(markers[i]);	
+						if(searchOption==markers[i].stateCode){
+							switch(markers[i].stateCode){
+								//텔텔텔
+								case '1': 
+									markerClusterer.addMarker(markers[i]);
+									markersSearchResult.push(markers[i]);
+									break;
+								case '2':
+									markerClusterer.addMarker(markers[i]);
+									markersSearchResult.push(markers[i]);
+									break;
+								case '3':
+									markerClusterer.addMarker(markers[i]);
+									markersSearchResult.push(markers[i]);
+									break;
+								case '4':
+									markerClusterer.addMarker(markers[i]);
+									markersSearchResult.push(markers[i]);
+									break;
+								case '5':
+									markerClusterer.addMarker(markers[i]);
+									markersSearchResult.push(markers[i]);
+									break;
+								default:
+									break;
 							}
 						}
 					}
 				}
-				if(searchOption=="sell"){
-					for(var i=0;i<markers.length;i++){
-						if(markers[i].stateCode==2){
-							if(markers[i].title.toUpperCase().match(searchKeyword)!=null){
-								markerClusterer.addMarker(markers[i]);
-								markersSearchResult.push(markers[i]);	
-							}
-						}
-					}
-				}
-				
-				//순순
-				if(document.getElementById('optionsRadios1').checked){
-					markersSortingDistance();
-				}
-				if(document.getElementById('optionsRadios2').checked){
-					markersSortingPrice();
-				}
-								
-				
 			}
 			markerClusterer.repaint();
 			return false;
@@ -2159,7 +2164,7 @@ div.mousescroll:hover {
 	</header>
 	
 	<div id="menu-toggle1">
-		<a>
+		<a onclick="itemSearch('all')">
 		<!--
 		<img src="resources/imgs/TastyRoadIcon/tab/view.png" width=70 height=70 ></img>
 		-->
@@ -2170,7 +2175,7 @@ div.mousescroll:hover {
 	
 	
 	<div id="menu-toggle2">
-		<a>
+		<a onclick="itemSearch('1')">
 		<!--
 		<img src="resources/imgs/TastyRoadIcon/tab/korean.png" width=70 height=70 ></img>
 		-->
@@ -2181,7 +2186,7 @@ div.mousescroll:hover {
 	</div>
 	
 	<div id="menu-toggle3">
-		<a>
+		<a onclick="itemSearch('2')">
 		<!--
 		<img src="resources/imgs/TastyRoadIcon/tab/japaness.png" width=70 height=70 ></img>
 		-->
@@ -2191,7 +2196,7 @@ div.mousescroll:hover {
 	</div>
 	
 	<div id="menu-toggle4">
-		<a>
+		<a onclick="itemSearch('3')">
 		<!--
 		<img src="resources/imgs/TastyRoadIcon/tab/chiness.png" width=70 height=70 ></img>
 		-->
@@ -2201,7 +2206,7 @@ div.mousescroll:hover {
 	</div>
 	
 	<div id="menu-toggle5">
-		<a>
+		<a onclick="itemSearch('4')">
 		<!--
 		<img src="resources/imgs/TastyRoadIcon/tab/american.png" width=70 height=70 ></img>
 		-->
@@ -2212,7 +2217,7 @@ div.mousescroll:hover {
 	
 	
 	<div id="menu-toggle6">
-		<a>
+		<a onclick="itemSearch('5')">
 		<!--
 		<img src="resources/imgs/TastyRoadIcon/tab/cafe.png" width=70 height=70 ></img>
 		-->
