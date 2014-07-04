@@ -179,9 +179,10 @@ position: fixed;
 #whoMadeIt{
 	position: fixed;
 	z-index: 1000;
-	bottom:-10px;
-	left:60px;
-	height:45px;
+	bottom:3px;
+	left:70px;
+	font-family:'impact';
+	font-size:20px;
 }
 
 .navbar {
@@ -888,9 +889,11 @@ position: fixed;
 </div>
 
 <div>
-<a href="/">
-	<img id="whoMadeIt"  src="resources/imgs/WMI3.png">
-</a>
+<a href="/" id="whoMadeIt">
+<!-- 	<img id="whoMadeIt"  src="resources/imgs/WMI3.png">
+ -->
+ WHO MADE IT?
+ </a>
 </div>
 
 <div>

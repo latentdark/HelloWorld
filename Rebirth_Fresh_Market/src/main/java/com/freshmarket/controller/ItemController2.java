@@ -411,10 +411,10 @@ public class ItemController2 {
   				item.setItemPicturePath1((m.getParameter("xItemPicture1")));
   			}
   			if(!(m.getParameter("xItemPicture2").equals("null"))){
-  				item.setItemPicturePath1((m.getParameter("xItemPicture2")));
+  				item.setItemPicturePath2((m.getParameter("xItemPicture2")));
   			}
   			if(!(m.getParameter("xItemPicture3").equals("null"))){
-  				item.setItemPicturePath1((m.getParameter("xItemPicture3")));
+  				item.setItemPicturePath3((m.getParameter("xItemPicture3")));
   			}
   		}else if(imageList.size()==1){
   			item.setItemPicturePath1(imageList.get(0));			
