@@ -176,7 +176,7 @@ position: fixed;
 	width: 700px;
 }
 
-#tastyLoad{
+#tastyRoad{
 	position: fixed;
 	z-index: 1000;
 	bottom:3px;
@@ -186,7 +186,7 @@ position: fixed;
 	color:#FF6600;
 }
 
-#tastyLoad:hover{
+#tastyRoad:hover{
 	color:#d83c3c;
 }
 
@@ -941,8 +941,8 @@ position: fixed;
  </a>
 </div>
 
-<a href="/TastyLoad" id="tastyLoad" data-target="#wmimodal">
- TastyLoad
+<a href="/TastyRoad" id="tastyRoad" data-target="#wmimodal">
+ TastyRoad
  </a>
 </div>
 <!-- 여기여기 -->

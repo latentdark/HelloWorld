@@ -174,14 +174,62 @@
 .form-wrapper button:active:before{
         border-right-color: #c42f2f;
 }      
- 
-.form-wrapper button::-moz-focus-inner { /* remove extra button spacing for Mozilla Firefox */
+ /* remove extra button spacing for Mozilla Firefox */
+.form-wrapper button::-moz-focus-inner { 
     border: 0;
     padding: 0;
 }    
 
+#tastyRoad{
+	position: fixed;
+	z-index: 1000;
+	bottom:3px;
+	left:200px;
+	font-family:'impact';
+	font-size:20px;
+	color:#FF6600;
+}
+
+#tastyRoad:hover{
+	color:#d83c3c;
+}
+
+/* 여기여기 */
+#whoMadeIt{
+	position: fixed;
+	z-index: 1000;
+	bottom:3px;
+	left:70px;
+	font-family:'impact';
+	font-size:20px;
+	color:#5dcd9d;
+}
+
+#whoMadeIt:hover{
+	color:#d83c3c;
+}
 
 </style>
+
+<a href="" id="whoMadeIt" data-toggle="modal" data-target="#wmimodal">
+<!-- 	<img id="whoMadeIt"  src="resources/imgs/WMI3.png">
+ -->
+ WHO MADE IT?
+ </a>
+</div>
+
+<!--WhoMadeIt?-->
+<div class="modal fade" id="wmimodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" id="wmimodal-dialog">
+	임시 페이지 입니다.
+  	<!-- 	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	 --></div>
+</div><!-- /.modal -->
+
+<a href="http://tastyroad.cafe24.com" id="tastyRoad" data-target="#wmimodal">
+ TastyRoad
+ </a>
+</div>
 
 <div id="searchBar">
 	<form class="form-wrapper cf" action="#" onsubmit="return itemSearch('Quick')">
