@@ -674,8 +674,14 @@ div.mousescroll:hover {
 
 <!-- GoogleMap API Key -->
 <script
+	src="http://maps.googleapis.com/maps/api/js?sensor=false&language=ko">
+	</script>
+	
+	<!-- 
+	<script
 	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAX-hWL7tXxRZd2GtUjDME2jf-9qNoiRsE&sensor=false&language=ko">
 	</script>
+	 -->
 
 <!-- jquery UI google CDN -->
 <link rel="stylesheet"
@@ -1226,7 +1232,10 @@ div.mousescroll:hover {
 						//console.log(markers[i].title.toUpperCase().match(searchKeyword));
 						if(markers[i].itemName.toUpperCase().match(searchKeyword)!=null){
 							markerClusterer.addMarker(markers[i]);
-							markersSearchResult.push(markers[i]);
+							var temp=markers[i];
+							temp.identity='fake';
+							//markersSearchResult.push(markers[i]);
+							markersSearchResult.push(temp);
 						}
 					}
 				}
@@ -1235,7 +1244,10 @@ div.mousescroll:hover {
 						if(markers[i].stateCode==1){
 							if(markers[i].itemName.toUpperCase().match(searchKeyword)!=null){
 								markerClusterer.addMarker(markers[i]);
-								markersSearchResult.push(markers[i]);	
+								var temp=markers[i];
+								temp.identity='fake';
+								//markersSearchResult.push(markers[i]);
+								markersSearchResult.push(temp);
 							}
 						}
 					}
@@ -1245,7 +1257,10 @@ div.mousescroll:hover {
 						if(markers[i].stateCode==2){
 							if(markers[i].itemName.toUpperCase().match(searchKeyword)!=null){
 								markerClusterer.addMarker(markers[i]);
-								markersSearchResult.push(markers[i]);	
+								var temp=markers[i];
+								temp.identity='fake';
+								//markersSearchResult.push(markers[i]);
+								markersSearchResult.push(temp);	
 							}
 						}
 					}
@@ -1313,8 +1328,8 @@ div.mousescroll:hover {
 								regiDate : itemList[i].regiDate,
 								distance:null,
 								distance_m:null,								
-								price : itemList[i].price
-								
+								price : itemList[i].price,
+								identity : null
 								})
 						);
 					
@@ -1434,7 +1449,7 @@ div.mousescroll:hover {
 			 		marker.itemName+
 
 			 "</div>";
-		 var infowindow = new google.maps.InfoWindow({
+			 var infowindow = new google.maps.InfoWindow({
 				content: content	
 		 });
 		  
@@ -1486,23 +1501,6 @@ div.mousescroll:hover {
 			//it`s too fast.
 			//map.setCenter(marker.position); 
 			
-			/*
-			// start coordinates
-			var start = [ 
-			      new google.maps.LatLng(marker.position.k, marker.position.A), 
-			      new google.maps.LatLng(marker.position.k, marker.position.A),
-			      new google.maps.LatLng(marker.position.k, marker.position.A),
-			      new google.maps.LatLng(marker.position.k, marker.position.A)
-			      ];
-
-			// end coordinates
-			var end = [
-		          new google.maps.LatLng(marker.position.k-1, marker.position.A), 
-			      new google.maps.LatLng(marker.position.k+1, marker.position.A),
-			      new google.maps.LatLng(marker.position.k, marker.position.A-1),
-			      new google.maps.LatLng(marker.position.k, marker.position.A+1)
-			      ];
-			*/
 			// start coordinates
 			var start = [ 
 			      new google.maps.LatLng(marker.position.lat(), marker.position.lng()), 
@@ -1540,22 +1538,7 @@ div.mousescroll:hover {
 				polyline[i].setMap(map);
 			}
 			
-			/*
-			var flightPlanCoordinates = [
-                new google.maps.LatLng(marker.position.k, marker.position.A),
-                new google.maps.LatLng(marker.position.k-1, marker.position.A)
-              ];
-				
-			
-            flightPath = new google.maps.Polyline({
-              path: flightPlanCoordinates,
-              strokeColor: '#FF0000',
-              strokeOpacity: 1.0,
-              strokeWeight: 2
-            });
-            flightPath.setMap(map);
-			
-			*/
+
 			mapCenter=map.getCenter();
 			map.panTo(marker.position);
 			//map.panToBounds(marker.position);
@@ -1588,6 +1571,9 @@ div.mousescroll:hover {
 			//markerClusterer.getMarkers().close();
 			//markerClusterer.infowindow.close();
 			infowindow.close();
+			console.log("infowindow_Debug__"+infowindow);
+			infowindow=null;
+			console.log("infowindow_Debug__"+infowindow);
 			moveCheck=mapCenter;
 			setTimeout(function(){positionReturn()},1000*2);			
 		}

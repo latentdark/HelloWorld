@@ -959,7 +959,12 @@ position: fixed;
 <!--WhoMadeIt?-->
 <div class="modal fade" id="wmimodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog" id="wmimodal-dialog">
-	임시 페이지 입니다.
+	<h1>임시 페이지 입니다.</h1>
+	<h1>Architect - 이재영 </h1>
+	<h1>Designer  - 이민석 </h1>
+	<h1>DBA		  - 신형섭 </h1>
+	<h1>Android	  - 임지환 </h1>
+	<h1>Android   - 박준일 </h1>
   	<!-- 	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	 --></div>
 </div><!-- /.modal -->
@@ -981,7 +986,7 @@ position: fixed;
 			<label class="string optional" for="user_remember_me"> Remember me</label>
 		 	<!--  아직 적용안됐음 (remember me) -->
 		  	<input id="signin_submit" class="btn btn-primary" type="submit" name="commit" value="Sign In" onchange='process()'/>
-		  	<a id="signup" href="http://192.168.200.80:3000/">Sign Up</a>
+		  	<a id="signup" href="http://signup.cafe24app.com/">Sign Up</a>
 		</form>
           </div>
           </li>
