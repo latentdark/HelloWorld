@@ -175,7 +175,7 @@ position: fixed;
 	right:1px;
 	width: 700px;
 }
-
+/* 여기여기 */
 #whoMadeIt{
 	position: fixed;
 	z-index: 1000;
@@ -187,9 +187,27 @@ position: fixed;
 }
 
 #whoMadeIt:hover{
-	color:#944AC5;
+	color:#d83c3c;
 }
 
+
+#wmimodal{
+	z-index:1300;
+}
+#wmimodal-dialog{
+	z-index:1400;
+	/* background-image: url("/resources/imgs/hd_love_baroque.jpg");
+	 */
+	background-color:white;
+	width: 90%;
+	height:580px;;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+/* 여기여기 */
 .navbar {
 	/* background-image: url("/resources/imgs/bg6.png");
 			 */
@@ -894,18 +912,34 @@ position: fixed;
 </div>
 
 <div>
-<a href="/" id="whoMadeIt">
+
+<!-- 여기여기 -->
+
+<a href="" id="whoMadeIt" data-toggle="modal" data-target="#wmimodal">
 <!-- 	<img id="whoMadeIt"  src="resources/imgs/WMI3.png">
  -->
  WHO MADE IT?
  </a>
 </div>
+<!-- 여기여기 -->
+
 
 <div>
 <a href="/">
 	<img id="mainlogo" src="resources/imgs/logo5re.png">
 </a>
 </div>
+
+
+<!-- 여기여기 -->
+<!--WhoMadeIt?-->
+<div class="modal fade" id="wmimodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" id="wmimodal-dialog">
+  	<!-- 	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	 --></div>
+</div><!-- /.modal -->
+<!--  -->
+<!-- 여기여기 -->
 
 <c:if test='${user==null}'>
 <div id="loginInjection">		     		
