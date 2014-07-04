@@ -175,6 +175,21 @@ position: fixed;
 	right:1px;
 	width: 700px;
 }
+
+#tastyLoad{
+	position: fixed;
+	z-index: 1000;
+	bottom:3px;
+	left:200px;
+	font-family:'impact';
+	font-size:20px;
+	color:#FF6600;
+}
+
+#tastyLoad:hover{
+	color:#d83c3c;
+}
+
 /* 여기여기 */
 #whoMadeIt{
 	position: fixed;
@@ -471,7 +486,11 @@ position: fixed;
 	/*임시 작업공간 */
 	var countCommentResult;
 	function countComment(marker){
+		var async_choice=(marker.async==false)?false:true;
+		console.log("marker async 확인_"+marker.async);
+			
 		$.ajax({
+			async : async_choice,
 			type:"POST",
 			url:"/countComment",
 			data:{
@@ -921,6 +940,11 @@ position: fixed;
  WHO MADE IT?
  </a>
 </div>
+
+<a href="/TastyLoad" id="tastyLoad" data-target="#wmimodal">
+ TastyLoad
+ </a>
+</div>
 <!-- 여기여기 -->
 
 
@@ -935,6 +959,7 @@ position: fixed;
 <!--WhoMadeIt?-->
 <div class="modal fade" id="wmimodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog" id="wmimodal-dialog">
+	임시 페이지 입니다.
   	<!-- 	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	 --></div>
 </div><!-- /.modal -->

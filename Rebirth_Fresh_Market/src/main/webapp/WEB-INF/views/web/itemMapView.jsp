@@ -3348,7 +3348,12 @@ div.mousescroll:hover {
 	 	console.log("누른후 "+flag);
 	 }else{
 		document.getElementById("mmodal").innerHTML=returnDiv;
-		document.getElementById("replyButton").innerHTML="댓글 <span class=\"badge\">42</span>";
+		var fakeCountMarker={
+				itemNo:markerNo,
+				async:false
+		}
+		countComment(fakeCountMarker);
+		document.getElementById("replyButton").innerHTML="댓글 <span class=\"badge\">"+countCommentResult+"</span>";
 		flag="1";
 		console.log("누른후 "+flag);
 	 }
