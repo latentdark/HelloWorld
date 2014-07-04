@@ -183,6 +183,9 @@
 
 <div>
 <a href="/">
+	<!--
 	<img id="mainlogo" src="resources/imgs/TastyRoadIcon/Title/FreshMaket-TastyRoad.png">
+	-->
+	<img id="mainlogo" src="resources/imgs/TastyRoadIcon/Title/FreshMaket-TastyRoad orange.png">
 </a>
 </div>
