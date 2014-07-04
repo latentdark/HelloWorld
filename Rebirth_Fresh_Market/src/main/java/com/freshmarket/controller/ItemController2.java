@@ -289,18 +289,6 @@ public class ItemController2 {
   			}//end Of for statement
   		}//end Of if
   	//=====================================================================================================		
-  		System.out.println("아이템 번호 : "+item.getItemNo());
-		System.out.println("아이템 이름 : "+item.getItemName());
-		System.out.println("상세 내용 : "+item.getItemInfo());
-		System.out.println("가격 : "+item.getPrice());
-		System.out.println("x좌표 : "+item.getGridX1());
-		System.out.println("y좌표 : "+item.getGridY1());
-		System.out.println("대분류 : "+item.getCategory1());
-		System.out.println("소분류 : "+item.getCategory2());
-		System.out.println("사진 1 : "+item.getItemPicturePath1());
-		System.out.println("사진 2 : "+item.getItemPicturePath2());
-		System.out.println("사진 3 : "+item.getItemPicturePath3());
-		System.out.println("상태 : "+item.getStateCode());
   		itemService.addItem(item);
   		
   		return "redirect:/";
@@ -452,6 +440,9 @@ public class ItemController2 {
   		item.setItemInfo(m.getParameter("itemInfo"));
   		item.setGridX1(Double.parseDouble(m.getParameter("gridX1")));
   		item.setGridY1(Double.parseDouble(m.getParameter("gridY1")));
+  		
+  		
+ 		
 		if(!(m.getParameter("category1").equals("default"))){
 			item.setCategory1(Integer.parseInt(m.getParameter("category1")));
 		}
@@ -482,18 +473,6 @@ public class ItemController2 {
   			}//end Of for statement
   		}//end Of if
   	//=====================================================================================================		
-  		System.out.println("아이템 번호 : "+item.getItemNo());
-		System.out.println("아이템 이름 : "+item.getItemName());
-		System.out.println("상세 내용 : "+item.getItemInfo());
-		System.out.println("가격 : "+item.getPrice());
-		System.out.println("x좌표 : "+item.getGridX1());
-		System.out.println("y좌표 : "+item.getGridY1());
-		System.out.println("대분류 : "+item.getCategory1());
-		System.out.println("소분류 : "+item.getCategory2());
-		System.out.println("사진 1 : "+item.getItemPicturePath1());
-		System.out.println("사진 2 : "+item.getItemPicturePath2());
-		System.out.println("사진 3 : "+item.getItemPicturePath3());
-		System.out.println("상태 : "+item.getStateCode());
 		
   		itemService.updateItem(item);
 		itemService.updateItemPicture(item);

@@ -2155,7 +2155,7 @@ div.mousescroll:hover {
 			s_sel.options[i] = null;
 		}
 		console.log(c2+"소분류 번호 들어옴?");
-		s_sel.options[0] = new Option("소분류 선택", "");
+		s_sel.options[0] = new Option("소분류 선택", "default");
 
 		if(sel != 0){
 			for(var i=0; i<s_selbox[sel-1].length; i++){
