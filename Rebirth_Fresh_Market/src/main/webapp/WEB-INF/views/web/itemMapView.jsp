@@ -458,14 +458,16 @@ div.mousescroll:hover {
 */
 
 #t3 a:hover {
-	background: rgb(255, 228, 0);
-	cursor: pointer;
+/* 	background: rgb(255, 228, 0);*/
+	color:#8F22F3;
+	font-weight: bold;
+ 	cursor: pointer;
 	border-top-right-radius: 0px;
 	border-bottom-right-radius: 0px;
 	text-decoration: none;
-	-moz-box-shadow: 0 0 5px #9ddff5;
+/* 	-moz-box-shadow: 0 0 5px #9ddff5;
 	-webkit-box-shadow: 0 0 5px #9ddff5;
-	box-shadow: 0 0 5px #9ddff5;
+	box-shadow: 0 0 5px #9ddff5; */
 
 	/* CSS outer glow with the box-shadow property */
 }
