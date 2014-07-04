@@ -1199,11 +1199,11 @@ div.mousescroll:hover {
 	*///--주석을 풀 때 여길 풀어주세요.by teamdwf
 	
 	//새로 추가된 코드부분...
-	var koreanImage = '../resources/imgs/unitedIcons/mapkorean.png';
-	var japaneseImage = '../resources/imgs/unitedIcons/mapjapanese.png';
-	var chineseImage = '../resources/imgs/unitedIcons/mapchinese.png';
-	var westernImage = '../resources/imgs/unitedIcons/mapwestern.png';
-	var cafeImage = '../resources/imgs/unitedIcons/mapcafe.png';
+	var koreanImage = '../resources/imgs/TastyRoadIcon/markerIcon/mapkorean.png';
+	var japaneseImage = '../resources/imgs/TastyRoadIcon/markerIcon/mapjapanese.png';
+	var chineseImage = '../resources/imgs/TastyRoadIcon/markerIcon/mapchinese.png';
+	var westernImage = '../resources/imgs/TastyRoadIcon/markerIcon/mapwestern.png';
+	var cafeImage = '../resources/imgs/TastyRoadIcon/markerIcon/cafe.png';
 	var geoImage = '../resources/imgs/icons/people.png';//people.png는 기존 이미지 파일 사용.
 	
 	//==================================<코드수정끝...by teamdwf>==========================================
@@ -2168,7 +2168,7 @@ div.mousescroll:hover {
 		<!--
 		<img src="resources/imgs/TastyRoadIcon/tab/view.png" width=70 height=70 ></img>
 		-->
-		<img src="resources/imgs/TastyRoadIcon/tab/spoon.png" width=70 height=70 ></img>
+		<img src="resources/imgs/TastyRoadIcon/tab/all.png" width=70 height=70 ></img>
 		<span>전체보기</span>
 		</a>		
 	</div>
@@ -2189,8 +2189,10 @@ div.mousescroll:hover {
 		<a onclick="itemSearch('2')">
 		<!--
 		<img src="resources/imgs/TastyRoadIcon/tab/japaness.png" width=70 height=70 ></img>
-		-->
+		
 		<img src="resources/imgs/TastyRoadIcon/tab/fish.png" width=70 height=70 ></img>
+		-->
+		<img src="resources/imgs/TastyRoadIcon/tab/japanese.png" width=70 height=70 ></img>
 		<span>일식</span>
 		</a>		
 	</div>
@@ -2199,8 +2201,10 @@ div.mousescroll:hover {
 		<a onclick="itemSearch('3')">
 		<!--
 		<img src="resources/imgs/TastyRoadIcon/tab/chiness.png" width=70 height=70 ></img>
-		-->
+		
 		<img src="resources/imgs/TastyRoadIcon/tab/ramen.png" width=70 height=70 ></img>
+		-->
+		<img src="resources/imgs/TastyRoadIcon/tab/chinese.png" width=70 height=70 ></img>
 		<span>중식</span>
 		</a>		
 	</div>
