@@ -2609,13 +2609,15 @@ div.mousescroll:hover {
 		console.log(hiddenPic2.value);
 		console.log(hiddenPic3.value);
 		
-		if(hiddenPic1.value!=null){
+		
+		//null 아니라 "null" 맞음
+		if(hiddenPic1.value!="null"){
 			document.getElementById("noimage1").src="http://imageserver.iisweb.kr/freshmarket/itempictures/"+hiddenPic1.value;
 		}
-		if(hiddenPic2.value!=null){
+		if(hiddenPic2.value!="null"){
 			document.getElementById("noimage2").src="http://imageserver.iisweb.kr/freshmarket/itempictures/"+hiddenPic2.value;
 		}	
-		if(hiddenPic3.value!=null){
+		if(hiddenPic3.value!="null"){
 			document.getElementById("noimage3").src="http://imageserver.iisweb.kr/freshmarket/itempictures/"+hiddenPic3.value;
 		}
 				

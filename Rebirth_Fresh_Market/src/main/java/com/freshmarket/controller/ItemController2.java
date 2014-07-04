@@ -289,7 +289,18 @@ public class ItemController2 {
   			}//end Of for statement
   		}//end Of if
   	//=====================================================================================================		
-  		
+  		System.out.println("아이템 번호 : "+item.getItemNo());
+		System.out.println("아이템 이름 : "+item.getItemName());
+		System.out.println("상세 내용 : "+item.getItemInfo());
+		System.out.println("가격 : "+item.getPrice());
+		System.out.println("x좌표 : "+item.getGridX1());
+		System.out.println("y좌표 : "+item.getGridY1());
+		System.out.println("대분류 : "+item.getCategory1());
+		System.out.println("소분류 : "+item.getCategory2());
+		System.out.println("사진 1 : "+item.getItemPicturePath1());
+		System.out.println("사진 2 : "+item.getItemPicturePath2());
+		System.out.println("사진 3 : "+item.getItemPicturePath3());
+		System.out.println("상태 : "+item.getStateCode());
   		itemService.addItem(item);
   		
   		return "redirect:/";
@@ -407,9 +418,16 @@ public class ItemController2 {
   		
   		//아이템 채우기
   		if(imageList.size()==0){
-  			item.setItemPicturePath1((m.getParameter("xItemPicture1")));
-  			item.setItemPicturePath2((m.getParameter("xItemPicture2")));
-  			item.setItemPicturePath3((m.getParameter("xItemPicture3")));
+  			//null 이아니라 "null" 맞음
+  			if(!(m.getParameter("xItemPicture1").equals("null"))){
+  				item.setItemPicturePath1((m.getParameter("xItemPicture1")));
+  			}
+  			if(!(m.getParameter("xItemPicture2").equals("null"))){
+  				item.setItemPicturePath1((m.getParameter("xItemPicture2")));
+  			}
+  			if(!(m.getParameter("xItemPicture3").equals("null"))){
+  				item.setItemPicturePath1((m.getParameter("xItemPicture3")));
+  			}
   		}else if(imageList.size()==1){
   			item.setItemPicturePath1(imageList.get(0));			
   		}else if(imageList.size()==2){
@@ -420,8 +438,11 @@ public class ItemController2 {
   			item.setItemPicturePath2(imageList.get(1));
   			item.setItemPicturePath3(imageList.get(2));
   		}
-  		
-  		
+  		/*System.out.println("===================");
+  		System.out.println(imageList.get(0)+"사진1");ㄴ
+  		System.out.println(imageList.get(1)+"사진2");
+  		System.out.println(imageList.get(2)+"사진3");
+  		System.out.println("===================")/;*/
   		
   		user=(User)session.getAttribute("user");
   		item.setUserNo(user.getUserNo());
