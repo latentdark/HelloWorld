@@ -43,7 +43,7 @@ public class UnitedItemController {
 	}
     
     
-	@RequestMapping(value ={"/unitedItemMapView","/TastyLoad"})
+	@RequestMapping(value ={"/unitedItemMapView","/TastyRoad"})
 	public ModelAndView googlemap(Locale locale, Model model) {
 		ModelAndView modelAndView = new ModelAndView();
 		
