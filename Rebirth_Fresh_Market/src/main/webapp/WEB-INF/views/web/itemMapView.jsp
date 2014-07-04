@@ -927,6 +927,8 @@ div.mousescroll:hover {
 			
 			$('#deletepopup').modal('hide');
 			$('#item'+markerNo).modal('hide');
+			//$('#deletepopup').modal.close();
+			//$('#item'+markerNo).modal.close();
 			
 			console.log("removeItem() Debug");
 			alert('삭제되었습니다.');
