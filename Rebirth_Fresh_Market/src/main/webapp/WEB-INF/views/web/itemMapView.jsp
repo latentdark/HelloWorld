@@ -1983,9 +1983,9 @@ div.mousescroll:hover {
 				"<thead>"+
 					"<tr>"+
 						"<th style=\"width:50px;\"></th>"+
-						"<th style=\"width:45px;\">거리</th>"+
+						"<th style=\"width:45px;\">거리(km)</th>"+
 						"<th style=\"width:45px;\">가격(만)</th>"+
-						"<th style=\"width:120px; text-align: center;\">물품명</th>"+
+						"<th style=\"width:120px; text-align: center; padding-bottom:15px;\">물품명</th>"+
 					//	"<th style=\"width:80px;\">거리</th>"+
 					//	"<th style=\"width:70px;\">가격(만)</th>"+
 					//	"<th style=\"width:100px; text-align: center;\">물품명</th>"+
