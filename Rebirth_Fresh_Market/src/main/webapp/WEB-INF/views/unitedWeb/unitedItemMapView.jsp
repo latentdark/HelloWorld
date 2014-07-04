@@ -94,7 +94,9 @@ body {
 	position: fixed;
 	top: 15%;
 	left: 0;
-	background: #5DCD9D;
+	/*background: #5DCD9D;*/
+	/*background: #3285d9;*/
+	background: #ff6600;
 	z-index: 1000;
 	padding-left: 10px;
 	padding-top: 10px;
@@ -200,7 +202,9 @@ body {
 	position: fixed;
 	top: 25%;
 	left: 0;
-	background: #5DCD9D;
+	/*background: #5DCD9D;*/
+	/*background: #3285d9;*/
+	background: #ff6600;
 	z-index: 1000;
 	padding-left: 10px;
 	padding-top: 10px;
@@ -307,7 +311,9 @@ body {
 	position: fixed;
 	top: 35%;
 	left: 0;
-	background: #5DCD9D;
+	/*background: #5DCD9D;*/
+	/*background: #3285d9;*/
+	background: #ff6600;
 	z-index: 1000;
 	padding-left: 10px;
 	padding-top: 10px;
@@ -415,7 +421,9 @@ body {
 	position: fixed;
 	top: 45%;
 	left: 0;
-	background: #5DCD9D;
+	/*background: #5DCD9D;*/
+	/*background: #3285d9;*/
+	background: #ff6600;
 	z-index: 1000;
 	padding-left: 10px;
 	padding-top: 10px;
@@ -522,7 +530,9 @@ body {
 	position: fixed;
 	top: 55%;
 	left: 0;
-	background: #5DCD9D;
+	/*background: #5DCD9D;*/
+	/*background: #3285d9;*/
+	background: #ff6600;
 	z-index: 1000;
 	padding-left: 10px;
 	padding-top: 10px;
@@ -629,7 +639,9 @@ body {
 	position: fixed;
 	top: 65%;
 	left: 0;
-	background: #5DCD9D;
+	/*background: #5DCD9D;*/
+	/*background: #3285d9;*/
+	background: #ff6600;
 	z-index: 1000;
 	padding-left: 10px;
 	padding-top: 10px;
@@ -2148,7 +2160,10 @@ div.mousescroll:hover {
 	
 	<div id="menu-toggle1">
 		<a>
+		<!--
 		<img src="resources/imgs/TastyRoadIcon/tab/view.png" width=70 height=70 ></img>
+		-->
+		<img src="resources/imgs/TastyRoadIcon/tab/spoon.png" width=70 height=70 ></img>
 		<span>전체보기</span>
 		</a>		
 	</div>
@@ -2156,7 +2171,10 @@ div.mousescroll:hover {
 	
 	<div id="menu-toggle2">
 		<a>
+		<!--
 		<img src="resources/imgs/TastyRoadIcon/tab/korean.png" width=70 height=70 ></img>
+		-->
+		<img src="resources/imgs/TastyRoadIcon/tab/spoon.png" width=70 height=70 ></img>
 		<span>한식</span>
 		</a>		
 
@@ -2164,21 +2182,30 @@ div.mousescroll:hover {
 	
 	<div id="menu-toggle3">
 		<a>
+		<!--
 		<img src="resources/imgs/TastyRoadIcon/tab/japaness.png" width=70 height=70 ></img>
+		-->
+		<img src="resources/imgs/TastyRoadIcon/tab/fish.png" width=70 height=70 ></img>
 		<span>일식</span>
 		</a>		
 	</div>
 	
 	<div id="menu-toggle4">
 		<a>
+		<!--
 		<img src="resources/imgs/TastyRoadIcon/tab/chiness.png" width=70 height=70 ></img>
+		-->
+		<img src="resources/imgs/TastyRoadIcon/tab/ramen.png" width=70 height=70 ></img>
 		<span>중식</span>
 		</a>		
 	</div>
 	
 	<div id="menu-toggle5">
 		<a>
+		<!--
 		<img src="resources/imgs/TastyRoadIcon/tab/american.png" width=70 height=70 ></img>
+		-->
+		<img src="resources/imgs/TastyRoadIcon/tab/fork.png" width=70 height=70 ></img>
 		<span>양식</span>
 		</a>		
 	</div>
@@ -2186,7 +2213,10 @@ div.mousescroll:hover {
 	
 	<div id="menu-toggle6">
 		<a>
+		<!--
 		<img src="resources/imgs/TastyRoadIcon/tab/cafe.png" width=70 height=70 ></img>
+		-->
+		<img src="resources/imgs/TastyRoadIcon/tab/cup.png" width=70 height=70 ></img>
 		<span>카페</span>
 		</a>		
 	</div>
