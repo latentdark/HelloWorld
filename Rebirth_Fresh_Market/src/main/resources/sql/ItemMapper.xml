@@ -272,8 +272,14 @@
 			<if test="itemPicturePath1!=null">
 				filepath1=#{itemPicturePath1, jdbcType=VARCHAR},
 			</if>
+			<if test="itemPicturePath2==null">
+			    filepath2=null,
+			</if>
 			<if test="itemPicturePath2!=null">
 				filepath2=#{itemPicturePath2, jdbcType=VARCHAR},
+			</if>
+			<if test="itemPicturePath3==null">
+			    filepath3=null,
 			</if>
 			<if test="itemPicturePath3!=null">
 				filepath3=#{itemPicturePath3, jdbcType=VARCHAR}
