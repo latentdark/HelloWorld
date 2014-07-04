@@ -3,7 +3,15 @@
 <style type="text/css">
 
 /*로고 크기,위치 결정*/
-#mainlogo{
+#mainlogo1 {
+	position: fixed;
+	z-index: 1000;
+	bottom:104px;
+	right:1px;
+	width: 500px;
+}
+
+#mainlogo2 {
 	position: fixed;
 	z-index: 1000;
 	bottom:13px;
@@ -28,6 +36,7 @@
     border-radius: 10px;
     box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
 }
+
 .cf:before, .cf:after{
     content:"";
     display:table;
@@ -188,6 +197,9 @@
 	<!--
 	<img id="mainlogo" src="resources/imgs/TastyRoadIcon/Title/FreshMaket-TastyRoad.png">
 	-->
-	<img id="mainlogo" src="resources/imgs/TastyRoadIcon/Title/FreshMaket-TastyRoad orange.png">
+	<img id="mainlogo1" src="resources/imgs/TastyRoadIcon/Title/FreshMaket-TastyRoad orange1.png">
+</a>
+<a href="/unitedItemMapView">	
+	<img id="mainlogo2" src="resources/imgs/TastyRoadIcon/Title/FreshMaket-TastyRoad orange2.png">
 </a>
 </div>
