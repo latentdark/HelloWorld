@@ -874,10 +874,12 @@ div.mousescroll:hover {
 		
 
 	}
-	function refreshData(){
+	function refreshData(async_option){
 		console.log("refreshData()__Inn");
-		
+		var async_choice=(async_option==false)?false:true;
+		console.log("async_option__"+async_option);
 		$.ajax({
+			async : async_choice,
 			type:"POST",
 			url:"/itemList"	
 		}).done(function(res){
@@ -912,7 +914,7 @@ div.mousescroll:hover {
 	var itemNo;
 	function removeItem(){
 		$.ajax({
-			async : false,
+			async : true,
 			type:"POST",
 			url:"/removeItem",
 			data:{
@@ -922,13 +924,17 @@ div.mousescroll:hover {
 			console.log(res);
 			refreshData();
 			//var combine="'#item"+markerNo+"'";
+			
+			$('#deletepopup').modal('hide');
 			$('#item'+markerNo).modal('hide');
+			//$('#deletepopup').modal.close();
+			//$('#item'+markerNo).modal.close();
 			
 			console.log("removeItem() Debug");
 			alert('삭제되었습니다.');
 			console.log("removeItem() Debug");
 			
-			return true;
+			return false;
 			console.log("성공");
 		}).fail(function(res){
 			console.log(res);
@@ -1129,7 +1135,7 @@ div.mousescroll:hover {
 			      if (results[1]) {
 			    	  document.getElementById("reg_add").value=results[1].formatted_address;
 			      } else {
-			        alert('No results found');
+			         alert('No results found'); 
 			      }
 			    } else {
 			      alert('Geocoder failed due to: ' + status);
@@ -1977,9 +1983,9 @@ div.mousescroll:hover {
 				"<thead>"+
 					"<tr>"+
 						"<th style=\"width:50px;\"></th>"+
-						"<th style=\"width:45px;\">거리</th>"+
+						"<th style=\"width:45px;\">거리(km)</th>"+
 						"<th style=\"width:45px;\">가격(만)</th>"+
-						"<th style=\"width:120px; text-align: center;\">물품명</th>"+
+						"<th style=\"width:120px; text-align: center; padding-bottom:15px;\">물품명</th>"+
 					//	"<th style=\"width:80px;\">거리</th>"+
 					//	"<th style=\"width:70px;\">가격(만)</th>"+
 					//	"<th style=\"width:100px; text-align: center;\">물품명</th>"+
@@ -2149,7 +2155,7 @@ div.mousescroll:hover {
 			s_sel.options[i] = null;
 		}
 		console.log(c2+"소분류 번호 들어옴?");
-		s_sel.options[0] = new Option("소분류 선택", "");
+		s_sel.options[0] = new Option("소분류 선택", "default");
 
 		if(sel != 0){
 			for(var i=0; i<s_selbox[sel-1].length; i++){
@@ -2603,14 +2609,16 @@ div.mousescroll:hover {
 		console.log(hiddenPic2.value);
 		console.log(hiddenPic3.value);
 		
-		if(hiddenPic1.value!=null){
-			document.getElementById("noimage1").src="resources/itempictures/"+hiddenPic1.value;
+		
+		//null 아니라 "null" 맞음
+		if(hiddenPic1.value!="null"){
+			document.getElementById("noimage1").src="http://imageserver.iisweb.kr/freshmarket/itempictures/"+hiddenPic1.value;
 		}
-		if(hiddenPic2.value!=null){
-			document.getElementById("noimage2").src="resources/itempictures/"+hiddenPic2.value;
+		if(hiddenPic2.value!="null"){
+			document.getElementById("noimage2").src="http://imageserver.iisweb.kr/freshmarket/itempictures/"+hiddenPic2.value;
 		}	
-		if(hiddenPic3.value!=null){
-			document.getElementById("noimage3").src="resources/itempictures/"+hiddenPic3.value;
+		if(hiddenPic3.value!="null"){
+			document.getElementById("noimage3").src="http://imageserver.iisweb.kr/freshmarket/itempictures/"+hiddenPic3.value;
 		}
 				
 	}
@@ -3018,13 +3026,17 @@ div.mousescroll:hover {
 				<div class="modal-content">
 
 					<div class="modal-body">
-						<form action="#" onsubmit="return removeItem()">
+						<!--  
+						<form action="" onsubmit="return removeItem()">
+						-->
 							<p>삭제 하시겠습니까?</p>
 							<button type="button" class="btn btn-default"
 								data-dismiss="modal">취소</button>
 							<input type="hidden" name="ItemNo" id="deleteItemNo" value="">
-							<input type="submit" class="btn btn-danger" value="삭제">
+							<input type="button" onclick="removeItem()" class="btn btn-danger" value="삭제">
+						<!-- 
 						</form>
+						 -->
 					</div>
 				</div>
 				<!-- /.modal-content -->
@@ -3046,7 +3058,7 @@ div.mousescroll:hover {
 </html>
 
 
-<%-- 속도향상을 위해 맨 아래로 내림. --%>
+<!-- 속도향상을 위해 맨 아래로 내림. -->
 <script>
  var replyDiv;
  var returnDiv;
@@ -3199,78 +3211,7 @@ div.mousescroll:hover {
 			"</div>";
 			
 			//덧글 innerHTML
-			  <%--
-			replyDiv="<div  class=\"mousescroll\" style=\"height:500px; text-align:left; font-size:13px;\" id=\"accordion\">"+
-						"<table class=\"table\">"+
-							"<tr><td><div>"+
-							
-								"<b>양키</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a class=\"accordion-toggle\" data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#replyacco\">답글</a>"+
-								"<p><span>가나다라마바사아자차카타파하</span></p>"+
-								
-								"<div id=\"replyacco\"  class=\"panel-collapse collapse\">"+
-							      "<div class=\"panel-body\" style=\"padding-top:0px; padding-bottom:5px; padding-left:0px; padding-right:0px\">"+
-								      "<hr>"+
-								      "<span style=\"float:left;color: orangered;\">┗</span>"+
-							    	  "<div style=\"width:380px; float:left; margin-right:10px; margin-left:5px;\">"+
-								  	  	"<textarea name=\"replyTextarea\" class=\"form-control\" rows=\"3\" placeholder=\"덧글 내용을 입력하세요\"></textarea>"+
-								      "</div>"+
-								  	  "<div>"+	
-									  	"<button type=\"button\" id=\"replyregi\" class=\"btn btn-default\" onclick=\"\" style=\"margin-top: 40px;\">덧글입력</button>"+
-								      "</div>"+
-							 	  "</div>"+
-							    "</div>"+
-							    
-							"</div></td></tr>"+
-							
-							"<tr><td><div>"+
-								"<b>박준일</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
-								"<p><span>가나다라마바사아자차카타파하 </span></p>"+
-							"</div></td></tr>"+
-							
-							"<tr class=\"success\"><td><div class=\"reReply\">"+
-								"<span style=\"float:left;color: orangered;margin-right:3.3px;\">┗</span><b>이민석</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a> 수정</a><a> 삭제</a><a class=\"accordion-toggle\" data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#replyacco2\"> 답글</a>"+							
-								"<p style=\"margin-left:16.5px;\"><span>가나다라마바사아자차카타파하</span></p>"+
-								"<div id=\"replyacco2\"  class=\"panel-collapse collapse\">"+
-							      "<div class=\"panel-body\" style=\"padding-top:0px; padding-bottom:5px; padding-left:0px; padding-right:0px\">"+
-								      "<hr>"+
-								      "<span style=\"float:left;color: orangered;\">┗</span>"+
-							    	  "<div style=\"width:380px; float:left; margin-right:10px; margin-left:5px;\">"+
-								  	  	"<textarea name=\"replyTextarea\" class=\"form-control\" rows=\"3\" placeholder=\"덧글 내용을 입력하세요\"></textarea>"+
-								      "</div>"+
-								  	  "<div>"+	
-									  	"<button type=\"button\" id=\"replyregi\" class=\"btn btn-default\" onclick=\"\" style=\"margin-top: 40px;\">덧글입력</button>"+
-								      "</div>"+
-							 	  "</div>"+
-							    "</div>"+
-							"</div></td></tr>"+
-							
-							"<tr><td><div>"+
-								"<b>섭섭맨</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
-								"<p><span>가나다라마바사아자차카타파하 </span></p>"+
-							"</div></td></tr>"+
-							
-							"<tr><td><div>"+
-								"<b> 이재영</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a>답글</a>"+
-								"<p><span>가나다라마바사아자차카타파하 </span></p>"+
-							"</div></td></tr>"+
-							
-							/* div class에 reReply 추가하면 덧글답장  */
-							"<tr class=\"success\"><td><div class=\"reReply\">"+
-							 	"<span style=\"float:left;color: orangered;margin-right:3.3px;\">┗</span><b>이민석</b> <span style=\"color:gray; font-size:12px;\">2014/6/12 8:33 </span><a> 수정</a><a> 삭제</a><a> 답글</a>"+
-								"<p style=\"margin-left:16.5px\"><span>이민석 짱짱장짱</span></p>"+
-							"</div></td></tr>"+
-						
-						"</table>"+
-					"</div>"+
-					"<hr>"+
-			 		"<div style=\"width: 450px;float: left;\">"+
-						"<textarea name=\"replyTextarea\" class=\"form-control\" rows=\"3\" placeholder=\"덧글 내용을 입력하세요\"></textarea>"+
-					"</div>"+
-					"<div>"+	
-						"<button type=\"button\" id=\"replyregi\" class=\"btn btn-default\" onclick=\"\" style=\"margin-top: 40px;\">덧글입력</button>"+
-				    "</div>";
-				    --%>	
-		
+					
 		document.getElementById("htmlInjectionSector").innerHTML = htmlinjec;
 		document.getElementById("modallink").click();
 		
@@ -3405,7 +3346,12 @@ div.mousescroll:hover {
 	 	console.log("누른후 "+flag);
 	 }else{
 		document.getElementById("mmodal").innerHTML=returnDiv;
-		document.getElementById("replyButton").innerHTML="댓글 <span class=\"badge\">42</span>";
+		var fakeCountMarker={
+				itemNo:markerNo,
+				async:false
+		}
+		countComment(fakeCountMarker);
+		document.getElementById("replyButton").innerHTML="댓글 <span class=\"badge\">"+countCommentResult+"</span>";
 		flag="1";
 		console.log("누른후 "+flag);
 	 }
@@ -3414,6 +3360,13 @@ div.mousescroll:hover {
  function modify(){
 	console.log("수정모드");	
 	console.log(markerNo);
+	$('#menu1').removeClass('open');
+	$('#menu-toggle1').removeClass('open');
+	$('#menu2').removeClass('open');
+	$('#menu-toggle2').removeClass('open');
+	$('#menu3').removeClass('open');
+	$('#menu-toggle3').removeClass('open');
+	
 	$('#menu2').addClass('open');
 	$('#menu-toggle2').addClass('open');
 	$('#item'+markerNo).removeClass('in');

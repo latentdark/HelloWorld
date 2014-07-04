@@ -447,7 +447,11 @@ position: fixed;
 	/*임시 작업공간 */
 	var countCommentResult;
 	function countComment(marker){
+		var async_choice=(marker.async==false)?false:true;
+		console.log("marker async 확인_"+marker.async);
+			
 		$.ajax({
+			async : async_choice,
 			type:"POST",
 			url:"/countComment",
 			data:{
@@ -783,7 +787,7 @@ position: fixed;
 	
 	function removeComment(commentNo, itemNo_temp){
 		if(confirm("정말 삭제하시겠습니까?")){
-	        alert("삭제되었습니다.");
+	        //alert("삭제되었습니다.");
 	    }else{
 	        alert("삭제취소"); 
 	       	return false;
