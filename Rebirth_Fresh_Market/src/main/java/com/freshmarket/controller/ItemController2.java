@@ -324,6 +324,12 @@ public class ItemController2 {
     	int max = 10 * 640 * 480; //최대 업로드 크기는 5M까지만 허용
   		//용량 안될때 예외처리 안되있음 
 	    MultipartRequest m = new MultipartRequest(request, dir, max, "utf-8",new DefaultFileRenamePolicy());
+	    
+	    item.setItemNo(Integer.parseInt(m.getParameter("itemNo")));
+	    
+	    FTPTransfer transfer = new FTPTransfer();
+	    transfer.delete(SERVER_IP, PORT, ID, PASSWORD, UPLOAD_DIR, itemService.findItem(item.getItemNo()));
+	    
 	    /*
   		List<String> images=new ArrayList<String>();
   		if(m.getOriginalFileName("itemPicturePath1")!=null){
@@ -452,7 +458,7 @@ public class ItemController2 {
   		item.setStateCode(Integer.parseInt(m.getParameter("stateCode")));
   	//===========================================<수정4. by 정준호>===========================================	
   		//ftp통신.
-  		FTPTransfer transfer = new FTPTransfer();
+  		transfer = new FTPTransfer();
   		boolean result=transfer.insert(SERVER_IP, PORT, ID, PASSWORD, UPLOAD_DIR, null, imageFileList);
   		System.out.println("");
   		
