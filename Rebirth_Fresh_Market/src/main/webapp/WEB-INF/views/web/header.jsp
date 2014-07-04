@@ -183,6 +183,7 @@ position: fixed;
 	left:70px;
 	font-family:'impact';
 	font-size:20px;
+	color:#5dcd9d;
 }
 
 .navbar {
