@@ -13,7 +13,7 @@ import com.freshmarket.domain.User;
 import com.freshmarket.service.UserService;
 import com.freshmarket.service.impl.UserServiceImpl;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+//@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "config/context-aspect.xml",
 		"config/context-common.xml",
 		"config/context-mybatis.xml",

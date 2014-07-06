@@ -88,7 +88,12 @@ public class ItemControllerTestApp {
 		
 		
 		//findItemNo
-		item.setItemNo(itemService.findItemNo(item));
+		
+		
+		//x표 없에기위해 잠시 주석
+		//item.setItemNo(itemService.findItemNo(item));
+		
+		
 		System.out.println("지금 등록한 제품의 번호는 " + item.getItemNo());
 		System.out.println(item);
 		

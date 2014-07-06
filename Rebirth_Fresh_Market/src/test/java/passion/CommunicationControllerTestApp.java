@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.freshmarket.service.ChatService;
 import com.freshmarket.service.CommunicationService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
