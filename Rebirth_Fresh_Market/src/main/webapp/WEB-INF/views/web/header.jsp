@@ -211,11 +211,9 @@ position: fixed;
 }
 #wmimodal-dialog{
 	z-index:1400;
-	/* background-image: url("/resources/imgs/hd_love_baroque.jpg");
-	 */
 	background-color:white;
-	width: 90%;
-	height:580px;;
+	width: 1150px;
+	height:580px;
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
 	border-top-left-radius: 5px;
@@ -959,14 +957,16 @@ position: fixed;
 <!--WhoMadeIt?-->
 <div class="modal fade" id="wmimodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog" id="wmimodal-dialog">
-	<h1>임시 페이지 입니다.</h1>
+<!--<h1>임시 페이지 입니다.</h1>
 	<h1>Architect - 이재영 </h1>
 	<h1>Designer  - 이민석 </h1>
 	<h1>DBA		  - 신형섭 </h1>
 	<h1>Android	  - 임지환 </h1>
-	<h1>Android   - 박준일 </h1>
+	<h1>Android   - 박준일 </h1> -->
   	<!-- 	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	 --></div>
+	 -->
+	 <img src="resources/imgs/wmiimg.png" style="margin-top:15px; margin-left:25px;">
+	 </div>
 </div><!-- /.modal -->
 <!--  -->
 <!-- 여기여기 -->
