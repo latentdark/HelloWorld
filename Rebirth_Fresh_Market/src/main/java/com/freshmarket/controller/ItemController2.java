@@ -238,7 +238,7 @@ public class ItemController2 {
   	//===================================================================================================== 		
   		//아이템 채우기
   		if(imageList.size()==0){
-  			item.setItemPicturePath1("noimage.gif");
+  			item.setItemPicturePath1("noimage.png");
   		}else if(imageList.size()==1){
   			item.setItemPicturePath1(imageList.get(0));			
   		}else if(imageList.size()==2){
