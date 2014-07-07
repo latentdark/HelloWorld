@@ -208,16 +208,96 @@ position: fixed;
 
 #wmimodal{
 	z-index:1300;
+	
 }
 #wmimodal-dialog{
 	z-index:1400;
 	background-color:white;
+	background-image:url(resources/imgs/WMI/wmipp.png);
 	width: 1150px;
 	height:580px;
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
+	top:calc(45% - 290px);
+	left:calc(50% - 575px);
+	position:absolute;
+}
+
+#wmimodal-minseok{
+	z-index:1400;
+	background-color:white;
+	background-image:url(resources/imgs/WMI/wmipp-ms.png);
+	width: 1150px;
+	height:580px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	top:calc(45% - 290px);
+	left:calc(50% - 575px);
+	position:absolute;
+}
+
+#wmimodal-jihwan{
+	z-index:1400;
+	background-color:white;
+	background-image:url(resources/imgs/WMI/wmipp-jh.png);
+	width: 1150px;
+	height:580px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	top:calc(45% - 290px);
+	left:calc(50% - 575px);
+	position:absolute;
+}
+
+#wmimodal-jaeyoung{
+	z-index:1400;
+	background-color:white;
+	background-image:url(resources/imgs/WMI/wmipp-jy.png);
+	width: 1150px;
+	height:580px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	top:calc(45% - 290px);
+	left:calc(50% - 575px);
+	position:absolute;
+}
+
+#wmimodal-junil{
+	z-index:1400;
+	background-color:white;
+	background-image:url(resources/imgs/WMI/wmipp-ji.png);
+	width: 1150px;
+	height:580px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	top:calc(45% - 290px);
+	left:calc(50% - 575px);
+	position:absolute;
+}
+
+#wmimodal-hyeongsup{
+	z-index:1400;
+	background-color:white;
+	background-image:url(resources/imgs/WMI/wmipp-hs.png);
+	width: 1150px;
+	height:580px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	top:calc(45% - 290px);
+	left:calc(50% - 575px);
+	position:absolute;
 }
 
 /* 여기여기 */
@@ -313,6 +393,145 @@ position: fixed;
 	background: none;
 }
 
+#lmslink{
+	background-image:url(resources/imgs/WMI/leems.png);
+	top:120px;
+	left:510px;
+	width:136px;
+	height:65px;
+	position:absolute;
+}
+
+#lmslink:hover{
+	background-image:url(resources/imgs/WMI/leemshover.png);
+}
+
+#ljhlink{
+	background-image:url(resources/imgs/WMI/limjh.png);
+	top:349px;
+	left:350px;
+	width:135px;
+	height:65px;
+	position:absolute;
+}
+
+#ljhlink:hover{
+	background-image:url(resources/imgs/WMI/limjhhover.png);	
+}
+
+#ljylink{
+	 background-image:url(resources/imgs/WMI/leejy.png);
+	top:150px;
+	left:200px;
+	width:135px;
+	height:65px;
+	position:absolute;
+}
+
+#ljylink:hover{
+	background-image:url(resources/imgs/WMI/leejyhover.png);
+}
+
+#shslink{
+ 	background-image:url(resources/imgs/WMI/shinhs.png);
+	top:80px;
+	left:780px;
+	width:136px;
+	height:65px;
+	position:absolute;
+}
+
+#shslink:hover{
+	background-image:url(resources/imgs/WMI/shinhshover.png);
+}
+
+#pjilink{
+ background-image:url(resources/imgs/WMI/parkji.png);
+ top:390px;
+ left:680px;
+ width:136px;
+ height:65px;
+ position:absolute;
+}
+
+#pjilink:hover{
+ background-image:url(resources/imgs/WMI/parkjihover.png);
+}
+
+#teamintroduce{
+	background-image:url(resources/imgs/WMI/teamintrohover.png);
+	top:500px;
+	left:60px;
+	width:144px;
+	height:61px;
+	position:absolute;
+}
+
+#teamintroduce:hover{
+	background-image:url(resources/imgs/WMI/teamintro.png);
+}
+
+#msintro{
+	top: 250px;
+	position: absolute;
+	left: 60px;
+}
+
+#jyintro{
+	top: 200px;
+	position: absolute;
+	left: 600px;
+}
+
+
+#jhintro{
+	top: 50px;
+	position: absolute;
+	left: 700px;
+}
+
+
+#hsintro{
+	top: 250px;
+	position: absolute;
+	left: 250px;
+}
+
+#jiintro{
+	top: 250px;
+	position: absolute;
+	left: 150px;
+}
+
+#teamintro{
+	width: 700px;
+	height: 450px;
+	position: absolute;
+	top: 60px;
+	right: 50px;
+}
+
+.introwindow{
+	border-style: solid;
+	width: 400px;
+	height: 250px;
+	background-color: rgba(255,255,255,0.8);
+	border-top-right-radius: 40px;
+	border-bottom-right-radius: 40px;
+	border-top-left-radius: 40px;
+	border-bottom-left-radius: 40px;
+	padding: 30px 20px 20px 20px;
+}
+
+.introh2{
+	padding: 0px;
+	margin: 0px;
+	font-weight: 800;
+}
+
+.introui{
+	font-size:large;
+}
 </style>
 </head>
 <script>
@@ -957,18 +1176,155 @@ position: fixed;
 <!--WhoMadeIt?-->
 <div class="modal fade" id="wmimodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog" id="wmimodal-dialog">
-<!--<h1>임시 페이지 입니다.</h1>
-	<h1>Architect - 이재영 </h1>
-	<h1>Designer  - 이민석 </h1>
-	<h1>DBA		  - 신형섭 </h1>
-	<h1>Android	  - 임지환 </h1>
-	<h1>Android   - 박준일 </h1> -->
-  	<!-- 	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	 -->
-	 <img src="resources/imgs/wmiimg.png" style="margin-top:15px; margin-left:25px;">
-	 </div>
+		<a id="ljhlink" href="#" onmouseover="jihwanpage();"></a>
+		<a id="ljylink" href="#" onmouseover="jaeyoungpage();"></a>
+		<a id="lmslink" href="#" onmouseover="minseokpage();"></a>
+		<a id="pjilink" href="#" onmouseover="junilpage();"></a>		    
+		<a id="shslink" href="#" onmouseover="hyeongsuppage();"></a>		
+		<a id="teamintroduce" href="#" onclick="teampage();"></a>		    		    		    		    		    	 
+	</div>
 </div><!-- /.modal -->
 <!--  -->
+<script>
+
+var modalhome;
+var minseok;
+var jihwan;
+var jaeyoung;
+var junil;
+var hyeongsup;
+var team;
+
+minseok="<div class=\"modal-dialog\" id=\"wmimodal-minseok\">"+
+			"<a id=\"lmslink\" href=\"#\" onmouseout=\"wmimodalhome();\"></a>"+
+			"<div id=\"msintro\" class=\"introwindow\">"+
+			"<h3 class=\"introh2\">이민석(1989.6.4) - Designer</h3><br>"+
+			"<ui class=\"introui\">"+
+			"<li>email : lagender@gmail.com</li>"+
+			"<li>facebook : /minseokism</li>"+
+			"</ui>"+
+			"</ui>"+
+			"<br><p style=\"font-size:large;\">"+
+			" Java를 알고싶다면 옆건물 Java카페로오세요"
+			"</p>"+
+			"</div>"+
+		"</div>";
+		
+jihwan="<div class=\"modal-dialog\" id=\"wmimodal-jihwan\">"+
+			"<a id=\"ljhlink\" href=\"#\" onmouseout=\"wmimodalhome();\"></a>"+
+			"<div id=\"jhintro\" class=\"introwindow\">"+
+			"<h3 class=\"introh2\">임지환(1989.6.9) - Android</h3><br>"+
+			"<ui class=\"introui\">"+
+			"<li>email : limjihwan89@naver.com</li>"+
+			"<li>facebook : /didzl89</li>"+
+			"</ui>"+
+			"</ui>"+
+			"<br><p style=\"font-size:large;\">"+
+			" Java를 알고싶다면 옆건물 Java카페로오세요"
+			"</p>"+
+			"</div>"+
+		"</div>";
+		
+jaeyoung="<div class=\"modal-dialog\" id=\"wmimodal-jaeyoung\">"+
+			"<a id=\"ljylink\" href=\"#\" onmouseout=\"wmimodalhome();\"></a>"+
+			"<div id=\"jyintro\" class=\"introwindow\">"+
+			"<h3 class=\"introh2\">이재영(1989.12.16) - Architect</h3><br>"+
+			"<ui class=\"introui\">"+
+			"<li>email : lagender@gmail.com</li>"+
+			"<li>facebook : /minseokism</li>"+
+			"</ui>"+
+			"</ui>"+
+			"<br><p style=\"font-size:large;\">"+
+			" Java를 알고싶다면 옆건물 Java카페로오세요"
+			"</p>"+
+			"</div>"+
+		"</div>";		
+
+junil="<div class=\"modal-dialog\" id=\"wmimodal-junil\">"+
+			"<a id=\"pjilink\" href=\"#\" onmouseout=\"wmimodalhome();\"></a>"+
+			"<div id=\"jiintro\" class=\"introwindow\">"+
+			"<h3 class=\"introh2\">박준일(1990.2.20) - Android</h3><br>"+
+			"<ui class=\"introui\">"+
+			"<li>email : wnsdlfek@naver.com</li>"+
+			"<li>facebook : /junil.park.52</li>"+
+			"</ui>"+
+			"<br><p style=\"font-size:large;\">"+
+			" Java를 알고싶다면 옆건물 Java카페로오세요"
+			"</p>"+
+			"</div>"+
+		"</div>";
+		
+hyeongsup="<div class=\"modal-dialog\" id=\"wmimodal-hyeongsup\">"+
+			"<a id=\"shslink\" href=\"#\" onmouseout=\"wmimodalhome();\"></a>"+
+			"<div id=\"hsintro\" class=\"introwindow\">"+
+			"<h3 class=\"introh2\">신형섭(1988.4.26) - DBA</h3><br>"+
+			"<ui class=\"introui\">"+
+			"<li>email : ruwkthtm1@naver.com</li>"+
+			"<li>instragram : /realsupsupman</li>"+
+			"</ui>"+
+			"<br><p style=\"font-size:large;\">"+
+			" Java를 알고싶다면 옆건물 Java카페로오세요"
+			"</p>"+
+			"</div>"+
+		"</div>";	
+		
+team="<div class=\"modal-dialog\" id=\"wmimodal-dialog\">"+		
+		"<a id=\"teamintroduce\" href=\"#\" onclick=\"wmimodalhome();\"></a>"+		    		    		    		    		    	 
+	"<div id=\"teamintro\" class=\"introwindow\">"+
+	"<h2 class=\"introh2\" style=\"text-align:center;\">팀 연혁</h2><br>"+
+	"<ui class=\"introui\" style=\"text-align:center;\">"+
+	"<li>2014.3.30 Team HelloWorld 결성</li>"+
+	"<li>2014.4.24 초창기 멤버 정지환 탈퇴</li>"+
+	"<li>2014.7.10 Team HelloWorld 해체</li>"+
+	"</ui>"+
+	
+	"<p>"+
+	""+
+	"</p>"+
+	"</div>"+
+	"</div>";	
+		
+modalhome=	"<div class=\"modal-dialog\" id=\"wmimodal-dialog\">"+
+			"<a id=\"ljhlink\" href=\"#\" onmouseover=\"jihwanpage();\"></a>"+
+			"<a id=\"ljylink\" href=\"#\" onmouseover=\"jaeyoungpage();\"></a>"+
+			"<a id=\"lmslink\" href=\"#\" onmouseover=\"minseokpage();\" ></a>"+
+			"<a id=\"pjilink\" href=\"#\" onmouseover=\"junilpage();\"></a>"+		    
+			"<a id=\"shslink\" href=\"#\" onmouseover=\"hyeongsuppage();\"></a>"+		
+			"<a id=\"teamintroduce\" href=\"#\" onclick=\"teampage();\"></a>"+		    		    		    		    		    	 
+			"</div>";
+
+			
+			
+function minseokpage(){
+	document.getElementById("wmimodal").innerHTML=minseok;
+}
+
+function jihwanpage(){
+	document.getElementById("wmimodal").innerHTML=jihwan;
+}
+
+function jaeyoungpage(){
+	document.getElementById("wmimodal").innerHTML=jaeyoung;
+}
+function junilpage(){
+	document.getElementById("wmimodal").innerHTML=junil;
+}
+function hyeongsuppage(){
+	document.getElementById("wmimodal").innerHTML=hyeongsup;
+}
+
+function teampage(){
+	document.getElementById("wmimodal").innerHTML=team;
+}
+
+function wmimodalhome(){
+	document.getElementById("wmimodal").innerHTML=modalhome;
+}
+</script>
+
+
+
+
 <!-- 여기여기 -->
 
 <c:if test='${user==null}'>
