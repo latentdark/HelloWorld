@@ -532,6 +532,51 @@ position: fixed;
 .introui{
 	font-size:large;
 }
+
+/* 안내페이지  */
+.FP{
+	position: fixed;
+	z-index: 1400;
+
+}
+
+#FPmodal{
+	z-index:1100;
+	overflow:hidden;
+}
+
+#FPlogin{
+	width: 200px;
+	top: 70px;
+	right: 50px;
+}
+
+#FPmenu3{
+	width: 250px;
+	left: 100px;
+	top: 190px;
+}
+
+#FPsearch{
+	width: 200px;
+	top: 100px;
+	right: 40%;
+}
+
+
+
+#FPcookie{
+ 	background-image:url(resources/imgs/FP/cookie11.png);
+	width: 200px;
+	height: 63px;
+	position:absolute;
+	bottom: 5%;
+	left: 5%;
+}
+
+#FPcookie:hover{
+ 	background-image:url(resources/imgs/FP/cookie22.png);
+}
 </style>
 </head>
 <script>
@@ -1159,6 +1204,7 @@ position: fixed;
 </div>
 
 <a href="/TastyRoad" id="tastyRoad" data-target="#wmimodal">
+<!-- <a href="" id="tastyRoad" onclick="FPmodal(); return false;"> -->
  TastyRoad
  </a>
 </div>
@@ -1170,7 +1216,6 @@ position: fixed;
 	<img id="mainlogo" src="resources/imgs/logo5re.png">
 </a>
 </div>
-
 
 <!-- 여기여기 -->
 <!--WhoMadeIt?-->
@@ -1185,6 +1230,24 @@ position: fixed;
 	</div>
 </div><!-- /.modal -->
 <!--  -->
+
+<input style="display: none" type="button" id="FPmodallink"  data-toggle="modal" data-target="#FPmodal">
+
+<div class="modal fade" id="FPmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<img id="FPlogin" class="FP" src="resources/imgs/FP/login3.png">
+	<img id="FPmenu3" class="FP" src="resources/imgs/FP/menu33.png">
+	<img id="FPsearch" class="FP" src="resources/imgs/FP/search3.png">	
+	<img id="mainlogo" src="resources/imgs/logo6re.png">	
+	<a id="FPcookie" href="" onclick="setCookie('FM', 'freshmarket, mslee', 1);FPclose();"></a>	
+	<input type="button" style="display:none;" id="closemodal2" class="close" data-dismiss="modal" aria-hidden="true">
+</div><!-- /.modal -->
+
+	<!--  쿠키 테스트 삭제 요망 -->
+<!-- 	<input type="button" value="쿠키 보기" onclick="FPmodal('FM')">
+	<input type="button" value="쿠키 삭제" onclick="setCookie('FM', '', -1)"> -->
+	<!--  -->
+
+
 <script>
 
 var modalhome;
@@ -1319,6 +1382,54 @@ function teampage(){
 
 function wmimodalhome(){
 	document.getElementById("wmimodal").innerHTML=modalhome;
+}
+
+/* function FPmodal(){
+	document.getElementById("FPmodallink").click();
+}  */
+/* 쿠키  */
+
+
+function setCookie(cName, cValue, cDay){
+    var expire = new Date();
+    expire.setDate(expire.getDate() + cDay);
+    cookies = cName + '=' + escape(cValue) + '; path=/ '; // 한글 깨짐을 막기위해 escape(cValue)를 합니다.
+    if(typeof cDay != 'undefined') cookies += ';expires=' + expire.toGMTString() + ';';
+    document.cookie = cookies;	
+}
+
+/* function getCookie(cName) {
+    cName = cName + '=';
+    var cookieData = document.cookie;
+    var start = cookieData.indexOf(cName);
+    var cValue = '';
+    if(start != -1){
+         start += cName.length;
+         var end = cookieData.indexOf(';', start);
+         if(end == -1)end = cookieData.length;
+         cValue = cookieData.substring(start, end);
+    }
+    return unescape(cValue);
+} */
+
+function FPmodal(cName){
+    cName = cName + '=';
+    var cookieData = document.cookie;
+    var start = cookieData.indexOf(cName);
+    var cValue = '';
+    if(start != -1){
+         start += cName.length;
+         var end = cookieData.indexOf(';', start);
+         if(end == -1)end = cookieData.length;
+         cValue = cookieData.substring(start, end);
+    }
+	console.log(unescape(cValue));
+	if(!(unescape(cValue))){
+		document.getElementById("FPmodallink").click();
+	}
+}
+function FPclose(){
+	document.getElementById("closemodal2").click();	
 }
 </script>
 

@@ -2644,7 +2644,7 @@ div.mousescroll:hover {
  	onload에 추가하면 2번 되서 성능 저하됩니다~~~~~~ 
  -->
 <body class="cbp-spmenu-push" data-twttr-rendered="true"
-	onload="init(this.registerform);">
+	onload="init(this.registerform); FPmodal('FM');">
 	<!----------------------------------------------------------- -->
 
 
