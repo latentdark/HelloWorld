@@ -1268,7 +1268,7 @@ minseok="<div class=\"modal-dialog\" id=\"wmimodal-minseok\">"+
 			"</ui>"+
 			"</ui>"+
 			"<br><p style=\"font-size:large;\">"+
-			" Java를 알고싶다면 옆건물 Java카페로오세요"
+			" Everything has a reason " +
 			"</p>"+
 			"</div>"+
 		"</div>";
@@ -1283,7 +1283,7 @@ jihwan="<div class=\"modal-dialog\" id=\"wmimodal-jihwan\">"+
 			"</ui>"+
 			"</ui>"+
 			"<br><p style=\"font-size:large;\">"+
-			" Java를 알고싶다면 옆건물 Java카페로오세요"
+			" 후회하지말라, 죽도록 해라  " +
 			"</p>"+
 			"</div>"+
 		"</div>";
@@ -1293,12 +1293,13 @@ jaeyoung="<div class=\"modal-dialog\" id=\"wmimodal-jaeyoung\">"+
 			"<div id=\"jyintro\" class=\"introwindow\">"+
 			"<h3 class=\"introh2\">이재영(1989.12.16) - Architect</h3><br>"+
 			"<ui class=\"introui\">"+
-			"<li>email : lagender@gmail.com</li>"+
-			"<li>facebook : /minseokism</li>"+
+			"<li>email : latentdark+fmt@mensakorea.org </li>"+
+			"<li>sharing82.blogspot.com</li>"+
+			"<li>http://iloveshe2.blog.me/</li>"+
 			"</ui>"+
 			"</ui>"+
 			"<br><p style=\"font-size:large;\">"+
-			" Java를 알고싶다면 옆건물 Java카페로오세요"
+			" 개발은 예술이다. " +
 			"</p>"+
 			"</div>"+
 		"</div>";		
@@ -1312,7 +1313,7 @@ junil="<div class=\"modal-dialog\" id=\"wmimodal-junil\">"+
 			"<li>facebook : /junil.park.52</li>"+
 			"</ui>"+
 			"<br><p style=\"font-size:large;\">"+
-			" Java를 알고싶다면 옆건물 Java카페로오세요"
+			" 코드는 누가봐도 알아볼 수 있어야한다. " +
 			"</p>"+
 			"</div>"+
 		"</div>";
@@ -1326,7 +1327,7 @@ hyeongsup="<div class=\"modal-dialog\" id=\"wmimodal-hyeongsup\">"+
 			"<li>instragram : /realsupsupman</li>"+
 			"</ui>"+
 			"<br><p style=\"font-size:large;\">"+
-			" Java를 알고싶다면 옆건물 Java카페로오세요"
+			" 저녁은 집에서 " +
 			"</p>"+
 			"</div>"+
 		"</div>";	
@@ -1336,9 +1337,12 @@ team="<div class=\"modal-dialog\" id=\"wmimodal-dialog\">"+
 	"<div id=\"teamintro\" class=\"introwindow\">"+
 	"<h2 class=\"introh2\" style=\"text-align:center;\">팀 연혁</h2><br>"+
 	"<ui class=\"introui\" style=\"text-align:center;\">"+
+	"Hello World팀은 비트교육센터 자바 고급과정에서 결성된 팀입니다."+
+	
 	"<li>2014.3.30 Team HelloWorld 결성</li>"+
 	"<li>2014.4.24 초창기 멤버 정지환 탈퇴</li>"+
 	"<li>2014.7.10 Team HelloWorld 해체</li>"+
+	/**/
 	"</ui>"+
 	
 	"<p>"+
